@@ -1,0 +1,905 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{fancy,a4wide,epsf,multicol}
+
+\lhead[\rm\thepage]{\sl\rightmark} 
+
+\chead{}
+
+\rhead[\sl\leftmark]{\rm\thepage}
+
+%\lfoot{\small Fritzsche, Software Engineering}
+
+\cfoot{}
+
+\rfoot{}
+
+%\renewcommand{\headrulewidth} {0.0pt} 
+%\renewcommand{\footrulewidth} {0.0pt} 
+
+
+\sloppy
+
+\pagestyle{fancy}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 2pt minus 1pt}
+
+\setlength{\headrulewidth}{0.8pt}
+
+%\title{\Huge {Thema} 
+%\vspace{2cm} \normalsize {Projektdokumentation\ zum Gruppenbeleg Software Engineering}}
+%\author{\normalsize x,y,z\\[2cm]  Hochschule f\"{u}r Technik und Wirtschaft Dresden\\ Fakultät Informatik/Mathematik}
+%\newcounter{aufgabe}[section]
+\end_preamble
+\use_default_options false
+\begin_modules
+braille
+booklistings
+theorems-ams
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\language ngerman
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman ae
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize 11
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Stichwortverzeichnis
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 4cm
+\topmargin 3cm
+\rightmargin 3cm
+\bottommargin 3cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language polish
+\papercolumns 1
+\papersides 2
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+maketitle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bibliographystyle{alphadin}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+
+\size normal
+\color magenta
+<
+\size default
+thema
+\size normal
+>
+\size default
+\color inherit
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset VSpace 1cm
+\end_inset
+
+
+\size normal
+Projektdokumentation zum Softwareentwicklungsprojekt
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+(Entwicklerdokumentation)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset VSpace 1cm
+\end_inset
+
+Lehrveranstaltung 
+\begin_inset Quotes pld
+\end_inset
+
+Software Engineering I / II
+\begin_inset Quotes prd
+\end_inset
+
+
+\size default
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Entwickler:
+\color magenta
+ <autor1>
+\color inherit
+, 
+\color magenta
+<autor2>
+\color inherit
+, 
+\color magenta
+<autor3>
+\color inherit
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+Auftraggeber: 
+\color magenta
+<auftraggeber>
+\begin_inset Newline newline
+\end_inset
+
+
+\color inherit
+
+\begin_inset VSpace 0.5cm
+\end_inset
+
+Bachelorstudiengang Medieninformatik
+\begin_inset Newline newline
+\end_inset
+
+Hochschule für Technik und Wirtschaft Dresden
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+maketitle
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace 1cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+
+\size normal
+\color magenta
+An dieser Stelle steht eine Zusammenfassung zum Zweck des Projektes, die
+ auf die Seite passen muss.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Einleitung
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\color magenta
+Beschreibung des Vorhabens.
+ Erläuterungen zur Entwicklung und Nutzung des Projekts.
+ Einordnung der geschaffenen Lösung in den wissenschaftlichen Kontext.
+ 
+\end_layout
+
+\begin_layout Section
+Projektmanagement
+\end_layout
+
+\begin_layout Subsection
+Vorgegebener Zeitablauf
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="10cm">
+<column alignment="left" valignment="top" width="5cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorlage Pflichtenheft
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12.04.2013 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Bearbeitung Analyse/Entwurf:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Klassendiagramme, Komponentendiagramme, Paketstruktur; Verteilungsdiagramme,
+ ...
+ Festlegung der Rollenverteilung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="10cm">
+<column alignment="left" valignment="top" width="5cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorlage Projektdokumentation (Zwischenstand)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+06.05.2013
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Durchführung der Implementierung 
+\end_layout
+
+\begin_layout Plain Layout
+User Interface Prototyping
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="10cm">
+<column alignment="left" valignment="top" width="5cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gruppenkolloquium
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+06.05.
+ + 17.05.2013
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Implementation, Testfallspezifikation, Testung (JUnit) Bereitstellung API
+ (Javadoc)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="10cm">
+<column alignment="left" valignment="top" width="5cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Abgabe der Projektdokumentation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15.06.2013
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbereitung Präsentation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="2">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="10cm">
+<column alignment="left" valignment="top" width="5cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Praesentation 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19./20.06.
+ + 25./26.06.2013
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Ressourcenplanung und Organisation
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\color magenta
+Einsatz personeller Ressourcen, Rollenverteilung im Projekt, Zuordnung von
+ Aufgaben zu Rollen, inhaltliche Schnittstellen.
+\end_layout
+
+\begin_layout Subsection
+Werkzeugunterstützung 
+\end_layout
+
+\begin_layout Subsubsection
+Managementwerkzeuge
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\color magenta
+Beschreibung des Einsatzes von Werkzeugen für das Projektmanagement (svn,
+ Mercurial, Lyx etc.)
+\end_layout
+
+\begin_layout Subsubsection
+Softwareentwicklungswerkzeuge
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\color magenta
+Beschreibung des Einsatzes von Werkzeugen für die Softwareentwicklung (Topcased,
+ JDK etc.)
+\end_layout
+
+\begin_layout Section
+Pflichtenheft
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\color magenta
+Hier wird auf das als gesondertes Dokument vorgelegte Pflichtenheft verwiesen.
+\end_layout
+
+\begin_layout Section
+Anforderungsanalyse und Entwurf
+\end_layout
+
+\begin_layout Subsection
+Anwendungsfallanalyse
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\color magenta
+Detailliertere Beschreibungen der UseCases des Pflichtenheftes, Darstellung
+ durch Aktivitätsdiagramme.
+ Beschreibung von Anwendungsszenarien, Darstellung durch Sequenzdiagramme.
+ Insbesondere ist darzustellen, wer die Akteure sind und welche Aufgaben
+ sie jeweils haben.
+\end_layout
+
+\begin_layout Subsection
+Problembereichsanalyse
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\color magenta
+Analyse und Strukturierung des Problems.
+ Identifizierung von Teilproblemen.
+ Identifizierung von Klassen.
+ Hier sind besonders verständilche verbale Beschreibungen notwendig!
+\end_layout
+
+\begin_layout Subsection
+Stand der Wissenschaft und Technik
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\color magenta
+Überlegungen zur Abwägung zwischen Nachnutzung und Eigenentwicklung.
+ Dieser Punkt kann recht umfangreich sein, wenn vorhandene Lösungen erst
+ analysiert werden müssen (z.B.
+ CMS_Projekt).
+\end_layout
+
+\begin_layout Subsection
+Entwurf der Systemarchitektur
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\color magenta
+Grobarchitektur, z.B.
+ Darstellung eines Schichtenmodells.
+ Komponentenbildung.
+ Nachnutzung von Bibliotheken/Frameworks.
+ Verteilungsdiagramm(e) im Falle von Client-Server-Anwendungen.
+\end_layout
+
+\begin_layout Subsection
+Entwurf der Benutzeroberfläche
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\color magenta
+Grafische Darstellung der Struktur der GUI und der über die GUI ausgelösten
+ Aktivitäten.
+ Hier sind bereits die Klassen für die Komposition der Oberflächenelemente
+ anzugeben, auch die Struktur von Menüs usw.
+ Darstellung der Dialoggestaltung.
+\end_layout
+
+\begin_layout Subsection
+Entwurf der Funktionalität/Interaktionsmodell
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\color magenta
+Beschreibung der logischen Struktur der Anwendung, Klassendiagramme, Zustandsdia
+gramme, Schnittstellenspezifikationen (Interfaces!) und verwendete bzw.
+ selbst definierte Protokolle.
+\end_layout
+
+\begin_layout Subsection
+Datenverwaltung / Datenbankentwurf
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\color magenta
+Beschreibung der persistenten Datenspeicherung.
+ Angabe von ER-Diagrammen und des OR-Mappings.
+\end_layout
+
+\begin_layout Section
+Implementation
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\color magenta
+Abgrenzung von Geschäftsklassen und Fachklassen.
+ Erstellung bzw.
+ Generierung der Quellcodes.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\color magenta
+Implementierung von Algorithmen.
+\end_layout
+
+\begin_layout Subsection
+Der Build-Prozess
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\color magenta
+Beschreibung der Erstellung der auszuliefernden Anwendung.
+ Enthält auch eine Installationsanleitung.
+\end_layout
+
+\begin_layout Subsection
+API
+\end_layout
+
+\begin_layout Subsection
+Teststrategien und -werkzeuge
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\color magenta
+Hier wird beschrieben, ob und wenn ja welche Testwerkzeuge eingesetzt werden
+ (z.B.
+ JUnit).
+\end_layout
+
+\begin_layout Subsection
+Testfallspezifikation
+\end_layout
+
+\begin_layout Subsection
+Testdurchführung und Testergebnisse
+\end_layout
+
+\begin_layout Section
+Anwenderdokumentation
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\color magenta
+Hier sollte eine Anleitung zur Installation enthalten sein.
+ Empfohlen wird die Erstellung einer Web-Site für das Projekt.
+\end_layout
+
+\begin_layout Section
+Projektbewertung aus Entwicklersicht
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\color magenta
+Einschätzung des Entwicklungsstandes des Projekts.
+ Beantwortung der Frage 
+\begin_inset Quotes pld
+\end_inset
+
+Was soll als nächstes getan werden, wenn noch Zeit bzw.
+ Geld zur Verfügung gestellt wird?
+\begin_inset Quotes prd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\color magenta
+Verbesserungsvorschläge, z.B.
+ zur Gestaltung der Entwicklerdokumentation.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "gdi_I_bib,/Users/fritzsch/workstation/SF/Literatur-Datenbank/informatikbib1"
+options "bibtotoc,alphadin"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
