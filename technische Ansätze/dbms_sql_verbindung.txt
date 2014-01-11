@@ -1,0 +1,3 @@
+http://scherer-it.ch/java/javadb_beispiele.html
+http://openbook.galileocomputing.de/java7/1507_16_005.html
+http://www.torsten-horn.de/techdocs/java-sql.htm
