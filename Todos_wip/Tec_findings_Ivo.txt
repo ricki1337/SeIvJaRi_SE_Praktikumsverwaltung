@@ -1,0 +1,28 @@
+Aufgaben:
+
+1.	Emailversand (woher kommt inhalt etc.)
+	a.	Definieren von Email-Inhalte in Templates?
+	b.	Daten kommen aus der Datenbank?
+	c.	Versenden von Emails über Datenbank oder über Java?
+		*	Vollständige Implementation:
+			JavaMail: 				http://www.oracle.com/technetwork/java/javamail
+			Apache Commons Email: 	http://commons.apache.org/proper/commons-email
+		*	Üer Kommandozeile:
+			Blat: 		http://www.blat.net
+			Mutt: 		http://www.mutt.org
+			SendEmail: 	http://caspian.dotconf.net/menu/Software/SendEmail
+		*	Über Applet direkt wenn (oder):
+			-	Applet Signiert
+			-	SMTP Server auf gleichen Rechner wie HTML-Server
+			-	Auf HTML-Server läuft SMTP-Proxy -> leitet Anfragen vom Applet weiter
+
+2.	öffnen mehrerer unterfenster (ein fenstertyp, zb suche wird mehrfach geöffnet und zb als reiter/tab angezeigt)
+	a.	Läsung über JDeskoptpane?
+	b.	Multiple Document Interface (MDI) -> Kombination aus JDesktopPane und JInternalFrames
+	c.	mehrere Dokumente über ein Hauptfenster angezeigt und bedient
+	d.	siehe Quellen
+
+Quellen:
+http://www.torsten-horn.de/techdocs/java-smtp.htm
+http://java-tutorial.org/jdesktoppane.html
+
