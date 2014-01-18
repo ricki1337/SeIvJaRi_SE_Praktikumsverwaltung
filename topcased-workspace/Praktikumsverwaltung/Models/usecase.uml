@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_qb8akM37EdqwVrslYOdUDA">
+  <packagedElement xmi:type="uml:Package" xmi:id="_w8IxIM37EdqwVrslYOdUDA" name="Praktikumsverwaltung">
+    <packagedElement xmi:type="uml:Actor" xmi:id="_snpnMH9ZEeOFFqCBgts--g" name="Praktikumsverantwortlicher"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_wL5xEH9ZEeOFFqCBgts--g" name="Studenten verwalten">
+      <include xmi:id="_GOe3c39aEeOFFqCBgts--g" name="Include1" addition="_2HAdkH9ZEeOFFqCBgts--g"/>
+      <extensionPoint xmi:id="_HphSEH9aEeOFFqCBgts--g" name="Button Neu"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_yQthcH9ZEeOFFqCBgts--g" name="Firmen verwalten">
+      <include xmi:id="_alYfI39aEeOFFqCBgts--g" name="Include1" addition="_ZwCykH9aEeOFFqCBgts--g"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_2HAdkH9ZEeOFFqCBgts--g" name="Anzeigen">
+      <include xmi:id="_FPhU0H9aEeOFFqCBgts--g" name="Include1" addition="_wL5xEH9ZEeOFFqCBgts--g"/>
+      <extensionPoint xmi:id="_9MEbwH9ZEeOFFqCBgts--g" name="Suchfeld"/>
+      <extensionPoint xmi:id="_zhA2QH9aEeOFFqCBgts--g" name="Bearbeitung der Felder"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_40ia0H9ZEeOFFqCBgts--g" name="Anlegen">
+      <include xmi:id="_LRCyY39aEeOFFqCBgts--g" name="Include1" addition="_J903AH9aEeOFFqCBgts--g"/>
+      <extend xmi:id="_Hp1bJH9aEeOFFqCBgts--g" name="Extend1" extendedCase="_wL5xEH9ZEeOFFqCBgts--g" extensionLocation="_HphSEH9aEeOFFqCBgts--g"/>
+      <extensionPoint xmi:id="_N3eCEH9aEeOFFqCBgts--g" name="Button Import"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_6_eoYH9ZEeOFFqCBgts--g" name="Filtern">
+      <extend xmi:id="_9M5iMH9ZEeOFFqCBgts--g" name="Extend1" extendedCase="_2HAdkH9ZEeOFFqCBgts--g" extensionLocation="_9MEbwH9ZEeOFFqCBgts--g"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="__wb18H9ZEeOFFqCBgts--g" name="A_&lt;praktikumsverantwortlicher>_&lt;studenten verwalten>" memberEnd="__wb18X9ZEeOFFqCBgts--g __wb19H9ZEeOFFqCBgts--g">
+      <ownedEnd xmi:id="__wb18X9ZEeOFFqCBgts--g" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="__wb18H9ZEeOFFqCBgts--g">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__wb18n9ZEeOFFqCBgts--g" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__wb1839ZEeOFFqCBgts--g" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="__wb19H9ZEeOFFqCBgts--g" name="studenten verwalten" type="_wL5xEH9ZEeOFFqCBgts--g" association="__wb18H9ZEeOFFqCBgts--g">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__wb19X9ZEeOFFqCBgts--g" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__wb19n9ZEeOFFqCBgts--g" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_ADGTRn9aEeOFFqCBgts--g" name="A_&lt;praktikumsverantwortlicher>_&lt;firmen verwalten>" memberEnd="_ADGTR39aEeOFFqCBgts--g _ADGTSn9aEeOFFqCBgts--g">
+      <ownedEnd xmi:id="_ADGTR39aEeOFFqCBgts--g" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_ADGTRn9aEeOFFqCBgts--g">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ADGTSH9aEeOFFqCBgts--g" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ADGTSX9aEeOFFqCBgts--g" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_ADGTSn9aEeOFFqCBgts--g" name="firmen verwalten" type="_yQthcH9ZEeOFFqCBgts--g" association="_ADGTRn9aEeOFFqCBgts--g">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ADGTS39aEeOFFqCBgts--g" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ADGTTH9aEeOFFqCBgts--g" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_J903AH9aEeOFFqCBgts--g" name="Daten eingeben"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_L-HTwH9aEeOFFqCBgts--g" name="Import">
+      <extend xmi:id="_N3xkFH9aEeOFFqCBgts--g" name="Extend1" extendedCase="_40ia0H9ZEeOFFqCBgts--g" extensionLocation="_N3eCEH9aEeOFFqCBgts--g"/>
+      <extend xmi:id="_dY5IlH9aEeOFFqCBgts--g" name="Extend2" extendedCase="_bVUuUH9aEeOFFqCBgts--g" extensionLocation="_dYk_gH9aEeOFFqCBgts--g"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_ZwCykH9aEeOFFqCBgts--g" name="Anzeigen">
+      <generalization xmi:id="_m6MfsH9aEeOFFqCBgts--g" general="_40ia0H9ZEeOFFqCBgts--g"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_bVUuUH9aEeOFFqCBgts--g" name="Anlegen">
+      <extensionPoint xmi:id="_dYk_gH9aEeOFFqCBgts--g" name="Button Import"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_gMqQsH9aEeOFFqCBgts--g" name="Import"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_xCvdAH9aEeOFFqCBgts--g" name="Bearbeiten">
+      <extend xmi:id="_zhTxNH9aEeOFFqCBgts--g" name="Extend1" extendedCase="_2HAdkH9ZEeOFFqCBgts--g" extensionLocation="_zhA2QH9aEeOFFqCBgts--g"/>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>
