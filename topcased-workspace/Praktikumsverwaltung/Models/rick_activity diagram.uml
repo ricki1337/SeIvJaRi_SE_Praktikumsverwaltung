@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="idModel" name="activity diagramModel">
+  <packagedElement xmi:type="uml:Package" xmi:id="idPackage" name="activity diagramPackage">
+    <packagedElement xmi:type="uml:Activity" xmi:id="idActivity" name="activity diagramActivity">
+      <ownedComment xmi:id="_zkltooApEeOV07fk0emd0A" annotatedElement="_Fxgt4IAmEeOV07fk0emd0A">
+        <body>händisch oder per Import</body>
+      </ownedComment>
+      <ownedComment xmi:id="_2WaVAoApEeOV07fk0emd0A" annotatedElement="_InW5qIAmEeOV07fk0emd0A">
+        <body>Liste mit Studenten, welche ins Paktikum gehen wird vom Prüfungsamt mitgeteilt</body>
+      </ownedComment>
+      <ownedComment xmi:id="_rLI58oAqEeOV07fk0emd0A" annotatedElement="_mA-iOIAqEeOV07fk0emd0A">
+        <body>Was passiert wenn keine Meldung kommt?&#xD;
+</body>
+      </ownedComment>
+      <ownedComment xmi:id="_tHe1YoArEeOV07fk0emd0A" annotatedElement="_WTC0SYArEeOV07fk0emd0A">
+        <body>Beinhaltet die Datenübernahme des Vertrags</body>
+      </ownedComment>
+      <node xmi:type="uml:InitialNode" xmi:id="_DAk3UIAmEeOV07fk0emd0A" name="InitialNode1" outgoing="_InW5qIAmEeOV07fk0emd0A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_sgQPkoAmEeOV07fk0emd0A" name="Praktikum beginnt" outgoing="_mgi6eYAnEeOV07fk0emd0A" incoming="_i_nxaYAnEeOV07fk0emd0A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_lFxlkoAnEeOV07fk0emd0A" name="Praktikum abgeschlossen" incoming="_mgi6eYAnEeOV07fk0emd0A"/>
+      <node xmi:type="uml:JoinNode" xmi:id="_Y63AgoAqEeOV07fk0emd0A" name="JoinNode1" outgoing="_eqbLaIAqEeOV07fk0emd0A"/>
+      <node xmi:type="uml:MergeNode" xmi:id="_py8GAIAsEeOV07fk0emd0A" name="MergeNode1"/>
+      <node xmi:type="uml:JoinNode" xmi:id="_q2VcsIAsEeOV07fk0emd0A" name="JoinNode2"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_NOIW0IAuEeOV07fk0emd0A" name="OpaqueAction1"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_PsCjsIAuEeOV07fk0emd0A" name="liegt Bericht vor?" outgoing="_6Xd9YIAuEeOV07fk0emd0A _Xrr-CIAyEeOV07fk0emd0A" incoming="_U04s0IAuEeOV07fk0emd0A _8ZlmIIAuEeOV07fk0emd0A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_1tgvsIAuEeOV07fk0emd0A" name="Student mahnen" outgoing="_8ZlmIIAuEeOV07fk0emd0A" incoming="_6Xd9YIAuEeOV07fk0emd0A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_EqNYgIAvEeOV07fk0emd0A" name="Info im Vertrag setzen" incoming="_Xrr-CIAyEeOV07fk0emd0A"/>
+      <node xmi:type="uml:StructuredActivityNode" xmi:id="_0SqJAIAzEeOV07fk0emd0A" name="Daten anlegen"/>
+      <node xmi:type="uml:FlowFinalNode" xmi:id="_FMC9cIAzEeOV07fk0emd0A" name="FlowFinalNode1" incoming="_GZVP-IAzEeOV07fk0emd0A" inPartition="__WnlsIAzEeOV07fk0emd0A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_ceomEoAmEeOV07fk0emd0A" name="Betreuer zuordnen" outgoing="_kx3nmYAmEeOV07fk0emd0A _wkRP4IAsEeOV07fk0emd0A" incoming="_fmqG-YAmEeOV07fk0emd0A _um5hGIAoEeOV07fk0emd0A _1gf2KIAoEeOV07fk0emd0A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_rz5N8oAoEeOV07fk0emd0A" name="Betreuer anlegen" outgoing="_1gf2KIAoEeOV07fk0emd0A" incoming="_tewNSoAoEeOV07fk0emd0A"/>
+      <node xmi:type="uml:JoinNode" xmi:id="_sklqEIAzEeOV07fk0emd0A" name="alle Informationen eingegeben" visibility="public" outgoing="_U04s0IAuEeOV07fk0emd0A _GZVP-IAzEeOV07fk0emd0A _xsC2oIA0EeOV07fk0emd0A _9z9DqIA0EeOV07fk0emd0A" incoming="_wHGywIAsEeOV07fk0emd0A _wkRP4IAsEeOV07fk0emd0A _x9S4UIAsEeOV07fk0emd0A _ipZbAIAtEeOV07fk0emd0A"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_xnsqg4AmEeOV07fk0emd0A" name="Firma vorhanden?" outgoing="_HQzg-YAnEeOV07fk0emd0A _TjHAGIAnEeOV07fk0emd0A" incoming="_3ID7yYAmEeOV07fk0emd0A _YDwj-IArEeOV07fk0emd0A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_BS9CcoAnEeOV07fk0emd0A" name="Firma anlegen" outgoing="_Mk-wWYAnEeOV07fk0emd0A" incoming="_HQzg-YAnEeOV07fk0emd0A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_DIZhIoAnEeOV07fk0emd0A" name="Kontakt anlegen" outgoing="_R5HjeIAnEeOV07fk0emd0A" incoming="_Mk-wWYAnEeOV07fk0emd0A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_VrPmsoAmEeOV07fk0emd0A" name="Firma zuordnen" outgoing="_fmqG-YAmEeOV07fk0emd0A _xtAWaIAoEeOV07fk0emd0A _wHGywIAsEeOV07fk0emd0A" incoming="_XpVECYAmEeOV07fk0emd0A _R5HjeIAnEeOV07fk0emd0A _TjHAGIAnEeOV07fk0emd0A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_e0pXAIAtEeOV07fk0emd0A" name="zusätzliche Daten pflegen" outgoing="_ipZbAIAtEeOV07fk0emd0A" incoming="_hjTVoIAtEeOV07fk0emd0A"/>
+      <node xmi:type="uml:ForkNode" xmi:id="_U52zwoArEeOV07fk0emd0A" name="ForkNode1" visibility="public"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_jQ_Yw4AoEeOV07fk0emd0A" name="Betreuer vorhanden?" outgoing="_tewNSoAoEeOV07fk0emd0A _um5hGIAoEeOV07fk0emd0A" incoming="_xtAWaIAoEeOV07fk0emd0A _CDiOCIArEeOV07fk0emd0A _Z7loSIArEeOV07fk0emd0A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_iXIqgoAmEeOV07fk0emd0A" name="Vertrag anlegen" outgoing="_i_nxaYAnEeOV07fk0emd0A _CDiOCIArEeOV07fk0emd0A _WTC0SYArEeOV07fk0emd0A" incoming="_kx3nmYAmEeOV07fk0emd0A _UOFk2YApEeOV07fk0emd0A _UKN8CYAqEeOV07fk0emd0A"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_B7TUg4AqEeOV07fk0emd0A" name="Betreuer meldet Student mit Vertrag" outgoing="_OwRb2YAqEeOV07fk0emd0A _UKN8CYAqEeOV07fk0emd0A" incoming="_eqbLaIAqEeOV07fk0emd0A _IQHhiYAqEeOV07fk0emd0A _mA-iOIAqEeOV07fk0emd0A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_L3URsoAqEeOV07fk0emd0A" name="Student mahnen" outgoing="_mA-iOIAqEeOV07fk0emd0A" incoming="_OwRb2YAqEeOV07fk0emd0A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_Fxgt4IAmEeOV07fk0emd0A" name="Student(en) Neuanlage" outgoing="_XpVECYAmEeOV07fk0emd0A _3ID7yYAmEeOV07fk0emd0A _UOFk2YApEeOV07fk0emd0A _IQHhiYAqEeOV07fk0emd0A" incoming="_InW5qIAmEeOV07fk0emd0A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_T-UpgIA0EeOV07fk0emd0A" name="Meldung an Prüfungsamt" outgoing="_XgaQOIA0EeOV07fk0emd0A" incoming="_Oq3WaIA1EeOV07fk0emd0A _Kgt_QIA3EeOV07fk0emd0A"/>
+      <node xmi:type="uml:FlowFinalNode" xmi:id="_XGsIoIA0EeOV07fk0emd0A" name="FlowFinalNode2" incoming="_XgaQOIA0EeOV07fk0emd0A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_bK2hoIA0EeOV07fk0emd0A" name="Betreuer reicht Beurteilung und Empfehlung ein" incoming="_xsC2oIA0EeOV07fk0emd0A"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_1kyp0IA0EeOV07fk0emd0A" name="DecisionNode1"/>
+      <node xmi:type="uml:ForkNode" xmi:id="_8YJ0AIA0EeOV07fk0emd0A" name="ForkNode2" outgoing="_TkjpMIA1EeOV07fk0emd0A _UjOQ6IA1EeOV07fk0emd0A _V33vpoA1EeOV07fk0emd0A" incoming="_9z9DqIA0EeOV07fk0emd0A"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_Bj9xkIA1EeOV07fk0emd0A" name="Zeugnis eingereicht?" outgoing="_xBuR0IA1EeOV07fk0emd0A _x0hAtoA1EeOV07fk0emd0A" incoming="_V33vpoA1EeOV07fk0emd0A _xdGmSIA1EeOV07fk0emd0A"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_FZOL4IA1EeOV07fk0emd0A" name="Bericht eingereicht?" outgoing="_yK3rMIA1EeOV07fk0emd0A _y0GOaIA1EeOV07fk0emd0A" incoming="_TkjpMIA1EeOV07fk0emd0A _yeKaoIA1EeOV07fk0emd0A"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_Hq9lAIA1EeOV07fk0emd0A" name="Empfehlung abgegeben?" outgoing="_zLmvdIA1EeOV07fk0emd0A _z6vGUIA1EeOV07fk0emd0A" incoming="_UjOQ6IA1EeOV07fk0emd0A _ziKOSIA1EeOV07fk0emd0A"/>
+      <node xmi:type="uml:JoinNode" xmi:id="_Ny0UEIA1EeOV07fk0emd0A" name="JoinNode3" outgoing="_Oq3WaIA1EeOV07fk0emd0A _GKWb8IA3EeOV07fk0emd0A" incoming="_mkpO-IA1EeOV07fk0emd0A _nmcqMIA1EeOV07fk0emd0A _okPvMIA1EeOV07fk0emd0A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_ctlqQIA1EeOV07fk0emd0A" name="Info pflegen" outgoing="_nmcqMIA1EeOV07fk0emd0A" incoming="_x0hAtoA1EeOV07fk0emd0A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_kK9awIA1EeOV07fk0emd0A" name="Info pflegen" outgoing="_okPvMIA1EeOV07fk0emd0A" incoming="_y0GOaIA1EeOV07fk0emd0A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_lJOZ0IA1EeOV07fk0emd0A" name="Info pflegen" outgoing="_mkpO-IA1EeOV07fk0emd0A" incoming="_z6vGUIA1EeOV07fk0emd0A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_s-aNYIA1EeOV07fk0emd0A" name="Betreuer mahnen" outgoing="_xdGmSIA1EeOV07fk0emd0A" incoming="_xBuR0IA1EeOV07fk0emd0A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_vFwUYIA1EeOV07fk0emd0A" name="Betreuer mahnen" outgoing="_yeKaoIA1EeOV07fk0emd0A" incoming="_yK3rMIA1EeOV07fk0emd0A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_viEc8IA1EeOV07fk0emd0A" name="Betreuer mahnen" outgoing="_ziKOSIA1EeOV07fk0emd0A" incoming="_zLmvdIA1EeOV07fk0emd0A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_DGY7sIA3EeOV07fk0emd0A" name="Erfolgsinfo setzen" outgoing="_Kgt_QIA3EeOV07fk0emd0A" incoming="_GKWb8IA3EeOV07fk0emd0A"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_InW5qIAmEeOV07fk0emd0A" name="Vorbereitung Paktikumssemester" source="_DAk3UIAmEeOV07fk0emd0A" target="_Fxgt4IAmEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_InW5qYAmEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_InW5qoAmEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_XpVECYAmEeOV07fk0emd0A" name="hat Firma gefunden" source="_Fxgt4IAmEeOV07fk0emd0A" target="_VrPmsoAmEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_XpVECoAmEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_XpVEC4AmEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_fmqG-YAmEeOV07fk0emd0A" name="Betreuer gefunden" source="_VrPmsoAmEeOV07fk0emd0A" target="_ceomEoAmEeOV07fk0emd0A" inPartition="__WnlsIAzEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_fmqG-oAmEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_fmqG-4AmEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_kx3nmYAmEeOV07fk0emd0A" name="Vertrag geschlossen" source="_ceomEoAmEeOV07fk0emd0A" target="_iXIqgoAmEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_kx3nmoAmEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_kx3nm4AmEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_3ID7yYAmEeOV07fk0emd0A" name="Student hat Firma gefunden" source="_Fxgt4IAmEeOV07fk0emd0A" target="_xnsqg4AmEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_3ID7yoAmEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_3ID7y4AmEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_HQzg-YAnEeOV07fk0emd0A" name="Nein" source="_xnsqg4AmEeOV07fk0emd0A" target="_BS9CcoAnEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_HQzg-oAnEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_HQzg-4AnEeOV07fk0emd0A"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_Mk-wWYAnEeOV07fk0emd0A" name="ControlFlow1" source="_BS9CcoAnEeOV07fk0emd0A" target="_DIZhIoAnEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_Mk-wWoAnEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_Mk-wW4AnEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_R5HjeIAnEeOV07fk0emd0A" name="ControlFlow2" source="_DIZhIoAnEeOV07fk0emd0A" target="_VrPmsoAmEeOV07fk0emd0A" inPartition="__WnlsIAzEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_R5HjeYAnEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_R5HjeoAnEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_TjHAGIAnEeOV07fk0emd0A" name="Ja" source="_xnsqg4AmEeOV07fk0emd0A" target="_VrPmsoAmEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_TjHAGYAnEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_TjHAGoAnEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_i_nxaYAnEeOV07fk0emd0A" name="ControlFlow3" source="_iXIqgoAmEeOV07fk0emd0A" target="_sgQPkoAmEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_i_nxaoAnEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_i_nxa4AnEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_mgi6eYAnEeOV07fk0emd0A" name="ControlFlow4" source="_sgQPkoAmEeOV07fk0emd0A" target="_lFxlkoAnEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_mgi6eoAnEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_mgi6e4AnEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_tewNSoAoEeOV07fk0emd0A" name="Nein" source="_jQ_Yw4AoEeOV07fk0emd0A" target="_rz5N8oAoEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_tewNS4AoEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_tewNTIAoEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_um5hGIAoEeOV07fk0emd0A" name="Ja" source="_jQ_Yw4AoEeOV07fk0emd0A" target="_ceomEoAmEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_um5hGYAoEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_um5hGoAoEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_xtAWaIAoEeOV07fk0emd0A" name="Betreuer übernimmt Student" source="_VrPmsoAmEeOV07fk0emd0A" target="_jQ_Yw4AoEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_xtAWaYAoEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_xtAWaoAoEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_1gf2KIAoEeOV07fk0emd0A" name="ControlFlow5" source="_rz5N8oAoEeOV07fk0emd0A" target="_ceomEoAmEeOV07fk0emd0A" inPartition="__WnlsIAzEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_1gf2KYAoEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_1gf2KoAoEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_UOFk2YApEeOV07fk0emd0A" name="ControlFlow6" source="_Fxgt4IAmEeOV07fk0emd0A" target="_iXIqgoAmEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_UOFk2oApEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_UOFk24ApEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_IQHhiYAqEeOV07fk0emd0A" name="ControlFlow7" source="_Fxgt4IAmEeOV07fk0emd0A" target="_B7TUg4AqEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_IQHhioAqEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_IQHhi4AqEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_OwRb2YAqEeOV07fk0emd0A" name="Zeitpunkt x keine Meldung" source="_B7TUg4AqEeOV07fk0emd0A" target="_L3URsoAqEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_OwRb2oAqEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_OwRb24AqEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_UKN8CYAqEeOV07fk0emd0A" name="Ja" source="_B7TUg4AqEeOV07fk0emd0A" target="_iXIqgoAmEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_UKN8CoAqEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_UKN8C4AqEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_eqbLaIAqEeOV07fk0emd0A" name="ControlFlow8" source="_Y63AgoAqEeOV07fk0emd0A" target="_B7TUg4AqEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_eqbLaYAqEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_eqbLaoAqEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_mA-iOIAqEeOV07fk0emd0A" name="ControlFlow9" source="_L3URsoAqEeOV07fk0emd0A" target="_B7TUg4AqEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_mA-iOYAqEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_mA-iOoAqEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_CDiOCIArEeOV07fk0emd0A" name="ControlFlow10" source="_iXIqgoAmEeOV07fk0emd0A" target="_jQ_Yw4AoEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_CDiOCYArEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_CDiOCoArEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_WTC0SYArEeOV07fk0emd0A" name="Daten pflegen" source="_iXIqgoAmEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_WTC0SoArEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_WTC0S4ArEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_YDwj-IArEeOV07fk0emd0A" name="ControlFlow11" target="_xnsqg4AmEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_YDwj-YArEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_YDwj-oArEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_Z7loSIArEeOV07fk0emd0A" name="ControlFlow12" target="_jQ_Yw4AoEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_Z7loSYArEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_Z7loSoArEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_wHGywIAsEeOV07fk0emd0A" name="erledigt" source="_VrPmsoAmEeOV07fk0emd0A" target="_sklqEIAzEeOV07fk0emd0A" inPartition="__WnlsIAzEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_wHGywYAsEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_wHGywoAsEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_wkRP4IAsEeOV07fk0emd0A" name="erledigt" source="_ceomEoAmEeOV07fk0emd0A" target="_sklqEIAzEeOV07fk0emd0A" inPartition="__WnlsIAzEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_wkRP4YAsEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_wkRP4oAsEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_x9S4UIAsEeOV07fk0emd0A" name="ControlFlow15" target="_sklqEIAzEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_x9S4UYAsEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_x9S4UoAsEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_hjTVoIAtEeOV07fk0emd0A" name="ControlFlow16" target="_e0pXAIAtEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_hjTVoYAtEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_hjTVooAtEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_ipZbAIAtEeOV07fk0emd0A" name="erledigt" source="_e0pXAIAtEeOV07fk0emd0A" target="_sklqEIAzEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_ipZbAYAtEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_ipZbAoAtEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_U04s0IAuEeOV07fk0emd0A" name="Praktikum ist vergangen" source="_sklqEIAzEeOV07fk0emd0A" target="_PsCjsIAuEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_U04s0YAuEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_U04s0oAuEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_6Xd9YIAuEeOV07fk0emd0A" name="Nein" source="_PsCjsIAuEeOV07fk0emd0A" target="_1tgvsIAuEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_6Xd9YYAuEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_6Xd9YoAuEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_8ZlmIIAuEeOV07fk0emd0A" name="nach Zeitraum x" source="_1tgvsIAuEeOV07fk0emd0A" target="_PsCjsIAuEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_8ZlmIYAuEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_8ZlmIoAuEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_Xrr-CIAyEeOV07fk0emd0A" name="Ja" source="_PsCjsIAuEeOV07fk0emd0A" target="_EqNYgIAvEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_Xrr-CYAyEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_Xrr-CoAyEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_GZVP-IAzEeOV07fk0emd0A" name="ControlFlow13" source="_sklqEIAzEeOV07fk0emd0A" target="_FMC9cIAzEeOV07fk0emd0A" inPartition="__WnlsIAzEeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_GZVP-YAzEeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_GZVP-oAzEeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_XgaQOIA0EeOV07fk0emd0A" name="ControlFlow14" source="_T-UpgIA0EeOV07fk0emd0A" target="_XGsIoIA0EeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_XgaQOYA0EeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_XgaQOoA0EeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_xsC2oIA0EeOV07fk0emd0A" name="Prakt. abgeschlossen..." source="_sklqEIAzEeOV07fk0emd0A" target="_bK2hoIA0EeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_xsC2oYA0EeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_xsC2ooA0EeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_9z9DqIA0EeOV07fk0emd0A" name="Prakt. abgeschlossen..." source="_sklqEIAzEeOV07fk0emd0A" target="_8YJ0AIA0EeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_9z9DqYA0EeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_9z9DqoA0EeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_Oq3WaIA1EeOV07fk0emd0A" name="ControlFlow17" source="_Ny0UEIA1EeOV07fk0emd0A" target="_T-UpgIA0EeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_Oq3WaYA1EeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_Oq3WaoA1EeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_TkjpMIA1EeOV07fk0emd0A" name="ControlFlow18" source="_8YJ0AIA0EeOV07fk0emd0A" target="_FZOL4IA1EeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_TkjpMYA1EeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_TkjpMoA1EeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_UjOQ6IA1EeOV07fk0emd0A" name="ControlFlow19" source="_8YJ0AIA0EeOV07fk0emd0A" target="_Hq9lAIA1EeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_UjOQ6YA1EeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_UjOQ6oA1EeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_V33vpoA1EeOV07fk0emd0A" name="ControlFlow20" source="_8YJ0AIA0EeOV07fk0emd0A" target="_Bj9xkIA1EeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_V33vp4A1EeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_V33vqIA1EeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_mkpO-IA1EeOV07fk0emd0A" name="ControlFlow21" source="_lJOZ0IA1EeOV07fk0emd0A" target="_Ny0UEIA1EeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_mkpO-YA1EeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_mkpO-oA1EeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_nmcqMIA1EeOV07fk0emd0A" name="ControlFlow22" source="_ctlqQIA1EeOV07fk0emd0A" target="_Ny0UEIA1EeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_nmcqMYA1EeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_nmcqMoA1EeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_okPvMIA1EeOV07fk0emd0A" name="ControlFlow23" source="_kK9awIA1EeOV07fk0emd0A" target="_Ny0UEIA1EeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_okPvMYA1EeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_okPvMoA1EeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_xBuR0IA1EeOV07fk0emd0A" name="Nein" source="_Bj9xkIA1EeOV07fk0emd0A" target="_s-aNYIA1EeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_xBuR0YA1EeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_xBuR0oA1EeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_xdGmSIA1EeOV07fk0emd0A" name="nach Zeitraum x" source="_s-aNYIA1EeOV07fk0emd0A" target="_Bj9xkIA1EeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_xdGmSYA1EeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_xdGmSoA1EeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_x0hAtoA1EeOV07fk0emd0A" name="Ja" source="_Bj9xkIA1EeOV07fk0emd0A" target="_ctlqQIA1EeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_x0hAt4A1EeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_x0hAuIA1EeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_yK3rMIA1EeOV07fk0emd0A" name="Nein" source="_FZOL4IA1EeOV07fk0emd0A" target="_vFwUYIA1EeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_yK3rMYA1EeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_yK3rMoA1EeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_yeKaoIA1EeOV07fk0emd0A" name="nach Zeitraum x" source="_vFwUYIA1EeOV07fk0emd0A" target="_FZOL4IA1EeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_yeKaoYA1EeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_yeKaooA1EeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_y0GOaIA1EeOV07fk0emd0A" name="Ja" source="_FZOL4IA1EeOV07fk0emd0A" target="_kK9awIA1EeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_y0G1cIA1EeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_y0G1cYA1EeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_zLmvdIA1EeOV07fk0emd0A" name="Nein" source="_Hq9lAIA1EeOV07fk0emd0A" target="_viEc8IA1EeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_zLmvdYA1EeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_zLmvdoA1EeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_ziKOSIA1EeOV07fk0emd0A" name="nach Zeitraum x" source="_viEc8IA1EeOV07fk0emd0A" target="_Hq9lAIA1EeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_ziKOSYA1EeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_ziKOSoA1EeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_z6vGUIA1EeOV07fk0emd0A" name="Ja" source="_Hq9lAIA1EeOV07fk0emd0A" target="_lJOZ0IA1EeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_z6vGUYA1EeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_z6vGUoA1EeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_GKWb8IA3EeOV07fk0emd0A" name="alle Info vorhanden" source="_Ny0UEIA1EeOV07fk0emd0A" target="_DGY7sIA3EeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_GKWb8YA3EeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_GKWb8oA3EeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_Kgt_QIA3EeOV07fk0emd0A" name="ControlFlow24" source="_DGY7sIA3EeOV07fk0emd0A" target="_T-UpgIA0EeOV07fk0emd0A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_Kgt_QYA3EeOV07fk0emd0A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_Kgt_QoA3EeOV07fk0emd0A" value="1"/>
+      </edge>
+      <group xmi:type="uml:ActivityPartition" xmi:id="__WnlsIAzEeOV07fk0emd0A" name="Daten anlegen" node="_FMC9cIAzEeOV07fk0emd0A" edge="_1gf2KIAoEeOV07fk0emd0A _wkRP4IAsEeOV07fk0emd0A _GZVP-IAzEeOV07fk0emd0A _R5HjeIAnEeOV07fk0emd0A _fmqG-YAmEeOV07fk0emd0A _wHGywIAsEeOV07fk0emd0A"/>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>
