@@ -41,7 +41,7 @@
       <node xmi:type="uml:DecisionNode" xmi:id="_B7TUg4AqEeOV07fk0emd0A" name="Betreuer meldet Student mit Vertrag" outgoing="_OwRb2YAqEeOV07fk0emd0A _UKN8CYAqEeOV07fk0emd0A" incoming="_eqbLaIAqEeOV07fk0emd0A _IQHhiYAqEeOV07fk0emd0A _mA-iOIAqEeOV07fk0emd0A"/>
       <node xmi:type="uml:OpaqueAction" xmi:id="_L3URsoAqEeOV07fk0emd0A" name="Student mahnen" outgoing="_mA-iOIAqEeOV07fk0emd0A" incoming="_OwRb2YAqEeOV07fk0emd0A"/>
       <node xmi:type="uml:OpaqueAction" xmi:id="_Fxgt4IAmEeOV07fk0emd0A" name="Student(en) Neuanlage" outgoing="_XpVECYAmEeOV07fk0emd0A _3ID7yYAmEeOV07fk0emd0A _UOFk2YApEeOV07fk0emd0A _IQHhiYAqEeOV07fk0emd0A" incoming="_InW5qIAmEeOV07fk0emd0A"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_T-UpgIA0EeOV07fk0emd0A" name="Meldung an Prüfungsamt" outgoing="_XgaQOIA0EeOV07fk0emd0A" incoming="_Oq3WaIA1EeOV07fk0emd0A _Kgt_QIA3EeOV07fk0emd0A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_T-UpgIA0EeOV07fk0emd0A" name="Meldung an Prüfungsamt" outgoing="_XgaQOIA0EeOV07fk0emd0A _xWdeuIHVEeOm7eGx0SwIbg" incoming="_Oq3WaIA1EeOV07fk0emd0A _Kgt_QIA3EeOV07fk0emd0A"/>
       <node xmi:type="uml:FlowFinalNode" xmi:id="_XGsIoIA0EeOV07fk0emd0A" name="FlowFinalNode2" incoming="_XgaQOIA0EeOV07fk0emd0A"/>
       <node xmi:type="uml:OpaqueAction" xmi:id="_bK2hoIA0EeOV07fk0emd0A" name="Betreuer reicht Beurteilung und Empfehlung ein" incoming="_xsC2oIA0EeOV07fk0emd0A"/>
       <node xmi:type="uml:DecisionNode" xmi:id="_1kyp0IA0EeOV07fk0emd0A" name="DecisionNode1"/>
@@ -57,6 +57,7 @@
       <node xmi:type="uml:OpaqueAction" xmi:id="_vFwUYIA1EeOV07fk0emd0A" name="Betreuer mahnen" outgoing="_yeKaoIA1EeOV07fk0emd0A" incoming="_yK3rMIA1EeOV07fk0emd0A"/>
       <node xmi:type="uml:OpaqueAction" xmi:id="_viEc8IA1EeOV07fk0emd0A" name="Betreuer mahnen" outgoing="_ziKOSIA1EeOV07fk0emd0A" incoming="_zLmvdIA1EeOV07fk0emd0A"/>
       <node xmi:type="uml:OpaqueAction" xmi:id="_DGY7sIA3EeOV07fk0emd0A" name="Erfolgsinfo setzen" outgoing="_Kgt_QIA3EeOV07fk0emd0A" incoming="_GKWb8IA3EeOV07fk0emd0A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_vkS9gIHVEeOm7eGx0SwIbg" name="Mail an Betreuer" incoming="_xWdeuIHVEeOm7eGx0SwIbg"/>
       <edge xmi:type="uml:ControlFlow" xmi:id="_InW5qIAmEeOV07fk0emd0A" name="Vorbereitung Paktikumssemester" source="_DAk3UIAmEeOV07fk0emd0A" target="_Fxgt4IAmEeOV07fk0emd0A">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_InW5qYAmEeOV07fk0emd0A" value="true"/>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_InW5qoAmEeOV07fk0emd0A" value="1"/>
@@ -280,6 +281,10 @@
       <edge xmi:type="uml:ControlFlow" xmi:id="_Kgt_QIA3EeOV07fk0emd0A" name="ControlFlow24" source="_DGY7sIA3EeOV07fk0emd0A" target="_T-UpgIA0EeOV07fk0emd0A">
         <guard xmi:type="uml:LiteralBoolean" xmi:id="_Kgt_QYA3EeOV07fk0emd0A" value="true"/>
         <weight xmi:type="uml:LiteralInteger" xmi:id="_Kgt_QoA3EeOV07fk0emd0A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_xWdeuIHVEeOm7eGx0SwIbg" name="ControlFlow25" source="_T-UpgIA0EeOV07fk0emd0A" target="_vkS9gIHVEeOm7eGx0SwIbg">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_xWdeuYHVEeOm7eGx0SwIbg" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_xWdeuoHVEeOm7eGx0SwIbg" value="1"/>
       </edge>
       <group xmi:type="uml:ActivityPartition" xmi:id="__WnlsIAzEeOV07fk0emd0A" name="Daten anlegen" node="_FMC9cIAzEeOV07fk0emd0A" edge="_1gf2KIAoEeOV07fk0emd0A _wkRP4IAsEeOV07fk0emd0A _GZVP-IAzEeOV07fk0emd0A _R5HjeIAnEeOV07fk0emd0A _fmqG-YAmEeOV07fk0emd0A _wHGywIAsEeOV07fk0emd0A"/>
     </packagedElement>

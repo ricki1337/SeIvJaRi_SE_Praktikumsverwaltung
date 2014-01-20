@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <diagrams:Diagrams xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.topcased.org/DI/1.0" xmlns:diagrams="http://www.topcased.org/Diagrams/1.0" xmi:id="_CaSRQH9TEeOxD4hg0ncHkA" activeDiagram="_CaS4UH9TEeOxD4hg0ncHkA">
   <model href="rick_usecase.uml#_w8IxIM37EdqwVrslYOdUDA"/>
-  <diagrams xmi:id="_CaS4UH9TEeOxD4hg0ncHkA" position="0,0" size="100,100" name="Praktikumsverwaltung" viewport="0,272">
+  <diagrams xmi:id="_CaS4UH9TEeOxD4hg0ncHkA" position="0,0" size="100,100" name="Praktikumsverwaltung" viewport="0,-13">
     <property xmi:id="_sPov0H9ZEeOFFqCBgts--g" key="pageFormatName" value="A4"/>
     <property xmi:id="_sPov0X9ZEeOFFqCBgts--g" key="diagramWidth" value="840"/>
     <property xmi:id="_sPov0n9ZEeOFFqCBgts--g" key="diagramHeight" value="1188"/>
@@ -46,9 +46,9 @@
         <element href="rick_usecase.uml#_40ia0H9ZEeOFFqCBgts--g"/>
       </semanticModel>
     </contained>
-    <contained xsi:type="di:GraphNode" xmi:id="_6_czMH9ZEeOFFqCBgts--g" position="479,206" size="88,50">
+    <contained xsi:type="di:GraphNode" xmi:id="_6_czMH9ZEeOFFqCBgts--g" position="332,217" size="88,50">
       <property xmi:id="_OSn--4AcEeOV07fk0emd0A" key="font" value="-regular-8"/>
-      <anchorage xmi:id="_9MYk0H9ZEeOFFqCBgts--g" graphEdge="_9M47IH9ZEeOFFqCBgts--g _ECm8IIHTEeO9TbmwoxemMQ _fA6gMIHUEeOm7eGx0SwIbg"/>
+      <anchorage xmi:id="_9MYk0H9ZEeOFFqCBgts--g" graphEdge="_9M47IH9ZEeOFFqCBgts--g"/>
       <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_6_daQH9ZEeOFFqCBgts--g" presentation="default">
         <element href="rick_usecase.uml#_6_eoYH9ZEeOFFqCBgts--g"/>
       </semanticModel>
@@ -58,7 +58,7 @@
       <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_9M47IX9ZEeOFFqCBgts--g" presentation="default">
         <element href="rick_usecase.uml#_9M5iMH9ZEeOFFqCBgts--g"/>
       </semanticModel>
-      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_9M47In9ZEeOFFqCBgts--g" id="nameEdgeObject" offset="-22,22"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_9M47In9ZEeOFFqCBgts--g" id="nameEdgeObject" offset="-43,2"/>
       <contained xsi:type="di:EdgeObjectUV" xmi:id="_9M47I39ZEeOFFqCBgts--g" visible="false" id="extensionEdgeObject" uDistance="4"/>
     </contained>
     <contained xsi:type="di:GraphEdge" xmi:id="__wbO4H9ZEeOFFqCBgts--g" anchor="__wRd4H9ZEeOFFqCBgts--g __wRd4X9ZEeOFFqCBgts--g">
@@ -81,7 +81,7 @@
       <contained xsi:type="di:EdgeObjectOffset" xmi:id="_ADGTRH9aEeOFFqCBgts--g" visible="false" id="nameEdgeObject" offset="0,10"/>
       <contained xsi:type="di:EdgeObjectOffset" xmi:id="_ADGTRX9aEeOFFqCBgts--g" visible="false" id="stereotypeEdgeObject" offset="0,-10"/>
     </contained>
-    <contained xsi:type="di:GraphNode" xmi:id="_L-GFoH9aEeOFFqCBgts--g" position="435,23" size="68,56">
+    <contained xsi:type="di:GraphNode" xmi:id="_L-GFoH9aEeOFFqCBgts--g" position="413,18" size="68,56">
       <property xmi:id="_OSn_AIAcEeOV07fk0emd0A" key="font" value="-regular-8"/>
       <anchorage xmi:id="_N3wV8H9aEeOFFqCBgts--g" graphEdge="_N3xkEH9aEeOFFqCBgts--g"/>
       <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_L-GFoX9aEeOFFqCBgts--g" presentation="default">
@@ -120,7 +120,7 @@
     </contained>
     <contained xsi:type="di:GraphNode" xmi:id="_1GTV0IAaEeOV07fk0emd0A" position="433,296" size="91,50">
       <property xmi:id="_OSn--IAcEeOV07fk0emd0A" key="font" value="-regular-8"/>
-      <anchorage xmi:id="_cQigsIAbEeOV07fk0emd0A" graphEdge="_cQigsYAbEeOV07fk0emd0A"/>
+      <anchorage xmi:id="_cQigsIAbEeOV07fk0emd0A" graphEdge="_cQigsYAbEeOV07fk0emd0A _BHu_EIHWEeOm7eGx0SwIbg"/>
       <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_1GTV0YAaEeOV07fk0emd0A" presentation="default">
         <element href="rick_usecase.uml#_1GTV0oAaEeOV07fk0emd0A"/>
       </semanticModel>
@@ -305,7 +305,7 @@
       <contained xsi:type="di:EdgeObjectOffset" xmi:id="_5spHc4AdEeOV07fk0emd0A" id="nameEdgeObject" offset="62,5"/>
       <contained xsi:type="di:EdgeObjectUV" xmi:id="_5spHdIAdEeOV07fk0emd0A" visible="false" id="extensionEdgeObject"/>
     </contained>
-    <contained xsi:type="di:GraphNode" xmi:id="_NsYMUIAeEeOV07fk0emd0A" position="521,335" size="76,53">
+    <contained xsi:type="di:GraphNode" xmi:id="_NsYMUIAeEeOV07fk0emd0A" position="543,349" size="76,53">
       <property xmi:id="_YiCHQIAeEeOV07fk0emd0A" key="font" value="-regular-8"/>
       <anchorage xmi:id="_SblGYIAeEeOV07fk0emd0A" graphEdge="_SblGYYAeEeOV07fk0emd0A"/>
       <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_NsYMUYAeEeOV07fk0emd0A" presentation="default">
@@ -381,74 +381,78 @@
       <contained xsi:type="di:EdgeObjectUV" xmi:id="_tqMvpIAlEeOV07fk0emd0A" visible="false" id="extensionEdgeObject" uDistance="-11"/>
     </contained>
     <contained xsi:type="di:GraphNode" xmi:id="__yfkEYHNEeO9TbmwoxemMQ" position="417,790" size="83,50">
+      <property xmi:id="_DvxYUYHWEeOm7eGx0SwIbg" key="font" value="-regular-8"/>
       <anchorage xmi:id="_AqI9wIHOEeO9TbmwoxemMQ" graphEdge="_AqMBEIHOEeO9TbmwoxemMQ"/>
       <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="__yfkEoHNEeO9TbmwoxemMQ" presentation="default">
         <element href="rick_usecase.uml#__ykckIHNEeO9TbmwoxemMQ"/>
       </semanticModel>
     </contained>
     <contained xsi:type="di:GraphEdge" xmi:id="_AqMBEIHOEeO9TbmwoxemMQ" anchor="_oJW24IAdEeOV07fk0emd0A _AqI9wIHOEeO9TbmwoxemMQ">
+      <property xmi:id="_Dvx_YoHWEeOm7eGx0SwIbg" key="font" value="-regular-8"/>
       <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_AqMBEYHOEeO9TbmwoxemMQ" presentation="default">
         <element href="rick_usecase.uml#_AqMBE4HOEeO9TbmwoxemMQ"/>
       </semanticModel>
       <contained xsi:type="di:EdgeObjectOffset" xmi:id="_AqMBEoHOEeO9TbmwoxemMQ" id="nameEdgeObject" offset="-26,-9"/>
     </contained>
     <contained xsi:type="di:GraphNode" xmi:id="_9sdu4IHREeO9TbmwoxemMQ" position="563,581" size="75,50">
+      <property xmi:id="_DvxYUoHWEeOm7eGx0SwIbg" key="font" value="-regular-8"/>
       <anchorage xmi:id="_Bd1HsIHSEeO9TbmwoxemMQ" graphEdge="_Bd2V0IHSEeO9TbmwoxemMQ"/>
       <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_9sdu4YHREeO9TbmwoxemMQ" presentation="default">
         <element href="rick_usecase.uml#_9sfkEIHREeO9TbmwoxemMQ"/>
       </semanticModel>
     </contained>
     <contained xsi:type="di:GraphEdge" xmi:id="_Bd2V0IHSEeO9TbmwoxemMQ" anchor="_I1ekQIAdEeOV07fk0emd0A _Bd1HsIHSEeO9TbmwoxemMQ">
+      <property xmi:id="_DvxYUIHWEeOm7eGx0SwIbg" key="font" value="-regular-8"/>
       <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Bd2V0YHSEeO9TbmwoxemMQ" presentation="default">
         <element href="rick_usecase.uml#_Benx4IHSEeO9TbmwoxemMQ"/>
       </semanticModel>
       <contained xsi:type="di:EdgeObjectOffset" xmi:id="_Bd2V0oHSEeO9TbmwoxemMQ" id="nameEdgeObject" offset="-3,-11"/>
     </contained>
     <contained xsi:type="di:GraphNode" xmi:id="_E9_bwIHSEeO9TbmwoxemMQ" position="348,464" size="74,50">
+      <property xmi:id="_DvwxQIHWEeOm7eGx0SwIbg" key="font" value="-regular-8"/>
       <anchorage xmi:id="_Fvd8AIHSEeO9TbmwoxemMQ" graphEdge="_FvfKIIHSEeO9TbmwoxemMQ _YqV2EIAbEeOV07fk0emd0A _I4Z7gIHVEeOm7eGx0SwIbg"/>
       <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_E9_bwYHSEeO9TbmwoxemMQ" presentation="default">
         <element href="rick_usecase.uml#_E-bgoIHSEeO9TbmwoxemMQ"/>
       </semanticModel>
     </contained>
     <contained xsi:type="di:GraphEdge" xmi:id="_FvfKIIHSEeO9TbmwoxemMQ" anchor="_ADEeEH9aEeOFFqCBgts--g _Fvd8AIHSEeO9TbmwoxemMQ">
+      <property xmi:id="_Dvx_YIHWEeOm7eGx0SwIbg" key="font" value="-regular-8"/>
       <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_FvfKIYHSEeO9TbmwoxemMQ" presentation="default">
         <element href="rick_usecase.uml#_Fv7PAIHSEeO9TbmwoxemMQ"/>
       </semanticModel>
-      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_FvfKIoHSEeO9TbmwoxemMQ" id="nameEdgeObject" offset="-19,-16"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_FvfKIoHSEeO9TbmwoxemMQ" id="nameEdgeObject" offset="-39,2"/>
     </contained>
     <contained xsi:type="di:GraphNode" xmi:id="_JuD4gIHSEeO9TbmwoxemMQ" position="383,135" size="72,50">
-      <anchorage xmi:id="_KiJn4IHSEeO9TbmwoxemMQ" graphEdge="_KiK2AIHSEeO9TbmwoxemMQ _9M47IH9ZEeOFFqCBgts--g _4dqSQIHSEeO9TbmwoxemMQ"/>
+      <property xmi:id="_DvwxQoHWEeOm7eGx0SwIbg" key="font" value="-regular-8"/>
+      <anchorage xmi:id="_KiJn4IHSEeO9TbmwoxemMQ" graphEdge="_KiK2AIHSEeO9TbmwoxemMQ _9M47IH9ZEeOFFqCBgts--g _4dqSQIHSEeO9TbmwoxemMQ _fA6gMIHUEeOm7eGx0SwIbg"/>
       <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_JuD4gYHSEeO9TbmwoxemMQ" presentation="default">
         <element href="rick_usecase.uml#_JujnwIHSEeO9TbmwoxemMQ"/>
       </semanticModel>
     </contained>
     <contained xsi:type="di:GraphEdge" xmi:id="_KiK2AIHSEeO9TbmwoxemMQ" anchor="__wRd4X9ZEeOFFqCBgts--g _KiJn4IHSEeO9TbmwoxemMQ">
+      <property xmi:id="_DvymcoHWEeOm7eGx0SwIbg" key="font" value="-regular-8"/>
       <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_KiK2AYHSEeO9TbmwoxemMQ" presentation="default">
         <element href="rick_usecase.uml#_KipXIIHSEeO9TbmwoxemMQ"/>
       </semanticModel>
       <contained xsi:type="di:EdgeObjectOffset" xmi:id="_KiK2AoHSEeO9TbmwoxemMQ" id="nameEdgeObject" offset="-1,-22"/>
     </contained>
     <contained xsi:type="di:GraphNode" xmi:id="_1u-ecIHSEeO9TbmwoxemMQ" position="593,136" size="96,51">
-      <anchorage xmi:id="_4dpEIIHSEeO9TbmwoxemMQ" graphEdge="_4dqSQIHSEeO9TbmwoxemMQ _tqMvoYAlEeOV07fk0emd0A _zhTxMH9aEeOFFqCBgts--g _9-CA8YAZEeOV07fk0emd0A _ECm8IIHTEeO9TbmwoxemMQ"/>
+      <property xmi:id="_DvymcIHWEeOm7eGx0SwIbg" key="font" value="-regular-8"/>
+      <anchorage xmi:id="_4dpEIIHSEeO9TbmwoxemMQ" graphEdge="_4dqSQIHSEeO9TbmwoxemMQ _tqMvoYAlEeOV07fk0emd0A _zhTxMH9aEeOFFqCBgts--g _9-CA8YAZEeOV07fk0emd0A"/>
       <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_1u-ecYHSEeO9TbmwoxemMQ" presentation="default">
         <element href="rick_usecase.uml#_1ve0wIHSEeO9TbmwoxemMQ"/>
       </semanticModel>
     </contained>
     <contained xsi:type="di:GraphEdge" xmi:id="_4dqSQIHSEeO9TbmwoxemMQ" anchor="_4dpEIIHSEeO9TbmwoxemMQ _KiJn4IHSEeO9TbmwoxemMQ">
+      <property xmi:id="_Dvx_Y4HWEeOm7eGx0SwIbg" key="font" value="-regular-8"/>
       <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_4dqSQYHSEeO9TbmwoxemMQ" presentation="default">
         <element href="rick_usecase.uml#_4eOS8IHSEeO9TbmwoxemMQ"/>
       </semanticModel>
       <contained xsi:type="di:EdgeObjectOffset" xmi:id="_4dqSQoHSEeO9TbmwoxemMQ" id="nameEdgeObject" offset="-4,14"/>
       <contained xsi:type="di:EdgeObjectUV" xmi:id="_4dqSQ4HSEeO9TbmwoxemMQ" visible="false" id="extensionEdgeObject"/>
     </contained>
-    <contained xsi:type="di:GraphEdge" xmi:id="_ECm8IIHTEeO9TbmwoxemMQ" anchor="_4dpEIIHSEeO9TbmwoxemMQ _9MYk0H9ZEeOFFqCBgts--g">
-      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ECm8IYHTEeO9TbmwoxemMQ" presentation="default">
-        <element href="rick_usecase.uml#_EDNZEIHTEeO9TbmwoxemMQ"/>
-      </semanticModel>
-      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_ECm8IoHTEeO9TbmwoxemMQ" id="nameEdgeObject" offset="19,19"/>
-      <contained xsi:type="di:EdgeObjectUV" xmi:id="_ECm8I4HTEeO9TbmwoxemMQ" visible="false" id="extensionEdgeObject"/>
-    </contained>
-    <contained xsi:type="di:GraphEdge" xmi:id="_fA6gMIHUEeOm7eGx0SwIbg" anchor="_9-CA8IAZEeOV07fk0emd0A _9MYk0H9ZEeOFFqCBgts--g">
+    <contained xsi:type="di:GraphEdge" xmi:id="_fA6gMIHUEeOm7eGx0SwIbg" anchor="_9-CA8IAZEeOV07fk0emd0A _KiJn4IHSEeO9TbmwoxemMQ">
+      <property xmi:id="_DvwxQYHWEeOm7eGx0SwIbg" key="font" value="-regular-8"/>
       <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_fA6gMYHUEeOm7eGx0SwIbg" presentation="default">
         <element href="rick_usecase.uml#_fA6gNIHUEeOm7eGx0SwIbg"/>
       </semanticModel>
@@ -456,12 +460,14 @@
       <contained xsi:type="di:EdgeObjectUV" xmi:id="_fA6gM4HUEeOm7eGx0SwIbg" visible="false" id="extensionEdgeObject"/>
     </contained>
     <contained xsi:type="di:GraphNode" xmi:id="_HiZx4IHVEeOm7eGx0SwIbg" position="546,452" size="93,50">
-      <anchorage xmi:id="_I4YtYIHVEeOm7eGx0SwIbg" graphEdge="_I4Z7gIHVEeOm7eGx0SwIbg _JZX6kIHVEeOm7eGx0SwIbg _gmXRcYAbEeOV07fk0emd0A _SblGYYAeEeOV07fk0emd0A"/>
+      <property xmi:id="_DvxYVIHWEeOm7eGx0SwIbg" key="font" value="-regular-8"/>
+      <anchorage xmi:id="_I4YtYIHVEeOm7eGx0SwIbg" graphEdge="_I4Z7gIHVEeOm7eGx0SwIbg _JZX6kIHVEeOm7eGx0SwIbg _gmXRcYAbEeOV07fk0emd0A _SblGYYAeEeOV07fk0emd0A _BHu_EIHWEeOm7eGx0SwIbg"/>
       <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_HiZx4YHVEeOm7eGx0SwIbg" presentation="default">
         <element href="rick_usecase.uml#_HibnEIHVEeOm7eGx0SwIbg"/>
       </semanticModel>
     </contained>
     <contained xsi:type="di:GraphEdge" xmi:id="_I4Z7gIHVEeOm7eGx0SwIbg" anchor="_I4YtYIHVEeOm7eGx0SwIbg _Fvd8AIHSEeO9TbmwoxemMQ">
+      <property xmi:id="_DvymcYHWEeOm7eGx0SwIbg" key="font" value="-regular-8"/>
       <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_I4Z7gYHVEeOm7eGx0SwIbg" presentation="default">
         <element href="rick_usecase.uml#_I4Z7hIHVEeOm7eGx0SwIbg"/>
       </semanticModel>
@@ -469,11 +475,20 @@
       <contained xsi:type="di:EdgeObjectUV" xmi:id="_I4Z7g4HVEeOm7eGx0SwIbg" visible="false" id="extensionEdgeObject"/>
     </contained>
     <contained xsi:type="di:GraphEdge" xmi:id="_JZX6kIHVEeOm7eGx0SwIbg" anchor="_I4YtYIHVEeOm7eGx0SwIbg _YqMFEIAbEeOV07fk0emd0A">
+      <property xmi:id="_DvwKMIHWEeOm7eGx0SwIbg" key="font" value="-regular-8"/>
       <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_JZX6kYHVEeOm7eGx0SwIbg" presentation="default">
         <element href="rick_usecase.uml#_JZYhoIHVEeOm7eGx0SwIbg"/>
       </semanticModel>
-      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_JZX6koHVEeOm7eGx0SwIbg" id="nameEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_JZX6koHVEeOm7eGx0SwIbg" id="nameEdgeObject" offset="34,8"/>
       <contained xsi:type="di:EdgeObjectUV" xmi:id="_JZX6k4HVEeOm7eGx0SwIbg" visible="false" id="extensionEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_BHu_EIHWEeOm7eGx0SwIbg" anchor="_cQigsIAbEeOV07fk0emd0A _I4YtYIHVEeOm7eGx0SwIbg">
+      <property xmi:id="_DvxYU4HWEeOm7eGx0SwIbg" key="font" value="-regular-8"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_BHu_EYHWEeOm7eGx0SwIbg" presentation="default">
+        <element href="rick_usecase.uml#_BHu_FIHWEeOm7eGx0SwIbg"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_BHu_EoHWEeOm7eGx0SwIbg" id="nameEdgeObject" offset="-42,3"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_BHu_E4HWEeOm7eGx0SwIbg" visible="false" id="extensionEdgeObject"/>
     </contained>
   </diagrams>
 </diagrams:Diagrams>
