@@ -1,0 +1,364 @@
+
+
+
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//EN">
+<html>
+  <head>
+    <title>Die Definitionsphase / Pflichtenheft</title>
+    <meta name="author" content="Dr. Dietmar Lammers">
+    <meta name="description" content="Script zum Programmierpraktikum">
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+    <link href="ppstyle.css" rel="stylesheet"> 
+
+  </head>
+
+  <body bgcolor="white">
+      <table><tr><td><a href="http://cs.uni-muenster.de/u/lammers/EDU/ss99/ProgrammierPraktikum"><img border=0 src="logo.gif" alt="ProgrammierPraktikum SS99"></a></td><td valign="middle" align="center" width="100%"><h2>Das Pflichtenheft</h2></td></tr></table>
+      
+      Das <a name="glos--Pflichtenheft"><em><font color="maroon">Pflichtenheft</font></em></a> ist 'das Ergebnisdokument einer
+      Anforderungsdefinition.' Es ist verbal, aber mehr oder weniger
+      streng formalisiert, und dient häuftig als
+      Vertragsgrundlage zwischen Kunde und Softwarehersteller. 
+      Hat man bereits ein Lastenheft erstellt, kann man dies sinnvoll
+      zum Pflichenheft fortschreiben (wir machen genau das mit dem
+      Lastenheftschema). Genauer beschreiben läßt sich ein
+      Pflichtenheft mit den Eigenschaften 
+
+      <dl>
+	<dt>Adressaten</dt>
+	<dd>Kunde oder Kunden/Benutzerrepräsentant einerseits,
+	  Softwareproduzent durch Projektleiter/Systemanalytiker
+	  andererseits.
+	</dd>
+
+	<dt>Aufgabe</dt>	
+	<dd>
+	  Enthält alle fachlichen Anforderungen an der
+	  Produkt aus Sicht des Auftraggebers.
+	</dd>
+
+	<dt>Inhalt</dt>	
+	<dd>
+	  Beschrieben wird <em>was</em> geleistet werden soll, nicht
+	  <em>wie</em> die Leistung entsteht. Festgelegt werden muß
+	  der gesamte fachliche Funktions- , Daten-, Leistungs- und
+	  Qualitätsumfang. Das Pflichtenheft muß Grundlage eines
+	  Vertrages sein können, d.h. anhand der hier beschriebenen
+	  Forderungen muß das Endprodukt abgenommen werden können.
+	</dd>
+
+	<dt>Form</dt>
+	<dd>
+	  Die Form folgt einer standardisierten Gliederung. Die
+	  Aufgaben werden verbal detailliert beschrieben. Die Einzelpunkte
+	  werden für spätere Bezüge sauber numeriert.
+	</dd>
+	
+	<dt>Lesbarkeit</dt>
+	<dd>
+	  Das Pflichtenheft sollte gut lesbar sein und damit eine
+	  leichte Einarbeitung in das Projekt ermöglichen.
+	  So sollten z. Bsp. Mitarbeiter, die später zum Projet
+	  dazustossen, nach lesen des Pflichteheftes in der Lage
+	  sein im Projekt ohne grössere Schwierigkeiten
+	  mitzuarbeiten. 
+	</dd>
+
+	<dt>Zeitpunkt</dt>
+	<dd>
+	  Das Pflichtenheft ist das erste Dokument nach der Planungsphase.
+	  Die Erstellung erfolgt iterativ. Nach der Fertigstellung 
+	  erfolgen ggf. notwendige Änderungen, aber nur nach Absprache und
+	  ggf. Zusatzvertrag mit dem Kunden.
+	</dd>
+	
+	<dt>Umfang</dt>	
+	<dd>Der Leistungsumfang muß aus Sicht des Auftraggebers auf
+	  hinreichendem Abstraktionsniveau detailliert genug
+	  beschrieben werden können. Der Umfang ist also nicht
+	  beschränkt. Andererseits ist ein zu langes Pflichtenheft
+	  nicht mehr lesbar.
+	</dd>
+      </dl>
+      
+      
+      Ein mögliches <a name="glos--Plichtenheftgliederungsschema"><em><font color="maroon">Plichtenheftgliederungsschema</font></em></a>
+      folgt. Die dort aufgeführten Beispiele geben im Fließtext die
+      Zuordnung der Sätze zur Gliederung an, für ein Pflichtenheft
+      müßten sie bei den entsprechenden Punkten aufgestellt sein.
+
+      
+<!--       Ich verwende eine Notation mit arabischer Nummerierung der -->
+<!--       Punkte, Unterpunkte mit '.' abgetrennt, wobei ggf. bei -->
+<!--       Unterpunkten in 10er-Schritten oder 100-er-Schritten gezählt -->
+<!--       wird, damit später besser  -->
+<!--       eingefügt werden kann. Zur Referenzierung sollte eine Notation -->
+<!--       PHn.n.n verwendet werden, wobei die 'n' die entsprechenden -->
+<!--       Nummern sind. Außerdem vereinbare ich (wegen der Notation im -->
+<!--       <A HREF="Literatur.html#Balzert">Balzert</a>) die folgenden Kürzel für Referenzen:  -->
+<!--       <ul plain="plain"> -->
+<!-- 	<li>/F = PH4. [zum Referenzieren der Funktionen]</li> -->
+<!-- 	<li>/D = PH5. [zum Referenzieren der Daten]</li> -->
+<!-- 	<li>/L = PH6. [zum Referenzieren der Leistungen]</li> -->
+<!-- 	<li>/B = PH7. [zum Referenzieren der Benutzerschnittstelle]</li> -->
+<!--       </ul> -->
+
+<!--       m4_example("Zusätzlich zur Funktion /F30 muß ..." ist also -->
+<!--       gleichwertig mit "Zusätzlich zur Funktion PH4.30 muß ...") -->
+
+    <br><h3><a name="ssec-Plichtenheftschema">Plichtenheftschema</a></h3>
+    (Das Schema ist auch <A HREF="Pflichten.html">ohne
+      Anmerkungen</a> zu haben)
+    <ol>
+      <li> Zielbestimmung:
+	<ol>
+	  <li> Mußkriterien   </li>
+	  <li> Sollkriterien </li>
+	  <li> Muß-Nicht-Kriterien</li>
+	</ol>
+	Im Unterschied zum Lastenheft wird genau zwischen unbedingten
+	und wünschenswerten Leistungen unterschieden. Außerdem wird
+	festgelegt, welche Anforderungen der Produkt nicht notwendig
+	erfüllen sollte oder muß.
+	
+      <dl compact="compact">
+	<dt><strong>Beispiel:</strong></dt>
+	<dd><em>Ein geplantes Textverarbeitungsprogramm (1) muß
+	Silbentrennung beherrschen, (2) Rechtschreibcheck und -korrektur
+	ist wünschenswert, und (3) beides muß in Spezialfällen nicht
+	automatisch funktionieren, es kann dann interaktiv
+	nachgefragt werden.</em></dd>
+      </dl><br clear="left"> 
+      </li>
+
+      <li>Produkteinsatz
+	<ol>
+	  <li>Anwendungsbereiche</li>
+	  <li>Zielgruppen</li>
+	  <li>Betriebsbedinungen</li>
+	</ol>
+	
+      <dl compact="compact">
+	<dt><strong>Beispiel:</strong></dt>
+	<dd><em>(1)Die o.g. Textverarbeitung soll im
+	Redaktionsbetrieb einer Zeitung (Büro) eingesetzt
+	werden. (2) Sie wird von den Redakteuren bedient, die EDV-kundig
+	sind, aber bislang nur DROW-3 benutzt haben. (3) Das Produkt
+	wird von einer EDV-Systemgruppe installiert und
+	vollzeit-betreut.</em></dd>
+      </dl><br clear="left">
+	
+      <dl compact="compact">
+	<dt><strong>Beispiel:</strong></dt>
+	<dd><em>Eine Software ist (1) für Geldautomaten
+	vorgesehen. (2) Die Bedienung erfolgt durch
+	Benuter alle Art. (3) Die Software wird nicht vor Ort
+	gepflegt. Sie muß nach Installation im 24h-Betrieb funktionieren,
+	Die Eingaben sind durch den Automaten beschränkt.</em></dd>
+      </dl><br clear="left">
+      </li>
+	
+      <li> Produktumgebung
+	<ol>
+	  <li>Software</li>
+	  <li>Hardware</li>
+	  <li>Orgware</li>
+	  <li>Schnittstellen</li>
+	</ol>
+	
+      <dl compact="compact">
+	<dt><strong>Beispiel:</strong></dt>
+	<dd><em>Die Textverarbeitung soll von den Redakteuren
+	(2) auf Rechnern mit Intel-Prozessoren unter (1) dem
+	Betriebssystem OS/2 mit üblichem Umfeld: (2) Maus, Keyboard,
+	Farbmonitor in SVGA-Auflösung. Die Ausgabe
+	erfolgt zunächst auf (2) HP5-kompatiblen Laserduckern und dann
+	auf (2) einer Satzmaschine der Fa. Linotype mit den dort
+	beschafften Zeichensätzen (in 1200dpi). Damit der
+	Datentransport zur Satzmaschine sinnfoll erfolgen kann, müssen
+	die Redakteursrechner über (3) Ethernet mit der Satzmaschine
+	verbunden sein. Das erleichtert auch die verteilte
+	Datenhaltung der Lexika und der fertigen Artikel auf einem (3)
+	Server. Die Software sollte (4) Daten aus dem Office-Paket
+	übernehmen können, und Bilder aus (4) Adobe-Photoshop.</em></dd>
+      </dl><br clear="left">
+      </li>
+	
+      <li> Produktfunktionen
+	<ol>
+	  <li>Funktion 1</li>
+	  <li>Funktion 2</li>
+	  <li>...</li>
+	</ol>
+	Hier ist darauf zu achten, Muß-Funktionen und
+	Soll-Funktionen deutlich zu kennzeichen. Größerer
+	Einzelfunktionen sind mit sauberer Untergliederung genauer
+	durch Unterfunktionen zu beschreiben. Hier sollte also
+	pro Punkt eine gewünschte Funktion (die später im Programm so
+	zur Verfügung steht) mit einem Satz beschrieben werden.
+	
+      <dl compact="compact">
+	<dt><strong>Beispiel:</strong></dt>
+	<dd><em>Der (1) Erfassen von Texten mit (2) Bildern
+	ist notwendig. (3W) Freies Positionieren der Bilder ist
+	wünschenswert. Zur Texterfassung soll (1.1) Blockmarkierung
+	und Behandlung mit der Maus möglich sein. ...</em></dd>
+      </dl><br clear="left">
+      </li>
+	
+      <li>Produktdaten
+	<ol>
+	  <li>Daten 1</li>
+	  <li>Daten 2</li>
+	  <li>...</li>
+	</ol>
+	Wie bei den Funktionen wenn nötig genauere Untergliederung vornehmen.
+	
+      <dl compact="compact">
+	<dt><strong>Beispiel:</strong></dt>
+	<dd><em>(1) Die fertigen Artikel müssen in komprimierter,
+	aber einfach referenzierbarer Form archiviert werden.</em></dd>
+      </dl><br clear="left">
+      </li>
+
+      <li>Leistungen:<br>
+	Ggf. sind besonderer Leistungsdaten
+	festzuhalten. Nummerierung wie oben.
+	
+      <dl compact="compact">
+	<dt><strong>Beispiel:</strong></dt>
+	<dd><em>Bei der Silbentrennung sollte die Fehlerrate
+	nicht über 0.5% liegen.</em></dd>
+      </dl><br clear="left">
+      </li>
+
+      <li>Benutzeroberfläche:<br>
+	Bildschirmlayout, ggf. Tastaturmakros, Drucklayout
+	Dialogstruktur etc. werden hier festgelegt.
+	
+      <dl compact="compact">
+	<dt><strong>Beispiel:</strong></dt>
+	<dd><em>(1) Die Gesamtseite muß auf dem Monitor
+	dargestellt werden können. (2) Die Anweisungen zum Satz, Druck
+	erc. sollen über Fall-Down-Menüs mit Windows96-Look&Feel
+	gehandhabt werden.</em></dd>
+      </dl><br clear="left">
+
+      </li>
+      
+      <li>Qualitätsziele:<br>
+	Hier muß in meßbarer Form niedergelegt werden, welche
+	Qualitätsbedingungen das Produkt erfüllen muß.
+	
+      <dl compact="compact">
+	<dt><strong>Beispiel:</strong></dt>
+	<dd><em>(1) Bei Störungen im Netzwerk dürfen keine
+	Daten verlorengehen. (2) Datenverlust darf nicht bei einer
+	einzigen Fehlbedienung auftreten.</em></dd>
+      </dl><br clear="left">
+      </li>
+      
+      <li>Testszenarien/Testfälle:<br>
+	<ol>
+	  <li>Test1 </li>
+	  <li>Test 2</li>
+	  <li>...</li>
+	</ol>
+	Hier sind Testszenarien vorzustellen, die die Gesamtfunktion
+	(oder zumindest mehrere Einzelfunkionen)
+	überprüfen und zu Abnahmezwecken verwendet werden können.
+	
+      <dl compact="compact">
+	<dt><strong>Beispiel:</strong></dt>
+	<dd><em>(1) Zum Test des verlangten Umgangs mit
+	Netzstöruungen wird ein Arbeitsplatz während 
+	einer Artikelerstellung vom Netz getrennt. Es dürfen keine
+	Daten verlorengehen, und die Daten sollten transparent an
+	einem anderen Arbeitsplatz weiterbearbeitet werden
+	können. (2) ...</em></dd>
+      </dl><br clear="left">
+      </li>
+	
+	<li>Entwicklungsumgebung:<br>
+	  <ol>
+	    <li>Software</li>
+	    <li>Hardware</li>
+	    <li>Orgware</li>
+	    <li>Schnittstellen</li>
+	  </ol>
+	  Entwicklungshard- und Software ist festzulegen, sofern sie
+	  nicht mit der Zielhardware
+	  übereinstimmt. Für die Entwicklung benötigte
+	  (Software-)Hilfsmittel wie Compiler etc. sollten aufgeführt
+	  werden. 
+	  
+      <dl compact="compact">
+	<dt><strong>Beispiel:</strong></dt>
+	<dd><em>Entwickelt wird unter und für das
+	  (1) Betriebssystem Windows95 auf Rechnern der
+	  (2) Intel-Pentium-Architektur.  Es wird ein
+	  InterData-C-Compiler und die Internetsoftware Explorer-X.3
+	  benutzt. Als Ersatz für die Linotype wird eine
+	  Simulationshardware eingesetzt, deren Programmierung durch
+	  den Softwareanbieter nach Handbüchern zu
+	  erstellen ist. ... Für Testzwecke steht ein (2) üblicher
+	  Zielarbeitsplatz zur Verfügung, und in Freizeiten darf nach
+	  Absprache bis zu 100h gesamt auf die
+	  Satzmaschine zugegriffen werden.</em></dd>
+      </dl><br clear="left">
+	</li>
+	<li>Ergänzungen:<br>
+	  Besondere Absprachen, die nicht durch die vorangehenden
+	  Punkte abgedeckt sind.
+	  
+      <dl compact="compact">
+	<dt><strong>Beispiel:</strong></dt>
+	<dd><em>Zur Installation steht der Ostersonntag zur
+	  Verfügung, bei Problemen ggf. noch der Vormittag des
+	  Ostermontags zur Verfügung. Am Ostermontag-Nachmittag muß
+	  der Betrieb des alten oder neuen Systems bei einer
+	  Konventionalstrafe von DM 180000 gewährleistet sein.</em></dd>
+      </dl><br clear="left">
+	</li>
+      </ol>
+
+
+    
+    
+    
+
+
+
+<br><hr clear="left">
+<br clear="left">
+
+
+
+
+
+
+ 
+ [<a href="DefPhase.html">vorige Seite</a>] 
+  
+ [<a href="Produktmodell.html">nächste Seite</a>] 
+  
+ [<a href="Contents.html">Inhalt</a>] 
+  
+ [<a href="Literatur.html">Literatur</a>] 
+  
+ [<a href="Glossar.html">Stichworte</a>] 
+ 
+
+    <hr>
+    <address><a href="mailto:lammers@math.uni-muenster.de">Dietmar Lammers</a></address>
+    <!-- Created: Mon Apr 26 15:10:51 MET DST 1999 -->
+    <!-- hhmts start -->
+Last modified: Fri Apr 30 13:32:43 MET DST 1999
+<!-- hhmts end -->
+  </body>
+</html>
