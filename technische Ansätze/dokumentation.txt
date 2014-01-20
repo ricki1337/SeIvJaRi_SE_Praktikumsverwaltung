@@ -1,0 +1,34 @@
+javadoc
+------------------------------
+-unterstützte sprachen: Java
+-ausgabeformate:  Html,RTF, XML, PDF, Framemaker, Windows Help und einige mehr
+
+Ist Teil der Sprache und wird von Standardwerkzeugen des JDK unterstützt.
+--> tutorial von oracle: http://www.oracle.com/technetwork/java/javase/documentation/writingdoccomments-137785.html
+
+- Dokumentation zu Variablen und Methoden werden in den Javaquelldateien als Javakommentar in einem besonderen Format beschrieben
+--> javadoc liest Javaquelldateien und erzeugt html Seiten mit der passenden Dokumentation einer Klasse
+
+Beispiel (im quelltext):
+
+ /**
+    * Ware dient zum Verwalten von Guetern mit Preisen und Namen in einem Lager.
+    * @author  Stefan Schneider
+    * @version 1.1
+    * @see     Lager
+    */
+
+Aufruf: javadoc *.java
+
+--> problematisch: quelltext ist mit kommentaren überflutet
+--> vorteilhaft:  aufwand einer separaten Dokumentenerstellung wird erspart und die "Vollständigkeit" der Dokumentierung gesichert
+
+
+Doxygen
+----------------------
+-unterstützte sprachen:  C++, C, Objective-C, Java, Python, Fortran und IDL.
+-ausgabeformate:  HTML, CHM, LaTeX, XML, RTF, PostScript, PDF, Manpages und Markdown
+
++  grafische Benutzeroberfläche dient der sogenannte Doxywizard, mit dem die Einstellungen sehr einfach vorgenommen werden können
+-bsp: http://www.icu-project.org/apiref/icu4c/group__ustring__ustrlen.html
+
