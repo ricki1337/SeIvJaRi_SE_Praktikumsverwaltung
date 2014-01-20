@@ -1,31 +1,17 @@
-###termin freitag, 17.01.
-
-##todo für alle:
-- einarbeitung in die verschiedenen punkte
-- stichpunkte oder absätze zu (genaue info siehe SE_beleg_dok_Pflichtenheft.pdf):
-	zielbestimmung
-	beschreibung des problembereichs
-	produktfunktionen
-	produktcharakteristika
-	Nichtfunktionale Anforderungen
-	Technische Produktumgebung
-	Anforderungen an die Entwicklungsumgebung
-	
-
-##technische punkte:
-- datenbankverbindung (zentrale schnittstelle) mit java +rick
-- auslesen von daten aus excel datei und csv datei +jakob
-- generierung von pdf dateien (grundlage??, dateiformat?) -mit beck klären
-- generieren von meldung an das prüfungsamt (wie sollen die aussehen? wie werden die daten dort verarbeitet?) -mit beck klären
-- emailversand (woher kommt inhalt etc.) +ivo
-- dynamische generierung von tabellen (in der db? in excel?) -mit beck klären
-- suchfunktionen (suchalgorithmen in sql, unscharfe suche) +rick
-- öffnen mehrerer unterfenster (ein fenstertyp, zb suche wird mehrfach geöffnet und zb als reiter/tab angezeigt) +ivo
-- dokumentationshilfe (software?) +sepp
-- oberflächen gestaltung -jakob
+##todo:
+- ins pflichtenheft einarbeiten
+	- punkte durchlesen
+	- inhalte prüfen (kritisch & konstruktiv) und vorschläge für verbesserungen machen
+	- offene Inhalte ergänzen
+- UML usecase korrigieren #rick
+- 2.1 Beschreibung des Problembereichs erstellen & UML Modell herleiten
+- glossarbegriffe festlegen
+- glossarbegriffe erklären
+- UML komponentendiagramm erstellen (4.4 Gliederung in Teilprodukte)
 
 
-##pflichtenheft
+
+##stand pflichtenheft
 - zielbestimmung
 - beschreibung des problembereichs
 - glossar #als letztes
@@ -44,7 +30,14 @@
 - gliederung der teilprodukte
 
 
-##mit prof beck zu klären:
-- Generierung von Formularen zur Empfehlung des betreuenden Professors an den Praktikumsbeauftragten.
-- Generierung von Meldungen an das Prüfungsamt (auch als Sammelmeldung aller als erfolgreich abgeschlossener und noch nicht gemeldeter Praktika, selektiert nach Studiengruppen).
-- Versand einer Mail an den betreuenden Hochschullehrer nach Druck der Meldung an das PA.
+##(zurückgestellt) technische punkte:
+- datenbankverbindung (zentrale schnittstelle) mit java +rick
+- auslesen von daten aus excel datei und csv datei +jakob
+- generierung von pdf dateien (grundlage??, dateiformat?) -mit beck klären
+- generieren von meldung an das prüfungsamt (wie sollen die aussehen? wie werden die daten dort verarbeitet?) -mit beck klären
+- emailversand (woher kommt inhalt etc.) +ivo
+- dynamische generierung von tabellen (in der db? in excel?) -mit beck klären
+- suchfunktionen (suchalgorithmen in sql, unscharfe suche) +rick
+- öffnen mehrerer unterfenster (ein fenstertyp, zb suche wird mehrfach geöffnet und zb als reiter/tab angezeigt) +ivo
+- dokumentationshilfe (software?) +sepp
+- oberflächen gestaltung -jakob
