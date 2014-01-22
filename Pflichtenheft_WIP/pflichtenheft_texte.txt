@@ -1,0 +1,100 @@
+#1. Zielbestimmung
+
+Die Verwaltung und Organisation der Studenten im Praxis- oder Projektsemester ist die Aufgabe des Praktikaverantwortlichen. Zu seinen Aufgaben gehören neben der Pflege von Studenten-, Firmen-, Betreuer- und Vertragsstammdaten auch das Überprüfen und Nachhalten von Dokumenten und Informationen zum Praktikum sowie das melden der Anerkennung von Praktikumsleistungen des Studenten an das Prüfungsamt. Um diese Vielzahl von Aufgaben effizient wahrzunehmen soll ein Informationssystem entwickelt werden, welches die Informationen übersichtlich präsentiert und die Pflege- und Reportaufgaben komfortabel unterstützt.
+
+Sollkriterien:
+- Informationsystem auf Basis von Java
+- unveränderte Nutzung von bereits bestehender Datenbank
+- manuelle Datenpflege (Hinzufügen/Ändern) von Studenten, Betreuern, Firmen und Verträgen über Eingabemasken
+- Massendatenimport (Hinzufügen von Datensätzen von Studenten) über Excel bzw. CSV Dateilisten
+- drucken von Meldungen an das Prüfungsamt (auch als Sammelmeldung über eine Auswahl von Studenten)
+- automatischer Emailversand an den betreuenden Hochschullehrer nach Druck der Meldung an das Prüfungsamt
+- Auflistung der Studenten, Verträge und Firmen in Tabellen mit der Möglichkeit diese mittels Filter oder einer unscharfen Suche einzuschränken
+- Suchfunktionen zu Eingabemasken mit unscharfer Suche (nicht case sensitiv, Suchbegriff in Datenfeld und Datensatz enthalten)
+- Navigation durch gefundene Daten und Selektion des zu bearbeitenden Datensatzes
+	
+
+Wunschkriterien:
+- Erweiterte Suche (mit regulären Ausdrücken, nur bestimmte Datenbankteile durchsuchen)
+- Bei Suche sollen alle ausgefüllten Felder ausgewertet werden
+
+	
+Abgrenzungskriterien:
+- es ist kein Mehrbenutzer-Betrieb vorgesehen, Rollen oder Rechteverwaltung entfällt
+- keine Prüfung der Nutzereingaben auf Korrektheit
+- als Datenbankmanagementsystem wird ausschließlich MySql eingesetzt, andere Systeme werden nicht unterstützt
+
+#2.1 Beschreibung des Problembereichs
+Der Praktikumsverantwortliche (Prof. Dr. A. Beck) der HTW Dresden ist dafür zuständig , den Ablauf des Praktikumssemesters/Praxisprojektes jedes Studenten  laut Prüfungsordnung zu überwachen. Er muss jederzeit über die Praktikumssituation der Studenten informiert sein und Deadlines bzw. Studenten ohne Praktikumsstelle erkennen können. Er steht mit dem Prüfungsamt in Kontakt welches über den Abschluss/Abbruch des Praktikums vor Beginn der Abschlussarbeit  informiert werden muss.
+
+
+#2.2 Glossar
+Praktikumsvertrag
+Übereinkommen zwischen Betrieb und Student, er legt unter anderem  die Dauer des Praktikums und die Pflichten der Vertragspartner fest 
+
+Praktikumsbetreuer
+fachlich betreuender Professor, der den Praktikumsbericht, das Zeugnis/die Beurteilung Begutachtet und eine Empfehlung über Erfolg/Nichterfolg an den Praktikumsverantwortlichen ausspricht
+
+Praktikumsverantwortlicher
+Koordiniert Ablauf des praktischen Studiensemesters. Zu seinen Aufgaben gehören zB. Die Erfassung der Praktikumsbetrieben
+
+
+
+
+#3. Produktfunktionen
+Das Programm soll dem Praktikumsverantwortlichen eine intuitive und lösungsorientierte Arbeit ermöglichen. Die Datenbank wird durch eine grafische Benutzeroberfläche (GUI) einfach und intuitiv präsentiert und editiert. Neue Datensätze können entweder manuell per Eingabemaske oder per Import von Exeltabellen/*.csv Dateien eingepflegt werden.    
+
+Das Programm stellt eine unscharfe Suche auf Grund der in der Datenbank enthaltenen Datensätze bereit. Es können Tabellen auf Grundlage der enthaltenen Datensätze durch Anwendung diverser Filter generiert werden z.b :
+-	Alle Unternehmen
+-	Studenten (Verträge) mit wählbarem Praktikumsstatus (noch kein Vertrag, Vertrag abgeschlossen, Praktikum erfolgreich abgeschlossen) zu jeweils einer Studiengruppe
+
+Es wird eine Funktion bereitgestellt, automatisch eine E-mail an den Praktikumsbetreuer zu verschicken nachdem eine Meldung für das Prüfungsamt gedruckt wurde. Außerdem sind Meldungen via E-Mail an die Studenten und Praktikumsbetreuer möglich.
+
+
+#3.3 Produktdaten
+Daten die, die Software Praktikumsverwaltung nutzt und ändert. Die Daten entstammen der Praktikumsdatenbank. Datentypen sich entsprechend einzuhalten.
+
+1.	Studenten: Alle Informationen zum Studenten
+a)	Matrikel Nummer 				(eindeutig)
+b)	Nachnahme					
+c)	Vorname
+d)	E-Mail Adresse
+e)	Studiengruppe
+f)	Bemerkung
+
+2.	Praktikumsfirma: Alle Informationen zur Firma
+a)	Firmen ID						(eindeutig)
+b)	Firmenname
+c)	Straße und Hausnummer			
+d)	PLZ
+e)	Stadt
+f)	Land
+g)	Telefonnummer
+h)	Bemerkung
+
+3.	Kontaktperson Praktikumsfirma: Zuständiger Ansprechpartner bei der Praktikumsfirma
+a)	Ansprechpartner ID 				(eindeutig)
+b)	Name
+c)	Telefonnummer
+d)	Bemerkung
+e)	Firmen ID 						(eindeutig, bezieht sich auf 2a)
+
+4.	Praktikumsvertrag: Alle Relevanten Daten zu einem Praktikumsvertrag
+a)	Vertragsnummer					(eindeutig)
+b)	Firmen ID 						(eindeutig, bezieht sich auf 2a)
+c)	Matrikel Nummer 				(eindeutig, bezieht sich auf 1a)
+d)	Beginn Praktikum					
+e)	Ende Praktikum					
+f)	Betreuender Professor			(eindeutig, bezieht sich auf 5a)
+g)	Ansprechpartner ID				(eindeutig, bezieht sich auf 3a)
+h)	Vortrag gedruckt
+i)	Type (Prakikums-/Projektsemester)
+j)	Abschluss vorliegend
+k)	Praktikumsbericht vorliegend
+l)	Praktikumszeugnis vorliegend
+m)	Empfehlung
+n)	Kommentar Professor
+
+5.	Professor: Daten des betreuenden Professors
+a)	Professor ID					
+b)	Name des Professors				

@@ -1,11 +1,38 @@
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 
 public class Prakt_ViewStudent extends JInternalFrame{
+	
+	class MySelectionListener extends MouseAdapter{
+		JTable table;
+		public MySelectionListener(JTable table){
+			this.table = table;
+			
+		}
+		public void mouseClicked(MouseEvent e){
+			if (e.getClickCount() == 2) { 
+		           MainWindow.addInternalFrame(new Prakt_ViewStudent(MainWindow,table.getSelectedRow()));
+			}
+		}
+
+	}
+	
+	Prakt_MainWindow MainWindow;
+	
 	JPanel PanelTop,PanelCenter;
-	public Prakt_ViewStudent(){
+	ListSelectionModel listSelectionModel;
+	
+	
+	
+	public Prakt_ViewStudent(final Prakt_MainWindow MainWindow,int auswahl){
 		super("Studenten",true,true,true,true);
+		this.MainWindow = MainWindow;
 		setSize(500,500);
 		GridBagLayout gbl = new GridBagLayout();
 		GridBagConstraints gbc = new GridBagConstraints();
@@ -29,8 +56,8 @@ public class Prakt_ViewStudent extends JInternalFrame{
 		
 		gbl.setConstraints(PanelTop, gbc);
 		add(PanelTop);
-		
-		displayOne();
+		if(auswahl > -1) displayOne();
+		else displayList();
 		gbc.anchor = GridBagConstraints.FIRST_LINE_START;
 		gbc.gridx = 0;
 		gbc.gridy = 1;
@@ -427,4 +454,50 @@ public class Prakt_ViewStudent extends JInternalFrame{
 		//vortrag ende
 		
 	}
+	
+	public void displayList(){
+		GridBagLayout gbl = new GridBagLayout();
+		GridBagConstraints gbc = new GridBagConstraints();
+		
+		JPanel TablePanel = new JPanel();
+		TablePanel.setLayout(gbl);
+		
+		Object rowData[][] = {
+				{"12341","Rick","Hermenau","s12312@htw-dresden.de","12/043/01","Ja","Ja","Ja"},
+				{"12342","Max","Meier","s12212@htw-dresden.de","11/041/01","Ja","Ja","Nein"},
+				{"12343","Ingo","Kummer","s22312@htw-dresden.de","11/043/01","Ja","Ja","Nein"},
+				{"12344","Ivo","Beier","s12312@htw-dresden.de","12/043/01","Ja","Nein","Nein"},
+				{"12345","Sepp","Härtel","s16312@htw-dresden.de","12/043/01","Nein","Nein","Nein"},
+				{"12346","Jakob","Helzig","s12812@htw-dresden.de","12/043/01","Ja","Nein","Nein"}
+		};
+		
+		Object columnNames[]= {"Matrikelnr.","Vorname","Nachname","Email","Studiengr.","Betreuer","Firma","Vertrag"};
+		PanelCenter = new JPanel();
+		mytable table = new mytable( rowData, columnNames );
+		
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table.addMouseListener(new MySelectionListener(table));
+		
+		JScrollPane scrollPane = new JScrollPane(table);
+		table.setFillsViewportHeight(true);
+		gbc.gridwidth = GridBagConstraints.REMAINDER;
+		gbl.setConstraints(table.getTableHeader(), gbc);
+		TablePanel.add(table.getTableHeader());
+		gbl.setConstraints(table, gbc);
+		TablePanel.add(table);
+		PanelCenter.add(TablePanel);
+	}
+}
+
+
+
+class mytable extends JTable{
+	public mytable(Object[][] rowData, Object[] columnNames) {
+		super(rowData,columnNames);
+	}
+
+	public boolean isCellEditable(int row, int col){
+        return false;
+    }
+	
 }

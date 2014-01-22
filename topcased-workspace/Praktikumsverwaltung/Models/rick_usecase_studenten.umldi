@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <diagrams:Diagrams xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.topcased.org/DI/1.0" xmlns:diagrams="http://www.topcased.org/Diagrams/1.0" xmi:id="_CaSRQH9TEeOxD4hg0ncHkA" activeDiagram="_CaS4UH9TEeOxD4hg0ncHkA">
   <model href="rick_usecase.uml#_w8IxIM37EdqwVrslYOdUDA"/>
-  <diagrams xmi:id="_CaS4UH9TEeOxD4hg0ncHkA" position="0,0" size="100,100" name="Praktikumsverwaltung" viewport="0,0">
+  <diagrams xmi:id="_CaS4UH9TEeOxD4hg0ncHkA" position="0,0" size="100,100" name="Praktikumsverwaltung" viewport="0,187">
     <property xmi:id="_sPov0H9ZEeOFFqCBgts--g" key="pageFormatName" value="A4"/>
     <property xmi:id="_sPov0X9ZEeOFFqCBgts--g" key="diagramWidth" value="840"/>
     <property xmi:id="_sPov0n9ZEeOFFqCBgts--g" key="diagramHeight" value="1188"/>
@@ -14,7 +14,7 @@
     <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_CaS4UX9TEeOxD4hg0ncHkA" presentation="org.topcased.modeler.uml.usecasediagram">
       <element href="rick_usecase.uml#_w8IxIM37EdqwVrslYOdUDA"/>
     </semanticModel>
-    <contained xsi:type="di:GraphNode" xmi:id="_qQftIH9aEeOFFqCBgts--g" position="215,81" size="240,634">
+    <contained xsi:type="di:GraphNode" xmi:id="_qQftIH9aEeOFFqCBgts--g" position="221,85" size="240,634">
       <property xmi:id="_OSn-94AcEeOV07fk0emd0A" key="font" value="-regular-8"/>
       <semanticModel xsi:type="di:SimpleSemanticModelElement" xmi:id="_qQftIX9aEeOFFqCBgts--g" presentation="default" typeInfo="BoundaryBox"/>
     </contained>
@@ -99,14 +99,14 @@
     </contained>
     <contained xsi:type="di:GraphNode" xmi:id="_qchSsIAlEeOV07fk0emd0A" position="260,642" size="66,50">
       <property xmi:id="_7VmIooAlEeOV07fk0emd0A" key="font" value="-regular-8"/>
-      <anchorage xmi:id="_WSri8IIPEeOAXuZJKXkoQg" graphEdge="_WSsxEIIPEeOAXuZJKXkoQg"/>
+      <anchorage xmi:id="_WSri8IIPEeOAXuZJKXkoQg" graphEdge="_WSsxEIIPEeOAXuZJKXkoQg _UVgvUINGEeOElNdY8ylrQg"/>
       <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_qchSsYAlEeOV07fk0emd0A" presentation="default">
         <element href="rick_usecase.uml#_qchSsoAlEeOV07fk0emd0A"/>
       </semanticModel>
     </contained>
     <contained xsi:type="di:GraphNode" xmi:id="_7tKKgYAZEeOV07fk0emd0A" position="313,572" size="86,57">
       <property xmi:id="_OSn-9YAcEeOV07fk0emd0A" key="font" value="-regular-8"/>
-      <anchorage xmi:id="_04T6YIINEeOAXuZJKXkoQg" graphEdge="_04VIgIINEeOAXuZJKXkoQg"/>
+      <anchorage xmi:id="_04T6YIINEeOAXuZJKXkoQg" graphEdge="_04VIgIINEeOAXuZJKXkoQg _UVgvUINGEeOElNdY8ylrQg"/>
       <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_7tKKgoAZEeOV07fk0emd0A" presentation="default">
         <element href="rick_usecase.uml#_7tTUcIAZEeOV07fk0emd0A"/>
       </semanticModel>
@@ -152,6 +152,14 @@
       <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_40hMsX9ZEeOFFqCBgts--g" presentation="default">
         <element href="rick_usecase.uml#_40ia0H9ZEeOFFqCBgts--g"/>
       </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_UVgvUINGEeOElNdY8ylrQg" anchor="_04T6YIINEeOAXuZJKXkoQg _WSri8IIPEeOAXuZJKXkoQg">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_UVhWYINGEeOElNdY8ylrQg" presentation="default">
+        <element href="rick_usecase.uml#_UVhWY4NGEeOElNdY8ylrQg"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_UVhWYYNGEeOElNdY8ylrQg" id="nameEdgeObject" offset="45,-11"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_UVhWYoNGEeOElNdY8ylrQg" visible="false" id="extensionEdgeObject" uDistance="14"/>
+      <waypoints>[0, 67, 63, 0]</waypoints>
     </contained>
   </diagrams>
 </diagrams:Diagrams>

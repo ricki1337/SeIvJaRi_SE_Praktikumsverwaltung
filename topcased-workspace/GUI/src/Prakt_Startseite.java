@@ -24,7 +24,7 @@ public class Prakt_Startseite extends JInternalFrame{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				MainWindow.addInternalFrame(new Prakt_ViewStudent());
+				MainWindow.addInternalFrame(new Prakt_ViewStudent(MainWindow,-1));
 				
 			}});
 		c.gridwidth = GridBagConstraints.REMAINDER;
