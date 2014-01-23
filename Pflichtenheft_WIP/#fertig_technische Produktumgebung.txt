@@ -1,0 +1,23 @@
+Die Software ist weitgehend Betriebssystem unabhängig, es bestehen aber dennoch Abhängigkeiten und Anforderungen.
+
+Softwareanforderungen:
+
+•	JAVA Laufzeitumgebung 7 (32 bit) oder höher
+
+Hardwareanforderungen:
+
+•	Computer, der den Ansprüchen der o.g. Software genügen
+•	Monitorauflösung von min. 1024x768 Pixel
+•	Netzwerkzugriff innerhalb des Intranets der HTW-Dresden 
+•	Drucker Zugriff
+
+Schnittstellen:
+
+•	Vollständiger Zugriff auf relevante MySQL Datenbank
+
+Organisatorische Rahmenbedingungen:
+
+•	Nutzer-Account der HTW-Dresden erforderlich
+•	E-Mail Account der HTW-Dresden erforderlich
+•	Zugriff auf Praktikumsdatenbank erforderlich
+
