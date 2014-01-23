@@ -25,8 +25,7 @@ Abgrenzungskriterien:
 - als Datenbankmanagementsystem wird ausschließlich MySql eingesetzt, andere Systeme werden nicht unterstützt
 
 #2.1 Beschreibung des Problembereichs
-Der Praktikumsverantwortliche (Prof. Dr. A. Beck) der HTW Dresden ist dafür zuständig , den Ablauf des Praktikumssemesters/Praxisprojektes jedes Studenten  laut Prüfungsordnung zu überwachen. Er muss jederzeit über die Praktikumssituation der Studenten informiert sein und Deadlines bzw. Studenten ohne Praktikumsstelle erkennen können. Er steht mit dem Prüfungsamt in Kontakt welches über den Abschluss/Abbruch des Praktikums vor Beginn der Abschlussarbeit  informiert werden muss.
-
+Der Praktikumsverantwortliche (Prof. Dr. A. Beck) der HTW Dresden ist laut Prüfungsordnung verantwortlich, den Ablauf des Praktikumssemesters/Praxisprojektes jedes Studenten  zu überwachen. Er muss jederzeit über die Praktikumssituation der Studenten informiert sein und Deadlines bzw. Studenten ohne Praktikumsstelle erkennen können. Dafür steht ihm eine Liste mit Firmen und Studenten zur verfügung. Er steht mit dem Prüfungsamt in Kontakt welches über den Abschluss/Abbruch des Praktikums vor Beginn der Abschlussarbeit  informiert werden muss. Ein Student  ist durch einen Praktikumsvertrag an ein Unternehmen gebunden und wird von einem  Mitarbeiter sowie einem Praktikumsbetreuer (Professor an der HTW ) betreut. Nachdem vom Arbeitgeber ein Abschlusbericht und Zeugniss ausgestellt wurde, bestätigt  der Praktikumsbetreuer  den Abschluss des Praktikums.
 
 #2.2 Glossar
 Praktikumsvertrag
