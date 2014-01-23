@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <diagrams:Diagrams xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.topcased.org/DI/1.0" xmlns:diagrams="http://www.topcased.org/Diagrams/1.0" xmi:id="_85ldgYOfEeObnc40kTtmyw" activeDiagram="_85ldgoOfEeObnc40kTtmyw">
   <model href="rick%20activity%20diagram%20editieren.uml#idActivity"/>
-  <diagrams xmi:id="_85ldgoOfEeObnc40kTtmyw" position="0,0" size="100,100" name="rick activity diagram editieren" viewport="0,0">
+  <diagrams xmi:id="_85ldgoOfEeObnc40kTtmyw" position="0,0" size="100,100" name="rick activity diagram editieren" viewport="17,162">
     <property xmi:id="_86MhgIOfEeObnc40kTtmyw" key="pageFormatName" value="A4"/>
     <property xmi:id="_86MhgYOfEeObnc40kTtmyw" key="diagramWidth" value="840"/>
     <property xmi:id="_86MhgoOfEeObnc40kTtmyw" key="diagramHeight" value="1188"/>
@@ -80,7 +80,7 @@
         <element href="rick%20activity%20diagram%20editieren.uml#_HNNpeIOgEeObnc40kTtmyw"/>
       </semanticModel>
     </contained>
-    <contained xsi:type="di:GraphNode" xmi:id="_HN2ioIOgEeObnc40kTtmyw" position="663,296" size="40,60">
+    <contained xsi:type="di:GraphNode" xmi:id="_HN2ioIOgEeObnc40kTtmyw" position="606,294" size="40,60">
       <property xmi:id="_HN2ioYOgEeObnc40kTtmyw" key="isVisibleLabel" value="visible"/>
       <property xmi:id="_9-A8sYOkEeObnc40kTtmyw" key="font" value="-regular-10"/>
       <anchorage xmi:id="_244p4IOgEeObnc40kTtmyw" graphEdge="_2454AIOgEeObnc40kTtmyw _-fxiwIOgEeObnc40kTtmyw _J-JOEIOiEeObnc40kTtmyw _4pMXoIOlEeObnc40kTtmyw"/>
@@ -88,7 +88,7 @@
         <element href="rick%20activity%20diagram%20editieren.uml#_HNNpeYOgEeObnc40kTtmyw"/>
       </semanticModel>
     </contained>
-    <contained xsi:type="di:GraphNode" xmi:id="_HN4X0IOgEeObnc40kTtmyw" position="516,295" size="89,65">
+    <contained xsi:type="di:GraphNode" xmi:id="_HN4X0IOgEeObnc40kTtmyw" position="469,293" size="89,65">
       <property xmi:id="_9-EnEoOkEeObnc40kTtmyw" key="font" value="-regular-10"/>
       <anchorage xmi:id="_-fwUoIOgEeObnc40kTtmyw" graphEdge="_-fxiwIOgEeObnc40kTtmyw _J-JOEIOiEeObnc40kTtmyw"/>
       <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_HN4X0YOgEeObnc40kTtmyw" presentation="default">
@@ -191,8 +191,8 @@
       <contained xsi:type="di:EdgeObjectUV" xmi:id="_2454BIOgEeObnc40kTtmyw" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
       <contained xsi:type="di:EdgeObjectUV" xmi:id="_2454BYOgEeObnc40kTtmyw" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
       <contained xsi:type="di:EdgeObjectOffset" xmi:id="_2454BoOgEeObnc40kTtmyw" visible="false" id="interruptibleEdgeObject"/>
-      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_2454B4OgEeObnc40kTtmyw" visible="false" id="interruptibleIconEdgeObject"/>
-      <waypoints>[291, 0, 0, -121]</waypoints>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_2454B4OgEeObnc40kTtmyw" visible="false" id="interruptibleIconEdgeObject" offset="-34,0"/>
+      <waypoints>[234, 0, 0, -119]</waypoints>
     </contained>
     <contained xsi:type="di:GraphEdge" xmi:id="_5eUbEIOgEeObnc40kTtmyw" anchor="_1nSfIIOgEeObnc40kTtmyw _5eTM8IOgEeObnc40kTtmyw">
       <property xmi:id="_9-EAAoOkEeObnc40kTtmyw" key="font" value="-regular-10"/>
@@ -228,7 +228,7 @@
       <contained xsi:type="di:EdgeObjectOffset" xmi:id="_-fxiwoOgEeObnc40kTtmyw" id="stereotypeEdgeObject"/>
       <contained xsi:type="di:EdgeObjectUV" xmi:id="_-fxiw4OgEeObnc40kTtmyw" visible="false" id="guardEdgeObject" uDistance="32" vDistance="-20"/>
       <contained xsi:type="di:EdgeObjectUV" xmi:id="_-fxixIOgEeObnc40kTtmyw" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
-      <contained xsi:type="di:EdgeObjectUV" xmi:id="_-fxixYOgEeObnc40kTtmyw" id="nameEdgeObject" uDistance="28" vDistance="-4"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_-fxixYOgEeObnc40kTtmyw" id="nameEdgeObject" uDistance="17" vDistance="-4"/>
       <contained xsi:type="di:EdgeObjectOffset" xmi:id="_-fxixoOgEeObnc40kTtmyw" visible="false" id="interruptibleEdgeObject"/>
       <contained xsi:type="di:EdgeObjectOffset" xmi:id="_-fxix4OgEeObnc40kTtmyw" visible="false" id="interruptibleIconEdgeObject"/>
       <waypoints>[-105, -11, 37, 1]</waypoints>
@@ -369,10 +369,10 @@
       <contained xsi:type="di:EdgeObjectUV" xmi:id="_J-JOFYOiEeObnc40kTtmyw" id="nameEdgeObject" uDistance="38" vDistance="-30"/>
       <contained xsi:type="di:EdgeObjectOffset" xmi:id="_J-JOFoOiEeObnc40kTtmyw" visible="false" id="interruptibleEdgeObject"/>
       <contained xsi:type="di:EdgeObjectOffset" xmi:id="_J-JOF4OiEeObnc40kTtmyw" visible="false" id="interruptibleIconEdgeObject"/>
-      <waypoints>[-6, -59, -129, -58]</waypoints>
-      <waypoints>[89, -59, -34, -58]</waypoints>
+      <waypoints>[0, -61, -112, -57]</waypoints>
+      <waypoints>[83, -61, -29, -57]</waypoints>
     </contained>
-    <contained xsi:type="di:GraphNode" xmi:id="_2jZv0IOlEeObnc40kTtmyw" position="711,406" size="80,65">
+    <contained xsi:type="di:GraphNode" xmi:id="_2jZv0IOlEeObnc40kTtmyw" position="647,402" size="80,65">
       <anchorage xmi:id="_4pLJgIOlEeObnc40kTtmyw" graphEdge="_4pMXoIOlEeObnc40kTtmyw _7XvokIOlEeObnc40kTtmyw"/>
       <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_2jZv0YOlEeObnc40kTtmyw" presentation="default">
         <element href="rick%20activity%20diagram%20editieren.uml#_2jYhsIOlEeObnc40kTtmyw"/>
@@ -400,7 +400,7 @@
       <contained xsi:type="di:EdgeObjectUV" xmi:id="_7XvolYOlEeObnc40kTtmyw" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
       <contained xsi:type="di:EdgeObjectOffset" xmi:id="_7XvoloOlEeObnc40kTtmyw" visible="false" id="interruptibleEdgeObject"/>
       <contained xsi:type="di:EdgeObjectOffset" xmi:id="_7Xvol4OlEeObnc40kTtmyw" visible="false" id="interruptibleIconEdgeObject" offset="184,20"/>
-      <waypoints>[-7, 110, 357, 0]</waypoints>
+      <waypoints>[0, 114, 300, 0]</waypoints>
     </contained>
     <contained xsi:type="di:GraphNode" xmi:id="_CnzV0IOmEeObnc40kTtmyw" position="623,863" size="40,40">
       <anchorage xmi:id="_DIOiUIOmEeObnc40kTtmyw" graphEdge="_DIPwcIOmEeObnc40kTtmyw _PdkHUIOmEeObnc40kTtmyw"/>

@@ -89,6 +89,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:UseCase" xmi:id="_WikRQoAbEeOV07fk0emd0A" name="Filtern">
       <extend xmi:id="_YqV2FIAbEeOV07fk0emd0A" name="Extend1" extendedCase="_E-bgoIHSEeO9TbmwoxemMQ" extensionLocation="_Yp5KIIAbEeOV07fk0emd0A"/>
+      <extend xmi:id="_9Ki1xIQPEeOdZvtSBWegFQ" name="Extend2" extendedCase="_E-bgoIHSEeO9TbmwoxemMQ" extensionLocation="_9J2SMIQPEeOdZvtSBWegFQ"/>
       <extensionPoint xmi:id="_JZFmsIHVEeOm7eGx0SwIbg" name="ExtensionPoint1"/>
     </packagedElement>
     <packagedElement xmi:type="uml:UseCase" xmi:id="_8_4PQoAcEeOV07fk0emd0A" name="Anlegen">
@@ -112,6 +113,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:UseCase" xmi:id="_NtSAsoAdEeOV07fk0emd0A" name="Filtern">
       <extend xmi:id="_YChWNYAdEeOV07fk0emd0A" name="Extend1" extendedCase="_6ULI4oAaEeOV07fk0emd0A" extensionLocation="_YCObQIAdEeOV07fk0emd0A"/>
+      <extend xmi:id="_GrAU1IQPEeOdZvtSBWegFQ" name="Extend2" extendedCase="_9sfkEIHREeO9TbmwoxemMQ" extensionLocation="_GqTxQIQPEeOdZvtSBWegFQ"/>
     </packagedElement>
     <packagedElement xmi:type="uml:UseCase" xmi:id="_P7XB0oAdEeOV07fk0emd0A" name="Bearbeiten">
       <extend xmi:id="_aBY2pYAdEeOV07fk0emd0A" name="Extend1" extendedCase="_6ULI4oAaEeOV07fk0emd0A" extensionLocation="_aA8KsIAdEeOV07fk0emd0A"/>
@@ -131,6 +133,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:UseCase" xmi:id="_rn8dooAdEeOV07fk0emd0A" name="Filtern">
       <extend xmi:id="_4OqtlIAdEeOV07fk0emd0A" name="Extend1" extendedCase="_UXVlQoAaEeOV07fk0emd0A" extensionLocation="_4OOBoIAdEeOV07fk0emd0A"/>
+      <extend xmi:id="_nN5NtIQOEeOdZvtSBWegFQ" name="Extend2" extendedCase="__ykckIHNEeO9TbmwoxemMQ" extensionLocation="_nNMDEIQOEeOdZvtSBWegFQ"/>
     </packagedElement>
     <packagedElement xmi:type="uml:UseCase" xmi:id="_NsYMUoAeEeOV07fk0emd0A" name="Kontakt bearbeiten">
       <extend xmi:id="_Sbu3YIAeEeOV07fk0emd0A" name="Extend1" extendedCase="_HibnEIHVEeOm7eGx0SwIbg" extensionLocation="_SbSLcIAeEeOV07fk0emd0A">
@@ -152,8 +155,12 @@
       <extensionPoint xmi:id="_wj4pkINGEeOElNdY8ylrQg" name="ExtensionPoint1"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_00i2cIAlEeOV07fk0emd0A" name="Package1"/>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="__ykckIHNEeO9TbmwoxemMQ" name="Liste anzeigen"/>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_9sfkEIHREeO9TbmwoxemMQ" name="anzeigen"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="__ykckIHNEeO9TbmwoxemMQ" name="Liste anzeigen">
+      <extensionPoint xmi:id="_nNMDEIQOEeOdZvtSBWegFQ" name="ExtensionPoint1"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_9sfkEIHREeO9TbmwoxemMQ" name="Liste anzeigen">
+      <extensionPoint xmi:id="_GqTxQIQPEeOdZvtSBWegFQ" name="ExtensionPoint1"/>
+    </packagedElement>
     <packagedElement xmi:type="uml:UseCase" xmi:id="_E-bgoIHSEeO9TbmwoxemMQ" name="Liste anzeigen">
       <extensionPoint xmi:id="_I4HnoIHVEeOm7eGx0SwIbg" name="ExtensionPoint1"/>
     </packagedElement>
@@ -166,6 +173,7 @@
       <extend xmi:id="_I4Z7hIHVEeOm7eGx0SwIbg" name="Extend1" extendedCase="_E-bgoIHSEeO9TbmwoxemMQ" extensionLocation="_I4HnoIHVEeOm7eGx0SwIbg"/>
       <extend xmi:id="_JZYhoIHVEeOm7eGx0SwIbg" name="Extend2" extendedCase="_WikRQoAbEeOV07fk0emd0A" extensionLocation="_JZFmsIHVEeOm7eGx0SwIbg"/>
       <extensionPoint xmi:id="_BHa2AIHWEeOm7eGx0SwIbg" name="ExtensionPoint1"/>
+      <extensionPoint xmi:id="_9J2SMIQPEeOdZvtSBWegFQ" name="ExtensionPoint2"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Actor" xmi:id="_-s5TgIIFEeOAXuZJKXkoQg" name="Praktikumsverantwortlicher"/>
     <packagedElement xmi:type="uml:UseCase" xmi:id="_FsxvYIIJEeOAXuZJKXkoQg" name="Studenten verwalten" isAbstract="true"/>
@@ -298,15 +306,18 @@
       <extend xmi:id="_tqMvpYAlEeOV07fk0emd0A" name="Extend1" extendedCase="_1ve0wIHSEeO9TbmwoxemMQ" extensionLocation="_tp50sIAlEeOV07fk0emd0A"/>
       <extend xmi:id="_XSQLYIHUEeOm7eGx0SwIbg" name="Extend2" extendedCase="_6_eoYH9ZEeOFFqCBgts--g" extensionLocation="_XR5mEIHUEeOm7eGx0SwIbg"/>
       <extend xmi:id="_NxCHcIIOEeOAXuZJKXkoQg" name="Extend3" extendedCase="_1ve0wIHSEeO9TbmwoxemMQ" extensionLocation="_NwtXUIIOEeOAXuZJKXkoQg"/>
+      <extend xmi:id="_-rKtQIQKEeOdZvtSBWegFQ" name="Extend4" extendedCase="_7tTUcIAZEeOV07fk0emd0A" extensionLocation="_-qW08YQKEeOdZvtSBWegFQ"/>
       <extensionPoint xmi:id="_UUie8INGEeOElNdY8ylrQg" name="ExtensionPoint1"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_7tTUcIAZEeOV07fk0emd0A" name="Dokument(e) drucken">
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_7tTUcIAZEeOV07fk0emd0A" name="Meldung drucken">
       <extend xmi:id="_9-CA9YAZEeOV07fk0emd0A" name="Extend1" extendedCase="_1ve0wIHSEeO9TbmwoxemMQ" extensionLocation="_99lVAIAZEeOV07fk0emd0A"/>
       <extend xmi:id="_fA6gNIHUEeOm7eGx0SwIbg" name="Extend2" extendedCase="_JujnwIHSEeO9TbmwoxemMQ" extensionLocation="_fAlwEIHUEeOm7eGx0SwIbg"/>
       <extend xmi:id="_UVhWY4NGEeOElNdY8ylrQg" name="Extend3" extendedCase="_qchSsoAlEeOV07fk0emd0A" extensionLocation="_UUie8INGEeOElNdY8ylrQg"/>
+      <extensionPoint xmi:id="_-qW08YQKEeOdZvtSBWegFQ" name="ExtensionPoint1"/>
     </packagedElement>
     <packagedElement xmi:type="uml:UseCase" xmi:id="_6_eoYH9ZEeOFFqCBgts--g" name="Filtern">
       <extend xmi:id="_9M5iMH9ZEeOFFqCBgts--g" name="Extend1" extendedCase="_JujnwIHSEeO9TbmwoxemMQ" extensionLocation="_9MEbwH9ZEeOFFqCBgts--g"/>
+      <extend xmi:id="_DF5r0IQOEeOdZvtSBWegFQ" name="Extend2" extendedCase="_JujnwIHSEeO9TbmwoxemMQ" extensionLocation="_DFI20IQOEeOdZvtSBWegFQ"/>
       <extensionPoint xmi:id="_ECPIsIHTEeO9TbmwoxemMQ" name="ExtensionPoint1"/>
       <extensionPoint xmi:id="_XR5mEIHUEeOm7eGx0SwIbg" name="ExtensionPoint2"/>
       <extensionPoint xmi:id="_fAlwEIHUEeOm7eGx0SwIbg" name="ExtensionPoint3"/>
@@ -315,8 +326,9 @@
       <extensionPoint xmi:id="_4dRQsIHSEeO9TbmwoxemMQ" name="ExtensionPoint1"/>
       <extensionPoint xmi:id="_QlTLMIHUEeOm7eGx0SwIbg" name="ExtensionPoint2"/>
       <extensionPoint xmi:id="_KO-9AIIOEeOAXuZJKXkoQg" name="ExtensionPoint3"/>
+      <extensionPoint xmi:id="_DFI20IQOEeOdZvtSBWegFQ" name="ExtensionPoint4"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_1ve0wIHSEeO9TbmwoxemMQ" name="Student anzeigen">
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_1ve0wIHSEeO9TbmwoxemMQ" name="Details anzeigen">
       <extend xmi:id="_4eOS8IHSEeO9TbmwoxemMQ" name="Extend1" extendedCase="_JujnwIHSEeO9TbmwoxemMQ" extensionLocation="_4dRQsIHSEeO9TbmwoxemMQ"/>
       <extend xmi:id="_EDNZEIHTEeO9TbmwoxemMQ" name="Extend2" extendedCase="_6_eoYH9ZEeOFFqCBgts--g" extensionLocation="_ECPIsIHTEeO9TbmwoxemMQ"/>
       <extend xmi:id="__WVYcIINEeOAXuZJKXkoQg" name="trest" extendedCase="_6_eoYH9ZEeOFFqCBgts--g">
@@ -535,6 +547,17 @@
       <ownedEnd xmi:id="_5_7GNINGEeOElNdY8ylrQg" name="mail an Student" type="_4XSUcINGEeOElNdY8ylrQg" association="_5_7GMINGEeOElNdY8ylrQg">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5_7GNYNGEeOElNdY8ylrQg" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_7GNoNGEeOElNdY8ylrQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_NcUQkIQPEeOdZvtSBWegFQ" name="Details anzeigen"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_P6Q5sIQPEeOdZvtSBWegFQ" name="A_&lt;praktikumsverantwortlicher>_&lt;details anzeigen>_3" memberEnd="_P6Q5sYQPEeOdZvtSBWegFQ _P6Q5tIQPEeOdZvtSBWegFQ">
+      <ownedEnd xmi:id="_P6Q5sYQPEeOdZvtSBWegFQ" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_P6Q5sIQPEeOdZvtSBWegFQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_P6Q5soQPEeOdZvtSBWegFQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_P6Q5s4QPEeOdZvtSBWegFQ" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_P6Q5tIQPEeOdZvtSBWegFQ" name="details anzeigen" type="_NcUQkIQPEeOdZvtSBWegFQ" association="_P6Q5sIQPEeOdZvtSBWegFQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_P6Q5tYQPEeOdZvtSBWegFQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_P6Q5toQPEeOdZvtSBWegFQ" value="1"/>
       </ownedEnd>
     </packagedElement>
   </packagedElement>
