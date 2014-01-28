@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_qb8akM37EdqwVrslYOdUDA">
+  <elementImport xmi:id="_UegswIXXEeOwFt3Ctq-XqQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+  </elementImport>
+  <elementImport xmi:id="_UehT0IXXEeOwFt3Ctq-XqQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+  </elementImport>
+  <elementImport xmi:id="_UehT0YXXEeOwFt3Ctq-XqQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <elementImport xmi:id="_UehT0oXXEeOwFt3Ctq-XqQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Package" xmi:id="_w8IxIM37EdqwVrslYOdUDA" name="MainWindow">
+    <packagedElement xmi:type="uml:Class" xmi:id="_gdWSwIXWEeOwFt3Ctq-XqQ" name="MainWindow">
+      <redefinedClassifier xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaClass"/>
+      <ownedAttribute xmi:id="_NoIq0IXXEeOwFt3Ctq-XqQ" name="AppName">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_aNH1YIXXEeOwFt3Ctq-XqQ" value="Praktikumsverwaltung"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_jq83MIXWEeOwFt3Ctq-XqQ" name="MenuTop"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_mjqJsIXWEeOwFt3Ctq-XqQ" name="beinhaltet" memberEnd="_mjqJsYXWEeOwFt3Ctq-XqQ _mjqJtIXWEeOwFt3Ctq-XqQ" navigableOwnedEnd="_mjqJtIXWEeOwFt3Ctq-XqQ">
+      <ownedEnd xmi:id="_mjqJsYXWEeOwFt3Ctq-XqQ" name="mainWindow" type="_gdWSwIXWEeOwFt3Ctq-XqQ" association="_mjqJsIXWEeOwFt3Ctq-XqQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mjqJsoXWEeOwFt3Ctq-XqQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mjqJs4XWEeOwFt3Ctq-XqQ" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_mjqJtIXWEeOwFt3Ctq-XqQ" name="topMenu" type="_jq83MIXWEeOwFt3Ctq-XqQ" aggregation="composite" association="_mjqJsIXWEeOwFt3Ctq-XqQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mjqJtYXWEeOwFt3Ctq-XqQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mjqJtoXWEeOwFt3Ctq-XqQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_ANcK0IXYEeOwFt3Ctq-XqQ" name="BasicWindow">
+      <ownedAttribute xmi:id="_b1qEAIXYEeOwFt3Ctq-XqQ" name="basicWindowTop" type="_CxmJoIXYEeOwFt3Ctq-XqQ" isUnique="false" aggregation="composite" association="_b1wKoIXYEeOwFt3Ctq-XqQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_b1qEAYXYEeOwFt3Ctq-XqQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_b1qEAoXYEeOwFt3Ctq-XqQ"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_81RDMIXZEeOwFt3Ctq-XqQ" name="model"/>
+      <ownedAttribute xmi:id="_gumBgIXbEeOwFt3Ctq-XqQ" name="controller"/>
+      <ownedOperation xmi:id="_14ooQIXZEeOwFt3Ctq-XqQ" name="refresh"/>
+      <ownedOperation xmi:id="_Ta2wAIXaEeOwFt3Ctq-XqQ" name="setPanelTop"/>
+      <ownedOperation xmi:id="_iSxxEIXbEeOwFt3Ctq-XqQ" name="sendOperation"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_CxmJoIXYEeOwFt3Ctq-XqQ" name="PanelTop">
+      <ownedAttribute xmi:id="_f7JAwIXaEeOwFt3Ctq-XqQ" name=""/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_EghJkIXYEeOwFt3Ctq-XqQ" name="BasicWindowList">
+      <generalization xmi:id="_aJL7IIXYEeOwFt3Ctq-XqQ" general="_ANcK0IXYEeOwFt3Ctq-XqQ"/>
+      <ownedAttribute xmi:id="_oqlvEIXYEeOwFt3Ctq-XqQ" name="basicWindowTable" type="_lsatwIXYEeOwFt3Ctq-XqQ" aggregation="composite" association="_oqscwIXYEeOwFt3Ctq-XqQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_oqlvEYXYEeOwFt3Ctq-XqQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_oqlvEoXYEeOwFt3Ctq-XqQ" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:id="_w5yvsIXZEeOwFt3Ctq-XqQ" name="ShowDetails"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_b1wKoIXYEeOwFt3Ctq-XqQ" name="A_&lt;basicWindow>_&lt;basicWindowTop>" memberEnd="_b1wKoYXYEeOwFt3Ctq-XqQ _b1qEAIXYEeOwFt3Ctq-XqQ">
+      <ownedEnd xmi:id="_b1wKoYXYEeOwFt3Ctq-XqQ" name="basicWindow" type="_ANcK0IXYEeOwFt3Ctq-XqQ" association="_b1wKoIXYEeOwFt3Ctq-XqQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_b1wKooXYEeOwFt3Ctq-XqQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_b1wKo4XYEeOwFt3Ctq-XqQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_lsatwIXYEeOwFt3Ctq-XqQ" name="PanelTable">
+      <ownedAttribute xmi:id="_uQ4pMIXYEeOwFt3Ctq-XqQ" name="TableHead"/>
+      <ownedAttribute xmi:id="_v6C_YIXYEeOwFt3Ctq-XqQ" name="TableData"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_oqscwIXYEeOwFt3Ctq-XqQ" name="A_&lt;basicWindowList>_&lt;basicWindowTable>" memberEnd="_oqscwYXYEeOwFt3Ctq-XqQ _oqlvEIXYEeOwFt3Ctq-XqQ">
+      <ownedEnd xmi:id="_oqscwYXYEeOwFt3Ctq-XqQ" name="basicWindowList" type="_EghJkIXYEeOwFt3Ctq-XqQ" association="_oqscwIXYEeOwFt3Ctq-XqQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_oqscwoXYEeOwFt3Ctq-XqQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_oqscw4XYEeOwFt3Ctq-XqQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_2zj04IXYEeOwFt3Ctq-XqQ" name="A_&lt;mainWindow>_&lt;basicWindowList>" memberEnd="_2zj04YXYEeOwFt3Ctq-XqQ _2zj05IXYEeOwFt3Ctq-XqQ" navigableOwnedEnd="_2zj05IXYEeOwFt3Ctq-XqQ _2zj04YXYEeOwFt3Ctq-XqQ">
+      <ownedEnd xmi:id="_2zj04YXYEeOwFt3Ctq-XqQ" name="PlatzBereitstellen" type="_gdWSwIXWEeOwFt3Ctq-XqQ" association="_2zj04IXYEeOwFt3Ctq-XqQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2zj04oXYEeOwFt3Ctq-XqQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2zj044XYEeOwFt3Ctq-XqQ" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_2zj05IXYEeOwFt3Ctq-XqQ" name="InhaltAnzeigen" type="_EghJkIXYEeOwFt3Ctq-XqQ" isUnique="false" association="_2zj04IXYEeOwFt3Ctq-XqQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2zj05YXYEeOwFt3Ctq-XqQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2zj05oXYEeOwFt3Ctq-XqQ"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_O2Gn4IXZEeOwFt3Ctq-XqQ" name="BasicWindowDetail">
+      <generalization xmi:id="_RRBLIIXZEeOwFt3Ctq-XqQ" general="_ANcK0IXYEeOwFt3Ctq-XqQ"/>
+      <ownedAttribute xmi:id="_fyOKwIXZEeOwFt3Ctq-XqQ" name="ZeigeDetails" type="_TIXuUIXZEeOwFt3Ctq-XqQ" aggregation="composite" association="_fyWGkIXZEeOwFt3Ctq-XqQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_fyOKwYXZEeOwFt3Ctq-XqQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_fyOKwoXZEeOwFt3Ctq-XqQ" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:id="_KeUdYIXbEeOwFt3Ctq-XqQ" name="showElement"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_TIXuUIXZEeOwFt3Ctq-XqQ" name="PanelInfo"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_bdniAIXZEeOwFt3Ctq-XqQ" name="PanelExtInfo"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_fyWGkIXZEeOwFt3Ctq-XqQ" name="A_&lt;basicWindowDetail>_&lt;panelInfo>" memberEnd="_fyWGkYXZEeOwFt3Ctq-XqQ _fyOKwIXZEeOwFt3Ctq-XqQ">
+      <ownedEnd xmi:id="_fyWGkYXZEeOwFt3Ctq-XqQ" name="basicWindowDetail" type="_O2Gn4IXZEeOwFt3Ctq-XqQ" association="_fyWGkIXZEeOwFt3Ctq-XqQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_fyWGkoXZEeOwFt3Ctq-XqQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_fyWGk4XZEeOwFt3Ctq-XqQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_hQffkIXZEeOwFt3Ctq-XqQ" name="A_&lt;basicWindowDetail>_&lt;panelExtInfo>" memberEnd="_hQffkYXZEeOwFt3Ctq-XqQ _hQfflIXZEeOwFt3Ctq-XqQ" navigableOwnedEnd="_hQffkYXZEeOwFt3Ctq-XqQ _hQfflIXZEeOwFt3Ctq-XqQ">
+      <ownedEnd xmi:id="_hQffkYXZEeOwFt3Ctq-XqQ" name="basicWindowDetail" type="_O2Gn4IXZEeOwFt3Ctq-XqQ" association="_hQffkIXZEeOwFt3Ctq-XqQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hQffkoXZEeOwFt3Ctq-XqQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hQffk4XZEeOwFt3Ctq-XqQ" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_hQfflIXZEeOwFt3Ctq-XqQ" name="ZeigeZusatzInfo" type="_bdniAIXZEeOwFt3Ctq-XqQ" isUnique="false" association="_hQffkIXZEeOwFt3Ctq-XqQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hQfflYXZEeOwFt3Ctq-XqQ" value="3"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hQffloXZEeOwFt3Ctq-XqQ"/>
+      </ownedEnd>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>

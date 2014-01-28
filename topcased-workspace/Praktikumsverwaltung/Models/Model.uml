@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_qb8akM37EdqwVrslYOdUDA">
+  <elementImport xmi:id="_8HivoIXbEeOwFt3Ctq-XqQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+  </elementImport>
+  <elementImport xmi:id="_8HivoYXbEeOwFt3Ctq-XqQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+  </elementImport>
+  <elementImport xmi:id="_8HjWsIXbEeOwFt3Ctq-XqQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <elementImport xmi:id="_8HjWsYXbEeOwFt3Ctq-XqQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Package" xmi:id="_w8IxIM37EdqwVrslYOdUDA" name="Model">
+    <packagedElement xmi:type="uml:Class" xmi:id="_rjrUsIXbEeOwFt3Ctq-XqQ" name="Model">
+      <ownedAttribute xmi:id="_s9lG4IXbEeOwFt3Ctq-XqQ" name="table">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_vgbeIIXbEeOwFt3Ctq-XqQ" name="filter" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-jJPYIXbEeOwFt3Ctq-XqQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-6CFYIXbEeOwFt3Ctq-XqQ"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_weQYUIXbEeOwFt3Ctq-XqQ" name="PageSize">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_BYbacIXcEeOwFt3Ctq-XqQ" value="20"/>
+      </ownedAttribute>
+      <ownedOperation xmi:id="_EC-8MIXcEeOwFt3Ctq-XqQ" name="getResult"/>
+      <ownedOperation xmi:id="_L0gXwIXcEeOwFt3Ctq-XqQ" name="Operation1"/>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>
