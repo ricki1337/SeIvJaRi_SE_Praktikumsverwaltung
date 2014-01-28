@@ -1,3 +1,0 @@
-Die Software wird ausschließlich durch den Praktikumsverantwortlichen der HTW-Dresden genutzt. Für den Start des Programmes ist als Argument die Adresse des Datenbankservers anzugeben, welcher den Datenbestand managed auf dem die Applikation aufbaut. Dieser Server wird vom Praktikaverantwortlichen verwaltet und ist Ihm damit auch bekannt.
-
-Sollte ein neuer Nutzer das Programm bedienen ist nur das Wissen über den Verwaltungsablauf des Paxissemesters und des Projektsemesters erforderlich. Die Oberfläche des Systems ist intuitiv gestaltet, sodass kein spezialwissen erforderlich ist.
