@@ -105,5 +105,6 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hQffloXZEeOwFt3Ctq-XqQ"/>
       </ownedEnd>
     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_VHDsgIjiEeOU8pNJR_ce1A" name="View"/>
   </packagedElement>
 </uml:Model>

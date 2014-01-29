@@ -13,8 +13,12 @@
     <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
   </elementImport>
   <packagedElement xmi:type="uml:Package" xmi:id="_w8IxIM37EdqwVrslYOdUDA" name="Model">
+    <ownedComment xmi:id="_IykBkIjNEeOVMNzqeNPZ1Q" annotatedElement="_ox1QAIjMEeOVMNzqeNPZ1Q">
+      <body>instanz besteht die ganze anwendung über&#xD;
+</body>
+    </ownedComment>
     <packagedElement xmi:type="uml:Class" xmi:id="_rjrUsIXbEeOwFt3Ctq-XqQ" name="Model">
-      <ownedAttribute xmi:id="_s9lG4IXbEeOwFt3Ctq-XqQ" name="table">
+      <ownedAttribute xmi:id="_s9lG4IXbEeOwFt3Ctq-XqQ" name="SrcQuery">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="_vgbeIIXbEeOwFt3Ctq-XqQ" name="filter" isUnique="false">
@@ -26,8 +30,32 @@
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
         <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_BYbacIXcEeOwFt3Ctq-XqQ" value="20"/>
       </ownedAttribute>
+      <ownedAttribute xmi:id="_m2PJMojQEeOVMNzqeNPZ1Q" name="View" isUnique="false">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_m5uAYIjjEeOU8pNJR_ce1A" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_z1E-MojQEeOVMNzqeNPZ1Q" name="Result"/>
       <ownedOperation xmi:id="_EC-8MIXcEeOwFt3Ctq-XqQ" name="getResult"/>
-      <ownedOperation xmi:id="_L0gXwIXcEeOwFt3Ctq-XqQ" name="Operation1"/>
+      <ownedOperation xmi:id="_L0gXwIXcEeOwFt3Ctq-XqQ" name="informView"/>
+      <ownedOperation xmi:id="_KpULAojREeOVMNzqeNPZ1Q" name="ResultForView"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_ox1QAIjMEeOVMNzqeNPZ1Q" name="MySqlDB">
+      <ownedAttribute xmi:id="_GFFHoojNEeOVMNzqeNPZ1Q" name="connection"/>
+      <ownedOperation xmi:id="_r5dvUojMEeOVMNzqeNPZ1Q" name="getArray"/>
+      <ownedOperation xmi:id="_uPNesojMEeOVMNzqeNPZ1Q" name="update"/>
+      <ownedOperation xmi:id="_y1yBMojMEeOVMNzqeNPZ1Q" name="insert"/>
+      <ownedOperation xmi:id="_z6BscojMEeOVMNzqeNPZ1Q" name="getObject"/>
+      <ownedOperation xmi:id="_3N54AojMEeOVMNzqeNPZ1Q" name="connect"/>
+      <ownedOperation xmi:id="_5_6soojMEeOVMNzqeNPZ1Q" name="disconnect"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_P1BXuojNEeOVMNzqeNPZ1Q" name="A_&lt;model>_&lt;mySqlDB>" memberEnd="_P1BXu4jNEeOVMNzqeNPZ1Q _P1BXvojNEeOVMNzqeNPZ1Q" navigableOwnedEnd="_P1BXvojNEeOVMNzqeNPZ1Q">
+      <ownedEnd xmi:id="_P1BXu4jNEeOVMNzqeNPZ1Q" name="model" type="_rjrUsIXbEeOwFt3Ctq-XqQ" association="_P1BXuojNEeOVMNzqeNPZ1Q">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_P1BXvIjNEeOVMNzqeNPZ1Q" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_P1BXvYjNEeOVMNzqeNPZ1Q" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_P1BXvojNEeOVMNzqeNPZ1Q" name="mySqlDB" type="_ox1QAIjMEeOVMNzqeNPZ1Q" association="_P1BXuojNEeOVMNzqeNPZ1Q">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_P1BXv4jNEeOVMNzqeNPZ1Q" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_P1BXwIjNEeOVMNzqeNPZ1Q" value="1"/>
+      </ownedEnd>
     </packagedElement>
   </packagedElement>
 </uml:Model>
