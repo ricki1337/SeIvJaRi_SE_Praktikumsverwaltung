@@ -13,6 +13,16 @@
     <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
   </elementImport>
   <packagedElement xmi:type="uml:Package" xmi:id="_w8IxIM37EdqwVrslYOdUDA" name="MainWindow">
+    <ownedComment xmi:id="_BNs90okhEeOysd3MzSHu_w" annotatedElement="_VHDsgIjiEeOU8pNJR_ce1A">
+      <body>listener interfaces....fehlen noch&#xD;
+</body>
+    </ownedComment>
+    <ownedComment xmi:id="_buJWookhEeOysd3MzSHu_w" annotatedElement="_gdWSwIXWEeOwFt3Ctq-XqQ">
+      <body>eigentlich doch auch ein view element?!&#xD;
+&#xD;
+wie sehen controller und model dazu aus?&#xD;
+</body>
+    </ownedComment>
     <packagedElement xmi:type="uml:Class" xmi:id="_gdWSwIXWEeOwFt3Ctq-XqQ" name="MainWindow">
       <redefinedClassifier xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaClass"/>
       <ownedAttribute xmi:id="_NoIq0IXXEeOwFt3Ctq-XqQ" name="AppName">
@@ -32,15 +42,12 @@
       </ownedEnd>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_ANcK0IXYEeOwFt3Ctq-XqQ" name="BasicWindow">
+      <generalization xmi:id="__rLGBIkeEeOysd3MzSHu_w" general="_VHDsgIjiEeOU8pNJR_ce1A"/>
       <ownedAttribute xmi:id="_b1qEAIXYEeOwFt3Ctq-XqQ" name="basicWindowTop" type="_CxmJoIXYEeOwFt3Ctq-XqQ" isUnique="false" aggregation="composite" association="_b1wKoIXYEeOwFt3Ctq-XqQ">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_b1qEAYXYEeOwFt3Ctq-XqQ" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_b1qEAoXYEeOwFt3Ctq-XqQ"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_81RDMIXZEeOwFt3Ctq-XqQ" name="model"/>
-      <ownedAttribute xmi:id="_gumBgIXbEeOwFt3Ctq-XqQ" name="controller"/>
-      <ownedOperation xmi:id="_14ooQIXZEeOwFt3Ctq-XqQ" name="refresh"/>
       <ownedOperation xmi:id="_Ta2wAIXaEeOwFt3Ctq-XqQ" name="setPanelTop"/>
-      <ownedOperation xmi:id="_iSxxEIXbEeOwFt3Ctq-XqQ" name="sendOperation"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_CxmJoIXYEeOwFt3Ctq-XqQ" name="PanelTop">
       <ownedAttribute xmi:id="_f7JAwIXaEeOwFt3Ctq-XqQ" name=""/>
@@ -74,7 +81,7 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2zj04oXYEeOwFt3Ctq-XqQ" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2zj044XYEeOwFt3Ctq-XqQ" value="1"/>
       </ownedEnd>
-      <ownedEnd xmi:id="_2zj05IXYEeOwFt3Ctq-XqQ" name="InhaltAnzeigen" type="_EghJkIXYEeOwFt3Ctq-XqQ" isUnique="false" association="_2zj04IXYEeOwFt3Ctq-XqQ">
+      <ownedEnd xmi:id="_2zj05IXYEeOwFt3Ctq-XqQ" name="InhaltAnzeigen" type="_ANcK0IXYEeOwFt3Ctq-XqQ" isUnique="false" association="_2zj04IXYEeOwFt3Ctq-XqQ">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2zj05YXYEeOwFt3Ctq-XqQ" value="*"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2zj05oXYEeOwFt3Ctq-XqQ"/>
       </ownedEnd>
@@ -84,6 +91,10 @@
       <ownedAttribute xmi:id="_fyOKwIXZEeOwFt3Ctq-XqQ" name="ZeigeDetails" type="_TIXuUIXZEeOwFt3Ctq-XqQ" aggregation="composite" association="_fyWGkIXZEeOwFt3Ctq-XqQ">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_fyOKwYXZEeOwFt3Ctq-XqQ" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_fyOKwoXZEeOwFt3Ctq-XqQ" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="__ikpUIywEeOm1qfanIdQXA" name="panelExtInfo" type="_bdniAIXZEeOwFt3Ctq-XqQ" aggregation="composite" association="__iuaWoywEeOm1qfanIdQXA">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__ikpUYywEeOm1qfanIdQXA" value="3"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__ikpUoywEeOm1qfanIdQXA"/>
       </ownedAttribute>
       <ownedOperation xmi:id="_KeUdYIXbEeOwFt3Ctq-XqQ" name="showElement"/>
     </packagedElement>
@@ -105,6 +116,17 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hQffloXZEeOwFt3Ctq-XqQ"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_VHDsgIjiEeOU8pNJR_ce1A" name="View"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_VHDsgIjiEeOU8pNJR_ce1A" name="View">
+      <ownedAttribute xmi:id="_81RDMIXZEeOwFt3Ctq-XqQ" name="model"/>
+      <ownedAttribute xmi:id="_gumBgIXbEeOwFt3Ctq-XqQ" name="controller"/>
+      <ownedOperation xmi:id="_14ooQIXZEeOwFt3Ctq-XqQ" name="refresh"/>
+      <ownedOperation xmi:id="_iSxxEIXbEeOwFt3Ctq-XqQ" name="sendOperation"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="__iuaWoywEeOm1qfanIdQXA" name="A_&lt;basicWindowDetail>_&lt;panelExtInfo>_2" memberEnd="__iuaW4ywEeOm1qfanIdQXA __ikpUIywEeOm1qfanIdQXA">
+      <ownedEnd xmi:id="__iuaW4ywEeOm1qfanIdQXA" name="basicWindowDetail" type="_O2Gn4IXZEeOwFt3Ctq-XqQ" association="__iuaWoywEeOm1qfanIdQXA">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__iuaXIywEeOm1qfanIdQXA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__iuaXYywEeOm1qfanIdQXA" value="1"/>
+      </ownedEnd>
+    </packagedElement>
   </packagedElement>
 </uml:Model>

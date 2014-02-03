@@ -65,6 +65,21 @@
             <element href="Model.uml#_KpULAojREeOVMNzqeNPZ1Q"/>
           </semanticModel>
         </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_RifHUIy4EeOm1qfanIdQXA" position="0,0" size="-1,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_RifHUYy4EeOm1qfanIdQXA" presentation="default">
+            <element href="Model.uml#_RifHUoy4EeOm1qfanIdQXA"/>
+          </semanticModel>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_SpRJMIy4EeOm1qfanIdQXA" position="0,0" size="-1,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_SpRJMYy4EeOm1qfanIdQXA" presentation="default">
+            <element href="Model.uml#_SpRJMoy4EeOm1qfanIdQXA"/>
+          </semanticModel>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_T3srMIy4EeOm1qfanIdQXA" position="0,0" size="-1,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_T3srMYy4EeOm1qfanIdQXA" presentation="default">
+            <element href="Model.uml#_T3srMoy4EeOm1qfanIdQXA"/>
+          </semanticModel>
+        </contained>
       </contained>
     </contained>
     <contained xsi:type="di:GraphNode" xmi:id="_oxrfAIjMEeOVMNzqeNPZ1Q" position="488,33" size="265,-1">
@@ -118,9 +133,19 @@
             <element href="Model.uml#_5_6soojMEeOVMNzqeNPZ1Q"/>
           </semanticModel>
         </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_D0Wt8Iy5EeOm1qfanIdQXA" position="0,0" size="-1,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_D0Wt8Yy5EeOm1qfanIdQXA" presentation="default">
+            <element href="Model.uml#_D0Wt8oy5EeOm1qfanIdQXA"/>
+          </semanticModel>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_oDs_kIy6EeOm1qfanIdQXA" position="0,0" size="-1,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_oDs_kYy6EeOm1qfanIdQXA" presentation="default">
+            <element href="Model.uml#_oDs_koy6EeOm1qfanIdQXA"/>
+          </semanticModel>
+        </contained>
       </contained>
     </contained>
-    <contained xsi:type="di:GraphNode" xmi:id="_IyaQkIjNEeOVMNzqeNPZ1Q" position="528,275" size="184,88">
+    <contained xsi:type="di:GraphNode" xmi:id="_IyaQkIjNEeOVMNzqeNPZ1Q" position="528,238" size="184,125">
       <anchorage xmi:id="_L5tYsIjNEeOVMNzqeNPZ1Q" graphEdge="_L6AToIjNEeOVMNzqeNPZ1Q"/>
       <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_IyaQkYjNEeOVMNzqeNPZ1Q" presentation="default">
         <element href="Model.uml#_IykBkIjNEeOVMNzqeNPZ1Q"/>
@@ -134,12 +159,12 @@
         <element href="Model.uml#_P1BXuojNEeOVMNzqeNPZ1Q"/>
       </semanticModel>
       <contained xsi:type="di:EdgeObjectUV" xmi:id="_P1BXsojNEeOVMNzqeNPZ1Q" visible="false" id="srcNameEdgeObject" uDistance="10" vDistance="10"/>
-      <contained xsi:type="di:EdgeObjectUV" xmi:id="_P1BXs4jNEeOVMNzqeNPZ1Q" id="srcPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_P1BXs4jNEeOVMNzqeNPZ1Q" visible="false" id="srcPropertiesEdgeObject" uDistance="25" vDistance="10"/>
       <contained xsi:type="di:EdgeObjectUV" xmi:id="_P1BXtIjNEeOVMNzqeNPZ1Q" id="srcCountEdgeObject" uDistance="10" vDistance="-10"/>
       <contained xsi:type="di:EdgeObjectUV" xmi:id="_P1BXtYjNEeOVMNzqeNPZ1Q" visible="false" id="targetNameEdgeObject" uDistance="10" vDistance="10"/>
       <contained xsi:type="di:EdgeObjectUV" xmi:id="_P1BXtojNEeOVMNzqeNPZ1Q" id="targetPropertiesEdgeObject" uDistance="25" vDistance="10"/>
       <contained xsi:type="di:EdgeObjectUV" xmi:id="_P1BXt4jNEeOVMNzqeNPZ1Q" id="targetCountEdgeObject" uDistance="10" vDistance="-10"/>
-      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_P1BXuIjNEeOVMNzqeNPZ1Q" visible="false" id="middleNameEdgeObject" offset="0,10"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_P1BXuIjNEeOVMNzqeNPZ1Q" id="middleNameEdgeObject" offset="-4,-11"/>
       <contained xsi:type="di:EdgeObjectOffset" xmi:id="_P1BXuYjNEeOVMNzqeNPZ1Q" id="stereotypeEdgeObject" offset="0,-10"/>
     </contained>
   </diagrams>
