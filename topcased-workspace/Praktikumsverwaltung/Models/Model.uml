@@ -20,7 +20,7 @@
 - informiert Models bei Änderungen&#xD;
 </body>
     </ownedComment>
-    <packagedElement xmi:type="uml:Class" xmi:id="_rjrUsIXbEeOwFt3Ctq-XqQ" name="Model">
+    <packagedElement xmi:type="uml:Class" xmi:id="_rjrUsIXbEeOwFt3Ctq-XqQ" name="Model" clientDependency="_4uSeI7AHEeOWDI3lMDA2dg">
       <ownedAttribute xmi:id="_s9lG4IXbEeOwFt3Ctq-XqQ" name="SrcQuery">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
@@ -37,6 +37,7 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_m5uAYIjjEeOU8pNJR_ce1A" value="*"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="_z1E-MojQEeOVMNzqeNPZ1Q" name="Result"/>
+      <interfaceRealization xmi:id="_4uSeI7AHEeOWDI3lMDA2dg" name="InterfaceRealization1" supplier="_3jTRsLAHEeOWDI3lMDA2dg" client="_rjrUsIXbEeOwFt3Ctq-XqQ" contract="_3jTRsLAHEeOWDI3lMDA2dg"/>
       <ownedOperation xmi:id="_EC-8MIXcEeOwFt3Ctq-XqQ" name="getResult"/>
       <ownedOperation xmi:id="_L0gXwIXcEeOwFt3Ctq-XqQ" name="informView"/>
       <ownedOperation xmi:id="_KpULAojREeOVMNzqeNPZ1Q" name="ResultForView"/>
@@ -54,6 +55,8 @@
       <ownedOperation xmi:id="_5_6soojMEeOVMNzqeNPZ1Q" name="disconnect" visibility="public"/>
       <ownedOperation xmi:id="_D0Wt8oy5EeOm1qfanIdQXA" name="informModels"/>
       <ownedOperation xmi:id="_oDs_koy6EeOm1qfanIdQXA" name="addModel"/>
+      <ownedOperation xmi:id="_Avq6oLAIEeOWDI3lMDA2dg" name="login" isStatic="true"/>
+      <ownedOperation xmi:id="_DhmPsLAIEeOWDI3lMDA2dg" name="logout" isStatic="true"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_P1BXuojNEeOVMNzqeNPZ1Q" name="benutzt >" memberEnd="_P1BXu4jNEeOVMNzqeNPZ1Q _P1BXvojNEeOVMNzqeNPZ1Q" navigableOwnedEnd="_P1BXvojNEeOVMNzqeNPZ1Q _P1BXu4jNEeOVMNzqeNPZ1Q">
       <ownedEnd xmi:id="_P1BXu4jNEeOVMNzqeNPZ1Q" name="model" type="_rjrUsIXbEeOwFt3Ctq-XqQ" association="_P1BXuojNEeOVMNzqeNPZ1Q">
@@ -63,6 +66,19 @@
       <ownedEnd xmi:id="_P1BXvojNEeOVMNzqeNPZ1Q" name="mySqlDB" type="_ox1QAIjMEeOVMNzqeNPZ1Q" association="_P1BXuojNEeOVMNzqeNPZ1Q">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_P1BXv4jNEeOVMNzqeNPZ1Q" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_P1BXwIjNEeOVMNzqeNPZ1Q" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_3jTRsLAHEeOWDI3lMDA2dg" name="observer">
+      <ownedOperation xmi:id="_B73A8LAIEeOWDI3lMDA2dg" name="refresh"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_h2J96rAJEeOWDI3lMDA2dg" name="A_&lt;mySqlDB>_&lt;observer>" memberEnd="_h2J967AJEeOWDI3lMDA2dg _h2J97rAJEeOWDI3lMDA2dg" navigableOwnedEnd="_h2J97rAJEeOWDI3lMDA2dg">
+      <ownedEnd xmi:id="_h2J967AJEeOWDI3lMDA2dg" name="mySqlDB" type="_ox1QAIjMEeOVMNzqeNPZ1Q" isUnique="false" association="_h2J96rAJEeOWDI3lMDA2dg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_h2J97LAJEeOWDI3lMDA2dg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_h2J97bAJEeOWDI3lMDA2dg"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_h2J97rAJEeOWDI3lMDA2dg" name="observer" type="_3jTRsLAHEeOWDI3lMDA2dg" association="_h2J96rAJEeOWDI3lMDA2dg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_h2J977AJEeOWDI3lMDA2dg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_h2J98LAJEeOWDI3lMDA2dg" value="1"/>
       </ownedEnd>
     </packagedElement>
   </packagedElement>
