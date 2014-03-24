@@ -27,7 +27,7 @@ public class myjdbctest {
 	
 	}
 	
-	public static void main(String args[]) throws SQLException{
+	/*public static void main(String args[]) throws SQLException{
 		ResultSet table;
 		ResultSetMetaData metaData;
 		String ergebnis;
@@ -42,5 +42,6 @@ public class myjdbctest {
 		}
 		return;
 	}
+	*/
 	
 }
