@@ -1,0 +1,34 @@
+Import:
+	- OrigFile als .xls:
+		- Name
+		- Vorname
+		- Matr
+		- sNr
+		- StudGr (Jahr/Stdg/Abs)
+	-> 1. Zeile enthält Spaltennamen
+	-> feldtrenner nach export: ","
+	
+TestDB: -> zugangsdaten kommen per mail
+	- MySql
+	- IP: 141.56.132.43 (ipc43.informatik.htw-dresden.de)
+	- port: 3306
+	- user: project
+	- pw: seproject
+	- db: Prakt
+	
+Export/Druck:
+	- Druck direkt aus Programm
+	- Template existiert bereits -> Ausdruck hat Ivo
+		- Einzeln -> 1 Blatt
+		- Mehrere -> auf einem Blatt untereinander
+		
+Mail:
+	- Mail wird per Vorlagetext generiert 
+	
+	
+DB:
+	-> Erst Vertrag dann Student löschen
+
+Doku:
+	-> soll "intuitiv" sein
+	-> Klassen von Darstellenden Fenstern sollen nachvollziehbar sein -> aufrufe und abhängigkeiten
