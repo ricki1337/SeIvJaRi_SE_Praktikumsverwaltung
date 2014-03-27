@@ -17,6 +17,12 @@ public class Prakt_MainWindow extends JFrame{
 	public void addInternalFrame(JInternalFrame iFrame){
 		//JInternalFrame iFrame = new JInternalFrame(name,true,true,true,true);
 		//iFrame.setSize(300, 300);
+
+		
+	
+		if (((offeneFensterAnzahl*xOffset+iFrame.getWidth())> this.getContentPane().getHeight())
+				||(offeneFensterAnzahl*yOffset+iFrame.getWidth())> this.getContentPane().getWidth())
+			offeneFensterAnzahl=0;
 		++offeneFensterAnzahl;
 		iFrame.setTitle(iFrame.getTitle()+" #"+offeneFensterAnzahl);
 		iFrame.setLocation(xOffset*offeneFensterAnzahl, yOffset*offeneFensterAnzahl);

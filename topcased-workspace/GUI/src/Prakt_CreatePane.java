@@ -13,13 +13,13 @@ public class Prakt_CreatePane extends JInternalFrame{
 		
 		case "Studenten":
 			
-			return new Prakt_ViewStudent(mWindow, -1);
+			return new Prakt_ViewBasis(mWindow, mButtonHit);
 		case "Firmen":
-			return new Prakt_ViewFirmen();
+			return new Prakt_ViewBasis(mWindow,mButtonHit);
 		case "Professor":
-			return new Prakt_ViewBetreuer();
+			return new Prakt_ViewBasis(mWindow,mButtonHit);
 		case "Verträge":
-			return  new  Prakt_ViewVertrag();
+			return new  Prakt_ViewBasis(mWindow,mButtonHit);
 		}
 		
 	//das ist scheisse ... mir fällt aber gerade nix anderes ein ...	
