@@ -36,13 +36,6 @@
 &#xD;
 - constructor und clone sind private</body>
     </ownedComment>
-    <ownedComment xmi:id="_AKfQULAQEeOWDI3lMDA2dg">
-      <body>Probleme:&#xD;
-- wie werden die Klassen unterschieden?&#xD;
-	-> Abfrage beim Start des Programms nach DB Typ&#xD;
-	-> dort werden Nutzername &amp; Passwort &amp; Datenbank abgefragt&#xD;
-</body>
-    </ownedComment>
     <packagedElement xmi:type="uml:Class" xmi:id="_rjrUsIXbEeOwFt3Ctq-XqQ" name="Model" clientDependency="_4uSeI7AHEeOWDI3lMDA2dg">
       <ownedAttribute xmi:id="_s9lG4IXbEeOwFt3Ctq-XqQ" name="SrcQuery">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -163,6 +156,38 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_UXoC4LOQEeOoNu5g7KeIEw" name="MySql" clientDependency="_XZeDQLOQEeOoNu5g7KeIEw">
       <interfaceRealization xmi:id="_XZeDQLOQEeOoNu5g7KeIEw" name="InterfaceRealization1" supplier="_vo4fgLOOEeOoNu5g7KeIEw" client="_UXoC4LOQEeOoNu5g7KeIEw" contract="_vo4fgLOOEeOoNu5g7KeIEw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_cK4PILWFEeOrpOtC6fspFw" name="Controller"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_c1tU0LWFEeOrpOtC6fspFw" name="View"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_gDFPwLWFEeOrpOtC6fspFw" name="A_&lt;controller>_&lt;model>" memberEnd="_gDFPwbWFEeOrpOtC6fspFw _gDFPxLWFEeOrpOtC6fspFw" navigableOwnedEnd="_gDFPxLWFEeOrpOtC6fspFw">
+      <ownedEnd xmi:id="_gDFPwbWFEeOrpOtC6fspFw" name="controller" type="_cK4PILWFEeOrpOtC6fspFw" association="_gDFPwLWFEeOrpOtC6fspFw">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gDFPwrWFEeOrpOtC6fspFw" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gDFPw7WFEeOrpOtC6fspFw" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_gDFPxLWFEeOrpOtC6fspFw" name="model" type="_rjrUsIXbEeOwFt3Ctq-XqQ" association="_gDFPwLWFEeOrpOtC6fspFw">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gDFPxbWFEeOrpOtC6fspFw" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gDFPxrWFEeOrpOtC6fspFw" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_g8lqoLWFEeOrpOtC6fspFw" name="A_&lt;view>_&lt;model>" memberEnd="_g8mRsLWFEeOrpOtC6fspFw _g8mRs7WFEeOrpOtC6fspFw" navigableOwnedEnd="_g8mRsLWFEeOrpOtC6fspFw _g8mRs7WFEeOrpOtC6fspFw">
+      <ownedEnd xmi:id="_g8mRsLWFEeOrpOtC6fspFw" name="view" type="_c1tU0LWFEeOrpOtC6fspFw" association="_g8lqoLWFEeOrpOtC6fspFw">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_g8mRsbWFEeOrpOtC6fspFw" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_g8mRsrWFEeOrpOtC6fspFw" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_g8mRs7WFEeOrpOtC6fspFw" name="model" type="_rjrUsIXbEeOwFt3Ctq-XqQ" association="_g8lqoLWFEeOrpOtC6fspFw">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_g8mRtLWFEeOrpOtC6fspFw" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_g8mRtbWFEeOrpOtC6fspFw" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iGYkQLWFEeOrpOtC6fspFw" name="A_&lt;view>_&lt;controller>" memberEnd="_iGYkQbWFEeOrpOtC6fspFw _iGYkRLWFEeOrpOtC6fspFw" navigableOwnedEnd="_iGYkQbWFEeOrpOtC6fspFw _iGYkRLWFEeOrpOtC6fspFw">
+      <ownedEnd xmi:id="_iGYkQbWFEeOrpOtC6fspFw" name="view" type="_c1tU0LWFEeOrpOtC6fspFw" association="_iGYkQLWFEeOrpOtC6fspFw">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iGYkQrWFEeOrpOtC6fspFw" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iGYkQ7WFEeOrpOtC6fspFw" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_iGYkRLWFEeOrpOtC6fspFw" name="controller" type="_cK4PILWFEeOrpOtC6fspFw" association="_iGYkQLWFEeOrpOtC6fspFw">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iGYkRbWFEeOrpOtC6fspFw" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iGYkRrWFEeOrpOtC6fspFw" value="1"/>
+      </ownedEnd>
     </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_NuSM0LOPEeOoNu5g7KeIEw" name="boolean"/>
