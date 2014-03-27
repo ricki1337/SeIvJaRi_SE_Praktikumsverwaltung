@@ -1,4 +1,5 @@
 import java.sql.*;
+import Datenbank.*;
 
 public class DatenbankTest {
 	
@@ -6,12 +7,16 @@ public class DatenbankTest {
 		
 		Database db = Database.getInstance();
 		
-		db.connect("MySql", "localhost", 3306, "root", "", "ronin");
-		ResultSet test = db.getQuery("select * from core_user");
+		db.connect("MySql", "ipc43.informatik.htw-dresden.de", 3306, "project", "seproject", "Prakt");
+		ResultSet test = db.getQuery("select * from Profs");
 		
 		while(test.next()){
 			
-				System.out.println(test.getString("name"));
+				System.out.println("(\"" + 
+						
+						test.getString("NameID") + "\",\"" + 
+						test.getString("Name") + "\"),"
+						);
 			
 		}
 		
