@@ -1,32 +1,30 @@
+import java.io.IOException;
+import java.io.InputStream;
+
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 
-public class DisplayHTML extends JFrame
-{
-public static void main(String args[])
-{
-	new DisplayHTML().start();
-	
-}
+public class DisplayHTML extends JFrame {
 
-void start()
-{
-	try
-	{
-	String html;
-	html="<html><head><title>Simple Page</title></head>";
-	html+="<body bgcolor='#777779'><hr/><font size=50>This is Html content</font><hr/>";
-	html+="</body></html>";
-	JEditorPane ed1=new JEditorPane("text/html",html);
-	add(ed1);
-	setVisible(true);
-	setSize(600,600);
-	setDefaultCloseOperation(EXIT_ON_CLOSE);
+	JEditorPane ed1;
+
+	public DisplayHTML(InputStream in) {
+		// http://ostermiller.org/convert_java_outputstream_inputstream.html
+
+		ed1 = new JEditorPane();
+		ed1.setContentType("text/html");
+		ed1.setEditable(false);
+		setVisible(true);
+		setSize(600, 600);
+		add(ed1);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		try {
+			ed1.read(in, null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
-	catch(Exception e)
-	{
-		e.printStackTrace();
-		System.out.println("Some problem has occured"+e.getMessage());
-	}
-}
+
 }
