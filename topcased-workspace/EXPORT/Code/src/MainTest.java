@@ -1,14 +1,30 @@
+import java.awt.Desktop;
+import java.awt.GraphicsEnvironment;
+import java.awt.print.PrinterJob;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.net.URI;
-import java.awt.Desktop;
+
+import javax.print.Doc;
+import javax.print.DocFlavor;
+import javax.print.DocPrintJob;
+import javax.print.PrintException;
+import javax.print.PrintService;
+import javax.print.PrintServiceLookup;
+import javax.print.ServiceUI;
+import javax.print.SimpleDoc;
+import javax.print.attribute.HashPrintRequestAttributeSet;
+import javax.print.attribute.PrintRequestAttributeSet;
+import javax.print.attribute.standard.MediaSizeName;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -74,7 +90,12 @@ public class MainTest {
       fileWriter.close();
     }
     
-    showhtml("output.html");
+    //create a Array with the data for export...
+    
+    //showhtml("output.html");
+    printdata("output.html");
+   
+    
     
 
   }
@@ -91,5 +112,29 @@ public class MainTest {
 	catch(Exception oError) {
 	  System.out.println("Error...desktop not found?");
 	}
+  }
+  public static void printdata (String file) {
+	  
+	  DocFlavor flavor = DocFlavor.INPUT_STREAM.AUTOSENSE;
+	  
+	   PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
+	   aset.add(MediaSizeName.ISO_A4);
+	   PrintService printService[] = PrintServiceLookup.lookupPrintServices(flavor, aset);
+	   PrintService defaultService = PrintServiceLookup.lookupDefaultPrintService();
+	   PrintService service = ServiceUI.printDialog(GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration(), 200, 200,
+               printService, defaultService, flavor, aset);
+       
+	   
+	   if (service!=null) {
+	       DocPrintJob pj = service.createPrintJob();
+	       try {
+	           FileInputStream fis = new FileInputStream("output.html");
+	           Doc doc = new SimpleDoc(fis, flavor, null);
+	           
+	           pj.print(doc, aset);
+	        } catch (FileNotFoundException fe) {
+	        } catch (PrintException e) {
+	        }
+	   }
   }
 } 
