@@ -1,6 +1,5 @@
 import java.awt.Desktop;
 import java.awt.GraphicsEnvironment;
-import java.awt.print.PrinterJob;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -81,6 +80,8 @@ public class MainTest {
     // Write output to the console
     Writer consoleWriter = new OutputStreamWriter(System.out);
     template.process(input, consoleWriter);
+    
+ 
 
     // For the sake of example, also write output into a file:
     Writer fileWriter = new FileWriter(new File("output.html"));
@@ -103,7 +104,7 @@ public class MainTest {
   public static void showhtml (String file) {
 	  Desktop desktop = Desktop.getDesktop();
 		
-	//Adresse mit Standardbrowser anzeigen
+	//Datei mit Standardbrowser anzeigen
 	URI uri;
 	try {
 	  uri = new URI(file);
@@ -113,16 +114,24 @@ public class MainTest {
 	  System.out.println("Error...desktop not found?");
 	}
   }
+  
+  //Druckfunktion momentan workaround über html
   public static void printdata (String file) {
-	  
-	  DocFlavor flavor = DocFlavor.INPUT_STREAM.AUTOSENSE;
-	  
+	 
+	  //Druckeigenschaften anlegen welche Art von Daten, codierung und woher
+	   DocFlavor flavor = DocFlavor.INPUT_STREAM.AUTOSENSE;
+	   
+	   //Druckeigenschaften festlegen, zb A4, kopienanzahl etc.
 	   PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
 	   aset.add(MediaSizeName.ISO_A4);
-	   PrintService printService[] = PrintServiceLookup.lookupPrintServices(flavor, aset);
+	   
+	   //Auslesen aller auf dem PC verfügbaren Drucker(-Service/treiber) und prüfen ob diese die Druckeigenschaften beherschen
+	   PrintService[] printService = PrintServiceLookup.lookupPrintServices(flavor, null);
 	   PrintService defaultService = PrintServiceLookup.lookupDefaultPrintService();
-	   PrintService service = ServiceUI.printDialog(GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration(), 200, 200,
-               printService, defaultService, flavor, aset);
+	   
+	   //Druckdialog öffnen um Drucker auszuwählen
+	   PrintService service = ServiceUI.printDialog(GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration(),
+			   200, 200,printService, defaultService, flavor, aset);
        
 	   
 	   if (service!=null) {
