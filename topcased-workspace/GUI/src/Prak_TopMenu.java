@@ -63,10 +63,10 @@ public class Prak_TopMenu extends JMenuBar{
 			public void actionPerformed(ActionEvent ae) {
 				JButton button = (JButton)ae.getSource();
 	            String txt = button.getText();
-				System.out.println(txt);
+				//System.out.println(txt);
 			try {
 				mWindow.addInternalFrame(Prakt_CreatePane.createInternalFrame(mWindow,txt));
-			}catch(NullPointerException e){}
+			}catch(Exception e){System.out.println("Fehler beim Erkennen des Buttons.");}
 			
 			}});
 		mButtonMenu[i].setBorderPainted(false);
