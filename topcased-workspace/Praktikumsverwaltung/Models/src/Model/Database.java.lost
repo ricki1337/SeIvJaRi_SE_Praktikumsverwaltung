@@ -1,0 +1,7 @@
+[Lost Code] Mon Mar 31 14:49:31 CEST 2014
+
+// Start of user code for Database.init():Database
+// TODO
+return new Database();
+// End of user code
+

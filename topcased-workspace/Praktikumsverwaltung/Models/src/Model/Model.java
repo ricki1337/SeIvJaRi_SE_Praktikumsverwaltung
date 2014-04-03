@@ -27,17 +27,18 @@ public void getResult()
 // End of user code
 }
 
-public void informView()
+private void informView()
 {
 // Start of user code for Model.informView()
 // TODO
 // End of user code
 }
 
-public void ResultForView()
+public ResultSet getResult()
 {
-// Start of user code for Model.ResultForView()
+// Start of user code for Model.getResult():ResultSet
 // TODO
+return (ResultSet) new Object();
 // End of user code
 }
 
@@ -48,16 +49,9 @@ public void setFilter()
 // End of user code
 }
 
-public void deleteFilter()
+public void deleteFilter(String spaltenName)
 {
-// Start of user code for Model.deleteFilter()
-// TODO
-// End of user code
-}
-
-public void refreshResult()
-{
-// Start of user code for Model.refreshResult()
+// Start of user code for Model.deleteFilter(String)
 // TODO
 // End of user code
 }

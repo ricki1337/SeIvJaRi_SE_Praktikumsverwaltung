@@ -20,13 +20,34 @@ super();
 
 // Methods 
 
-public abstract result getQuery(String query);
+public ResultSet getQuery(String query)
+{
+// Start of user code for Database.getQuery(String):ResultSet
+// TODO
+return (ResultSet) new Object();
+// End of user code
+}
 
-public abstract void setQuery(String query);
+public void setQuery(String query)
+{
+// Start of user code for Database.setQuery(String)
+// TODO
+// End of user code
+}
 
-private abstract void connect();
+private void connect()
+{
+// Start of user code for Database.connect()
+// TODO
+// End of user code
+}
 
-private abstract void disconnect();
+public void disconnect()
+{
+// Start of user code for Database.disconnect()
+// TODO
+// End of user code
+}
 
 private void informModels()
 {
@@ -49,11 +70,9 @@ public void logout(observer observer)
 // End of user code
 }
 
-public static Database init()
+public static Database getInstance()
 {
-// Start of user code for Database.init():Database
-// TODO
-return new Database();
+// Start of user code for Database.getInstance():Database
 // End of user code
 }
 
