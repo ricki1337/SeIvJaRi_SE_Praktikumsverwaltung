@@ -36,7 +36,7 @@
 &#xD;
 - constructor und clone sind private</body>
     </ownedComment>
-    <packagedElement xmi:type="uml:Class" xmi:id="_rjrUsIXbEeOwFt3Ctq-XqQ" name="Model" clientDependency="_4uSeI7AHEeOWDI3lMDA2dg">
+    <packagedElement xmi:type="uml:Class" xmi:id="_rjrUsIXbEeOwFt3Ctq-XqQ" name="Model" clientDependency="_4uSeI7AHEeOWDI3lMDA2dg" isAbstract="true">
       <ownedAttribute xmi:id="_s9lG4IXbEeOwFt3Ctq-XqQ" name="SrcQuery">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
@@ -178,7 +178,7 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gDFPxrWFEeOrpOtC6fspFw" value="1"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_g8lqoLWFEeOrpOtC6fspFw" name="A_&lt;view>_&lt;model>" memberEnd="_g8mRsLWFEeOrpOtC6fspFw _g8mRs7WFEeOrpOtC6fspFw" navigableOwnedEnd="_g8mRsLWFEeOrpOtC6fspFw _g8mRs7WFEeOrpOtC6fspFw">
+    <packagedElement xmi:type="uml:Association" xmi:id="_g8lqoLWFEeOrpOtC6fspFw" name="A_&lt;view>_&lt;model>" memberEnd="_g8mRsLWFEeOrpOtC6fspFw _g8mRs7WFEeOrpOtC6fspFw" navigableOwnedEnd="_g8mRs7WFEeOrpOtC6fspFw">
       <ownedEnd xmi:id="_g8mRsLWFEeOrpOtC6fspFw" name="view" type="_c1tU0LWFEeOrpOtC6fspFw" association="_g8lqoLWFEeOrpOtC6fspFw">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_g8mRsbWFEeOrpOtC6fspFw" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_g8mRsrWFEeOrpOtC6fspFw" value="1"/>
@@ -188,7 +188,7 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_g8mRtbWFEeOrpOtC6fspFw" value="1"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_iGYkQLWFEeOrpOtC6fspFw" name="A_&lt;view>_&lt;controller>" memberEnd="_iGYkQbWFEeOrpOtC6fspFw _iGYkRLWFEeOrpOtC6fspFw" navigableOwnedEnd="_iGYkQbWFEeOrpOtC6fspFw _iGYkRLWFEeOrpOtC6fspFw">
+    <packagedElement xmi:type="uml:Association" xmi:id="_iGYkQLWFEeOrpOtC6fspFw" name="A_&lt;view>_&lt;controller>" memberEnd="_iGYkQbWFEeOrpOtC6fspFw _iGYkRLWFEeOrpOtC6fspFw" navigableOwnedEnd="_iGYkQbWFEeOrpOtC6fspFw">
       <ownedEnd xmi:id="_iGYkQbWFEeOrpOtC6fspFw" name="view" type="_c1tU0LWFEeOrpOtC6fspFw" association="_iGYkQLWFEeOrpOtC6fspFw">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iGYkQrWFEeOrpOtC6fspFw" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iGYkQ7WFEeOrpOtC6fspFw" value="1"/>

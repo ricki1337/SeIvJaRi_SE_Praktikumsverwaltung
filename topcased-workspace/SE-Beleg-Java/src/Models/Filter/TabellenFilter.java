@@ -35,6 +35,7 @@ public class TabellenFilter implements Filter{
 
 	@Override
 	public String getFilter() {
+		if(spaltenName.isEmpty()) return new String();
 		// TODO Auto-generated method stub
 		String output = new String();
 		for(int i=0;i<=this.spaltenName.size();i++){

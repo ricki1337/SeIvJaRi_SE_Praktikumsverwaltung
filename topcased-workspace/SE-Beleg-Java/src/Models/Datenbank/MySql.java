@@ -8,6 +8,7 @@ public class MySql implements DatabaseFunction{
 	public MySql(){}
 
 	public ResultSet getQuery(String query) {
+		System.out.println(query);
 		try{
 		Statement stmnt = connection.createStatement();
 		return stmnt.executeQuery(query);

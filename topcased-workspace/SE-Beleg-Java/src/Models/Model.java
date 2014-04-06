@@ -10,29 +10,45 @@ import Views.*;
 
 
 public abstract class Model implements observer{
-	
+	//ursprungs abfrage
 	private String srcQuery;
+	//enthält alle Tabellen der srcQuery -> für Abgleich nach Aktualisierung der DB
 	private ArrayList<String> srcTables;
+	//hält alle gesetzten Filter
 	private Filter filter;
+	//hält Anzahl der gezeigten Datensätze
 	private int columnLimit;
-	private View view;
+	
+	//hält alle Views des Models
+	private ArrayList<UpdateView> views;
 	
 	private ResultSet result;
 	private Database db;
 	
 	private Model(){
-		Filter filter = new TabellenFilter();
-		ArrayList<String> srcTables = new ArrayList<String>();
+		filter = new TabellenFilter();
+		srcTables = new ArrayList<String>();
+		views = new ArrayList<UpdateView>();
+		db = Database.getInstance();
 	}
 	
-	public void setView(View view){
-		this.view = view;
+	public Model(String srcQuery){
+		this(srcQuery,20);
 	}
 	
 	public Model(String srcQuery, int columnLimit){
 		this();
 		setSrcQuery(srcQuery);
 		setcolumnLimit(columnLimit);
+		setResult();
+	}
+	
+	public void registerView(UpdateView view){
+		views.add(view);
+	}
+	
+	public void unregisterView(UpdateView view){
+		views.remove(view);
 	}
 	
 	/**
@@ -49,16 +65,22 @@ public abstract class Model implements observer{
 			// wenn ein vergleich true, hole neue daten aus Database
 			if(srcTables.contains(table)){
 				setResult();
+				//informiere die Views über neue Daten
+				informViews();
 				break;
 			}
 		}
 		
 	}
 	/**
-	 * TODO
-	 * views müssen ein interface implementieren...
+	 * views werden über neuen Status informiert
+	 * 
 	 */
-	private void informViews(){}
+	private void informViews(){
+		for(UpdateView item: views){
+			item.modelHasChanged();
+		}
+	}
 	
 	/**
 	 * fügt dem Result einen "or" Filter hinzu
@@ -131,15 +153,16 @@ public abstract class Model implements observer{
 	private void setResult() {
 		//srcQuery mit filter und columnLimit ergänzen
 		String where = new String();
-		where = (getSrcQuery().contains("where"))?" where ":" and ";
-		
-		String query = getSrcQuery() + where + filter.getFilter() + " limit " + columnLimit;
+		String filter = this.filter.getFilter();
+		where = (getSrcQuery().contains("where"))?" and ":" where ";
+		filter = (filter.length()>0)?filter:" 1 ";
+		String query = getSrcQuery() + where + filter + " limit " + columnLimit;
 		
 		//abfrage ausführen
 		this.result = db.getQuery(query);
 		
-		//informiere die Views über neue Daten
-		informViews();
+		
+		
 	}
 
 	/**
@@ -158,8 +181,8 @@ public abstract class Model implements observer{
 			String srcQuery = getSrcQuery();
 			try {
 				while(tables.next()){
-					if(srcQuery.contains(tables.getString(0)))
-						srcTables.add(tables.getString(0));
+					if(srcQuery.contains(tables.getString(1)))
+						srcTables.add(tables.getString(1));
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
