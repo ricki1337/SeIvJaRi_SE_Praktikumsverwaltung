@@ -37,24 +37,27 @@
 - constructor und clone sind private</body>
     </ownedComment>
     <packagedElement xmi:type="uml:Class" xmi:id="_rjrUsIXbEeOwFt3Ctq-XqQ" name="Model" clientDependency="_4uSeI7AHEeOWDI3lMDA2dg" isAbstract="true">
-      <ownedAttribute xmi:id="_s9lG4IXbEeOwFt3Ctq-XqQ" name="SrcQuery">
+      <ownedAttribute xmi:id="_s9lG4IXbEeOwFt3Ctq-XqQ" name="srcQuery" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_weQYUIXbEeOwFt3Ctq-XqQ" name="PageSize">
+      <ownedAttribute xmi:id="_weQYUIXbEeOwFt3Ctq-XqQ" name="columnLimit" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
         <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_BYbacIXcEeOwFt3Ctq-XqQ" value="20"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_m2PJMojQEeOVMNzqeNPZ1Q" name="View" isUnique="false">
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_m5uAYIjjEeOU8pNJR_ce1A" value="*"/>
+      <ownedAttribute xmi:id="_m2PJMojQEeOVMNzqeNPZ1Q" name="views" visibility="private" type="_AZoYMMObEeOnGsz36j4xoA" isUnique="false">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_m5uAYIjjEeOU8pNJR_ce1A" value="1"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_z1E-MojQEeOVMNzqeNPZ1Q" name="SrcResult" type="_P8H9ELAQEeOWDI3lMDA2dg"/>
+      <ownedAttribute xmi:id="_z1E-MojQEeOVMNzqeNPZ1Q" name="result" visibility="private" type="_P8H9ELAQEeOWDI3lMDA2dg"/>
+      <ownedAttribute xmi:id="_0cw9ksOaEeOnGsz36j4xoA" name="srcTables" visibility="private" type="_vwR1yMOZEeOnGsz36j4xoA"/>
+      <ownedAttribute xmi:id="_5-3UMsOaEeOnGsz36j4xoA" name="filter" visibility="private" type="_TBLacLjMEeO0Dpd1d364ZA"/>
+      <ownedAttribute xmi:id="_LunTcMObEeOnGsz36j4xoA" name="db" visibility="private" type="_ox1QAIjMEeOVMNzqeNPZ1Q"/>
       <interfaceRealization xmi:id="_4uSeI7AHEeOWDI3lMDA2dg" name="InterfaceRealization1" supplier="_3jTRsLAHEeOWDI3lMDA2dg" client="_rjrUsIXbEeOwFt3Ctq-XqQ" contract="_3jTRsLAHEeOWDI3lMDA2dg"/>
       <ownedOperation xmi:id="_EC-8MIXcEeOwFt3Ctq-XqQ" name="getResult"/>
-      <ownedOperation xmi:id="_L0gXwIXcEeOwFt3Ctq-XqQ" name="informView" visibility="private"/>
+      <ownedOperation xmi:id="_L0gXwIXcEeOwFt3Ctq-XqQ" name="informViews" visibility="private"/>
       <ownedOperation xmi:id="_KpULAojREeOVMNzqeNPZ1Q" name="getResult">
         <ownedParameter xmi:id="_sYgEgLjLEeO0Dpd1d364ZA" name="return" type="_P8H9ELAQEeOWDI3lMDA2dg" direction="return"/>
       </ownedOperation>
-      <ownedOperation xmi:id="_aXKCIrjPEeO0Dpd1d364ZA" name="setFilter">
+      <ownedOperation xmi:id="_aXKCIrjPEeO0Dpd1d364ZA" name="setOrFilter">
         <ownedParameter xmi:id="_AlrC4LsFEeOF_41jiL_0lA" name="spaltenName">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedParameter>
@@ -65,6 +68,40 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedParameter>
       </ownedOperation>
+      <ownedOperation xmi:id="_mhMlIsObEeOnGsz36j4xoA" name="registerView">
+        <ownedParameter xmi:id="_oTheYMObEeOnGsz36j4xoA" name="view" type="_IzVOcL8DEeOSgvEemH1FBA"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_qT3lgsObEeOnGsz36j4xoA" name="unregisterView">
+        <ownedParameter xmi:id="_rVjE8MObEeOnGsz36j4xoA" name="view" type="_IzVOcL8DEeOSgvEemH1FBA"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_1MIvksObEeOnGsz36j4xoA" name="setAndFilter">
+        <ownedParameter xmi:id="_2n0qcMObEeOnGsz36j4xoA" name="spaltenName">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="_4KHjoMObEeOnGsz36j4xoA" name="spaltenWert" type="_KaTR8LjREeO0Dpd1d364ZA"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_7eW7ksObEeOnGsz36j4xoA" name="getSrcQuery" visibility="private">
+        <ownedParameter xmi:id="_8NAxUMObEeOnGsz36j4xoA" name="return" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_G0wzIsOcEeOnGsz36j4xoA" name="setSrcQuery" visibility="private">
+        <ownedParameter xmi:id="_HrbVYMOcEeOnGsz36j4xoA" name="srcQuery">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_KpclssOcEeOnGsz36j4xoA" name="getcolumnLimit">
+        <ownedParameter xmi:id="_LOSYIMOcEeOnGsz36j4xoA" name="return" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_NiE_ssOcEeOnGsz36j4xoA" name="setcolumnLimit">
+        <ownedParameter xmi:id="_OPPAoMOcEeOnGsz36j4xoA" name="columnLimit">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_RtMVQsOcEeOnGsz36j4xoA" name="setResult" visibility="private"/>
+      <ownedOperation xmi:id="_UcX4UsOcEeOnGsz36j4xoA" name="setSrcTables" visibility="private"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_ox1QAIjMEeOVMNzqeNPZ1Q" name="Database" isAbstract="true">
       <ownedAttribute xmi:id="_aH578LANEeOWDI3lMDA2dg" name="instance" visibility="private" isStatic="true" type="_ox1QAIjMEeOVMNzqeNPZ1Q"/>
@@ -166,8 +203,61 @@
       <ownedAttribute xmi:id="_SSgGcrsEEeOF_41jiL_0lA" name="connection" visibility="private" type="_GcJmgLOQEeOoNu5g7KeIEw"/>
       <interfaceRealization xmi:id="_XZeDQLOQEeOoNu5g7KeIEw" name="InterfaceRealization1" supplier="_vo4fgLOOEeOoNu5g7KeIEw" client="_UXoC4LOQEeOoNu5g7KeIEw" contract="_vo4fgLOOEeOoNu5g7KeIEw"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_cK4PILWFEeOrpOtC6fspFw" name="Controller"/>
-    <packagedElement xmi:type="uml:Class" xmi:id="_c1tU0LWFEeOrpOtC6fspFw" name="View"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_cK4PILWFEeOrpOtC6fspFw" name="Controller" isAbstract="true">
+      <ownedAttribute xmi:id="__KLbIsOdEeOnGsz36j4xoA" name="model" visibility="protected" type="_rjrUsIXbEeOwFt3Ctq-XqQ"/>
+      <ownedAttribute xmi:id="_CZkIQsOeEeOnGsz36j4xoA" name="view" visibility="protected" type="_c1tU0LWFEeOrpOtC6fspFw"/>
+      <ownedOperation xmi:id="_LVQQ4sOeEeOnGsz36j4xoA" name="display" isAbstract="true"/>
+      <ownedOperation xmi:id="_OrYfMsOeEeOnGsz36j4xoA" name="getDisplayedFrame"/>
+      <ownedOperation xmi:id="_QbHXcsOeEeOnGsz36j4xoA" name="getModel">
+        <ownedParameter xmi:id="_QwdVUMOeEeOnGsz36j4xoA" name="return" type="_rjrUsIXbEeOwFt3Ctq-XqQ" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_S8GGcsOeEeOnGsz36j4xoA" name="setModel">
+        <ownedParameter xmi:id="_TmypQMOeEeOnGsz36j4xoA" name="model" type="_rjrUsIXbEeOwFt3Ctq-XqQ"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_XByJcMOeEeOnGsz36j4xoA" name="setView">
+        <ownedParameter xmi:id="_YUEQsMOeEeOnGsz36j4xoA" name="view" type="_c1tU0LWFEeOrpOtC6fspFw"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_c1tU0LWFEeOrpOtC6fspFw" name="View" clientDependency="_9oUOg8OXEeOnGsz36j4xoA" isAbstract="true">
+      <ownedAttribute xmi:id="_NdOKsr8DEeOSgvEemH1FBA" name="model"/>
+      <ownedAttribute xmi:id="_OSdJkr8DEeOSgvEemH1FBA" name="controller"/>
+      <ownedAttribute xmi:id="_L888UsOZEeOnGsz36j4xoA" name="contentPanel" visibility="private"/>
+      <ownedAttribute xmi:id="_1W-_kMOZEeOnGsz36j4xoA" name="model" visibility="protected" type="_rjrUsIXbEeOwFt3Ctq-XqQ"/>
+      <ownedAttribute xmi:id="_5CTawsOZEeOnGsz36j4xoA" name="controller" visibility="protected" type="_cK4PILWFEeOrpOtC6fspFw"/>
+      <ownedAttribute xmi:id="_8OVR4sOZEeOnGsz36j4xoA" name="layout" visibility="private" type="_oQH3AMOZEeOnGsz36j4xoA"/>
+      <ownedAttribute xmi:id="__90bYsOZEeOnGsz36j4xoA" name="gbc" visibility="private" type="_qOExcMOZEeOnGsz36j4xoA"/>
+      <ownedAttribute xmi:id="_DDFjMMOaEeOnGsz36j4xoA" name="viewElemente" visibility="protected" type="_uKinCMOZEeOnGsz36j4xoA"/>
+      <ownedAttribute xmi:id="_FByEgsOaEeOnGsz36j4xoA" name="viewElementeToSql" visibility="protected" type="_vwR1yMOZEeOnGsz36j4xoA"/>
+      <interfaceRealization xmi:id="_9oUOg8OXEeOnGsz36j4xoA" name="InterfaceRealization1" supplier="_IzVOcL8DEeOSgvEemH1FBA" client="_c1tU0LWFEeOrpOtC6fspFw" contract="_IzVOcL8DEeOSgvEemH1FBA"/>
+      <ownedOperation xmi:id="_JBzkYsOaEeOnGsz36j4xoA" name="setElemente" isAbstract="true"/>
+      <ownedOperation xmi:id="_LTqSQMOaEeOnGsz36j4xoA" name="addElement">
+        <ownedParameter xmi:id="_NskqYMOaEeOnGsz36j4xoA" name="element" type="_MYhokMOaEeOnGsz36j4xoA"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_9uscUr8CEeOSgvEemH1FBA" name="setLabel" visibility="protected">
+        <ownedParameter xmi:id="_TdQ2oMOaEeOnGsz36j4xoA" name="labelText">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="_VVrw0MOaEeOnGsz36j4xoA" name="posX">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="_XQYi8MOaEeOnGsz36j4xoA" name="posY">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_a3hBssOaEeOnGsz36j4xoA" name="getEingabeWerte">
+        <ownedParameter xmi:id="_bdHCEMOaEeOnGsz36j4xoA" name="return" type="_cZP6OMOaEeOnGsz36j4xoA" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_hHrYMsOaEeOnGsz36j4xoA" name="display" visibility="public"/>
+      <ownedOperation xmi:id="_l90AssOaEeOnGsz36j4xoA" name="getGridBagConstraint">
+        <ownedParameter xmi:id="_mYCekMOaEeOnGsz36j4xoA" name="return" type="_qOExcMOZEeOnGsz36j4xoA" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_oI1GwsOaEeOnGsz36j4xoA" name="setGridBagConstraint">
+        <ownedParameter xmi:id="_pdgasMOaEeOnGsz36j4xoA" name="gbc" type="_qOExcMOZEeOnGsz36j4xoA"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_rw9EAMOaEeOnGsz36j4xoA" name="setConstraint">
+        <ownedParameter xmi:id="_tD7u0MOaEeOnGsz36j4xoA" name="element" type="_MYhokMOaEeOnGsz36j4xoA"/>
+      </ownedOperation>
+    </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_gDFPwLWFEeOrpOtC6fspFw" name="A_&lt;controller>_&lt;model>" memberEnd="_gDFPwbWFEeOrpOtC6fspFw _gDFPxLWFEeOrpOtC6fspFw" navigableOwnedEnd="_gDFPxLWFEeOrpOtC6fspFw">
       <ownedEnd xmi:id="_gDFPwbWFEeOrpOtC6fspFw" name="controller" type="_cK4PILWFEeOrpOtC6fspFw" association="_gDFPwLWFEeOrpOtC6fspFw">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gDFPwrWFEeOrpOtC6fspFw" value="1"/>
@@ -260,6 +350,151 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XGpoxrjREeO0Dpd1d364ZA"/>
       </ownedEnd>
     </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_IzVOcL8DEeOSgvEemH1FBA" name="UpdateView">
+      <ownedOperation xmi:id="_HQU1IMOZEeOnGsz36j4xoA" name="modelHasChanged"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_-Q__IMOXEeOnGsz36j4xoA" name="ListView" isAbstract="true">
+      <generalization xmi:id="_KooqNMOYEeOnGsz36j4xoA" general="_c1tU0LWFEeOrpOtC6fspFw"/>
+      <ownedAttribute xmi:id="_rxYP4sOcEeOnGsz36j4xoA" name="rowData" visibility="private" type="_cZP6OMOaEeOnGsz36j4xoA"/>
+      <ownedAttribute xmi:id="_ulum0sOcEeOnGsz36j4xoA" name="columnNames" visibility="private" type="_cZP6OMOaEeOnGsz36j4xoA"/>
+      <ownedAttribute xmi:id="_yJ5RIsOcEeOnGsz36j4xoA" name="table" type="_w73-2MOcEeOnGsz36j4xoA"/>
+      <ownedOperation xmi:id="_0EYTIL8CEeOSgvEemH1FBA" name="setTable" visibility="protected"/>
+      <ownedOperation xmi:id="_02WQUsOcEeOnGsz36j4xoA" name="setTopMenu" visibility="protected"/>
+      <ownedOperation xmi:id="_2uy_sMOcEeOnGsz36j4xoA" name="setMarker">
+        <ownedParameter xmi:id="_3-rTMMOcEeOnGsz36j4xoA" name="value">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_8WxU0sOcEeOnGsz36j4xoA" name="setElemente" isAbstract="true"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_-jxxOMOXEeOnGsz36j4xoA" name="SingleView" isAbstract="true">
+      <generalization xmi:id="_NE87pMOYEeOnGsz36j4xoA" general="_c1tU0LWFEeOrpOtC6fspFw"/>
+      <ownedOperation xmi:id="_0ZQW8r8CEeOSgvEemH1FBA" name="setTextfield">
+        <ownedParameter xmi:id="_DdjxUMOdEeOnGsz36j4xoA" name="labelText">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="_Fq2IQMOdEeOnGsz36j4xoA" name="sqlSpaltenName">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="_HH8YYMOdEeOnGsz36j4xoA" name="posX">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="_IfjEgMOdEeOnGsz36j4xoA" name="posY">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_03X2Ur8CEeOSgvEemH1FBA" name="setTextbox">
+        <ownedParameter xmi:id="_LGmmUMOdEeOnGsz36j4xoA" name="labelText">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="_NFfU4MOdEeOnGsz36j4xoA" name="sqlSpaltenName">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="_OqrKAMOdEeOnGsz36j4xoA" name="posX">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="_SRI6YMOdEeOnGsz36j4xoA" name="posY">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_8X8r0r8CEeOSgvEemH1FBA" name="setCheckbox">
+        <ownedParameter xmi:id="_UGTFMMOdEeOnGsz36j4xoA" name="labelText">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="_V0u88MOdEeOnGsz36j4xoA" name="sqlSpaltenName">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="_XMv4wMOdEeOnGsz36j4xoA" name="posX">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="_YQ1zAMOdEeOnGsz36j4xoA" name="posY">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_ATozAsOdEeOnGsz36j4xoA" name="setElemente" isAbstract="true"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_OUyy4MOYEeOnGsz36j4xoA" name="StudentList">
+      <generalization xmi:id="_VNcFtMOYEeOnGsz36j4xoA" general="_-Q__IMOXEeOnGsz36j4xoA"/>
+      <ownedOperation xmi:id="_fie0osOdEeOnGsz36j4xoA" name="setElemente"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_QEtRWMOYEeOnGsz36j4xoA" name="FirmaList">
+      <generalization xmi:id="_V0VtpMOYEeOnGsz36j4xoA" general="_-Q__IMOXEeOnGsz36j4xoA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_RMmtiMOYEeOnGsz36j4xoA" name="VertragList">
+      <generalization xmi:id="_WP6PVMOYEeOnGsz36j4xoA" general="_-Q__IMOXEeOnGsz36j4xoA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_SKlYsMOYEeOnGsz36j4xoA" name="BetreuerList">
+      <generalization xmi:id="_WmHI1MOYEeOnGsz36j4xoA" general="_-Q__IMOXEeOnGsz36j4xoA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_XwyzSMOYEeOnGsz36j4xoA" name="StudentSingle">
+      <generalization xmi:id="_d6hKlMOYEeOnGsz36j4xoA" general="_-jxxOMOXEeOnGsz36j4xoA"/>
+      <ownedOperation xmi:id="_dodX8sOdEeOnGsz36j4xoA" name="setElemente"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_X-9LEMOYEeOnGsz36j4xoA" name="FirmaSingle">
+      <generalization xmi:id="_ePYnU8OYEeOnGsz36j4xoA" general="_-jxxOMOXEeOnGsz36j4xoA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_YRS4SMOYEeOnGsz36j4xoA" name="VertragSingle">
+      <generalization xmi:id="_ejDxRMOYEeOnGsz36j4xoA" general="_-jxxOMOXEeOnGsz36j4xoA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_YjrowMOYEeOnGsz36j4xoA" name="BetreuerSingle">
+      <generalization xmi:id="_e4hD5MOYEeOnGsz36j4xoA" general="_-jxxOMOXEeOnGsz36j4xoA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_ka7jmMOYEeOnGsz36j4xoA" name="ListController" clientDependency="_4r6XM8OdEeOnGsz36j4xoA _5EDxdMOdEeOnGsz36j4xoA _5hbp9MOdEeOnGsz36j4xoA" isAbstract="true">
+      <generalization xmi:id="_vf2pk8OYEeOnGsz36j4xoA" general="_cK4PILWFEeOrpOtC6fspFw"/>
+      <interfaceRealization xmi:id="_4r6XM8OdEeOnGsz36j4xoA" name="InterfaceRealization1" supplier="_t5n5UMOdEeOnGsz36j4xoA" client="_ka7jmMOYEeOnGsz36j4xoA" contract="_t5n5UMOdEeOnGsz36j4xoA"/>
+      <interfaceRealization xmi:id="_5EDxdMOdEeOnGsz36j4xoA" name="InterfaceRealization2" supplier="_q8_wKMOdEeOnGsz36j4xoA" client="_ka7jmMOYEeOnGsz36j4xoA" contract="_q8_wKMOdEeOnGsz36j4xoA"/>
+      <interfaceRealization xmi:id="_5hbp9MOdEeOnGsz36j4xoA" name="InterfaceRealization3" supplier="_uy4ckMOdEeOnGsz36j4xoA" client="_ka7jmMOYEeOnGsz36j4xoA" contract="_uy4ckMOdEeOnGsz36j4xoA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mIc1WMOYEeOnGsz36j4xoA" name="SingleController" isAbstract="true">
+      <generalization xmi:id="_w-YdFMOYEeOnGsz36j4xoA" general="_cK4PILWFEeOrpOtC6fspFw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_pYYVAMOYEeOnGsz36j4xoA" name="StudentList">
+      <generalization xmi:id="_vIKiVMOYEeOnGsz36j4xoA" general="_ka7jmMOYEeOnGsz36j4xoA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_qlwuKMOYEeOnGsz36j4xoA" name="FirmaList">
+      <generalization xmi:id="_uLp2xMOYEeOnGsz36j4xoA" general="_ka7jmMOYEeOnGsz36j4xoA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_rV-qKMOYEeOnGsz36j4xoA" name="VertragList">
+      <generalization xmi:id="_t15CJMOYEeOnGsz36j4xoA" general="_ka7jmMOYEeOnGsz36j4xoA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_sHUAeMOYEeOnGsz36j4xoA" name="BetreuerList">
+      <generalization xmi:id="_tSkSpcOYEeOnGsz36j4xoA" general="_ka7jmMOYEeOnGsz36j4xoA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_xnHRAMOYEeOnGsz36j4xoA" name="StudentSingle">
+      <generalization xmi:id="_3uk-hMOYEeOnGsz36j4xoA" general="_mIc1WMOYEeOnGsz36j4xoA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_zK8bSMOYEeOnGsz36j4xoA" name="FirmaSingle">
+      <generalization xmi:id="_4XtbFMOYEeOnGsz36j4xoA" general="_mIc1WMOYEeOnGsz36j4xoA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_0udccMOYEeOnGsz36j4xoA" name="VertragSingle">
+      <generalization xmi:id="_4ugxhMOYEeOnGsz36j4xoA" general="_mIc1WMOYEeOnGsz36j4xoA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_1jzwGMOYEeOnGsz36j4xoA" name="BetreuerSingle">
+      <generalization xmi:id="_5M6kw8OYEeOnGsz36j4xoA" general="_mIc1WMOYEeOnGsz36j4xoA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_b0omusOZEeOnGsz36j4xoA" name="A_&lt;model>_&lt;updateView>" memberEnd="_b0omu8OZEeOnGsz36j4xoA _b0omvsOZEeOnGsz36j4xoA" navigableOwnedEnd="_b0omvsOZEeOnGsz36j4xoA">
+      <ownedEnd xmi:id="_b0omu8OZEeOnGsz36j4xoA" name="model" type="_rjrUsIXbEeOwFt3Ctq-XqQ" association="_b0omusOZEeOnGsz36j4xoA">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_b0omvMOZEeOnGsz36j4xoA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_b0omvcOZEeOnGsz36j4xoA" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_b0omvsOZEeOnGsz36j4xoA" name="updateView" type="_IzVOcL8DEeOSgvEemH1FBA" association="_b0omusOZEeOnGsz36j4xoA">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_b0omv8OZEeOnGsz36j4xoA" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_b0omwMOZEeOnGsz36j4xoA" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_k6eJ2MOZEeOnGsz36j4xoA" name="JPanel"/>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_oQH3AMOZEeOnGsz36j4xoA" name="GridBagLayout"/>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_qOExcMOZEeOnGsz36j4xoA" name="GridBagConstraints"/>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_uKinCMOZEeOnGsz36j4xoA" name="ArrayList&lt;JComponent>"/>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_vwR1yMOZEeOnGsz36j4xoA" name="ArrayList&lt;String>"/>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_MYhokMOaEeOnGsz36j4xoA" name="JComponent"/>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_cZP6OMOaEeOnGsz36j4xoA" name="Object"/>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_AZoYMMObEeOnGsz36j4xoA" name="ArrayList&lt;UpdateView>"/>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_w73-2MOcEeOnGsz36j4xoA" name="JTable"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_q8_wKMOdEeOnGsz36j4xoA" name="ListSelectionListener"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_t5n5UMOdEeOnGsz36j4xoA" name="MouseListener"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_uy4ckMOdEeOnGsz36j4xoA" name="KeyListener"/>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_NYBZ6MOeEeOnGsz36j4xoA" name="JInternalFrame"/>
   </packagedElement>
   <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_NuSM0LOPEeOoNu5g7KeIEw" name="boolean"/>
   <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_NuSz4LOPEeOoNu5g7KeIEw" name="byte"/>
