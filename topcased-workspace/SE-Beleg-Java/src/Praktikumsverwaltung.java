@@ -6,8 +6,12 @@ import javax.swing.*;
 
 public class Praktikumsverwaltung extends JFrame{
 
-	JDesktopPane InnerDesktop;
+	static JDesktopPane InnerDesktop;
 	
+	public static void addFrame(Controller controller){
+		controller.display();
+		InnerDesktop.add(controller.getDisplayedFrame());
+	}
 	
 	public Praktikumsverwaltung(String dbHost){
 		//temporär
@@ -19,14 +23,16 @@ public class Praktikumsverwaltung extends JFrame{
 		Database db = Database.getInstance();
 		db.connect("MySql", dbHost, 3306, "root", "", "seproject");
 		
+		//controller  müssen über eine funktion erstellt werden
+		//	-> controller bekommen den maincontroller mit übergeben, um selbst neue fenster zu erzeugen
 		
 		//student controller starten...
-		Controller c = new Student();
+		Controller c = new StudentList();
 		
 		
 		
 		c.display();
-		InnerDesktop.add(c);
+		InnerDesktop.add(c.getDisplayedFrame());
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setSize(800, 600);
 		setVisible(true);

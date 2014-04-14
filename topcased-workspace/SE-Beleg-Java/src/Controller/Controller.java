@@ -1,22 +1,26 @@
 package Controller;
 
-import java.awt.event.ActionListener;
+
+
+import java.awt.event.MouseListener;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 import Models.*;
 import Views.*;
 
-public abstract class Controller extends JInternalFrame implements ActionListener {
+public abstract class Controller {
 	protected Model model = null;
 	protected View view = null;
 	
 	public Controller(){
-		super();
+		
 	}
 	
 	public Controller(View view, Model model){
-		this();
-		
+
 		setModel(model);
 		setView(view);
 	}
@@ -33,5 +37,11 @@ public abstract class Controller extends JInternalFrame implements ActionListene
 		return this.model;
 	}
 	
+	public JInternalFrame getDisplayedFrame(){
+		return this.view;
+	}
+	
+	//muss der konkrete controller umsetzen
 	public abstract void display();
+	
 }
