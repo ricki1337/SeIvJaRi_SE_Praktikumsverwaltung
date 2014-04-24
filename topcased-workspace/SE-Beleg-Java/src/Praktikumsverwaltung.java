@@ -33,9 +33,15 @@ public class Praktikumsverwaltung extends JFrame{
 		
 		c.display();
 		InnerDesktop.add(c.getDisplayedFrame());
+	
+
+		MenuBar menu = new MenuBar();
+		this.setJMenuBar(menu.getMenu());
+		
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setSize(800, 600);
 		setVisible(true);
+
 	}
 	
 	public static void main(String[] args){
