@@ -1,5 +1,7 @@
 package Views.Elemente;
 
+import java.sql.ResultSet;
+
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 
@@ -8,7 +10,6 @@ import javax.swing.table.AbstractTableModel;
 public class NonEditableTable extends AbstractTableModel{
 	private Object[] columns;
     private Object[][] data;
-	
 	
 	public NonEditableTable(Object[][] rowData, Object[] columnNames) {
 		data = rowData;
@@ -39,12 +40,6 @@ public class NonEditableTable extends AbstractTableModel{
         return columns[column].toString();
     }
 
-    //
-    // This method is used by the JTable to define the default
-    // renderer or editor for each cell. For example if you have
-    // a boolean data it will be rendered as a check box. A
-    // number value is right aligned.
-    //
     @Override
     public Class<?> getColumnClass(int columnIndex) {
         return data[0][columnIndex].getClass();

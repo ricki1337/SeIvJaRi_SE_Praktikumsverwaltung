@@ -11,7 +11,7 @@ public class ExtendedSearchPanel extends JPanel{
 		JLabel label = new JLabel("Suchen nach:");
 		parent.add(label);
 		parent.setSize(parent.getWidth(),parent.getHeight()+100);
-		//setSize(parent.getWidth(),parent.getHeight()+100);
+		
 		setVisible(true);
 	}
 	

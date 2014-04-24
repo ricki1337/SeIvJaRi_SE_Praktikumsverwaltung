@@ -40,13 +40,13 @@ public class SingleView extends View{
 			//das JTextField neben dem JLabel positionieren
 			gbc.gridx = posX+1;
 			//GridBagConstraints registrieren
-			setConstraint(f);
+			setConstraintToComponent(f);
 			//das JTextField in die Liste der Informationstragenden Elemente einhängen
-			viewElemente.add(f);
+			listOfallComponentsOnView.add(f);
 			//die parallele Liste für die Sql Spalte
-			viewElementeToSql.add(sqlSpaltenName);
+			listOfComponentsToSqlReference.add(sqlSpaltenName);
 			//das JTextField im JPanel registrieren
-			addElement(f);
+			addComponentToView(f);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -86,6 +86,12 @@ public class SingleView extends View{
 
 	@Override
 	public void setElemente() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void modelHasChanged() {
 		// TODO Auto-generated method stub
 		
 	}

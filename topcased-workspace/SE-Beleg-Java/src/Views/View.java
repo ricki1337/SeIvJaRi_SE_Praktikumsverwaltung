@@ -4,18 +4,10 @@ package Views;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.event.ActionListener;
-import java.sql.*;
 import java.util.ArrayList;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionListener;
-
-import com.mysql.jdbc.ResultSetMetaData;
-
 import Models.*;
-import Views.Elemente.TopMenu;
-
 import Controller.*;
 
 public abstract class View extends JInternalFrame implements UpdateView{
@@ -27,12 +19,12 @@ public abstract class View extends JInternalFrame implements UpdateView{
 	
 	private GridBagLayout layout;
 	
-	private GridBagConstraints gbc;
+	private GridBagConstraints gridBagConstraint;
 	
-	//hält alle informationen repräsentierenden elemente
-	protected ArrayList<JComponent> viewElemente;
-	//hält assoziation der Sql Tabelle zu viewElemente
-	protected ArrayList<String> viewElementeToSql;
+	
+	protected ArrayList<JComponent> listOfallComponentsOnView;
+	
+	protected ArrayList<String> listOfComponentsToSqlReference;
 	
 	
 	
@@ -43,8 +35,8 @@ public abstract class View extends JInternalFrame implements UpdateView{
 		model = this.controller.getModel();
 		model.registerView(this);
 		
-		viewElemente = new ArrayList<JComponent>();
-		viewElementeToSql = new ArrayList<String>();
+		listOfallComponentsOnView = new ArrayList<JComponent>();
+		listOfComponentsToSqlReference = new ArrayList<String>();
 		
 		contentPanel = new JPanel();
 		layout = new GridBagLayout();
@@ -57,42 +49,32 @@ public abstract class View extends JInternalFrame implements UpdateView{
 	 * 		model meldet das sich daten geändert haben
 	 */
 	@Override
-	public void modelHasChanged() {
-		//alle elemente löschen
-		contentPanel.removeAll();
-		//array zurücksetzen
-		viewElemente.clear();
-		viewElementeToSql.clear();		
-		//elemente neu setzen
-		setElemente();
-	}
+	public abstract void modelHasChanged();
 	
 	/**
 	 * über diese funktion wird die view gefüllt -> hier werden die elemente gesetzt
 	 */
 	public abstract void setElemente();
 	
-	
-	public void addElement(JComponent element){
-		contentPanel.add(element);
+	public void deleteComponentFromView(JComponent component){
+		contentPanel.remove(component);
 	}
 	
-	
-	
-	
-	
+	public void addComponentToView(JComponent component){
+		System.out.println("add "+ component.getName());
+		contentPanel.add(component);
+	}
 	
 	protected void setLabel(String labelText,int posX, int posY){
-		JLabel l = new JLabel(labelText);
-		GridBagConstraints gbc = getGridBagConstraint();
-		//gbc.anchor = GridBagConstraints.FIRST_LINE_START;
-		gbc.gridx = posX;
-		gbc.gridy = posY;
+		JLabel label = new JLabel(labelText);
+		GridBagConstraints gridBagConstraint = getGridBagConstraint();
 		
-		gbc.gridwidth = GridBagConstraints.RELATIVE;
-		setConstraint(l);
-		addElement(l);
+		gridBagConstraint.gridx = posX;
+		gridBagConstraint.gridy = posY;
+		gridBagConstraint.gridwidth = GridBagConstraints.RELATIVE;
 		
+		setConstraintToComponent(label);
+		addComponentToView(label);
 	}
 	
 
@@ -115,14 +97,14 @@ public abstract class View extends JInternalFrame implements UpdateView{
 	}
 	
 	public GridBagConstraints getGridBagConstraint() {
-		return gbc;
+		return gridBagConstraint;
 	}
 	
-	public void setGridBagConstraint(GridBagConstraints gbc) {
-		this.gbc = gbc;
+	public void setGridBagConstraint(GridBagConstraints gridBagConstaint) {
+		this.gridBagConstraint = gridBagConstaint;
 	}
 	
-	public void setConstraint(JComponent element){
-		layout.setConstraints(element,getGridBagConstraint());
+	public void setConstraintToComponent(JComponent component){
+		layout.setConstraints(component,getGridBagConstraint());
 	}
 }
