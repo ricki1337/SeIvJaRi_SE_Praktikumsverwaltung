@@ -3,6 +3,8 @@ package csvImport;
 
 import java.io.*;
 
+import javax.swing.table.DefaultTableModel;
+
 
 //Konstruktoren
 //------------------
@@ -24,24 +26,26 @@ import java.io.*;
 public class csvImport {
 //Eigenschaften
 	StudentContainer container;
-	String delimiter, errorlog="Beim Import sind Fehler aufgetreten:\n";
-	String file;
+	String file, delimiter, errorlog="Beim Import sind Fehler aufgetreten:\n";
+	int lines=0;
 	Boolean importerrors=false,MetaDatenKopfZeile = true; //Wenn in der ersten Zeile Spaltenbezeichner stehen true, dann wird diese Zeile übersprungen
 	char [] spaltenreihenfolge;
+	DefaultTableModel datamodel = new DefaultTableModel(0,5);
 	
 //Konstruktor
-	csvImport(String file, String delimiter, char [] spaltenreihenfolge){
+	public csvImport(String file, String delimiter, boolean t){
 		this.file=file;
 		this.delimiter=delimiter;
-		this.spaltenreihenfolge=spaltenreihenfolge;
+		this.MetaDatenKopfZeile=t;
+		this.spaltenreihenfolge= new  char [] {'n','v','m','b','g'};
 		container = new StudentContainer();
 		
 	}
 
 //Funktionen
-	public StudentContainer parseIt() {
+	public DefaultTableModel parseIt() {
 		parseCsvFile();
-		return this.container;
+		return datamodel;
 	}
 
 //csv Parser
@@ -71,34 +75,17 @@ public class csvImport {
 // Verarbeitet eine Zeile
     public void processCsvLine(final String data) {
     	
-        String [] a = data.split(delimiter);
+        String [] splittedline = data.split(delimiter);
         
-        int matrikelnr=0,bibliotheksnr=0;
-        String vorname="",name="", studiengruppe="";
-        
-        for (int b=0; b<5 ; b++){
-	        try{
-		        	switch (spaltenreihenfolge[b]){
-		        		case 's':studiengruppe=a[b]; break;	
-		        		case 'm':matrikelnr=Integer.parseInt(a[b]); break;
-		            	case 'n':name=a[b]; break;
-		            	case 'v':vorname=a[b]; break;
-		            	case 'b':bibliotheksnr=Integer.parseInt(a[b]); break;	
-
-		        }
-	        }
-        
-        
-	        catch(NumberFormatException e){
-	        	importerrors=true;
-	        	errorlog+=e.toString()+"\n";
-	        	//System.out.println(e.toString());//Kann nach fertigstellung entfernt werden
-	        }
-        }
-        container.addStudent(name, vorname,studiengruppe, bibliotheksnr,matrikelnr); 
+        String[] newrow = { splittedline[0], splittedline[1],splittedline[2], splittedline[3],splittedline[4]};
+ 		datamodel.addRow(newrow);
+ 		lines++;
 
     }
     
+    public int getcount(){
+    	return this.lines;
+    }
     public boolean getImportErrors(){return importerrors;}
     public String getErrorLog(){return errorlog;}
 
