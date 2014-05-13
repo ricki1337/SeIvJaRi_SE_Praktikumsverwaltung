@@ -93,8 +93,8 @@ public class Database
 				case "MySql": 	this.db = new MySql();
 								break;
 								
-				case "test":	this.db = new MySqlMock();
-								break;
+//				case "test":	this.db = new MySqlMock();
+//								break;
 			}
 			
 			this.db.connect(host, port, user, pw, db);
