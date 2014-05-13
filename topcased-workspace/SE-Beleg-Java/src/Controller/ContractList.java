@@ -81,7 +81,9 @@ public class ContractList extends ListController{
 										guiMail bl = new guiMail(array);
 										bl.setVisible(true);
 										break;
-		case "print":				    String[][] testary;
+										
+										
+		case "print" :				    String[][] testary;
 										testary = new String[][] {
 										{ "65878", "Hans Detlef", "muh@web.de", "11/43/01", "sap" },
 										{ "98564", "Rolf Golf", "blub@freenet.de", "12/13/14","Microsoft" },
@@ -99,12 +101,12 @@ public class ContractList extends ListController{
 											e1.printStackTrace();
 										}
 									testding.setData(testary, "Titel","Überschrift");
-			try {
-				testding.printFile("output.html");
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+									try {
+									testding.printFile("output.html");
+									} catch (Exception e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+									}
 									}
 		
 	

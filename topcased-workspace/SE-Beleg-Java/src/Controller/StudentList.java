@@ -11,6 +11,8 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 
+import drucken.MainTest;
+
 public class StudentList extends ListController{
 	
 	private String srcSqlQuery = "select MatrNr as Matrikelnr, Firstname as Vorname, Name as Nachname, Email as 'E-Mail', StGr as Studiengruppe,Note as Bemerkung from student";
@@ -66,10 +68,34 @@ public class StudentList extends ListController{
 											guiMail bl = new guiMail(array);
 											bl.setVisible(true);
 											break;
-		case "print":						System.out.println("TODO");break;
+		case "print" :				    String[][] testary;
+		testary = new String[][] {
+		{ "65878", "Hans Detlef", "muh@web.de", "11/43/01", "sap" },
+		{ "98564", "Rolf Golf", "blub@freenet.de", "12/13/14","Microsoft" },
+		{ "45879", "Franz Lenz", "tag@morgen.com", "00/11/22", "Himmel" },
+		{ "25874", "Lisa Müller", "hallo@wasgeht.de", "10/024/34","Golfplatz" },
+		{ "97854", "Hans Wurst", "langweilig@langweildich.net","09/034/61", "Imbiss" },
+
+		};
+
+		MainTest testding = null;
+		try {
+			testding = new MainTest();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	testding.setData(testary, "Titel","Überschrift");
+	try {
+	testding.printFile("output.html");
+	} catch (Exception e1) {
+	// TODO Auto-generated catch block
+	e1.printStackTrace();
+	}
+	}
 					
 		}
-	}
+	
 
 
 	@Override
