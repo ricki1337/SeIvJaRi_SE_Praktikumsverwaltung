@@ -1,3 +1,5 @@
+package Mail_1version;
+
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

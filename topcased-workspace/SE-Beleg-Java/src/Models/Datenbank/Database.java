@@ -13,16 +13,18 @@ public class Database
 	
 	//enthält alle beobachter
 	private Vector<observer> observerList;
-
+	
+	private ArrayList<String> tables;
 
 	private Database (){
 		//beobachterliste init
 		observerList = new Vector<observer>();
+		tables = new ArrayList<String>();
 	}
 	
 	public Database clone(){ 
 		try {
-		throw new Exception("Von Database darf nur eine Instanz existieren!");
+		throw new AssertionError("Von Database darf nur eine Instanz existieren!");
 		} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -30,11 +32,11 @@ public class Database
 		return null;
 	}
 	
-	private void informModels()
+	private void informModels(String[] changedTables)
 	{
 		//gehe die beobachterliste durch und rufe jeweils refresh() auf
 		for(int i=0;i<observerList.size();i++)
-			observerList.elementAt(i).refresh();
+			observerList.elementAt(i).refresh(changedTables);
 	}
 	
 	public void login(observer observer)
@@ -61,23 +63,56 @@ public class Database
 
 	
 	public int setQuery(String query) {
+
 		int tmp = this.db.setQuery(query);
-		informModels();
+	
+		informModels(getChangedTables(query));
 		return tmp; 
 	}
+	
+	private String[] getChangedTables(String query){
+		ArrayList<String> changedTables = new ArrayList<String>();
+		for(String table:tables){
+			if(query.contains(table))
+				changedTables.add(table);
+		}
+		
+		String[] test = new String[changedTables.size()];
+		for(int index=0;index<changedTables.size();index++){
+			test[index] = changedTables.get(index);
+		}
+		
+		return test;
+	}
+	
 
 	//datenbankverbindung setzen
 	public void connect(String dbType, String host, int port, String user, String pw, String db) {
 		if(this.db == null){
 			switch(dbType){
 				case "MySql": 	this.db = new MySql();
-								break;		
+								break;
+								
+				case "test":	this.db = new MySqlMock();
+								break;
 			}
 			
 			this.db.connect(host, port, user, pw, db);
 		}
+		setTables();
 	}
-
+	
+	protected void setTables(){
+		ResultSet sqlTables = this.db.getQuery("show tables;");
+		
+		try {
+			while(sqlTables.next()){
+					tables.add(sqlTables.getString(1));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	public void disconnect() {
 		if(this.db != null) this.db.disconnect();		

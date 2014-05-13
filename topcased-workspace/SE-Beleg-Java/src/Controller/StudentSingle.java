@@ -4,17 +4,31 @@ import java.awt.event.MouseEvent;
 
 public class StudentSingle extends SingleController{
 	
+	Views.StudentSingle view;
+	
 	public StudentSingle(){
-		super();
-		setModel(new Models.Student("select * from student"));
-		setView(new Views.SingleStudent(this));
+		setModel(new Models.StudentSingle());
+		setView((view = new Views.StudentSingle(this)));
 	}
 	
 	
-	public StudentSingle(String sqlWhereQuery){
+	public StudentSingle(Object primaryKeys){
 		super();
-		setModel(new Models.Student("select * from student " + sqlWhereQuery));
-		setView(new Views.SingleStudent(this));
+		String sqlFilter = new String();
+		
+		if(primaryKeys instanceof Object[]){		
+			int count = 0;
+			for(Object item:(Object[])primaryKeys){
+				if(count == 0) sqlFilter = item.toString();
+				else sqlFilter += " ,"+item.toString();
+				count++;
+			}
+		} else{
+			sqlFilter = primaryKeys.toString();
+		}
+		
+		setModel(new Models.StudentSingle("select * from student where MatrNr in (" + sqlFilter +")"));
+		setView((view = new Views.StudentSingle(this)));
 	}
 
 	@Override
@@ -23,9 +37,15 @@ public class StudentSingle extends SingleController{
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	public void mouseClicked(MouseEvent e) {
+		switch(e.getComponent().getName()){
+		case "next": 	view.gotoNext();
+						break;
+		case "save": 	model.updateDatabase();
+						break;
+		case "previus": view.gotoPrevius();
+						break;
+		}
 	}
 
 	@Override

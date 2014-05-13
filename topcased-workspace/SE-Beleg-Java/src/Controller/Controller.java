@@ -15,9 +15,7 @@ public abstract class Controller {
 	protected Model model = null;
 	protected View view = null;
 	
-	public Controller(){
-		
-	}
+	public Controller(){}
 	
 	public Controller(View view, Model model){
 
@@ -41,7 +39,6 @@ public abstract class Controller {
 		return this.view;
 	}
 	
-	//muss der konkrete controller umsetzen
 	public abstract void display();
 	
 }

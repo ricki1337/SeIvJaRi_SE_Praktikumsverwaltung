@@ -1,19 +1,15 @@
 package Controller;
 
-import java.awt.event.InputMethodEvent;
-import java.awt.event.InputMethodListener;
-import java.awt.event.KeyListener;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
+import java.util.EventListener;
 
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
+import javax.swing.event.DocumentListener;
 import Models.Model;
 import Views.ListView;
-import Views.View;
 
 //public abstract class ListController extends Controller implements ListSelectionListener, MouseListener,InputMethodListener{
-public abstract class ListController extends Controller implements ListSelectionListener, MouseListener,KeyListener{
+public abstract class ListController extends Controller implements MouseListener,DocumentListener, ActionListener{
 	
 	public ListController(){}
 	

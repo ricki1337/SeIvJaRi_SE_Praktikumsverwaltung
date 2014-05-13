@@ -1,3 +1,5 @@
+package Mail_1version;
+
 import java.io.IOException;
 import java.util.Properties;
 

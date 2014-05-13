@@ -12,16 +12,25 @@ public class StudentList extends ListView{
 	@Override
 	public void setElemente() {
 		addListTopMenu();
-		addListTableWithDataFromModel();
 		addListBottomMenu();
+		addListTableWithDataFromModel();
+		
 	}
 
 	@Override
 	public void modelHasChanged() {
-		deleteTable();
-		addListTableWithDataFromModel();
-		this.revalidate();
-		pack();
+		refreshListTableWithDataFromModel();
+	}
+
+	@Override
+	public Object[][] getEingabeWerte() {
+		return null;
+	}
+
+	@Override
+	public String getValueFromCurrentItem(String sqlColumnName) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

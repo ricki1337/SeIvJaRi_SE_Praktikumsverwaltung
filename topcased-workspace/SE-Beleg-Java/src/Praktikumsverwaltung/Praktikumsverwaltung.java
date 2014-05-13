@@ -1,8 +1,11 @@
 package Praktikumsverwaltung;
 
 
+import java.beans.PropertyVetoException;
+
 import Controller.*;
 import Models.Datenbank.Database;
+import Views.GuiElemente.MenuBar;
 
 import javax.swing.*;
 
@@ -13,31 +16,30 @@ public class Praktikumsverwaltung extends JFrame{
 	
 	public static void addFrameToForeground(Controller controller){
 		controller.display();
-		InnerDesktop.add(controller.getDisplayedFrame());
+		JInternalFrame newFrame = controller.getDisplayedFrame();
+		InnerDesktop.add(newFrame);
+		try {
+			newFrame.setSelected(true);
+		} catch (PropertyVetoException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public Praktikumsverwaltung(String dbHost){
-		//temporär
-		super("MainFrame");
+		super("Praktikumsverwaltung");
 		InnerDesktop = new JDesktopPane();
 		setContentPane(InnerDesktop);
 		
 		//test
 		Database db = Database.getInstance();
 		db.connect("MySql", dbHost, 3306, "root", "", "seproject");
-		
-		//controller  müssen über eine funktion erstellt werden
-		//	-> controller bekommen den maincontroller mit übergeben, um selbst neue fenster zu erzeugen
-		
-		//student controller starten...
-		Controller c = new StudentList();
+
+		MenuBar menu = new MenuBar();
+		this.setJMenuBar(menu.getMenu());
 		
 		
-		
-		c.display();
-		InnerDesktop.add(c.getDisplayedFrame());
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setSize(800, 600);
+		setSize(1024, 768);
 		setVisible(true);
 	}
 	

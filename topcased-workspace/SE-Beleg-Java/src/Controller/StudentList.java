@@ -1,21 +1,27 @@
 package Controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.InputMethodEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import Praktikumsverwaltung.*;
 
-import javax.swing.event.ListSelectionEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+
+import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
 
 public class StudentList extends ListController{
+	
+	private String srcSqlQuery = "select MatrNr as Matrikelnr, Firstname as Vorname, Name as Nachname, Email as 'E-Mail', StGr as Studiengruppe,Note as Bemerkung from student";
+	private Views.StudentList view;
+	
 	
 	public StudentList(){
 		super();
 
-		setModel(new Models.StudentList("select MatrNr as Matrikelnr, Firstname as Vorname, Name as Nachname, Email as 'E-Mail', StGr as Studiengruppe,Note as Bemerkung from student"));
+		setModel(new Models.StudentList(srcSqlQuery));
 		
-		setView(new Views.StudentList(this));
+		setView(view = new Views.StudentList(this));
 	}
 
 	
@@ -26,20 +32,31 @@ public class StudentList extends ListController{
 		view.display();
 	}
 
-
-	
-	public void valueChanged(ListSelectionEvent e) {
-		// TODO Auto-generated method stub
-		//view.setMarker(true);		
-	}
-
-
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if (e.getClickCount() == 2) {
-			//bei doppelklick auf eine zeile...wird die detailansicht der zeile geöffnet
-	        System.out.println("Öffne Detailansicht...");
-			//MainWindow.addInternalFrame(new Prakt_ViewStudent(MainWindow,table.getSelectedRow()));
+		switch(e.getComponent().getName()){
+		case "table": 	if (e.getClickCount() == 2) {
+							Object studentId;
+							
+							if((studentId = view.getColumnValueFromSelectedRow("Matrikelnr")) != null){
+							StudentSingle newFrame = new StudentSingle(studentId);
+							Praktikumsverwaltung.addFrameToForeground(newFrame);
+							}
+						}else{
+							view.setFlag();
+						}
+						break;
+						
+		case "setFlagOnMarkedRows": 	view.setFlagOnSelectedRow();
+										break;
+										
+		case "modifySelectedRows":		Object[] studentList = view.getColumnValuesFromSelectedRows("Matrikelnr");
+										StudentSingle newFrame = new StudentSingle(studentList);
+										Praktikumsverwaltung.addFrameToForeground(newFrame);
+										break;
+		case "anlegen":					StudentEmptySingle newEmptyFrame = new StudentEmptySingle();
+										Praktikumsverwaltung.addFrameToForeground(newEmptyFrame);
+										break;
 		}
 	}
 
@@ -71,33 +88,69 @@ public class StudentList extends ListController{
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		Controller c = new StudentList();
-		//Praktikumsverwaltung.addFrame(c);
+	}
+
+	
+
+	@Override
+	public void changedUpdate(DocumentEvent arg0) {
+		Document searchField = arg0.getDocument();
+		
+		try {
+			String searchValue = searchField.getText(0,searchField.getLength());
+			((Models.StudentList)model).setSearchFilter(searchValue);
+		} catch (BadLocationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 
 
 	@Override
-	public void keyPressed(KeyEvent arg0) {
-		// TODO Auto-generated method stub
+	public void insertUpdate(DocumentEvent arg0) {
+		Document searchField = arg0.getDocument();
+		try {
+			String searchValue = searchField.getText(0,searchField.getLength());
+			((Models.StudentList)model).setSearchFilter(searchValue);
+		} catch (BadLocationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
 
 
 	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
+	public void removeUpdate(DocumentEvent arg0) {
+		Document searchField = arg0.getDocument();
+		try {
+			String searchValue = searchField.getText(0,searchField.getLength());
+			((Models.StudentList)model).setSearchFilter(searchValue);
+		} catch (BadLocationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
 
 
 	@Override
-	public void keyTyped(KeyEvent arg0) {
+	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		System.out.println(arg0.getKeyChar());
+		if(arg0.getSource() instanceof JTextField){
+			JTextField anzDatensaetze = (JTextField)(arg0.getSource());
+			if(anzDatensaetze.getName().equals("anzDatensaetze")){
+				model.setcolumnLimit(Integer.parseInt(anzDatensaetze.getText()));
+				view.setTableRowsCount(Integer.parseInt(anzDatensaetze.getText()));
+			}
+			
+		}
 	}
 	
+	
+
 
 }
