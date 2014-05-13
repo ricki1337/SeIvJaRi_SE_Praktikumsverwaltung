@@ -1,5 +1,6 @@
 package Controller;
 
+import Mail_1version.guiMail;
 import Praktikumsverwaltung.*;
 
 import java.awt.event.ActionEvent;
@@ -57,6 +58,16 @@ public class StudentList extends ListController{
 		case "anlegen":					StudentEmptySingle newEmptyFrame = new StudentEmptySingle();
 										Praktikumsverwaltung.addFrameToForeground(newEmptyFrame);
 										break;
+		case "mailTo":						String array [] []  = { {"hans", "wurst", "34049" , "beck", "043", "wurstbetrieb","0","1","s68551"},
+											{"jakob", "heltzig", "34050" , "beck", "043", "prbetrieb","1","1","s68551"}, 
+											{"seppus", "härtelus", "33350" , "beck", "043", "prbetrieb","0","0","s68551"} };
+							
+							
+											guiMail bl = new guiMail(array);
+											bl.setVisible(true);
+											break;
+		case "print":						System.out.println("TODO");break;
+					
 		}
 	}
 
