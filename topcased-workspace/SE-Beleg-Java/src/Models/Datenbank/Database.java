@@ -3,6 +3,8 @@ package Models.Datenbank;
 import java.sql.*;
 import java.util.*;
 
+import com.mysql.jdbc.exceptions.MySQLSyntaxErrorException;
+
 public class Database
 {
 	//instance von Database wird beim laden(!!) der klasse erzeugt
@@ -87,7 +89,7 @@ public class Database
 	
 
 	//datenbankverbindung setzen
-	public void connect(String dbType, String host, int port, String user, String pw, String db) {
+	public void connect(String dbType, String host, int port, String user, String pw, String db) throws Exception {
 		if(this.db == null){
 			switch(dbType){
 				case "MySql": 	this.db = new MySql();
@@ -97,21 +99,31 @@ public class Database
 //								break;
 			}
 			
-			this.db.connect(host, port, user, pw, db);
+				
+					this.db.connect(host, port, user, pw, db);
+		
+					
+				
+	
 		}
-		setTables();
+
+			setTables();
+
 	}
 	
-	protected void setTables(){
+	protected void setTables() throws SQLException{
 		ResultSet sqlTables = this.db.getQuery("show tables;");
 		
-		try {
+		
 			while(sqlTables.next()){
 					tables.add(sqlTables.getString(1));
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+			
+
+
+			
+			
+		
 	}
 	
 	public void disconnect() {

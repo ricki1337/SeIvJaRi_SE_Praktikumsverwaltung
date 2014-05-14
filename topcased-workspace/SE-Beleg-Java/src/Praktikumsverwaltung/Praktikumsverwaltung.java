@@ -5,6 +5,7 @@ import java.beans.PropertyVetoException;
 
 import Controller.*;
 import Models.Datenbank.Database;
+import Views.Dialog.DatabaseConnectionDialog;
 import Views.GuiElemente.MenuBar;
 
 import javax.swing.*;
@@ -31,9 +32,11 @@ public class Praktikumsverwaltung extends JFrame{
 		setContentPane(InnerDesktop);
 		
 		//test
-		Database db = Database.getInstance();
-		db.connect("MySql", dbHost, 3306, "root", "", "seproject");
-
+		DatabaseConnectionDialog Dialog = new DatabaseConnectionDialog(dbHost,this, true);
+		Dialog.setLocationRelativeTo(null);
+		Dialog.setVisible(true);
+		
+		new ConfigParser.Config();
 		MenuBar menu = new MenuBar();
 		this.setJMenuBar(menu.getMenu());
 		

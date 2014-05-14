@@ -10,7 +10,7 @@ public interface DatabaseFunction {
 
 	public int setQuery(String query);
 
-	public Connection connect(String host, int port, String user, String pw, String db);
+	public Connection connect(String host, int port, String user, String pw, String db) throws Exception;
 
 	public void disconnect();
 }
