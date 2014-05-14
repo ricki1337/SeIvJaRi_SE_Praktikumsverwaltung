@@ -21,7 +21,7 @@ import javax.swing.text.DefaultHighlighter;
 import javax.swing.text.DefaultHighlighter.DefaultHighlightPainter;
 
 
-
+import Models.Datenbank.Database;
 import Controller.ListController;
 import Import.csvImport;
 
@@ -31,6 +31,7 @@ import Import.csvImport;
 public class ImportWizard extends JDialog implements ActionListener {
 	JFileChooser chooser = new JFileChooser();
 	String comboBoxListe[] = {";",",","-"};
+	Database db = Database.getInstance();
 	
 	//Zustandsvariablen
 	boolean value_checkbox_zeileignorieren = true;
@@ -208,7 +209,7 @@ private void initComponents() {
 
     button_abbrechen.setText("Abbrechen");
 
-    label_fortschritt.setText("Image Fortschritt");
+    label_fortschritt.setText("");
 
     combo_spalte1.setModel(new javax.swing.DefaultComboBoxModel(comboliste));
     combo_spalte2.setModel(new javax.swing.DefaultComboBoxModel(comboliste));
@@ -330,7 +331,7 @@ public void actionPerformed(ActionEvent e) {
 	   
 	//BUTTON "IMPORTIEREN"  	
 	   if (e.getSource() == button_importieren){
-
+		   
 		   // Zuordnungsarray erstellen 
 		   char [] zuordnung = new char [5];
 		   for(int i = 0 ; i<5 ; i++){
@@ -350,7 +351,7 @@ public void actionPerformed(ActionEvent e) {
 			}
 		   
 		   int MatrNr = 0, rowIndexInit = 0, rowcount = table.getModel().getRowCount();
-		   String Name = "", Firstname = "", Email = "", StGr = "", Note = "";
+		   String Name = "", Firstname = "", Email = "", StGr = "", Note = ""; 
 		   boolean error=false;
 		   
 		   if (checkbox_zeileignorieren.isSelected()){rowIndexInit=1;}
@@ -379,15 +380,18 @@ public void actionPerformed(ActionEvent e) {
 					   
 
 			   }
-				   if(!error){this.logconsole.setText(logconsole.getText() + "\n" + Name + Firstname + MatrNr + StGr + Email );};
 				   
-//				   if(!error){
-//					  //Query bauen
-//					   String sql = "INSERT INTO student " + "VALUES (" + MatrNr + "," + Name + "," + Firstname +","+ Email + "," + StGr + "," + Note + ")";
-//					   //Query in DB blasen
-//					//..
-//				   }
+				   
+				   if(!error){
+					  //Query bauen
+					   String sql = "INSERT INTO student " + "VALUES (" + MatrNr + ",\"" + Name + "\",\"" + Firstname +"\",\""+ Email + "\",\"" + StGr + "\",\"" + Note + "\")";
+					   this.logconsole.setText(logconsole.getText()+"\n"+sql);
+					   db.setQuery(sql);
+
+				   }
 			}
+		   this.button_importieren.setEnabled(false);
+		   this.button_abbrechen.setText("Fertig");
 	   }
 	   
 	   //BUTTON "ABBRECHEN"
