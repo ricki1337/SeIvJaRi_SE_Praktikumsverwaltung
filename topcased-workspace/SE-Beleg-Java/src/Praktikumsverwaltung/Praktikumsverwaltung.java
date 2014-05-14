@@ -9,7 +9,7 @@ import Views.Dialog.DatabaseConnectionDialog;
 import Views.GuiElemente.MenuBar;
 
 import javax.swing.*;
-
+import ConfigParser.Config;
 
 public class Praktikumsverwaltung extends JFrame{
 
@@ -31,12 +31,15 @@ public class Praktikumsverwaltung extends JFrame{
 		InnerDesktop = new JDesktopPane();
 		setContentPane(InnerDesktop);
 		
-		//test
+
+		
 		DatabaseConnectionDialog Dialog = new DatabaseConnectionDialog(dbHost,this, true);
 		Dialog.setLocationRelativeTo(null);
 		Dialog.setVisible(true);
 		
-		new ConfigParser.Config();
+		
+		
+		
 		MenuBar menu = new MenuBar();
 		this.setJMenuBar(menu.getMenu());
 		

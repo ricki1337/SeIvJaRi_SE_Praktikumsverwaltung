@@ -14,6 +14,7 @@ import javax.swing.KeyStroke;
 
 import com.mysql.jdbc.exceptions.MySQLSyntaxErrorException;
 
+import ConfigParser.Config;
 import Models.Datenbank.Database;
 
 public class DatabaseConnectionDialog extends JDialog {
@@ -159,8 +160,16 @@ public class DatabaseConnectionDialog extends JDialog {
         );
 
         getRootPane().setDefaultButton(jb_verbinden);
-        this.jtf_datenbank.setText("seproject");//remove me
-        this.jtf_nutzername.setText("root");//remove me
+        
+        String user=Config.getProperties("User");
+        String datenbank=Config.getProperties("Datenbank");
+       
+        if(user!=null){this.jtf_nutzername.setText(user);}
+        else this.jtf_nutzername.setText("nicht in config");//remove me
+        
+        if(datenbank!=null){this.jtf_datenbank.setText(datenbank);}
+        else this.jtf_nutzername.setText("nicht in config");//remove me
+        
         pack();
     }// </editor-fold>                        
 
@@ -180,6 +189,9 @@ public class DatabaseConnectionDialog extends JDialog {
 
 		try {
 			db.connect("MySql", dbhost, 3306, user, password, database);
+    		Config.setProperties("Datenbank", database);
+    		Config.setProperties("User", user);
+			
 			dispose();
 		} catch (Exception e) {
 			this.jl_infolabel.setText("BUG: RECONNECT FUNZT NICHT");
