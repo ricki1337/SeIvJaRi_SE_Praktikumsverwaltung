@@ -1,7 +1,9 @@
 package Models.Datenbank;
 
-import java.sql.*;
-import java.util.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Vector;
 
 public class Database
 {

@@ -5,9 +5,8 @@ import java.awt.GridBagConstraints;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import Views.Table.TableData;
-
 import Controller.Controller;
+import Views.Table.TableData;
 
 public class ContractEmptySingle extends EmptySingleView{
 

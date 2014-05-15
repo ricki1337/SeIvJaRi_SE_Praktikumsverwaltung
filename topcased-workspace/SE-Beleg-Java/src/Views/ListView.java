@@ -1,30 +1,19 @@
 package Views;
 
 import java.awt.GridBagConstraints;
-import java.awt.event.ActionListener;
-import java.awt.event.InputMethodListener;
-import java.awt.event.KeyListener;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.EventListener;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
-import javax.swing.event.InternalFrameEvent;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableModel;
 
+import Controller.ListController;
 import Views.GuiElemente.ListBottomMenu;
 import Views.GuiElemente.ListBottomMenuForSelection;
 import Views.GuiElemente.ListTopMenu;
 import Views.Table.NonEditableTableModel;
-import Views.Table.TableColumnNames;
 import Views.Table.TableData;
-
-import Controller.*;
 
 public abstract class ListView extends View{
 

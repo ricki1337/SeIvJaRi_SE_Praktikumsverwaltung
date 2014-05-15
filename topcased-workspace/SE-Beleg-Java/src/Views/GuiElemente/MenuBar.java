@@ -2,14 +2,20 @@ package Views.GuiElemente;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
 
-import Controller.*;
+import Controller.CompanieList;
+import Controller.ContractList;
+import Controller.ProfList;
+import Controller.StudentList;
 import Praktikumsverwaltung.Praktikumsverwaltung;
 import Views.Import.ImportWizard;
 

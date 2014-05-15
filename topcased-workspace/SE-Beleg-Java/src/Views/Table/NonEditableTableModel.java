@@ -1,8 +1,5 @@
 package Views.Table;
 
-import java.sql.ResultSet;
-
-import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 
 //http://www.javacoderanch.com/how-to-render-boolean-value-as-checkbox-in-jtable-component.html

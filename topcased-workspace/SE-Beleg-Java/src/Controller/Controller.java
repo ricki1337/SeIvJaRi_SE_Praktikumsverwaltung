@@ -2,9 +2,10 @@ package Controller;
 
 
 
-import javax.swing.*;
-import Models.*;
-import Views.*;
+import javax.swing.JInternalFrame;
+
+import Models.Model;
+import Views.View;
 
 public abstract class Controller {
 	protected Model model = null;

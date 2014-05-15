@@ -3,16 +3,11 @@ package Views.GuiElemente;
 
 
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.InputMethodListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.util.EventListener;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;

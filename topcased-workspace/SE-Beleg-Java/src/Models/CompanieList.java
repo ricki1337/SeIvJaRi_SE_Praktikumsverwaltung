@@ -3,6 +3,7 @@ package Models;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+
 import Models.Filter.StringFilter;
 
 public class CompanieList extends Model{

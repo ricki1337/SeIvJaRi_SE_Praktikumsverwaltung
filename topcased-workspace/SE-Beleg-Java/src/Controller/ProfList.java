@@ -1,7 +1,5 @@
 package Controller;
 
-import Praktikumsverwaltung.*;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 
@@ -9,6 +7,8 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
+
+import Praktikumsverwaltung.Praktikumsverwaltung;
 
 public class ProfList extends ListController{
 	

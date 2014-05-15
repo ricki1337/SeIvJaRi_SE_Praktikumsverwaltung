@@ -6,7 +6,6 @@ import javax.swing.JInternalFrame;
 
 import Controller.CompanieList;
 import Controller.ContractSingle;
-import Controller.Controller;
 
 public class CompanieToContractDialog extends JDialog{
 	

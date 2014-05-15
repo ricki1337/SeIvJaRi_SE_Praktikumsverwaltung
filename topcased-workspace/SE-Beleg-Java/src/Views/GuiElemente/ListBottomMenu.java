@@ -5,7 +5,6 @@ import java.awt.event.MouseListener;
 import java.util.EventListener;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class ListBottomMenu extends JPanel{

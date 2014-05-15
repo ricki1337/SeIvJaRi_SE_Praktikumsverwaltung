@@ -1,8 +1,6 @@
 package Views.Import;
 
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,8 +13,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-
-import Controller.ListController;
 
 //checkboxes einfügen : Erste Zeile ignorieren
 // "importieren" button

@@ -1,6 +1,6 @@
 package Views;
 
-import Controller.*;
+import Controller.ListController;
 
 public class CompanieListToContract extends ListView{
 

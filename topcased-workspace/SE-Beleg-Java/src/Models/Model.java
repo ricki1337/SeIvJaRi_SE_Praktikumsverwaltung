@@ -1,11 +1,16 @@
 package Models;
 
-import java.sql.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
-import Models.Datenbank.*;
-import Models.Filter.*;
-import Views.*;
+import Models.Datenbank.Database;
+import Models.Datenbank.observer;
+import Models.Filter.FilterTyp;
+import Models.Filter.ObjectFilter;
+import Models.Filter.TabellenFilter;
+import Views.UpdateView;
+import Views.View;
 
 
 public abstract class Model implements observer{

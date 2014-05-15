@@ -3,7 +3,6 @@ package Views.Dialog;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
@@ -12,9 +11,6 @@ import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.KeyStroke;
 
-import com.mysql.jdbc.exceptions.MySQLSyntaxErrorException;
-
-//import ConfigParser.Config;
 import Models.Datenbank.Database;
 
 public class DatabaseConnectionDialog extends JDialog {

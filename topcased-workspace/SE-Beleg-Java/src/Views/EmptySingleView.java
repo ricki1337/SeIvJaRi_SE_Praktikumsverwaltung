@@ -2,8 +2,6 @@ package Views;
 
 import java.awt.GridBagConstraints;
 import java.awt.event.MouseListener;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.EventListener;
 
 import javax.swing.JCheckBox;
@@ -12,12 +10,9 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import Views.GuiElemente.AddButton;
-import Views.GuiElemente.ListBottomMenu;
-import Views.GuiElemente.SingleBottomMenu;
-import Views.Table.TableData;
-
 import Controller.Controller;
+import Views.GuiElemente.AddButton;
+import Views.GuiElemente.SingleBottomMenu;
 
 public abstract class EmptySingleView extends View{
 	

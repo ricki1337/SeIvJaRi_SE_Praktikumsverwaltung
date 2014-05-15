@@ -1,7 +1,8 @@
 package Models.Datenbank;
 
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
 
 
 public interface DatabaseFunction {

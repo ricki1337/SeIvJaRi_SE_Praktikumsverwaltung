@@ -2,7 +2,6 @@ package Views.GuiElemente;
 
 import java.awt.GridLayout;
 
-import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 

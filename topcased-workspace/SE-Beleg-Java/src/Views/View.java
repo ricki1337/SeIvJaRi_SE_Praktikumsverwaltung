@@ -2,18 +2,21 @@ package Views;
 
 
 
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.util.ArrayList;
 
-import javax.swing.*;
+import javax.swing.JComponent;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 
-import Models.*;
-import Controller.*;
+import Controller.Controller;
+import Models.Model;
 
 public abstract class View extends JInternalFrame implements UpdateView{
 

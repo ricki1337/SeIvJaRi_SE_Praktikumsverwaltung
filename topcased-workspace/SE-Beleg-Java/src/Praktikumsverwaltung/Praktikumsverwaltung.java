@@ -5,12 +5,13 @@ import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.beans.PropertyVetoException;
 
-import Controller.*;
+import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+
+import Controller.Controller;
 import Views.Dialog.DatabaseConnectionDialog;
 import Views.GuiElemente.MenuBar;
-
-import javax.swing.*;
-//import ConfigParser.Config;
 
 public class Praktikumsverwaltung extends JFrame{
 
