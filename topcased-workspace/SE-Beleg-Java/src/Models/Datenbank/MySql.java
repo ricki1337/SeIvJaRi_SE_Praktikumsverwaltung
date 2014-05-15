@@ -17,8 +17,10 @@ public class MySql implements DatabaseFunction{
 		return stmnt.executeQuery(query);
 		}
 		catch(Exception e){
-			e.printStackTrace();
+			//e.printStackTrace();
 			return null;
+			
+
 		}
 	}
 
@@ -36,17 +38,14 @@ public class MySql implements DatabaseFunction{
 	}
 
 	@Override
-	public Connection connect(String host, int port, String user, String pw, String db) {
-		try{
+	public Connection connect(String host, int port, String user, String pw, String db) throws Exception {
+		
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			String connectionCommand = "jdbc:mysql://"+host+"/"+db+"?user="+user+"&password="+pw;
 			connection = DriverManager.getConnection(connectionCommand);
 			return connection;
-		}
-		catch(Exception e){
-			e.printStackTrace();
-			return null;
-		}
+		
+
 	}
 
 	@Override

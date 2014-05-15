@@ -1,9 +1,9 @@
 package Models.Datenbank;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Vector;
+import java.sql.*;
+import java.util.*;
+
+import com.mysql.jdbc.exceptions.MySQLSyntaxErrorException;
 
 public class Database
 {
@@ -89,31 +89,41 @@ public class Database
 	
 
 	//datenbankverbindung setzen
-	public void connect(String dbType, String host, int port, String user, String pw, String db) {
+	public void connect(String dbType, String host, int port, String user, String pw, String db) throws Exception {
 		if(this.db == null){
 			switch(dbType){
 				case "MySql": 	this.db = new MySql();
 								break;
 								
-				case "test":	this.db = new MySqlMock();
-								break;
+//				case "test":	this.db = new MySqlMock();
+//								break;
 			}
 			
-			this.db.connect(host, port, user, pw, db);
+				
+					this.db.connect(host, port, user, pw, db);
+		
+					
+				
+	
 		}
-		setTables();
+
+			setTables();
+
 	}
 	
-	protected void setTables(){
-		ResultSet sqlTables = getQuery("show tables;");
+	protected void setTables() throws SQLException{
+		ResultSet sqlTables = this.db.getQuery("show tables;");
 		
-		try {
+		
 			while(sqlTables.next()){
 					tables.add(sqlTables.getString(1));
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+			
+
+
+			
+			
+		
 	}
 	
 	public void disconnect() {

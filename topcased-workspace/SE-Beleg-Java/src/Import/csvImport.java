@@ -1,5 +1,5 @@
 package Import;
-
+//blabal
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -27,7 +27,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class csvImport {
 //Eigenschaften
-	StudentContainer container;
+
 	String file, delimiter, errorlog="Beim Import sind Fehler aufgetreten:\n";
 	int lines=0;
 	Boolean importerrors=false,MetaDatenKopfZeile = true; //Wenn in der ersten Zeile Spaltenbezeichner stehen true, dann wird diese Zeile übersprungen
@@ -40,7 +40,7 @@ public class csvImport {
 		this.delimiter=delimiter;
 		this.MetaDatenKopfZeile=t;
 		this.spaltenreihenfolge= new  char [] {'n','v','m','b','g'};
-		container = new StudentContainer();
+
 		
 	}
 

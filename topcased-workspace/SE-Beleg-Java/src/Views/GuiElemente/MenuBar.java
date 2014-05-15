@@ -157,11 +157,12 @@ public class MenuBar implements ActionListener{
    }
     
     private void startImport(){
-    	ImportWizard a =new ImportWizard();
-    	a.setSize(800, 600);
-    	a.setTitle("ImportWizard");
-		a.setModal(true);
-		a.setVisible(true);
+    	ImportWizard importwizard =new ImportWizard();
+    	importwizard.setSize(800, 600);
+    	importwizard.setTitle("ImportWizard");
+    	importwizard.setLocationRelativeTo(null);
+		importwizard.setModal(true);
+		importwizard.setVisible(true);
 
     	
     }

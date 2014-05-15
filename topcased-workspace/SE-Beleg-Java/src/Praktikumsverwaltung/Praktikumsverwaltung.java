@@ -11,9 +11,11 @@ import javax.swing.JInternalFrame;
 
 import Controller.Controller;
 import Views.Dialog.DatabaseConnectionDialog;
+import Views.Dialog.DatabaseConnectionDialog;
 import Views.GuiElemente.MenuBar;
 
-public class Praktikumsverwaltung extends JFrame{
+import javax.swing.*;
+import ConfigParser.Config;public class Praktikumsverwaltung extends JFrame{
 
 	static JDesktopPane InnerDesktop;
 	
@@ -33,6 +35,8 @@ public class Praktikumsverwaltung extends JFrame{
 		InnerDesktop = new JDesktopPane();
 		setContentPane(InnerDesktop);
 		
+		//Database db = Database.getInstance();
+		//db.connect("MySql", dbHost, 3306, "root", "", "seproject");
 
 		
 		DatabaseConnectionDialog Dialog = new DatabaseConnectionDialog(dbHost,this, true);
