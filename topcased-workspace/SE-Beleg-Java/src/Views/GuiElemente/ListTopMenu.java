@@ -16,23 +16,34 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentListener;
 
 import Views.ListView;
+import Views.GuiElemente.SearchPanel.CompanyExtendedSearchPanel;
+import Views.GuiElemente.SearchPanel.ContractExtendedSearchPanel;
+import Views.GuiElemente.SearchPanel.ExtendedSearchPanel;
+import Views.GuiElemente.SearchPanel.ProfExtendedSearchPanel;
+import Views.GuiElemente.SearchPanel.StudentExtendedSearchPanel;
 
 public class ListTopMenu extends JPanel{
+	JPanel oben;
+	JPanel unten;
+	GridLayout layout;
+	ExtendedSearchPanel searchPanel;
+	EventListener controller;
+	ListView view;
 	
-
+	
 	public ListTopMenu(EventListener controller, final ListView view){
 		super();
-		final JPanel instance = this;
-		GridLayout layout = new GridLayout(2,2);
+		layout = new GridLayout(1,2);
 		layout.setHgap(5);
 		setLayout(layout);
 		setName("topmenu");
+		this.controller = controller;
+		this.view = view;
 		
-		
-		JPanel oben = new JPanel();
+		oben = new JPanel();
 		oben.setLayout(new FlowLayout());
 		
-		final JPanel unten = new JPanel();
+		unten = new JPanel();
 		unten.setLayout(new GridLayout(1,1));
 		unten.setName("unten");
 		
@@ -54,8 +65,8 @@ public class ListTopMenu extends JPanel{
 
 		oben.add(anlegen);
 		
+		setSearchPanel();
 		
-		ExtendedSearchPanel searchPanel = new ExtendedSearchPanel(this);
 		searchPanel.setName("searchPanel");
 
 		searchPanel.setVisible(true);
@@ -67,13 +78,8 @@ public class ListTopMenu extends JPanel{
 				new ActionListener(){
 						@Override
 						public void actionPerformed(ActionEvent ae) {
-							
-							unten.setVisible(unten.isVisible()?false:true);
-							instance.setSize(620,unten.isVisible()?160:50);
-							instance.repaint();
-							view.refreshViewComponents();
-							
-							System.out.println(instance.getSize());
+							showExtendedSearch();
+							view.pack();
 						}
 				});
 		
@@ -81,7 +87,6 @@ public class ListTopMenu extends JPanel{
 		oben.add(erweiterteSuche);
 		
 		oben.add(new JLabel("Anz. Datensätze: "));
-		
 		JTextField anzDatensaetze = new JTextField("20");
 		anzDatensaetze.setName("anzDatensaetze");
 		anzDatensaetze.setColumns(3);
@@ -90,10 +95,39 @@ public class ListTopMenu extends JPanel{
 		
 		
 		oben.setVisible(true);
-		unten.setVisible(true);
+		
 		add(oben);
-		add(unten);
+		
 		setVisible(true);
 	}
+	
+	final private void showExtendedSearch(){
+		if(unten.isShowing()){
+			remove(unten);
+			layout.setRows(1);
+		}else{
+			layout.setRows(2);
+			unten.setVisible(true);
+			add(unten);
+		}
+		layout.layoutContainer(getParent());
+
+	}
+	
+	public void setSearchPanel(){
+		if(view instanceof Views.CompanieList | view instanceof Views.CompanieListToContract)
+			searchPanel = new CompanyExtendedSearchPanel(controller,view);
+		
+		if(view instanceof Views.StudentList | view instanceof Views.StudentListToContract)
+			searchPanel = new StudentExtendedSearchPanel(controller,view);
+		
+		if(view instanceof Views.ContractList)
+			searchPanel = new ContractExtendedSearchPanel(controller,view);
+		
+		if(view instanceof Views.ProfList)
+			searchPanel = new ProfExtendedSearchPanel(controller,view);
+	}
+	
+	
 
 }

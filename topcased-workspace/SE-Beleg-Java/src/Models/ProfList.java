@@ -32,6 +32,22 @@ public class ProfList extends Model{
 		informView();
 	}
 	
+	public void setSearchFilter(Object[][] searchValues){
+		
+		deleteSearchFilter();
+		
+		for(Object[] row:searchValues){
+			if(row == null) continue;
+			StringFilter filter = new StringFilter((String)row[1]);
+			filter.setWertPraefix('%');
+			filter.setWertSuffix('%');
+			setAndFilter((String)row[0],filter);
+
+		}
+		setResult();
+		informView();
+	}
+	
 	public void deleteSearchFilter(){
 		String[] columnNames = getSqlResultColumnNames();
 		

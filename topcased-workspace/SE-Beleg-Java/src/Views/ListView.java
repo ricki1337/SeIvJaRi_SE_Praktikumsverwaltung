@@ -4,6 +4,7 @@ import java.awt.GridBagConstraints;
 import java.sql.ResultSet;
 import java.util.EventListener;
 
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -170,5 +171,6 @@ public abstract class ListView extends View{
 		public void setTableRowsCount(int rowsCount){
 			refreshListTableWithDataFromModel(rowsCount);
 		}
-
+		
+		abstract public void getExtendedSearchInputFields(JPanel target);
 }

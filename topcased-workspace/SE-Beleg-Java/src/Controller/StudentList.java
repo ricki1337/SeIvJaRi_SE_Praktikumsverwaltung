@@ -3,12 +3,14 @@ package Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 
 import Praktikumsverwaltung.Praktikumsverwaltung;
+import Views.GuiElemente.SearchPanel.ExtendedSearchPanel;
 
 public class StudentList extends ListController{
 	
@@ -153,6 +155,11 @@ public class StudentList extends ListController{
 				view.setTableRowsCount(Integer.parseInt(anzDatensaetze.getText()));
 			}
 			
+		}
+		if(arg0.getSource() instanceof JButton){
+			JButton searchButton = (JButton)(arg0.getSource());
+			ExtendedSearchPanel searchPanel = (ExtendedSearchPanel)searchButton.getParent();
+			((Models.StudentList)model).setSearchFilter(searchPanel.getSearchValues());
 		}
 	}
 	
