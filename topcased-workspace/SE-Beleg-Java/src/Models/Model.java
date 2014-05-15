@@ -37,7 +37,7 @@ public abstract class Model implements observer{
 	public Model(String srcQuery, int columnLimit){
 		this();
 		setSrcQuery(srcQuery);
-		setcolumnLimit(columnLimit);
+		setColumnLimit(columnLimit);
 		setResult();
 	}
 	
@@ -89,9 +89,13 @@ public abstract class Model implements observer{
 	public int getcolumnLimit() {
 		return columnLimit;
 	}
-
-	public void setcolumnLimit(int columnLimit) {
+	
+	private void setColumnLimit(int columnLimit){
 		this.columnLimit = columnLimit;
+	}
+
+	public void setcolumnLimitAndRefreshViews(int columnLimit) {
+		setColumnLimit(columnLimit);
 		setResult();
 		informView();
 	}
@@ -106,8 +110,8 @@ public abstract class Model implements observer{
 		where = (getSrcQuery().contains("where")) ? " and " : " where ";
 		filter = (filter.length()>0) ? filter : " 1 ";
 		String query = getSrcQuery() + where + filter + " limit " + columnLimit;
-		
-		this.result = db.getQuery(query);
+		ResultSet result = db.getQuery(query);
+		this.result = result;
 	}
 
 	private void setSrcTables() {
@@ -145,8 +149,8 @@ public abstract class Model implements observer{
 		String primaryKey = getPrimaryKeyColumnName();
 		String primaryKeyValue = (String)((View)view).getValueFromCurrentItem(primaryKey);
 		
-		sqlUpdateQuery += " WHERE " + primaryKey + " = " + primaryKeyValue;
-		System.out.println(sqlUpdateQuery);
+		sqlUpdateQuery += " WHERE " + primaryKey + " = '" + primaryKeyValue+ "'";
+
 		updateDatabase(sqlUpdateQuery);		
 	}
 	
@@ -194,7 +198,6 @@ public abstract class Model implements observer{
 		}
 		sqlInsertQuery += sqlColumns + " VALUES " + sqlValues + ";";
 		
-		System.out.println(sqlInsertQuery);
 		db.setQuery(sqlInsertQuery);		
 	
 	}

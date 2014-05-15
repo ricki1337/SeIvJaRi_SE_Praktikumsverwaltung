@@ -28,6 +28,9 @@ public class ContractEmptySingle extends EmptySingleView{
 		studentData = new TableData(student.getResult());
 		
 		deleteComponentFromView("addStudent");
+		setStudentFields();
+		this.getLayout().layoutContainer(this);
+		pack();
 	}
 	
 	public void setCompany(String companyId){
@@ -72,6 +75,7 @@ public class ContractEmptySingle extends EmptySingleView{
 	
 	private void setCompanyFields(){
 		try {
+			addHiddenFieldWithSqlReference("CompID",companyData.getStringValueFromPosition(0, "ID"));
 			addTextfieldWithData("Firmenname", companyData.getStringValueFromPosition(0, "Name"), 3, 1);
 			addTextfieldWithData("Straﬂe", companyData.getStringValueFromPosition(0, "Street"), 3, 2);
 			addTextfieldWithData("PLZ", companyData.getStringValueFromPosition(0, "ZIP"),3 , 3);
@@ -95,10 +99,16 @@ public class ContractEmptySingle extends EmptySingleView{
 	
 	
 	private void setStudentFields(){
-		addTextfieldWithData("Vorname", "Vorname", 1, 1);
-		addTextfieldWithData("Nachname", "Nachname", 1, 2);
-		addTextfieldWithData("Matrikelnr.", "Matrikelnr.", 1, 3);
-		addTextfieldWithData("E-Mail", "E-Mail", 1, 4);
+		try {
+			addHiddenFieldWithSqlReference("MatrNr",studentData.getStringValueFromPosition(0, "MatrNr"));
+			addTextfieldWithData("Vorname", studentData.getStringValueFromPosition(0, "Firstname"), 1, 1);
+			addTextfieldWithData("Nachname", studentData.getStringValueFromPosition(0, "Name"), 1, 2);
+			addTextfieldWithData("Matrikelnr.", studentData.getStringValueFromPosition(0, "MatrNr"), 1, 3);
+			addTextfieldWithData("E-Mail", studentData.getStringValueFromPosition(0, "Email"), 1, 4);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		setModifyStudentButton();
 	}
 	
@@ -146,5 +156,14 @@ public class ContractEmptySingle extends EmptySingleView{
 			e.printStackTrace();
 		}
 		
+	}
+	
+	private void addHiddenFieldWithSqlReference(String sqlSpaltenName, String value){
+
+		JLabel hiddenContractId = new JLabel(value);
+		hiddenContractId.setVisible(false);
+		
+		addComponentToView(hiddenContractId,sqlSpaltenName);
+
 	}
 }

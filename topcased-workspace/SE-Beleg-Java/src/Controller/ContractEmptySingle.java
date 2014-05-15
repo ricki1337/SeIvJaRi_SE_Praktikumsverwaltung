@@ -29,11 +29,11 @@ public class ContractEmptySingle extends SingleController implements ChangeableC
 			case "changeCompany": 	Praktikumsverwaltung.Praktikumsverwaltung.addFrameToForeground(new CompanieListToContract(this));
 									break;
 			
-			case "modifyStudent": 	Praktikumsverwaltung.Praktikumsverwaltung.addFrameToForeground(new StudentSingle(view.getValueFromCurrentItem("Matrikelnr.")));
+			case "modifyStudent": 	Praktikumsverwaltung.Praktikumsverwaltung.addFrameToForeground(new StudentSingle(view.getValueFromCurrentItem("Matrikelnr")));
 									break;
-//			case "addStudent":							
-//			case "changeStudent": 	Praktikumsverwaltung.Praktikumsverwaltung.addFrameToForeground(new StudentListToContract(this));
-//									break;
+			case "addStudent":							
+			case "changeStudent": 	Praktikumsverwaltung.Praktikumsverwaltung.addFrameToForeground(new StudentListToContract(this));
+									break;
 			
 		}
 	}

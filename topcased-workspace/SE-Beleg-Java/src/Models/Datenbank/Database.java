@@ -103,7 +103,7 @@ public class Database
 	}
 	
 	protected void setTables(){
-		ResultSet sqlTables = this.db.getQuery("show tables;");
+		ResultSet sqlTables = getQuery("show tables;");
 		
 		try {
 			while(sqlTables.next()){

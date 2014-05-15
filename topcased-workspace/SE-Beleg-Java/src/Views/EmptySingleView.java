@@ -124,12 +124,25 @@ public abstract class EmptySingleView extends View{
 	
 	@Override
 	public Object[][] getEingabeWerte() {
-		Object[][] updatedValues = new Object[listOfComponentsToSqlReference.size()][2];
-		
-		for(int index = 0;index < listOfComponentsToSqlReference.size();index++){
-			updatedValues[index][0] = listOfComponentsToSqlReference.get(index);
-			updatedValues[index][1] = getValueFromComponent(index);
+		Object[][] updatedValues = new Object[countOfSqlReferencesInList][2];
+		int index = 0;
+		int sqlReferenceIndex = 0;
+		for(String sqlReference : listOfComponentsToSqlReference){
+			if(sqlReference.equals("")){
+				sqlReferenceIndex++;
+				continue;
+			}
+			updatedValues[index][0] = sqlReference;
+			updatedValues[index][1] = getValueFromComponent(index+sqlReferenceIndex);
+			index++;
 		}
+//		for(int index = 0;index < listOfComponentsToSqlReference.size();index++){
+//			if(listOfComponentsToSqlReference.get(index) != null){
+//				 = listOfComponentsToSqlReference.get(index);
+//				//updatedValues[index][1] = getStringValueFromComponent(index);
+//				
+//			}
+//		}
 		
 		return updatedValues;
 	}

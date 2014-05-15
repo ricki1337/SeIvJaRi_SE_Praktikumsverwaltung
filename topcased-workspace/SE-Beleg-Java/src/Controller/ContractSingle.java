@@ -71,6 +71,10 @@ public class ContractSingle extends SingleController implements ChangeableContro
 								break;
 		case "changeCompanie": 	Praktikumsverwaltung.Praktikumsverwaltung.addFrameToForeground(new CompanieListToContract(this));
 								break;
+		case "modifyStudent": 	Praktikumsverwaltung.Praktikumsverwaltung.addFrameToForeground(new StudentSingle(view.getValueFromCurrentItem("Matrikelnr.")));
+								break;
+		case "changeStudent": 	Praktikumsverwaltung.Praktikumsverwaltung.addFrameToForeground(new StudentListToContract(this));
+								break;
 		}
 	}
 
@@ -104,6 +108,8 @@ public class ContractSingle extends SingleController implements ChangeableContro
 		// TODO Auto-generated method stub
 		if(valueName.equals("company"))
 			((Models.ContractSingle)model).changeCompanie(view.getValueFromCurrentItem("ID"),(String)value);
+		if(valueName.equals("student"))
+			((Models.ContractSingle)model).changeStudent(view.getValueFromCurrentItem("ID"),(String)value);
 	}
 
 }

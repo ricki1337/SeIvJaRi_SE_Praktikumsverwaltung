@@ -12,7 +12,13 @@ import javax.swing.text.Document;
 
 public class StudentList extends ListController{
 	
-	private String srcSqlQuery = "select MatrNr as Matrikelnr, Firstname as Vorname, Name as Nachname, Email as 'E-Mail', StGr as Studiengruppe,Note as Bemerkung from student";
+	private String srcSqlQuery = "select MatrNr as Matrikelnr," +
+									" Firstname as Vorname," +
+									" Name as Nachname," +
+									" Email as 'E-Mail'," +
+									" StGr as Studiengruppe," +
+									" Note as Bemerkung" +
+									" from student";
 	private Views.StudentList view;
 	
 	
@@ -143,7 +149,7 @@ public class StudentList extends ListController{
 		if(arg0.getSource() instanceof JTextField){
 			JTextField anzDatensaetze = (JTextField)(arg0.getSource());
 			if(anzDatensaetze.getName().equals("anzDatensaetze")){
-				model.setcolumnLimit(Integer.parseInt(anzDatensaetze.getText()));
+				model.setcolumnLimitAndRefreshViews(Integer.parseInt(anzDatensaetze.getText()));
 				view.setTableRowsCount(Integer.parseInt(anzDatensaetze.getText()));
 			}
 			

@@ -23,5 +23,9 @@ public class ContractSingle extends Model{
 	public void changeCompanie(String contractId,String companieId){
 		this.updateDatabase("UPDATE "+getTableNameForUpdateOrInsert()+" set CompID = '"+companieId+"' where "+getPrimaryKeyColumnName()+" = '"+contractId+"'");
 	}
+	
+	public void changeStudent(String contractId,String matrikelNr){
+		this.updateDatabase("UPDATE "+getTableNameForUpdateOrInsert()+" set MatrNr = '"+matrikelNr+"' where "+getPrimaryKeyColumnName()+" = '"+contractId+"'");
+	}
 
 }

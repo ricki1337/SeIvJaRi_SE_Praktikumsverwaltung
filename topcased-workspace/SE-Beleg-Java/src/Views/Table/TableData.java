@@ -34,41 +34,54 @@ public class TableData {
 	private void setDataFromResultSet(){
 		
 		try {
-			sqlResultSet.last();
-			
-			data = new Object[sqlResultSet.getRow()][columnNames.getCountOfColumns()];
-			sqlResultSet.first();
-			int row = 0;
-			do{
-				for(int column = 0;column<columnNames.getCountOfColumns();column++){
-					Object object = sqlResultSet.getObject(column+1);
-					if(object == null){
-						object = sqlResultSet.getBoolean(column+1);
+			if(!sqlResultSet.last()){
+				return;
+			}else{
+				sqlResultSet.last();
+				
+				data = new Object[sqlResultSet.getRow()][columnNames.getCountOfColumns()];
+				sqlResultSet.first();
+				int row = 0;
+				do{
+					for(int column = 0;column<columnNames.getCountOfColumns();column++){
+						Object object = sqlResultSet.getObject(column+1);
+						if(object == null){
+							object = sqlResultSet.getBoolean(column+1);
+						}
+						data[row][column] = object;
 					}
-					data[row][column] = object;
-				}
-				row++;
-			}while(sqlResultSet.next());
+					row++;
+				}while(sqlResultSet.next());
+				
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
+	
 	public void setRowCount(int rowCount){
 		if(rowCount < 0) throw new IllegalArgumentException();
 		this.rowCount = rowCount;
+		setDataFromResultSet();
 		setTableRowsUpToRowCount();
 	}
 	
 	private void setTableRowsUpToRowCount(){
 		Object[][] tmp_data = new Object[rowCount][columnNames.getCountOfColumns()];
-
+		Object[] emptyRow = new EmptyObject[columnNames.getCountOfColumns()];
+		for(int row = 0; row < columnNames.getCountOfColumns();row++) emptyRow[row] = new EmptyObject();
+		
+		
 		for(int row = 0; row < tmp_data.length;row++){
 			try{
 				tmp_data[row] = data[row];
 			}catch(IndexOutOfBoundsException exception){
-				tmp_data[row] = new EmptyObject[columnNames.getCountOfColumns()];
+				tmp_data[row] = emptyRow;
+			}
+			catch(NullPointerException exception){
+				tmp_data[row] = emptyRow;
 			}
 		}
 		data = tmp_data;

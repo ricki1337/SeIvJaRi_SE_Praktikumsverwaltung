@@ -6,7 +6,6 @@ import java.awt.GraphicsEnvironment;
 import java.beans.PropertyVetoException;
 
 import Controller.*;
-import Models.Datenbank.Database;
 import Views.Dialog.DatabaseConnectionDialog;
 import Views.GuiElemente.MenuBar;
 

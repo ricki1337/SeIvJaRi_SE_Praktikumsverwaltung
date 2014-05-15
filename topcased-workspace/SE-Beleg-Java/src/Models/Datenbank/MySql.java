@@ -10,7 +10,7 @@ public class MySql implements DatabaseFunction{
 	public ResultSet getQuery(String query) {
 		try{
 		Statement stmnt = connection.createStatement();
-		
+		System.out.println("MySql-Class: "+query);
 		return stmnt.executeQuery(query);
 		}
 		catch(Exception e){
@@ -23,6 +23,7 @@ public class MySql implements DatabaseFunction{
 	public int setQuery(String query) {
 		try{
 			Statement stmnt = connection.createStatement();
+			System.out.println("MySql-Class: "+query);
 			return stmnt.executeUpdate(query);
 			}
 			catch(Exception e){
