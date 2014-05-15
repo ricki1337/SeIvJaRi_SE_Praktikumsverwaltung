@@ -10,19 +10,26 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 
-public class CompanieListToContract extends ListController{
+public class StudentListToContract extends ListController{
 	
-	private String srcSqlQuery = "select ID as ID, Name as Name, Street as Strasse, ZIP as PLZ, Town as Ort, Country as Land, Phone_Cental as 'Tel.', Notes as Bemerkung from companies";
-	private Views.CompanieListToContract view;
+	private String srcSqlQuery = "select MatrNr as Matrikelnr," +
+									" Firstname as Vorname," +
+									" Name as Nachname," +
+									" Email as 'E-Mail'," +
+									" StGr as Studiengruppe," +
+									" Note as Bemerkung" +
+									" from student";
+	private Views.StudentListToContract view;
 	private ChangeableController calledController;
 	
-	public CompanieListToContract(ChangeableController calledController){
+	public StudentListToContract(ChangeableController calledController){
 		super();
 		this.calledController = calledController;
-		setModel(new Models.CompanieList(srcSqlQuery));
+		setModel(new Models.StudentList(srcSqlQuery));
 		
-		setView(view = new Views.CompanieListToContract(this));
+		setView(view = new Views.StudentListToContract(this));
 	}
+
 	
 
 	@Override
@@ -35,10 +42,10 @@ public class CompanieListToContract extends ListController{
 	public void mouseClicked(MouseEvent e) {
 		switch(e.getComponent().getName()){
 		case "table": 	if (e.getClickCount() == 2) {
-							Object companieId;
+							Object studentId;
 							
-							if((companieId = view.getColumnValueFromSelectedRow("ID")) != null){
-							CompanieSingle newFrame = new CompanieSingle(companieId);
+							if((studentId = view.getColumnValueFromSelectedRow("Matrikelnr")) != null){
+							StudentSingle newFrame = new StudentSingle(studentId);
 							Praktikumsverwaltung.addFrameToForeground(newFrame);
 							}
 						}else{
@@ -46,11 +53,11 @@ public class CompanieListToContract extends ListController{
 						}
 						break;
 						
-		case "setMarkedRow": 	calledController.change("company",view.getColumnValueFromSelectedRow("ID").toString());
-								view.dispose();
-								break;
+		case "setMarkedRow": 	calledController.change("student",view.getColumnValueFromSelectedRow("Matrikelnr").toString());
+										view.dispose();
+										break;
 										
-		case "anlegen":					CompanieEmptySingle newEmptyFrame = new CompanieEmptySingle();
+		case "anlegen":					StudentEmptySingle newEmptyFrame = new StudentEmptySingle();
 										Praktikumsverwaltung.addFrameToForeground(newEmptyFrame);
 										break;
 		}
@@ -94,7 +101,7 @@ public class CompanieListToContract extends ListController{
 		
 		try {
 			String searchValue = searchField.getText(0,searchField.getLength());
-			((Models.CompanieList)model).setSearchFilter(searchValue);
+			((Models.StudentList)model).setSearchFilter(searchValue);
 		} catch (BadLocationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -108,7 +115,7 @@ public class CompanieListToContract extends ListController{
 		Document searchField = arg0.getDocument();
 		try {
 			String searchValue = searchField.getText(0,searchField.getLength());
-			((Models.CompanieList)model).setSearchFilter(searchValue);
+			((Models.StudentList)model).setSearchFilter(searchValue);
 		} catch (BadLocationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -123,7 +130,7 @@ public class CompanieListToContract extends ListController{
 		Document searchField = arg0.getDocument();
 		try {
 			String searchValue = searchField.getText(0,searchField.getLength());
-			((Models.CompanieList)model).setSearchFilter(searchValue);
+			((Models.StudentList)model).setSearchFilter(searchValue);
 		} catch (BadLocationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -139,7 +146,7 @@ public class CompanieListToContract extends ListController{
 		if(arg0.getSource() instanceof JTextField){
 			JTextField anzDatensaetze = (JTextField)(arg0.getSource());
 			if(anzDatensaetze.getName().equals("anzDatensaetze")){
-				model.setcolumnLimit(Integer.parseInt(anzDatensaetze.getText()));
+				model.setcolumnLimitAndRefreshViews(Integer.parseInt(anzDatensaetze.getText()));
 				view.setTableRowsCount(Integer.parseInt(anzDatensaetze.getText()));
 			}
 			

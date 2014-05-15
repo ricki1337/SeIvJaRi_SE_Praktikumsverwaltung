@@ -1,5 +1,5 @@
 package Controller;
 
-public interface changeableController {
+public interface ChangeableController {
 	public void change(String valueName, Object value);
 }

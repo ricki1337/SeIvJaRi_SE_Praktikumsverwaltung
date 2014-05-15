@@ -2,10 +2,7 @@ package Controller;
 
 import java.awt.event.MouseEvent;
 
-import Models.Model;
-import Views.Dialog.CompanieToContractDialog;
-
-public class ContractSingle extends SingleController implements changeableController{
+public class ContractSingle extends SingleController implements ChangeableController{
 	
 	Views.ContractSingle view;
 	

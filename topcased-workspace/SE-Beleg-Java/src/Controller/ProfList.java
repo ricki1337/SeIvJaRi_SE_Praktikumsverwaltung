@@ -10,19 +10,20 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 
-public class CompanieListToContract extends ListController{
+public class ProfList extends ListController{
 	
-	private String srcSqlQuery = "select ID as ID, Name as Name, Street as Strasse, ZIP as PLZ, Town as Ort, Country as Land, Phone_Cental as 'Tel.', Notes as Bemerkung from companies";
-	private Views.CompanieListToContract view;
-	private ChangeableController calledController;
+private String srcSqlQuery = "select Name as Name, NameID as 'E-Mail' from profs";
+	private Views.ProfList view;
 	
-	public CompanieListToContract(ChangeableController calledController){
+	
+	public ProfList(){
 		super();
-		this.calledController = calledController;
-		setModel(new Models.CompanieList(srcSqlQuery));
+
+		setModel(new Models.ProfList(srcSqlQuery));
 		
-		setView(view = new Views.CompanieListToContract(this));
+		setView(view = new Views.ProfList(this));
 	}
+
 	
 
 	@Override
@@ -35,10 +36,10 @@ public class CompanieListToContract extends ListController{
 	public void mouseClicked(MouseEvent e) {
 		switch(e.getComponent().getName()){
 		case "table": 	if (e.getClickCount() == 2) {
-							Object companieId;
+							Object profId;
 							
-							if((companieId = view.getColumnValueFromSelectedRow("ID")) != null){
-							CompanieSingle newFrame = new CompanieSingle(companieId);
+							if((profId = view.getColumnValueFromSelectedRow("E-Mail")) != null){
+							ProfSingle newFrame = new ProfSingle(profId);
 							Praktikumsverwaltung.addFrameToForeground(newFrame);
 							}
 						}else{
@@ -46,11 +47,14 @@ public class CompanieListToContract extends ListController{
 						}
 						break;
 						
-		case "setMarkedRow": 	calledController.change("company",view.getColumnValueFromSelectedRow("ID").toString());
-								view.dispose();
-								break;
+		case "setFlagOnMarkedRows": 	view.setFlagOnSelectedRow();
+										break;
 										
-		case "anlegen":					CompanieEmptySingle newEmptyFrame = new CompanieEmptySingle();
+		case "modifySelectedRows":		Object[] profList = view.getColumnValuesFromSelectedRows("E-Mail");
+										ProfSingle newFrame = new ProfSingle(profList);
+										Praktikumsverwaltung.addFrameToForeground(newFrame);
+										break;
+		case "anlegen":					ProfEmptySingle newEmptyFrame = new ProfEmptySingle();
 										Praktikumsverwaltung.addFrameToForeground(newEmptyFrame);
 										break;
 		}
@@ -94,7 +98,7 @@ public class CompanieListToContract extends ListController{
 		
 		try {
 			String searchValue = searchField.getText(0,searchField.getLength());
-			((Models.CompanieList)model).setSearchFilter(searchValue);
+			((Models.ProfList)model).setSearchFilter(searchValue);
 		} catch (BadLocationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -108,7 +112,7 @@ public class CompanieListToContract extends ListController{
 		Document searchField = arg0.getDocument();
 		try {
 			String searchValue = searchField.getText(0,searchField.getLength());
-			((Models.CompanieList)model).setSearchFilter(searchValue);
+			((Models.ProfList)model).setSearchFilter(searchValue);
 		} catch (BadLocationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -123,7 +127,7 @@ public class CompanieListToContract extends ListController{
 		Document searchField = arg0.getDocument();
 		try {
 			String searchValue = searchField.getText(0,searchField.getLength());
-			((Models.CompanieList)model).setSearchFilter(searchValue);
+			((Models.ProfList)model).setSearchFilter(searchValue);
 		} catch (BadLocationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -139,7 +143,7 @@ public class CompanieListToContract extends ListController{
 		if(arg0.getSource() instanceof JTextField){
 			JTextField anzDatensaetze = (JTextField)(arg0.getSource());
 			if(anzDatensaetze.getName().equals("anzDatensaetze")){
-				model.setcolumnLimit(Integer.parseInt(anzDatensaetze.getText()));
+				model.setcolumnLimitAndRefreshViews(Integer.parseInt(anzDatensaetze.getText()));
 				view.setTableRowsCount(Integer.parseInt(anzDatensaetze.getText()));
 			}
 			

@@ -2,7 +2,7 @@ package Controller;
 
 import java.awt.event.MouseEvent;
 
-public class ContractEmptySingle extends SingleController implements changeableController{
+public class ContractEmptySingle extends SingleController implements ChangeableController{
 	
 	Views.ContractEmptySingle view;
 	

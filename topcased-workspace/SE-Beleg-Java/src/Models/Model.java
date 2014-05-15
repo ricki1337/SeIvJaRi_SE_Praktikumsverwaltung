@@ -3,12 +3,6 @@ package Models;
 import java.sql.*;
 import java.util.ArrayList;
 
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-
-import Controller.*;
 import Models.Datenbank.*;
 import Models.Filter.*;
 import Views.*;

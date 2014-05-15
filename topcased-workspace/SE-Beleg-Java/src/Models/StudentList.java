@@ -3,8 +3,6 @@ package Models;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.ArrayList;
-
 import Models.Filter.StringFilter;
 
 public class StudentList extends Model{

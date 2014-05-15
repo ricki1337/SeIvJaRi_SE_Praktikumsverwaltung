@@ -3,11 +3,13 @@ package Models;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 import Models.Filter.StringFilter;
 
-public class ContractList extends Model{
+public class ProfList extends Model{
 
-	public ContractList(String srcQuery) {
+	public ProfList(String srcQuery) {
 		super(srcQuery);
 	}
 
@@ -61,12 +63,12 @@ public class ContractList extends Model{
 	@Override
 	public String getTableNameForUpdateOrInsert() {
 		// TODO Auto-generated method stub
-		return new String("contract");
+		return new String("profs");
 	}
 
 	@Override
 	protected String getPrimaryKeyColumnName() {
 		// TODO Auto-generated method stub
-		return new String("ID");
+		return new String("NameID");
 	}
 }
