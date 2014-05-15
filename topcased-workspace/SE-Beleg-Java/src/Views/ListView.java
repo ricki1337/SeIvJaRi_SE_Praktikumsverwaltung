@@ -90,7 +90,7 @@ public abstract class ListView extends View{
 		}
 		
 		protected void refreshListTableWithDataFromModel(){
-			refreshListTableWithDataFromModel(20);
+			refreshListTableWithDataFromModel(tableRowData.getRowCount());
 		}
 		
 		protected void refreshListTableWithDataFromModel(int newRowCount){
@@ -106,10 +106,11 @@ public abstract class ListView extends View{
 		
 		protected void addListTableWithDataFromModel(){
 			GridBagConstraints gbc = getGridBagConstraint();
+			ResultSet tmp = model.getResult();
 			
-			tableRowData = new TableData(model.getResult());
+			tableRowData = new TableData(tmp);
 			
-			tableRowData.addColumnAtBegin("Auswahl", (boolean)false);
+			tableRowData.addColumnAtBegin("Auswahl", (Boolean)false);
 			tableModel = new NonEditableTableModel(tableRowData.getTableData(), tableRowData.getColumnNames());
 			table = new JTable(tableModel);
 			

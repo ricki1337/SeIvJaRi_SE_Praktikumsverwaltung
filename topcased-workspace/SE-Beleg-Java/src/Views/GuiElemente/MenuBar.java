@@ -128,7 +128,7 @@ public class MenuBar implements ActionListener{
         	Praktikumsverwaltung.addFrameToForeground(new ContractList());
        }
         if (object.getSource() == betreuer){
-            System.out.println("betreuer wurde angeklickt");
+        	Praktikumsverwaltung.addFrameToForeground(new ProfList());
        }
     	
     	

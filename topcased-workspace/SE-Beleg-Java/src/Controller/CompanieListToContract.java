@@ -139,7 +139,7 @@ public class CompanieListToContract extends ListController{
 		if(arg0.getSource() instanceof JTextField){
 			JTextField anzDatensaetze = (JTextField)(arg0.getSource());
 			if(anzDatensaetze.getName().equals("anzDatensaetze")){
-				model.setcolumnLimit(Integer.parseInt(anzDatensaetze.getText()));
+				model.setcolumnLimitAndRefreshViews(Integer.parseInt(anzDatensaetze.getText()));
 				view.setTableRowsCount(Integer.parseInt(anzDatensaetze.getText()));
 			}
 			

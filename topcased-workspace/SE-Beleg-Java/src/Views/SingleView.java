@@ -36,6 +36,7 @@ public abstract class SingleView extends View{
 		
 		try {
 			f = new JTextField(tableRowData.getStringValueFromPosition(rowPosition, sqlSpaltenName));
+			f.setName(sqlSpaltenName);
 			f.setColumns(20);
 			
 			gbc.gridx = posX+1;
@@ -55,7 +56,7 @@ public abstract class SingleView extends View{
 		try {
 			f = new JTextField(tableRowData.getStringValueFromPosition(rowPosition, sqlSpaltenName));
 			f.setColumns(20);
-			
+			f.setName(sqlSpaltenName);
 			gbc.gridx = posX+1;
 
 			addComponentToView(f);
@@ -75,7 +76,7 @@ public abstract class SingleView extends View{
 			f = new JTextArea(tableRowData.getStringValueFromPosition(rowPosition, sqlSpaltenName));
 			f.setColumns(20);
 			f.setRows(5);
-			
+			f.setName(sqlSpaltenName);
 			gbc.gridx = posX+1;
 
 			addComponentToView(f,sqlUpdateOrInstertSpaltenName);
@@ -94,7 +95,7 @@ public abstract class SingleView extends View{
 			f = new JTextArea(tableRowData.getStringValueFromPosition(rowPosition, sqlSpaltenName));
 			f.setColumns(20);
 			f.setRows(5);
-			
+			f.setName(sqlSpaltenName);
 			gbc.gridx = posX+1;
 			addComponentToView(f);
 		} catch (Exception e) {
@@ -112,7 +113,7 @@ public abstract class SingleView extends View{
 			Boolean value = tableRowData.getBooleanValueFromPosition(rowPosition, sqlSpaltenName);
 			f = new JCheckBox();
 			f.setSelected(value);
-			
+			f.setName(sqlSpaltenName);
 			gbc.gridx = posX;
 			addComponentToView(f,sqlUpdateOrInstertSpaltenName);
 		} catch (Exception e) {
@@ -130,7 +131,7 @@ public abstract class SingleView extends View{
 			Boolean value = tableRowData.getBooleanValueFromPosition(rowPosition, sqlSpaltenName);
 			f = new JCheckBox();
 			f.setSelected(value);
-			
+			f.setName(sqlSpaltenName);
 			gbc.gridx = posX;
 			
 			addComponentToView(f);
@@ -174,18 +175,21 @@ public abstract class SingleView extends View{
 	
 	protected void refreshComponentsContent(){
 		int index = 0;
+		tableRowData = new TableData(model.getResult());
+
+		
 		for(JComponent comp:listOfallComponentsOnView){
-			if(listOfComponentsToSqlReference.get(index) != null){
+			if(comp.getName() != null && !comp.getName().equals("")){
 				if(comp instanceof JTextField)	
-						((JTextField) comp).setText(tableRowData.getValueFromPosition(rowPosition, listOfComponentsToSqlReference.get(index)).toString());
+						((JTextField) comp).setText(tableRowData.getValueFromPosition(rowPosition, comp.getName()).toString());
 				
 				if(comp instanceof JCheckBox){	
-					boolean flag = tableRowData.getValueFromPosition(rowPosition, listOfComponentsToSqlReference.get(index))=="true"?true:false;
+					boolean flag = tableRowData.getValueFromPosition(rowPosition, comp.getName())=="true"?true:false;
 					((JCheckBox) comp).setSelected(flag);
 				}
 				
 				if(comp instanceof JTextArea)	
-					((JTextArea) comp).setText(tableRowData.getValueFromPosition(rowPosition, listOfComponentsToSqlReference.get(index)).toString());
+					((JTextArea) comp).setText(tableRowData.getValueFromPosition(rowPosition, comp.getName()).toString());
 			}
 			index++;
 		}
@@ -194,7 +198,7 @@ public abstract class SingleView extends View{
 	@Override
 	public void modelHasChanged() {
 		// TODO Auto-generated method stub
-		
+		refreshComponentsContent();
 	}
 	
 	@Override
@@ -211,14 +215,6 @@ public abstract class SingleView extends View{
 			updatedValues[index][1] = getValueFromComponent(index+sqlReferenceIndex);
 			index++;
 		}
-//		for(int index = 0;index < listOfComponentsToSqlReference.size();index++){
-//			if(listOfComponentsToSqlReference.get(index) != null){
-//				 = listOfComponentsToSqlReference.get(index);
-//				//updatedValues[index][1] = getStringValueFromComponent(index);
-//				
-//			}
-//		}
-		
 		return updatedValues;
 	}
 	
