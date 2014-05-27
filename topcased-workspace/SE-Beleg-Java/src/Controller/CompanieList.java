@@ -59,6 +59,13 @@ public class CompanieList extends ListController{
 		case "anlegen":					CompanieEmptySingle newEmptyFrame = new CompanieEmptySingle();
 										Praktikumsverwaltung.addFrameToForeground(newEmptyFrame);
 										break;
+		case "mailTo":					Object[] studentListForMailing = view.getColumnValuesFromSelectedRows("ID");
+										Mailing newMailing = new Mailing(studentListForMailing,"IDCompanies");
+										Praktikumsverwaltung.addFrameToForeground(newMailing);
+										break;
+		case "print":					Object[] studentListForPrinting = view.getColumnValuesFromSelectedRows("ID");
+										Print newPrinting = new Print(studentListForPrinting,"IDCompanies");
+										Praktikumsverwaltung.addFrameToForeground(newPrinting);
 		}
 	}
 

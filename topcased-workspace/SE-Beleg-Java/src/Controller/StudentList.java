@@ -65,6 +65,13 @@ public class StudentList extends ListController{
 		case "anlegen":					StudentEmptySingle newEmptyFrame = new StudentEmptySingle();
 										Praktikumsverwaltung.addFrameToForeground(newEmptyFrame);
 										break;
+		case "mailTo":					Object[] studentListForMailing = view.getColumnValuesFromSelectedRows("Matrikelnr");
+										Mailing newMailing = new Mailing(studentListForMailing,"Matrikelnr");
+										Praktikumsverwaltung.addFrameToForeground(newMailing);
+										break;
+		case "print":					Object[] studentListForPrinting = view.getColumnValuesFromSelectedRows("Matrikelnr");
+										Print newPrinting = new Print(studentListForPrinting,"Matrikelnr");
+										Praktikumsverwaltung.addFrameToForeground(newPrinting);
 		}
 	}
 

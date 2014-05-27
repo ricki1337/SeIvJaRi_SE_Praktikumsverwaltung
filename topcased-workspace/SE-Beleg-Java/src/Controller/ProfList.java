@@ -59,6 +59,13 @@ private String srcSqlQuery = "select Name as Name, NameID as 'E-Mail' from profs
 		case "anlegen":					ProfEmptySingle newEmptyFrame = new ProfEmptySingle();
 										Praktikumsverwaltung.addFrameToForeground(newEmptyFrame);
 										break;
+		case "mailTo":					Object[] profListForMailing = view.getColumnValuesFromSelectedRows("E-Mail");
+										Mailing newMailing = new Mailing(profListForMailing,"Name");
+										Praktikumsverwaltung.addFrameToForeground(newMailing);
+										break;
+		case "print":					Object[] studentListForPrinting = view.getColumnValuesFromSelectedRows("E-Mail");
+										Print newPrinting = new Print(studentListForPrinting,"Name");
+										Praktikumsverwaltung.addFrameToForeground(newPrinting);
 		}
 	}
 
