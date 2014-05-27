@@ -1,5 +1,3 @@
-package drucken;
-
 public class ValuePrintObject {
 
 	private String mat, name, mail, gruppe, firma;
@@ -50,4 +48,3 @@ public class ValuePrintObject {
 	}
 
 }
-

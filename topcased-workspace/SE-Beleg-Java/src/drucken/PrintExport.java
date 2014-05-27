@@ -1,5 +1,3 @@
-package drucken;
-
 import java.awt.Desktop;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -32,40 +30,42 @@ public class PrintExport {
 	private List<ValuePrintObject> tableData= new ArrayList<ValuePrintObject>();
 	private String[][] mstrData;
 
-	public static void main(String[] args) throws Exception {
+//	public static void main(String[] args) throws Exception {
+//
+//		String[][] testary;
+//		testary = new String[][] {
+//				{ "65878", "Hans Detlef", "muh@web.de", "11/43/01", "sap" },
+//				{ "98564", "Rolf Golf", "blub@freenet.de", "12/13/14","Microsoft" },
+//				{ "45879", "Franz Lenz", "tag@morgen.com", "00/11/22", "Himmel" },
+//				{ "25874", "Lisa Müller", "hallo@wasgeht.de", "10/024/34","Golfplatz" },
+//				{ "97854", "Hans Wurst", "langweilig@langweildich.net","09/034/61", "Imbiss" },
+//
+//		};
+//
+//		PrintExport testding = new PrintExport();
+//		testding.setData(testary, "Titel","Überschrift");
+//		testding.printFile("output.html");
+//		//testding.print();
+//
+//	}
 
-		String[][] testary;
-		testary = new String[][] {
-				{ "65878", "Hans Detlef", "muh@web.de", "11/43/01", "sap" },
-				{ "98564", "Rolf Golf", "blub@freenet.de", "12/13/14","Microsoft" },
-				{ "45879", "Franz Lenz", "tag@morgen.com", "00/11/22", "Himmel" },
-				{ "25874", "Lisa Müller", "hallo@wasgeht.de", "10/024/34","Golfplatz" },
-				{ "97854", "Hans Wurst", "langweilig@langweildich.net","09/034/61", "Imbiss" },
-
-		};
-
-		PrintExport testding = new PrintExport();
-		testding.setData(testary, "Titel","Überschrift");
-		testding.printFile("output.html");
-		//testding.print();
-
-	}
-
+	//Konstruktur wenn daten beim Anlegen mit übergeben werden
 	public PrintExport(String[][] strData) throws Exception {
 		this.mstrData = strData;
-		init();		
+		this.init();		
 		
-		setData();
-		print();
+		this.setData();
+		this.print();
 		
 		
 
 	}
-	
+	//Konstruktor wenn keine Daten mit übergeben werden, es müssen dann setdata und print manuell gemacht werden
 	public PrintExport() throws Exception {
 		init();
 	}
 
+	//Template laden und aktivieren
 	private void init() throws Exception {
 
 		// Configure FreeMarker
