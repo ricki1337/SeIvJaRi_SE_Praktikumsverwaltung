@@ -72,6 +72,13 @@ public class ContractList extends ListController{
 		case "anlegen":					ContractEmptySingle newEmptyFrame = new ContractEmptySingle();
 										Praktikumsverwaltung.addFrameToForeground(newEmptyFrame);
 										break;
+		case "mailTo":					Object[] studentListForMailing = view.getColumnValuesFromSelectedRows("ID");
+										Mailing newMailing = new Mailing(studentListForMailing,"ID");
+										Praktikumsverwaltung.addFrameToForeground(newMailing);
+										break;
+		case "print":					Object[] studentListForPrinting = view.getColumnValuesFromSelectedRows("ID");
+										Print newPrinting = new Print(studentListForPrinting,"ID");
+										Praktikumsverwaltung.addFrameToForeground(newPrinting);
 		}
 	}
 
