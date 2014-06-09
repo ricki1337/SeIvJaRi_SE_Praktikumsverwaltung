@@ -23,7 +23,7 @@ import javax.swing.text.DefaultHighlighter.DefaultHighlightPainter;
 
 import Models.Datenbank.Database;
 import Controller.ListController;
-import Import.csvImport;
+import Import.CsvImport;
 
 //vlt sollte ein Button "Typüberprüfung" eingefügt werden. Denn im Fehler fall weis man nicht welche daten nicht importiert wurden
 
@@ -403,7 +403,7 @@ public void actionPerformed(ActionEvent e) {
 	   if (e.getSource() == button_vorschau){
 		   value_combo_seperator=combo_seperator.getSelectedItem().toString();
 		   DefaultTableModel datamodel = new DefaultTableModel(0,5);
-		   csvImport csvimport = new csvImport(file,value_combo_seperator,false);
+		   CsvImport csvimport = new CsvImport(file,value_combo_seperator,false);
 		   datamodel=csvimport.parseIt();
 		   logconsole.setText("Es wurden " + csvimport.getcount() + " Datensätze gefunden.\n");
 		   

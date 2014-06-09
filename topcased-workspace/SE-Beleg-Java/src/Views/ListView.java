@@ -64,17 +64,16 @@ public abstract class ListView extends View{
 		
 		public void setFlag(){
 			if(table.getSelectedColumn() != 0) return;
-			boolean presentValue = (boolean) tableRowData.getValueFromPosition(table.getSelectedRow(), "Auswahl");
-			tableRowData.setValueAtPosition(getSelectedRow(), "Auswahl", !presentValue);
-			
+			boolean currentValue = (boolean) tableRowData.getValueFromPosition(table.getSelectedRow(), "Auswahl");
+			tableRowData.setValueAtPosition(getSelectedRow(), "Auswahl", !currentValue);
 			table.repaint();
 		}
 		
 		public void setFlagOnSelectedRow(){
 			if(table.getSelectedRows().length == 0) return;
 			for(int row:getSelectedRows()){
-				boolean presentValue = (boolean) tableRowData.getValueFromPosition(row, "Auswahl");
-				tableRowData.setValueAtPosition(row, "Auswahl", !presentValue);
+				boolean currentValue = (boolean) tableRowData.getValueFromPosition(row, "Auswahl");
+				tableRowData.setValueAtPosition(row, "Auswahl", !currentValue);
 			}
 			table.repaint();
 		}
@@ -96,28 +95,24 @@ public abstract class ListView extends View{
 		
 		protected void addListTableWithDataFromModel(){
 			GridBagConstraints gbc = getGridBagConstraint();
-			ResultSet tmp = model.getResult();
 			
-			tableRowData = new TableData(tmp);
-			
+			tableRowData = new TableData(model.getResult());			
 			tableRowData.addColumnAtBegin("Auswahl", (Boolean)false);
-			tableModel = new NonEditableTableModel(tableRowData.getTableData(), tableRowData.getColumnNames());
-			table = new JTable(tableModel);
 			
+			tableModel = new NonEditableTableModel(tableRowData.getTableData(), tableRowData.getColumnNames());
+			
+			table = new JTable(tableModel);
 			table.setName("table");
 			table.setAutoCreateRowSorter(true);
 			table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-			
 			table.addMouseListener((ListController)controller);
-			
-			JScrollPane scrollPane = new JScrollPane(table);
-			scrollPane.setVerticalScrollBarPolicy(scrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-			
 			table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-						
 			table.setAutoscrolls(true);
 			table.setFillsViewportHeight(true);
 			
+			
+			JScrollPane scrollPane = new JScrollPane(table);
+			scrollPane.setVerticalScrollBarPolicy(scrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 			
 			gbc.gridx = 0;
 			gbc.gridy = 1;
@@ -132,7 +127,6 @@ public abstract class ListView extends View{
 			gbc.gridy = 2;
 			gbc.fill = GridBagConstraints.HORIZONTAL;
 			gbc.gridwidth = GridBagConstraints.REMAINDER;
-			
 
 			addComponentToView(scrollPane);
 		}
@@ -141,29 +135,31 @@ public abstract class ListView extends View{
 			return tableRowData.getValueFromPosition(getSelectedRow(), columnName);
 		}
 		
-		public Object[] getColumnValuesFromSelectedRows(String columnName){
-			Object[] returnValues = new Object[table.getSelectedRowCount()];
-			int rowCount = 0;
-			int column = table.convertColumnIndexToModel(tableRowData.getColumnIndex(columnName));
-			for(int selectedRow:table.getSelectedRows()){
-				returnValues[rowCount] = table.getValueAt(table.convertRowIndexToModel(selectedRow),column);
-				rowCount++;
-			}
-			return returnValues;
-		}
-		
 		private int getSelectedRow(){
 			int selectedRow = table.getSelectedRow();
 			int rowIdInTableModel = table.convertRowIndexToModel(selectedRow);
 			return rowIdInTableModel;
 		}
 		
+		public Object[] getColumnValuesFromSelectedRows(String columnName){
+			Object[] returnValues = new Object[table.getSelectedRowCount()];
+			int rowIndex = 0;
+			int column = table.convertColumnIndexToModel(tableRowData.getColumnAliasIndex(columnName));
+			for(int selectedRow:table.getSelectedRows()){
+				returnValues[rowIndex] = table.getValueAt(table.convertRowIndexToModel(selectedRow),column);
+				rowIndex++;
+			}
+			return returnValues;
+		}
+		
+		
+		
 		private int[] getSelectedRows(){
 			int[] selectedRows = new int[table.getSelectedRowCount()]; 
-			int rowCount = 0;
+			int rowIndex = 0;
 			for(int selectedRow:table.getSelectedRows()){
-				selectedRows[rowCount] = table.convertRowIndexToModel(selectedRow);
-				rowCount++;
+				selectedRows[rowIndex] = table.convertRowIndexToModel(selectedRow);
+				rowIndex++;
 			}
 			return selectedRows;
 		}
@@ -172,5 +168,27 @@ public abstract class ListView extends View{
 			refreshListTableWithDataFromModel(rowsCount);
 		}
 		
-		abstract public void getExtendedSearchInputFields(JPanel target);
+		@Override
+		public void modelHasChanged() {
+			refreshListTableWithDataFromModel();
+		}
+
+		@Override
+		public Object[][] getInputValues() {
+			return null;
+		}
+		
+		@Override
+		public String getValueFromCurrentItem(String sqlColumnName) {
+			return null;
+		}
+		
+		@Override
+		public void setElemente() {
+			addListTopMenu();
+			addListBottomMenu();
+			addListTableWithDataFromModel();
+		}
+		
+		//abstract public void getExtendedSearchInputFields(JPanel target);
 }

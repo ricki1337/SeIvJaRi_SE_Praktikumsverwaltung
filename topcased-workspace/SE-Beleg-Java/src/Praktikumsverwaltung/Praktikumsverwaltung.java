@@ -10,16 +10,26 @@ import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
 import Controller.Controller;
-import Views.Dialog.DatabaseConnectionDialog;
+import Controller.ControllerNew;
 import Views.Dialog.DatabaseConnectionDialog;
 import Views.GuiElemente.MenuBar;
 
-import javax.swing.*;
-import ConfigParser.Config;public class Praktikumsverwaltung extends JFrame{
+public class Praktikumsverwaltung extends JFrame{
 
 	static JDesktopPane InnerDesktop;
 	
 	public static void addFrameToForeground(Controller controller){
+		controller.display();
+		JInternalFrame newFrame = controller.getDisplayedFrame();
+		InnerDesktop.add(newFrame);
+		try {
+			newFrame.setSelected(true);
+		} catch (PropertyVetoException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void addFrameToForeground(ControllerNew controller){
 		controller.display();
 		JInternalFrame newFrame = controller.getDisplayedFrame();
 		InnerDesktop.add(newFrame);
@@ -35,25 +45,15 @@ import ConfigParser.Config;public class Praktikumsverwaltung extends JFrame{
 		InnerDesktop = new JDesktopPane();
 		setContentPane(InnerDesktop);
 		
-		//Database db = Database.getInstance();
-		//db.connect("MySql", dbHost, 3306, "root", "", "seproject");
-
-		
 		DatabaseConnectionDialog Dialog = new DatabaseConnectionDialog(dbHost,this, true);
 		Dialog.setLocationRelativeTo(null);
 		Dialog.setVisible(true);
 		
-		
-		
-		
 		MenuBar menu = new MenuBar();
 		this.setJMenuBar(menu.getMenu());
 		
-		
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		/*
-		 * http://stackoverflow.com/questions/3680221/screen-resolution-java
-		 * */
+
 		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 		int width = gd.getDisplayMode().getWidth();
 		int height = gd.getDisplayMode().getHeight();
@@ -64,8 +64,13 @@ import ConfigParser.Config;public class Praktikumsverwaltung extends JFrame{
 	}
 	
 	public static void main(String[] args){
+		
+
+		if(args.length != 1){
+			System.out.println("Error! Es wurde eine falsche Anzahl Parameter übergeben.");
+			System.exit(0);
+		}
 		//args[0] enthält db-host
-		//praktikumsverwaltung starten
 		new Praktikumsverwaltung(args[0]);
 		
 	}

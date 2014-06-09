@@ -3,6 +3,7 @@ package Views;
 import javax.swing.JLabel;
 
 import Controller.Controller;
+import Models.Datenbank.SqlTableContracts;
 
 public class ContractSingle extends SingleView{
 
@@ -27,19 +28,20 @@ public class ContractSingle extends SingleView{
 		
 		setLabel("                 ",1,6);
 		addContractIdToComponentList();
-		addTextfieldWithSqlReference("Betreuer", "Betreuer","Prof", 1, 7);
-		addTextfieldWithSqlReference("beginnt am", "beginnt am","BegPr", 1, 8);
-		addTextfieldWithSqlReference("endet am", "endet am","EndPr", 1, 9);
-		addTextfieldWithSqlReference("Typ", "Typ","Type", 1, 10);
+		addTextfieldWithSqlReference("Betreuer", "Betreuer",SqlTableContracts.TableNameDotFK_Betreuer, 1, 7);
+		addTextfieldWithSqlReference("beginnt am", "beginnt am",SqlTableContracts.TableNameDotBeginn, 1, 8);
+		addTextfieldWithSqlReference("endet am", "endet am",SqlTableContracts.TableNameDotEnde, 1, 9);
+		addTextfieldWithSqlReference("Typ", "Typ",SqlTableContracts.TableNameDotTyp, 1, 10);
 		
-		addCheckboxWithSqlReference("Bericht", "Bericht","Bericht", 3, 7);
-		addCheckboxWithSqlReference("Zeugnis", "Zeugnis","Zeugnis", 3, 8);
-		addCheckboxWithSqlReference("Empfehlung", "Empfehlung","Empfehlung", 3, 9);
+		addCheckboxWithSqlReference("Bericht", "Bericht",SqlTableContracts.TableNameDotBericht, 3, 7);
+		addCheckboxWithSqlReference("Zeugnis", "Zeugnis",SqlTableContracts.TableNameDotZeugnis, 3, 8);
+		addCheckboxWithSqlReference("Empfehlung", "Empfehlung",SqlTableContracts.TableNameDotEmpfehlung, 3, 9);
 		
 		addBottomMenu(12);
 	}
 	
 	private void setCompanieFields(){
+		
 		addTextfield("Firmenname", "Firmenname", 3, 1);
 		addTextfield("Straﬂe", "Strasse", 3, 2);
 		addTextfield("PLZ", "PLZ", 3, 3);
@@ -75,7 +77,7 @@ public class ContractSingle extends SingleView{
 	
 	private boolean isStudentSet(){
 		try {
-			String matr = tableRowData.getStringValueFromPosition(rowPosition, "Matrikelnr.");
+			String matr = model.tableRowData.getStringValueFromPosition(model.rowPosition, "Matrikelnr.");
 			if(matr.isEmpty()) return false;
 			
 		} catch (Exception e) {
@@ -87,7 +89,7 @@ public class ContractSingle extends SingleView{
 	
 	private boolean isCompanieSet(){
 		try {
-			String companie = tableRowData.getStringValueFromPosition(rowPosition, "Firmenname");
+			String companie = model.tableRowData.getStringValueFromPosition(model.rowPosition, "Firmenname");
 			if(companie.isEmpty()) return false;
 			
 		} catch (Exception e) {
@@ -98,7 +100,7 @@ public class ContractSingle extends SingleView{
 	}
 	private void addContractIdToComponentList(){
 		try {
-			JLabel hiddenContractId = new JLabel(tableRowData.getStringValueFromPosition(rowPosition, "ID"));
+			JLabel hiddenContractId = new JLabel(model.tableRowData.getStringValueFromPosition(model.rowPosition, "ID"));
 			hiddenContractId.setVisible(false);
 			
 			addComponentToView(hiddenContractId,"ID");

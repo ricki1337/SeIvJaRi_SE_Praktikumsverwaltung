@@ -1,3 +1,6 @@
+package drucken;
+
+
 /*  Copyright 2002
     Kei G. Gauthier
     Suite 301

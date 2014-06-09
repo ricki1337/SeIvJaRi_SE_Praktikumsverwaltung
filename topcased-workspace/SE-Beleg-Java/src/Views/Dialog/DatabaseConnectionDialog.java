@@ -164,17 +164,17 @@ public class DatabaseConnectionDialog extends JDialog {
         String user=Config.getProperties("User");
         String datenbank=Config.getProperties("Datenbank");
        
-        if(user!=null){this.jtf_nutzername.setText(user);}
-        else this.jtf_nutzername.setText("nicht in config");//remove me
-        
-        if(datenbank!=null){this.jtf_datenbank.setText(datenbank);}
-        else this.jtf_nutzername.setText("nicht in config");//remove me
+        if(user!=null)
+        	this.jtf_nutzername.setText(user);
+
+        if(datenbank!=null)
+        	this.jtf_datenbank.setText(datenbank);
         
         pack();
     }// </editor-fold>                        
 
     private void jb_verbindenActionPerformed(ActionEvent evt) {                                             
-    	String dbhost ="localhost";
+    	//String dbhost = this.dbhost;
     	String database = this.jtf_datenbank.getText();
 		String user = this.jtf_nutzername.getText();
 		
@@ -195,7 +195,7 @@ public class DatabaseConnectionDialog extends JDialog {
 			dispose();
 		} catch (Exception e) {
 			this.jl_infolabel.setText("BUG: RECONNECT FUNZT NICHT");
-			
+			e.printStackTrace();
 		}
     	
     }                                            

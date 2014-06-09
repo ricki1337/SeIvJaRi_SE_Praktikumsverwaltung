@@ -3,6 +3,7 @@ package Models.Datenbank;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class MySql implements DatabaseFunction{
@@ -10,31 +11,18 @@ public class MySql implements DatabaseFunction{
 	
 	public MySql(){}
 
-	public ResultSet getQuery(String query) {
-		try{
+	public ResultSet getQuery(String query) throws SQLException {
 		Statement stmnt = connection.createStatement();
 		System.out.println("MySql-Class: "+query);
-		return stmnt.executeQuery(query);
-		}
-		catch(Exception e){
-			//e.printStackTrace();
-			return null;
-			
 
-		}
+		return stmnt.executeQuery(query);
 	}
 
 	@Override
-	public int setQuery(String query) {
-		try{
-			Statement stmnt = connection.createStatement();
-			System.out.println("MySql-Class: "+query);
-			return stmnt.executeUpdate(query);
-			}
-			catch(Exception e){
-				e.printStackTrace();
-				return 0;
-			}
+	public int setQuery(String query) throws SQLException {
+		Statement stmnt = connection.createStatement();
+		System.out.println("MySql-Class: "+query);
+		return stmnt.executeUpdate(query);
 	}
 
 	@Override

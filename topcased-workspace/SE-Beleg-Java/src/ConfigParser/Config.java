@@ -7,6 +7,10 @@ import java.io.Reader;
 import java.io.Writer;
 import java.util.Properties;
 
+import org.xml.sax.ErrorHandler;
+
+import Controller.ErrorManager;
+
 
 public class Config {
 	private static Properties  properties = new Properties( System.getProperties() );
@@ -27,15 +31,16 @@ public class Config {
 		}
 		catch ( IOException e )
 		{
-		//properties konnten nicht geladen werde, nicht weiter schlimm wir schreiben nach erfolgreicher anmeldung einfach ein neues file
-		System.out.println("properties konnten nicht geladen werde");
-		  //e.printStackTrace();
-		 return null;
+			//properties konnten nicht geladen werde, nicht weiter schlimm wir schreiben nach erfolgreicher anmeldung einfach ein neues file
+			return null;
 		 
 		}
 		finally
 		{
-		  try { reader.close(); } catch ( Exception e ) { }
+		  try {
+			  reader.close();
+		  }
+		  catch(Exception e){}
 		}
 
 	}
@@ -54,8 +59,9 @@ public class Config {
 			return true;
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			ErrorManager errorHandler = new ErrorManager(e);
+			if(errorHandler.retry)
+				Config.setProperties(key,value);
 		}
 
 		return false;

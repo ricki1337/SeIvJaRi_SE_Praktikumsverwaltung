@@ -1,158 +1,126 @@
 package Controller;
 
-import java.awt.event.MouseEvent;
-import java.util.Arrays;
+import drucken.PrintExport;
 
-import Models.Model;
-import Views.Table.TableData;
+import Models.Datenbank.SqlTableCompanies;
+import Models.Datenbank.SqlTableContracts;
+import Models.Datenbank.SqlTableStudent;
+import Models.Filter.IntFilter;
+import Models.Filter.StringFilter;
 
-public class Print extends SingleController implements ChangeableController {
+public class Print extends ControllerNew{
 
-	Views.Print view;
-	public Print(){
-		setModel(new Models.Print());
-		setView((view = new Views.Print(this,count)));
+	String sqlQueryString = "SELECT " +
+								SqlTableStudent.TableNameDotEMail + " as Email, " +
+								SqlTableStudent.TableNameDotVorname + " as Vorname, "  +
+								SqlTableStudent.TableNameDotNachname + " as Nachname, " +
+								SqlTableStudent.TableNameDotMatrikelNummer + " as 'Matrikelnr.', " +
+								SqlTableStudent.TableNameDotStudiengruppe + " as Studiengruppe, " +
+								SqlTableCompanies.TableNameDotFirmenname + " as Firmenname " +
+							"FROM "+ SqlTableContracts.tableNameWithAlias + " " +
+								"JOIN " + SqlTableStudent.tableNameWithAlias + " ON " +
+										SqlTableContracts.TableNameDotFK_Student + " = " + SqlTableStudent.TableNameDotPrimaryKey + " " +
+								"JOIN " + SqlTableCompanies.tableNameWithAlias + " ON " +
+										SqlTableContracts.TableNameDotFK_Firma + " = " + SqlTableCompanies.TableNameDotPrimaryKey;
+	
+	private Models.ListModel model;
+	
+	private String primaryKey;
+	private Object primaryKeys;
+	
+	public Print(String primaryKey, Object primaryKeyValues){
+		setPrimaryKey(primaryKey);
+		setPrimaryKeys(primaryKeyValues);
+		
+		model = new Models.ListModel(sqlQueryString,SqlTableContracts.tableName,primaryKey);
+		setModel(model);
+		
+		setModelFilter(primaryKey, primaryKeyValues);
+		model.setResult();
+	}
+
+	public void setPrimaryKeys(Object primaryKeys) {
+		if(primaryKeys == null)
+			throw new IllegalArgumentException();
+		this.primaryKeys = primaryKeys;
+	}
+
+
+	public void setPrimaryKey(String primaryKey) {
+		if(primaryKey == null)
+			throw new IllegalArgumentException();
+		this.primaryKey = primaryKey;
 	}
 	
-	int count = 0;
-	
-	public Print(Object primaryKeys, String Primärschlüssel){
-		super();
-		String sqlFilter = new String();
-		if(primaryKeys instanceof Object[]){		
+	public String getPrimaryKey() {
+		return primaryKey;
+	}
+
+
+	public Object getPrimaryKeys() {
+		return primaryKeys;
+	}
+
+
+	protected void setModelFilter(String primaryKey, Object primaryKeyValues) {
+		if(primaryKeyValues instanceof Object[]){		
 			
-			for(Object item:(Object[])primaryKeys){
+			for(Object item:(Object[])primaryKeyValues){
 				
-			if(Primärschlüssel.equals("Matrikelnr")|| Primärschlüssel.equals("ID") || Primärschlüssel.equals("IDCompanies")){
-				if(count == 0) sqlFilter = item.toString();
-				else sqlFilter += " ,"+item.toString();
-				count++;}
-			
-			if(Primärschlüssel.equals("Name")){
-				if(count == 0) sqlFilter = "'"+ item.toString()+"'";
-				else sqlFilter += " ,'"+item.toString()+"'";
-				count++;}
+				if(primaryKey.equals(SqlTableStudent.MatrikelNummer)|| primaryKey.equals("ID") || primaryKey.equals("IDCompanies")){
+					model.setOrFilter(primaryKey, new IntFilter(item.toString()));
+				}
+				
+				if(primaryKey.equals("Name")){
+					model.setOrFilter(primaryKey, new StringFilter(item));
+				}
 			
 			}
 		} else{
-			if(Primärschlüssel.equals("Matrikelnr") || Primärschlüssel.equals("ID")|| Primärschlüssel.equals("IDCompanies")){
-			sqlFilter = primaryKeys.toString();}
+			if(primaryKey.equals("Matrikelnr") || primaryKey.equals("ID")|| primaryKey.equals("IDCompanies")){
+				model.setOrFilter(primaryKey, new IntFilter(primaryKeyValues.toString()));
+			}
 			
-			if(Primärschlüssel.equals("Name")){
-				sqlFilter = "'"+primaryKeys.toString()+"'";}
+			if(primaryKey.equals("Name")){
+				model.setOrFilter(primaryKey, new StringFilter(primaryKeyValues));
+			}
 		}
-
-		
-		
-		String query = null;
-		
-		
-		if(Primärschlüssel.equals("Matrikelnr")){
-			
-			query = new String("SELECT s.email as Email," +
-					"s.firstname as Vorname,"  +
-					" s.name as Nachname," +
-					" s.matrnr as 'Matrikelnr.'," +
-					" s.StGr as Studiengruppe," +
-					" co.Name as Firmenname" +
-					" FROM contract c JOIN student s ON c.MatrNr = s.MatrNr JOIN companies co ON c.compid = co.id " +
-					" where s.matrnr IN (" + sqlFilter +")");
-			setModel(new Models.Print(query,"MatrNr"));}
-		
-		if(Primärschlüssel.equals("ID")){
-			query = new String("SELECT s.email as Email," +
-					"s.firstname as Vorname,"  +
-					" s.name as Nachname," +
-					" s.matrnr as 'Matrikelnr.'," +
-					" s.StGr as Studiengruppe," +
-					" co.Name as Firmenname" +
-					" FROM contract c JOIN student s ON c.MatrNr = s.MatrNr JOIN companies co ON c.compid = co.id JOIN profs pr ON pr.name = Prof" +
-					" where c.id IN (" + sqlFilter +")");
-			
-			setModel(new Models.Print(query,"ID"));
-			}
-		
-		if(Primärschlüssel.equals("IDCompanies")){
-			query = new String("SELECT s.email as Email," +
-					"s.firstname as Vorname,"  +
-					" s.name as Nachname," +
-					" s.matrnr as 'Matrikelnr.'," +
-					" s.StGr as Studiengruppe," +
-					" co.Name as Firmenname" +
-					" FROM contract c JOIN student s ON c.MatrNr = s.MatrNr JOIN companies co ON c.compid = co.id JOIN profs pr ON pr.name = Prof" +
-					" where co.ID in (" + sqlFilter +")");
-			
-			setModel(new Models.Mailing(query,"ID"));
-			}
-		
-		if(Primärschlüssel.equals("Name")){
-			query = new String("SELECT s.email as Email," +
-					"s.firstname as Vorname,"  +
-					" s.name as Nachname," +
-					" s.matrnr as 'Matrikelnr.'," +
-					" s.StGr as Studiengruppe," +
-					" co.Name as Firmenname" +
-					" FROM contract c JOIN student s ON c.MatrNr = s.MatrNr JOIN companies co ON c.compid = co.id JOIN profs pr ON pr.name = Prof" +
-					" where pr.NameID in (" + sqlFilter +")");
-			
-			setModel(new Models.Mailing(query,"NameID"));
-			}
-	
-		setView((view = new Views.Print(this,count)));
-	
-		
-		
-		
 	}
 	
+	
+	
+	
+	public String[][] createArrayForPrinting(){
+		String[][] array = new String[model.tableRowData.getRowCount()][9]; 
+		try {
+			for(int i=0;i<model.tableRowData.getRowCount();i++){
+				array[i][0]= model.tableRowData.getStringValueFromPosition(i, "Matrikelnr.");
+				array[i][1]= model.tableRowData.getStringValueFromPosition(i, "Vorname") + " " + model.tableRowData.getStringValueFromPosition(i, "Nachname");
+				array[i][2]= model.tableRowData.getStringValueFromPosition(i, "Email");
+				array[i][3]= model.tableRowData.getStringValueFromPosition(i, "Studiengruppe");
+				array[i][4]= model.tableRowData.getStringValueFromPosition(i, "Firmenname");
+			}
+		
+		} catch (Exception e) {
+			ErrorManager errorManager = new ErrorManager(e);
+				if(errorManager.retry)
+					return createArrayForPrinting();
+		}
+		return array;
+	}
 	
 	@Override
 	public void display() {
-		view.setElemente();
+		try {
+			PrintExport testding;
+			testding = new PrintExport();
+			testding.setData(createArrayForPrinting(), "Titel","Überschrift");
+			testding.print();
+		} catch (Exception e) {
+			ErrorManager errorManager = new ErrorManager(e);
+			if(errorManager.retry)
+				display();
+		}
 	}
-	
-
-
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		
-	}
-
-
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void change(String valueName, Object value) {
-		// TODO Auto-generated method stub
-		
-	}
-
 
 }

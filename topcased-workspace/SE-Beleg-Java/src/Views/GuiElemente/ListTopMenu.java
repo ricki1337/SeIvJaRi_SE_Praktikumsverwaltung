@@ -20,7 +20,6 @@ import Views.GuiElemente.SearchPanel.CompanyExtendedSearchPanel;
 import Views.GuiElemente.SearchPanel.ContractExtendedSearchPanel;
 import Views.GuiElemente.SearchPanel.ExtendedSearchPanel;
 import Views.GuiElemente.SearchPanel.ProfExtendedSearchPanel;
-import Views.GuiElemente.SearchPanel.StudentExtendedSearchPanel;
 
 public class ListTopMenu extends JPanel{
 	JPanel oben;
@@ -117,9 +116,6 @@ public class ListTopMenu extends JPanel{
 	public void setSearchPanel(){
 		if(view instanceof Views.CompanieList | view instanceof Views.CompanieListToContract)
 			searchPanel = new CompanyExtendedSearchPanel(controller,view);
-		
-		if(view instanceof Views.StudentList | view instanceof Views.StudentListToContract)
-			searchPanel = new StudentExtendedSearchPanel(controller,view);
 		
 		if(view instanceof Views.ContractList)
 			searchPanel = new ContractExtendedSearchPanel(controller,view);

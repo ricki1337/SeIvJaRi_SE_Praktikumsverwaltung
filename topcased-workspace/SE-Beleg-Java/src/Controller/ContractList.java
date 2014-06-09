@@ -1,183 +1,207 @@
 package Controller;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.Iterator;
+import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 
+import Models.Datenbank.SqlTableCompanies;
+import Models.Datenbank.SqlTableContracts;
+import Models.Datenbank.SqlTableProfs;
+import Models.Datenbank.SqlTableStudent;
+import Models.Filter.StringFilter;
 import Praktikumsverwaltung.Praktikumsverwaltung;
+import Views.ViewNew;
+import Views.GuiElemente.BoxElementBottomNavi;
+import Views.GuiElemente.BoxElementBottomNaviEditMailPrint;
+import Views.GuiElemente.BoxElementBottomNaviMark;
+import Views.GuiElemente.BoxElementTable;
+import Views.GuiElemente.BoxElementSearchMenu;
+import Views.GuiElemente.SearchPanel.BoxElementExtendedSearchProf;
 import Views.GuiElemente.SearchPanel.ExtendedSearchPanel;
+import Views.GuiElemente.SearchPanel.ExtendedSearchPanelStudentNew;
+import Views.Interfaces.BasicBoxCtrl;
+import Views.Interfaces.NaviEditMailPrintBoxCtrl;
+import Views.Interfaces.NaviMarkBoxCtrl;
+import Views.Interfaces.ExtendedSearchBoxCtrl;
+import Views.Interfaces.SearchBoxCtrl;
+import Views.Interfaces.TableBoxCtrl;
+import Views.Table.TableData;
 
-public class ContractList extends ListController{
+public class ContractList extends ControllerNew implements BasicBoxCtrl, TableBoxCtrl, SearchBoxCtrl, ExtendedSearchBoxCtrl, NaviEditMailPrintBoxCtrl, NaviMarkBoxCtrl{
 	
-	private String srcSqlQuery = "SELECT c.id as ID," +
-			"s.matrnr as 'Matrikelnr.'," +
-			" s.firstname as Vorname," +
-			" s.name as Nachname," +
-			" s.stgr as Studiengruppe," +
-			" co.name as Firmenname," +
-			" type as Typ," +
-			" begpr as 'beginnt am'," +
-			" endpr as 'endet am'," +
-			" Prof as Betreuer," +
-			" bericht as Bericht," +
-			" zeugnis as Zeugnis," +
-			" empfehlung as Empfehlung" +
-			"  FROM contract c JOIN student s ON c.MatrNr = s.MatrNr JOIN companies co ON c.compid = co.id";
-	private Views.ContractList view;
+	private String srcSqlQuery = "SELECT " +
+									SqlTableContracts.TableNameDotId + " as ID, " +
+									SqlTableStudent.TableNameDotMatrikelNummer + " as 'Matrikelnr.', " +
+									SqlTableStudent.TableNameDotVorname + " as Vorname, " +
+									SqlTableStudent.TableNameDotNachname + " as Nachname, " +
+									SqlTableStudent.TableNameDotStudiengruppe + " as Studiengruppe, " +
+									SqlTableCompanies.TableNameDotFirmenname + " as Firmenname, " +
+									SqlTableContracts.TableNameDotTyp + " as Typ, " +
+									SqlTableContracts.TableNameDotBeginn + " as 'beginnt am', " +
+									SqlTableContracts.TableNameDotEnde + " as 'endet am', " +
+									SqlTableContracts.TableNameDotFK_Betreuer + " as Betreuer, " +
+									SqlTableContracts.TableNameDotBericht + " as Bericht, " +
+									SqlTableContracts.TableNameDotZeugnis + " as Zeugnis, " +
+									SqlTableContracts.TableNameDotEmpfehlung + " as Empfehlung " +
+									"FROM "+ SqlTableContracts.tableName +
+										" JOIN "+ SqlTableStudent.tableName +" ON " +
+											SqlTableContracts.TableNameDotFK_Student + " = " + SqlTableStudent.TableNameDotPrimaryKey +
+										" JOIN "+ SqlTableCompanies.tableName +" ON " +
+										SqlTableContracts.TableNameDotFK_Firma + " = " + SqlTableCompanies.TableNameDotPrimaryKey;
 	
-	
+	private Models.ListModel model;
+	private Views.ViewNew view;
+		
+	private BoxElementTable table;
+	private BoxElementExtendedSearchProf extendedSearch;
+	private BoxElementSearchMenu searchMenu;
+		
 	public ContractList(){
 		super();
-
-		setModel(new Models.ContractList(srcSqlQuery));
+		model = new Models.ListModel(srcSqlQuery,SqlTableContracts.tableName,SqlTableContracts.PrimaryKey);
 		
-		setView(view = new Views.ContractList(this));
+		setModel(model);
+		setView(view = new Views.ViewNew(this));
+		view.setTitle("Verträge");
+		setElements();
 	}
-
 	
-
+	@Override
+	public void setElements(){
+		searchMenu = new BoxElementSearchMenu(this);
+		view.addComponentToView(searchMenu);
+		extendedSearch = new BoxElementExtendedSearchProf(this);
+		extendedSearch.setVisible(false);
+		view.addComponentToView(extendedSearch);
+		table = new BoxElementTable(this);
+		view.addComponentToView(table);
+		BoxElementBottomNavi navi = new BoxElementBottomNavi(this);
+		navi.addBoxToRightSide(new BoxElementBottomNaviEditMailPrint(this));
+		navi.addBoxToLeftSide(new BoxElementBottomNaviMark(this));
+		view.addComponentToView(navi);
+	}
+	
+	
 	@Override
 	public void display() {
-		// TODO Auto-generated method stub
 		view.display();
 	}
 
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		switch(e.getComponent().getName()){
-		case "table": 	if (e.getClickCount() == 2) {
-							Object contractId;
-							
-							if((contractId = view.getColumnValueFromSelectedRow("ID")) != null){
-								ContractSingle newFrame = new ContractSingle(contractId);
-								Praktikumsverwaltung.addFrameToForeground(newFrame);
-							}
-						}else{
-							view.setFlag();
-						}
-						break;
-						
-		case "setFlagOnMarkedRows": 	view.setFlagOnSelectedRow();
-										break;
-										
-		case "modifySelectedRows":		Object[] ContractList = view.getColumnValuesFromSelectedRows("ID");
-										ContractSingle newFrame = new ContractSingle(ContractList);
-										Praktikumsverwaltung.addFrameToForeground(newFrame);
-										break;
-		case "anlegen":					ContractEmptySingle newEmptyFrame = new ContractEmptySingle();
-										Praktikumsverwaltung.addFrameToForeground(newEmptyFrame);
-										break;
-		case "mailTo":					Object[] studentListForMailing = view.getColumnValuesFromSelectedRows("ID");
-										Mailing newMailing = new Mailing(studentListForMailing,"ID");
-										Praktikumsverwaltung.addFrameToForeground(newMailing);
-										break;
-		case "print":					Object[] studentListForPrinting = view.getColumnValuesFromSelectedRows("ID");
-										Print newPrinting = new Print(studentListForPrinting,"ID");
-										Praktikumsverwaltung.addFrameToForeground(newPrinting);
-		}
-	}
-
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-	}
-
 	
-
 	@Override
-	public void changedUpdate(DocumentEvent arg0) {
-		Document searchField = arg0.getDocument();
+	public Object[][] getTableData() {
 		
-		try {
-			String searchValue = searchField.getText(0,searchField.getLength());
-			((Models.ContractList)model).setSearchFilter(searchValue);
-		} catch (BadLocationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		return model.tableRowData.getTableData();
+	}
+
+	@Override
+	public Object[] getTableHeader() {
+		return model.tableRowData.getColumnNames();
+	}
+
+	@Override
+	public Object getValueFromPosition(int row, String column) {
+		return model.tableRowData.getValueFromPosition(row, column);
+	}
+
+	@Override
+	public void setValueAtPosition(int row, String column, Object value) {
+		model.tableRowData.setValueAtPosition(row, column, value);
+	}
+
+	@Override
+	public int getColumnAliasIndex(String columnName) {
+		return model.tableRowData.getColumnAliasIndex(columnName);
 	}
 
 
+	@Override
+	public int getSqlRecordLimit() {
+		return model.getColumnLimit();
+	}
 
 	@Override
-	public void insertUpdate(DocumentEvent arg0) {
-		Document searchField = arg0.getDocument();
-		try {
-			String searchValue = searchField.getText(0,searchField.getLength());
-			((Models.ContractList)model).setSearchFilter(searchValue);
-		} catch (BadLocationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	public void tableRowClicked() {
+		table.setFlag();
+	}
+
+	@Override
+	public void tableRowDoubleClicked() {
+		Object contractId;
+		if((contractId = table.getColumnValueFromSelectedRow("ID")) != null){
+			ContractSingle newFrame = new ContractSingle(contractId);
+			Praktikumsverwaltung.addFrameToForeground(newFrame);
 		}
+	}
+
+	@Override
+	public void buttonEditClicked() {
+		Object[] contractList = table.getColumnValuesFromSelectedRows("ID");
+		ContractSingle newFrame = new ContractSingle(contractList);
+		Praktikumsverwaltung.addFrameToForeground(newFrame);
+	}
+
+	@Override
+	public void buttonMailToClicked() {
+		// TODO
 		
 	}
 
-
-
 	@Override
-	public void removeUpdate(DocumentEvent arg0) {
-		Document searchField = arg0.getDocument();
-		try {
-			String searchValue = searchField.getText(0,searchField.getLength());
-			((Models.ContractList)model).setSearchFilter(searchValue);
-		} catch (BadLocationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public void buttonPrintClicked() {
+		// TODO
 		
 	}
 
-
+	@Override
+	public void buttonMarkClicked() {
+		table.setFlagOnSelectedRow();
+	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		if(arg0.getSource() instanceof JTextField){
-			JTextField anzDatensaetze = (JTextField)(arg0.getSource());
-			if(anzDatensaetze.getName().equals("anzDatensaetze")){
-				model.setcolumnLimitAndRefreshViews(Integer.parseInt(anzDatensaetze.getText()));
-				view.setTableRowsCount(Integer.parseInt(anzDatensaetze.getText()));
-			}
-			
-		}
-		if(arg0.getSource() instanceof JButton){
-			JButton searchButton = (JButton)(arg0.getSource());
-			ExtendedSearchPanel searchPanel = (ExtendedSearchPanel)searchButton.getParent();
-			((Models.ContractList)model).setSearchFilter(searchPanel.getSearchValues());
-		}
+	public void buttonSearchSpecificClicked() {
+		model.setSearchFilter(extendedSearch.getSearchFilter());
 	}
-	
-	
 
+	@Override
+	public void buttonDeleteFilterClicked() {
+		model.deleteSearchFilter();
+		model.setResult();
+		view.modelHasChanged();
+		extendedSearch.clearFields();
+	}
 
+	@Override
+	public void searchFieldChanged() {
+		((Models.ListModel)model).setSearchFilter(searchMenu.getValueOfSearchField());
+	}
+
+	@Override
+	public void RecordLimitFieldChanged() {
+		model.setColumnLimitAndRefreshViews(searchMenu.getValueOfRecordLimitField());
+	}
+
+	@Override
+	public void buttonShowExtendedSearchClicked() {
+		boolean isVisible = extendedSearch.isVisible();
+		extendedSearch.setVisible(!isVisible);
+		view.getLayout().layoutContainer(view);
+		view.pack();
+	}
+
+	@Override
+	public void buttonAddNewDataClicked() {
+		ContractEmptySingle newEmptyFrame = new ContractEmptySingle();
+		Praktikumsverwaltung.addFrameToForeground(newEmptyFrame);
+	}
 }

@@ -12,10 +12,11 @@ import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 
-import Controller.CompanieList;
+import Controller.CompanyList;
 import Controller.ContractList;
 import Controller.ProfList;
 import Controller.StudentList;
+import Models.Datenbank.Database;
 import Praktikumsverwaltung.Praktikumsverwaltung;
 import Views.Import.ImportWizard;
 
@@ -99,7 +100,7 @@ public class MenuBar implements ActionListener{
         
         // Menüelemente hinzufügen
         menueLeiste.add(datei);
-        menueLeiste.add(hilfe);
+        //menueLeiste.add(hilfe);
         menueLeiste.add(separator);
         menueLeiste.add(label);
         menueLeiste.add(student);
@@ -110,11 +111,11 @@ public class MenuBar implements ActionListener{
         
         
         // Untermenüelemente hinzufügen
-        datei.add(oeffnen);
+        //datei.add(oeffnen);
         datei.add(importieren);
         datei.add(beenden);
-        hilfe.add(faq);
-        hilfe.add(about);
+        //hilfe.add(faq);
+        //hilfe.add(about);
     }
     
     public JMenuBar getMenu(){return menueLeiste;}   	
@@ -125,10 +126,10 @@ public class MenuBar implements ActionListener{
     
     public void actionPerformed(ActionEvent object) {
         if (object.getSource() == student){
-            Praktikumsverwaltung.addFrameToForeground(new StudentList());
+        	Praktikumsverwaltung.addFrameToForeground(new StudentList());
        }
         if (object.getSource() == firma){
-        	Praktikumsverwaltung.addFrameToForeground(new CompanieList());
+        	Praktikumsverwaltung.addFrameToForeground(new CompanyList());
        }
         if (object.getSource() == vertrag){
         	Praktikumsverwaltung.addFrameToForeground(new ContractList());
@@ -138,15 +139,13 @@ public class MenuBar implements ActionListener{
        }
     	
     	
-    	if (object.getSource() == oeffnen){
-             System.out.println("öffnen wurde angeklickt");
-        }
     	if (object.getSource() == importieren){
-            System.out.println("imortieren wurde angeklickt");
             startImport();
        }
         if (object.getSource() == beenden){
-             System.out.println("beenden wurde angeklickt");
+             Database db = Database.getInstance();
+             db.disconnect();
+             System.exit(0);
         }
         if (object.getSource() == faq){
              System.out.println("faq wurde angeklickt");
@@ -163,8 +162,6 @@ public class MenuBar implements ActionListener{
     	importwizard.setLocationRelativeTo(null);
 		importwizard.setModal(true);
 		importwizard.setVisible(true);
-
-    	
     }
   
 	

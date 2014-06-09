@@ -1,11 +1,13 @@
 package Import;
-//blabal
+
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
 import javax.swing.table.DefaultTableModel;
+
+import Controller.ErrorManager;
 
 
 //Konstruktoren
@@ -25,7 +27,7 @@ import javax.swing.table.DefaultTableModel;
 
 
 
-public class csvImport {
+public class CsvImport {
 //Eigenschaften
 
 	String file, delimiter, errorlog="Beim Import sind Fehler aufgetreten:\n";
@@ -35,13 +37,11 @@ public class csvImport {
 	DefaultTableModel datamodel = new DefaultTableModel(0,5);
 	
 //Konstruktor
-	public csvImport(String file, String delimiter, boolean t){
+	public CsvImport(String file, String delimiter, boolean t){
 		this.file=file;
 		this.delimiter=delimiter;
 		this.MetaDatenKopfZeile=t;
 		this.spaltenreihenfolge= new  char [] {'n','v','m','b','g'};
-
-		
 	}
 
 //Funktionen
@@ -67,8 +67,9 @@ public class csvImport {
 		        }
 		   reader.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			ErrorManager errorManager = new ErrorManager(e);
+			if(errorManager.retry)
+				parseCsvFile();			
 		}
 		
 
@@ -88,7 +89,13 @@ public class csvImport {
     public int getcount(){
     	return this.lines;
     }
-    public boolean getImportErrors(){return importerrors;}
-    public String getErrorLog(){return errorlog;}
+    
+    public boolean getImportErrors(){
+    	return importerrors;
+    }
+    
+    public String getErrorLog(){
+    	return errorlog;
+    }
 
 }

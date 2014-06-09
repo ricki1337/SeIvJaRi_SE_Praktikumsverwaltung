@@ -2,32 +2,43 @@ package Controller;
 
 import java.awt.event.MouseEvent;
 
+import Models.Datenbank.SqlTableStudent;
+import Models.Filter.IntFilter;
+
 public class StudentSingle extends SingleController{
 	
 	Views.StudentSingle view;
 	
+	private String srcSqlQuery = "select " +
+									SqlTableStudent.TableNameDotMatrikelNummer + " as Matrikelnr, " +
+									SqlTableStudent.TableNameDotVorname + " as Vorname, " +
+									SqlTableStudent.TableNameDotNachname + " as Nachname, " +
+									SqlTableStudent.TableNameDotEMail + " as 'E-Mail', " +
+									SqlTableStudent.TableNameDotStudiengruppe + " as Studiengruppe, " +
+									SqlTableStudent.TableNameDotBemerkung + " as Bemerkung " +
+								"from " +
+									SqlTableStudent.tableName;
+	
+	
 	public StudentSingle(){
-		setModel(new Models.StudentSingle());
+		setModel(new Models.Model(SqlTableStudent.tableName,SqlTableStudent.TableNameDotPrimaryKey));
 		setView((view = new Views.StudentSingle(this)));
 	}
 	
 	
 	public StudentSingle(Object primaryKeys){
 		super();
-		String sqlFilter = new String();
-		
+		Models.Model model = new Models.Model(srcSqlQuery,SqlTableStudent.tableName,SqlTableStudent.TableNameDotPrimaryKey);
+				
 		if(primaryKeys instanceof Object[]){		
-			int count = 0;
 			for(Object item:(Object[])primaryKeys){
-				if(count == 0) sqlFilter = item.toString();
-				else sqlFilter += " ,"+item.toString();
-				count++;
+				model.setOrFilter(SqlTableStudent.TableNameDotMatrikelNummer, new IntFilter(Integer.parseInt(item.toString())));
 			}
 		} else{
-			sqlFilter = primaryKeys.toString();
+			model.setAndFilter(SqlTableStudent.TableNameDotMatrikelNummer, new IntFilter(Integer.parseInt(primaryKeys.toString())));
 		}
-		
-		setModel(new Models.StudentSingle("select * from student where MatrNr in (" + sqlFilter +")"));
+		model.setResult();
+		setModel(model);
 		setView((view = new Views.StudentSingle(this)));
 	}
 
@@ -49,27 +60,15 @@ public class StudentSingle extends SingleController{
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mouseEntered(MouseEvent arg0) {}
 
 	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mouseExited(MouseEvent arg0) {}
 
 	@Override
-	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mousePressed(MouseEvent arg0) {}
 
 	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mouseReleased(MouseEvent arg0) {}
 
 }

@@ -1,6 +1,7 @@
 package Views;
 
 import Controller.Controller;
+import Models.Datenbank.SqlTableStudent;
 
 public class StudentSingle extends SingleView{
 
@@ -11,12 +12,13 @@ public class StudentSingle extends SingleView{
 
 	@Override
 	public void setElemente() {
-		addTextfieldWithSqlReference("Matrikelnr.", "MatrNr", "MatrNr", 1, 1);
-		addTextfieldWithSqlReference("Vorname", "Firstname", "Firstname", 1, 2);
-		addTextfieldWithSqlReference("Nachname", "Name", "Name", 1, 3);
-		addTextfieldWithSqlReference("E-Mail", "Email", "Email", 1, 4);
-		addTextfieldWithSqlReference("Studiengruppe", "StGr", "StGr", 1, 5);
-		addTextAreaWithSqlReference("Bemerkung", "Note", "Note", 6, 3);
+		
+		addTextfieldWithSqlReference("Matrikelnr.", "Matrikelnr", SqlTableStudent.TableNameDotMatrikelNummer, 1, 1);
+		addTextfieldWithSqlReference("Vorname", "Vorname", SqlTableStudent.TableNameDotVorname, 1, 2);
+		addTextfieldWithSqlReference("Nachname", "Nachname", SqlTableStudent.TableNameDotNachname, 1, 3);
+		addTextfieldWithSqlReference("E-Mail", "E-Mail", SqlTableStudent.TableNameDotEMail, 1, 4);
+		addTextfieldWithSqlReference("Studiengruppe", "Studiengruppe", SqlTableStudent.TableNameDotStudiengruppe, 1, 5);
+		addTextAreaWithSqlReference("Bemerkung", "Bemerkung", SqlTableStudent.TableNameDotBemerkung, 6, 3);
 		
 		addBottomMenu(6);
 	}

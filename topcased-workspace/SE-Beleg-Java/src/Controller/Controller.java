@@ -14,12 +14,14 @@ public abstract class Controller {
 	public Controller(){}
 	
 	public Controller(View view, Model model){
-
 		setModel(model);
 		setView(view);
 	}
 	
 	public void setView(View view){
+		if(view == null)
+			throw new IllegalArgumentException();
+		
 		this.view = view;
 	}
 	

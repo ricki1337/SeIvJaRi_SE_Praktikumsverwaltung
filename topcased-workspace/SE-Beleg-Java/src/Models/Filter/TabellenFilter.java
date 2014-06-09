@@ -25,7 +25,6 @@ public class TabellenFilter implements ObjectFilter{
 	
 	@Override
 	public void setAndFilter(String spaltenName, FilterTyp spaltenWert) {
-		// TODO Auto-generated method stub
 		if(this.spaltenName.size()!=0)
 			this.spaltenName.add(" and "+spaltenName);
 		else this.spaltenName.add(spaltenName);

@@ -3,23 +3,27 @@ package Models.Datenbank;
 import java.sql.*;
 import java.util.*;
 
-import com.mysql.jdbc.exceptions.MySQLSyntaxErrorException;
+import ConfigParser.Config;
+import Controller.ErrorManager;
 
 public class Database
 {
-	//instance von Database wird beim laden(!!) der klasse erzeugt
 	private static Database instance = new Database();
 	
-	//ist die eigentliche anbindung an die datenbank
-	private DatabaseFunction db;
+	protected DatabaseFunction db;
 	
-	//enthält alle beobachter
+	private String dbHost = null;
+	private int dbPort = 0;
+	private String dbName = null;
+	private String dbPassword = null;
+	private String dbUser = null;
+	
+	
 	private Vector<observer> observerList;
 	
-	private ArrayList<String> tables;
+	protected ArrayList<String> tables;
 
 	private Database (){
-		//beobachterliste init
 		observerList = new Vector<observer>();
 		tables = new ArrayList<String>();
 	}
@@ -28,106 +32,131 @@ public class Database
 		try {
 		throw new AssertionError("Von Database darf nur eine Instanz existieren!");
 		} catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+			e.printStackTrace();
 		} 
 		return null;
 	}
 	
 	private void informModels(String[] changedTables)
 	{
-		//gehe die beobachterliste durch und rufe jeweils refresh() auf
 		for(int i=0;i<observerList.size();i++)
 			observerList.elementAt(i).refresh(changedTables);
 	}
 	
 	public void login(observer observer)
 	{
-		//beobachter registriert sich in der beobachterliste
 		observerList.add(observer);
 	}
 	
 	public void logout(observer observer)
 	{
-		//beobachter trägt sich aus der beobachterliste aus
-				observerList.remove(observer);
+		observerList.remove(observer);
 	}
 	
 	public static Database getInstance()
 	{
+		if(instance == null)
+			instance = new Database();
 		return instance;
 	}
 
 
 	public ResultSet getQuery(String query) {
-		return this.db.getQuery(query);
+		ResultSet result = null;
+		try{
+			result = this.db.getQuery(query);
+		}
+		catch(Exception e){
+			ErrorManager errorManager = new ErrorManager(e);
+			if(errorManager.retry)
+				result = getQuery(query);
+		}
+		return result;
 	}
 
 	
 	public int setQuery(String query) {
-
-		int tmp = this.db.setQuery(query);
-	
+		int tmp = 0;
+		try{
+			tmp = this.db.setQuery(query);
+		}
+		catch(Exception e){
+			ErrorManager errorManager = new ErrorManager(e);
+			if(errorManager.retry)
+				tmp = setQuery(query);
+		}
 		informModels(getChangedTables(query));
 		return tmp; 
 	}
 	
-	private String[] getChangedTables(String query){
+	protected String[] getChangedTables(String query){
 		ArrayList<String> changedTables = new ArrayList<String>();
 		for(String table:tables){
 			if(query.contains(table))
 				changedTables.add(table);
 		}
 		
-		String[] test = new String[changedTables.size()];
+		String[] changedTablesArray = new String[changedTables.size()];
 		for(int index=0;index<changedTables.size();index++){
-			test[index] = changedTables.get(index);
+			changedTablesArray[index] = changedTables.get(index);
 		}
 		
-		return test;
+		return changedTablesArray;
 	}
 	
 
-	//datenbankverbindung setzen
 	public void connect(String dbType, String host, int port, String user, String pw, String db) throws Exception {
+		dbHost = host;
+		dbPort = port;
+		dbUser = user;
+		dbName = db;
+		dbPassword = pw;
+		
 		if(this.db == null){
 			switch(dbType){
 				case "MySql": 	this.db = new MySql();
 								break;
-								
-//				case "test":	this.db = new MySqlMock();
-//								break;
+
 			}
-			
-				
-					this.db.connect(host, port, user, pw, db);
-		
-					
-				
-	
+			try{
+				this.db.connect(dbHost, dbPort, dbUser, dbPassword, dbName);
+			}
+			catch(Exception e){
+				ErrorManager errorManager = new ErrorManager(e);
+				if(errorManager.retry)
+					this.db.connect(dbHost, dbPort, dbUser, dbPassword, dbName);
+			}
 		}
-
-			setTables();
-
+		setTables();
 	}
 	
 	protected void setTables() throws SQLException{
 		ResultSet sqlTables = this.db.getQuery("show tables;");
-		
-		
-			while(sqlTables.next()){
-					tables.add(sqlTables.getString(1));
+
+		while(sqlTables.next()){
+			String tableName = null;
+			
+			try{
+				tableName = sqlTables.getString(1);
 			}
-			
+			catch(SQLException e){
+				try{
+					tableName = sqlTables.getString("Tables_in_"+ dbName);
+				}
+				catch(SQLException ex){
+					ErrorManager errorManager = new ErrorManager(ex);
+					if(errorManager.retry)
+						setTables();
+				}
+			}
+			tables.add(tableName);
+		}
 
-
-			
-			
-		
 	}
 	
 	public void disconnect() {
-		if(this.db != null) this.db.disconnect();		
+		if(this.db != null) this.db.disconnect();
+		Database.instance = null;
 	}
 
 }

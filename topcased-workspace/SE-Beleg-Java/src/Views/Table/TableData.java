@@ -5,33 +5,51 @@ import java.sql.SQLException;
 
 public class TableData {
 	
-	private TableColumnNames columnNames;
-	private ResultSet sqlResultSet;
-	private Object[][] data;
-	private int rowCount;
+	protected TableColumnNames columnNames;
+	protected ResultSet sqlResultSet;
+	protected Object[][] data;
+	protected int rowCount;
+	
+	
+	protected TableData(){}
 	
 	public TableData(ResultSet sqlResultSet){
 		this(sqlResultSet,20);
 	}
 	
 	public TableData(ResultSet sqlResultSet, int rowCount){
-		this.sqlResultSet = sqlResultSet;
-		this.rowCount = rowCount;
+		setSqlResultSet(sqlResultSet);
+		setRowCount(rowCount);
 		setColumnNames();
 		setDataFromResultSet();
 		setTableRowsUpToRowCount();
 	}
 	
-	private void setColumnNames(){
+	protected void setSqlResultSet(ResultSet sqlResultSet){
+		if(sqlResultSet == null) throw new IllegalArgumentException();
+		this.sqlResultSet = sqlResultSet;	
+	}
+	
+	public void setRowCount(int rowCount){
+		if(rowCount < 1) throw new IllegalArgumentException();
+		this.rowCount = rowCount;
+	}
+	
+	public void setNewRowCountAndRefreshData(int rowCount){
+		setRowCount(rowCount);
+		setDataFromResultSet();
+		setTableRowsUpToRowCount();
+	}
+	
+	protected void setColumnNames(){
 		try {
 			columnNames = new TableColumnNames(sqlResultSet.getMetaData());
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	private void setDataFromResultSet(){
+	protected void setDataFromResultSet(){
 		
 		try {
 			if(!sqlResultSet.last()){
@@ -41,43 +59,39 @@ public class TableData {
 				
 				data = new Object[sqlResultSet.getRow()][columnNames.getCountOfColumns()];
 				sqlResultSet.first();
-				int row = 0;
+				int dataRow = 0;
 				do{
-					for(int column = 0;column<columnNames.getCountOfColumns();column++){
-						Object object = sqlResultSet.getObject(column+1);
+					for(int dataColumn = 0, resultColumn = 1;dataColumn<columnNames.getCountOfColumns();dataColumn++,resultColumn++){
+						Object object = sqlResultSet.getObject(resultColumn);
 						if(object == null){
-							object = sqlResultSet.getBoolean(column+1);
+							object = sqlResultSet.getBoolean(resultColumn);
 						}
-						data[row][column] = object;
+						data[dataRow][dataColumn] = object;
 					}
-					row++;
+					dataRow++;
 				}while(sqlResultSet.next());
 				
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return;
 		}
 	}
 	
-	
-	public void setRowCount(int rowCount){
-		if(rowCount < 0) throw new IllegalArgumentException();
-		this.rowCount = rowCount;
-		setDataFromResultSet();
-		setTableRowsUpToRowCount();
-	}
-	
-	private void setTableRowsUpToRowCount(){
-		Object[][] tmp_data = new Object[rowCount][columnNames.getCountOfColumns()];
-		Object[] emptyRow = new EmptyObject[columnNames.getCountOfColumns()];
-		for(int row = 0; row < columnNames.getCountOfColumns();row++) emptyRow[row] = new EmptyObject();
+	protected void setTableRowsUpToRowCount(){
+		int rows = rowCount;
+		int columns = columnNames.getCountOfColumns();
+		Object[][] tmp_data = new Object[rows][columns];
+		Object[] emptyRow = new EmptyObject[columns];
 		
+		for(int column = 0; column < columns;column++) 
+			emptyRow[column] = new EmptyObject();
 		
-		for(int row = 0; row < tmp_data.length;row++){
+		for(int row = 0; row < rows;row++){
 			try{
 				tmp_data[row] = data[row];
-			}catch(IndexOutOfBoundsException exception){
+			}
+			catch(IndexOutOfBoundsException exception){
 				tmp_data[row] = emptyRow;
 			}
 			catch(NullPointerException exception){
@@ -86,33 +100,10 @@ public class TableData {
 		}
 		data = tmp_data;
 	}
-	
-	public void addColumnAtBegin(String columnName){
-		addColumnAtPosition(columnName,0,null);
-	}
+
 	
 	public void addColumnAtBegin(String columnName,Object data){
 		addColumnAtPosition(columnName,0,data);
-	}
-	
-	public void addColumnAtBegin(String columnName, Object data[]){
-		addColumnAtPosition(columnName,0,data);
-	}
-	
-	public void addColumnAtEnd(String columnName){
-		addColumnAtPosition(columnName,columnNames.getCountOfColumns()-1,null);
-	}
-	
-	public void addColumnAtEnd(String columnName,Object data){
-		addColumnAtPosition(columnName,columnNames.getCountOfColumns()-1,data);
-	}
-	
-	public void addColumnAtEnd(String columnName, Object data[]){
-		addColumnAtPosition(columnName,columnNames.getCountOfColumns()-1,data);
-	}
-	
-	public void addColumnAtPosition(String columnName,int position){
-		addColumnAtPosition(columnName,position,null);
 	}
 	
 	public void addColumnAtPosition(String columnName,int position, Object data){
@@ -120,20 +111,22 @@ public class TableData {
 		addColumn(position,data);
 	}
 	
-	public void addColumnAtPosition(String columnName,int position, Object[] data){
-		addColumnName(columnName,position);
-		addColumn(position,data);
-	}
-	
-	private void addColumnName(String name, int position){
+	protected void addColumnName(String name, int position){
 		if(position < 0 || position > columnNames.getCountOfColumns())
 			throw new IndexOutOfBoundsException();
+		
+		if(name == null | name.length() == 0)
+			throw new IllegalArgumentException();
+		
 		columnNames.addColumn(name, position);
 	}
 	
-	private void addColumn(int position, Object data){
+	protected void addColumn(int position, Object data){
 		if(position < 0 || position > columnNames.getCountOfColumns())
 			throw new IndexOutOfBoundsException();
+		
+		if(data == null)
+			throw new IllegalArgumentException();
 		
 		Object[][] tmp_data = new Object[this.data.length][columnNames.getCountOfColumns()];
 		
@@ -145,24 +138,8 @@ public class TableData {
 		this.data = tmp_data;
 	}
 	
-	private void addColumn(int position, Object[] data){
-		if(position < 0 || position > columnNames.getCountOfColumns())
-			throw new IndexOutOfBoundsException();
-		
-		if(data.length != columnNames.getCountOfColumns()-1)
-			throw new IndexOutOfBoundsException();
-		
-		Object[][] tmp_data = new Object[this.data.length][columnNames.getCountOfColumns()];
-		for(int row = 0;row < this.data.length;row++){
-			for(int column = columnNames.getCountOfColumns();column>=0;column--){
-				tmp_data[row][column] = column==position?data[row]:this.data[row][column-1];
-			}
-		}
-		this.data = tmp_data;
-	}
-	
 	public Object[] getColumnNames(){
-		return columnNames.getColumnNames();
+		return columnNames.getColumnAliasNames();
 	}
 	
 	public Object[][] getTableData(){
@@ -170,12 +147,14 @@ public class TableData {
 	}
 
 	public Object getValueFromPosition(int row, String column){
-		return getValueFromPosition(row,columnNames.getColumnIndex(column));
+		int index = columnNames.getColumnIndex(column);
+		return getValueFromPosition(row,index);
 	}
 	
 	public Object getValueFromPosition(int row, int column){
 		if(row < 0 || row >= data.length)
 			throw new IndexOutOfBoundsException();
+		
 		if(column < 0 || column >= columnNames.getCountOfColumns())
 			throw new IndexOutOfBoundsException();
 		
@@ -183,7 +162,14 @@ public class TableData {
 	}
 	
 	public String getStringValueFromPosition(int row, String column) throws Exception{
-		return getStringValueFromPosition(row,columnNames.getColumnIndex(column));
+		String valueFromPosition = null;
+		try{
+			int index = columnNames.getColumnIndex(column);
+			valueFromPosition = getStringValueFromPosition(row,index);
+		}catch(Exception e){
+			
+		}
+		return valueFromPosition;
 	}
 	
 	public String getStringValueFromPosition(int row, int column) throws Exception{
@@ -209,11 +195,12 @@ public class TableData {
 			return (String) value;
 		}
 		
-		throw new Exception();
+		throw new IndexOutOfBoundsException("Element an Position row: "+row+", column: "+column+" was not found in this function.");
 	}
 	
 	public boolean getBooleanValueFromPosition(int row, String column) throws Exception{
-		return getBooleanValueFromPosition(row,columnNames.getColumnIndex(column));
+		int index = columnNames.getColumnIndex(column);
+		return getBooleanValueFromPosition(row,index);
 	}
 	
 	public boolean getBooleanValueFromPosition(int row, int column) throws Exception{
@@ -223,11 +210,20 @@ public class TableData {
 			return ((Boolean) value);
 		}
 		
+		if(value instanceof String){
+			return Boolean.parseBoolean((String)value);
+		}
+		
+		if(value instanceof Integer){
+			return (((Integer)value)<=0)?false:true;
+		}
+		
 		throw new Exception();
 	}	
 	
 	public void setValueAtPosition(int row, String column, Object value){
-		setValueAtPosition(row,columnNames.getColumnIndex(column),value);
+		int columnIndex = columnNames.getColumnIndex(column);
+		setValueAtPosition(row,columnIndex,value);
 	}
 	
 	public void setValueAtPosition(int row, int column, Object value){
@@ -236,19 +232,28 @@ public class TableData {
 		if(column < 0 || column >= columnNames.getCountOfColumns())
 			throw new IndexOutOfBoundsException();
 		data[row][column] = value;
-		System.out.println();
-	}
-	
-	public String getColumnName(int columnIndex){
-		return columnNames.getColumnNameByIndex(columnIndex);
 	}
 	
 	public int getColumnIndex(String columnName){
 		return columnNames.getColumnIndex(columnName);
 	}
 	
+	public int getColumnAliasIndex(String columnName){
+		return columnNames.getColumnAliasNameIndex(columnName);
+	}
+	
+	public int getColumnNameIndex(String columnName){
+		return columnNames.getColumnNameIndex(columnName);
+	}
+	
 	public int getRowCount(){
-		return data.length;
+		int count=0;
+		for(Object[] object:data){
+			if(object[0] instanceof EmptyObject | object[columnNames.getCountOfColumns()-1] instanceof EmptyObject)
+				continue;
+			count++;
+		}
+		return count;
 	}
 	
 }

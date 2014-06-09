@@ -29,7 +29,7 @@ public class StudentListToContract extends ListView{
 	}
 
 	@Override
-	public Object[][] getEingabeWerte() {
+	public Object[][] getInputValues() {
 		return null;
 	}
 
@@ -39,17 +39,5 @@ public class StudentListToContract extends ListView{
 		return null;
 	}
 
-	@Override
-	public void getExtendedSearchInputFields(JPanel target) {
-		target.setLayout(new GridLayout(5,2));
-		target.add(new JLabel("Matrikelnr.:")); target.add(new JTextField(20));
-		target.add(new JLabel("Vorname:")); target.add(new JTextField(20));
-		target.add(new JLabel("Nachname:")); target.add(new JTextField(20));
-		target.add(new JLabel("E-Mail:")); target.add(new JTextField(20));
-		target.add(new JLabel("Studiengruppe:")); target.add(new JTextField(20));
-		target.setVisible(true);
-	}
-
-	
 
 }

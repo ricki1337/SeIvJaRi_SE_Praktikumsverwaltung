@@ -2,8 +2,8 @@ package Models.Filter;
 
 public class StringFilter implements FilterTyp{
 	private String wert;
-	private char praefix;
-	private char suffix;
+	private String praefix = "'";
+	private String suffix = "'";
 	
 	public StringFilter(Object wert){
 		this(wert.toString());
@@ -16,7 +16,8 @@ public class StringFilter implements FilterTyp{
 	@Override
 	public Object getWert() {
 		// TODO Auto-generated method stub
-		return " like '"+ praefix + wert + suffix +"'";
+		
+		return " like "+ praefix + wert + suffix;
 	}
 
 	@Override
@@ -25,12 +26,12 @@ public class StringFilter implements FilterTyp{
 		this.wert = (String)wert;
 	}
 	
-	public void setWertPraefix(char praefix){
-		this.praefix = praefix;
+	public void setWertPraefix(String praefix){
+		this.praefix = "'" + praefix;
 	}
 	
-	public void setWertSuffix(char suffix){
-		this.suffix = suffix;
+	public void setWertSuffix(String suffix){
+		this.suffix =  suffix + "'";
 	}
 
 }

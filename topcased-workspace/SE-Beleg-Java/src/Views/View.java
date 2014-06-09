@@ -23,7 +23,7 @@ public abstract class View extends JInternalFrame implements UpdateView{
 	protected Model model;
 	protected Controller controller;
 	
-	private JPanel contentPanel;
+	protected JPanel contentPanel;
 	
 	private GridBagLayout layout;
 	
@@ -39,12 +39,12 @@ public abstract class View extends JInternalFrame implements UpdateView{
 	public View(Controller controller){
 		super("",false,true,true,true);
 		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+		
 		final JInternalFrame instance = this;
 		this.addInternalFrameListener(new InternalFrameAdapter(){
             public void internalFrameClosing(InternalFrameEvent e) {
             	model.modelClose();
             	instance.dispose();
-              
             }
 		});
 		
@@ -120,7 +120,7 @@ public abstract class View extends JInternalFrame implements UpdateView{
 	}
 	
 
-	public abstract Object[][] getEingabeWerte();
+	public abstract Object[][] getInputValues();
 	
 	public final void display(){
 		setElemente();

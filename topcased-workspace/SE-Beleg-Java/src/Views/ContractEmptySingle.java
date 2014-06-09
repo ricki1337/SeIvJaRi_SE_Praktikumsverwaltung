@@ -6,12 +6,15 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import Controller.Controller;
+import Models.Datenbank.SqlTableCompanies;
+import Models.Datenbank.SqlTableContracts;
+import Models.Datenbank.SqlTableStudent;
 import Views.Table.TableData;
 
 public class ContractEmptySingle extends EmptySingleView{
 
-	private Models.CompanieSingle company = null;
-	private Models.StudentSingle student = null;
+	private Models.Model company = null;
+	private Models.Model student = null;
 	private TableData companyData = null;
 	private TableData studentData = null;
 	
@@ -21,9 +24,13 @@ public class ContractEmptySingle extends EmptySingleView{
 		
 	}
 
+	/**
+	 * TODO
+	 * auslagerung von student & company single in controller
+	 */
 	public void setStudent(String studentId){
-		String sourceQuery = new String("select * from student where MatrNr = "+studentId);
-		student = new Models.StudentSingle(sourceQuery);
+		String sourceQuery = new String("select * from " + SqlTableStudent.tableName + " where " + SqlTableStudent.TableNameDotMatrikelNummer + " = " + studentId);
+		student = new Models.Model(sourceQuery,SqlTableStudent.tableName,SqlTableStudent.TableNameDotPrimaryKey);
 		studentData = new TableData(student.getResult());
 		
 		deleteComponentFromView("addStudent");
@@ -33,9 +40,9 @@ public class ContractEmptySingle extends EmptySingleView{
 	}
 	
 	public void setCompany(String companyId){
-		String sourceQuery = new String("select * from companies where Id = "+companyId);
+		String sourceQuery = new String("select * from " + SqlTableCompanies.tableName + " where " + SqlTableCompanies.TableNameDotId + " = " + companyId);
 		
-		company = new Models.CompanieSingle(sourceQuery);
+		company = new Models.Model(sourceQuery,SqlTableCompanies.tableName,SqlTableCompanies.TableNameDotPrimaryKey);
 		companyData= new TableData(company.getResult());
 		
 		deleteComponentFromView("addCompany");
@@ -60,14 +67,14 @@ public class ContractEmptySingle extends EmptySingleView{
 		
 		setLabel("                 ",1,6);
 
-		addTextfieldWithSqlReference("Betreuer", "Prof", 1, 7);
-		addTextfieldWithSqlReference("beginnt am", "BegPr", 1, 8);
-		addTextfieldWithSqlReference("endet am","EndPr", 1, 9);
-		addTextfieldWithSqlReference("Typ", "Type", 1, 10);
+		addTextfieldWithSqlReference("Betreuer", SqlTableContracts.TableNameDotFK_Betreuer, 1, 7);
+		addTextfieldWithSqlReference("beginnt am", SqlTableContracts.TableNameDotBeginn, 1, 8);
+		addTextfieldWithSqlReference("endet am",SqlTableContracts.TableNameDotEnde, 1, 9);
+		addTextfieldWithSqlReference("Typ", SqlTableContracts.TableNameDotTyp, 1, 10);
 		
-		addCheckboxWithSqlReference("Bericht","Bericht", 3, 7);
-		addCheckboxWithSqlReference("Zeugnis","Zeugnis", 3, 8);
-		addCheckboxWithSqlReference("Empfehlung","Empfehlung", 3, 9);
+		addCheckboxWithSqlReference("Bericht",SqlTableContracts.TableNameDotBericht, 3, 7);
+		addCheckboxWithSqlReference("Zeugnis",SqlTableContracts.TableNameDotZeugnis, 3, 8);
+		addCheckboxWithSqlReference("Empfehlung",SqlTableContracts.TableNameDotEmpfehlung, 3, 9);
 		
 		setBottomMenu(12);
 	}
@@ -120,25 +127,15 @@ public class ContractEmptySingle extends EmptySingleView{
 	}
 	
 	private boolean isStudentSet(){
-		
 		if(student == null) return false;
-	
 		return true;
 	}
 	
 	private boolean isCompanySet(){
-
 		if(company == null) return false;
-		
 		return true;
 	}
 
-	public void clearAllFields() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
 	private void addTextfieldWithData(String labelText, String value, int posX, int posY){
 		GridBagConstraints gbc = getGridBagConstraint();
 		setLabel(labelText,posX,posY);
@@ -157,12 +154,5 @@ public class ContractEmptySingle extends EmptySingleView{
 		
 	}
 	
-	private void addHiddenFieldWithSqlReference(String sqlSpaltenName, String value){
-
-		JLabel hiddenContractId = new JLabel(value);
-		hiddenContractId.setVisible(false);
-		
-		addComponentToView(hiddenContractId,sqlSpaltenName);
-
-	}
+	
 }

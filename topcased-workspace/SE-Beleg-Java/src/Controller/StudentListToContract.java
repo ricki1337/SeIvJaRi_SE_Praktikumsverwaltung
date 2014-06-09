@@ -9,25 +9,29 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 
+import Controller.Interfaces.ChangeableController;
+import Models.Datenbank.SqlTableStudent;
 import Praktikumsverwaltung.Praktikumsverwaltung;
 import Views.GuiElemente.SearchPanel.ExtendedSearchPanel;
 
 public class StudentListToContract extends ListController{
 	
-	private String srcSqlQuery = "select MatrNr as Matrikelnr," +
-									" Firstname as Vorname," +
-									" Name as Nachname," +
-									" Email as 'E-Mail'," +
-									" StGr as Studiengruppe," +
-									" Note as Bemerkung" +
-									" from student";
+	private String srcSqlQuery = "select " +
+									SqlTableStudent.TableNameDotMatrikelNummer + " as Matrikelnr, " +
+									SqlTableStudent.TableNameDotVorname + " as Vorname, " +
+									SqlTableStudent.TableNameDotNachname + " as Nachname, " +
+									SqlTableStudent.TableNameDotEMail + " as 'E-Mail', " +
+									SqlTableStudent.TableNameDotStudiengruppe + " as Studiengruppe, " +
+									SqlTableStudent.TableNameDotBemerkung + " as Bemerkung " +
+								"from " +
+									SqlTableStudent.tableName;
 	private Views.StudentListToContract view;
 	private ChangeableController calledController;
 	
 	public StudentListToContract(ChangeableController calledController){
 		super();
 		this.calledController = calledController;
-		setModel(new Models.StudentList(srcSqlQuery));
+		setModel(new Models.ListModel(srcSqlQuery,SqlTableStudent.tableName,SqlTableStudent.TableNameDotPrimaryKey));
 		
 		setView(view = new Views.StudentListToContract(this));
 	}
@@ -36,7 +40,6 @@ public class StudentListToContract extends ListController{
 
 	@Override
 	public void display() {
-		// TODO Auto-generated method stub
 		view.display();
 	}
 
@@ -65,90 +68,48 @@ public class StudentListToContract extends ListController{
 		}
 	}
 
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-	}
-
-	
-
 	@Override
 	public void changedUpdate(DocumentEvent arg0) {
 		Document searchField = arg0.getDocument();
 		
 		try {
 			String searchValue = searchField.getText(0,searchField.getLength());
-			((Models.StudentList)model).setSearchFilter(searchValue);
+			((Models.ListModel)model).setSearchFilter(searchValue);
 		} catch (BadLocationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-
-
 
 	@Override
 	public void insertUpdate(DocumentEvent arg0) {
 		Document searchField = arg0.getDocument();
 		try {
 			String searchValue = searchField.getText(0,searchField.getLength());
-			((Models.StudentList)model).setSearchFilter(searchValue);
+			((Models.ListModel)model).setSearchFilter(searchValue);
 		} catch (BadLocationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 	}
-
-
 
 	@Override
 	public void removeUpdate(DocumentEvent arg0) {
 		Document searchField = arg0.getDocument();
 		try {
 			String searchValue = searchField.getText(0,searchField.getLength());
-			((Models.StudentList)model).setSearchFilter(searchValue);
+			((Models.ListModel)model).setSearchFilter(searchValue);
 		} catch (BadLocationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 	}
 
-
-
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
 		if(arg0.getSource() instanceof JTextField){
 			JTextField anzDatensaetze = (JTextField)(arg0.getSource());
 			if(anzDatensaetze.getName().equals("anzDatensaetze")){
-				model.setcolumnLimitAndRefreshViews(Integer.parseInt(anzDatensaetze.getText()));
+				model.setColumnLimitAndRefreshViews(Integer.parseInt(anzDatensaetze.getText()));
 				view.setTableRowsCount(Integer.parseInt(anzDatensaetze.getText()));
 			}
 			
@@ -156,11 +117,20 @@ public class StudentListToContract extends ListController{
 		if(arg0.getSource() instanceof JButton){
 			JButton searchButton = (JButton)(arg0.getSource());
 			ExtendedSearchPanel searchPanel = (ExtendedSearchPanel)searchButton.getParent();
-			((Models.StudentList)model).setSearchFilter(searchPanel.getSearchValues());
+			((Models.ListModel)model).setSearchFilter(searchPanel.getSearchValues());
 		}
 	}
 	
-	
+	@Override
+	public void mouseEntered(MouseEvent e) {}
 
+	@Override
+	public void mouseExited(MouseEvent e) {}
+
+	@Override
+	public void mousePressed(MouseEvent e) {}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {}
 
 }

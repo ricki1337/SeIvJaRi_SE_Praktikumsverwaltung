@@ -2,12 +2,15 @@ package Controller;
 
 import java.awt.event.MouseEvent;
 
+import Controller.Interfaces.ChangeableController;
+import Models.Datenbank.SqlTableContracts;
+
 public class ContractEmptySingle extends SingleController implements ChangeableController{
 	
 	Views.ContractEmptySingle view;
 	
 	public ContractEmptySingle(){
-		setModel(new Models.ContractSingle());
+		setModel(new Models.Model(SqlTableContracts.tableName,SqlTableContracts.TableNameDotPrimaryKey));
 		setView((view = new Views.ContractEmptySingle(this)));
 	}
 
@@ -16,6 +19,12 @@ public class ContractEmptySingle extends SingleController implements ChangeableC
 		view.display();
 	}
 
+	
+	/**
+	 * TODO
+	 * views bekommen extra funktionen zum zurückliefern der entsprechenden werte....
+	 */
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		switch(e.getComponent().getName()){
@@ -23,10 +32,10 @@ public class ContractEmptySingle extends SingleController implements ChangeableC
 									view.clearAllFields();
 									break;
 									
-			case "modifyCompany": 	Praktikumsverwaltung.Praktikumsverwaltung.addFrameToForeground(new CompanieSingle(view.getValueFromCurrentItem("FirmenID")));
+			case "modifyCompany": 	Praktikumsverwaltung.Praktikumsverwaltung.addFrameToForeground(new CompanySingle(view.getValueFromCurrentItem("FirmenID")));
 									break;
 			case "addCompany":							
-			case "changeCompany": 	Praktikumsverwaltung.Praktikumsverwaltung.addFrameToForeground(new CompanieListToContract(this));
+			case "changeCompany": 	Praktikumsverwaltung.Praktikumsverwaltung.addFrameToForeground(new CompanyListToContract(this));
 									break;
 			
 			case "modifyStudent": 	Praktikumsverwaltung.Praktikumsverwaltung.addFrameToForeground(new StudentSingle(view.getValueFromCurrentItem("Matrikelnr")));
@@ -39,32 +48,7 @@ public class ContractEmptySingle extends SingleController implements ChangeableC
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void change(String valueName, Object value) {
-		// TODO Auto-generated method stub
 		if(valueName.equals("company")){
 			view.setCompany((String)value);
 		}
@@ -72,7 +56,18 @@ public class ContractEmptySingle extends SingleController implements ChangeableC
 		if(valueName.equals("student")){
 			view.setStudent((String)value);
 		}
-			
 	}
+	
+	@Override
+	public void mouseEntered(MouseEvent arg0) {}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {}
 
 }

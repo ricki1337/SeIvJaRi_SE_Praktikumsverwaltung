@@ -2,12 +2,14 @@ package Controller;
 
 import java.awt.event.MouseEvent;
 
+import Models.Datenbank.SqlTableCompanies;
+
 public class CompanieEmptySingle extends SingleController{
 	
 	Views.CompanieEmptySingle view;
 	
 	public CompanieEmptySingle(){
-		setModel(new Models.CompanieSingle());
+		setModel(new Models.Model(SqlTableCompanies.tableName,SqlTableCompanies.TableNameDotPrimaryKey));
 		setView((view = new Views.CompanieEmptySingle(this)));
 	}
 
@@ -26,27 +28,15 @@ public class CompanieEmptySingle extends SingleController{
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mouseEntered(MouseEvent arg0) {}
 
 	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mouseExited(MouseEvent arg0) {}
 
 	@Override
-	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mousePressed(MouseEvent arg0) {}
 
 	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mouseReleased(MouseEvent arg0) {}
 
 }

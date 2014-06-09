@@ -1,31 +1,23 @@
 package Models;
 
+import Models.Datenbank.SqlTableContracts;
+
 public class ContractSingle extends Model{
 	
-	public ContractSingle(String srcQuery) {
-		super(srcQuery);
-		// TODO Auto-generated constructor stub
+	public ContractSingle(String srcQuery,String tableNameForUpdateOrInsert, String primaryKeyColumnName) {
+		super(srcQuery,tableNameForUpdateOrInsert,primaryKeyColumnName);
 	}
 	
-	public ContractSingle(){
-		super();
+	public ContractSingle(String tableNameForUpdateOrInsert, String primaryKeyColumnName){
+		super(tableNameForUpdateOrInsert,primaryKeyColumnName);
 	}
 	
-	
-	public String getTableNameForUpdateOrInsert(){
-		return new String("contract");
-	}
-	
-	protected String getPrimaryKeyColumnName(){
-		return new String("ID");
-	}
-	
-	public void changeCompanie(String contractId,String companieId){
-		this.updateDatabase("UPDATE "+getTableNameForUpdateOrInsert()+" set CompID = '"+companieId+"' where "+getPrimaryKeyColumnName()+" = '"+contractId+"'");
+	public void changeCompany(String contractId,String companyId){
+		this.updateDatabase("UPDATE " + SqlTableContracts.tableName + " set " + SqlTableContracts.TableNameDotFK_Firma + " = '" + companyId + "' where " + SqlTableContracts.TableNameDotId + " = '" + contractId + "'");
 	}
 	
 	public void changeStudent(String contractId,String matrikelNr){
-		this.updateDatabase("UPDATE "+getTableNameForUpdateOrInsert()+" set MatrNr = '"+matrikelNr+"' where "+getPrimaryKeyColumnName()+" = '"+contractId+"'");
+		this.updateDatabase("UPDATE " + SqlTableContracts.tableName + " set " + SqlTableContracts.TableNameDotFK_Student + " = '" + matrikelNr + "' where " + SqlTableContracts.TableNameDotId + " = '" + contractId + "'");
 	}
 
 }

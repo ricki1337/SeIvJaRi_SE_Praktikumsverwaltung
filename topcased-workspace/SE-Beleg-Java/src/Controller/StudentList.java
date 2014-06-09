@@ -1,176 +1,213 @@
 package Controller;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.Iterator;
+import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 
+import Controller.Interfaces.CallbackSelectedValue;
+import Models.Datenbank.SqlTableStudent;
+import Models.Filter.StringFilter;
 import Praktikumsverwaltung.Praktikumsverwaltung;
+import Views.ViewNew;
+import Views.GuiElemente.BoxElementBottomNavi;
+import Views.GuiElemente.BoxElementBottomNaviEditMailPrint;
+import Views.GuiElemente.BoxElementBottomNaviMailPrint;
+import Views.GuiElemente.BoxElementBottomNaviMark;
+import Views.GuiElemente.BoxElementTable;
+import Views.GuiElemente.BoxElementSearchMenu;
 import Views.GuiElemente.SearchPanel.ExtendedSearchPanel;
+import Views.GuiElemente.SearchPanel.ExtendedSearchPanelStudentNew;
+import Views.Interfaces.BasicBoxCtrl;
+import Views.Interfaces.NaviEditMailPrintBoxCtrl;
+import Views.Interfaces.NaviMarkBoxCtrl;
+import Views.Interfaces.ExtendedSearchBoxCtrl;
+import Views.Interfaces.SearchBoxCtrl;
+import Views.Interfaces.TableBoxCtrl;
+import Views.Table.TableData;
 
-public class StudentList extends ListController{
+public class StudentList extends ControllerNew implements BasicBoxCtrl, TableBoxCtrl, SearchBoxCtrl, ExtendedSearchBoxCtrl, NaviEditMailPrintBoxCtrl, NaviMarkBoxCtrl{
 	
-	private String srcSqlQuery = "select MatrNr as Matrikelnr," +
-									" Firstname as Vorname," +
-									" Name as Nachname," +
-									" Email as 'E-Mail'," +
-									" StGr as Studiengruppe," +
-									" Note as Bemerkung" +
-									" from student";
-	private Views.StudentList view;
+	private String srcSqlQuery = "select " +
+									SqlTableStudent.MatrikelNummer + " as Matrikelnr, " +
+									SqlTableStudent.Vorname + " as Vorname, " +
+									SqlTableStudent.Nachname + " as Nachname, " +
+									SqlTableStudent.EMail + " as 'E-Mail', " +
+									SqlTableStudent.Studiengruppe + " as Studiengruppe, " +
+									SqlTableStudent.Bemerkung + " as Bemerkung " +
+								"from " +
+									SqlTableStudent.tableName;
 	
+	private Models.ListModel model;
+	private Views.ViewNew view;
+		
+	private BoxElementTable table;
+	private BoxElementSearchMenu searchMenu;
+	private ExtendedSearchPanelStudentNew extendedSearch;
+	
+	private CallbackSelectedValue callback = null;
 	
 	public StudentList(){
 		super();
-
-		setModel(new Models.StudentList(srcSqlQuery));
+		model = new Models.ListModel(srcSqlQuery,SqlTableStudent.tableName,SqlTableStudent.PrimaryKey);
 		
-		setView(view = new Views.StudentList(this));
+		setModel(model);
+		setView(view = new Views.ViewNew(this));
+		view.setTitle("Studenten");
+		setElements();
 	}
-
 	
-
+	public StudentList(CallbackSelectedValue callback){
+		super();
+		model = new Models.ListModel(srcSqlQuery,SqlTableStudent.tableName,SqlTableStudent.PrimaryKey);
+		setModel(model);
+		setView(view = new Views.ViewNew(this));
+		view.setTitle("Student auswählen");
+		this.callback = callback;
+		setElements();
+	}
+	
+	@Override
+	public void setElements(){
+		searchMenu = new BoxElementSearchMenu(this);
+		view.addComponentToView(searchMenu);
+		extendedSearch = new ExtendedSearchPanelStudentNew(this);
+		extendedSearch.setVisible(false);
+		view.addComponentToView(extendedSearch);
+		table = new Views.GuiElemente.BoxElementTable(this);
+		view.addComponentToView(table);
+		BoxElementBottomNavi navi = new BoxElementBottomNavi(this);
+		navi.addBoxToRightSide(new BoxElementBottomNaviEditMailPrint(this));
+		navi.addBoxToLeftSide(new BoxElementBottomNaviMark(this));
+		view.addComponentToView(navi);
+	}
+	
+	
 	@Override
 	public void display() {
-		// TODO Auto-generated method stub
 		view.display();
 	}
 
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		switch(e.getComponent().getName()){
-		case "table": 	if (e.getClickCount() == 2) {
-							Object studentId;
-							
-							if((studentId = view.getColumnValueFromSelectedRow("Matrikelnr")) != null){
-							StudentSingle newFrame = new StudentSingle(studentId);
-							Praktikumsverwaltung.addFrameToForeground(newFrame);
-							}
-						}else{
-							view.setFlag();
-						}
-						break;
-						
-		case "setFlagOnMarkedRows": 	view.setFlagOnSelectedRow();
-										break;
-										
-		case "modifySelectedRows":		Object[] studentList = view.getColumnValuesFromSelectedRows("Matrikelnr");
-										StudentSingle newFrame = new StudentSingle(studentList);
-										Praktikumsverwaltung.addFrameToForeground(newFrame);
-										break;
-		case "anlegen":					StudentEmptySingle newEmptyFrame = new StudentEmptySingle();
-										Praktikumsverwaltung.addFrameToForeground(newEmptyFrame);
-										break;
-		case "mailTo":					Object[] studentListForMailing = view.getColumnValuesFromSelectedRows("Matrikelnr");
-										Mailing newMailing = new Mailing(studentListForMailing,"Matrikelnr");
-										Praktikumsverwaltung.addFrameToForeground(newMailing);
-										break;
-		case "print":					Object[] studentListForPrinting = view.getColumnValuesFromSelectedRows("Matrikelnr");
-										Print newPrinting = new Print(studentListForPrinting,"Matrikelnr");
-										Praktikumsverwaltung.addFrameToForeground(newPrinting);
-		}
-	}
-
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-	}
-
 	
-
 	@Override
-	public void changedUpdate(DocumentEvent arg0) {
-		Document searchField = arg0.getDocument();
+	public Object[][] getTableData() {
 		
-		try {
-			String searchValue = searchField.getText(0,searchField.getLength());
-			((Models.StudentList)model).setSearchFilter(searchValue);
-		} catch (BadLocationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		return model.tableRowData.getTableData();
 	}
 
-
+	@Override
+	public Object[] getTableHeader() {
+		return model.tableRowData.getColumnNames();
+	}
 
 	@Override
-	public void insertUpdate(DocumentEvent arg0) {
-		Document searchField = arg0.getDocument();
-		try {
-			String searchValue = searchField.getText(0,searchField.getLength());
-			((Models.StudentList)model).setSearchFilter(searchValue);
-		} catch (BadLocationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	public Object getValueFromPosition(int row, String column) {
+		return model.tableRowData.getValueFromPosition(row, column);
+	}
+
+	@Override
+	public void setValueAtPosition(int row, String column, Object value) {
+		model.tableRowData.setValueAtPosition(row, column, value);
+	}
+
+	@Override
+	public int getColumnAliasIndex(String columnName) {
+		return model.tableRowData.getColumnAliasIndex(columnName);
+	}
+
+	@Override
+	public int getSqlRecordLimit() {
+		return model.getColumnLimit();
+	}
+
+	@Override
+	public void tableRowClicked() {
+		table.setFlag();
+	}
+
+	@Override
+	public void tableRowDoubleClicked() {
+		Object studentId;
+		if((studentId = table.getColumnValueFromSelectedRow("Matrikelnr")) != null){
+			StudentSingleNew newFrame = new StudentSingleNew(studentId);
+			Praktikumsverwaltung.addFrameToForeground(newFrame);
 		}
 		
 	}
 
-
-
 	@Override
-	public void removeUpdate(DocumentEvent arg0) {
-		Document searchField = arg0.getDocument();
-		try {
-			String searchValue = searchField.getText(0,searchField.getLength());
-			((Models.StudentList)model).setSearchFilter(searchValue);
-		} catch (BadLocationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+	public void buttonEditClicked() {
+		Object[] studentList = table.getColumnValuesFromSelectedRows("Matrikelnr");
+		StudentSingleNew newFrame = new StudentSingleNew(studentList);
+		Praktikumsverwaltung.addFrameToForeground(newFrame);
 	}
 
-
+	@Override
+	public void buttonMailToClicked() {
+		Object[] studentListForMailing = table.getColumnValuesFromSelectedRows("Matrikelnr");
+		Mailing newMailing = new Mailing("Matrikelnr",studentListForMailing);
+		Praktikumsverwaltung.addFrameToForeground(newMailing);
+	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		if(arg0.getSource() instanceof JTextField){
-			JTextField anzDatensaetze = (JTextField)(arg0.getSource());
-			if(anzDatensaetze.getName().equals("anzDatensaetze")){
-				model.setcolumnLimitAndRefreshViews(Integer.parseInt(anzDatensaetze.getText()));
-				view.setTableRowsCount(Integer.parseInt(anzDatensaetze.getText()));
-			}
-			
-		}
-		if(arg0.getSource() instanceof JButton){
-			JButton searchButton = (JButton)(arg0.getSource());
-			ExtendedSearchPanel searchPanel = (ExtendedSearchPanel)searchButton.getParent();
-			((Models.StudentList)model).setSearchFilter(searchPanel.getSearchValues());
-		}
+	public void buttonPrintClicked() {
+		Object[] studentListForPrint = table.getColumnValuesFromSelectedRows("Matrikelnr");
+		Print printDlg = new Print("Matrikelnr",studentListForPrint);
+		printDlg.display();
 	}
-	
-	
 
+	@Override
+	public void buttonSearchSpecificClicked() {
+		model.setSearchFilter(extendedSearch.getSearchFilter());		
+	}
 
+	@Override
+	public void buttonDeleteFilterClicked() {
+		model.deleteSearchFilter();
+		model.setResult();
+		extendedSearch.clearFields();
+		view.modelHasChanged();
+	}
+
+	@Override
+	public void buttonMarkClicked() {
+		table.setFlagOnSelectedRow();
+	}
+
+	@Override
+	public void searchFieldChanged() {
+		String valueOfSearchField = searchMenu.getValueOfSearchField();
+		if(valueOfSearchField.length() == 0)
+			((Models.ListModel)model).deleteSearchFilter();
+		else
+			((Models.ListModel)model).setSearchFilter(valueOfSearchField);
+	}
+
+	@Override
+	public void RecordLimitFieldChanged() {
+		model.setColumnLimitAndRefreshViews(searchMenu.getValueOfRecordLimitField());
+	}
+
+	@Override
+	public void buttonShowExtendedSearchClicked() {
+		boolean isVisible = extendedSearch.isVisible();
+		extendedSearch.setVisible(!isVisible);
+		view.getLayout().layoutContainer(view);
+		view.pack();
+	}
+
+	@Override
+	public void buttonAddNewDataClicked() {
+		StudentSingleNew newEmptyFrame = new StudentSingleNew();
+		Praktikumsverwaltung.addFrameToForeground(newEmptyFrame);
+	}
 }

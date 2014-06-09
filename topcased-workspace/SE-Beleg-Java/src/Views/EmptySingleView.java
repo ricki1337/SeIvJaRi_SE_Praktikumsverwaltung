@@ -73,6 +73,14 @@ public abstract class EmptySingleView extends View{
 		}
 	}
 	
+	protected void addHiddenFieldWithSqlReference(String sqlSpaltenName, String value){
+
+		JLabel hiddenContractId = new JLabel(value);
+		hiddenContractId.setVisible(false);
+		
+		addComponentToView(hiddenContractId,sqlSpaltenName);
+
+	}
 	
 	protected void addCheckboxWithSqlReference(String labelText,String sqlSpaltenName,int posX, int posY){
 		GridBagConstraints gbc = getGridBagConstraint();
@@ -118,7 +126,7 @@ public abstract class EmptySingleView extends View{
 
 	
 	@Override
-	public Object[][] getEingabeWerte() {
+	public Object[][] getInputValues() {
 		Object[][] updatedValues = new Object[countOfSqlReferencesInList][2];
 		int index = 0;
 		int sqlReferenceIndex = 0;
@@ -131,13 +139,6 @@ public abstract class EmptySingleView extends View{
 			updatedValues[index][1] = getValueFromComponent(index+sqlReferenceIndex);
 			index++;
 		}
-//		for(int index = 0;index < listOfComponentsToSqlReference.size();index++){
-//			if(listOfComponentsToSqlReference.get(index) != null){
-//				 = listOfComponentsToSqlReference.get(index);
-//				//updatedValues[index][1] = getStringValueFromComponent(index);
-//				
-//			}
-//		}
 		
 		return updatedValues;
 	}

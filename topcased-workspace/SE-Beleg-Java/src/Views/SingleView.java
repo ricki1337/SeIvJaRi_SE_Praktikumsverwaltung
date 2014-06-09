@@ -17,22 +17,21 @@ import Views.Table.TableData;
 
 public abstract class SingleView extends View{
 	
-	protected TableData tableRowData;
-	protected int rowPosition = 0;
+
+	
 	public SingleView(Controller controller){
 		super(controller);
-		tableRowData = new TableData(model.getResult());
 	}
 
-	protected void addTextfieldWithSqlReference(String labelText,String sqlSpaltenName, String sqlUpdateOrInstertSpaltenName,int posX, int posY){
+	protected void addTextfieldWithSqlReference(String labelText,String sqlAliasSpaltenName, String sqlUpdateOrInstertSpaltenName,int posX, int posY){
 		GridBagConstraints gbc = getGridBagConstraint();
 		setLabel(labelText,posX,posY);
 		
 		JTextField f;
 		
 		try {
-			f = new JTextField(tableRowData.getStringValueFromPosition(rowPosition, sqlSpaltenName));
-			f.setName(sqlSpaltenName);
+			f = new JTextField(model.tableRowData.getStringValueFromPosition(model.rowPosition, sqlAliasSpaltenName));
+			f.setName(sqlAliasSpaltenName);
 			f.setColumns(20);
 			
 			gbc.gridx = posX+1;
@@ -50,7 +49,7 @@ public abstract class SingleView extends View{
 		JTextField f;
 		
 		try {
-			f = new JTextField(tableRowData.getStringValueFromPosition(rowPosition, sqlSpaltenName));
+			f = new JTextField(model.tableRowData.getStringValueFromPosition(model.rowPosition, sqlSpaltenName));
 			f.setColumns(20);
 			f.setName(sqlSpaltenName);
 			gbc.gridx = posX+1;
@@ -69,7 +68,7 @@ public abstract class SingleView extends View{
 		JTextArea f;
 		
 		try {
-			f = new JTextArea(tableRowData.getStringValueFromPosition(rowPosition, sqlSpaltenName));
+			f = new JTextArea(model.tableRowData.getStringValueFromPosition(model.rowPosition, sqlSpaltenName));
 			f.setColumns(20);
 			f.setRows(5);
 			f.setName(sqlSpaltenName);
@@ -88,7 +87,7 @@ public abstract class SingleView extends View{
 		JTextArea f;
 		
 		try {
-			f = new JTextArea(tableRowData.getStringValueFromPosition(rowPosition, sqlSpaltenName));
+			f = new JTextArea(model.tableRowData.getStringValueFromPosition(model.rowPosition, sqlSpaltenName));
 			f.setColumns(20);
 			f.setRows(5);
 			f.setName(sqlSpaltenName);
@@ -106,7 +105,7 @@ public abstract class SingleView extends View{
 		JCheckBox f;
 		
 		try {
-			Boolean value = tableRowData.getBooleanValueFromPosition(rowPosition, sqlSpaltenName);
+			Boolean value = model.tableRowData.getBooleanValueFromPosition(model.rowPosition, sqlSpaltenName);
 			f = new JCheckBox();
 			f.setSelected(value);
 			f.setName(sqlSpaltenName);
@@ -124,7 +123,7 @@ public abstract class SingleView extends View{
 		JCheckBox f;
 		
 		try {
-			Boolean value = tableRowData.getBooleanValueFromPosition(rowPosition, sqlSpaltenName);
+			Boolean value = model.tableRowData.getBooleanValueFromPosition(model.rowPosition, sqlSpaltenName);
 			f = new JCheckBox();
 			f.setSelected(value);
 			f.setName(sqlSpaltenName);
@@ -134,6 +133,15 @@ public abstract class SingleView extends View{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	protected void addHiddenFieldWithSqlReference(String sqlSpaltenName, String value){
+
+		JLabel hiddenContractId = new JLabel(value);
+		hiddenContractId.setVisible(false);
+		
+		addComponentToView(hiddenContractId,sqlSpaltenName);
+
 	}
 	
 	protected void addAddButton(String buttonText, String buttonName,int posX, int posY, int width, int height){
@@ -158,36 +166,31 @@ public abstract class SingleView extends View{
 	}
 	
 	public void gotoNext(){
-		if(rowPosition == tableRowData.getRowCount()) return;
-		rowPosition++;
+		if((model.rowPosition+1) == model.tableRowData.getRowCount()) return;
+		model.rowPosition++;
 		refreshComponentsContent();
 	}
 	
 	public void gotoPrevius(){
-		if(rowPosition == 0) return;
-		rowPosition--;
+		if(model.rowPosition == 0) return;
+		model.rowPosition--;
 		refreshComponentsContent();
 	}
 	
 	protected void refreshComponentsContent(){
-		int index = 0;
-		tableRowData = new TableData(model.getResult());
-
-		
 		for(JComponent comp:listOfallComponentsOnView){
 			if(comp.getName() != null && !comp.getName().equals("")){
 				if(comp instanceof JTextField)	
-						((JTextField) comp).setText(tableRowData.getValueFromPosition(rowPosition, comp.getName()).toString());
+						((JTextField) comp).setText(model.tableRowData.getValueFromPosition(model.rowPosition, comp.getName()).toString());
 				
 				if(comp instanceof JCheckBox){	
-					boolean flag = tableRowData.getValueFromPosition(rowPosition, comp.getName())=="true"?true:false;
+					boolean flag = model.tableRowData.getValueFromPosition(model.rowPosition, comp.getName())=="true"?true:false;
 					((JCheckBox) comp).setSelected(flag);
 				}
 				
 				if(comp instanceof JTextArea)	
-					((JTextArea) comp).setText(tableRowData.getValueFromPosition(rowPosition, comp.getName()).toString());
+					((JTextArea) comp).setText(model.tableRowData.getValueFromPosition(model.rowPosition, comp.getName()).toString());
 			}
-			index++;
 		}
 	}
 	
@@ -198,7 +201,7 @@ public abstract class SingleView extends View{
 	}
 	
 	@Override
-	public Object[][] getEingabeWerte() {
+	public Object[][] getInputValues() {
 		Object[][] updatedValues = new Object[countOfSqlReferencesInList][2];
 		int index = 0;
 		int sqlReferenceIndex = 0;
@@ -262,7 +265,7 @@ public abstract class SingleView extends View{
 	
 	public String getValueFromCurrentItem(String sqlColumnName){
 		try {
-			return tableRowData.getStringValueFromPosition(rowPosition, sqlColumnName);
+			return model.tableRowData.getStringValueFromPosition(model.rowPosition, sqlColumnName);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

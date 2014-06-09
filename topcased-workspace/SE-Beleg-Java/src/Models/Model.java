@@ -10,40 +10,69 @@ import Models.Filter.FilterTyp;
 import Models.Filter.ObjectFilter;
 import Models.Filter.TabellenFilter;
 import Views.UpdateView;
-import Views.View;
+import Views.Table.TableData;
 
 
-public abstract class Model implements observer{
+public class Model implements observer{
 
-	private String srcQuery;
-
-	private ArrayList<String> srcTables;
-
-	private ObjectFilter filter;
-
-	private int columnLimit;
+		private Database db;
+		private String srcQuery;
+		private ArrayList<String> srcTables;
+		private ResultSet result;
+		private String tableNameForUpdateOrInsert; 
+		private String primaryKeyColumnName;
+		public TableData tableRowData;
+		private int columnLimit;
+		public int rowPosition = 0;
+		
+		private ObjectFilter filter;
 	
-	private UpdateView view;
+		private UpdateView view;
+		
+	protected Model () {}
 	
-	private ResultSet result;
-	private Database db;
+	public Model(String srcQuery,String tableNameForUpdateOrInsert, String primaryKeyColumnName){
+		this(srcQuery,20,tableNameForUpdateOrInsert,primaryKeyColumnName);
+	}
 	
-	public Model(){
+	public Model(String srcQuery, int columnLimit,String tableNameForUpdateOrInsert, String primaryKeyColumnName){
+		this(tableNameForUpdateOrInsert,primaryKeyColumnName);
+		setSrcQuery(srcQuery);
+		setColumnLimit(columnLimit);
+		setResult();
+	}
+	
+	public Model(String tableNameForUpdateOrInsert, String primaryKeyColumnName){
+		this.tableNameForUpdateOrInsert = tableNameForUpdateOrInsert;
+		this.primaryKeyColumnName = primaryKeyColumnName;
 		filter = new TabellenFilter();
 		srcTables = new ArrayList<String>();
 		db = Database.getInstance();
 		db.login(this);
+		setColumnLimit(20);
+	}	
+	
+	public void setSrcQuery(String srcQuery) {
+		this.srcQuery = srcQuery;
+		setSrcTables();
 	}
 	
-	public Model(String srcQuery){
-		this(srcQuery,20);
+	private String getSrcQuery() {
+		return srcQuery;
 	}
-	
-	public Model(String srcQuery, int columnLimit){
-		this();
-		setSrcQuery(srcQuery);
+		
+	public void setColumnLimitAndRefreshViews(int columnLimit) {
 		setColumnLimit(columnLimit);
 		setResult();
+		informView();
+	}
+	
+	private void setColumnLimit(int columnLimit){
+		this.columnLimit = columnLimit;
+	}
+	
+	public int getColumnLimit() {
+		return columnLimit;
 	}
 	
 	public void modelClose(){
@@ -61,13 +90,37 @@ public abstract class Model implements observer{
 		
 	}
 	
-	public void setView(UpdateView view){
-		this.view = view;
+	public void setResult() {
+		if(getSrcQuery() == null){
+			try {
+				throw new Exception("srcQuery im Model ist nicht gesetzt.");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}	
+		String where = new String();
+		String filter = this.filter.getFilter();
+		where = (getSrcQuery().contains("where")) ? " and " : " where ";
+		filter = (filter.length()>0) ? filter : " 1 ";
+		String query = getSrcQuery() + where + filter + " limit " + columnLimit;
+		ResultSet result = db.getQuery(query);
+		this.result = result;
+		setTableRowData();
 	}
-
+	
+	public ResultSet getResult(){
+		if(this.result == null && this.srcQuery != null)
+			setResult();
+		return this.result;
+	}
+	
 	protected void informView(){
 		if(view != null) 
 			view.modelHasChanged();
+	}
+	
+	public void setView(UpdateView view){
+		this.view = view;
 	}
 
 	public void setOrFilter(String spaltenName, FilterTyp spaltenWert){
@@ -82,41 +135,14 @@ public abstract class Model implements observer{
 		filter.deleteFilter(spaltenName);
 	}
 
-	private String getSrcQuery() {
-		return srcQuery;
-	}
-
-	private void setSrcQuery(String srcQuery) {
-		this.srcQuery = srcQuery;
-		setSrcTables();
-	}
-
-	public int getcolumnLimit() {
-		return columnLimit;
+	
+	private void setTableRowData(){
+		tableRowData = new TableData(result,getColumnLimit());
+		tableRowData.addColumnAtBegin("Auswahl", (boolean)false);
 	}
 	
-	private void setColumnLimit(int columnLimit){
-		this.columnLimit = columnLimit;
-	}
-
-	public void setcolumnLimitAndRefreshViews(int columnLimit) {
-		setColumnLimit(columnLimit);
-		setResult();
-		informView();
-	}
-
-	public ResultSet getResult(){
-		return this.result;
-	}
-
-	protected void setResult() {
-		String where = new String();
-		String filter = this.filter.getFilter();
-		where = (getSrcQuery().contains("where")) ? " and " : " where ";
-		filter = (filter.length()>0) ? filter : " 1 ";
-		String query = getSrcQuery() + where + filter + " limit " + columnLimit;
-		ResultSet result = db.getQuery(query);
-		this.result = result;
+	public TableData getTableRowData(){
+		return tableRowData;
 	}
 
 	private void setSrcTables() {
@@ -135,7 +161,7 @@ public abstract class Model implements observer{
 	
 	public void updateDatabase(){
 		String sqlTableName = getTableNameForUpdateOrInsert();
-		Object[][] newData = ((View) view).getEingabeWerte();
+		Object[][] newData = view.getInputValues();
 		
 		String sqlUpdateQuery = new String("UPDATE " + sqlTableName + " SET ");
 		
@@ -150,13 +176,20 @@ public abstract class Model implements observer{
 			}
 			counter--;
 		}
+		try {
+			int indexOfDot = getPrimaryKeyColumnName().indexOf(".");
+			String primaryKey = getPrimaryKeyColumnName().substring(indexOfDot+1);
+			
+			int index = tableRowData.getColumnNameIndex(primaryKey);
+			String primaryKeyValue;
 		
-		String primaryKey = getPrimaryKeyColumnName();
-		String primaryKeyValue = (String)((View)view).getValueFromCurrentItem(primaryKey);
-		
-		sqlUpdateQuery += " WHERE " + primaryKey + " = '" + primaryKeyValue+ "'";
+			primaryKeyValue = tableRowData.getStringValueFromPosition(rowPosition, index);
+			sqlUpdateQuery += " WHERE " + primaryKey + " = '" + primaryKeyValue+ "'";
 
-		updateDatabase(sqlUpdateQuery);		
+			updateDatabase(sqlUpdateQuery);		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
 	}
 	
 	private String convertToString(Object value){
@@ -182,7 +215,7 @@ public abstract class Model implements observer{
 	public void insertIntoDatabase(){
 		String sqlTableName = getTableNameForUpdateOrInsert();
 		
-		Object[][] newData = ((View) view).getEingabeWerte();
+		Object[][] newData = view.getInputValues();
 		
 		String sqlInsertQuery = new String("INSERT INTO " + sqlTableName + " ");
 		String sqlColumns = new String("(");
@@ -204,10 +237,23 @@ public abstract class Model implements observer{
 		sqlInsertQuery += sqlColumns + " VALUES " + sqlValues + ";";
 		
 		db.setQuery(sqlInsertQuery);		
-	
 	}
 	
-	protected abstract String getPrimaryKeyColumnName();
+	protected String getPrimaryKeyColumnName(){
+		return primaryKeyColumnName;
+	}
 	
-	public abstract String getTableNameForUpdateOrInsert();
+	public String getTableNameForUpdateOrInsert(){
+		return tableNameForUpdateOrInsert;
+	}
+	
+	public void nextRow(){
+		if(rowPosition < (tableRowData.getRowCount()-1))
+			rowPosition++;
+	}
+	
+	public void previusRow(){
+		if(rowPosition > 0)
+			rowPosition--;
+	}
 }

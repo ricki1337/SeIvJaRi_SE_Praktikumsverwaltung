@@ -18,7 +18,4 @@ public abstract class ListController extends Controller implements MouseListener
 
 	@Override
 	public abstract void display();
-	
-	
-
 }

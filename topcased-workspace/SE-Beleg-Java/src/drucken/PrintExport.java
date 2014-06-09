@@ -1,8 +1,9 @@
+package drucken;
+
 import java.awt.Desktop;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.StringReader;
 import java.io.Writer;
@@ -18,7 +19,6 @@ import javax.swing.text.html.HTMLEditorKit;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
-import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
 
@@ -30,36 +30,14 @@ public class PrintExport {
 	private List<ValuePrintObject> tableData= new ArrayList<ValuePrintObject>();
 	private String[][] mstrData;
 
-//	public static void main(String[] args) throws Exception {
-//
-//		String[][] testary;
-//		testary = new String[][] {
-//				{ "65878", "Hans Detlef", "muh@web.de", "11/43/01", "sap" },
-//				{ "98564", "Rolf Golf", "blub@freenet.de", "12/13/14","Microsoft" },
-//				{ "45879", "Franz Lenz", "tag@morgen.com", "00/11/22", "Himmel" },
-//				{ "25874", "Lisa Müller", "hallo@wasgeht.de", "10/024/34","Golfplatz" },
-//				{ "97854", "Hans Wurst", "langweilig@langweildich.net","09/034/61", "Imbiss" },
-//
-//		};
-//
-//		PrintExport testding = new PrintExport();
-//		testding.setData(testary, "Titel","Überschrift");
-//		testding.printFile("output.html");
-//		//testding.print();
-//
-//	}
-
 	//Konstruktur wenn daten beim Anlegen mit übergeben werden
 	public PrintExport(String[][] strData) throws Exception {
 		this.mstrData = strData;
 		this.init();		
-		
 		this.setData();
 		this.print();
-		
-		
-
 	}
+	
 	//Konstruktor wenn keine Daten mit übergeben werden, es müssen dann setdata und print manuell gemacht werden
 	public PrintExport() throws Exception {
 		init();
@@ -88,13 +66,7 @@ public class PrintExport {
 		
 	}
 
-	public void setTemplate(String tmp) throws Exception {
 
-		// Choose template(s)
-		template = cfg.getTemplate(tmp);
-	}
-
-	
 	private void setData() {
 		
 		
@@ -105,15 +77,9 @@ public class PrintExport {
 		// Liste füllen mit gewünschten Daten bzw weitergabe an das
 		// entsprechende Objekt welche mit set/get arbeitet
 		for (String[] i : mstrData) {
-
-			tableData.add(new ValuePrintObject(i[0], i[1], i[2], i[3],
-					i[4]));
+			tableData.add(new ValuePrintObject(i[0], i[1], i[2], i[3], i[4]));
 		}
-//		 tableData.add(new ValuePrintObject("33796", "Hans Meier",
-//					 "Hans@spambog.com", "12 / 43 / 61", "Microsoft"));
-					
 		input.put("tableData", tableData);
-		
 	}
 	
 	public void setData(String[][] strData, String title,String headline) {
@@ -125,13 +91,7 @@ public class PrintExport {
 		// Liste füllen mit gewünschten Daten bzw weitergabe an das
 		// entsprechende Objekt welche mit set/get arbeitet
 		for (String[] i : strData) {
-
-			tableData.add(new ValuePrintObject(i[0], i[1], i[2], i[3],
-					i[4]));
-
-			// tableData.add(new ValuePrintObject("33796", "Hans Meier",
-			// "Hans@spambog.com", "12 / 43 / 61", "Microsoft"));
-			//
+			tableData.add(new ValuePrintObject(i[0], i[1], i[2], i[3], i[4]));
 		}
 		input.put("tableData", tableData);
 	}
