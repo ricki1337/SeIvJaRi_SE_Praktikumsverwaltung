@@ -1,7 +1,9 @@
 package Views.GuiElemente;
 
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -10,6 +12,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import ConfigParser.Debug;
 import Views.Interfaces.BasicBox;
 import Views.Interfaces.BasicBoxCtrl;
 import Views.Interfaces.NaviEditMailPrintBoxCtrl;
@@ -25,6 +28,7 @@ public class BoxElementBottomNaviEditMailPrint extends JPanel implements BasicBo
 		initComponents();
 		setComponentNames();
 		setComponentEventHandler();
+		setToolTip();
 	}
 	
 	@Override
@@ -99,6 +103,13 @@ public class BoxElementBottomNaviEditMailPrint extends JPanel implements BasicBo
 		
 	}
 
+	public void setToolTip(){
+		if(Debug.isDebugMode()){
+			setToolTipText(this.getClass().getCanonicalName());
+			this.setBackground(Color.getHSBColor(ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255));
+		}
+	}
+	
 	@Override
 	public void mouseEntered(MouseEvent e) {}
 

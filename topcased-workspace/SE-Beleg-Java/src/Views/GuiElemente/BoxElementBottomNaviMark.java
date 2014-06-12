@@ -1,7 +1,9 @@
 package Views.GuiElemente;
 
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -10,6 +12,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import ConfigParser.Debug;
 import Views.Interfaces.BasicBox;
 import Views.Interfaces.BasicBoxCtrl;
 import Views.Interfaces.NaviMarkBoxCtrl;
@@ -24,6 +27,7 @@ public class BoxElementBottomNaviMark extends JPanel implements BasicBox , Mouse
 		initComponents();
 		setComponentNames();
 		setComponentEventHandler();
+		setToolTip();
 	}
 	
 	@Override
@@ -72,6 +76,13 @@ public class BoxElementBottomNaviMark extends JPanel implements BasicBox , Mouse
 		if(e.getComponent() == jbn_mark)
 			controller.buttonMarkClicked();
 		
+	}
+	
+	public void setToolTip(){
+		if(Debug.isDebugMode()){
+			setToolTipText(this.getClass().getCanonicalName());
+			this.setBackground(Color.getHSBColor(ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255));
+		}
 	}
 
 	@Override

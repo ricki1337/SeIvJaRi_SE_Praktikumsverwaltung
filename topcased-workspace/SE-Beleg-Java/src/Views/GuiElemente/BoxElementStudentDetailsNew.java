@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -14,6 +15,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import ConfigParser.Debug;
 import Models.Datenbank.SqlTableStudent;
 import Views.Interfaces.EditBox;
 import Views.Interfaces.EditBoxCtrl;
@@ -34,6 +36,7 @@ public class BoxElementStudentDetailsNew extends JPanel implements EditBox{
 		setComponentNames();
 		
 		setComponentEventHandler();
+		setToolTip();
 	}
 	
 	@Override
@@ -222,6 +225,13 @@ public class BoxElementStudentDetailsNew extends JPanel implements EditBox{
 		);
 		panel.setLayout(gl_panel);
 		setLayout(groupLayout);
+	}
+	
+	public void setToolTip(){
+		if(Debug.isDebugMode()){
+			setToolTipText(this.getClass().getCanonicalName());
+			this.setBackground(Color.getHSBColor(ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255));
+		}
 	}
 
 }

@@ -1,9 +1,11 @@
 package Views.GuiElemente;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -13,6 +15,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 
+import ConfigParser.Debug;
 import Views.Interfaces.SearchBox;
 import Views.Interfaces.ExtendedSearchBox;
 import Views.Interfaces.SearchBoxCtrl;
@@ -35,6 +38,7 @@ public class BoxElementSearchMenu extends JPanel implements SearchBox,MouseListe
     	setComponentNames();
     	setComponentValues();
     	setComponentEventHandler();
+    	setToolTip();
     }
 
     @Override
@@ -187,6 +191,12 @@ public class BoxElementSearchMenu extends JPanel implements SearchBox,MouseListe
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {}
-
+	
+	public void setToolTip(){
+		if(Debug.isDebugMode()){
+			setToolTipText(this.getClass().getCanonicalName());
+			this.setBackground(Color.getHSBColor(ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255));
+		}
+	}
 	
 }

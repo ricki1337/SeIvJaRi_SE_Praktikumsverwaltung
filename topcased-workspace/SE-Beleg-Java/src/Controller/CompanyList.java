@@ -22,6 +22,7 @@ import Models.Filter.StringFilter;
 import Praktikumsverwaltung.Praktikumsverwaltung;
 import Views.ViewNew;
 import Views.GuiElemente.BoxElementBottomNavi;
+import Views.GuiElemente.BoxElementBottomNaviAbortSelect;
 import Views.GuiElemente.BoxElementBottomNaviEditMailPrint;
 import Views.GuiElemente.BoxElementBottomNaviMark;
 import Views.GuiElemente.BoxElementTable;
@@ -30,6 +31,7 @@ import Views.GuiElemente.SearchPanel.BoxElementExtendedSearchProf;
 import Views.GuiElemente.SearchPanel.ExtendedSearchPanel;
 import Views.GuiElemente.SearchPanel.ExtendedSearchPanelStudentNew;
 import Views.Interfaces.BasicBoxCtrl;
+import Views.Interfaces.NaviAbortSelectBoxCtrl;
 import Views.Interfaces.NaviEditMailPrintBoxCtrl;
 import Views.Interfaces.NaviMarkBoxCtrl;
 import Views.Interfaces.ExtendedSearchBoxCtrl;
@@ -37,7 +39,7 @@ import Views.Interfaces.SearchBoxCtrl;
 import Views.Interfaces.TableBoxCtrl;
 import Views.Table.TableData;
 
-public class CompanyList extends ControllerNew implements BasicBoxCtrl, TableBoxCtrl, SearchBoxCtrl, ExtendedSearchBoxCtrl, NaviEditMailPrintBoxCtrl, NaviMarkBoxCtrl{
+public class CompanyList extends ControllerNew implements BasicBoxCtrl, TableBoxCtrl, SearchBoxCtrl, ExtendedSearchBoxCtrl, NaviEditMailPrintBoxCtrl, NaviMarkBoxCtrl, NaviAbortSelectBoxCtrl{
 	
 	private String srcSqlQuery = "select " +
 										SqlTableCompanies.TableNameDotId + " as ID, " +
@@ -78,7 +80,7 @@ public class CompanyList extends ControllerNew implements BasicBoxCtrl, TableBox
 		setView(view = new Views.ViewNew(this));
 		this.callback = callback;
 		view.setTitle("Firma auswählen");
-		setElements();
+		setElementsForCallback();
 	}
 	
 	@Override
@@ -96,6 +98,19 @@ public class CompanyList extends ControllerNew implements BasicBoxCtrl, TableBox
 		view.addComponentToView(navi);
 	}
 	
+	public void setElementsForCallback(){
+		searchMenu = new BoxElementSearchMenu(this);
+		view.addComponentToView(searchMenu);
+		extendedSearch = new BoxElementExtendedSearchProf(this);
+		extendedSearch.setVisible(false);
+		view.addComponentToView(extendedSearch);
+		table = new BoxElementTable(this);
+		view.addComponentToView(table);
+		BoxElementBottomNavi navi = new BoxElementBottomNavi(this);
+		navi.addBoxToRightSide(new BoxElementBottomNaviAbortSelect(this));
+	
+		view.addComponentToView(navi);
+	}
 	
 	@Override
 	public void display() {
@@ -144,7 +159,7 @@ public class CompanyList extends ControllerNew implements BasicBoxCtrl, TableBox
 	public void tableRowDoubleClicked() {
 		Object companyId;
 		if((companyId = table.getColumnValueFromSelectedRow("ID")) != null){
-			CompanySingle newFrame = new CompanySingle(companyId);
+			CompanySingleNew newFrame = new CompanySingleNew(companyId);
 			Praktikumsverwaltung.addFrameToForeground(newFrame);
 		}
 	}
@@ -152,7 +167,7 @@ public class CompanyList extends ControllerNew implements BasicBoxCtrl, TableBox
 	@Override
 	public void buttonEditClicked() {
 		Object[] companyList = table.getColumnValuesFromSelectedRows("ID");
-		CompanySingle newFrame = new CompanySingle(companyList);
+		CompanySingleNew newFrame = new CompanySingleNew(companyList);
 		Praktikumsverwaltung.addFrameToForeground(newFrame);
 	}
 
@@ -170,7 +185,7 @@ public class CompanyList extends ControllerNew implements BasicBoxCtrl, TableBox
 
 	@Override
 	public void buttonMarkClicked() {
-		table.setFlagOnSelectedRow();
+		table.setFlagOnSelectedRows();
 	}
 
 	@Override
@@ -208,5 +223,18 @@ public class CompanyList extends ControllerNew implements BasicBoxCtrl, TableBox
 	public void buttonAddNewDataClicked() {
 		CompanieEmptySingle newEmptyFrame = new CompanieEmptySingle();
 		Praktikumsverwaltung.addFrameToForeground(newEmptyFrame);
+	}
+
+	@Override
+	public void buttonAbortClicked() {
+		view.dispose();
+		model.modelClose();
+	}
+
+	@Override
+	public void buttonSelectClicked() {
+		callback.setSelectedValue(SqlTableCompanies.PrimaryKey, getValueFromPosition(table.getSelectedRow(),SqlTableCompanies.PrimaryKey));
+		view.dispose();
+		model.modelClose();
 	}
 }

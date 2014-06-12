@@ -92,7 +92,7 @@ public class Database
 	protected String[] getChangedTables(String query){
 		ArrayList<String> changedTables = new ArrayList<String>();
 		for(String table:tables){
-			if(query.contains(table))
+			if(query.toLowerCase().contains(table.toLowerCase()))
 				changedTables.add(table);
 		}
 		

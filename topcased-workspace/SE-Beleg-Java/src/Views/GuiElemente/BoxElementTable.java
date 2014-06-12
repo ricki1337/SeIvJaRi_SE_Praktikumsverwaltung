@@ -1,14 +1,17 @@
 package Views.GuiElemente;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import ConfigParser.Debug;
 import Controller.ProfSingle;
 import Praktikumsverwaltung.Praktikumsverwaltung;
 import Views.Interfaces.BasicBox;
@@ -22,6 +25,7 @@ public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
 	    private javax.swing.JTable jt_table;
 	    private NonEditableTableModel tableModel;
 	    private java.awt.ScrollPane scrollPane1;
+	    private GroupLayout layout;
 	    
 	    private TableBoxCtrl controller;
     
@@ -32,6 +36,7 @@ public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
         setComponentNames();
         setComponentValues();
         setComponentEventHandler();
+        setToolTip();
     }
 
     @Override
@@ -45,12 +50,11 @@ public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
         jt_table.setAutoCreateRowSorter(true);
         jt_table.setDoubleBuffered(true);
         jt_table.setFillsViewportHeight(true);
-        jt_table.setAutoscrolls(true);
         jScrollPane1.setViewportView(jt_table);
         
         scrollPane1.add(jScrollPane1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        layout = new javax.swing.GroupLayout(this);
         layout.setHorizontalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
         		.addGroup(layout.createSequentialGroup()
@@ -87,8 +91,7 @@ public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
 	@Override
 	public void refreshContent() {
 		tableModel.setDataAndColumnNames(controller.getTableData(), controller.getTableHeader());
-		tableModel.fireTableDataChanged();
-		jt_table.repaint();
+		jt_table.printAll(jt_table.getGraphics());
 	}
 	
 	public void setFlag(){
@@ -98,7 +101,7 @@ public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
 		jt_table.repaint();
 	}
 	
-	public void setFlagOnSelectedRow(){
+	public void setFlagOnSelectedRows(){
 		if(jt_table.getSelectedRows().length == 0) return;
 		for(int row:getSelectedRows()){
 			boolean currentValue = (boolean) controller.getValueFromPosition(row, "Auswahl");
@@ -107,13 +110,13 @@ public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
 		jt_table.repaint();
 	}
 	
-	private int getSelectedRow(){
+	public int getSelectedRow(){
 		int selectedRow = jt_table.getSelectedRow();
 		int rowIdInTableModel = jt_table.convertRowIndexToModel(selectedRow);
 		return rowIdInTableModel;
 	}
 	
-	private int[] getSelectedRows(){
+	public int[] getSelectedRows(){
 		int[] selectedRows = new int[jt_table.getSelectedRowCount()]; 
 		int rowIndex = 0;
 		for(int selectedRow:jt_table.getSelectedRows()){
@@ -132,11 +135,36 @@ public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
 		return controller.getValueFromPosition(jt_table.getSelectedRow(), string);
 	}
 	
+	public int getFlaggedColumnCount(){
+		int flaggedColumnCount = 0;
+		for(int index=0;index<jt_table.getRowCount();index++){
+			if((boolean) controller.getValueFromPosition(index, "Auswahl")){
+				flaggedColumnCount++;
+			}
+		}
+		
+		return flaggedColumnCount;
+	}
+	
+	public int[] getFlaggedColumns(){
+		int[] flaggedColumns = new int[getFlaggedColumnCount()];
+		int flaggedColumnsCount = 0;
+		for(int index=0;index<jt_table.getRowCount();index++){
+			if((boolean) controller.getValueFromPosition(index, "Auswahl")){
+				flaggedColumns[flaggedColumnsCount] = index;
+				flaggedColumnsCount++;
+			}
+		}
+		
+		return flaggedColumns;
+	}
+	
 	public Object[] getColumnValuesFromSelectedRows(String columnName){
-		Object[] returnValues = new Object[jt_table.getSelectedRowCount()];
+		Object[] returnValues = new Object[getFlaggedColumnCount()];
 		int rowIndex = 0;
 		int column = jt_table.convertColumnIndexToModel(controller.getColumnAliasIndex(columnName));
-		for(int selectedRow:jt_table.getSelectedRows()){
+		//for(int selectedRow:jt_table.getSelectedRows()){
+		for(int selectedRow:getFlaggedColumns()){
 			returnValues[rowIndex] = jt_table.getValueAt(jt_table.convertRowIndexToModel(selectedRow),column);
 			rowIndex++;
 		}
@@ -152,6 +180,13 @@ public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
 			}else{
 				controller.tableRowClicked();
 			}
+		}
+	}
+	
+	public void setToolTip(){
+		if(Debug.isDebugMode()){
+			setToolTipText(this.getClass().getCanonicalName());
+			this.setBackground(Color.getHSBColor(ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255));
 		}
 	}
 

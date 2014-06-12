@@ -102,7 +102,7 @@ public class ViewNew extends JInternalFrame implements UpdateView{
 	public void modelHasChanged() {
 		for(BasicBox box:listOfallComponentsOnView){
 			box.refreshContent();
-		}		
+		}
 	}
 
 	@Override

@@ -1,7 +1,9 @@
 package Views.GuiElemente;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -12,6 +14,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 
+import ConfigParser.Debug;
 import Controller.CompanyList;
 import Controller.ContractList;
 import Controller.ProfList;
@@ -116,6 +119,7 @@ public class MenuBar implements ActionListener{
         datei.add(beenden);
         //hilfe.add(faq);
         //hilfe.add(about);
+        setToolTip();
     }
     
     public JMenuBar getMenu(){return menueLeiste;}   	
@@ -164,5 +168,11 @@ public class MenuBar implements ActionListener{
 		importwizard.setVisible(true);
     }
   
+    public void setToolTip(){
+		if(Debug.isDebugMode()){
+			menueLeiste.setToolTipText(this.getClass().getCanonicalName());
+			menueLeiste.setBackground(Color.getHSBColor(ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255));
+		}
+	}
 	
 }

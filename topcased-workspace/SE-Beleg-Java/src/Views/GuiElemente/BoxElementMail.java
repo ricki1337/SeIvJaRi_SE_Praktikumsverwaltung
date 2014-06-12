@@ -1,9 +1,11 @@
 package Views.GuiElemente;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -14,6 +16,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import ConfigParser.Debug;
 import Views.Interfaces.BasicBox;
 import Views.Interfaces.MailBox;
 import Views.Interfaces.MailBoxCtrl;
@@ -52,6 +55,7 @@ public class BoxElementMail extends JPanel implements BasicBox, MouseListener, M
 		this.controller = controller;
 		dataArray = controller.getMailData();   	
 		initComponents();
+		setToolTip();
     } 
 
 	@Override
@@ -195,6 +199,13 @@ public class BoxElementMail extends JPanel implements BasicBox, MouseListener, M
 	@Override
 	public String getRecipientEmailAdress(int index) {
 		return txtfields.get(index).getText();
+	}
+	
+	public void setToolTip(){
+		if(Debug.isDebugMode()){
+			setToolTipText(this.getClass().getCanonicalName());
+			this.setBackground(Color.getHSBColor(ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255));
+		}
 	}
 	
 	@Override

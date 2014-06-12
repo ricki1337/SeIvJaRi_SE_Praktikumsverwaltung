@@ -9,6 +9,7 @@ import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
+import ConfigParser.Debug;
 import Controller.Controller;
 import Controller.ControllerNew;
 import Views.Dialog.DatabaseConnectionDialog;
@@ -66,11 +67,19 @@ public class Praktikumsverwaltung extends JFrame{
 	public static void main(String[] args){
 		
 
-		if(args.length != 1){
+		if(args.length > 2){
 			System.out.println("Error! Es wurde eine falsche Anzahl Parameter übergeben.");
 			System.exit(0);
 		}
 		//args[0] enthält db-host
+		//args[1] enthält debug mode
+		
+		if(args.length == 2){
+			if(args[1].equals("debug"))
+				Debug.setDebugMode(true);
+			System.out.println(Debug.isDebugMode());
+		}
+			
 		new Praktikumsverwaltung(args[0]);
 		
 	}

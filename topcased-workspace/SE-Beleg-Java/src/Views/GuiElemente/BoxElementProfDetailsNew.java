@@ -1,7 +1,10 @@
 package Views.GuiElemente;
 
+import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JComponent;
@@ -9,6 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import ConfigParser.Debug;
 import Models.Datenbank.SqlTableProfs;
 import Views.Interfaces.EditBox;
 import Views.Interfaces.EditBoxCtrl;
@@ -23,6 +28,7 @@ public class BoxElementProfDetailsNew extends JPanel implements EditBox{
 		this.parent = parent;
 		initComponents();
 		setComponentNames();
+		setToolTip();
 	}
 	
 	@Override
@@ -140,4 +146,11 @@ public class BoxElementProfDetailsNew extends JPanel implements EditBox{
 	
 	@Override
 	public void setComponentValues() {}
+	
+	public void setToolTip(){
+		if(Debug.isDebugMode()){
+			setToolTipText(this.getClass().getCanonicalName());
+			this.setBackground(Color.getHSBColor(ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255));
+		}
+	}
 }

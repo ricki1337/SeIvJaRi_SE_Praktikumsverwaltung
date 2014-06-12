@@ -41,7 +41,7 @@ public class ContractSingle extends SingleView{
 	}
 	
 	private void setCompanieFields(){
-		
+		addCompanyIdToComponentList();
 		addTextfield("Firmenname", "Firmenname", 3, 1);
 		addTextfield("Straﬂe", "Strasse", 3, 2);
 		addTextfield("PLZ", "PLZ", 3, 3);
@@ -60,6 +60,7 @@ public class ContractSingle extends SingleView{
 	
 	
 	private void setStudentFields(){
+		addStudentMatrikelNrToComponentList();
 		addTextfield("Vorname", "Vorname", 1, 1);
 		addTextfield("Nachname", "Nachname", 1, 2);
 		addTextfield("Matrikelnr.", "Matrikelnr.", 1, 3);
@@ -98,12 +99,41 @@ public class ContractSingle extends SingleView{
 		}
 		return true;
 	}
+	
 	private void addContractIdToComponentList(){
 		try {
 			JLabel hiddenContractId = new JLabel(model.tableRowData.getStringValueFromPosition(model.rowPosition, "ID"));
 			hiddenContractId.setVisible(false);
 			
 			addComponentToView(hiddenContractId,"ID");
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	private void addStudentMatrikelNrToComponentList(){
+		try {
+			JLabel hiddenContractId = new JLabel(model.tableRowData.getStringValueFromPosition(model.rowPosition, "Matrikelnr."));
+			hiddenContractId.setVisible(false);
+			
+			addComponentToView(hiddenContractId,SqlTableContracts.FK_Student);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	private void addCompanyIdToComponentList(){
+		try {
+			JLabel hiddenContractId = new JLabel(model.tableRowData.getStringValueFromPosition(model.rowPosition, "FirmenID"));
+			hiddenContractId.setVisible(false);
+			
+			addComponentToView(hiddenContractId,SqlTableContracts.FK_Firma);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

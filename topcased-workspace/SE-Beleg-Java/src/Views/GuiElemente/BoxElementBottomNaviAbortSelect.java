@@ -14,15 +14,14 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import ConfigParser.Debug;
 import Views.Interfaces.BasicBox;
-import Views.Interfaces.BasicBoxCtrl;
-import Views.Interfaces.NaviMailPrintBoxCtrl;
+import Views.Interfaces.NaviAbortSelectBoxCtrl;
 
-public class BoxElementBottomNaviMailPrint extends JPanel implements BasicBox, MouseListener {
-	JButton jbn_mail;
-	JButton jbn_print;
-	private NaviMailPrintBoxCtrl controller;
+public class BoxElementBottomNaviAbortSelect extends JPanel implements BasicBox, MouseListener {
+	JButton jbn_select;
+	JButton jbn_abort;
+	private NaviAbortSelectBoxCtrl controller;
 	
-	public BoxElementBottomNaviMailPrint(NaviMailPrintBoxCtrl controller){
+	public BoxElementBottomNaviAbortSelect(NaviAbortSelectBoxCtrl controller){
 		this.controller = controller;
 		initComponents();
 		setComponentNames();
@@ -32,14 +31,14 @@ public class BoxElementBottomNaviMailPrint extends JPanel implements BasicBox, M
 	
 	@Override
 	public void setComponentNames() {
-		jbn_mail.setName("mailTo");
-		jbn_print.setName("print");
+		jbn_select.setName("select");
+		jbn_abort.setName("close");
 	}
 
 	@Override
 	public void setComponentEventHandler() {
-		jbn_mail.addMouseListener(this);
-		jbn_print.addMouseListener(this);
+		jbn_select.addMouseListener(this);
+		jbn_abort.addMouseListener(this);
 	}
 
 	@Override
@@ -49,41 +48,46 @@ public class BoxElementBottomNaviMailPrint extends JPanel implements BasicBox, M
 
 	@Override
 	public void initComponents() {
-		jbn_print = new JButton("drucken");
-		
-		jbn_mail = new JButton("mailen");
+		jbn_select = new JButton("ausw\u00E4hlen");
+				
+		jbn_abort = new JButton("abbrechen");
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addContainerGap(369, Short.MAX_VALUE)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(jbn_mail, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
-						.addComponent(jbn_print))
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap(268, Short.MAX_VALUE)
+					.addComponent(jbn_abort)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(jbn_select)
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(jbn_mail)
-					.addGap(6)
-					.addComponent(jbn_print)
-					.addContainerGap(237, Short.MAX_VALUE))
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(jbn_select)
+						.addComponent(jbn_abort))
+					.addContainerGap(38, Short.MAX_VALUE))
 		);
 		setLayout(groupLayout);
 		
 	}
 	
+	@Override
+	public void setComponentValues() {}
 	
+	@Override
+	public void refreshContent() {}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if(e.getComponent() == jbn_mail)
-			controller.buttonMailToClicked();
-		
-		if(e.getComponent() == jbn_print)
-			controller.buttonPrintClicked();
+		if(e.getComponent() == jbn_select){
+			controller.buttonSelectClicked();
+		}
+		if(e.getComponent() == jbn_abort){
+			controller.buttonAbortClicked();
+		}
 	}
 	
 	public void setToolTip(){
@@ -92,12 +96,6 @@ public class BoxElementBottomNaviMailPrint extends JPanel implements BasicBox, M
 			this.setBackground(Color.getHSBColor(ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255));
 		}
 	}
-
-	@Override
-	public void setComponentValues() {}
-	
-	@Override
-	public void refreshContent() {}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {}

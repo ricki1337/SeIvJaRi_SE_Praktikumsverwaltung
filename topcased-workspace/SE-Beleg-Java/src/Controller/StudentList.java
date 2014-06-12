@@ -20,6 +20,7 @@ import Models.Filter.StringFilter;
 import Praktikumsverwaltung.Praktikumsverwaltung;
 import Views.ViewNew;
 import Views.GuiElemente.BoxElementBottomNavi;
+import Views.GuiElemente.BoxElementBottomNaviAbortSelect;
 import Views.GuiElemente.BoxElementBottomNaviEditMailPrint;
 import Views.GuiElemente.BoxElementBottomNaviMailPrint;
 import Views.GuiElemente.BoxElementBottomNaviMark;
@@ -28,6 +29,7 @@ import Views.GuiElemente.BoxElementSearchMenu;
 import Views.GuiElemente.SearchPanel.ExtendedSearchPanel;
 import Views.GuiElemente.SearchPanel.ExtendedSearchPanelStudentNew;
 import Views.Interfaces.BasicBoxCtrl;
+import Views.Interfaces.NaviAbortSelectBoxCtrl;
 import Views.Interfaces.NaviEditMailPrintBoxCtrl;
 import Views.Interfaces.NaviMarkBoxCtrl;
 import Views.Interfaces.ExtendedSearchBoxCtrl;
@@ -35,7 +37,7 @@ import Views.Interfaces.SearchBoxCtrl;
 import Views.Interfaces.TableBoxCtrl;
 import Views.Table.TableData;
 
-public class StudentList extends ControllerNew implements BasicBoxCtrl, TableBoxCtrl, SearchBoxCtrl, ExtendedSearchBoxCtrl, NaviEditMailPrintBoxCtrl, NaviMarkBoxCtrl{
+public class StudentList extends ControllerNew implements BasicBoxCtrl, TableBoxCtrl, SearchBoxCtrl, ExtendedSearchBoxCtrl, NaviEditMailPrintBoxCtrl, NaviMarkBoxCtrl, NaviAbortSelectBoxCtrl{
 	
 	private String srcSqlQuery = "select " +
 									SqlTableStudent.MatrikelNummer + " as Matrikelnr, " +
@@ -73,9 +75,25 @@ public class StudentList extends ControllerNew implements BasicBoxCtrl, TableBox
 		setView(view = new Views.ViewNew(this));
 		view.setTitle("Student auswählen");
 		this.callback = callback;
-		setElements();
+		setElementsForCallback();
 	}
 	
+	
+	public void setElementsForCallback() {
+		searchMenu = new BoxElementSearchMenu(this);
+		view.addComponentToView(searchMenu);
+		extendedSearch = new ExtendedSearchPanelStudentNew(this);
+		extendedSearch.setVisible(false);
+		view.addComponentToView(extendedSearch);
+		table = new Views.GuiElemente.BoxElementTable(this);
+		//TODO
+		//tabellenfunktion zum einstellen, das nur ein datensatz auswählbar ist
+		view.addComponentToView(table);
+		BoxElementBottomNavi navi = new BoxElementBottomNavi(this);
+		navi.addBoxToRightSide(new BoxElementBottomNaviAbortSelect(this));
+		view.addComponentToView(navi);
+	}
+
 	@Override
 	public void setElements(){
 		searchMenu = new BoxElementSearchMenu(this);
@@ -180,7 +198,7 @@ public class StudentList extends ControllerNew implements BasicBoxCtrl, TableBox
 
 	@Override
 	public void buttonMarkClicked() {
-		table.setFlagOnSelectedRow();
+		table.setFlagOnSelectedRows();
 	}
 
 	@Override
@@ -209,5 +227,19 @@ public class StudentList extends ControllerNew implements BasicBoxCtrl, TableBox
 	public void buttonAddNewDataClicked() {
 		StudentSingleNew newEmptyFrame = new StudentSingleNew();
 		Praktikumsverwaltung.addFrameToForeground(newEmptyFrame);
+	}
+
+	@Override
+	public void buttonAbortClicked() {
+		view.dispose();
+		model.modelClose();
+	}
+
+	@Override
+	public void buttonSelectClicked() {
+		callback.setSelectedValue(SqlTableStudent.PrimaryKey, getValueFromPosition(table.getSelectedRow(),SqlTableStudent.PrimaryKey));
+		view.dispose();
+		model.modelClose();
+		
 	}
 }

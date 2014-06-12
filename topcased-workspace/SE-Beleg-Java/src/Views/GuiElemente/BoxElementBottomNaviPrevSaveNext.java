@@ -1,7 +1,9 @@
 package Views.GuiElemente;
 
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -9,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import ConfigParser.Debug;
 import Views.Interfaces.BasicBox;
 import Views.Interfaces.BasicBoxCtrl;
 import Views.Interfaces.NaviPrevSaveNextBoxCtrl;
@@ -26,6 +29,7 @@ public class BoxElementBottomNaviPrevSaveNext extends JPanel implements BasicBox
 		initComponents();
 		setComponentNames();
 		setComponentEventHandler();
+		setToolTip();
 	}
 	
 	
@@ -101,6 +105,12 @@ public class BoxElementBottomNaviPrevSaveNext extends JPanel implements BasicBox
 		
 	}
 
+	public void setToolTip(){
+		if(Debug.isDebugMode()){
+			setToolTipText(this.getClass().getCanonicalName());
+			this.setBackground(Color.getHSBColor(ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255));
+		}
+	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {}

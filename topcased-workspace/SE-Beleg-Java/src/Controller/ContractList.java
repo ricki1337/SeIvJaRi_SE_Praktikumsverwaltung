@@ -139,7 +139,8 @@ public class ContractList extends ControllerNew implements BasicBoxCtrl, TableBo
 	public void tableRowDoubleClicked() {
 		Object contractId;
 		if((contractId = table.getColumnValueFromSelectedRow("ID")) != null){
-			ContractSingle newFrame = new ContractSingle(contractId);
+			//ContractSingle newFrame = new ContractSingle(contractId);
+			ContractSingleNew newFrame = new ContractSingleNew(contractId);
 			Praktikumsverwaltung.addFrameToForeground(newFrame);
 		}
 	}
@@ -165,7 +166,7 @@ public class ContractList extends ControllerNew implements BasicBoxCtrl, TableBo
 
 	@Override
 	public void buttonMarkClicked() {
-		table.setFlagOnSelectedRow();
+		table.setFlagOnSelectedRows();
 	}
 
 	@Override
@@ -201,7 +202,8 @@ public class ContractList extends ControllerNew implements BasicBoxCtrl, TableBo
 
 	@Override
 	public void buttonAddNewDataClicked() {
-		ContractEmptySingle newEmptyFrame = new ContractEmptySingle();
+		System.out.println("huhu");
+		ContractSingleNew newEmptyFrame = new ContractSingleNew();
 		Praktikumsverwaltung.addFrameToForeground(newEmptyFrame);
 	}
 }

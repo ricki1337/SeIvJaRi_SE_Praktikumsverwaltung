@@ -1,6 +1,7 @@
 package Views.GuiElemente;
 
 import java.awt.Color;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -8,6 +9,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import ConfigParser.Debug;
 import Views.Interfaces.BasicBoxCtrl;
 import Views.Interfaces.BasicBox;
 
@@ -21,6 +23,7 @@ public class BoxElementBottomNavi extends JPanel implements BasicBox{
 		initComponents();
 		setComponentNames();
 		setComponentEventHandler();
+		setToolTip();
 	}
 	
 	public void initComponents(){
@@ -63,6 +66,13 @@ public class BoxElementBottomNavi extends JPanel implements BasicBox{
 	@Override
 	public JComponent getJComponent() {
 		return this;
+	}
+	
+	public void setToolTip(){
+		if(Debug.isDebugMode()){
+			setToolTipText(this.getClass().getCanonicalName());
+			this.setBackground(Color.getHSBColor(ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255));
+		}
 	}
 	
 	@Override

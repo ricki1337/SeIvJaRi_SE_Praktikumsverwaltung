@@ -1,5 +1,5 @@
 package Controller.Interfaces;
 
 public interface CallbackSelectedValue {
-	public void getSelectedValue(Object value);
+	public void setSelectedValue(String valueName, Object value);
 }

@@ -30,10 +30,10 @@ public class ContactSingle extends SingleController{
 		
 		if(primaryKeys instanceof Object[]){		
 			for(Object item:(Object[])primaryKeys){
-				model.setOrFilter(SqlTableContacts.TableNameDotId, new StringFilter(item.toString()));
+				model.setOrFilter(SqlTableContacts.ZuordnungFirma, new StringFilter(item.toString()));
 			}
 		} else{
-			model.setAndFilter(SqlTableContacts.TableNameDotId, new StringFilter(primaryKeys.toString()));
+			model.setAndFilter(SqlTableContacts.ZuordnungFirma, new StringFilter(primaryKeys.toString()));
 		}
 		model.setResult();
 		setModel(model);

@@ -2,12 +2,13 @@ package Controller;
 
 import java.awt.event.MouseEvent;
 
+import Controller.Interfaces.CallbackSelectedValue;
 import Controller.Interfaces.ChangeableController;
 import Models.Datenbank.SqlTableCompanies;
 import Models.Datenbank.SqlTableContracts;
 import Models.Datenbank.SqlTableStudent;
 
-public class ContractSingle extends SingleController implements ChangeableController{
+public class ContractSingle extends SingleController implements ChangeableController, CallbackSelectedValue{
 	
 	Views.ContractSingle view;
 	
@@ -84,14 +85,14 @@ public class ContractSingle extends SingleController implements ChangeableContro
 								break;
 		case "modifyStudent": 	Praktikumsverwaltung.Praktikumsverwaltung.addFrameToForeground(new StudentSingle(view.getValueFromCurrentItem("Matrikelnr.")));
 								break;
-		case "changeStudent": 	Praktikumsverwaltung.Praktikumsverwaltung.addFrameToForeground(new StudentListToContract(this));
+		case "changeStudent": 	//Praktikumsverwaltung.Praktikumsverwaltung.addFrameToForeground(new StudentListToContract(this));
+								Praktikumsverwaltung.Praktikumsverwaltung.addFrameToForeground(new StudentList(this));
 								break;
 		}
 	}
 
 	@Override
 	public void change(String valueName, Object value) {
-		// TODO Auto-generated method stub
 		if(valueName.equals("company"))
 			((Models.ContractSingle)model).changeCompany(view.getValueFromCurrentItem("ID"),(String)value);
 		if(valueName.equals("student"))
@@ -109,5 +110,52 @@ public class ContractSingle extends SingleController implements ChangeableContro
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {}
+
+
+	@Override
+	public void setSelectedValue(String valueName, Object value) {
+		if(valueName.equals(SqlTableStudent.PrimaryKey))
+			changeStudentInformation(value);
+		if(valueName.equals(SqlTableCompanies.PrimaryKey))
+			model.tableRowData.setValueAtPosition(model.rowPosition, SqlTableContracts.FK_Firma, value);
+		
+		view.refreshComponentsContent();
+	}
+	
+	private void changeStudentInformation(Object matrikelNr){
+		model.tableRowData.setValueAtPosition(model.rowPosition, SqlTableContracts.FK_Student, matrikelNr);
+		StudentSingle studentSingleController = new StudentSingle(matrikelNr);
+		try {
+			String studentFirstname = studentSingleController.model.tableRowData.getStringValueFromPosition(studentSingleController.model.rowPosition, SqlTableStudent.Vorname);
+			model.tableRowData.setValueAtPosition(model.rowPosition, "Vorname", studentFirstname);
+			String studentName = studentSingleController.model.tableRowData.getStringValueFromPosition(studentSingleController.model.rowPosition, SqlTableStudent.Nachname);
+			model.tableRowData.setValueAtPosition(model.rowPosition, "Nachname", studentName);
+			String studentEmail = studentSingleController.model.tableRowData.getStringValueFromPosition(studentSingleController.model.rowPosition, SqlTableStudent.EMail);
+			model.tableRowData.setValueAtPosition(model.rowPosition, "E-Mail", studentEmail);
+			String studentStudienGruppe = studentSingleController.model.tableRowData.getStringValueFromPosition(studentSingleController.model.rowPosition, SqlTableStudent.Studiengruppe);
+			model.tableRowData.setValueAtPosition(model.rowPosition, "Studiengruppe", studentStudienGruppe);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+//	private void changeCompanyInformation(Object companyId){
+//		model.tableRowData.setValueAtPosition(model.rowPosition, SqlTableContracts.FK_Firma, companyId);
+//		StudentSingle studentSingleController = new StudentSingle(companyId);
+//		try {
+//			String studentFirstname = studentSingleController.model.tableRowData.getStringValueFromPosition(studentSingleController.model.rowPosition, SqlTableStudent.Vorname);
+//			model.tableRowData.setValueAtPosition(model.rowPosition, "Vorname", studentFirstname);
+//			String studentName = studentSingleController.model.tableRowData.getStringValueFromPosition(studentSingleController.model.rowPosition, SqlTableStudent.Nachname);
+//			model.tableRowData.setValueAtPosition(model.rowPosition, "Nachname", studentName);
+//			String studentEmail = studentSingleController.model.tableRowData.getStringValueFromPosition(studentSingleController.model.rowPosition, SqlTableStudent.EMail);
+//			model.tableRowData.setValueAtPosition(model.rowPosition, "E-Mail", studentEmail);
+//			String studentStudienGruppe = studentSingleController.model.tableRowData.getStringValueFromPosition(studentSingleController.model.rowPosition, SqlTableStudent.Studiengruppe);
+//			model.tableRowData.setValueAtPosition(model.rowPosition, "Studiengruppe", studentStudienGruppe);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		
+//	}
 
 }

@@ -148,10 +148,10 @@ public class Model implements observer{
 	private void setSrcTables() {
 			ResultSet tables = db.getQuery("show tables;");
 			
-			String srcQuery = getSrcQuery();
+			String srcQuery = getSrcQuery().toLowerCase();
 			try {
 				while(tables.next()){
-					if(srcQuery.contains(tables.getString(1)))
+					if(srcQuery.contains(tables.getString(1).toLowerCase()))
 						srcTables.add(tables.getString(1));
 				}
 			} catch (SQLException e) {

@@ -177,7 +177,7 @@ public abstract class SingleView extends View{
 		refreshComponentsContent();
 	}
 	
-	protected void refreshComponentsContent(){
+	public void refreshComponentsContent(){
 		for(JComponent comp:listOfallComponentsOnView){
 			if(comp.getName() != null && !comp.getName().equals("")){
 				if(comp instanceof JTextField)	
