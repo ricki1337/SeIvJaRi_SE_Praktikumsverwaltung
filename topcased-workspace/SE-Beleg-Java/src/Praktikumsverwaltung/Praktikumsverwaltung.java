@@ -55,7 +55,7 @@ public class Praktikumsverwaltung extends JFrame{
 	public static void main(String[] args){
 		
 
-		if(args.length > 2){
+		if(args.length > 2 || args.length == 0){
 			System.out.println("Error! Es wurde eine falsche Anzahl Parameter übergeben.");
 			System.exit(0);
 		}

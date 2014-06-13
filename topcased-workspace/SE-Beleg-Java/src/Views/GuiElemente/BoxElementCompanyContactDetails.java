@@ -1,4 +1,4 @@
-﻿package Views.GuiElemente;
+package Views.GuiElemente;
 
 import java.awt.Color;
 import java.awt.SystemColor;
