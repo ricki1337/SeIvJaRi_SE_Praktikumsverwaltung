@@ -2,8 +2,6 @@ package Models.Datenbank;
 
 import java.sql.*;
 import java.util.*;
-
-import ConfigParser.Config;
 import Controller.ErrorManager;
 
 public class Database

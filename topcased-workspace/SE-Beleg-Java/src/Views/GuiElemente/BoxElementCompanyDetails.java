@@ -45,12 +45,22 @@ public class BoxElementCompanyDetails extends JPanel implements EditBox{
 	    private GroupLayout groupLayout;
 
 		private EditBoxCtrl parent;
+		private boolean addNewContract = false;
 		
 	public BoxElementCompanyDetails(EditBoxCtrl parent){
 		this.parent = parent;
 		initComponents();
 		setComponentNames();
 		setComponentValues();
+		setComponentEventHandler();
+		setToolTip();
+	}
+	
+	public BoxElementCompanyDetails(EditBoxCtrl parent, boolean addNewContract){
+		this.parent = parent;
+		this.addNewContract = addNewContract;
+		initComponents();
+		setComponentNames();
 		setComponentEventHandler();
 		setToolTip();
 	}
@@ -79,7 +89,9 @@ public class BoxElementCompanyDetails extends JPanel implements EditBox{
 
 	@Override
 	public void refreshContent() {
-		setComponentValues();
+		if(!addNewContract)
+			setComponentValues();
+		
 		if(pnl_contact instanceof BasicBox)
 			((BasicBox)pnl_contact).refreshContent();
 	}

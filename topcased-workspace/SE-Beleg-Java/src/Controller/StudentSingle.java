@@ -1,33 +1,42 @@
 package Controller;
 
-import java.awt.event.MouseEvent;
-
 import Models.Datenbank.SqlTableStudent;
 import Models.Filter.IntFilter;
+import Views.GuiElemente.BoxElementBottomNavi;
+import Views.GuiElemente.BoxElementBottomNaviAbortSave;
+import Views.GuiElemente.BoxElementBottomNaviPrevSaveNext;
+import Views.GuiElemente.BoxElementStudentDetails;
+import Views.Interfaces.NaviAbortSaveBoxCtrl;
+import Views.Interfaces.NaviPrevSaveNextBoxCtrl;
+import Views.Interfaces.EditBoxCtrl;
 
-public class StudentSingle extends SingleController{
-	
-	Views.StudentSingle view;
+public class StudentSingle extends ControllerNew implements EditBoxCtrl, NaviAbortSaveBoxCtrl, NaviPrevSaveNextBoxCtrl{
 	
 	private String srcSqlQuery = "select " +
-									SqlTableStudent.TableNameDotMatrikelNummer + " as Matrikelnr, " +
-									SqlTableStudent.TableNameDotVorname + " as Vorname, " +
-									SqlTableStudent.TableNameDotNachname + " as Nachname, " +
-									SqlTableStudent.TableNameDotEMail + " as 'E-Mail', " +
-									SqlTableStudent.TableNameDotStudiengruppe + " as Studiengruppe, " +
-									SqlTableStudent.TableNameDotBemerkung + " as Bemerkung " +
+									SqlTableStudent.MatrikelNummer + " as Matrikelnr, " +
+									SqlTableStudent.Vorname + " as Vorname, " +
+									SqlTableStudent.Nachname + " as Nachname, " +
+									SqlTableStudent.EMail + " as 'E-Mail', " +
+									SqlTableStudent.Studiengruppe + " as Studiengruppe, " +
+									SqlTableStudent.Bemerkung + " as Bemerkung " +
 								"from " +
 									SqlTableStudent.tableName;
 	
 	
+	private Views.ViewNew view;
+	
 	public StudentSingle(){
 		setModel(new Models.Model(SqlTableStudent.tableName,SqlTableStudent.TableNameDotPrimaryKey));
-		setView((view = new Views.StudentSingle(this)));
+		setView(view = new Views.ViewNew(this));
+		view.setTitle("Student anlegen");
+		setElementsForNewData();
 	}
 	
 	
 	public StudentSingle(Object primaryKeys){
 		super();
+		
+		
 		Models.Model model = new Models.Model(srcSqlQuery,SqlTableStudent.tableName,SqlTableStudent.TableNameDotPrimaryKey);
 				
 		if(primaryKeys instanceof Object[]){		
@@ -39,36 +48,99 @@ public class StudentSingle extends SingleController{
 		}
 		model.setResult();
 		setModel(model);
-		setView((view = new Views.StudentSingle(this)));
+		setView((view = new Views.ViewNew(this)));
+		view.setTitle("Student editieren");
+		setElements();
+	}
+	
+	@Override
+	public void setElements() {
+		view.addComponentToView(new BoxElementStudentDetails(this));
+		BoxElementBottomNavi navi = new BoxElementBottomNavi(this);
+		navi.addBoxToLeftSide(new BoxElementBottomNaviPrevSaveNext(this));
+		view.addComponentToView(navi);
 	}
 
+	@Override
+	public void setElementsForNewData() {
+		view.addComponentToView(new BoxElementStudentDetails(this,true));
+		BoxElementBottomNavi navi = new BoxElementBottomNavi(this);
+		navi.addBoxToRightSide(new BoxElementBottomNaviAbortSave(this));
+		view.addComponentToView(navi);
+	}
+	
 	@Override
 	public void display() {
 		view.display();
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent e) {
-		switch(e.getComponent().getName()){
-		case "next": 	view.gotoNext();
-						break;
-		case "save": 	model.updateDatabase();
-						break;
-		case "previus": view.gotoPrevius();
-						break;
+	public String getStringValueForBoxElementEdit(String sqlColumnName) {
+		try {
+			return model.tableRowData.getStringValueFromPosition(model.rowPosition, sqlColumnName);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		return null;
+	}
+
+
+	@Override
+	public int getIntValueForBoxElementEdit(String sqlColumnName) {
+		try {
+			return Integer.parseInt(model.tableRowData.getStringValueFromPosition(model.rowPosition, sqlColumnName));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+
+	@Override
+	public boolean getBooleanValueForBoxElementEdit(String sqlColumnName) {
+		try {
+			return model.tableRowData.getBooleanValueFromPosition(model.rowPosition, sqlColumnName);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+
+	@Override
+	public void buttonAbortClicked() {
+		view.dispose();
+	}
+
+
+	@Override
+	public void buttonSaveClicked() {
+		model.insertIntoDatabase();
+		view.modelHasChanged();
+	}
+	
+	@Override
+	public void buttonSaveChangesClicked() {
+		model.updateDatabase();
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {}
+	public void buttonPreviusClicked() {
+		model.previusRow();
+		view.modelHasChanged();		
+	}
+
 
 	@Override
-	public void mouseExited(MouseEvent arg0) {}
+	public void buttonNextClicked() {
+		model.nextRow();
+		view.modelHasChanged();		
+	}
 
-	@Override
-	public void mousePressed(MouseEvent arg0) {}
 
-	@Override
-	public void mouseReleased(MouseEvent arg0) {}
+	
+
+
+	
 
 }

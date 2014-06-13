@@ -8,4 +8,6 @@ public interface CompanyDetailsContactCtrl {
 
 	public void buttonCompanyContactPreviusClicked();
 
+	public void buttonCompanyContactAddNewClicked();
+
 }

@@ -114,7 +114,7 @@ public class Print extends ControllerNew{
 		try {
 			PrintExport testding;
 			testding = new PrintExport();
-			testding.setData(createArrayForPrinting(), "Titel","Überschrift");
+			testding.setData(createArrayForPrinting(), "Titel","Folgende(r) Student(en) absolviert(en) das Praxisprojekt erfolgreich:");
 			testding.print();
 		} catch (Exception e) {
 			ErrorManager errorManager = new ErrorManager(e);

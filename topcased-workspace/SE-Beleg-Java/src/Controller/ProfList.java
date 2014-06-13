@@ -1,25 +1,8 @@
 package Controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.Iterator;
-import java.util.Map;
-
-import javax.swing.JButton;
-import javax.swing.JTextField;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Document;
-
 import Controller.Interfaces.CallbackSelectedValue;
 import Models.Datenbank.SqlTableProfs;
-import Models.Datenbank.SqlTableStudent;
-import Models.Filter.StringFilter;
 import Praktikumsverwaltung.Praktikumsverwaltung;
-import Views.ViewNew;
 import Views.GuiElemente.BoxElementBottomNavi;
 import Views.GuiElemente.BoxElementBottomNaviAbortSelect;
 import Views.GuiElemente.BoxElementBottomNaviEditMailPrint;
@@ -27,8 +10,6 @@ import Views.GuiElemente.BoxElementBottomNaviMark;
 import Views.GuiElemente.BoxElementTable;
 import Views.GuiElemente.BoxElementSearchMenu;
 import Views.GuiElemente.SearchPanel.BoxElementExtendedSearchProf;
-import Views.GuiElemente.SearchPanel.ExtendedSearchPanel;
-import Views.GuiElemente.SearchPanel.ExtendedSearchPanelStudentNew;
 import Views.Interfaces.BasicBoxCtrl;
 import Views.Interfaces.NaviAbortSelectBoxCtrl;
 import Views.Interfaces.NaviEditMailPrintBoxCtrl;
@@ -36,7 +17,6 @@ import Views.Interfaces.NaviMarkBoxCtrl;
 import Views.Interfaces.ExtendedSearchBoxCtrl;
 import Views.Interfaces.SearchBoxCtrl;
 import Views.Interfaces.TableBoxCtrl;
-import Views.Table.TableData;
 
 public class ProfList extends ControllerNew implements BasicBoxCtrl, 
 														TableBoxCtrl, 
@@ -219,7 +199,7 @@ public class ProfList extends ControllerNew implements BasicBoxCtrl,
 
 	@Override
 	public void buttonAddNewDataClicked() {
-		ProfEmptySingle newEmptyFrame = new ProfEmptySingle();
+		ProfSingle newEmptyFrame = new ProfSingle();
 		Praktikumsverwaltung.addFrameToForeground(newEmptyFrame);
 	}
 

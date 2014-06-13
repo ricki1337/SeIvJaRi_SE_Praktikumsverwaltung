@@ -10,6 +10,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 import ConfigParser.Debug;
 import Views.Interfaces.BasicBox;
@@ -20,6 +21,7 @@ public class BoxElementCompanyContactDetailsNav extends JPanel implements BasicB
 	 	private JButton jb_bearbeiten;
 	    private JButton jb_next;
 	    private JButton jb_prev;
+	    private JButton jb_add;
 	    
 	    private CompanyDetailsContactCtrl controller;
 	    
@@ -32,7 +34,6 @@ public class BoxElementCompanyContactDetailsNav extends JPanel implements BasicB
 
     @Override                   
     public void initComponents() {
-
     	jb_bearbeiten = new javax.swing.JButton();
         jb_prev = new javax.swing.JButton();
         jb_next = new javax.swing.JButton();
@@ -42,6 +43,8 @@ public class BoxElementCompanyContactDetailsNav extends JPanel implements BasicB
         jb_prev.setText("<<");
 
         jb_next.setText(">>");
+        
+        jb_add = new JButton("Hinzufügen");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         layout.setHorizontalGroup(
@@ -50,23 +53,27 @@ public class BoxElementCompanyContactDetailsNav extends JPanel implements BasicB
         			.addContainerGap()
         			.addComponent(jb_prev)
         			.addGap(22)
-        			.addComponent(jb_bearbeiten, GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(jb_bearbeiten, GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
+        				.addComponent(jb_add, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         			.addGap(18)
         			.addComponent(jb_next)
-        			.addGap(8))
+        			.addGap(4))
         );
         layout.setVerticalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
         		.addGroup(layout.createSequentialGroup()
-        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(jb_next)
-        				.addComponent(jb_bearbeiten, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-        				.addComponent(jb_prev))
-        			.addContainerGap(54, Short.MAX_VALUE))
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        					.addComponent(jb_next, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
+        					.addComponent(jb_prev, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(layout.createSequentialGroup()
+        					.addComponent(jb_bearbeiten, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addComponent(jb_add)))
+        			.addContainerGap(25, Short.MAX_VALUE))
         );
         this.setLayout(layout);
-        layout.preferredLayoutSize(this);
-        setVisible(true);
     }
 
 	@Override
@@ -74,6 +81,7 @@ public class BoxElementCompanyContactDetailsNav extends JPanel implements BasicB
 		jb_next.addMouseListener(this);
 		jb_bearbeiten.addMouseListener(this);
 		jb_prev.addMouseListener(this);
+		jb_add.addMouseListener(this);
 	}
 
 	@Override
@@ -91,6 +99,9 @@ public class BoxElementCompanyContactDetailsNav extends JPanel implements BasicB
 		
 		if(e.getComponent() == jb_prev)
 			controller.buttonCompanyContactPreviusClicked();
+		
+		if(e.getComponent() == jb_add)
+			controller.buttonCompanyContactAddNewClicked();
 		
 	}
 	

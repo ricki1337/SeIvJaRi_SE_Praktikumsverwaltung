@@ -29,12 +29,22 @@ public class BoxElementStudentDetails extends JPanel implements EditBox{
 		private JTextArea jta_note;
 	
 		private EditBoxCtrl parent;
+		private boolean addNewContract = false;
 		
 	public BoxElementStudentDetails(EditBoxCtrl parent){
 		this.parent = parent;
 		initComponents();
 		setComponentNames();
 		setComponentValues();
+		setComponentEventHandler();
+		setToolTip();
+	}
+	
+	public BoxElementStudentDetails(EditBoxCtrl parent, boolean addNewContract){
+		this.parent = parent;
+		this.addNewContract = addNewContract;
+		initComponents();
+		setComponentNames();
 		setComponentEventHandler();
 		setToolTip();
 	}
@@ -67,7 +77,8 @@ public class BoxElementStudentDetails extends JPanel implements EditBox{
 
 	@Override
 	public void refreshContent() {
-		setComponentValues();		
+		if(!addNewContract)
+			setComponentValues();		
 	}
 
 	@Override

@@ -2,25 +2,19 @@
 
 import java.awt.Color;
 import java.awt.SystemColor;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.border.EtchedBorder;
-
 import ConfigParser.Debug;
 import Models.Datenbank.SqlTableContacts;
 import Views.Interfaces.BasicBox;
 import Views.Interfaces.CompanyContactDetailsBoxCtrl;
-import Views.Interfaces.EditBoxCtrl;
 
 
 
@@ -32,7 +26,6 @@ public class BoxElementCompanyContactDetails extends JPanel implements BasicBox{
 	    private JLabel jl_telefon;
 	    private JLabel jl_telefon_value;
 	    private JTextArea jtf_bemerkung_value;
-	    private JPanel contentPanel;
 	    private JPanel jpnl_navi;
 	    private GroupLayout groupLayout;
 	    

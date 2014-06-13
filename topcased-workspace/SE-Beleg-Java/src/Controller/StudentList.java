@@ -1,32 +1,14 @@
 package Controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.Iterator;
-import java.util.Map;
-
-import javax.swing.JButton;
-import javax.swing.JTextField;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Document;
-
 import Controller.Interfaces.CallbackSelectedValue;
 import Models.Datenbank.SqlTableStudent;
-import Models.Filter.StringFilter;
 import Praktikumsverwaltung.Praktikumsverwaltung;
-import Views.ViewNew;
 import Views.GuiElemente.BoxElementBottomNavi;
 import Views.GuiElemente.BoxElementBottomNaviAbortSelect;
 import Views.GuiElemente.BoxElementBottomNaviEditMailPrint;
-import Views.GuiElemente.BoxElementBottomNaviMailPrint;
 import Views.GuiElemente.BoxElementBottomNaviMark;
 import Views.GuiElemente.BoxElementTable;
 import Views.GuiElemente.BoxElementSearchMenu;
-import Views.GuiElemente.SearchPanel.ExtendedSearchPanel;
 import Views.GuiElemente.SearchPanel.ExtendedSearchPanelStudentNew;
 import Views.Interfaces.BasicBoxCtrl;
 import Views.Interfaces.NaviAbortSelectBoxCtrl;
@@ -35,7 +17,6 @@ import Views.Interfaces.NaviMarkBoxCtrl;
 import Views.Interfaces.ExtendedSearchBoxCtrl;
 import Views.Interfaces.SearchBoxCtrl;
 import Views.Interfaces.TableBoxCtrl;
-import Views.Table.TableData;
 
 public class StudentList extends ControllerNew implements BasicBoxCtrl, TableBoxCtrl, SearchBoxCtrl, ExtendedSearchBoxCtrl, NaviEditMailPrintBoxCtrl, NaviMarkBoxCtrl, NaviAbortSelectBoxCtrl{
 	
@@ -156,7 +137,7 @@ public class StudentList extends ControllerNew implements BasicBoxCtrl, TableBox
 	public void tableRowDoubleClicked() {
 		Object studentId;
 		if((studentId = table.getColumnValueFromSelectedRow("Matrikelnr")) != null){
-			StudentSingleNew newFrame = new StudentSingleNew(studentId);
+			StudentSingle newFrame = new StudentSingle(studentId);
 			Praktikumsverwaltung.addFrameToForeground(newFrame);
 		}
 		
@@ -165,7 +146,7 @@ public class StudentList extends ControllerNew implements BasicBoxCtrl, TableBox
 	@Override
 	public void buttonEditClicked() {
 		Object[] studentList = table.getColumnValuesFromSelectedRows("Matrikelnr");
-		StudentSingleNew newFrame = new StudentSingleNew(studentList);
+		StudentSingle newFrame = new StudentSingle(studentList);
 		Praktikumsverwaltung.addFrameToForeground(newFrame);
 	}
 
@@ -225,7 +206,7 @@ public class StudentList extends ControllerNew implements BasicBoxCtrl, TableBox
 
 	@Override
 	public void buttonAddNewDataClicked() {
-		StudentSingleNew newEmptyFrame = new StudentSingleNew();
+		StudentSingle newEmptyFrame = new StudentSingle();
 		Praktikumsverwaltung.addFrameToForeground(newEmptyFrame);
 	}
 

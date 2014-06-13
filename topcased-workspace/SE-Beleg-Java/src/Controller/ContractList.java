@@ -1,41 +1,21 @@
 package Controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.Iterator;
-import java.util.Map;
-
-import javax.swing.JButton;
-import javax.swing.JTextField;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Document;
-
 import Models.Datenbank.SqlTableCompanies;
 import Models.Datenbank.SqlTableContracts;
-import Models.Datenbank.SqlTableProfs;
 import Models.Datenbank.SqlTableStudent;
-import Models.Filter.StringFilter;
 import Praktikumsverwaltung.Praktikumsverwaltung;
-import Views.ViewNew;
 import Views.GuiElemente.BoxElementBottomNavi;
 import Views.GuiElemente.BoxElementBottomNaviEditMailPrint;
 import Views.GuiElemente.BoxElementBottomNaviMark;
 import Views.GuiElemente.BoxElementTable;
 import Views.GuiElemente.BoxElementSearchMenu;
 import Views.GuiElemente.SearchPanel.BoxElementExtendedSearchProf;
-import Views.GuiElemente.SearchPanel.ExtendedSearchPanel;
-import Views.GuiElemente.SearchPanel.ExtendedSearchPanelStudentNew;
 import Views.Interfaces.BasicBoxCtrl;
 import Views.Interfaces.NaviEditMailPrintBoxCtrl;
 import Views.Interfaces.NaviMarkBoxCtrl;
 import Views.Interfaces.ExtendedSearchBoxCtrl;
 import Views.Interfaces.SearchBoxCtrl;
 import Views.Interfaces.TableBoxCtrl;
-import Views.Table.TableData;
 
 public class ContractList extends ControllerNew implements BasicBoxCtrl, TableBoxCtrl, SearchBoxCtrl, ExtendedSearchBoxCtrl, NaviEditMailPrintBoxCtrl, NaviMarkBoxCtrl{
 	
@@ -139,8 +119,7 @@ public class ContractList extends ControllerNew implements BasicBoxCtrl, TableBo
 	public void tableRowDoubleClicked() {
 		Object contractId;
 		if((contractId = table.getColumnValueFromSelectedRow("ID")) != null){
-			//ContractSingle newFrame = new ContractSingle(contractId);
-			ContractSingleNew newFrame = new ContractSingleNew(contractId);
+			ContractSingle newFrame = new ContractSingle(contractId);
 			Praktikumsverwaltung.addFrameToForeground(newFrame);
 		}
 	}
@@ -203,7 +182,7 @@ public class ContractList extends ControllerNew implements BasicBoxCtrl, TableBo
 	@Override
 	public void buttonAddNewDataClicked() {
 		System.out.println("huhu");
-		ContractSingleNew newEmptyFrame = new ContractSingleNew();
+		ContractSingle newEmptyFrame = new ContractSingle();
 		Praktikumsverwaltung.addFrameToForeground(newEmptyFrame);
 	}
 }

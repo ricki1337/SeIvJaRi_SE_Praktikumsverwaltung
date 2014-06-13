@@ -163,7 +163,6 @@ public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
 		Object[] returnValues = new Object[getFlaggedColumnCount()];
 		int rowIndex = 0;
 		int column = jt_table.convertColumnIndexToModel(controller.getColumnAliasIndex(columnName));
-		//for(int selectedRow:jt_table.getSelectedRows()){
 		for(int selectedRow:getFlaggedColumns()){
 			returnValues[rowIndex] = jt_table.getValueAt(jt_table.convertRowIndexToModel(selectedRow),column);
 			rowIndex++;

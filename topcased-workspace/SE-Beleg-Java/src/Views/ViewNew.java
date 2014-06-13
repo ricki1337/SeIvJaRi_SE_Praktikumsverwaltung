@@ -2,9 +2,7 @@ package Views;
 
 
 
-import java.awt.Color;
 import java.awt.Component;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,17 +11,13 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.JInternalFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
-import Controller.Controller;
 import Controller.ControllerNew;
 import Models.Model;
 import Views.Interfaces.BasicBox;
 import Views.Interfaces.EditBox;
-import Views.Interfaces.TableBoxCtrl;
 
 public class ViewNew extends JInternalFrame implements UpdateView{
 

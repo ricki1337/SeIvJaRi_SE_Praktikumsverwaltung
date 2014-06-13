@@ -10,7 +10,6 @@ import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
 import ConfigParser.Debug;
-import Controller.Controller;
 import Controller.ControllerNew;
 import Views.Dialog.DatabaseConnectionDialog;
 import Views.GuiElemente.MenuBar;
@@ -18,17 +17,6 @@ import Views.GuiElemente.MenuBar;
 public class Praktikumsverwaltung extends JFrame{
 
 	static JDesktopPane InnerDesktop;
-	
-	public static void addFrameToForeground(Controller controller){
-		controller.display();
-		JInternalFrame newFrame = controller.getDisplayedFrame();
-		InnerDesktop.add(newFrame);
-		try {
-			newFrame.setSelected(true);
-		} catch (PropertyVetoException e) {
-			e.printStackTrace();
-		}
-	}
 	
 	public static void addFrameToForeground(ControllerNew controller){
 		controller.display();

@@ -1,26 +1,8 @@
 package Controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.Iterator;
-import java.util.Map;
-
-import javax.swing.JButton;
-import javax.swing.JTextField;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Document;
-
 import Controller.Interfaces.CallbackSelectedValue;
 import Models.Datenbank.SqlTableCompanies;
-import Models.Datenbank.SqlTableProfs;
-import Models.Datenbank.SqlTableStudent;
-import Models.Filter.StringFilter;
 import Praktikumsverwaltung.Praktikumsverwaltung;
-import Views.ViewNew;
 import Views.GuiElemente.BoxElementBottomNavi;
 import Views.GuiElemente.BoxElementBottomNaviAbortSelect;
 import Views.GuiElemente.BoxElementBottomNaviEditMailPrint;
@@ -28,8 +10,6 @@ import Views.GuiElemente.BoxElementBottomNaviMark;
 import Views.GuiElemente.BoxElementTable;
 import Views.GuiElemente.BoxElementSearchMenu;
 import Views.GuiElemente.SearchPanel.BoxElementExtendedSearchProf;
-import Views.GuiElemente.SearchPanel.ExtendedSearchPanel;
-import Views.GuiElemente.SearchPanel.ExtendedSearchPanelStudentNew;
 import Views.Interfaces.BasicBoxCtrl;
 import Views.Interfaces.NaviAbortSelectBoxCtrl;
 import Views.Interfaces.NaviEditMailPrintBoxCtrl;
@@ -37,7 +17,6 @@ import Views.Interfaces.NaviMarkBoxCtrl;
 import Views.Interfaces.ExtendedSearchBoxCtrl;
 import Views.Interfaces.SearchBoxCtrl;
 import Views.Interfaces.TableBoxCtrl;
-import Views.Table.TableData;
 
 public class CompanyList extends ControllerNew implements BasicBoxCtrl, TableBoxCtrl, SearchBoxCtrl, ExtendedSearchBoxCtrl, NaviEditMailPrintBoxCtrl, NaviMarkBoxCtrl, NaviAbortSelectBoxCtrl{
 	
@@ -159,7 +138,7 @@ public class CompanyList extends ControllerNew implements BasicBoxCtrl, TableBox
 	public void tableRowDoubleClicked() {
 		Object companyId;
 		if((companyId = table.getColumnValueFromSelectedRow("ID")) != null){
-			CompanySingleNew newFrame = new CompanySingleNew(companyId);
+			CompanySingle newFrame = new CompanySingle(companyId);
 			Praktikumsverwaltung.addFrameToForeground(newFrame);
 		}
 	}
@@ -167,7 +146,7 @@ public class CompanyList extends ControllerNew implements BasicBoxCtrl, TableBox
 	@Override
 	public void buttonEditClicked() {
 		Object[] companyList = table.getColumnValuesFromSelectedRows("ID");
-		CompanySingleNew newFrame = new CompanySingleNew(companyList);
+		CompanySingle newFrame = new CompanySingle(companyList);
 		Praktikumsverwaltung.addFrameToForeground(newFrame);
 	}
 
@@ -221,7 +200,7 @@ public class CompanyList extends ControllerNew implements BasicBoxCtrl, TableBox
 
 	@Override
 	public void buttonAddNewDataClicked() {
-		CompanieEmptySingle newEmptyFrame = new CompanieEmptySingle();
+		CompanySingle newEmptyFrame = new CompanySingle();
 		Praktikumsverwaltung.addFrameToForeground(newEmptyFrame);
 	}
 
