@@ -99,7 +99,7 @@ public class BoxElementSearchMenu extends JPanel implements SearchBox,MouseListe
                     .addComponent(jb_neuanlegen)
                     .addComponent(jl_anzdaten)
                     .addComponent(jtf_anzdaten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }
 	

@@ -24,7 +24,6 @@ public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
 	    
 	    private javax.swing.JTable jt_table;
 	    private NonEditableTableModel tableModel;
-	    private java.awt.ScrollPane scrollPane1;
 	    private GroupLayout layout;
 	    
 	    private TableBoxCtrl controller;
@@ -42,7 +41,6 @@ public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
     @Override
 	public void initComponents() {
 
-        scrollPane1 = new java.awt.ScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         jt_table = new javax.swing.JTable();
         jt_table.setAlignmentY(Component.TOP_ALIGNMENT);
@@ -51,25 +49,28 @@ public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
         jt_table.setDoubleBuffered(true);
         jt_table.setFillsViewportHeight(true);
         jScrollPane1.setViewportView(jt_table);
-        
-        scrollPane1.add(jScrollPane1);
 
-        layout = new javax.swing.GroupLayout(this);
+        jScrollPane1.setViewportView(jt_table);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
-        	layout.createParallelGroup(Alignment.LEADING)
-        		.addGroup(layout.createSequentialGroup()
-        			.addContainerGap()
-        			.addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 300, GroupLayout.DEFAULT_SIZE)
-        			.addContainerGap())
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
-        	layout.createParallelGroup(Alignment.LEADING)
-        		.addGroup(layout.createSequentialGroup()
-        			.addContainerGap()
-        			.addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 300, GroupLayout.DEFAULT_SIZE)
-        			.addContainerGap())
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                .addContainerGap())
         );
+
         this.setLayout(layout);
+        
     }
     
     @Override
