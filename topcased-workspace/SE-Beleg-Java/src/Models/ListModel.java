@@ -3,6 +3,7 @@ package Models;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Map;
 
 import Models.Filter.StringFilter;
@@ -17,25 +18,44 @@ public class ListModel extends Model{
 		
 	}
 
-	public void setSearchFilter(Object searchValue){
+	public void setSearchFilter(Object searchValue){ 
 		
 		deleteSearchFilter();
 		
 		if(!searchValue.equals("")){
 		
 			String[] columnNames = getSqlResultColumnNames();
+
+			ResultSet result = getResult();
+			ResultSetMetaData metaData;
+
+			try {
+				metaData = result.getMetaData();
 	
-			for(String columnName:columnNames){
-				if(getSqlResultColumnNamesClassType(columnName).equals("java.lang.Boolean")) continue;
-				StringFilter filter = new StringFilter(searchValue);
-				filter.setWertPraefix("%");
-				filter.setWertSuffix("%");
-				setOrFilter(columnName,filter);
+				for(String columnName:columnNames){
+					for(int index = 1; index <= metaData.getColumnCount(); index++){
+						
+						if (columnName.toLowerCase().equals((metaData.getTableName(index) + '.' + metaData.getColumnName(index)).toLowerCase())) {
+							if(getSqlResultColumnNamesClassType(columnName.toLowerCase()).equals("java.lang.Boolean")) continue;
+							
+							StringFilter filter = new StringFilter(searchValue);
+							filter.setWertPraefix("%");
+							filter.setWertSuffix("%");
+							setOrFilter(columnName,filter);
+						}
+						else continue;
+					}
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+
 		}
 		setResult();
 		informView();
 	}
+	
 	
 	public void setSearchFilter(Object[][] searchValues){
 			
@@ -77,14 +97,14 @@ public class ListModel extends Model{
 		
 	}
 	
-	public String getSqlResultColumnNamesClassType(String columnName){
+	public String getSqlResultColumnNamesClassType(String columnName){ 
 		try{
 			ResultSet result = getResult();
 			ResultSetMetaData metaData = result.getMetaData();
 			
 			for(int index = 1; index <= metaData.getColumnCount();index++){
-				if(metaData.getColumnName(index).equals(columnName)){
-					System.out.println(columnName+ ": " +metaData.getColumnClassName(index));
+				if((metaData.getTableName(index) + '.' + metaData.getColumnName(index).toLowerCase()).equals(columnName)){
+
 					return metaData.getColumnClassName(index);
 				}
 			}
@@ -97,6 +117,11 @@ public class ListModel extends Model{
 	}
 	
 	private String[] getSqlResultColumnNames(){
+		return tableRowData.getColumnNames();
+
+	}
+	
+	private String[] getSqlResultAliasColumnNames(){
 		String[] columnNames = null;
 		try{
 			ResultSet result = getResult();

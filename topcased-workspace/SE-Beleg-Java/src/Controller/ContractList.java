@@ -9,7 +9,8 @@ import Views.GuiElemente.BoxElementBottomNaviEditMailPrint;
 import Views.GuiElemente.BoxElementBottomNaviMark;
 import Views.GuiElemente.BoxElementTable;
 import Views.GuiElemente.BoxElementSearchMenu;
-import Views.GuiElemente.SearchPanel.BoxElementExtendedSearchProf;
+import Views.GuiElemente.SearchPanel.BoxElementExtendedSearchContracts;
+
 import Views.Interfaces.BasicBoxCtrl;
 import Views.Interfaces.NaviEditMailPrintBoxCtrl;
 import Views.Interfaces.NaviMarkBoxCtrl;
@@ -43,7 +44,7 @@ public class ContractList extends ControllerNew implements BasicBoxCtrl, TableBo
 	private Views.ViewNew view;
 		
 	private BoxElementTable table;
-	private BoxElementExtendedSearchProf extendedSearch;
+	private BoxElementExtendedSearchContracts extendedSearch;
 	private BoxElementSearchMenu searchMenu;
 		
 	public ContractList(){
@@ -60,7 +61,7 @@ public class ContractList extends ControllerNew implements BasicBoxCtrl, TableBo
 	public void setElements(){
 		searchMenu = new BoxElementSearchMenu(this);
 		view.addComponentToView(searchMenu);
-		extendedSearch = new BoxElementExtendedSearchProf(this);
+		extendedSearch = new BoxElementExtendedSearchContracts(this);
 		extendedSearch.setVisible(false);
 		view.addComponentToView(extendedSearch);
 		table = new BoxElementTable(this);

@@ -9,6 +9,7 @@ import Views.GuiElemente.BoxElementBottomNaviEditMailPrint;
 import Views.GuiElemente.BoxElementBottomNaviMark;
 import Views.GuiElemente.BoxElementTable;
 import Views.GuiElemente.BoxElementSearchMenu;
+import Views.GuiElemente.SearchPanel.BoxElementExtendedSearchCompany;
 import Views.GuiElemente.SearchPanel.BoxElementExtendedSearchProf;
 import Views.Interfaces.BasicBoxCtrl;
 import Views.Interfaces.NaviAbortSelectBoxCtrl;
@@ -35,7 +36,7 @@ public class CompanyList extends ControllerNew implements BasicBoxCtrl, TableBox
 	private Views.ViewNew view;
 		
 	private BoxElementTable table;
-	private BoxElementExtendedSearchProf extendedSearch;
+	private BoxElementExtendedSearchCompany extendedSearch;
 	private BoxElementSearchMenu searchMenu;
 	
 	private CallbackSelectedValue callback = null;
@@ -66,7 +67,7 @@ public class CompanyList extends ControllerNew implements BasicBoxCtrl, TableBox
 	public void setElements(){
 		searchMenu = new BoxElementSearchMenu(this);
 		view.addComponentToView(searchMenu);
-		extendedSearch = new BoxElementExtendedSearchProf(this);
+		extendedSearch = new BoxElementExtendedSearchCompany(this);
 		extendedSearch.setVisible(false);
 		view.addComponentToView(extendedSearch);
 		table = new BoxElementTable(this);
@@ -80,7 +81,7 @@ public class CompanyList extends ControllerNew implements BasicBoxCtrl, TableBox
 	public void setElementsForCallback(){
 		searchMenu = new BoxElementSearchMenu(this);
 		view.addComponentToView(searchMenu);
-		extendedSearch = new BoxElementExtendedSearchProf(this);
+		extendedSearch = new BoxElementExtendedSearchCompany(this);
 		extendedSearch.setVisible(false);
 		view.addComponentToView(extendedSearch);
 		table = new BoxElementTable(this);

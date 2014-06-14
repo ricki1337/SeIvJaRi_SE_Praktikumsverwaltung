@@ -98,8 +98,8 @@ public class BoxElementExtendedSearchProf extends JPanel implements ExtendedSear
 	
 	@Override
 	public void setComponentNames() {
-		jtf_name.setName(SqlTableProfs.Name);
-		jtf_email.setName(SqlTableProfs.Id);
+		jtf_name.setName(SqlTableProfs.TableNameDotName);
+		jtf_email.setName(SqlTableProfs.TableNameDotId);
 		jb_suchen.setName("extendedSearch");
 		jb_filterentfernen.setName("clearSearchFields");
 	}

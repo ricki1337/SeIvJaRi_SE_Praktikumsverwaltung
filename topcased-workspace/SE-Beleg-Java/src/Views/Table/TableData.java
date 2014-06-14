@@ -2,6 +2,7 @@ package Views.Table;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class TableData {
 	
@@ -138,7 +139,7 @@ public class TableData {
 		this.data = tmp_data;
 	}
 	
-	public Object[] getColumnNames(){
+	public String[] getColumnNames(){ 
 		return columnNames.getColumnAliasNames();
 	}
 	

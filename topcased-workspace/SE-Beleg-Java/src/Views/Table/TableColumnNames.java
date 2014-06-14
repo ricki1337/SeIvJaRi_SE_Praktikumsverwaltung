@@ -8,12 +8,14 @@ public class TableColumnNames {
 	ResultSetMetaData sqlMetaInformation;
 	ArrayList<String> columnAliasList;
 	ArrayList<String> columnNameList;
+	ArrayList<String> columnTableList;
 	
 	
 	public TableColumnNames(ResultSetMetaData metaInformation){
 		sqlMetaInformation = metaInformation;
 		columnAliasList = new ArrayList<String>();
 		columnNameList = new ArrayList<String>();
+		columnTableList = new ArrayList<String>();
 		fillColumnListFromSqlMetaInformation();
 	}
 	
@@ -22,18 +24,43 @@ public class TableColumnNames {
 			for(int i = 1;i<=sqlMetaInformation.getColumnCount();i++){
 				columnAliasList.add(sqlMetaInformation.getColumnLabel(i));
 				columnNameList.add(sqlMetaInformation.getColumnName(i));
+				columnTableList.add(sqlMetaInformation.getTableName(i)+'.'+sqlMetaInformation.getColumnName(i));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public Object[] getColumnAliasNames(){
-		return columnAliasList.toArray();
+	public String[] getColumnAliasNames(){
+
+		String [] ColumnAliasNames;
+		ColumnAliasNames  = new  String[columnTableList.size()];
+		
+		for (int i=0;i<columnTableList.size(); i++ ){
+			ColumnAliasNames[i]=columnTableList.get(i);
+		}
+		
+		return ColumnAliasNames;
+		
+		//return columnAliasList.toArray();
 	}
 	
 	public Object[] getColumnNames(){
 		return columnNameList.toArray();
+	}
+	
+	public String[] getColumnNamesAsString(){
+
+		String [] ColumnNames;
+		ColumnNames  = new  String[columnNameList.size()];
+		
+		for (int i=0;i<columnNameList.size(); i++ ){
+			ColumnNames[i]=columnNameList.get(i);
+		}
+		
+		return ColumnNames;
+		
+		//return columnAliasList.toArray();
 	}
 	
 	public int getColumnAliasNameIndex(String column){
@@ -64,6 +91,7 @@ public class TableColumnNames {
 		try{
 			columnAliasList.add(position, columnName);
 			columnNameList.add(position, columnName);
+			columnTableList.add(position, columnName);
 		}catch(IndexOutOfBoundsException exception){
 			exception.printStackTrace();
 		}

@@ -16,10 +16,10 @@ import Views.Interfaces.ExtendedSearchBoxCtrl;
 
 public class ExtendedSearchPanelStudentNew extends JPanel implements ExtendedSearchBox, MouseListener{
 	
-	private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+	private javax.swing.JLabel jl_studiengruppe;
+    private javax.swing.JLabel jl_email;
+    private javax.swing.JTextField jtf_studiengruppe;
+    private javax.swing.JTextField jtf_email;
     private javax.swing.JButton jb_filterentfernen;
     private javax.swing.JButton jb_suchen;
     private javax.swing.JLabel jl_matrikelnr;
@@ -50,10 +50,10 @@ public class ExtendedSearchPanelStudentNew extends JPanel implements ExtendedSea
         jtf_matrikelnr = new javax.swing.JTextField();
         jb_suchen = new javax.swing.JButton();
         jb_filterentfernen = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jl_studiengruppe = new javax.swing.JLabel();
+        jl_email = new javax.swing.JLabel();
+        jtf_studiengruppe = new javax.swing.JTextField();
+        jtf_email = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(600, 100));
 
@@ -67,9 +67,9 @@ public class ExtendedSearchPanelStudentNew extends JPanel implements ExtendedSea
 
         jb_filterentfernen.setText("Filter entfernen");
 
-        jLabel1.setText("Studiennummer:");
+        jl_studiengruppe.setText("Studiengruppe:");
 
-        jLabel2.setText("Matrikelnummer:");
+        jl_email.setText("Email:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -93,13 +93,13 @@ public class ExtendedSearchPanelStudentNew extends JPanel implements ExtendedSea
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jb_suchen))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(jl_studiengruppe)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtf_studiengruppe, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(jl_email)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jtf_email, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -109,14 +109,14 @@ public class ExtendedSearchPanelStudentNew extends JPanel implements ExtendedSea
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jl_vorname)
                     .addComponent(jtf_vorname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jl_studiengruppe)
+                    .addComponent(jtf_studiengruppe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jl_nachname)
                     .addComponent(jtf_nachname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jl_email)
+                    .addComponent(jtf_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jl_matrikelnr)
@@ -130,9 +130,11 @@ public class ExtendedSearchPanelStudentNew extends JPanel implements ExtendedSea
 	
 	@Override
 	public void setComponentNames() {
-		jtf_vorname.setName(SqlTableStudent.Vorname);
-		jtf_nachname.setName(SqlTableStudent.Nachname);
-		jtf_matrikelnr.setName(SqlTableStudent.MatrikelNummer);
+		jtf_vorname.setName(SqlTableStudent.TableNameDotVorname);
+		jtf_nachname.setName(SqlTableStudent.TableNameDotNachname);
+		jtf_matrikelnr.setName(SqlTableStudent.TableNameDotMatrikelNummer);
+		jtf_studiengruppe.setName(SqlTableStudent.TableNameDotStudiengruppe);
+		jtf_email.setName(SqlTableStudent.TableNameDotEMail);
 		jb_suchen.setName("extendedSearch");
 		jb_filterentfernen.setName("clearSearchFields");
 	}

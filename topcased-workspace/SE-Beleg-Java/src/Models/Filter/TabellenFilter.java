@@ -47,23 +47,30 @@ public class TabellenFilter implements ObjectFilter{
 	public void deleteFilter(String spaltenName) {
 		int index;
 		
-		while((index = this.spaltenName.indexOf(spaltenName)) != -1){
-			this.spaltenName.remove(index);
-			this.spaltenWert.remove(index);
-		
+		for(int i = 0; i < this.spaltenName.size();i++){
+			if(this.spaltenName.get(i).toLowerCase().contains(spaltenName.toLowerCase())){
+				this.spaltenName.remove(i);
+				this.spaltenWert.remove(i);
+			}
 		}
 		
-		while((index = this.spaltenName.indexOf(" or " + spaltenName)) != -1){
-				this.spaltenName.remove(index);
-				this.spaltenWert.remove(index);
-			
-		}
-		
-		while((index = this.spaltenName.indexOf(" and " + spaltenName)) != -1){
-				this.spaltenName.remove(index);
-				this.spaltenWert.remove(index);
-			
-		}
+//		while((index = this.spaltenName.indexOf(spaltenName)) != -1){
+//			this.spaltenName.remove(index);
+//			this.spaltenWert.remove(index);
+//		
+//		}
+//		
+//		while((index = this.spaltenName.indexOf(" or " + spaltenName)) != -1){
+//				this.spaltenName.remove(index);
+//				this.spaltenWert.remove(index);
+//			
+//		}
+//		
+//		while((index = this.spaltenName.indexOf(" and " + spaltenName)) != -1){
+//				this.spaltenName.remove(index);
+//				this.spaltenWert.remove(index);
+//			
+//		}
 	}
 
 }
