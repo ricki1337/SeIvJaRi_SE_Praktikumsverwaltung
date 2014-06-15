@@ -1,4 +1,4 @@
-package Views.Table;
+package Models.Table;
 
 import static org.junit.Assert.*;
 
@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+
+import Models.Table.TableData;
 
 public class TestTableData {
 

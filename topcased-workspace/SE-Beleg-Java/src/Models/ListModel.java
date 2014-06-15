@@ -3,9 +3,11 @@ package Models;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Map;
 
+import javax.swing.SortOrder;
+
+import Models.Filter.FilterTyp;
 import Models.Filter.StringFilter;
 
 public class ListModel extends Model{
@@ -34,8 +36,11 @@ public class ListModel extends Model{
 	
 				for(String columnName:columnNames){
 					for(int index = 1; index <= metaData.getColumnCount(); index++){
+						String currentColumn = (metaData.getTableName(index) + '.' + metaData.getColumnName(index)).toLowerCase();
 						
-						if (columnName.toLowerCase().equals((metaData.getTableName(index) + '.' + metaData.getColumnName(index)).toLowerCase())) {
+						if(currentColumn.startsWith(".")) continue;
+						
+						if (columnName.toLowerCase().equals(currentColumn)) {
 							if(getSqlResultColumnNamesClassType(columnName.toLowerCase()).equals("java.lang.Boolean")) continue;
 							
 							StringFilter filter = new StringFilter(searchValue);
@@ -55,7 +60,6 @@ public class ListModel extends Model{
 		setResult();
 		informView();
 	}
-	
 	
 	public void setSearchFilter(Object[][] searchValues){
 			
@@ -78,6 +82,10 @@ public class ListModel extends Model{
 		deleteSearchFilter();
 		
 		for(Map.Entry<String, Object> entry:searchValues.entrySet()){
+			if(entry.getValue() instanceof FilterTyp){
+				setAndFilter(entry.getKey(),(FilterTyp)(entry.getValue()));
+				continue;
+			}
 			StringFilter filter = new StringFilter((String)entry.getValue());
 			filter.setWertPraefix("%");
 			filter.setWertSuffix("%");
@@ -97,14 +105,13 @@ public class ListModel extends Model{
 		
 	}
 	
-	public String getSqlResultColumnNamesClassType(String columnName){ 
+	public String getSqlResultColumnNamesClassType(String columnName){
 		try{
 			ResultSet result = getResult();
 			ResultSetMetaData metaData = result.getMetaData();
 			
 			for(int index = 1; index <= metaData.getColumnCount();index++){
 				if((metaData.getTableName(index) + '.' + metaData.getColumnName(index).toLowerCase()).equals(columnName)){
-
 					return metaData.getColumnClassName(index);
 				}
 			}
@@ -136,5 +143,15 @@ public class ListModel extends Model{
 			exception.printStackTrace();
 		}
 		return columnNames;
+	}
+	
+	public void setOrder(int columnIndex, SortOrder direction){
+		String columnName = tableRowData.getColumnNames()[columnIndex];
+		if(columnName.startsWith(".")) return;
+		
+		
+		this.order = " order by " + columnName + " " + (direction==SortOrder.ASCENDING?"asc":"desc") + " ";
+		setResult();
+		informView();
 	}
 }

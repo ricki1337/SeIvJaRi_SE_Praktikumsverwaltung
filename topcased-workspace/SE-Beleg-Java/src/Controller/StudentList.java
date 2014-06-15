@@ -1,7 +1,13 @@
 package Controller;
 
+import java.util.Map;
+
+import javax.swing.SortOrder;
+
 import Controller.Interfaces.CallbackSelectedValue;
+import Models.Datenbank.SqlTableContracts;
 import Models.Datenbank.SqlTableStudent;
+import Models.Filter.SqlListFilter;
 import Praktikumsverwaltung.Praktikumsverwaltung;
 import Views.GuiElemente.BoxElementBottomNavi;
 import Views.GuiElemente.BoxElementBottomNaviAbortSelect;
@@ -11,6 +17,7 @@ import Views.GuiElemente.BoxElementTable;
 import Views.GuiElemente.BoxElementSearchMenu;
 import Views.GuiElemente.SearchPanel.ExtendedSearchPanelStudentNew;
 import Views.Interfaces.BasicBoxCtrl;
+import Views.Interfaces.ExtendedStudentSearchBoxCtrl;
 import Views.Interfaces.NaviAbortSelectBoxCtrl;
 import Views.Interfaces.NaviEditMailPrintBoxCtrl;
 import Views.Interfaces.NaviMarkBoxCtrl;
@@ -18,17 +25,37 @@ import Views.Interfaces.ExtendedSearchBoxCtrl;
 import Views.Interfaces.SearchBoxCtrl;
 import Views.Interfaces.TableBoxCtrl;
 
-public class StudentList extends ControllerNew implements BasicBoxCtrl, TableBoxCtrl, SearchBoxCtrl, ExtendedSearchBoxCtrl, NaviEditMailPrintBoxCtrl, NaviMarkBoxCtrl, NaviAbortSelectBoxCtrl{
+public class StudentList extends ControllerNew implements	BasicBoxCtrl, 
+															TableBoxCtrl, 
+															SearchBoxCtrl, 
+															ExtendedSearchBoxCtrl, 
+															NaviEditMailPrintBoxCtrl, 
+															NaviMarkBoxCtrl, 
+															NaviAbortSelectBoxCtrl, 
+															ExtendedStudentSearchBoxCtrl{
 	
 	private String srcSqlQuery = "select " +
-									SqlTableStudent.MatrikelNummer + " as Matrikelnr, " +
-									SqlTableStudent.Vorname + " as Vorname, " +
-									SqlTableStudent.Nachname + " as Nachname, " +
-									SqlTableStudent.EMail + " as 'E-Mail', " +
-									SqlTableStudent.Studiengruppe + " as Studiengruppe, " +
-									SqlTableStudent.Bemerkung + " as Bemerkung " +
+									SqlTableStudent.TableNameDotMatrikelNummer + " as Matrikelnr, " +
+									SqlTableStudent.TableNameDotVorname + " as Vorname, " +
+									SqlTableStudent.TableNameDotNachname + " as Nachname, " +
+									SqlTableStudent.TableNameDotEMail + " as 'E-Mail', " +
+									SqlTableStudent.TableNameDotStudiengruppe + " as Studiengruppe, " +
+									SqlTableStudent.TableNameDotBemerkung + " as Bemerkung, " +
+									"CASE (SELECT count(*) FROM "+ SqlTableContracts.tableNameWithAlias + " WHERE " + SqlTableContracts.TableNameDotFK_Student + " = " + SqlTableStudent.TableNameDotMatrikelNummer +") " +
+										"WHEN '0' THEN 0 " +
+										"ELSE 1 " +
+									"END as Vertrag " +
 								"from " +
-									SqlTableStudent.tableName;
+									SqlTableStudent.tableNameWithAlias;
+	
+	private SqlListFilter hasNoContractFilter = null;
+	private SqlListFilter hasContractFilter = null;
+	private String srcSqlQueryContract = "SELECT " +
+											SqlTableContracts.TableNameDotFK_Student + 
+										" FROM " + 
+											SqlTableContracts.tableNameWithAlias + 
+										" WHERE " + SqlTableContracts.TableNameDotFK_Student + " IS NOT NULL";
+	
 	
 	private Models.ListModel model;
 	private Views.ViewNew view;
@@ -105,7 +132,7 @@ public class StudentList extends ControllerNew implements BasicBoxCtrl, TableBox
 
 	@Override
 	public Object[] getTableHeader() {
-		return model.tableRowData.getColumnNames();
+		return model.tableRowData.getColumnAliasNames();
 	}
 
 	@Override
@@ -166,7 +193,17 @@ public class StudentList extends ControllerNew implements BasicBoxCtrl, TableBox
 
 	@Override
 	public void buttonSearchSpecificClicked() {
-		model.setSearchFilter(extendedSearch.getSearchFilter());		
+		
+		Map<String,Object> filterElements = extendedSearch.getSearchFilter();
+		
+		if(hasNoContractFilter != null)
+			filterElements.put(SqlTableStudent.TableNameDotMatrikelNummer, hasNoContractFilter);
+		
+		if(hasContractFilter != null)
+			filterElements.put(SqlTableStudent.TableNameDotMatrikelNummer, hasContractFilter);
+		
+		
+		model.setSearchFilter(filterElements);		
 	}
 
 	@Override
@@ -223,4 +260,31 @@ public class StudentList extends ControllerNew implements BasicBoxCtrl, TableBox
 		model.modelClose();
 		
 	}
+
+	@Override
+	public void setHasNoContractFilterOff() {
+		hasNoContractFilter = null;
+	}
+
+	@Override
+	public void setHasNoContractFilterOn() {
+		hasNoContractFilter = new SqlListFilter(srcSqlQueryContract, false);
+	}
+
+	@Override
+	public void setHasContractFilterOn() {
+		hasContractFilter = new SqlListFilter(srcSqlQueryContract, true);
+	}
+
+	@Override
+	public void setHasContractFilterOff() {
+		hasContractFilter = null;
+	}
+
+	@Override
+	public void setOrderByColumn(int columnIndex, SortOrder orderDirection) {
+		model.setOrder(columnIndex, orderDirection);
+	}
+
+	
 }

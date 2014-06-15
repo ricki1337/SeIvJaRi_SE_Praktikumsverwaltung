@@ -133,10 +133,14 @@ public class ProfSingle extends ControllerNew implements EditBoxCtrl, NaviAbortS
 		view.modelHasChanged();		
 	}
 
+	@Override
+	public String getCurrentPos() {
+		return String.valueOf(model.rowPosition+1);
+	}
 
-	
 
-
-	
-
+	@Override
+	public String getPosSum() {
+		return String.valueOf(model.tableRowData.getRowCount());
+	}
 }

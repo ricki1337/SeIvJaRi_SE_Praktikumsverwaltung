@@ -1,5 +1,7 @@
 package Controller;
 
+import javax.swing.SortOrder;
+
 import Controller.Interfaces.CallbackSelectedValue;
 import Models.Datenbank.SqlTableProfs;
 import Praktikumsverwaltung.Praktikumsverwaltung;
@@ -104,7 +106,7 @@ public class ProfList extends ControllerNew implements BasicBoxCtrl,
 
 	@Override
 	public Object[] getTableHeader() {
-		return model.tableRowData.getColumnNames();
+		return model.tableRowData.getColumnAliasNames();
 	}
 
 	@Override
@@ -215,4 +217,11 @@ public class ProfList extends ControllerNew implements BasicBoxCtrl,
 		view.dispose();
 		model.modelClose();
 	}
+
+	@Override
+	public void setOrderByColumn(int columnIndex, SortOrder orderDirection) {
+		model.setOrder(columnIndex, orderDirection);
+	}
+
+	
 }

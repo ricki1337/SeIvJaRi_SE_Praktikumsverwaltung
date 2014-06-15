@@ -62,10 +62,8 @@ public class CompanySingle extends ControllerNew implements 	EditBoxCtrl,
 	
 	public CompanySingle(Object primaryKeys){
 		super();
-		
-		
+				
 		Models.Model model = new Models.Model(srcSqlQuery,SqlTableCompanies.tableName,SqlTableCompanies.PrimaryKey);
-		
 		
 		if(primaryKeys instanceof Object[]){		
 			for(Object item:(Object[])primaryKeys){
@@ -209,5 +207,17 @@ public class CompanySingle extends ControllerNew implements 	EditBoxCtrl,
 	@Override
 	public void buttonCompanyContactAddNewClicked() {
 		Praktikumsverwaltung.addFrameToForeground(new ContactSingle(getIntValueForBoxElementEdit(SqlTableCompanies.PrimaryKey)));
+	}
+
+
+	@Override
+	public String getCurrentPos() {
+		return String.valueOf(model.rowPosition+1);
+	}
+
+
+	@Override
+	public String getPosSum() {
+		return String.valueOf(model.tableRowData.getRowCount());
 	}
 }

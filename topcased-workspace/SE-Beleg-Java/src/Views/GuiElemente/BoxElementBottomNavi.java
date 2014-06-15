@@ -17,6 +17,8 @@ public class BoxElementBottomNavi extends JPanel implements BasicBox{
 	JPanel jpnl_right;
 	JPanel jpnl_left;
 	BasicBoxCtrl parent;
+	BasicBox rightBox = null;
+	BasicBox leftBox = null;
 	
 	public BoxElementBottomNavi(BasicBoxCtrl parent){
 		this.parent = parent;
@@ -55,12 +57,14 @@ public class BoxElementBottomNavi extends JPanel implements BasicBox{
 		JPanel newPanel = (JPanel)box.getJComponent();
 		GroupLayout layout = (GroupLayout) this.getLayout();
 		layout.replace(jpnl_left, newPanel);
+		leftBox = box;
 	}
 	
 	public void addBoxToRightSide(BasicBox box){
 		JPanel newPanel = (JPanel)box.getJComponent();
 		GroupLayout layout = (GroupLayout) this.getLayout();
 		layout.replace(jpnl_right , newPanel);
+		rightBox = box;
 	}	
 	
 	@Override
@@ -85,7 +89,12 @@ public class BoxElementBottomNavi extends JPanel implements BasicBox{
 	public void setComponentEventHandler() {}
 	
 	@Override
-	public void refreshContent() {}
+	public void refreshContent() {
+		if(leftBox != null)
+			leftBox.refreshContent();
+		if(rightBox != null)
+			rightBox.refreshContent();
+	}
 	
 	
 }

@@ -6,6 +6,7 @@ import Models.Datenbank.SqlTableContracts;
 import Models.Datenbank.SqlTableProfs;
 import Models.Datenbank.SqlTableStudent;
 import Models.Filter.IntFilter;
+import Models.Table.EmptyObject;
 import Praktikumsverwaltung.Praktikumsverwaltung;
 import Views.GuiElemente.BoxElementBottomNavi;
 import Views.GuiElemente.BoxElementBottomNaviAbortSave;
@@ -26,7 +27,6 @@ import Views.Interfaces.ContractDetailsStudentNewBoxCtrl;
 import Views.Interfaces.NaviAbortSaveBoxCtrl;
 import Views.Interfaces.NaviPrevSaveNextBoxCtrl;
 import Views.Interfaces.EditBoxCtrl;
-import Views.Table.EmptyObject;
 
 public class ContractSingle extends ControllerNew implements EditBoxCtrl, 
 																NaviAbortSaveBoxCtrl, 
@@ -57,6 +57,7 @@ public class ContractSingle extends ControllerNew implements EditBoxCtrl,
 										SqlTableContracts.TableNameDotTyp + " as Typ, " +
 										SqlTableContracts.TableNameDotBeginn + " as 'beginnt am', " +
 										SqlTableContracts.TableNameDotEnde + " as 'endet am', " +
+										SqlTableContracts.TableNameDotErfolg + " as Erfolg, " +
 										SqlTableContracts.TableNameDotBericht + " as Bericht, " +
 										SqlTableContracts.TableNameDotZeugnis + " as Zeugnis, " +
 										SqlTableContracts.TableNameDotEmpfehlung + " as Empfehlung " +
@@ -344,6 +345,18 @@ public class ContractSingle extends ControllerNew implements EditBoxCtrl,
 	@Override
 	public void buttonAddStudentOnContractClicked() {
 		Praktikumsverwaltung.addFrameToForeground(new StudentList(this));
+	}
+
+
+	@Override
+	public String getCurrentPos() {
+		return String.valueOf(model.rowPosition+1);
+	}
+
+
+	@Override
+	public String getPosSum() {
+		return String.valueOf(model.tableRowData.getRowCount());
 	}
 
 

@@ -1,4 +1,4 @@
-package Views.Table;
+package Models.Table;
 
 import javax.swing.table.AbstractTableModel;
 
@@ -29,7 +29,7 @@ public class NonEditableTableModel extends AbstractTableModel{
     }
 
     public Object getValueAt(int rowIndex, int columnIndex) {
-    	if(data[0][columnIndex] instanceof Boolean && data[rowIndex][columnIndex] instanceof Views.Table.EmptyObject)
+    	if(data[0][columnIndex] instanceof Boolean && data[rowIndex][columnIndex] instanceof Models.Table.EmptyObject)
     		return new Boolean(false);
         return data[rowIndex][columnIndex];
     }

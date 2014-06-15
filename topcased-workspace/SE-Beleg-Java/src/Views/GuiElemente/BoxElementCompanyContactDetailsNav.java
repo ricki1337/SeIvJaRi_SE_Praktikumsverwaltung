@@ -38,13 +38,13 @@ public class BoxElementCompanyContactDetailsNav extends JPanel implements BasicB
         jb_prev = new javax.swing.JButton();
         jb_next = new javax.swing.JButton();
 
-        jb_bearbeiten.setText("Bearbeiten");
+        jb_bearbeiten.setText("bearbeiten");
 
         jb_prev.setText("<<");
 
         jb_next.setText(">>");
         
-        jb_add = new JButton("Hinzufügen");
+        jb_add = new JButton("hinzu\u00E4gen");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         layout.setHorizontalGroup(

@@ -40,9 +40,7 @@ public class MySql implements DatabaseFunction{
 	public void disconnect() {
 		try {
 			connection.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		} catch (Exception e) {}
 	}
 
 }

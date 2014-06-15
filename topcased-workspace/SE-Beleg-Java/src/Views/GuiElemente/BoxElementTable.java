@@ -4,19 +4,26 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.RowSorter.SortKey;
+import javax.swing.event.RowSorterEvent;
+import javax.swing.event.RowSorterListener;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 import ConfigParser.Debug;
 import Controller.ProfSingle;
+import Models.Table.NonEditableTableModel;
+import Models.Table.TableDataRowSorter;
 import Praktikumsverwaltung.Praktikumsverwaltung;
 import Views.Interfaces.BasicBox;
 import Views.Interfaces.TableBoxCtrl;
-import Views.Table.NonEditableTableModel;
 
 public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
 
@@ -24,6 +31,7 @@ public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
 	    
 	    private javax.swing.JTable jt_table;
 	    private NonEditableTableModel tableModel;
+
 	    private GroupLayout layout;
 	    
 	    private TableBoxCtrl controller;
@@ -41,6 +49,7 @@ public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
     @Override
 	public void initComponents() {
 
+
         jScrollPane1 = new javax.swing.JScrollPane();
         jt_table = new javax.swing.JTable();
         jt_table.setAlignmentY(Component.TOP_ALIGNMENT);
@@ -50,27 +59,22 @@ public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
         jt_table.setFillsViewportHeight(true);
         jScrollPane1.setViewportView(jt_table);
 
-        jScrollPane1.setViewportView(jt_table);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        layout = new javax.swing.GroupLayout(this);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        	 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        	layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
                 .addContainerGap())
         );
-
         this.setLayout(layout);
-        
     }
     
     @Override
@@ -82,7 +86,17 @@ public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
 	public void setComponentValues() {
 		tableModel = new NonEditableTableModel(controller.getTableData(), controller.getTableHeader());
         jt_table.setModel(tableModel);
-		
+        jt_table.setRowSorter(new TableDataRowSorter<TableModel>(tableModel));
+                
+        jt_table.getRowSorter().addRowSorterListener(
+                new RowSorterListener() {
+
+                    @Override
+                    public void sorterChanged(RowSorterEvent e) {
+                    	List<? extends SortKey> test = jt_table.getRowSorter().getSortKeys();
+                    	controller.setOrderByColumn(test.get(0).getColumn(),test.get(0).getSortOrder());
+                    }
+                });
 	}
 
     public void setComponentEventHandler() {

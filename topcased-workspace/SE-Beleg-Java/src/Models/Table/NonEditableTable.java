@@ -1,4 +1,4 @@
-package Views.Table;
+package Models.Table;
 
 import javax.swing.JTable;
 

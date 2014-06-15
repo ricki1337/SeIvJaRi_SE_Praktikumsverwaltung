@@ -57,7 +57,7 @@ public class BoxElementContractDetailsCompany extends JPanel implements Contract
 
         jl_firmenname.setText("Firmenname:");
 
-        jl_strasse.setText("Straße:");
+        jl_strasse.setText("Stra\u00DFe:");
 
         jl_firmenname_value.setText("leer");
 
@@ -67,9 +67,9 @@ public class BoxElementContractDetailsCompany extends JPanel implements Contract
 
         jl_plz_value.setText("leer");
 
-        jb_aendern.setText("Ändern");
+        jb_aendern.setText("\u00E4ndern");
 
-        jb_bearbeiten.setText("Bearbeiten");
+        jb_bearbeiten.setText("bearbeiten");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         layout.setHorizontalGroup(

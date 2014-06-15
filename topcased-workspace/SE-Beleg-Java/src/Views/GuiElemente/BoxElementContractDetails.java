@@ -26,15 +26,14 @@ import Views.Interfaces.EditBoxCtrl;
 
 
 public class BoxElementContractDetails extends JPanel implements EditBox{
-	 	private JCheckBox jcb_bericht;
+		private JCheckBox jcb_erfolg;
 	    private JCheckBox jcb_empfehlung;
 	    private JCheckBox jcb_zeugnis;
+	    private JCheckBox jcb_bericht;
 	    private JLabel jl_beginnt;
-	    private JLabel jl_bericht;
-	    private JLabel jl_empfehlung;
 	    private JLabel jl_endet;
 	    private JLabel jl_typ;
-	    private JLabel jl_zeugnis;
+	    private JLabel jl_student;
 	    private JTextField jtf_beginnt_value;
 	    private JTextField jtf_endet_value;
 	    private JTextField jtf_typ_value;
@@ -66,18 +65,12 @@ public class BoxElementContractDetails extends JPanel implements EditBox{
     @Override
     public void initComponents() {
 
-    	jl_beginnt = new JLabel();
-        jl_typ = new JLabel();
-        jl_endet = new JLabel();
-        jtf_beginnt_value = new JTextField();
-        jtf_endet_value = new JTextField();
-        jtf_typ_value = new JTextField();
-        jl_bericht = new JLabel();
-        jl_zeugnis = new JLabel();
-        jl_empfehlung = new JLabel();
-        jcb_empfehlung = new JCheckBox();
-        jcb_zeugnis = new JCheckBox();
-        jcb_bericht = new JCheckBox();
+    	jl_beginnt = new javax.swing.JLabel();
+        jl_typ = new javax.swing.JLabel();
+        jl_endet = new javax.swing.JLabel();
+        jtf_beginnt_value = new javax.swing.JTextField();
+        jtf_endet_value = new javax.swing.JTextField();
+        jtf_typ_value = new javax.swing.JTextField();
 
         jl_beginnt.setText("beginnt am:");
 
@@ -85,13 +78,6 @@ public class BoxElementContractDetails extends JPanel implements EditBox{
 
         jl_endet.setText("endet am:");
 
-        
-        jl_bericht.setText("Bericht:");
-
-        jl_zeugnis.setText("Zeugnis:");
-
-        jl_empfehlung.setText("Empfehlung:");
-        
         pnl_prof = new JPanel();
         pnl_prof.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.GRAY, null));
         
@@ -101,11 +87,19 @@ public class BoxElementContractDetails extends JPanel implements EditBox{
         pnl_student = new JPanel();
         pnl_student.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.GRAY, null));
         
-        JLabel jl_student = new JLabel("Student");
+        jl_student = new JLabel("Student");
         
         lblFirma = new JLabel("Firma");
         
         lblBetreuer = new JLabel("Betreuer");
+        
+        jcb_erfolg = new JCheckBox("Erfolg");
+        
+        jcb_empfehlung = new JCheckBox("Empfehlung");
+        
+        jcb_zeugnis = new JCheckBox("Zeugnis");
+        
+        jcb_bericht = new JCheckBox("Bericht");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         layout.setHorizontalGroup(
@@ -114,13 +108,16 @@ public class BoxElementContractDetails extends JPanel implements EditBox{
         			.addContainerGap()
         			.addGroup(layout.createParallelGroup(Alignment.TRAILING)
         				.addGroup(layout.createSequentialGroup()
-        					.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
-        						.addComponent(pnl_student, GroupLayout.PREFERRED_SIZE, 373, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(jl_student))
-        					.addGap(18)
         					.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        						.addComponent(lblFirma)
-        						.addComponent(pnl_company, GroupLayout.PREFERRED_SIZE, 373, GroupLayout.PREFERRED_SIZE)))
+        						.addComponent(jl_student)
+        						.addComponent(pnl_student, GroupLayout.PREFERRED_SIZE, 328, GroupLayout.PREFERRED_SIZE))
+        					.addGap(58)
+        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        						.addComponent(pnl_prof, GroupLayout.PREFERRED_SIZE, 374, GroupLayout.PREFERRED_SIZE)
+        						.addComponent(pnl_company, GroupLayout.PREFERRED_SIZE, 373, GroupLayout.PREFERRED_SIZE)
+        						.addComponent(lblBetreuer)
+        						.addComponent(lblFirma))
+        					.addGap(187))
         				.addGroup(layout.createSequentialGroup()
         					.addGroup(layout.createParallelGroup(Alignment.LEADING)
         						.addComponent(jl_beginnt)
@@ -135,20 +132,13 @@ public class BoxElementContractDetails extends JPanel implements EditBox{
         							.addGroup(layout.createParallelGroup(Alignment.LEADING)
         								.addComponent(jtf_beginnt_value, Alignment.TRAILING)
         								.addComponent(jtf_endet_value))))
-        					.addGap(18)
+        					.addGap(82)
         					.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        						.addComponent(jl_empfehlung)
-        						.addComponent(jl_zeugnis)
-        						.addComponent(jl_bericht))
-        					.addPreferredGap(ComponentPlacement.UNRELATED)
-        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        						.addComponent(jcb_bericht)
         						.addComponent(jcb_zeugnis)
+        						.addComponent(jcb_erfolg)
+        						.addComponent(jcb_bericht)
         						.addComponent(jcb_empfehlung))
-        					.addGap(54)
-        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        						.addComponent(lblBetreuer)
-        						.addComponent(pnl_prof, GroupLayout.PREFERRED_SIZE, 374, GroupLayout.PREFERRED_SIZE))))
+        					.addGap(588)))
         			.addContainerGap())
         );
         layout.setVerticalGroup(
@@ -156,50 +146,38 @@ public class BoxElementContractDetails extends JPanel implements EditBox{
         		.addGroup(layout.createSequentialGroup()
         			.addGroup(layout.createParallelGroup(Alignment.LEADING)
         				.addGroup(layout.createSequentialGroup()
-        					.addGap(20)
+        					.addGap(24)
+        					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        						.addComponent(jl_beginnt)
+        						.addComponent(jtf_beginnt_value, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        						.addComponent(jcb_bericht))
+        					.addGap(6)
+        					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        						.addComponent(jl_endet)
+        						.addComponent(jtf_endet_value, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        						.addComponent(jcb_zeugnis))
+        					.addPreferredGap(ComponentPlacement.RELATED)
         					.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        						.addGroup(layout.createSequentialGroup()
-        							.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        								.addComponent(jl_beginnt)
-        								.addComponent(jtf_beginnt_value, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        								.addComponent(jl_endet)
-        								.addComponent(jtf_endet_value, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        								.addComponent(jl_typ)
-        								.addComponent(jtf_typ_value, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-        						.addGroup(layout.createSequentialGroup()
-        							.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        								.addComponent(jl_bericht)
-        								.addComponent(jcb_bericht))
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        								.addComponent(jl_zeugnis)
-        								.addComponent(jcb_zeugnis))
-        							.addPreferredGap(ComponentPlacement.RELATED)
-        							.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        								.addComponent(jl_empfehlung)
-        								.addComponent(jcb_empfehlung)))))
+        						.addComponent(jl_typ)
+        						.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+        							.addComponent(jcb_empfehlung)
+        							.addComponent(jtf_typ_value, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addComponent(jcb_erfolg))
         				.addGroup(layout.createSequentialGroup()
-        					.addContainerGap()
+        					.addGap(16)
         					.addComponent(lblBetreuer)
         					.addPreferredGap(ComponentPlacement.RELATED)
         					.addComponent(pnl_prof, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)))
-        			.addGap(5)
-        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        				.addGroup(layout.createSequentialGroup()
-        					.addGap(13)
-        					.addComponent(jl_student))
-        				.addGroup(layout.createSequentialGroup()
-        					.addGap(18)
-        					.addComponent(lblFirma)))
+        			.addGap(35)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(jl_student)
+        				.addComponent(lblFirma))
         			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addGroup(layout.createParallelGroup(Alignment.TRAILING)
-        				.addComponent(pnl_student, GroupLayout.PREFERRED_SIZE, 135, GroupLayout.PREFERRED_SIZE)
-        				.addComponent(pnl_company, GroupLayout.PREFERRED_SIZE, 135, Short.MAX_VALUE))
-        			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(pnl_student, GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+        				.addComponent(pnl_company, GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
+        			.addContainerGap())
         );
         this.setLayout(layout);
     }                 
@@ -213,6 +191,7 @@ public class BoxElementContractDetails extends JPanel implements EditBox{
 	     jcb_empfehlung.setName(SqlTableContracts.Empfehlung);
 	     jcb_zeugnis.setName(SqlTableContracts.Zeugnis);
 	     jcb_bericht.setName(SqlTableContracts.Bericht);
+	     jcb_erfolg.setName(SqlTableContracts.Erfolg);
 	}
 
 	@Override
@@ -223,6 +202,7 @@ public class BoxElementContractDetails extends JPanel implements EditBox{
 	    jcb_empfehlung.setSelected(controller.getBooleanValueForBoxElementEdit(SqlTableContracts.Empfehlung));
 	    jcb_zeugnis.setSelected(controller.getBooleanValueForBoxElementEdit(SqlTableContracts.Zeugnis));
 	    jcb_bericht.setSelected(controller.getBooleanValueForBoxElementEdit(SqlTableContracts.Bericht));
+	    jcb_erfolg.setSelected(controller.getBooleanValueForBoxElementEdit(SqlTableContracts.Erfolg));
 	}
 
 	@Override
@@ -258,6 +238,7 @@ public class BoxElementContractDetails extends JPanel implements EditBox{
 		inputValues.put(jcb_empfehlung.getName(), jcb_empfehlung.isSelected());
 		inputValues.put(jcb_zeugnis.getName(), jcb_zeugnis.isSelected());
 		inputValues.put(jcb_bericht.getName(), jcb_bericht.isSelected());
+		inputValues.put(jcb_erfolg.getName(), jcb_erfolg.isSelected());
 		
 		if(pnl_student instanceof EditBox){
 			inputValues.putAll(((EditBox)pnl_student).getInputValues());

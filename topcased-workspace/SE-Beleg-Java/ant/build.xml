@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<project name="Praktikumsverwaltung" default="main" basedir=".">
+	
+	
+	<target name="init">
+		<property name="sourceDir" value="../src/"/>
+		<property name="outputDir" value="../compilation"/>
+		<property name="build.dir"   value="build"/>
+		<property name="classes.dir" value="${build.dir}/classes"/>
+		<property name="lib.dir" value="../../libs"/>
+		<property name="jar.dir" value="${build.dir}/jar"/>
+			
+			
+		<path id="classpath">
+			<fileset dir="${lib.dir}" includes="*.jar"/>
+		</path>
+		<property name="main-class"  value="Praktikumsverwaltung.Praktikumsverwaltung"/>
+	</target>
+	
+	<target name="clean" depends="init">
+	      <deltree dir="${classes.dir}" />
+	</target>
+	
+	<target name="prepare" depends="clean">
+	      <mkdir dir="${classes.dir}" />
+	</target>
+		
+	<target name="compile" depends="prepare">
+	     <javac srcdir="${sourceDir}" destdir="${classes.dir}" classpathref="classpath"/>
+	</target>
+	
+	<target name="jar" depends="compile">
+        <mkdir dir="${jar.dir}"/>
+        <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
+        	<zipgroupfileset dir="${lib.dir}"/>
+            <manifest>
+                <attribute name="Main-Class" value="${main-class}"/>
+            </manifest>
+        </jar>
+	</target>
+	
+	<target name="run" depends="jar">
+		<java classname="${main-class}" fork="true" >
+		        <classpath>
+		            <path refid="classpath" />
+		            <path location="${jar.dir}/${ant.project.name}.jar" />
+		        </classpath>
+		</java>
+	</target>
+
+	<target name="clean-build" depends="clean,jar"/>
+
+	<target name="main" depends="clean,run"/>
+	
+</project>

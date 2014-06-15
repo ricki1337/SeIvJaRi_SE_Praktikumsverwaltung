@@ -2,6 +2,8 @@ package Views.Interfaces;
 
 import java.awt.event.MouseListener;
 
+import javax.swing.SortOrder;
+
 public interface TableBoxCtrl {
 	
 	public Object[][] getTableData();
@@ -13,6 +15,8 @@ public interface TableBoxCtrl {
 	public Object getValueFromPosition(int row, String column);
 	public void setValueAtPosition(int row, String column, Object value);
 	public int getColumnAliasIndex(String columnName);
+	
+	public void setOrderByColumn(int columnIndex, SortOrder orderDirection);
 
 }
 

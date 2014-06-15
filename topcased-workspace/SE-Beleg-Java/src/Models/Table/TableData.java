@@ -1,8 +1,7 @@
-package Views.Table;
+package Models.Table;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class TableData {
 	
@@ -64,7 +63,7 @@ public class TableData {
 				do{
 					for(int dataColumn = 0, resultColumn = 1;dataColumn<columnNames.getCountOfColumns();dataColumn++,resultColumn++){
 						Object object = sqlResultSet.getObject(resultColumn);
-						if(object == null){
+						if(object == null || (columnNames.sqlMetaInformation.getColumnType(resultColumn) == java.sql.Types.CHAR && columnNames.sqlMetaInformation.getColumnDisplaySize(resultColumn) == 1)){
 							object = sqlResultSet.getBoolean(resultColumn);
 						}
 						data[dataRow][dataColumn] = object;
@@ -139,7 +138,11 @@ public class TableData {
 		this.data = tmp_data;
 	}
 	
-	public String[] getColumnNames(){ 
+	public String[] getColumnNames(){
+		return columnNames.getColumnNames();
+	}
+	
+	public Object[] getColumnAliasNames(){
 		return columnNames.getColumnAliasNames();
 	}
 	

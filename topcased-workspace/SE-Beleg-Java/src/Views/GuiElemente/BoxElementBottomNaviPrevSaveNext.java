@@ -9,7 +9,9 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 import ConfigParser.Debug;
 import Views.Interfaces.BasicBox;
@@ -21,6 +23,7 @@ public class BoxElementBottomNaviPrevSaveNext extends JPanel implements BasicBox
 		private JButton jbn_previus;
 		private JButton jbn_save;
 		private JButton jbn_next;
+		private  JLabel jl_count;
 		
 		private NaviPrevSaveNextBoxCtrl controller;
 	
@@ -28,6 +31,7 @@ public class BoxElementBottomNaviPrevSaveNext extends JPanel implements BasicBox
 		this.controller = controller;
 		initComponents();
 		setComponentNames();
+		setComponentValues();
 		setComponentEventHandler();
 		setToolTip();
 	}
@@ -54,30 +58,42 @@ public class BoxElementBottomNaviPrevSaveNext extends JPanel implements BasicBox
 		jbn_save = new JButton("speichern");
 		
 		jbn_next = new JButton("n\u00E4chster >>");
+		JLabel lblDatensatz = new JLabel("Datensatz:");
+		
+		jl_count = new JLabel("");
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(jbn_previus)
-					.addGap(6)
-					.addComponent(jbn_save)
-					.addGap(6)
-					.addComponent(jbn_next)
-					.addContainerGap(155, Short.MAX_VALUE))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(jbn_previus)
+							.addGap(6)
+							.addComponent(jbn_save)
+							.addGap(6)
+							.addComponent(jbn_next))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(lblDatensatz)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(jl_count, GroupLayout.PREFERRED_SIZE, 158, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(166, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
 					.addContainerGap()
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblDatensatz)
+						.addComponent(jl_count, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE))
+					.addGap(7)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(jbn_previus)
 						.addComponent(jbn_save)
 						.addComponent(jbn_next))
-					.addContainerGap(266, Short.MAX_VALUE))
+					.addContainerGap(20, Short.MAX_VALUE))
 		);
 		setLayout(groupLayout);
-		setVisible(true);
 	}
 	
 	@Override
@@ -86,10 +102,14 @@ public class BoxElementBottomNaviPrevSaveNext extends JPanel implements BasicBox
 	}
 	
 	@Override
-	public void refreshContent() {}
+	public void refreshContent() {
+		setComponentValues();
+	}
 
 	@Override
-	public void setComponentValues() {}
+	public void setComponentValues() {
+		jl_count.setText(controller.getCurrentPos() + " von " + controller.getPosSum());
+	}
 
 
 	@Override

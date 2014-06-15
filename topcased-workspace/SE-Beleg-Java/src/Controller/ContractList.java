@@ -1,8 +1,16 @@
 package Controller;
 
+import java.util.Map;
+
+import javax.swing.SortOrder;
+
 import Models.Datenbank.SqlTableCompanies;
 import Models.Datenbank.SqlTableContracts;
+import Models.Datenbank.SqlTableProfs;
 import Models.Datenbank.SqlTableStudent;
+import Models.Filter.IntFilter;
+import Models.Filter.SqlListFilter;
+import Models.Filter.StringFilter;
 import Praktikumsverwaltung.Praktikumsverwaltung;
 import Views.GuiElemente.BoxElementBottomNavi;
 import Views.GuiElemente.BoxElementBottomNaviEditMailPrint;
@@ -10,15 +18,21 @@ import Views.GuiElemente.BoxElementBottomNaviMark;
 import Views.GuiElemente.BoxElementTable;
 import Views.GuiElemente.BoxElementSearchMenu;
 import Views.GuiElemente.SearchPanel.BoxElementExtendedSearchContracts;
-
 import Views.Interfaces.BasicBoxCtrl;
+import Views.Interfaces.ExtendedContractsSearchBoxCtrl;
 import Views.Interfaces.NaviEditMailPrintBoxCtrl;
 import Views.Interfaces.NaviMarkBoxCtrl;
 import Views.Interfaces.ExtendedSearchBoxCtrl;
 import Views.Interfaces.SearchBoxCtrl;
 import Views.Interfaces.TableBoxCtrl;
 
-public class ContractList extends ControllerNew implements BasicBoxCtrl, TableBoxCtrl, SearchBoxCtrl, ExtendedSearchBoxCtrl, NaviEditMailPrintBoxCtrl, NaviMarkBoxCtrl{
+public class ContractList extends ControllerNew implements 	BasicBoxCtrl, 
+															TableBoxCtrl, 
+															SearchBoxCtrl, 
+															ExtendedSearchBoxCtrl, 
+															NaviEditMailPrintBoxCtrl, 
+															NaviMarkBoxCtrl, 
+															ExtendedContractsSearchBoxCtrl{
 	
 	private String srcSqlQuery = "SELECT " +
 									SqlTableContracts.TableNameDotId + " as ID, " +
@@ -30,15 +44,18 @@ public class ContractList extends ControllerNew implements BasicBoxCtrl, TableBo
 									SqlTableContracts.TableNameDotTyp + " as Typ, " +
 									SqlTableContracts.TableNameDotBeginn + " as 'beginnt am', " +
 									SqlTableContracts.TableNameDotEnde + " as 'endet am', " +
-									SqlTableContracts.TableNameDotFK_Betreuer + " as Betreuer, " +
+									SqlTableProfs.TableNameDotName + " as Betreuer, " +
 									SqlTableContracts.TableNameDotBericht + " as Bericht, " +
 									SqlTableContracts.TableNameDotZeugnis + " as Zeugnis, " +
-									SqlTableContracts.TableNameDotEmpfehlung + " as Empfehlung " +
+									SqlTableContracts.TableNameDotEmpfehlung + " as Empfehlung, " +
+									SqlTableContracts.TableNameDotErfolg + " as Erfolg " +
 									"FROM "+ SqlTableContracts.tableName +
 										" JOIN "+ SqlTableStudent.tableName +" ON " +
 											SqlTableContracts.TableNameDotFK_Student + " = " + SqlTableStudent.TableNameDotPrimaryKey +
 										" JOIN "+ SqlTableCompanies.tableName +" ON " +
-										SqlTableContracts.TableNameDotFK_Firma + " = " + SqlTableCompanies.TableNameDotPrimaryKey;
+										SqlTableContracts.TableNameDotFK_Firma + " = " + SqlTableCompanies.TableNameDotPrimaryKey + 
+										" JOIN "+ SqlTableProfs.tableName +" ON " +
+										SqlTableContracts.TableNameDotFK_Betreuer + " = " + SqlTableProfs.TableNameDotPrimaryKey;
 	
 	private Models.ListModel model;
 	private Views.ViewNew view;
@@ -46,7 +63,11 @@ public class ContractList extends ControllerNew implements BasicBoxCtrl, TableBo
 	private BoxElementTable table;
 	private BoxElementExtendedSearchContracts extendedSearch;
 	private BoxElementSearchMenu searchMenu;
-		
+	
+	
+	private IntFilter successfulInternshipFilter = null;
+	private StringFilter internationalInternshipFilter = null;
+	
 	public ContractList(){
 		super();
 		model = new Models.ListModel(srcSqlQuery,SqlTableContracts.tableName,SqlTableContracts.PrimaryKey);
@@ -87,7 +108,7 @@ public class ContractList extends ControllerNew implements BasicBoxCtrl, TableBo
 
 	@Override
 	public Object[] getTableHeader() {
-		return model.tableRowData.getColumnNames();
+		return model.tableRowData.getColumnAliasNames();
 	}
 
 	@Override
@@ -151,7 +172,15 @@ public class ContractList extends ControllerNew implements BasicBoxCtrl, TableBo
 
 	@Override
 	public void buttonSearchSpecificClicked() {
-		model.setSearchFilter(extendedSearch.getSearchFilter());
+		Map<String,Object> filterElements = extendedSearch.getSearchFilter();
+		
+		if(internationalInternshipFilter != null)
+			filterElements.put(SqlTableContracts.TableNameDotTyp, internationalInternshipFilter);
+		
+		if(successfulInternshipFilter != null)
+			filterElements.put(SqlTableContracts.TableNameDotErfolg, successfulInternshipFilter);
+		
+		model.setSearchFilter(filterElements);
 	}
 
 	@Override
@@ -182,8 +211,35 @@ public class ContractList extends ControllerNew implements BasicBoxCtrl, TableBo
 
 	@Override
 	public void buttonAddNewDataClicked() {
-		System.out.println("huhu");
 		ContractSingle newEmptyFrame = new ContractSingle();
 		Praktikumsverwaltung.addFrameToForeground(newEmptyFrame);
 	}
+
+	@Override
+	public void setInternationalInternshipFilterOn() {
+		internationalInternshipFilter = new StringFilter("PS");
+	}
+
+	@Override
+	public void setInternationalInternshipFilterOff() {
+		internationalInternshipFilter = null;
+	}
+
+	@Override
+	public void setInternshipSuccessfulFilterOn() {
+		successfulInternshipFilter = new IntFilter(1);
+		
+	}
+
+	@Override
+	public void setInternshipSuccessfulFilterOff() {
+		successfulInternshipFilter = null;
+	}
+
+	@Override
+	public void setOrderByColumn(int columnIndex, SortOrder orderDirection) {
+		model.setOrder(columnIndex, orderDirection);
+	}
+
+	
 }

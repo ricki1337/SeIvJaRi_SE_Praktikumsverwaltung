@@ -75,9 +75,9 @@ public class BoxElementContractDetailsStudent extends JPanel implements Contract
 
         jl_matrikelnr_value.setText("leer");
 
-        jb_aendern.setText("Ändern");
+        jb_aendern.setText("\u00E4ndern");
 
-        jb_bearbeiten.setText("Bearbeiten");
+        jb_bearbeiten.setText("bearbeiten");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         layout.setHorizontalGroup(

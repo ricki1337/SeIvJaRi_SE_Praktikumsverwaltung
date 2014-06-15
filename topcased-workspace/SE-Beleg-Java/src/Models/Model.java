@@ -9,8 +9,8 @@ import Models.Datenbank.observer;
 import Models.Filter.FilterTyp;
 import Models.Filter.ObjectFilter;
 import Models.Filter.TabellenFilter;
+import Models.Table.TableData;
 import Views.UpdateView;
-import Views.Table.TableData;
 
 
 public class Model implements observer{
@@ -23,6 +23,7 @@ public class Model implements observer{
 		private String primaryKeyColumnName;
 		public TableData tableRowData;
 		private int columnLimit;
+		protected String order;
 		public int rowPosition = 0;
 		
 		private ObjectFilter filter;
@@ -50,6 +51,7 @@ public class Model implements observer{
 		db = Database.getInstance();
 		db.login(this);
 		setColumnLimit(20);
+		order = new String();
 	}	
 	
 	public void setSrcQuery(String srcQuery) {
@@ -100,9 +102,10 @@ public class Model implements observer{
 		}	
 		String where = new String();
 		String filter = this.filter.getFilter();
+		String order = this.order;
 		where = (getSrcQuery().contains("where")) ? " and " : " where ";
 		filter = (filter.length()>0) ? filter : " 1 ";
-		String query = getSrcQuery() + where + filter + " limit " + columnLimit;
+		String query = getSrcQuery() + where + filter + order + " limit " + columnLimit;
 		ResultSet result = db.getQuery(query);
 		this.result = result;
 		setTableRowData();

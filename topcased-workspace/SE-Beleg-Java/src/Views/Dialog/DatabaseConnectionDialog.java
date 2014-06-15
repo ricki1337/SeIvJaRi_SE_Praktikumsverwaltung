@@ -98,7 +98,7 @@ public class DatabaseConnectionDialog extends JDialog {
 
         jl_datenbank.setText("Datenbank:");
 
-        jl_caption.setText("Verbindung zur Datenbak herstellen");
+        jl_caption.setText("Verbindung zur Datenbank herstellen");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -171,7 +171,7 @@ public class DatabaseConnectionDialog extends JDialog {
         	this.jtf_datenbank.setText(datenbank);
         
         pack();
-    }// </editor-fold>                        
+    }                     
 
     private void jb_verbindenActionPerformed(ActionEvent evt) {                                             
     	//String dbhost = this.dbhost;
@@ -194,8 +194,8 @@ public class DatabaseConnectionDialog extends JDialog {
 			
 			dispose();
 		} catch (Exception e) {
-			this.jl_infolabel.setText("BUG: RECONNECT FUNZT NICHT");
-			e.printStackTrace();
+			this.jl_infolabel.setText("Verbindung konnte nicht hergestellt werden.");
+			db.disconnect();
 		}
     	
     }                                            

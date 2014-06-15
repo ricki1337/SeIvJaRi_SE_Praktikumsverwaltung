@@ -93,11 +93,13 @@ public class BoxElementExtendedSearchCompany extends JPanel implements ExtendedS
                         .addComponent(jl_plz)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jtf_plz, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jb_filterentfernen)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jb_suchen)))
                 .addContainerGap(75, Short.MAX_VALUE))
+
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,6 +121,7 @@ public class BoxElementExtendedSearchCompany extends JPanel implements ExtendedS
                     .addComponent(jb_suchen)
                     .addComponent(jb_filterentfernen))
                 .addContainerGap())
+
         );
       this.setLayout(layout);
     }

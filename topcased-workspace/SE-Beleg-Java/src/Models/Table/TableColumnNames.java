@@ -1,4 +1,4 @@
-package Views.Table;
+package Models.Table;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -31,37 +31,35 @@ public class TableColumnNames {
 		}
 	}
 	
-	public String[] getColumnAliasNames(){
+	public Object[] getColumnAliasNames(){
 
-		String [] ColumnAliasNames;
-		ColumnAliasNames  = new  String[columnTableList.size()];
+//		String [] columnAliasNames;
+//		columnAliasNames  = new  String[columnTableList.size()];
+//		
+//		for (int i=0;i<columnTableList.size(); i++ ){
+//			//columnAliasNames[i]=columnTableList.get(i);
+//			columnAliasNames[i]=columnAliasList.get(i);
+//		}
+		
+		//return columnAliasNames;
+		return columnAliasList.toArray();
+	}
+	
+	public String[] getColumnNames(){
+
+		String [] columnNames;
+		columnNames  = new  String[columnTableList.size()];
 		
 		for (int i=0;i<columnTableList.size(); i++ ){
-			ColumnAliasNames[i]=columnTableList.get(i);
+			columnNames[i]=columnTableList.get(i);
 		}
 		
-		return ColumnAliasNames;
-		
-		//return columnAliasList.toArray();
+		return columnNames;
 	}
 	
-	public Object[] getColumnNames(){
-		return columnNameList.toArray();
-	}
-	
-	public String[] getColumnNamesAsString(){
-
-		String [] ColumnNames;
-		ColumnNames  = new  String[columnNameList.size()];
-		
-		for (int i=0;i<columnNameList.size(); i++ ){
-			ColumnNames[i]=columnNameList.get(i);
-		}
-		
-		return ColumnNames;
-		
-		//return columnAliasList.toArray();
-	}
+//	public Object[] getColumnNames(){
+//		return columnNameList.toArray();
+//	}
 	
 	public int getColumnAliasNameIndex(String column){
 		return columnAliasList.indexOf(column);
