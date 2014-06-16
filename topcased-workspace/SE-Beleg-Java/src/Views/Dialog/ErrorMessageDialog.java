@@ -25,6 +25,9 @@ public class ErrorMessageDialog extends JDialog implements BasicBox, MouseListen
 	private final JPanel contentPanel = new JPanel();
 	private JTextPane jtxtp_errorMessage;
 	private JTextPane jtxtp_details;
+	JLabel scrollPaneTmp;
+	private JScrollPane scrollPane;
+	private GroupLayout gl_contentPanel;
 	private ErrorManagerCtrl controller;
 
 	
@@ -68,12 +71,15 @@ public class ErrorMessageDialog extends JDialog implements BasicBox, MouseListen
 		
 		if(e.getComponent() == tglbtn_details){
 			if(jtxtp_details.getText().length() > 0 && tglbtn_details.isSelected()){
-				jtxtp_details.setVisible(true);
+				gl_contentPanel.replace(scrollPaneTmp, scrollPane);
+				setBounds(100, 100, 505, 548);
 				this.getLayout().layoutContainer(this);
 			}
 			
 			if(!tglbtn_details.isSelected()){
-				jtxtp_details.setVisible(false);
+				gl_contentPanel.replace(scrollPane, scrollPaneTmp);
+				setBounds(100, 100, 505, 290);
+				this.getLayout().layoutContainer(this);
 			}
 			
 		}
@@ -101,7 +107,8 @@ public class ErrorMessageDialog extends JDialog implements BasicBox, MouseListen
 	public void initComponents() {
 		setModal(true);
 		setAlwaysOnTop(true);
-		setBounds(100, 100, 505, 548);
+		setResizable(false);
+		setBounds(100, 100, 505, 290);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -114,14 +121,15 @@ public class ErrorMessageDialog extends JDialog implements BasicBox, MouseListen
 		
 		tglbtn_details = new JToggleButton("Details anzeigen");
 		
-		JScrollPane scrollPane = new JScrollPane();
-		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
+		scrollPane = new JScrollPane();
+		scrollPaneTmp = new JLabel(" ");
+		gl_contentPanel = new GroupLayout(contentPanel);
 		gl_contentPanel.setHorizontalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(Alignment.TRAILING, gl_contentPanel.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING)
-						.addComponent(scrollPane, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
+						.addComponent(scrollPaneTmp, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
 						.addComponent(jtxtp_errorMessage, GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
 						.addComponent(lblNewLabel, Alignment.LEADING)
 						.addComponent(tglbtn_details, Alignment.LEADING))
@@ -136,11 +144,13 @@ public class ErrorMessageDialog extends JDialog implements BasicBox, MouseListen
 					.addGap(13)
 					.addComponent(tglbtn_details)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE))
+					.addComponent(scrollPaneTmp, GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE))
 		);
 		
 		jtxtp_details = new JTextPane();
+		jtxtp_details.setVisible(true);
 		scrollPane.setViewportView(jtxtp_details);
+		scrollPane.setVisible(true);
 		
 		jtxtp_details.setEditable(false);
 		contentPanel.setLayout(gl_contentPanel);

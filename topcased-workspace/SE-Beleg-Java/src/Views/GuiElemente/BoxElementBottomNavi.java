@@ -10,8 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import ConfigParser.Debug;
-import Views.Interfaces.BasicBoxCtrl;
 import Views.Interfaces.BasicBox;
+import Views.Interfaces.BasicBoxCtrl;
 
 public class BoxElementBottomNavi extends JPanel implements BasicBox{
 	JPanel jpnl_right;

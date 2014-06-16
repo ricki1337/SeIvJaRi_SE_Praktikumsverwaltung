@@ -1,15 +1,10 @@
 package Controller;
 
 import java.io.File;
-import java.io.IOException;
-
-import javax.swing.JCheckBox;
-import javax.swing.JTextField;
-
-import com.itextpdf.text.DocumentException;
 
 import Mail.createPDF;
-import Mail.mail;
+import Mail.MailSender;
+import Models.Datenbank.Observer;
 import Models.Datenbank.SqlTableCompanies;
 import Models.Datenbank.SqlTableContracts;
 import Models.Datenbank.SqlTableProfs;
@@ -17,12 +12,23 @@ import Models.Datenbank.SqlTableStudent;
 import Models.Filter.IntFilter;
 import Models.Filter.StringFilter;
 import Views.ViewNew;
+import Views.GuiElemente.BoxElementBottomNavi;
+import Views.GuiElemente.BoxElementBottomNaviAbortSendMail;
+import Views.GuiElemente.BoxElementBottomNaviProgress;
 import Views.GuiElemente.BoxElementMail;
+import Views.GuiElemente.BoxElementMailing;
 import Views.Interfaces.BasicBoxCtrl;
 import Views.Interfaces.MailBox;
 import Views.Interfaces.MailBoxCtrl;
+import Views.Interfaces.NaviAbortSendMailBoxCtrl;
+import Views.Interfaces.NaviProgressBoxCtrl;
 
-public class Mailing extends ControllerNew implements BasicBoxCtrl, MailBoxCtrl {
+public class Mailing extends ControllerNew implements 	BasicBoxCtrl, 
+														MailBoxCtrl, 
+														Runnable, 
+														NaviProgressBoxCtrl, 
+														NaviAbortSendMailBoxCtrl,
+														Observer{
 
 	private String sqlQueryString = "SELECT " +
 								SqlTableContracts.TableNameDotPrimaryKey + " as ID," +
@@ -38,25 +44,33 @@ public class Mailing extends ControllerNew implements BasicBoxCtrl, MailBoxCtrl 
 							"FROM " + SqlTableContracts.tableNameWithAlias + 
 									" JOIN " + SqlTableStudent.tableNameWithAlias + " ON " + SqlTableContracts.TableNameDotFK_Student + " = " + SqlTableStudent.TableNameDotPrimaryKey +
 									" JOIN " + SqlTableCompanies.tableNameWithAlias + " ON " + SqlTableContracts.TableNameDotFK_Firma + " = "+ SqlTableCompanies.TableNameDotPrimaryKey + 
-									" JOIN " + SqlTableProfs.tableNameWithAlias + " ON " + SqlTableProfs.TableNameDotName + " = " + SqlTableContracts.TableNameDotFK_Betreuer;
+									" JOIN " + SqlTableProfs.tableNameWithAlias + " ON " + SqlTableProfs.TableNameDotPrimaryKey + " = " + SqlTableContracts.TableNameDotFK_Betreuer;
 	
 	private ViewNew view;
 	protected Models.ListModel model;
 	private MailBox boxMail;
+	private BoxElementBottomNaviProgress progressBox;
 	
-	private String PDF;
+	private String tmpPathForPDF;
 	
 	private Object primaryKeyValues;
 	private String primaryKey;
 	
+	private int hundretPercentValue=0;
+	private int nullPercentValue=0;
+	private int currentPercentValue=0;
+	
+	private Thread mailingThread;
+	
 	protected Mailing(){}
 	
 	public Mailing(String primaryKey, Object primaryKeyValues){
+		super();
 		setPrimaryKey(primaryKey);
 		setPrimaryKeyValues(primaryKeyValues);
-		
+		configurePdfPath();
 		setListModel();
-		
+		mailingThread = new Thread(this);
 		setView(view = new Views.ViewNew(this));
 		
 		setElements();
@@ -100,20 +114,20 @@ public class Mailing extends ControllerNew implements BasicBoxCtrl, MailBoxCtrl 
 		
 		if(primaryKeyValues instanceof Object[]){		
 			for(Object value:(Object[])getPrimaryKeyValues()){
-				if(primaryKey.equals(SqlTableStudent.MatrikelNummer)|| primaryKey.equals("ID") || primaryKey.equals("IDCompanies")){
+				if(primaryKey.equals(SqlTableStudent.TableNameDotMatrikelNummer)|| primaryKey.equals(SqlTableContracts.TableNameDotPrimaryKey) || primaryKey.equals(SqlTableCompanies.TableNameDotPrimaryKey)){
 					model.setOrFilter(primaryKey, new IntFilter(value.toString()));
 				}
 				
-				if(primaryKey.equals("Name")){
+				if(primaryKey.equals(SqlTableProfs.TableNameDotPrimaryKey)){
 					model.setOrFilter(primaryKey, new StringFilter(value));
 				}
 			}
 		} else{
-			if(primaryKey.equals("Matrikelnr") || primaryKey.equals("ID")|| primaryKey.equals("IDCompanies")){
+			if(primaryKey.equals(SqlTableStudent.TableNameDotMatrikelNummer)|| primaryKey.equals(SqlTableContracts.TableNameDotPrimaryKey) || primaryKey.equals(SqlTableCompanies.TableNameDotPrimaryKey)){
 				model.setOrFilter(primaryKey, new IntFilter(primaryKeyValues.toString()));
 			}
 			
-			if(primaryKey.equals("Name")){
+			if(primaryKey.equals(SqlTableProfs.TableNameDotPrimaryKey)){
 				model.setOrFilter(primaryKey, new StringFilter(primaryKeyValues));
 			}
 		}
@@ -121,13 +135,21 @@ public class Mailing extends ControllerNew implements BasicBoxCtrl, MailBoxCtrl 
 	
 	@Override
 	public void setElements() {
-		view.setTitle("Mail senden");
-		boxMail = new BoxElementMail(this);
+		view.setTitle("E-Mail senden");
+//		boxMail = new BoxElementMail(this);
+//		view.addComponentToView(boxMail);
+		
+		boxMail = new BoxElementMailing(this);
 		view.addComponentToView(boxMail);
+		BoxElementBottomNavi navi = new BoxElementBottomNavi(this);
+		progressBox = new BoxElementBottomNaviProgress(this);
+		navi.addBoxToLeftSide(progressBox);
+		navi.addBoxToRightSide(new BoxElementBottomNaviAbortSendMail(this));
+		view.addComponentToView(navi);
 	}
 	
-	public void configurePdfPath(String path){
-		path = System.getProperty("user.dir");
+	public void configurePdfPath(){
+		String path = System.getProperty("user.dir");
 		
 		char [] pathCharArray;
 		pathCharArray = path.toCharArray();
@@ -141,47 +163,17 @@ public class Mailing extends ControllerNew implements BasicBoxCtrl, MailBoxCtrl 
         }
 		path = String.valueOf(pathCharArray);
 		path = path + "/anerkennung.pdf";
-		PDF = path;
+		tmpPathForPDF = path;
 	}
 	
 	
 
 	@Override
 	public void buttonSendMailClicked() {
-		String absender = boxMail.getSenderEmailAdress();
-		char[] pw = boxMail.getSenderEmailPassword();
-        createPDF ps = new createPDF();
-        try {
-        for(int i=0;i<model.tableRowData.getRowCount();i++){
-        	
-				if(model.tableRowData.getBooleanValueFromPosition(i, "sendMail")){
-				    ps.createPdf(	PDF,
-									model.tableRowData.getBooleanValueFromPosition(i, "Bericht"),
-									model.tableRowData.getBooleanValueFromPosition(i, "Zeugnis"),
-									model.tableRowData.getStringValueFromPosition(i, "Vorname"),
-									model.tableRowData.getStringValueFromPosition(i, "Nachname"),
-									model.tableRowData.getStringValueFromPosition(i, "Matrikelnr."),
-									model.tableRowData.getStringValueFromPosition(i, "Studiengruppe"),
-									model.tableRowData.getStringValueFromPosition(i, "Betreuer"),
-									model.tableRowData.getStringValueFromPosition(i, "Firmenname")
-								); 
-					boolean sendStatus = mail.sendMail(absender, boxMail.getRecipientEmailAdress(i), pw);
-				    boxMail.setMailsSend(sendStatus);
-					if(sendStatus){
-						String queryString = "update "+ SqlTableContracts.tableName + " set " +
-								SqlTableContracts.Bericht + " = " + model.tableRowData.getBooleanValueFromPosition(i, "Bericht") + "," +
-								SqlTableContracts.Zeugnis + " = " + model.tableRowData.getBooleanValueFromPosition(i, "Zeugnis") + 
-								" where "+ SqlTableContracts.Id + " = " + model.tableRowData.getBooleanValueFromPosition(i, "ID") +";";
-						model.updateDatabase(queryString);
-					}
-					deletePdfFromLocalSystem(PDF);
-				}
-        }//ende der mail senden for schleife
-        } catch (Exception e) {
-			ErrorManager errorManager = new ErrorManager(e);
-			if(errorManager.retry)
-				buttonSendMailClicked();
-		}
+		if(mailingThread.isAlive()) return;
+		mailingThread.start();
+		System.out.println("Thread started");
+		//run();
     }
 	
 	public void deletePdfFromLocalSystem(String path){
@@ -252,6 +244,91 @@ public class Mailing extends ControllerNew implements BasicBoxCtrl, MailBoxCtrl 
 	@Override
 	public void display() {
 		view.display();
+	}
+
+	@Override
+	public void run() {
+		String absender = boxMail.getSenderEmailAdress();
+		char[] pw = boxMail.getSenderEmailPassword();
+        createPDF ps = new createPDF();
+        try {
+        	nullPercentValue = 0;
+        	currentPercentValue = 0;
+        	for(int i=0;i<model.tableRowData.getRowCount();i++)
+        		if(model.tableRowData.getBooleanValueFromPosition(i, "sendMail"))
+        			hundretPercentValue++;
+        	progressBox.setComponentValues();
+        	boxMail.setComponentValues();
+        	MailSender mailer = new MailSender(this);
+        	String queryString = new String();
+        	mailer.connect(absender, pw);
+        	
+        	for(int i=0;i<model.tableRowData.getRowCount();i++){
+        	
+				if(model.tableRowData.getBooleanValueFromPosition(i, "sendMail")){
+					currentPercentValue++;
+				    ps.createPdf(	tmpPathForPDF,
+									model.tableRowData.getBooleanValueFromPosition(i, "Bericht"),
+									model.tableRowData.getBooleanValueFromPosition(i, "Zeugnis"),
+									model.tableRowData.getStringValueFromPosition(i, "Vorname"),
+									model.tableRowData.getStringValueFromPosition(i, "Nachname"),
+									model.tableRowData.getStringValueFromPosition(i, "Matrikelnr."),
+									model.tableRowData.getStringValueFromPosition(i, "Studiengruppe"),
+									model.tableRowData.getStringValueFromPosition(i, "Betreuer"),
+									model.tableRowData.getStringValueFromPosition(i, "Firmenname")
+								); 
+				    
+				    boolean sendStatus = mailer.sendMail(boxMail.getRecipientEmailAdress(i));
+
+				    boxMail.setMailSend(i, sendStatus);
+					if(sendStatus){
+						queryString += "update "+ SqlTableContracts.tableName + " set " +
+								SqlTableContracts.Bericht + " = " + model.tableRowData.getBooleanValueFromPosition(i, "Bericht") + "," +
+								SqlTableContracts.Zeugnis + " = " + model.tableRowData.getBooleanValueFromPosition(i, "Zeugnis") + 
+								" where "+ SqlTableContracts.Id + " = " + model.tableRowData.getStringValueFromPosition(i, "ID") +"; ";
+						
+						progressBox.refreshContent();
+					}
+					deletePdfFromLocalSystem(tmpPathForPDF);
+				}
+        	}//ende der mail senden for schleife
+        	 model.updateDatabase(queryString);
+        } catch (Exception e) {
+			ErrorManager errorManager = new ErrorManager(e);
+			if(errorManager.retry)
+				buttonSendMailClicked();
+		}
+       
+		
+	}
+
+	@Override
+	public int getValueEqualToNullPercent() {
+		return nullPercentValue;
+	}
+
+	@Override
+	public int getValueEqualToHundretPercent() {
+		return hundretPercentValue;
+	}
+
+	@Override
+	public int getCurrentValue() {
+		return currentPercentValue;
+	}
+
+	@Override
+	public void buttonAbortClicked() {
+		if(mailingThread.isAlive()){
+			mailingThread.suspend();
+		}
+		view.dispose();
+		model.modelClose();
+	}
+
+	@Override
+	public void refresh(String[] infoAboutChanged) {
+		boxMail.setMailingStatus(infoAboutChanged[0]);
 	}
 
 }

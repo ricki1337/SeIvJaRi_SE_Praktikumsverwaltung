@@ -3,26 +3,16 @@ package Views.GuiElemente;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.LayoutStyle.ComponentPlacement;
 
 import ConfigParser.Debug;
-import Models.Datenbank.SqlTableContracts;
-import Models.Datenbank.SqlTableStudent;
 import Views.Interfaces.BasicBox;
 import Views.Interfaces.ContractDetailsProfNewBoxCtrl;
-import Views.Interfaces.ContractDetailsStudentBox;
-import Views.Interfaces.ContractDetailsStudentBoxCtrl;
-import Views.Interfaces.ContractDetailsStudentNewBoxCtrl;
 
 
 public class BoxElementContractDetailsProfNew extends JPanel implements BasicBox, MouseListener{

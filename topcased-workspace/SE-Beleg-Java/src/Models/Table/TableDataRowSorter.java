@@ -1,6 +1,5 @@
 package Models.Table;
 
-import javax.swing.DefaultRowSorter;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 

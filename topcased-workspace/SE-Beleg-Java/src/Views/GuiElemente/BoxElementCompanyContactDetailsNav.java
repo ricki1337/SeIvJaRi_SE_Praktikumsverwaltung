@@ -44,7 +44,7 @@ public class BoxElementCompanyContactDetailsNav extends JPanel implements BasicB
 
         jb_next.setText(">>");
         
-        jb_add = new JButton("hinzu\u00E4gen");
+        jb_add = new JButton("hinzuf\u00FCgen");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         layout.setHorizontalGroup(

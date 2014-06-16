@@ -4,6 +4,7 @@ import drucken.PrintExport;
 
 import Models.Datenbank.SqlTableCompanies;
 import Models.Datenbank.SqlTableContracts;
+import Models.Datenbank.SqlTableProfs;
 import Models.Datenbank.SqlTableStudent;
 import Models.Filter.IntFilter;
 import Models.Filter.StringFilter;
@@ -67,21 +68,21 @@ public class Print extends ControllerNew{
 			
 			for(Object item:(Object[])primaryKeyValues){
 				
-				if(primaryKey.equals(SqlTableStudent.MatrikelNummer)|| primaryKey.equals("ID") || primaryKey.equals("IDCompanies")){
+				if(primaryKey.equals(SqlTableStudent.TableNameDotMatrikelNummer)|| primaryKey.equals(SqlTableContracts.TableNameDotPrimaryKey) || primaryKey.equals(SqlTableCompanies.TableNameDotPrimaryKey)){
 					model.setOrFilter(primaryKey, new IntFilter(item.toString()));
 				}
 				
-				if(primaryKey.equals("Name")){
+				if(primaryKey.equals(SqlTableProfs.TableNameDotPrimaryKey)){
 					model.setOrFilter(primaryKey, new StringFilter(item));
 				}
 			
 			}
 		} else{
-			if(primaryKey.equals("Matrikelnr") || primaryKey.equals("ID")|| primaryKey.equals("IDCompanies")){
+			if(primaryKey.equals(SqlTableStudent.TableNameDotMatrikelNummer)|| primaryKey.equals(SqlTableContracts.TableNameDotPrimaryKey) || primaryKey.equals(SqlTableCompanies.TableNameDotPrimaryKey)){
 				model.setOrFilter(primaryKey, new IntFilter(primaryKeyValues.toString()));
 			}
 			
-			if(primaryKey.equals("Name")){
+			if(primaryKey.equals(SqlTableProfs.TableNameDotPrimaryKey)){
 				model.setOrFilter(primaryKey, new StringFilter(primaryKeyValues));
 			}
 		}

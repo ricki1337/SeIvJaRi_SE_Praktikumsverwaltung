@@ -18,13 +18,10 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import Models.Datenbank.SqlTableCompanies;
-import Models.Datenbank.SqlTableContracts;
 import Models.Datenbank.SqlTableProfs;
 import Models.Datenbank.SqlTableStudent;
-import Models.Table.EmptyObject;
 import Views.Interfaces.ExtendedContractsSearchBoxCtrl;
 import Views.Interfaces.ExtendedSearchBox;
-import Views.Interfaces.ExtendedSearchBoxCtrl;
 
 public class BoxElementExtendedSearchContracts extends JPanel implements ExtendedSearchBox, MouseListener{
 	

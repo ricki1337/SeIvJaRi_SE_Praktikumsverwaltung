@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Models.Datenbank.Database;
-import Models.Datenbank.observer;
+import Models.Datenbank.Observer;
 import Models.Filter.FilterTyp;
 import Models.Filter.ObjectFilter;
 import Models.Filter.TabellenFilter;
@@ -13,7 +13,7 @@ import Models.Table.TableData;
 import Views.UpdateView;
 
 
-public class Model implements observer{
+public class Model implements Observer{
 
 		private Database db;
 		private String srcQuery;

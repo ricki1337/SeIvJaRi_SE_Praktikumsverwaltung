@@ -1,11 +1,7 @@
 package Controller;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
 import Models.Datenbank.SqlTableCompanies;
 import Models.Datenbank.SqlTableContacts;
-import Models.Datenbank.SqlTableStudent;
 import Models.Filter.IntFilter;
 import Models.Filter.StringFilter;
 import Praktikumsverwaltung.Praktikumsverwaltung;
@@ -15,12 +11,11 @@ import Views.GuiElemente.BoxElementBottomNaviPrevSaveNext;
 import Views.GuiElemente.BoxElementCompanyContactDetails;
 import Views.GuiElemente.BoxElementCompanyContactDetailsNav;
 import Views.GuiElemente.BoxElementCompanyDetails;
-import Views.GuiElemente.BoxElementStudentDetails;
 import Views.Interfaces.CompanyContactDetailsBoxCtrl;
 import Views.Interfaces.CompanyDetailsContactCtrl;
+import Views.Interfaces.EditBoxCtrl;
 import Views.Interfaces.NaviAbortSaveBoxCtrl;
 import Views.Interfaces.NaviPrevSaveNextBoxCtrl;
-import Views.Interfaces.EditBoxCtrl;
 
 public class CompanySingle extends ControllerNew implements 	EditBoxCtrl, 
 																NaviAbortSaveBoxCtrl, 

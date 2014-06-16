@@ -18,9 +18,6 @@ import javax.swing.border.EtchedBorder;
 import ConfigParser.Debug;
 import Models.Datenbank.SqlTableContracts;
 import Views.Interfaces.BasicBox;
-import Views.Interfaces.ContractDetailsCompanyBox;
-import Views.Interfaces.ContractDetailsProfBox;
-import Views.Interfaces.ContractDetailsStudentBox;
 import Views.Interfaces.EditBox;
 import Views.Interfaces.EditBoxCtrl;
 

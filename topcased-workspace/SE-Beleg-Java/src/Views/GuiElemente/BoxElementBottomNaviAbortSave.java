@@ -14,7 +14,6 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import ConfigParser.Debug;
 import Views.Interfaces.BasicBox;
-import Views.Interfaces.BasicBoxCtrl;
 import Views.Interfaces.NaviAbortSaveBoxCtrl;
 
 public class BoxElementBottomNaviAbortSave extends JPanel implements BasicBox, MouseListener {

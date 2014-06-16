@@ -16,7 +16,6 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import Models.Datenbank.SqlTableStudent;
 import Views.Interfaces.ExtendedSearchBox;
-import Views.Interfaces.ExtendedSearchBoxCtrl;
 import Views.Interfaces.ExtendedStudentSearchBoxCtrl;
 
 public class ExtendedSearchPanelStudentNew extends JPanel implements ExtendedSearchBox, MouseListener{

@@ -10,17 +10,19 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 import ConfigParser.Debug;
 import Views.Interfaces.BasicBox;
-import Views.Interfaces.NaviMarkBoxCtrl;
+import Views.Interfaces.NaviEditBoxCtrl;
+import Views.Interfaces.NaviEditMailPrintBoxCtrl;
 
-public class BoxElementBottomNaviMark extends JPanel implements BasicBox , MouseListener{
-	JButton jbn_mark;
+public class BoxElementBottomNaviEdit extends JPanel implements BasicBox, MouseListener {
+
+	JButton jbn_edit;
+	private NaviEditBoxCtrl controller;
 	
-	private NaviMarkBoxCtrl controller;
-	
-	public BoxElementBottomNaviMark(NaviMarkBoxCtrl controller){
+	public BoxElementBottomNaviEdit(NaviEditBoxCtrl controller){
 		this.controller = controller;
 		initComponents();
 		setComponentNames();
@@ -30,14 +32,12 @@ public class BoxElementBottomNaviMark extends JPanel implements BasicBox , Mouse
 	
 	@Override
 	public void setComponentNames() {
-		jbn_mark.setName("mark");
-	
+		jbn_edit.setName("edit");
 	}
 
 	@Override
 	public void setComponentEventHandler() {
-		jbn_mark.addMouseListener(this);
-	
+		jbn_edit.addMouseListener(this);
 	}
 
 	@Override
@@ -47,47 +47,44 @@ public class BoxElementBottomNaviMark extends JPanel implements BasicBox , Mouse
 
 	@Override
 	public void initComponents() {
-		jbn_mark = new JButton("markierte ausw\u00E4hlen");
+		jbn_edit = new JButton("markierte bearbeiten");
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(jbn_mark)
-					.addContainerGap(339, Short.MAX_VALUE))
+					.addContainerGap(307, Short.MAX_VALUE)
+					.addComponent(jbn_edit)
+					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(jbn_mark)
-					.addContainerGap(266, Short.MAX_VALUE))
+					.addComponent(jbn_edit)
+					.addContainerGap(38, Short.MAX_VALUE))
 		);
 		setLayout(groupLayout);
 		
 	}
 	
+	@Override
+	public void setComponentValues() {}
 	
+	@Override
+	public void refreshContent() {}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if(e.getComponent() == jbn_mark)
-			controller.buttonMarkClicked();
-		
+		if (e.getComponent() == jbn_edit)
+			controller.buttonEditClicked();
 	}
-	
+
 	public void setToolTip(){
 		if(Debug.isDebugMode()){
 			setToolTipText(this.getClass().getCanonicalName());
 			this.setBackground(Color.getHSBColor(ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255));
 		}
 	}
-
-	@Override
-	public void setComponentValues() {}
-	
-	@Override
-	public void refreshContent() {}
 	
 	@Override
 	public void mouseEntered(MouseEvent e) {}

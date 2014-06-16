@@ -6,13 +6,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.HashMap;
 import java.util.Map;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.JButton;
+
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.LayoutStyle.ComponentPlacement;
+
 import Models.Datenbank.SqlTableProfs;
 import Views.Interfaces.ExtendedSearchBox;
 import Views.Interfaces.ExtendedSearchBoxCtrl;

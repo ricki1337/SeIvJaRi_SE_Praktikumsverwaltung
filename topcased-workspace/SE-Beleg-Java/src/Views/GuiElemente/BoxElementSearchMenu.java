@@ -12,12 +12,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Document;
 
 import ConfigParser.Debug;
 import Views.Interfaces.SearchBox;
-import Views.Interfaces.ExtendedSearchBox;
 import Views.Interfaces.SearchBoxCtrl;
 
 

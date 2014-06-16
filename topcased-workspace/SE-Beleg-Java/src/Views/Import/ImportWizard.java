@@ -3,14 +3,14 @@ package Views.Import;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
 
-
-import Models.Datenbank.Database;
 import Import.CsvImport;
+import Models.Datenbank.Database;
 
 //vlt sollte ein Button "Typüberprüfung" eingefügt werden. Denn im Fehler fall weis man nicht welche daten nicht importiert wurden
 

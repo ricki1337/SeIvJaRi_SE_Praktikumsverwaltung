@@ -8,20 +8,16 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.RowSorter.SortKey;
 import javax.swing.event.RowSorterEvent;
 import javax.swing.event.RowSorterListener;
 import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
 
 import ConfigParser.Debug;
-import Controller.ProfSingle;
 import Models.Table.NonEditableTableModel;
 import Models.Table.TableDataRowSorter;
-import Praktikumsverwaltung.Praktikumsverwaltung;
 import Views.Interfaces.BasicBox;
 import Views.Interfaces.TableBoxCtrl;
 
@@ -125,6 +121,17 @@ public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
 		jt_table.repaint();
 	}
 	
+	
+
+	@Override
+	public JComponent getJComponent() {
+		return this;
+	}
+
+	public int getSelectedRowCount(){
+		return jt_table.getSelectedRowCount();
+	}
+	
 	public int getSelectedRow(){
 		int selectedRow = jt_table.getSelectedRow();
 		int rowIdInTableModel = jt_table.convertRowIndexToModel(selectedRow);
@@ -140,17 +147,23 @@ public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
 		}
 		return selectedRows;
 	}
-
-	@Override
-	public JComponent getJComponent() {
-		return this;
-	}
-
+	
 	public Object getColumnValueFromSelectedRow(String string) {
 		return controller.getValueFromPosition(jt_table.getSelectedRow(), string);
 	}
 	
-	public int getFlaggedColumnCount(){
+	public Object[] getColumnValuesFromSelectedRows(String columnName){
+		Object[] returnValues = new Object[getSelectedRowCount()];
+		int rowIndex = 0;
+		int column = jt_table.convertColumnIndexToModel(controller.getColumnAliasIndex(columnName));
+		for(int selectedRow:getSelectedRows()){
+			returnValues[rowIndex] = jt_table.getValueAt(jt_table.convertRowIndexToModel(selectedRow),column);
+			rowIndex++;
+		}
+		return returnValues;
+	}
+	
+	public int getFlaggedRowCount(){
 		int flaggedColumnCount = 0;
 		for(int index=0;index<jt_table.getRowCount();index++){
 			if((boolean) controller.getValueFromPosition(index, "Auswahl")){
@@ -161,25 +174,25 @@ public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
 		return flaggedColumnCount;
 	}
 	
-	public int[] getFlaggedColumns(){
-		int[] flaggedColumns = new int[getFlaggedColumnCount()];
-		int flaggedColumnsCount = 0;
+	public int[] getFlaggedRows(){
+		int[] flaggedRows = new int[getFlaggedRowCount()];
+		int flaggedRowsCount = 0;
 		for(int index=0;index<jt_table.getRowCount();index++){
 			if((boolean) controller.getValueFromPosition(index, "Auswahl")){
-				flaggedColumns[flaggedColumnsCount] = index;
-				flaggedColumnsCount++;
+				flaggedRows[flaggedRowsCount] = index;
+				flaggedRowsCount++;
 			}
 		}
 		
-		return flaggedColumns;
+		return flaggedRows;
 	}
 	
-	public Object[] getColumnValuesFromSelectedRows(String columnName){
-		Object[] returnValues = new Object[getFlaggedColumnCount()];
+	public Object[] getColumnValuesFromFlaggedRows(String columnName){
+		Object[] returnValues = new Object[getFlaggedRowCount()];
 		int rowIndex = 0;
 		int column = jt_table.convertColumnIndexToModel(controller.getColumnAliasIndex(columnName));
-		for(int selectedRow:getFlaggedColumns()){
-			returnValues[rowIndex] = jt_table.getValueAt(jt_table.convertRowIndexToModel(selectedRow),column);
+		for(int flaggedRow:getFlaggedRows()){
+			returnValues[rowIndex] = jt_table.getValueAt(jt_table.convertRowIndexToModel(flaggedRow),column);
 			rowIndex++;
 		}
 		return returnValues;

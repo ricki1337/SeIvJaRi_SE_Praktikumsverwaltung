@@ -42,9 +42,10 @@ public class StudentList extends ControllerNew implements	BasicBoxCtrl,
 									SqlTableStudent.TableNameDotStudiengruppe + " as Studiengruppe, " +
 									SqlTableStudent.TableNameDotBemerkung + " as Bemerkung, " +
 									"CASE (SELECT count(*) FROM "+ SqlTableContracts.tableNameWithAlias + " WHERE " + SqlTableContracts.TableNameDotFK_Student + " = " + SqlTableStudent.TableNameDotMatrikelNummer +") " +
-										"WHEN '0' THEN 0 " +
-										"ELSE 1 " +
+										"WHEN '0' THEN CAST(0 as CHAR(1)) " +
+										"ELSE CAST(1 as CHAR(1)) " +
 									"END as Vertrag " +
+ 
 								"from " +
 									SqlTableStudent.tableNameWithAlias;
 	
@@ -172,22 +173,38 @@ public class StudentList extends ControllerNew implements	BasicBoxCtrl,
 
 	@Override
 	public void buttonEditClicked() {
-		Object[] studentList = table.getColumnValuesFromSelectedRows("Matrikelnr");
+		Object[] studentList;
+		
+		if(table.getFlaggedRowCount() != 0)
+			studentList = table.getColumnValuesFromFlaggedRows("Matrikelnr");
+		else
+			studentList = table.getColumnValuesFromSelectedRows("Matrikelnr");
+		
 		StudentSingle newFrame = new StudentSingle(studentList);
 		Praktikumsverwaltung.addFrameToForeground(newFrame);
 	}
 
 	@Override
 	public void buttonMailToClicked() {
-		Object[] studentListForMailing = table.getColumnValuesFromSelectedRows("Matrikelnr");
-		Mailing newMailing = new Mailing("Matrikelnr",studentListForMailing);
+		Object[] studentListForMailing;
+		if(table.getFlaggedRowCount() != 0)
+			studentListForMailing = table.getColumnValuesFromFlaggedRows("Matrikelnr");
+		else
+			studentListForMailing = table.getColumnValuesFromSelectedRows("Matrikelnr");
+		
+		Mailing newMailing = new Mailing(SqlTableStudent.TableNameDotPrimaryKey,studentListForMailing);
 		Praktikumsverwaltung.addFrameToForeground(newMailing);
 	}
 
 	@Override
 	public void buttonPrintClicked() {
-		Object[] studentListForPrint = table.getColumnValuesFromSelectedRows("Matrikelnr");
-		Print printDlg = new Print("Matrikelnr",studentListForPrint);
+		Object[] studentListForPrint;
+		if(table.getFlaggedRowCount() != 0)
+			studentListForPrint = table.getColumnValuesFromFlaggedRows("Matrikelnr");
+		else
+			studentListForPrint = table.getColumnValuesFromSelectedRows("Matrikelnr");
+		
+		Print printDlg = new Print(SqlTableStudent.TableNameDotPrimaryKey,studentListForPrint);
 		printDlg.display();
 	}
 

@@ -15,7 +15,6 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import ConfigParser.Debug;
 import Views.Interfaces.BasicBox;
-import Views.Interfaces.BasicBoxCtrl;
 import Views.Interfaces.NaviPrevSaveNextBoxCtrl;
 
 public class BoxElementBottomNaviPrevSaveNext extends JPanel implements BasicBox, MouseListener{

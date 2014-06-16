@@ -1,7 +1,5 @@
 package Views.Interfaces;
 
-import java.awt.event.MouseListener;
-
 import javax.swing.SortOrder;
 
 public interface TableBoxCtrl {

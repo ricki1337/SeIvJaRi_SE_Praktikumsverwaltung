@@ -7,21 +7,28 @@ import Models.Datenbank.SqlTableCompanies;
 import Praktikumsverwaltung.Praktikumsverwaltung;
 import Views.GuiElemente.BoxElementBottomNavi;
 import Views.GuiElemente.BoxElementBottomNaviAbortSelect;
+import Views.GuiElemente.BoxElementBottomNaviEdit;
 import Views.GuiElemente.BoxElementBottomNaviEditMailPrint;
 import Views.GuiElemente.BoxElementBottomNaviMark;
 import Views.GuiElemente.BoxElementTable;
 import Views.GuiElemente.BoxElementSearchMenu;
 import Views.GuiElemente.SearchPanel.BoxElementExtendedSearchCompany;
-import Views.GuiElemente.SearchPanel.BoxElementExtendedSearchProf;
 import Views.Interfaces.BasicBoxCtrl;
 import Views.Interfaces.NaviAbortSelectBoxCtrl;
+import Views.Interfaces.NaviEditBoxCtrl;
 import Views.Interfaces.NaviEditMailPrintBoxCtrl;
 import Views.Interfaces.NaviMarkBoxCtrl;
 import Views.Interfaces.ExtendedSearchBoxCtrl;
 import Views.Interfaces.SearchBoxCtrl;
 import Views.Interfaces.TableBoxCtrl;
 
-public class CompanyList extends ControllerNew implements BasicBoxCtrl, TableBoxCtrl, SearchBoxCtrl, ExtendedSearchBoxCtrl, NaviEditMailPrintBoxCtrl, NaviMarkBoxCtrl, NaviAbortSelectBoxCtrl{
+public class CompanyList extends ControllerNew implements 	BasicBoxCtrl, 
+															TableBoxCtrl, 
+															SearchBoxCtrl, 
+															ExtendedSearchBoxCtrl, 
+															NaviMarkBoxCtrl, 
+															NaviAbortSelectBoxCtrl, 
+															NaviEditBoxCtrl{
 	
 	private String srcSqlQuery = "select " +
 										SqlTableCompanies.TableNameDotId + " as ID, " +
@@ -75,7 +82,7 @@ public class CompanyList extends ControllerNew implements BasicBoxCtrl, TableBox
 		table = new BoxElementTable(this);
 		view.addComponentToView(table);
 		BoxElementBottomNavi navi = new BoxElementBottomNavi(this);
-		navi.addBoxToRightSide(new BoxElementBottomNaviEditMailPrint(this));
+		navi.addBoxToRightSide(new BoxElementBottomNaviEdit(this));
 		navi.addBoxToLeftSide(new BoxElementBottomNaviMark(this));
 		view.addComponentToView(navi);
 	}
@@ -148,22 +155,17 @@ public class CompanyList extends ControllerNew implements BasicBoxCtrl, TableBox
 
 	@Override
 	public void buttonEditClicked() {
-		Object[] companyList = table.getColumnValuesFromSelectedRows("ID");
+		Object[] companyList;
+		if(table.getFlaggedRowCount() != 0)
+			companyList = table.getColumnValuesFromFlaggedRows("ID");
+		else
+			companyList = table.getColumnValuesFromSelectedRows("ID");
+		
+			
 		CompanySingle newFrame = new CompanySingle(companyList);
 		Praktikumsverwaltung.addFrameToForeground(newFrame);
 	}
 
-	@Override
-	public void buttonMailToClicked() {
-		// TODO
-		
-	}
-
-	@Override
-	public void buttonPrintClicked() {
-		// TODO
-		
-	}
 
 	@Override
 	public void buttonMarkClicked() {

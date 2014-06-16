@@ -94,6 +94,46 @@ public class BoxElementContactDetails extends JPanel implements EditBox{
 		JPanel panel = new JPanel();
 		
 		JPanel panel_1 = new JPanel();
+		
+		JPanel panel_2 = new JPanel();
+		
+		JLabel jl_bemerkung = new JLabel("Bemerkung");
+		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
+		gl_panel_2.setHorizontalGroup(
+			gl_panel_2.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_panel_2.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(jl_bemerkung)
+					.addContainerGap(28, Short.MAX_VALUE))
+		);
+		gl_panel_2.setVerticalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(jl_bemerkung)
+					.addContainerGap(133, Short.MAX_VALUE))
+		);
+		panel_2.setLayout(gl_panel_2);
+		
+		JPanel panel_3 = new JPanel();
+		
+		jta_bemerkung = new JTextArea();
+		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
+		gl_panel_3.setHorizontalGroup(
+			gl_panel_3.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_panel_3.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(jta_bemerkung, GroupLayout.PREFERRED_SIZE, 185, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(27, Short.MAX_VALUE))
+		);
+		gl_panel_3.setVerticalGroup(
+			gl_panel_3.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_3.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(jta_bemerkung, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(58, Short.MAX_VALUE))
+		);
+		panel_3.setLayout(gl_panel_3);
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -102,16 +142,22 @@ public class BoxElementContactDetails extends JPanel implements EditBox{
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE)
-					.addGap(117))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE)
+					.addGap(17))
 		);
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(panel_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-						.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE))
-					.addContainerGap())
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+						.addComponent(panel, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+						.addComponent(panel_1, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+						.addComponent(panel_2, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+						.addComponent(panel_3, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
+					.addContainerGap(63, Short.MAX_VALUE))
 		);
 		
 		jtf_name = new JTextField();
@@ -119,18 +165,14 @@ public class BoxElementContactDetails extends JPanel implements EditBox{
 		
 		jtf_tel = new JTextField();
 		jtf_tel.setColumns(20);
-		
-		jta_bemerkung = new JTextArea();
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel_1.createSequentialGroup()
+			gl_panel_1.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel_1.createSequentialGroup()
 					.addContainerGap(27, Short.MAX_VALUE)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
-						.addComponent(jta_bemerkung, Alignment.LEADING)
-						.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING, false)
-							.addComponent(jtf_name, GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-							.addComponent(jtf_tel, GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)))
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(jtf_name, GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+						.addComponent(jtf_tel, GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		gl_panel_1.setVerticalGroup(
@@ -140,17 +182,13 @@ public class BoxElementContactDetails extends JPanel implements EditBox{
 					.addComponent(jtf_name, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(jtf_tel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(jta_bemerkung, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(131, Short.MAX_VALUE))
+					.addContainerGap(106, Short.MAX_VALUE))
 		);
 		panel_1.setLayout(gl_panel_1);
 		
 		JLabel lblName = new JLabel("Name");
 		
 		JLabel lblTel = new JLabel("Tel.");
-		
-		JLabel jl_bemerkung = new JLabel("Bemerkung");
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.TRAILING)
@@ -161,10 +199,7 @@ public class BoxElementContactDetails extends JPanel implements EditBox{
 							.addComponent(lblName, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE)
 							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(jl_bemerkung)
-							.addContainerGap(28, Short.MAX_VALUE))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(lblTel, GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+							.addComponent(lblTel, GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
 							.addGap(4))))
 		);
 		gl_panel.setVerticalGroup(
@@ -174,9 +209,7 @@ public class BoxElementContactDetails extends JPanel implements EditBox{
 					.addComponent(lblName)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(lblTel)
-					.addGap(7)
-					.addComponent(jl_bemerkung)
-					.addContainerGap(207, Short.MAX_VALUE))
+					.addContainerGap(108, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
 		setLayout(groupLayout);

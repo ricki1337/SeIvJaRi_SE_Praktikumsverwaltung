@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
 import ConfigParser.Debug;
 import Models.Datenbank.SqlTableContacts;
 import Views.Interfaces.BasicBox;

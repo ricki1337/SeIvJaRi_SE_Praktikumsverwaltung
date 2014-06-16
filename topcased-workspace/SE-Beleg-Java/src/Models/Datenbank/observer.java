@@ -1,7 +1,7 @@
 package Models.Datenbank;
 
-public interface observer{
+public interface Observer{
 
-	public void refresh(String[] changedTables);
+	public void refresh(String[] infoAboutChanged);
 
 }

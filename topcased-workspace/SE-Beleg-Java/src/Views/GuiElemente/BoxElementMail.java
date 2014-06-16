@@ -16,6 +16,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import ConfigParser.Config;
 import ConfigParser.Debug;
 import Views.Interfaces.BasicBox;
 import Views.Interfaces.MailBox;
@@ -29,14 +30,15 @@ public class BoxElementMail extends JPanel implements BasicBox, MouseListener, M
 		ArrayList<JCheckBox> berichtCheckBoxList = new ArrayList<JCheckBox>();
 		ArrayList<JCheckBox> senden = new ArrayList<JCheckBox>();
 		ArrayList<JTextField> txtfields = new ArrayList<JTextField>();
+		ArrayList<JLabel> statusList = new ArrayList<JLabel>();
 
-		JLabel Jm = new JLabel("email");
-		JTextField Jabs = new JTextField("s68551@htw-dresden.de");
-		JLabel Jp = new JLabel("passwort");
-		JPasswordField Jpw = new JPasswordField();
-		JLabel label= new JLabel();
-		JLabel label2= new JLabel();
-		JButton mailsenden = new JButton("Mail(s) senden");
+		JLabel Jm;
+		JTextField Jabs;
+		JLabel Jp;
+		JPasswordField Jpw;
+		JLabel label;
+		JLabel label2;
+		JButton mailsenden;
 		
 		String[] vornamenliste;
 		String[] nachnamenliste;
@@ -55,14 +57,20 @@ public class BoxElementMail extends JPanel implements BasicBox, MouseListener, M
 		this.controller = controller;
 		dataArray = controller.getMailData();   	
 		initComponents();
+		setComponentValues();
 		setToolTip();
     } 
 
 	@Override
 	public void initComponents() {
 		int anzahl = dataArray.length;
-    	
-    	
+		Jm = new JLabel("Absende E-Mail Adresse:");
+		Jabs = new JTextField();
+		Jp = new JLabel("Passwort:");
+		label= new JLabel();
+		label2= new JLabel();
+		Jpw = new JPasswordField();
+		mailsenden = new JButton("Mail(s) senden");
     	vornamenliste = new String[anzahl];
     	nachnamenliste = new String[anzahl];
     	matrklliste = new String[anzahl];
@@ -73,8 +81,7 @@ public class BoxElementMail extends JPanel implements BasicBox, MouseListener, M
     	zeugnisvorliegendliste = new boolean[anzahl];
     	recipientEmailList = new String[anzahl];
     	
-    	for (int i = 0; i < dataArray.length; i++)
-		{
+    	for (int i = 0; i < dataArray.length; i++){
 			
 		    vornamenliste[i]=dataArray[i][0];
     		nachnamenliste[i]=dataArray[i][1];
@@ -84,11 +91,12 @@ public class BoxElementMail extends JPanel implements BasicBox, MouseListener, M
     		betriebsliste[i]=dataArray[i][5];
     		berichtvorliegendliste[i]=Boolean.parseBoolean(dataArray[i][6]);
     		zeugnisvorliegendliste[i]=Boolean.parseBoolean(dataArray[i][7]);
-    		recipientEmailList[i]=dataArray[i][8];}
+    		recipientEmailList[i]=dataArray[i][8];
+    	}
     	
     	
     	 
-    	 setLayout( new GridLayout(/*3*/ 0, 6, 6, 3) );
+    	 setLayout( new GridLayout(/*3*/ 0, 7, 6, 3) );
     	 
     	 add(Jm);
          add(Jabs);
@@ -97,6 +105,8 @@ public class BoxElementMail extends JPanel implements BasicBox, MouseListener, M
          add(label);
          label2.setText(String.valueOf(anzahl));
          add(label2);
+         add(label2);
+         add(label2);
          
          
 
@@ -104,46 +114,51 @@ public class BoxElementMail extends JPanel implements BasicBox, MouseListener, M
     	JCheckBox jcb_zeugnis;
     	JCheckBox jcb_bericht;
     	JCheckBox jcb_send;
+    	JLabel jl_status;
     	
     	
     	for(int i=0;i<anzahl;i++){
     		
-    	add(new JLabel(vornamenliste[i]));
-    		 
-        add(new JLabel(nachnamenliste[i]));
-        
-        //bericht checkbox
-    	jcb_bericht = new JCheckBox("Bericht"); 
-    	jcb_bericht.addMouseListener(this);
-    	berichtCheckBoxList.add(jcb_bericht);
-    	add(jcb_bericht);
-    	if(berichtvorliegendliste[i])
-    		jcb_bericht.setSelected(true);
-    	else 
-    		jcb_bericht.setSelected(false);
-    	
-    	//Zeugnis checkbox 
-    	jcb_zeugnis = new JCheckBox("Zeugnis");
-    	jcb_zeugnis.addMouseListener(this);
-    	zeugnisCheckBoxList.add(jcb_zeugnis);
-    	add(jcb_zeugnis);
-    	if(zeugnisvorliegendliste[i])
-    		jcb_zeugnis.setSelected(true);
-    	else 
-    		jcb_zeugnis.setSelected(false);
-    	
-    	//empfänger
-    	jcb_empfaenger= new JTextField(recipientEmailList[i]+"@htw-dresden.de");
-    	txtfields.add(jcb_empfaenger);
-    	add(jcb_empfaenger);
-    	
-    	//senden
-    	jcb_send = new JCheckBox("senden");
-    	jcb_send.addMouseListener(this);
-    	jcb_send.setSelected(true);
-    	senden.add(jcb_send);
-    	add(jcb_send);
-    	
+	    	add(new JLabel(vornamenliste[i]));
+	    		 
+	        add(new JLabel(nachnamenliste[i]));
+	        
+	        //bericht checkbox
+	    	jcb_bericht = new JCheckBox("Bericht"); 
+	    	jcb_bericht.addMouseListener(this);
+	    	berichtCheckBoxList.add(jcb_bericht);
+	    	add(jcb_bericht);
+	    	if(berichtvorliegendliste[i])
+	    		jcb_bericht.setSelected(true);
+	    	else 
+	    		jcb_bericht.setSelected(false);
+	    	
+	    	//Zeugnis checkbox 
+	    	jcb_zeugnis = new JCheckBox("Zeugnis");
+	    	jcb_zeugnis.addMouseListener(this);
+	    	zeugnisCheckBoxList.add(jcb_zeugnis);
+	    	add(jcb_zeugnis);
+	    	if(zeugnisvorliegendliste[i])
+	    		jcb_zeugnis.setSelected(true);
+	    	else 
+	    		jcb_zeugnis.setSelected(false);
+	    	
+	    	//empfänger
+	    	jcb_empfaenger= new JTextField(recipientEmailList[i]+"@htw-dresden.de");
+	    	txtfields.add(jcb_empfaenger);
+	    	add(jcb_empfaenger);
+	    	
+	    	//senden
+	    	jcb_send = new JCheckBox("senden");
+	    	jcb_send.addMouseListener(this);
+	    	jcb_send.setSelected(true);
+	    	senden.add(jcb_send);
+	    	add(jcb_send);
+	    	
+	    	// status
+	    	jl_status = new JLabel();
+	    	statusList.add(jl_status);
+	    	add(jl_status);
     	}
     
     	add(mailsenden);
@@ -177,6 +192,7 @@ public class BoxElementMail extends JPanel implements BasicBox, MouseListener, M
 
 	@Override
 	public String getSenderEmailAdress() {
+		Config.setProperties("emailAdress",Jabs.getText());
 		return Jabs.getText();
 	}
 
@@ -188,16 +204,21 @@ public class BoxElementMail extends JPanel implements BasicBox, MouseListener, M
 
 
 	@Override
-	public void setMailsSend(boolean status) {
-		if(status)
-			label.setText(("Mail erfolgreich gesendet"));
-		else 
-			label.setText(("Mail nicht gesendet"));
+	public void setMailSend(int statusLabelIndex, boolean status) {
+		JLabel label = statusList.get(statusLabelIndex);
+		if(status){
+			label.setText("erfolgreich gesendet");
+			label.setBackground(Color.GREEN);
+		}else {
+			label.setText("nicht gesendet");
+			label.setBackground(Color.RED);
+		}
 	}
 
 
 	@Override
 	public String getRecipientEmailAdress(int index) {
+		
 		return txtfields.get(index).getText();
 	}
 	
@@ -228,7 +249,10 @@ public class BoxElementMail extends JPanel implements BasicBox, MouseListener, M
 
 
 	@Override
-	public void setComponentValues() {}
+	public void setComponentValues() {
+		Jabs.setText(Config.getProperties("emailAdress"));
+		
+	}
 
 
 	@Override
@@ -237,4 +261,10 @@ public class BoxElementMail extends JPanel implements BasicBox, MouseListener, M
 
 	@Override
 	public void refreshContent() {}
+
+	@Override
+	public void setMailingStatus(String statusText) {
+		// TODO Auto-generated method stub
+		
+	}
 }

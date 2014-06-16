@@ -10,6 +10,7 @@ import Models.Table.EmptyObject;
 import Praktikumsverwaltung.Praktikumsverwaltung;
 import Views.GuiElemente.BoxElementBottomNavi;
 import Views.GuiElemente.BoxElementBottomNaviAbortSave;
+import Views.GuiElemente.BoxElementBottomNaviMailPrint;
 import Views.GuiElemente.BoxElementBottomNaviPrevSaveNext;
 import Views.GuiElemente.BoxElementContractDetails;
 import Views.GuiElemente.BoxElementContractDetailsCompany;
@@ -25,6 +26,7 @@ import Views.Interfaces.ContractDetailsProfNewBoxCtrl;
 import Views.Interfaces.ContractDetailsStudentBoxCtrl;
 import Views.Interfaces.ContractDetailsStudentNewBoxCtrl;
 import Views.Interfaces.NaviAbortSaveBoxCtrl;
+import Views.Interfaces.NaviMailPrintBoxCtrl;
 import Views.Interfaces.NaviPrevSaveNextBoxCtrl;
 import Views.Interfaces.EditBoxCtrl;
 
@@ -37,7 +39,8 @@ public class ContractSingle extends ControllerNew implements EditBoxCtrl,
 																CallbackSelectedValue,
 																ContractDetailsStudentNewBoxCtrl,
 																ContractDetailsCompanyNewBoxCtrl,
-																ContractDetailsProfNewBoxCtrl
+																ContractDetailsProfNewBoxCtrl, 
+																NaviMailPrintBoxCtrl
 																{
 	
 		private String srcSqlQuery = "SELECT " +
@@ -124,6 +127,7 @@ public class ContractSingle extends ControllerNew implements EditBoxCtrl,
 		
 		BoxElementBottomNavi navi = new BoxElementBottomNavi(this);
 		navi.addBoxToLeftSide(new BoxElementBottomNaviPrevSaveNext(this));
+		navi.addBoxToRightSide(new BoxElementBottomNaviMailPrint(this));
 		view.addComponentToView(navi);
 	}
 
@@ -357,6 +361,24 @@ public class ContractSingle extends ControllerNew implements EditBoxCtrl,
 	@Override
 	public String getPosSum() {
 		return String.valueOf(model.tableRowData.getRowCount());
+	}
+
+
+	@Override
+	public void buttonMailToClicked() {
+		Mailing newMailing = new Mailing(SqlTableContracts.TableNameDotId,model.tableRowData.getValueFromPosition(model.rowPosition, "ID"));
+		Praktikumsverwaltung.addFrameToForeground(newMailing);
+	}
+
+
+	@Override
+	public void buttonPrintClicked() {
+		Print printDlg = new Print(SqlTableContracts.TableNameDotId,model.tableRowData.getValueFromPosition(model.rowPosition, "ID"));
+		printDlg.display();
+		//automatischer emailversand
+		Mailing newMailing = new Mailing(SqlTableContracts.TableNameDotId,model.tableRowData.getValueFromPosition(model.rowPosition, "ID"));
+		Praktikumsverwaltung.addFrameToForeground(newMailing);
+		
 	}
 
 

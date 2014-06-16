@@ -110,6 +110,7 @@ public class StudentSingle extends ControllerNew implements EditBoxCtrl, NaviAbo
 	@Override
 	public void buttonAbortClicked() {
 		view.dispose();
+		model.modelClose();
 	}
 
 

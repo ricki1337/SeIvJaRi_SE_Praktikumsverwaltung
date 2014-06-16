@@ -1,6 +1,5 @@
 package Views.Interfaces;
 
-import java.awt.event.MouseListener;
 
 public interface EditBoxCtrl extends BasicBoxCtrl{
 	public void setElementsForNewData();

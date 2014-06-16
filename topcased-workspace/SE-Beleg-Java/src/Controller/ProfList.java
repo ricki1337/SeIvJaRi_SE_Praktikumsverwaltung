@@ -7,6 +7,7 @@ import Models.Datenbank.SqlTableProfs;
 import Praktikumsverwaltung.Praktikumsverwaltung;
 import Views.GuiElemente.BoxElementBottomNavi;
 import Views.GuiElemente.BoxElementBottomNaviAbortSelect;
+import Views.GuiElemente.BoxElementBottomNaviEdit;
 import Views.GuiElemente.BoxElementBottomNaviEditMailPrint;
 import Views.GuiElemente.BoxElementBottomNaviMark;
 import Views.GuiElemente.BoxElementTable;
@@ -14,6 +15,7 @@ import Views.GuiElemente.BoxElementSearchMenu;
 import Views.GuiElemente.SearchPanel.BoxElementExtendedSearchProf;
 import Views.Interfaces.BasicBoxCtrl;
 import Views.Interfaces.NaviAbortSelectBoxCtrl;
+import Views.Interfaces.NaviEditBoxCtrl;
 import Views.Interfaces.NaviEditMailPrintBoxCtrl;
 import Views.Interfaces.NaviMarkBoxCtrl;
 import Views.Interfaces.ExtendedSearchBoxCtrl;
@@ -24,8 +26,9 @@ public class ProfList extends ControllerNew implements BasicBoxCtrl,
 														TableBoxCtrl, 
 														SearchBoxCtrl, 
 														ExtendedSearchBoxCtrl, 
-														NaviEditMailPrintBoxCtrl, 
-														NaviMarkBoxCtrl, NaviAbortSelectBoxCtrl{
+														NaviEditBoxCtrl, 
+														NaviMarkBoxCtrl, 
+														NaviAbortSelectBoxCtrl{
 	
 	private String srcSqlQuery = "select " +
 									SqlTableProfs.Name + " as Name, " +
@@ -74,7 +77,7 @@ public class ProfList extends ControllerNew implements BasicBoxCtrl,
 		table = new BoxElementTable(this);
 		view.addComponentToView(table);
 		BoxElementBottomNavi navi = new BoxElementBottomNavi(this);
-		navi.addBoxToRightSide(new BoxElementBottomNaviEditMailPrint(this));
+		navi.addBoxToRightSide(new BoxElementBottomNaviEdit(this));
 		navi.addBoxToLeftSide(new BoxElementBottomNaviMark(this));
 		view.addComponentToView(navi);
 	}
@@ -146,21 +149,14 @@ public class ProfList extends ControllerNew implements BasicBoxCtrl,
 
 	@Override
 	public void buttonEditClicked() {
-		Object[] profList = table.getColumnValuesFromSelectedRows("E-Mail");
+		Object[] profList;
+		if(table.getFlaggedRowCount() != 0)
+			profList = table.getColumnValuesFromFlaggedRows("E-Mail");
+		else
+			profList = table.getColumnValuesFromSelectedRows("E-Mail");
+		
 		ProfSingle newFrame = new ProfSingle(profList);
 		Praktikumsverwaltung.addFrameToForeground(newFrame);
-	}
-
-	@Override
-	public void buttonMailToClicked() {
-		// TODO
-		
-	}
-
-	@Override
-	public void buttonPrintClicked() {
-		// TODO
-		
 	}
 
 	@Override

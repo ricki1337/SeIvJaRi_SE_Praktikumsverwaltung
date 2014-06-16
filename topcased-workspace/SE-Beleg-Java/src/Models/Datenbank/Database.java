@@ -17,12 +17,12 @@ public class Database
 	private String dbUser = null;
 	
 	
-	private Vector<observer> observerList;
+	private Vector<Observer> observerList;
 	
 	protected ArrayList<String> tables;
 
 	private Database (){
-		observerList = new Vector<observer>();
+		observerList = new Vector<Observer>();
 		tables = new ArrayList<String>();
 	}
 	
@@ -41,12 +41,12 @@ public class Database
 			observerList.elementAt(i).refresh(changedTables);
 	}
 	
-	public void login(observer observer)
+	public void login(Observer observer)
 	{
 		observerList.add(observer);
 	}
 	
-	public void logout(observer observer)
+	public void logout(Observer observer)
 	{
 		observerList.remove(observer);
 	}

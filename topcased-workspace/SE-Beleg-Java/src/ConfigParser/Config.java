@@ -7,8 +7,6 @@ import java.io.Reader;
 import java.io.Writer;
 import java.util.Properties;
 
-import org.xml.sax.ErrorHandler;
-
 import Controller.ErrorManager;
 
 

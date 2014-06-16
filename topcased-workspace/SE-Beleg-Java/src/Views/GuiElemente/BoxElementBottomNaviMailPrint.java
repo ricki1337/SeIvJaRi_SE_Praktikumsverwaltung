@@ -10,11 +10,9 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-import javax.swing.LayoutStyle.ComponentPlacement;
 
 import ConfigParser.Debug;
 import Views.Interfaces.BasicBox;
-import Views.Interfaces.BasicBoxCtrl;
 import Views.Interfaces.NaviMailPrintBoxCtrl;
 
 public class BoxElementBottomNaviMailPrint extends JPanel implements BasicBox, MouseListener {

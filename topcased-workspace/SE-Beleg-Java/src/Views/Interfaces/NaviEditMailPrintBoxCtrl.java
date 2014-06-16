@@ -1,7 +1,6 @@
 package Views.Interfaces;
 
-public interface NaviEditMailPrintBoxCtrl {
-	public void buttonEditClicked();
+public interface NaviEditMailPrintBoxCtrl  extends NaviEditBoxCtrl{
 	public void buttonMailToClicked();
 	public void buttonPrintClicked();
 }

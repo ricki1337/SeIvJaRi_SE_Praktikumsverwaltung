@@ -10,17 +10,19 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 import ConfigParser.Debug;
 import Views.Interfaces.BasicBox;
-import Views.Interfaces.NaviMarkBoxCtrl;
+import Views.Interfaces.NaviAbortSaveBoxCtrl;
+import Views.Interfaces.NaviAbortSendMailBoxCtrl;
 
-public class BoxElementBottomNaviMark extends JPanel implements BasicBox , MouseListener{
-	JButton jbn_mark;
+public class BoxElementBottomNaviAbortSendMail extends JPanel implements BasicBox, MouseListener {
+	private JButton jb_sendmail;
+	private JButton jb_abbrechen;
+	private NaviAbortSendMailBoxCtrl controller;
 	
-	private NaviMarkBoxCtrl controller;
-	
-	public BoxElementBottomNaviMark(NaviMarkBoxCtrl controller){
+	public BoxElementBottomNaviAbortSendMail(NaviAbortSendMailBoxCtrl controller){
 		this.controller = controller;
 		initComponents();
 		setComponentNames();
@@ -30,14 +32,14 @@ public class BoxElementBottomNaviMark extends JPanel implements BasicBox , Mouse
 	
 	@Override
 	public void setComponentNames() {
-		jbn_mark.setName("mark");
-	
+		jb_sendmail.setName("sendmail");
+		jb_abbrechen.setName("close");
 	}
 
 	@Override
 	public void setComponentEventHandler() {
-		jbn_mark.addMouseListener(this);
-	
+		jb_sendmail.addMouseListener(this);
+		jb_abbrechen.addMouseListener(this);
 	}
 
 	@Override
@@ -47,33 +49,44 @@ public class BoxElementBottomNaviMark extends JPanel implements BasicBox , Mouse
 
 	@Override
 	public void initComponents() {
-		jbn_mark = new JButton("markierte ausw\u00E4hlen");
+		jb_sendmail = new JButton("senden");
+		
+		jb_abbrechen = new JButton("abbrechen");
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(jbn_mark)
-					.addContainerGap(339, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addContainerGap(313, Short.MAX_VALUE)
+					.addComponent(jb_abbrechen)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(jb_sendmail))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(jbn_mark)
-					.addContainerGap(266, Short.MAX_VALUE))
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(jb_sendmail)
+						.addComponent(jb_abbrechen)))
 		);
 		setLayout(groupLayout);
 		
 	}
 	
+	@Override
+	public void setComponentValues() {}
 	
+	@Override
+	public void refreshContent() {}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if(e.getComponent() == jbn_mark)
-			controller.buttonMarkClicked();
-		
+		if(e.getComponent() == jb_sendmail){
+			controller.buttonSendMailClicked();
+		}
+		if(e.getComponent() == jb_abbrechen){
+			controller.buttonAbortClicked();
+		}
 	}
 	
 	public void setToolTip(){
@@ -83,12 +96,6 @@ public class BoxElementBottomNaviMark extends JPanel implements BasicBox , Mouse
 		}
 	}
 
-	@Override
-	public void setComponentValues() {}
-	
-	@Override
-	public void refreshContent() {}
-	
 	@Override
 	public void mouseEntered(MouseEvent e) {}
 

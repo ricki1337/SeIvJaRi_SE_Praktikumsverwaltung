@@ -9,20 +9,19 @@ import Models.Datenbank.SqlTableContracts;
 import Models.Datenbank.SqlTableProfs;
 import Models.Datenbank.SqlTableStudent;
 import Models.Filter.IntFilter;
-import Models.Filter.SqlListFilter;
 import Models.Filter.StringFilter;
 import Praktikumsverwaltung.Praktikumsverwaltung;
 import Views.GuiElemente.BoxElementBottomNavi;
 import Views.GuiElemente.BoxElementBottomNaviEditMailPrint;
 import Views.GuiElemente.BoxElementBottomNaviMark;
-import Views.GuiElemente.BoxElementTable;
 import Views.GuiElemente.BoxElementSearchMenu;
+import Views.GuiElemente.BoxElementTable;
 import Views.GuiElemente.SearchPanel.BoxElementExtendedSearchContracts;
 import Views.Interfaces.BasicBoxCtrl;
 import Views.Interfaces.ExtendedContractsSearchBoxCtrl;
+import Views.Interfaces.ExtendedSearchBoxCtrl;
 import Views.Interfaces.NaviEditMailPrintBoxCtrl;
 import Views.Interfaces.NaviMarkBoxCtrl;
-import Views.Interfaces.ExtendedSearchBoxCtrl;
 import Views.Interfaces.SearchBoxCtrl;
 import Views.Interfaces.TableBoxCtrl;
 
@@ -148,21 +147,40 @@ public class ContractList extends ControllerNew implements 	BasicBoxCtrl,
 
 	@Override
 	public void buttonEditClicked() {
-		Object[] contractList = table.getColumnValuesFromSelectedRows("ID");
+		Object[] contractList;
+		if(table.getFlaggedRowCount() != 0)
+			contractList = table.getColumnValuesFromFlaggedRows("ID");
+		else
+			contractList = table.getColumnValuesFromSelectedRows("ID");
+		
 		ContractSingle newFrame = new ContractSingle(contractList);
 		Praktikumsverwaltung.addFrameToForeground(newFrame);
 	}
 
 	@Override
 	public void buttonMailToClicked() {
-		// TODO
+		Object[] contractListForMailing;
+		if(table.getFlaggedRowCount() != 0)
+			contractListForMailing = table.getColumnValuesFromFlaggedRows("ID");
+		else
+			contractListForMailing = table.getColumnValuesFromSelectedRows("ID");
 		
+		Mailing newMailing = new Mailing(SqlTableContracts.TableNameDotId,contractListForMailing);
+		Praktikumsverwaltung.addFrameToForeground(newMailing);
 	}
 
 	@Override
 	public void buttonPrintClicked() {
-		// TODO
+		Object[] contractListForPrint;
+		if(table.getFlaggedRowCount() != 0)
+			contractListForPrint = table.getColumnValuesFromFlaggedRows("ID");
+		else
+			contractListForPrint = table.getColumnValuesFromSelectedRows("ID");
 		
+		Print printDlg = new Print(SqlTableContracts.TableNameDotId,contractListForPrint);
+		printDlg.display();
+		
+		buttonMailToClicked();
 	}
 
 	@Override
