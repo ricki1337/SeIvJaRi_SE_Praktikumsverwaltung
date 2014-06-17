@@ -106,12 +106,12 @@ public class MailSender
 		
 			 message.setRecipients(Message.RecipientType.TO, addresses);
 			 //Betreff
-			 message.setSubject("Betreff");
+			 message.setSubject("Praktikumsvertrag");
 			  
 			 BodyPart messageBodyPart = new MimeBodyPart();
 	
 			 //Inhalt
-			 messageBodyPart.setText("hi");
+			 messageBodyPart.setText("Sehr geehrte Damen und Herren,\n hiermit senden wir Ihnen die Empfehlung über die Anerkennung des praktischen Studiensemesters zu. Mit freundlichen Gr\u00FC\u00DFen, ");
 	
 			 Multipart multipart = new MimeMultipart();
 			 multipart.addBodyPart(messageBodyPart);
