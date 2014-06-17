@@ -1,5 +1,6 @@
 package Controller;
 
+import Controller.Interfaces.CallbackSelectedValue;
 import Models.Datenbank.SqlTableCompanies;
 import Models.Datenbank.SqlTableContacts;
 import Models.Filter.IntFilter;
@@ -20,7 +21,8 @@ import Views.Interfaces.NaviPrevSaveNextBoxCtrl;
 public class CompanySingle extends ControllerNew implements 	EditBoxCtrl, 
 																NaviAbortSaveBoxCtrl, 
 																NaviPrevSaveNextBoxCtrl, 
-																CompanyDetailsContactCtrl, 
+																CompanyDetailsContactCtrl,
+																CallbackSelectedValue,
 																CompanyContactDetailsBoxCtrl{
 	
 		private String srcSqlQuery = "select " +
@@ -46,6 +48,8 @@ public class CompanySingle extends ControllerNew implements 	EditBoxCtrl,
 		
 		private Views.ViewNew view;
 		private Models.Model contactModel;
+		private CallbackSelectedValue callbackselectedvaluecontroller;
+		private BoxElementCompanyContactDetails companyContactDetailsBox;
 	
 	public CompanySingle(){
 		setModel(new Models.Model(SqlTableCompanies.tableName,SqlTableCompanies.PrimaryKey));
@@ -82,7 +86,7 @@ public class CompanySingle extends ControllerNew implements 	EditBoxCtrl,
 	@Override
 	public void setElements() {
 		BoxElementCompanyDetails companyDetailsBox = new BoxElementCompanyDetails(this);
-		BoxElementCompanyContactDetails companyContactDetailsBox = new BoxElementCompanyContactDetails(this);
+		companyContactDetailsBox = new BoxElementCompanyContactDetails(this);
 		companyContactDetailsBox.setContactNaviBox(new BoxElementCompanyContactDetailsNav(this));
 		companyDetailsBox.setContactBox(companyContactDetailsBox);
 		view.addComponentToView(companyDetailsBox);
@@ -201,7 +205,11 @@ public class CompanySingle extends ControllerNew implements 	EditBoxCtrl,
 
 	@Override
 	public void buttonCompanyContactAddNewClicked() {
-		Praktikumsverwaltung.addFrameToForeground(new ContactSingle(getIntValueForBoxElementEdit(SqlTableCompanies.PrimaryKey)));
+		ContactSingle cs = new ContactSingle(getIntValueForBoxElementEdit(SqlTableCompanies.PrimaryKey));
+		Praktikumsverwaltung.addFrameToForeground(cs);
+		cs.setCallbackvalueController(this);
+		//callback controller
+		
 	}
 
 
@@ -214,5 +222,16 @@ public class CompanySingle extends ControllerNew implements 	EditBoxCtrl,
 	@Override
 	public String getPosSum() {
 		return String.valueOf(model.tableRowData.getRowCount());
+	}
+
+
+	@Override
+	public void setSelectedValue(String valueName, Object value) {
+		companyContactDetailsBox.refreshContent();
+		
+	}
+	
+	public void setCallbackSelectedValueControler(CallbackSelectedValue controller){
+		this.callbackselectedvaluecontroller = controller;
 	}
 }

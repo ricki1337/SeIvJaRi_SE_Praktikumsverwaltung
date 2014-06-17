@@ -1,5 +1,6 @@
 package Controller;
 
+import Controller.Interfaces.CallbackSelectedValue;
 import Models.Datenbank.SqlTableContacts;
 import Models.Filter.StringFilter;
 import Views.GuiElemente.BoxElementBottomNavi;
@@ -10,7 +11,7 @@ import Views.Interfaces.NaviAbortSaveBoxCtrl;
 import Views.Interfaces.NaviPrevSaveNextBoxCtrl;
 import Views.Interfaces.EditBoxCtrl;
 
-public class ContactSingle extends ControllerNew implements EditBoxCtrl, NaviAbortSaveBoxCtrl, NaviPrevSaveNextBoxCtrl{
+public class ContactSingle extends ControllerNew implements EditBoxCtrl, NaviAbortSaveBoxCtrl, NaviPrevSaveNextBoxCtrl {
 	
 	private String srcSqlQuery = "select " +
 									SqlTableContacts.TableNameDotId + " as ID, " +
@@ -21,9 +22,10 @@ public class ContactSingle extends ControllerNew implements EditBoxCtrl, NaviAbo
 								" from " +
 									SqlTableContacts.tableName;
 	
-	
+	private CallbackSelectedValue cs;
 	private Views.ViewNew view;
 	private int companyId = -1;
+
 	
 	public ContactSingle(int companyId){
 		this.companyId = companyId;
@@ -118,6 +120,7 @@ public class ContactSingle extends ControllerNew implements EditBoxCtrl, NaviAbo
 	public void buttonSaveClicked() {
 		model.insertIntoDatabase();
 		view.modelHasChanged();
+		cs.setSelectedValue(null, null);
 	}
 	
 	@Override
@@ -148,4 +151,9 @@ public class ContactSingle extends ControllerNew implements EditBoxCtrl, NaviAbo
 	public String getPosSum() {
 		return String.valueOf(model.tableRowData.getRowCount());
 	}
+	
+	public void setCallbackvalueController(CallbackSelectedValue cs){
+		this.cs = cs;
+	}
+
 }

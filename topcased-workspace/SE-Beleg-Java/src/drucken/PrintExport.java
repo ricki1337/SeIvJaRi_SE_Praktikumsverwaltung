@@ -17,6 +17,7 @@ import java.util.Map;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
 
+import freemarker.cache.StringTemplateLoader;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateExceptionHandler;
@@ -61,9 +62,9 @@ public class PrintExport {
 		cfg.setLocale(Locale.GERMANY);
 		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
 		
-		template = cfg.getTemplate("praktika.ftl");
-		
-		
+		//Template als String aus der Klasse PdfContent laden
+		template = new Template("name",new StringReader(PdfContent.getPdfContent()),new Configuration());
+
 	}
 
 

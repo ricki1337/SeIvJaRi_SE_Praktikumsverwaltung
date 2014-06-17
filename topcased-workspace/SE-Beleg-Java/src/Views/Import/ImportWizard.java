@@ -11,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 
 import Import.CsvImport;
 import Models.Datenbank.Database;
+import Models.Datenbank.SqlTableStudent;
 
 //vlt sollte ein Button "Typüberprüfung" eingefügt werden. Denn im Fehler fall weis man nicht welche daten nicht importiert wurden
 
@@ -371,7 +372,8 @@ public void actionPerformed(ActionEvent e) {
 				   
 				   if(!error){
 					  //Query bauen
-					   String sql = "INSERT INTO student " + "VALUES (" + MatrNr + ",\"" + Name + "\",\"" + Firstname +"\",\""+ Email + "\",\"" + StGr + "\",\"" + Note + "\")";
+					  
+					   String sql = "INSERT INTO " +  SqlTableStudent.tableName + " VALUES (" + MatrNr + ",\"" + Name + "\",\"" + Firstname +"\",\""+ Email + "\",\"" + StGr + "\",\"" + Note + "\")";
 					   this.logconsole.setText(logconsole.getText()+"\n"+sql);
 					   db.setQuery(sql);
 

@@ -58,8 +58,6 @@
 				</tbody>
 			</table>
 			<hr />
-			<h1 align="center">
-				<span style="font-family:lucida sans unicode,lucida grande,sans-serif;font-size: 36px;">${title}</span></h1>
 			<h2 align="center">
 				<span style="font-family:lucida sans unicode,lucida grande,sans-serif;font-size: 20.0px;"><strong>${headline}</strong></span></h2>
 			
