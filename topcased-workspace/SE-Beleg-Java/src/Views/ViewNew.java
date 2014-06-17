@@ -3,14 +3,20 @@ package Views;
 
 
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.AbstractAction;
+import javax.swing.ActionMap;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.InputMap;
 import javax.swing.JComponent;
 import javax.swing.JInternalFrame;
+import javax.swing.KeyStroke;
 import javax.swing.WindowConstants;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
@@ -38,9 +44,22 @@ public class ViewNew extends JInternalFrame implements UpdateView{
 		listOfallComponentsOnView = new ArrayList<BasicBox>();
 			
 		setCloseOperation();
-		
+		setCloseOnEscapeKey();
 		contentBox = new Box( BoxLayout.Y_AXIS );
 		this.add(contentBox);
+	}
+	
+	private void setCloseOnEscapeKey(){
+		final ViewNew instance = this;
+		String cancelName = "cancel";
+        InputMap inputMap = getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), cancelName);
+        ActionMap actionMap = getRootPane().getActionMap();
+        actionMap.put(cancelName, new AbstractAction() {
+            public void actionPerformed(ActionEvent e) {
+            	instance.controller.close();
+            }
+        });
 	}
 	
 	private void setCloseOperation(){

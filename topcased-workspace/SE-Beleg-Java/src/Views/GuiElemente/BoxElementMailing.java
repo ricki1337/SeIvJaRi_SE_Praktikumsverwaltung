@@ -15,6 +15,7 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -35,14 +36,6 @@ public class BoxElementMailing extends JPanel implements BasicBox, MouseListener
 		ArrayList<JTextField> txtfields = new ArrayList<JTextField>();
 		ArrayList<JLabel> statusList = new ArrayList<JLabel>();
 
-//		JLabel Jm;
-//		JTextField Jabs;
-//		JLabel Jp;
-//		JPasswordField Jpw;
-//		JLabel label;
-//		JLabel label2;
-//		JButton mailsenden;
-		
 		String[] vornamenliste;
 		String[] nachnamenliste;
 		String[] matrklliste;
@@ -79,7 +72,7 @@ public class BoxElementMailing extends JPanel implements BasicBox, MouseListener
 		jp_maildata = new JPanel();
 		
 		jtf_absender = new JTextField();
-		jtf_absender.setColumns(10);
+		jtf_absender.setColumns(40);
 		
 		JLabel jl_absender = new JLabel("E-Mail Absender:");
 		
@@ -94,7 +87,7 @@ public class BoxElementMailing extends JPanel implements BasicBox, MouseListener
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(jp_maildata, GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)
+						.addComponent(jp_maildata, GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
 								.addComponent(jl_password, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -103,13 +96,13 @@ public class BoxElementMailing extends JPanel implements BasicBox, MouseListener
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
 								.addComponent(jpw_password)
 								.addComponent(jtf_absender, GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))
-							.addPreferredGap(ComponentPlacement.RELATED, 261, Short.MAX_VALUE)
-							.addComponent(jl_mailStatus)))
+							.addGap(18)
+							.addComponent(jl_mailStatus, GroupLayout.PREFERRED_SIZE, 289, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(jl_absender)
@@ -119,9 +112,9 @@ public class BoxElementMailing extends JPanel implements BasicBox, MouseListener
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(jl_password)
 						.addComponent(jpw_password, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-					.addComponent(jp_maildata, GroupLayout.PREFERRED_SIZE, 258, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
+					.addGap(26)
+					.addComponent(jp_maildata, GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+					.addGap(17))
 		);
 		setLayout(groupLayout);
         
@@ -213,9 +206,9 @@ public class BoxElementMailing extends JPanel implements BasicBox, MouseListener
     	JCheckBox jcb_send;
     	JLabel jl_status;
     	
-    	
     	for(int i=0;i<anzahl;i++){
-    		
+    		JPanel mailData = new JPanel();
+    		mailData.setLayout(new GridLayout(0, 7, 6, 3));
     		jp_maildata.add(new JLabel(vornamenliste[i]));
 	    		 
     		jp_maildata.add(new JLabel(nachnamenliste[i]));

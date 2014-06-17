@@ -32,16 +32,6 @@ public class TableColumnNames {
 	}
 	
 	public Object[] getColumnAliasNames(){
-
-//		String [] columnAliasNames;
-//		columnAliasNames  = new  String[columnTableList.size()];
-//		
-//		for (int i=0;i<columnTableList.size(); i++ ){
-//			//columnAliasNames[i]=columnTableList.get(i);
-//			columnAliasNames[i]=columnAliasList.get(i);
-//		}
-		
-		//return columnAliasNames;
 		return columnAliasList.toArray();
 	}
 	
@@ -57,10 +47,6 @@ public class TableColumnNames {
 		return columnNames;
 	}
 	
-//	public Object[] getColumnNames(){
-//		return columnNameList.toArray();
-//	}
-	
 	public int getColumnAliasNameIndex(String column){
 		return columnAliasList.indexOf(column);
 	}
@@ -69,9 +55,14 @@ public class TableColumnNames {
 		return columnNameList.indexOf(column);
 	}
 	
+	public int getColumnTableNameIndex(String column){
+		return columnTableList.indexOf(column);
+	}
+	
 	public int getColumnIndex(String columnName){
 		int columnIndex = getColumnAliasNameIndex(columnName);
 		if(columnIndex == -1) columnIndex = getColumnNameIndex(columnName);
+		if(columnIndex == -1) columnIndex = getColumnTableNameIndex(columnName);
 		return columnIndex;
 	}
 	

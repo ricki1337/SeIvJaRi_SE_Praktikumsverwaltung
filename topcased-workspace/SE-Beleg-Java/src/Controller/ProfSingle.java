@@ -117,7 +117,7 @@ public class ProfSingle extends ControllerNew implements EditBoxCtrl, NaviAbortS
 	
 	@Override
 	public void buttonSaveChangesClicked() {
-		model.updateDatabase();
+		model.updateDatabaseAndInformOtherModels();
 	}
 
 	@Override

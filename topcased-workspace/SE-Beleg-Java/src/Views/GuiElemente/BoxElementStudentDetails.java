@@ -50,22 +50,22 @@ public class BoxElementStudentDetails extends JPanel implements EditBox{
 	
 	@Override
 	public void setComponentNames() {
-		jtf_matrikelnr.setName(SqlTableStudent.MatrikelNummer);
-		jtf_firstname.setName(SqlTableStudent.Vorname);
-		jtf_name.setName(SqlTableStudent.Nachname);
-		jtf_stgr.setName(SqlTableStudent.Studiengruppe);
-		jtf_mail.setName(SqlTableStudent.EMail);
-		jta_note.setName(SqlTableStudent.Bemerkung);
+		jtf_matrikelnr.setName(SqlTableStudent.TableNameDotMatrikelNummer);
+		jtf_firstname.setName(SqlTableStudent.TableNameDotVorname);
+		jtf_name.setName(SqlTableStudent.TableNameDotNachname);
+		jtf_stgr.setName(SqlTableStudent.TableNameDotStudiengruppe);
+		jtf_mail.setName(SqlTableStudent.TableNameDotEMail);
+		jta_note.setName(SqlTableStudent.TableNameDotBemerkung);
 	}
 
 	@Override
 	public void setComponentValues() {
-		jtf_matrikelnr.setText(parent.getStringValueForBoxElementEdit(SqlTableStudent.MatrikelNummer));
-		jtf_firstname.setText(parent.getStringValueForBoxElementEdit(SqlTableStudent.Vorname));
-		jtf_name.setText(parent.getStringValueForBoxElementEdit(SqlTableStudent.Nachname));
-		jtf_stgr.setText(parent.getStringValueForBoxElementEdit(SqlTableStudent.Studiengruppe));
-		jtf_mail.setText(parent.getStringValueForBoxElementEdit(SqlTableStudent.EMail));
-		jta_note.setText(parent.getStringValueForBoxElementEdit(SqlTableStudent.Bemerkung));
+		jtf_matrikelnr.setText(parent.getStringValueForBoxElementEdit(SqlTableStudent.TableNameDotMatrikelNummer));
+		jtf_firstname.setText(parent.getStringValueForBoxElementEdit(SqlTableStudent.TableNameDotVorname));
+		jtf_name.setText(parent.getStringValueForBoxElementEdit(SqlTableStudent.TableNameDotNachname));
+		jtf_stgr.setText(parent.getStringValueForBoxElementEdit(SqlTableStudent.TableNameDotStudiengruppe));
+		jtf_mail.setText(parent.getStringValueForBoxElementEdit(SqlTableStudent.TableNameDotEMail));
+		jta_note.setText(parent.getStringValueForBoxElementEdit(SqlTableStudent.TableNameDotBemerkung));
 	}
 
 	@Override

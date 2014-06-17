@@ -73,6 +73,20 @@ public class Database
 	}
 
 	
+	public int setQueryandInformModels(String query) {
+		int tmp = 0;
+		try{
+			tmp = this.db.setQuery(query);
+		}
+		catch(Exception e){
+			ErrorManager errorManager = new ErrorManager(e);
+			if(errorManager.retry)
+				tmp = setQueryandInformModels(query);
+		}
+		informModels(getChangedTables(query));
+		return tmp; 
+	}
+	
 	public int setQuery(String query) {
 		int tmp = 0;
 		try{
@@ -83,7 +97,6 @@ public class Database
 			if(errorManager.retry)
 				tmp = setQuery(query);
 		}
-		informModels(getChangedTables(query));
 		return tmp; 
 	}
 	

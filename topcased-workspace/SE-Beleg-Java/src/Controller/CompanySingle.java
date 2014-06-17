@@ -151,7 +151,7 @@ public class CompanySingle extends ControllerNew implements 	EditBoxCtrl,
 	
 	@Override
 	public void buttonSaveChangesClicked() {
-		model.updateDatabase();
+		model.updateDatabaseAndInformOtherModels();
 	}
 
 	@Override

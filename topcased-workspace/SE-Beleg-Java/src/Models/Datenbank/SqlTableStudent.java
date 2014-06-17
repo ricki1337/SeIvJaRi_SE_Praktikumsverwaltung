@@ -6,7 +6,7 @@ public class SqlTableStudent extends Object{
 	
 	public static final String PrimaryKey = new String("MatrNr");
 	public static final String MatrikelNummer = new String("MatrNr");
-	public static final String Vorname = new String("Firstname");
+	public static final String Vorname = new String("FirstName");
 	public static final String Nachname = new String("Name");
 	public static final String EMail = new String("Email");
 	public static final String Studiengruppe = new String("StGr");

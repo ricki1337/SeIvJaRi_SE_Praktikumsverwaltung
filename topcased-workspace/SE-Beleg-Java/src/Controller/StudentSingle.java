@@ -122,7 +122,7 @@ public class StudentSingle extends ControllerNew implements EditBoxCtrl, NaviAbo
 	
 	@Override
 	public void buttonSaveChangesClicked() {
-		model.updateDatabase();
+		model.updateDatabaseAndInformOtherModels();
 	}
 
 	@Override

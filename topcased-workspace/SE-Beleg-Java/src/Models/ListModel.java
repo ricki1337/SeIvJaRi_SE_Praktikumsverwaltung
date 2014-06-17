@@ -35,12 +35,13 @@ public class ListModel extends Model{
 				metaData = result.getMetaData();
 	
 				for(String columnName:columnNames){
+					if(columnName.startsWith(".") || !columnName.contains(".")) continue;
 					for(int index = 1; index <= metaData.getColumnCount(); index++){
 						String currentColumn = (metaData.getTableName(index) + '.' + metaData.getColumnName(index)).toLowerCase();
 						
 						if(currentColumn.startsWith(".")) continue;
 						
-						if (columnName.toLowerCase().equals(currentColumn)) {
+						if (columnName.toLowerCase().equals(currentColumn.toLowerCase())) {
 							if(getSqlResultColumnNamesClassType(columnName.toLowerCase()).equals("java.lang.Boolean")) continue;
 							
 							StringFilter filter = new StringFilter(searchValue);
@@ -52,7 +53,6 @@ public class ListModel extends Model{
 					}
 				}
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
@@ -111,7 +111,7 @@ public class ListModel extends Model{
 			ResultSetMetaData metaData = result.getMetaData();
 			
 			for(int index = 1; index <= metaData.getColumnCount();index++){
-				if((metaData.getTableName(index) + '.' + metaData.getColumnName(index).toLowerCase()).equals(columnName)){
+				if((metaData.getTableName(index) + '.' + metaData.getColumnName(index)).toLowerCase().equals(columnName)){
 					return metaData.getColumnClassName(index);
 				}
 			}
@@ -137,8 +137,6 @@ public class ListModel extends Model{
 			for(int index = 1; index <= metaData.getColumnCount();index++){
 				columnNames[index-1] = (metaData.getColumnName(index));
 			}
-			
-			
 		}catch(SQLException exception){
 			exception.printStackTrace();
 		}
@@ -148,8 +146,7 @@ public class ListModel extends Model{
 	public void setOrder(int columnIndex, SortOrder direction){
 		String columnName = tableRowData.getColumnNames()[columnIndex];
 		if(columnName.startsWith(".")) return;
-		
-		
+	
 		this.order = " order by " + columnName + " " + (direction==SortOrder.ASCENDING?"asc":"desc") + " ";
 		setResult();
 		informView();

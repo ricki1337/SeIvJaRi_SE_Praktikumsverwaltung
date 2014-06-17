@@ -52,11 +52,11 @@ public class BoxElementBottomNaviPrevSaveNext extends JPanel implements BasicBox
 	}
 	
 	public void initComponents(){
-		jbn_previus = new JButton("<< vorheriger");
+		jbn_previus = new JButton("<<");
 		
 		jbn_save = new JButton("speichern");
 		
-		jbn_next = new JButton("n\u00E4chster >>");
+		jbn_next = new JButton(">>");
 		JLabel lblDatensatz = new JLabel("Datensatz:");
 		
 		jl_count = new JLabel("");

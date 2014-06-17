@@ -83,7 +83,9 @@ public class ContractSingle extends ControllerNew implements EditBoxCtrl,
 		model.setSrcQuery(srcSqlQuery);
 		model.setAndFilter(SqlTableContracts.TableNameDotPrimaryKey, new IntFilter(0));
 		model.setResult();
-		
+		for(int index=0;index < model.tableRowData.getTableData()[0].length;index++){
+			model.tableRowData.setValueAtPosition(model.rowPosition, index, new EmptyObject());
+		}
 		model.tableRowData.setValueAtPosition(model.rowPosition, "Typ", "");
 		model.tableRowData.setValueAtPosition(model.rowPosition, "beginnt am", "");
 		model.tableRowData.setValueAtPosition(model.rowPosition, "endet am", "");
@@ -192,11 +194,17 @@ public class ContractSingle extends ControllerNew implements EditBoxCtrl,
 	public void buttonSaveClicked() {
 		model.insertIntoDatabase();
 		view.modelHasChanged();
+		if(newData){
+			detailsBox.setStudentBox(new BoxElementContractDetailsStudentNew(this));
+			detailsBox.setCompanyBox(new BoxElementContractDetailsCompanyNew(this));
+			detailsBox.setProfBox(new BoxElementContractDetailsProfNew(this));
+		}
+			
 	}
 	
 	@Override
 	public void buttonSaveChangesClicked() {
-		model.updateDatabase();
+		model.updateDatabaseAndInformOtherModels();
 	}
 
 	@Override

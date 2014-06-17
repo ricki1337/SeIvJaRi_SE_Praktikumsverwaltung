@@ -136,8 +136,6 @@ public class Mailing extends ControllerNew implements 	BasicBoxCtrl,
 	@Override
 	public void setElements() {
 		view.setTitle("E-Mail senden");
-//		boxMail = new BoxElementMail(this);
-//		view.addComponentToView(boxMail);
 		
 		boxMail = new BoxElementMailing(this);
 		view.addComponentToView(boxMail);
@@ -283,16 +281,16 @@ public class Mailing extends ControllerNew implements 	BasicBoxCtrl,
 				    boxMail.setMailSend(i, sendStatus);
 					if(sendStatus){
 						queryString += "update "+ SqlTableContracts.tableName + " set " +
-								SqlTableContracts.Bericht + " = " + model.tableRowData.getBooleanValueFromPosition(i, "Bericht") + "," +
+								SqlTableContracts.Bericht + " = " + model.tableRowData.getBooleanValueFromPosition(i, "Bericht") + ", " +
 								SqlTableContracts.Zeugnis + " = " + model.tableRowData.getBooleanValueFromPosition(i, "Zeugnis") + 
 								" where "+ SqlTableContracts.Id + " = " + model.tableRowData.getStringValueFromPosition(i, "ID") +"; ";
-						
+						model.updateDatabase(queryString);
 						progressBox.refreshContent();
 					}
 					deletePdfFromLocalSystem(tmpPathForPDF);
 				}
         	}//ende der mail senden for schleife
-        	 model.updateDatabase(queryString);
+        	 
         } catch (Exception e) {
 			ErrorManager errorManager = new ErrorManager(e);
 			if(errorManager.retry)

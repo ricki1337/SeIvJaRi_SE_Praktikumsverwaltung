@@ -40,6 +40,13 @@ public abstract class ControllerNew {
 		return this.view;
 	}
 	
+	public void close(){
+		if(model != null)
+			model.modelClose();
+		if(view != null)
+			view.dispose();
+	}
+	
 	public abstract void display();
 	
 }

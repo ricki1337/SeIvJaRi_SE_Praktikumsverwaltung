@@ -373,7 +373,7 @@ public void actionPerformed(ActionEvent e) {
 					  //Query bauen
 					   String sql = "INSERT INTO student " + "VALUES (" + MatrNr + ",\"" + Name + "\",\"" + Firstname +"\",\""+ Email + "\",\"" + StGr + "\",\"" + Note + "\")";
 					   this.logconsole.setText(logconsole.getText()+"\n"+sql);
-					   db.setQuery(sql);
+					   db.setQueryandInformModels(sql);
 
 				   }
 			}

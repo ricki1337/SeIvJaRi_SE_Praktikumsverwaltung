@@ -162,7 +162,7 @@ public class Model implements Observer{
 			}
 	}
 	
-	public void updateDatabase(){
+	public void updateDatabaseAndInformOtherModels(){
 		String sqlTableName = getTableNameForUpdateOrInsert();
 		Object[][] newData = view.getInputValues();
 		
@@ -189,10 +189,18 @@ public class Model implements Observer{
 			primaryKeyValue = tableRowData.getStringValueFromPosition(rowPosition, index);
 			sqlUpdateQuery += " WHERE " + primaryKey + " = '" + primaryKeyValue+ "'";
 
-			updateDatabase(sqlUpdateQuery);		
+			updateDatabaseAndInformOtherModels(sqlUpdateQuery);		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}		
+	}
+	
+	public void updateDatabaseAndInformOtherModels(String sqlQuery){
+		db.setQueryandInformModels(sqlQuery);	
+	}
+	
+	public void updateDatabase(String sqlQuery){
+		db.setQuery(sqlQuery);	
 	}
 	
 	private String convertToString(Object value){
@@ -211,9 +219,7 @@ public class Model implements Observer{
 		return new String();
 	}
 	
-	public void updateDatabase(String sqlQuery){
-		db.setQuery(sqlQuery);	
-	}
+	
 	
 	public void insertIntoDatabase(){
 		String sqlTableName = getTableNameForUpdateOrInsert();
@@ -239,7 +245,23 @@ public class Model implements Observer{
 		}
 		sqlInsertQuery += sqlColumns + " VALUES " + sqlValues + ";";
 		
-		db.setQuery(sqlInsertQuery);		
+		db.setQueryandInformModels(sqlInsertQuery);		
+	}
+	
+	//TODO
+	protected String getNewPrimaryKeyValue(){
+		String newPrimaryKeyValue = new String();
+		Model model = new Model("select max("+ getPrimaryKeyColumnName() +") as lastPK FROM "+getTableNameForUpdateOrInsert(),getTableNameForUpdateOrInsert(),getPrimaryKeyColumnName());
+		int lastPK;
+		try {
+			lastPK = model.getResult().getInt("lastPK");
+			newPrimaryKeyValue = String.valueOf(lastPK++);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return newPrimaryKeyValue;
 	}
 	
 	protected String getPrimaryKeyColumnName(){
