@@ -11,7 +11,9 @@ import Views.Interfaces.NaviAbortSaveBoxCtrl;
 import Views.Interfaces.NaviPrevSaveNextBoxCtrl;
 import Views.Interfaces.EditBoxCtrl;
 
-public class ContactSingle extends ControllerNew implements EditBoxCtrl, NaviAbortSaveBoxCtrl, NaviPrevSaveNextBoxCtrl {
+public class ContactSingle extends ControllerNew implements EditBoxCtrl, 
+															NaviAbortSaveBoxCtrl, 
+															NaviPrevSaveNextBoxCtrl {
 	
 	private String srcSqlQuery = "select " +
 									SqlTableContacts.TableNameDotId + " as ID, " +

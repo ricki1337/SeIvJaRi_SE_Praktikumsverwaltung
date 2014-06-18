@@ -12,7 +12,6 @@ import javax.mail.MessagingException;
 import javax.mail.Multipart;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
@@ -145,7 +144,6 @@ public class MailSender
 		String[] observerInfo = new String[1];
 		observerInfo[0] = status;
 		observer.refresh(observerInfo);
-		System.out.println(status);
 		this.status = status;
 	}
 	

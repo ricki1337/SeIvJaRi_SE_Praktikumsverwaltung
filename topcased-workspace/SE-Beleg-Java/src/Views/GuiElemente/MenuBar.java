@@ -32,137 +32,116 @@ public class MenuBar implements ActionListener{
     JMenuBar menueLeiste;
     
     // Menüleiste Elemente
-    JMenu datei;
-    JMenu hilfe;
+    JMenu jm_datei;
+    JMenu jm_hilfe;
 
     // Datei
-    JMenuItem oeffnen;
-    JMenuItem importieren;
-    JMenuItem beenden;
-    
-    // Hilfe
-    JMenuItem faq;
-    JMenuItem about;
+    JMenuItem jmi_oeffnen;
+    JMenuItem jmi_importieren;
+    JMenuItem jmi_beenden;
     
     //Button
-    JButton		student;
-    JButton		firma;
-    JButton		vertrag;
-    JButton		betreuer;
+    JButton		jb_student;
+    JButton		jb_firma;
+    JButton		jb_vertrag;
+    JButton		jb_betreuer;
     
     //Label
-    JLabel label;
-    
-    ImageIcon img;
-    
+    JLabel jl_suchmaske;
+
     
     public MenuBar(){
     	
     	JSeparator separator = new JSeparator(SwingConstants.VERTICAL);
     	
-    	img = new ImageIcon("D:\\Programme\\Topcased-5.3.0\\workspace\\topcased-workspace\\bin\\ui\\db_ok_32.png");
-    	
     	//Buttons erzeugen
-        student = new JButton("Student");
-        student.setName("student");
-        student.addActionListener(this);
+        jb_student = new JButton("Student");
+        jb_student.setName("student");
+        jb_student.addActionListener(this);
         
-        firma = new JButton("Firma");
-        firma.setName("firma");
-        firma.addActionListener(this);
+        jb_firma = new JButton("Firma");
+        jb_firma.setName("firma");
+        jb_firma.addActionListener(this);
         
-        vertrag = new JButton("Vertrag");
-        vertrag.setName("vertrag");
-        vertrag.addActionListener(this);
+        jb_vertrag = new JButton("Vertrag");
+        jb_vertrag.setName("vertrag");
+        jb_vertrag.addActionListener(this);
         
-        betreuer = new JButton("Betreuer");
-        betreuer.setName("betreuer");
-        betreuer.addActionListener(this);
+        jb_betreuer = new JButton("Betreuer");
+        jb_betreuer.setName("betreuer");
+        jb_betreuer.addActionListener(this);
         
-        label = new JLabel();
-        label.setText("Suchmaske:    \t");
+        jl_suchmaske = new JLabel();
+        jl_suchmaske.setText("Suchmaske:    \t");
         
         // Menüleiste erzeugen
         menueLeiste = new JMenuBar();
         
         // Menüelemente erzeugen
-        datei = new JMenu("Datei");
-        hilfe = new JMenu("Hilfe");
+        jm_datei = new JMenu("Datei");
+        jm_hilfe = new JMenu("Hilfe");
         
         // Untermenüelemente erzeugen
-        oeffnen = new JMenuItem("öffnen");
-        oeffnen.addActionListener(this);
-        beenden = new JMenuItem("beenden");
-        beenden.addActionListener(this);
-        importieren = new JMenuItem("Studenten Importieren");
-        importieren.addActionListener(this);
-        faq = new JMenuItem("F.A.Q.");
-        faq.addActionListener(this);
-        about = new JMenuItem("Über");
-        about.addActionListener(this);
+        jmi_oeffnen = new JMenuItem("\u00D6ffnen");
+        jmi_oeffnen.addActionListener(this);
+        jmi_beenden = new JMenuItem("Beenden");
+        jmi_beenden.addActionListener(this);
+        jmi_importieren = new JMenuItem("Studenten importieren");
+        jmi_importieren.addActionListener(this);
         
         // Menüelemente hinzufügen
-        menueLeiste.add(datei);
-        //menueLeiste.add(hilfe);
+        menueLeiste.add(jm_datei);
         menueLeiste.add(separator);
-        menueLeiste.add(label);
-        menueLeiste.add(student);
-        menueLeiste.add(betreuer);
-        menueLeiste.add(vertrag);
-        menueLeiste.add(firma);
-        label.setIcon(img);
-        
-        
+        menueLeiste.add(jl_suchmaske);
+        menueLeiste.add(jb_student);
+        menueLeiste.add(jb_betreuer);
+        menueLeiste.add(jb_vertrag);
+        menueLeiste.add(jb_firma);
+
         // Untermenüelemente hinzufügen
-        //datei.add(oeffnen);
-        datei.add(importieren);
-        datei.add(beenden);
-        //hilfe.add(faq);
-        //hilfe.add(about);
+        jm_datei.add(jmi_importieren);
+        jm_datei.add(jmi_beenden);
         setToolTip();
     }
     
-    public JMenuBar getMenu(){return menueLeiste;}   	
+    public JMenuBar getMenu(){
+    	return menueLeiste;
+    }   	
+    
     public void setFrame(Praktikumsverwaltung frame){
     	this.frame = frame;
     }
 	
     
     public void actionPerformed(ActionEvent object) {
-        if (object.getSource() == student){
+        if (object.getSource() == jb_student){
         	Praktikumsverwaltung.addFrameToForeground(new StudentList());
        }
-        if (object.getSource() == firma){
+        if (object.getSource() == jb_firma){
         	Praktikumsverwaltung.addFrameToForeground(new CompanyList());
        }
-        if (object.getSource() == vertrag){
+        if (object.getSource() == jb_vertrag){
         	Praktikumsverwaltung.addFrameToForeground(new ContractList());
        }
-        if (object.getSource() == betreuer){
+        if (object.getSource() == jb_betreuer){
         	Praktikumsverwaltung.addFrameToForeground(new ProfList());
        }
     	
     	
-    	if (object.getSource() == importieren){
+    	if (object.getSource() == jmi_importieren){
             startImport();
        }
-        if (object.getSource() == beenden){
+        if (object.getSource() == jmi_beenden){
              Database db = Database.getInstance();
              db.disconnect();
              System.exit(0);
-        }
-        if (object.getSource() == faq){
-             System.out.println("faq wurde angeklickt");
-        }
-        if (object.getSource() == about){
-             System.out.println("über wurde angeklickt");
         }
    }
     
     private void startImport(){
     	ImportWizard importwizard =new ImportWizard();
     	importwizard.setSize(800, 600);
-    	importwizard.setTitle("ImportWizard");
+    	importwizard.setTitle("Importassistent");
     	importwizard.setLocationRelativeTo(null);
 		importwizard.setModal(true);
 		importwizard.setVisible(true);

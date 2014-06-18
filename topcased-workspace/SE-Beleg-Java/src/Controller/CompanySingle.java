@@ -22,7 +22,8 @@ public class CompanySingle extends ControllerNew implements 	EditBoxCtrl,
 																NaviAbortSaveBoxCtrl, 
 																NaviPrevSaveNextBoxCtrl, 
 																CallbackSelectedValue,
-																CompanyContactDetailsBoxCtrl{
+																CompanyContactDetailsBoxCtrl,
+																CompanyDetailsContactCtrl{
 	
 		private String srcSqlQuery = "select " +
 										SqlTableCompanies.Id + " as ID, " +
@@ -47,7 +48,6 @@ public class CompanySingle extends ControllerNew implements 	EditBoxCtrl,
 		
 		private Views.ViewNew view;
 		private Models.Model contactModel;
-		private CallbackSelectedValue callbackselectedvaluecontroller;
 		private BoxElementCompanyContactDetails companyContactDetailsBox;
 	
 	public CompanySingle(){
@@ -226,8 +226,5 @@ public class CompanySingle extends ControllerNew implements 	EditBoxCtrl,
 		companyContactDetailsBox.refreshContent();
 		
 	}
-	
-	public void setCallbackSelectedValueControler(CallbackSelectedValue controller){
-		this.callbackselectedvaluecontroller = controller;
-	}
+
 }

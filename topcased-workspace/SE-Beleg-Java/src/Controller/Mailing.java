@@ -15,7 +15,6 @@ import Views.ViewNew;
 import Views.GuiElemente.BoxElementBottomNavi;
 import Views.GuiElemente.BoxElementBottomNaviAbortSendMail;
 import Views.GuiElemente.BoxElementBottomNaviProgress;
-import Views.GuiElemente.BoxElementMail;
 import Views.GuiElemente.BoxElementMailing;
 import Views.Interfaces.BasicBoxCtrl;
 import Views.Interfaces.MailBox;

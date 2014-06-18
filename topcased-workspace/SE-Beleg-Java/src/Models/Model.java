@@ -144,12 +144,6 @@ public class Model implements Observer{
 	private void setTableRowData(){
 		tableRowData = new TableData(result,getColumnLimit());
 		tableRowData.addColumnAtBegin("Auswahl", (boolean)false);
-		//TODO
-		String columnClass = tableRowData.getColumnClass(getPrimaryKeyColumnName());
-		if(columnClass != null && !getTableNameForUpdateOrInsert().contains(SqlTableStudent.tableName) && (columnClass.contains(Integer.class.getName()) || columnClass.contains(Long.class.getName()))){
-			System.out.println(getNewPrimaryKeyValue());
-		}
-		
 	}
 	
 	public TableData getTableRowData(){
@@ -272,7 +266,7 @@ public class Model implements Observer{
 			ResultSet result = model.getResult();
 			if(result.first()){
 				lastPK = result.getInt("lastPK");
-				newPrimaryKeyValue = String.valueOf(lastPK++);
+				newPrimaryKeyValue = String.valueOf(lastPK+1);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
