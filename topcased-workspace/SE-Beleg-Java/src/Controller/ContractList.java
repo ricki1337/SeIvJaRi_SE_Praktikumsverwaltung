@@ -11,6 +11,7 @@ import Models.Datenbank.SqlTableStudent;
 import Models.Filter.IntFilter;
 import Models.Filter.StringFilter;
 import Praktikumsverwaltung.Praktikumsverwaltung;
+import Views.Dialog.OkDialog;
 import Views.GuiElemente.BoxElementBottomNavi;
 import Views.GuiElemente.BoxElementBottomNaviEditMailPrint;
 import Views.GuiElemente.BoxElementBottomNaviMark;
@@ -153,6 +154,11 @@ public class ContractList extends ControllerNew implements 	BasicBoxCtrl,
 		else
 			contractList = table.getColumnValuesFromSelectedRows("ID");
 		
+		if(contractList.length == 0){
+			OkDialog okdialog = new OkDialog(Praktikumsverwaltung.getFrame(),true, "Bitte w\u00E4hlen Sie mindestens einen Eintrag aus.");
+			return;
+		}
+		
 		ContractSingle newFrame = new ContractSingle(contractList);
 		Praktikumsverwaltung.addFrameToForeground(newFrame);
 	}
@@ -165,6 +171,11 @@ public class ContractList extends ControllerNew implements 	BasicBoxCtrl,
 		else
 			contractListForMailing = table.getColumnValuesFromSelectedRows("ID");
 		
+		if(contractListForMailing.length == 0){
+			OkDialog okdialog = new OkDialog(Praktikumsverwaltung.getFrame(),true, "Bitte w\u00E4hlen Sie mindestens einen Eintrag aus.");
+			return;
+		}
+		
 		Mailing newMailing = new Mailing(SqlTableContracts.TableNameDotId,contractListForMailing);
 		Praktikumsverwaltung.addFrameToForeground(newMailing);
 	}
@@ -176,6 +187,11 @@ public class ContractList extends ControllerNew implements 	BasicBoxCtrl,
 			contractListForPrint = table.getColumnValuesFromFlaggedRows("ID");
 		else
 			contractListForPrint = table.getColumnValuesFromSelectedRows("ID");
+		
+		if(contractListForPrint.length == 0){
+			OkDialog okdialog = new OkDialog(Praktikumsverwaltung.getFrame(),true, "Bitte w\u00E4hlen Sie mindestens einen Eintrag aus.");
+			return;
+		}
 		
 		Print printDlg = new Print(SqlTableContracts.TableNameDotId,contractListForPrint);
 		printDlg.display();

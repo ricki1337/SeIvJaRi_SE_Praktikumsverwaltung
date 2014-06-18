@@ -5,6 +5,7 @@ import javax.swing.SortOrder;
 import Controller.Interfaces.CallbackSelectedValue;
 import Models.Datenbank.SqlTableCompanies;
 import Praktikumsverwaltung.Praktikumsverwaltung;
+import Views.Dialog.OkDialog;
 import Views.GuiElemente.BoxElementBottomNavi;
 import Views.GuiElemente.BoxElementBottomNaviAbortSelect;
 import Views.GuiElemente.BoxElementBottomNaviEdit;
@@ -161,6 +162,10 @@ public class CompanyList extends ControllerNew implements 	BasicBoxCtrl,
 		else
 			companyList = table.getColumnValuesFromSelectedRows("ID");
 		
+		if(companyList.length == 0){
+			OkDialog okdialog = new OkDialog(Praktikumsverwaltung.getFrame(),true, "Bitte w\u00E4hlen Sie mindestens einen Eintrag aus.");
+			return;
+		}
 			
 		CompanySingle newFrame = new CompanySingle(companyList);
 		Praktikumsverwaltung.addFrameToForeground(newFrame);
