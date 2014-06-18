@@ -92,10 +92,6 @@ public class MailSender
 		if(!transport.isConnected())
 			if(!connect(user,pass.toCharArray())) return false;
 		
-		//test
-		recipients = "s68424@htw-dresden.de";
-		
-		
 		setStatus("Sende E-Mail an: " + recipients);
 		 Address[] addresses;
 		 Message message=new MimeMessage(session);
@@ -110,7 +106,7 @@ public class MailSender
 			 BodyPart messageBodyPart = new MimeBodyPart();
 	
 			 //Inhalt
-			 messageBodyPart.setText("Sehr geehrte Damen und Herren,\n hiermit senden wir Ihnen die Empfehlung über die Anerkennung des praktischen Studiensemesters zu. Mit freundlichen Gr\u00FC\u00DFen, ");
+			 messageBodyPart.setText("Sehr geehrte Damen und Herren,\nhiermit senden wir Ihnen die Empfehlung über die Anerkennung des praktischen Studiensemesters zu. Mit freundlichen Gr\u00FC\u00DFen, der Praktikumsverantwortliche  \nFakultät Mathematik / Informatik \nHTW - Dresden");
 	
 			 Multipart multipart = new MimeMultipart();
 			 multipart.addBodyPart(messageBodyPart);

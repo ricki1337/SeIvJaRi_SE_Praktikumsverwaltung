@@ -9,6 +9,7 @@ import Models.Datenbank.SqlTableContracts;
 import Models.Datenbank.SqlTableStudent;
 import Models.Filter.SqlListFilter;
 import Praktikumsverwaltung.Praktikumsverwaltung;
+import Views.Dialog.OkDialog;
 import Views.GuiElemente.BoxElementBottomNavi;
 import Views.GuiElemente.BoxElementBottomNaviAbortSelect;
 import Views.GuiElemente.BoxElementBottomNaviEditMailPrint;
@@ -179,6 +180,12 @@ public class StudentList extends ControllerNew implements	BasicBoxCtrl,
 			studentList = table.getColumnValuesFromFlaggedRows("Matrikelnr");
 		else
 			studentList = table.getColumnValuesFromSelectedRows("Matrikelnr");
+
+		if(studentList.length==0){
+			OkDialog okdialog = new OkDialog(Praktikumsverwaltung.getFrame(),true, "Bitte w\u00E4hlen Sie mindestens einen Eintrag aus.");
+			return;
+		}
+		
 		
 		StudentSingle newFrame = new StudentSingle(studentList);
 		Praktikumsverwaltung.addFrameToForeground(newFrame);
@@ -187,10 +194,20 @@ public class StudentList extends ControllerNew implements	BasicBoxCtrl,
 	@Override
 	public void buttonMailToClicked() {
 		Object[] studentListForMailing;
-		if(table.getFlaggedRowCount() != 0)
+		
+		if(table.getFlaggedRowCount() != 0){ //per checkbox selektierte Zeilen
 			studentListForMailing = table.getColumnValuesFromFlaggedRows("Matrikelnr");
-		else
+			System.out.println("flagged: " + table.getFlaggedRowCount());}
+		
+		else //per Mousedrag ausgewählte Zeilen
 			studentListForMailing = table.getColumnValuesFromSelectedRows("Matrikelnr");
+			System.out.println("selectedrows length: " + studentListForMailing.length);
+		
+		if(studentListForMailing.length==0){
+			OkDialog okdialog = new OkDialog(Praktikumsverwaltung.getFrame(),true, "Bitte w\u00E4hlen Sie mindestens einen Eintrag aus.");
+			return;
+		}
+		
 		
 		Mailing newMailing = new Mailing(SqlTableStudent.TableNameDotPrimaryKey,studentListForMailing);
 		Praktikumsverwaltung.addFrameToForeground(newMailing);
@@ -203,6 +220,11 @@ public class StudentList extends ControllerNew implements	BasicBoxCtrl,
 			studentListForPrint = table.getColumnValuesFromFlaggedRows("Matrikelnr");
 		else
 			studentListForPrint = table.getColumnValuesFromSelectedRows("Matrikelnr");
+		
+		if(studentListForPrint.length == 0){
+			OkDialog okdialog = new OkDialog(Praktikumsverwaltung.getFrame(),true, "Bitte w\u00E4hlen Sie mindestens einen Eintrag aus.");
+			return;
+			}
 		
 		Print printDlg = new Print(SqlTableStudent.TableNameDotPrimaryKey,studentListForPrint);
 		printDlg.display();

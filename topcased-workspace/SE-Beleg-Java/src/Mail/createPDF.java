@@ -51,13 +51,13 @@ public class createPDF {
         document.add(Student); 
         document.add(new Paragraph(""));
         
-        Chunk siebte = new Chunk("Matrikel Nummer:                         ");
+        Chunk siebte = new Chunk("Matrikelnummer:                         ");
         document.add(siebte);
         Chunk matr = new Chunk(MatrNr);
         document.add(matr); 
         document.add(new Paragraph(""));
         
-        Chunk achte = new Chunk("Betreuender Prof:                         ");
+        Chunk achte = new Chunk("Betreuender Professor:                         ");
         document.add(achte);
         Chunk prof = new Chunk (betrProf);
         document.add(prof); 

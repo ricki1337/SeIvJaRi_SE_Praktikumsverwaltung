@@ -5,6 +5,7 @@ import javax.swing.SortOrder;
 import Controller.Interfaces.CallbackSelectedValue;
 import Models.Datenbank.SqlTableProfs;
 import Praktikumsverwaltung.Praktikumsverwaltung;
+import Views.Dialog.OkDialog;
 import Views.GuiElemente.BoxElementBottomNavi;
 import Views.GuiElemente.BoxElementBottomNaviAbortSelect;
 import Views.GuiElemente.BoxElementBottomNaviEdit;
@@ -152,6 +153,12 @@ public class ProfList extends ControllerNew implements BasicBoxCtrl,
 			profList = table.getColumnValuesFromFlaggedRows("E-Mail");
 		else
 			profList = table.getColumnValuesFromSelectedRows("E-Mail");
+		
+		if(profList.length == 0){
+			OkDialog okdialog = new OkDialog(Praktikumsverwaltung.getFrame(),true, "Bitte w\u00E4hlen Sie mindestens einen Eintrag aus.");
+			return;
+		}
+		
 		
 		ProfSingle newFrame = new ProfSingle(profList);
 		Praktikumsverwaltung.addFrameToForeground(newFrame);

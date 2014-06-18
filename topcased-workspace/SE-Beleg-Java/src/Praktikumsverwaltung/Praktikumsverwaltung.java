@@ -17,6 +17,7 @@ import Views.GuiElemente.MenuBar;
 public class Praktikumsverwaltung extends JFrame{
 
 	static JDesktopPane InnerDesktop;
+	static Praktikumsverwaltung praktikumsverwaltung ;
 	
 	public static void addFrameToForeground(ControllerNew controller){
 		controller.display();
@@ -28,6 +29,8 @@ public class Praktikumsverwaltung extends JFrame{
 			e.printStackTrace();
 		}
 	}
+	
+	public static Praktikumsverwaltung getFrame(){return praktikumsverwaltung;}
 	
 	public Praktikumsverwaltung(String dbHost){
 		super("Praktikumsverwaltung");
@@ -68,7 +71,7 @@ public class Praktikumsverwaltung extends JFrame{
 			System.out.println(Debug.isDebugMode());
 		}
 			
-		new Praktikumsverwaltung(args[0]);
+		praktikumsverwaltung = new Praktikumsverwaltung(args[0]);
 		
 	}
 }
