@@ -11,7 +11,7 @@ import Views.Interfaces.NaviAbortSaveBoxCtrl;
 import Views.Interfaces.NaviPrevSaveNextBoxCtrl;
 import Views.Interfaces.EditBoxCtrl;
 
-public class ContactSingle extends ControllerNew implements EditBoxCtrl, NaviAbortSaveBoxCtrl, NaviPrevSaveNextBoxCtrl{
+public class ContactSingle extends ControllerNew implements EditBoxCtrl, NaviAbortSaveBoxCtrl, NaviPrevSaveNextBoxCtrl {
 	
 	private String srcSqlQuery = "select " +
 									SqlTableContacts.TableNameDotId + " as ID, " +
@@ -25,6 +25,7 @@ public class ContactSingle extends ControllerNew implements EditBoxCtrl, NaviAbo
 	private CallbackSelectedValue cs;
 	private Views.ViewNew view;
 	private int companyId = -1;
+
 	
 	public ContactSingle(int companyId){
 		this.companyId = companyId;

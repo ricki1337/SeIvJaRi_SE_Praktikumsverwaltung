@@ -94,7 +94,7 @@ public class MailSender
 			if(!connect(user,pass.toCharArray())) return false;
 		
 		//test
-		recipients = "s68524@htw-dresden.de";
+		recipients = "s68424@htw-dresden.de";
 		
 		
 		setStatus("Sende E-Mail an: " + recipients);

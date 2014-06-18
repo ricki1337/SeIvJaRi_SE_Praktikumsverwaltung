@@ -83,7 +83,7 @@ public class BoxElementCompanyDetails extends JPanel implements EditBox{
 	public void refreshContent() {
 		if(!addNewContract)
 			setComponentValues();
-		
+
 		if(pnl_contact instanceof BasicBox)
 			((BasicBox)pnl_contact).refreshContent();
 	}

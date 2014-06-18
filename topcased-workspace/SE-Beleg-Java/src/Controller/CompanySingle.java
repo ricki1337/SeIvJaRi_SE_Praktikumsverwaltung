@@ -21,7 +21,6 @@ import Views.Interfaces.NaviPrevSaveNextBoxCtrl;
 public class CompanySingle extends ControllerNew implements 	EditBoxCtrl, 
 																NaviAbortSaveBoxCtrl, 
 																NaviPrevSaveNextBoxCtrl, 
-																CompanyDetailsContactCtrl, 
 																CallbackSelectedValue,
 																CompanyContactDetailsBoxCtrl{
 	
@@ -155,6 +154,7 @@ public class CompanySingle extends ControllerNew implements 	EditBoxCtrl,
 	
 	@Override
 	public void buttonSaveChangesClicked() {
+
 		model.updateDatabaseAndInformOtherModels();
 	}
 

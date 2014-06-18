@@ -64,7 +64,6 @@ public class PrintExport {
 		
 		//Template als String aus der Klasse PdfContent laden
 		template = new Template("name",new StringReader(PdfContent.getPdfContent()),new Configuration());
-		
 	}
 
 
