@@ -90,4 +90,18 @@ public class TableColumnNames {
 		return columnAliasList.size();
 	}
 	
+	public String getColumnClass(String columnName){
+		return getColumnClass(getColumnIndex(columnName));
+	}
+	
+	public String getColumnClass(int columnIndex){
+		String columnClass = null;
+		try {
+			columnClass = sqlMetaInformation.getColumnClassName(columnIndex);
+		} catch (SQLException e) {
+			return null;
+		}
+		return columnClass;
+	}
+	
 }

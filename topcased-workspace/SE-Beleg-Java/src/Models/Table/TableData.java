@@ -260,4 +260,8 @@ public class TableData {
 		return count;
 	}
 	
+	public String getColumnClass(String columnName){
+		return columnNames.getColumnClass(columnName);
+	}
+	
 }

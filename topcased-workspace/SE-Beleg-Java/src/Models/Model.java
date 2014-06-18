@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import Models.Datenbank.Database;
 import Models.Datenbank.Observer;
+import Models.Datenbank.SqlTableStudent;
 import Models.Filter.FilterTyp;
 import Models.Filter.ObjectFilter;
 import Models.Filter.TabellenFilter;
@@ -52,6 +53,7 @@ public class Model implements Observer{
 		db.login(this);
 		setColumnLimit(20);
 		order = new String();
+		
 	}	
 	
 	public void setSrcQuery(String srcQuery) {
@@ -142,6 +144,12 @@ public class Model implements Observer{
 	private void setTableRowData(){
 		tableRowData = new TableData(result,getColumnLimit());
 		tableRowData.addColumnAtBegin("Auswahl", (boolean)false);
+		//TODO
+		String columnClass = tableRowData.getColumnClass(getPrimaryKeyColumnName());
+		if(columnClass != null && !getTableNameForUpdateOrInsert().contains(SqlTableStudent.tableName) && (columnClass.contains(Integer.class.getName()) || columnClass.contains(Long.class.getName()))){
+			System.out.println(getNewPrimaryKeyValue());
+		}
+		
 	}
 	
 	public TableData getTableRowData(){
@@ -229,6 +237,14 @@ public class Model implements Observer{
 		String sqlInsertQuery = new String("INSERT INTO " + sqlTableName + " ");
 		String sqlColumns = new String("(");
 		String sqlValues = new String("(");
+		String columnClass = tableRowData.getColumnClass(getPrimaryKeyColumnName());
+		if(columnClass != null && !getTableNameForUpdateOrInsert().contains(SqlTableStudent.tableName) && columnClass.contains(Integer.class.getName()) || columnClass.contains(Long.class.getName())){
+			sqlColumns += getPrimaryKeyColumnName() + ", ";
+			sqlValues += getNewPrimaryKeyValue() + ", ";
+		}
+		
+		
+		
 		
 		int counter = newData.length;
 		for(Object[] row:newData){
@@ -248,16 +264,17 @@ public class Model implements Observer{
 		db.setQueryandInformModels(sqlInsertQuery);		
 	}
 	
-	//TODO
 	protected String getNewPrimaryKeyValue(){
 		String newPrimaryKeyValue = new String();
 		Model model = new Model("select max("+ getPrimaryKeyColumnName() +") as lastPK FROM "+getTableNameForUpdateOrInsert(),getTableNameForUpdateOrInsert(),getPrimaryKeyColumnName());
 		int lastPK;
 		try {
-			lastPK = model.getResult().getInt("lastPK");
-			newPrimaryKeyValue = String.valueOf(lastPK++);
+			ResultSet result = model.getResult();
+			if(result.first()){
+				lastPK = result.getInt("lastPK");
+				newPrimaryKeyValue = String.valueOf(lastPK++);
+			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
