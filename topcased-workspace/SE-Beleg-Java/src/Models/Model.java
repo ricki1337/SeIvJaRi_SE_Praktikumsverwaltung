@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import Models.Datenbank.Database;
 import Models.Datenbank.Observer;
+import Models.Datenbank.SqlTableProfs;
 import Models.Datenbank.SqlTableStudent;
 import Models.Filter.FilterTyp;
 import Models.Filter.ObjectFilter;
@@ -231,8 +232,8 @@ public class Model implements Observer{
 		String sqlInsertQuery = new String("INSERT INTO " + sqlTableName + " ");
 		String sqlColumns = new String("(");
 		String sqlValues = new String("(");
-		String columnClass = tableRowData.getColumnClass(getPrimaryKeyColumnName());
-		if(columnClass != null && !getTableNameForUpdateOrInsert().contains(SqlTableStudent.tableName) && columnClass.contains(Integer.class.getName()) || columnClass.contains(Long.class.getName())){
+
+		if(!getTableNameForUpdateOrInsert().contains(SqlTableStudent.tableName) && !getTableNameForUpdateOrInsert().contains(SqlTableProfs.tableName)){
 			sqlColumns += getPrimaryKeyColumnName() + ", ";
 			sqlValues += getNewPrimaryKeyValue() + ", ";
 		}

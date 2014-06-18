@@ -67,6 +67,15 @@ public class BoxElementStudentDetails extends JPanel implements EditBox{
 		jtf_mail.setText(parent.getStringValueForBoxElementEdit(SqlTableStudent.TableNameDotEMail));
 		jta_note.setText(parent.getStringValueForBoxElementEdit(SqlTableStudent.TableNameDotBemerkung));
 	}
+	
+	public void clearComponentValues() {
+		jtf_matrikelnr.setText("");
+		jtf_firstname.setText("");
+		jtf_name.setText("");
+		jtf_stgr.setText("");
+		jtf_mail.setText("");
+		jta_note.setText("");
+	}
 
 	@Override
 	public void setComponentEventHandler() {
@@ -77,7 +86,9 @@ public class BoxElementStudentDetails extends JPanel implements EditBox{
 	@Override
 	public void refreshContent() {
 		if(!addNewContract)
-			setComponentValues();		
+			setComponentValues();
+		else
+			clearComponentValues();
 	}
 
 	@Override

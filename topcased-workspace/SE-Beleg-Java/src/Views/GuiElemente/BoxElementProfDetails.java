@@ -55,6 +55,12 @@ public class BoxElementProfDetails extends JPanel implements EditBox{
 		jtf_email.setText(controller.getStringValueForBoxElementEdit(SqlTableProfs.Id));
 		jtf_name.setText(controller.getStringValueForBoxElementEdit(SqlTableProfs.Name));
 	}
+	
+	
+	public void clearComponentValues() {
+		jtf_email.setText("");
+		jtf_name.setText("");
+	}
 
 	
 
@@ -62,6 +68,8 @@ public class BoxElementProfDetails extends JPanel implements EditBox{
 	public void refreshContent() {
 		if(!addNewContract)
 			setComponentValues();
+		else
+			clearComponentValues();
 	}
 
 	@Override

@@ -76,6 +76,16 @@ public class BoxElementCompanyDetails extends JPanel implements EditBox{
 		jtf_land_value.setText(parent.getStringValueForBoxElementEdit(SqlTableCompanies.Land));
 		jtf_tel_value.setText(parent.getStringValueForBoxElementEdit(SqlTableCompanies.Telefonnummer));
 	}
+	
+	
+	public void clearComponentValues() {
+		jtf_firmenname_value.setText("");
+		jtf_strasse_value.setText("");
+		jtf_plz_value.setText("");
+		jtf_ort_value.setText("");
+		jtf_land_value.setText("");
+		jtf_tel_value.setText("");
+	}
 
 	
 
@@ -83,6 +93,8 @@ public class BoxElementCompanyDetails extends JPanel implements EditBox{
 	public void refreshContent() {
 		if(!addNewContract)
 			setComponentValues();
+		else
+			clearComponentValues();
 
 		if(pnl_contact instanceof BasicBox)
 			((BasicBox)pnl_contact).refreshContent();

@@ -201,11 +201,23 @@ public class BoxElementContractDetails extends JPanel implements EditBox{
 	    jcb_bericht.setSelected(controller.getBooleanValueForBoxElementEdit(SqlTableContracts.Bericht));
 	    jcb_erfolg.setSelected(controller.getBooleanValueForBoxElementEdit(SqlTableContracts.Erfolg));
 	}
+	
+	public void clearComponentValues(){
+		jtf_beginnt_value.setText("");
+	    jtf_endet_value.setText("");
+	    jtf_typ_value.setText("");
+	    jcb_empfehlung.setSelected(false);
+	    jcb_zeugnis.setSelected(false);
+	    jcb_bericht.setSelected(false);
+	    jcb_erfolg.setSelected(false);
+	}
 
 	@Override
 	public void refreshContent() {
 		if(!addNewContract)
 			setComponentValues();
+		else
+			clearComponentValues();
 	    
 	    if(pnl_student instanceof EditBox){
 			((EditBox)pnl_student).refreshContent();

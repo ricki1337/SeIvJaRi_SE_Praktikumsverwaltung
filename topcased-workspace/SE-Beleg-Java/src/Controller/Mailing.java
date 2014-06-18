@@ -168,9 +168,9 @@ public class Mailing extends ControllerNew implements 	BasicBoxCtrl,
 	@Override
 	public void buttonSendMailClicked() {
 		if(mailingThread.isAlive()) return;
+		if(mailingThread.getState().equals(Thread.State.TERMINATED))
+			mailingThread = new Thread(this);
 		mailingThread.start();
-		System.out.println("Thread started");
-		//run();
     }
 	
 	public void deletePdfFromLocalSystem(String path){
@@ -279,7 +279,7 @@ public class Mailing extends ControllerNew implements 	BasicBoxCtrl,
 
 				    boxMail.setMailSend(i, sendStatus);
 					if(sendStatus){
-						queryString += "update "+ SqlTableContracts.tableName + " set " +
+						queryString = "update "+ SqlTableContracts.tableName + " set " +
 								SqlTableContracts.Bericht + " = " + model.tableRowData.getBooleanValueFromPosition(i, "Bericht") + ", " +
 								SqlTableContracts.Zeugnis + " = " + model.tableRowData.getBooleanValueFromPosition(i, "Zeugnis") + 
 								" where "+ SqlTableContracts.Id + " = " + model.tableRowData.getStringValueFromPosition(i, "ID") +"; ";
@@ -288,7 +288,7 @@ public class Mailing extends ControllerNew implements 	BasicBoxCtrl,
 					}
 					deletePdfFromLocalSystem(tmpPathForPDF);
 				}
-        	}//ende der mail senden for schleife
+        	}
         	 
         } catch (Exception e) {
 			ErrorManager errorManager = new ErrorManager(e);

@@ -9,13 +9,22 @@ import java.util.Properties;
 
 import Controller.ErrorManager;
 
-
+/**
+ * Erstellt und verwaltet Parameter in einer {@link Properties} Instanz.<br>
+ * Die Parameter können überall gesetzt und abgefragt werden.
+ * @see Properties
+ */
 public class Config {
 	private static Properties  properties = new Properties( System.getProperties() );
 	
 	private Config(){
 	}
-
+	
+	/**
+	 * Gibt den Wert einer Property zurück.
+	 * @param key 	Der Name einer Property
+	 * @return		Den Wert der Property wenn die Property existiert, sonst null.
+	 */
 	public static String getProperties(String key){
 		Reader reader = null;
 

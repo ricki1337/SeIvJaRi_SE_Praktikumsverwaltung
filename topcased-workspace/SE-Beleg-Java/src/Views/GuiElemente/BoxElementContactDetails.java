@@ -63,12 +63,19 @@ public class BoxElementContactDetails extends JPanel implements EditBox{
 		jta_bemerkung.setText(controller.getStringValueForBoxElementEdit(SqlTableContacts.Bemerkung));
 	}
 
+	public void clearComponentValues(){
+		jtf_tel.setText("");
+		jtf_name.setText("");
+		jta_bemerkung.setText("");
+	}
 	
 
 	@Override
 	public void refreshContent() {
 		if(!addNewContract)
 			setComponentValues();
+		else
+			clearComponentValues();
 	}
 
 	@Override

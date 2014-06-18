@@ -13,15 +13,12 @@ public class MySql implements DatabaseFunction{
 
 	public ResultSet getQuery(String query) throws SQLException {
 		Statement stmnt = connection.createStatement();
-		System.out.println("MySql-Class: "+query);
-
 		return stmnt.executeQuery(query);
 	}
 
 	@Override
 	public int setQuery(String query) throws SQLException {
 		Statement stmnt = connection.createStatement();
-		System.out.println("MySql-Class: "+query);
 		return stmnt.executeUpdate(query);
 	}
 

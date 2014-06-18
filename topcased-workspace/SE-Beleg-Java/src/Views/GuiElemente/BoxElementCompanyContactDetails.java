@@ -63,7 +63,8 @@ public class BoxElementCompanyContactDetails extends JPanel implements BasicBox{
         jtf_bemerkung_value = new JTextArea();
         jtf_bemerkung_value.setColumns(20);
         jtf_bemerkung_value.setRows(4);
-        jtf_bemerkung_value.setBackground(SystemColor.control);
+        jtf_bemerkung_value.setBackground(Color.white);
+        jtf_bemerkung_value.setDisabledTextColor(Color.DARK_GRAY);
         jtf_bemerkung_value.setEnabled(false);
         jtf_bemerkung_value.setText("leer");
         groupLayout = new GroupLayout(this);
