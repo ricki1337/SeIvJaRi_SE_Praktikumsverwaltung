@@ -2,6 +2,7 @@ package Import;
 
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -16,45 +17,39 @@ import Controller.ErrorManager;
 //
 //	Parameter
 //	------------------
-//	file : e.g D:\\Programme\\Topcased-5.3.0\\workspace\\Mappe2.csv  - ACHTUNG ESCAPESEQUENZ NICHT VERGESSEN!
 //	delimiter: e.g ';' -Symbol welches die Spaltenwerte untereinander trennt
 //	spaltenreihenfolge: e.g {'n','v','m','b','g'} - Reihenfolge  der Spalten in der *.csv Datei
 //				n - name , v - vorname , m - matrikelnr, b - bibliotheksnr, s - studiengruppenr
-//Funktionen
-//------------------
-//	parseIt()
-//		Return: StudentContainer
 
 
 
 public class CsvImport {
-//Eigenschaften
+
 
 	String file, delimiter, errorlog="Beim Import sind Fehler aufgetreten:\n";
 	int lines=0;
 	Boolean importerrors=false,MetaDatenKopfZeile = true; //Wenn in der ersten Zeile Spaltenbezeichner stehen true, dann wird diese Zeile übersprungen
-	char [] spaltenreihenfolge;
 	DefaultTableModel datamodel = new DefaultTableModel(0,5);
 	
-//Konstruktor
+
 	public CsvImport(String file, String delimiter, boolean t){
 		this.file=file;
 		this.delimiter=delimiter;
 		this.MetaDatenKopfZeile=t;
-		this.spaltenreihenfolge= new  char [] {'n','v','m','b','g'};
+
 	}
 
-//Funktionen
-	public DefaultTableModel parseIt() {
+
+	public DefaultTableModel parseIt() throws IOException, ArrayIndexOutOfBoundsException {
 		parseCsvFile();
 		return datamodel;
 	}
 
 //csv Parser
-    private void parseCsvFile()  {
+    private void parseCsvFile() throws IOException, ArrayIndexOutOfBoundsException  {
         int i=0;//Zeileniteration
     	
-        try {
+       
 	    	final BufferedReader reader = new BufferedReader(new FileReader(file));
 	        String current;
 			current = reader.readLine();
@@ -65,18 +60,11 @@ public class CsvImport {
 		        	current = reader.readLine();
 		        	i++;
 		        }
-		   reader.close();
-		} catch (IOException e) {
-			ErrorManager errorManager = new ErrorManager(e);
-			if(errorManager.retry)
-				parseCsvFile();			
-		}
-		
-
+		   reader.close();	
 
     }
 // Verarbeitet eine Zeile
-    public void processCsvLine(final String data) {
+    public void processCsvLine(final String data) throws ArrayIndexOutOfBoundsException {
     	
         String [] splittedline = data.split(delimiter);
         

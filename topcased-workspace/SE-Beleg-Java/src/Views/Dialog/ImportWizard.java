@@ -3,6 +3,7 @@ package Views.Dialog;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -10,13 +11,16 @@ import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
 
 import Import.CsvImport;
-
-//vlt sollte ein Button "Typüberprüfung" eingefügt werden. Denn im Fehler fall weis man nicht welche daten nicht importiert wurden
+import Models.Datenbank.Database;
+import Models.Datenbank.SqlTableStudent;
+import Praktikumsverwaltung.Praktikumsverwaltung;
+import Views.Dialog.OkDialog;
 
 
 public class ImportWizard extends JDialog implements ActionListener {
 	JFileChooser chooser = new JFileChooser();
 	String comboBoxListe[] = {";",",","-"};
+	Database db = Database.getInstance();
 	
 	//Zustandsvariablen
 	boolean value_checkbox_zeileignorieren = true;
@@ -194,7 +198,7 @@ private void initComponents() {
 
     button_abbrechen.setText("Abbrechen");
 
-    label_fortschritt.setText("Image Fortschritt");
+    label_fortschritt.setText("");
 
     combo_spalte1.setModel(new javax.swing.DefaultComboBoxModel(comboliste));
     combo_spalte2.setModel(new javax.swing.DefaultComboBoxModel(comboliste));
@@ -311,12 +315,21 @@ public void actionPerformed(ActionEvent e) {
 			   textfield_datei.setText(file);
 			   button_vorschau.setEnabled(true);
 		   }
-		   catch(NullPointerException exeption){}
+		   catch(NullPointerException exeption){
+			   OkDialog okdialog = new OkDialog(Praktikumsverwaltung.getFrame(),true, "Fehler: Datei konnte nicht geöffnet werden. [NullPointerException, Class: ImportWizard] ");
+			   exeption.printStackTrace();
+		   }
+		   
+		   this.enableComboboxes(false);
+		   this.combo_seperator.setEnabled(true);
+		   this.checkbox_zeileignorieren.setEnabled(false);
+		   this.button_vorschau.setEnabled(true); 
+		   
       }
 	   
 	//BUTTON "IMPORTIEREN"  	
 	   if (e.getSource() == button_importieren){
-
+		   
 		   // Zuordnungsarray erstellen 
 		   char [] zuordnung = new char [5];
 		   for(int i = 0 ; i<5 ; i++){
@@ -336,7 +349,7 @@ public void actionPerformed(ActionEvent e) {
 			}
 		   
 		   int MatrNr = 0, rowIndexInit = 0, rowcount = table.getModel().getRowCount();
-		   String Name = "", Firstname = "", Email = "", StGr = "", Note = "";
+		   String Name = "", Firstname = "", Email = "", StGr = "", Note = ""; 
 		   boolean error=false;
 		   
 		   if (checkbox_zeileignorieren.isSelected()){rowIndexInit=1;}
@@ -365,15 +378,19 @@ public void actionPerformed(ActionEvent e) {
 					   
 
 			   }
-				   if(!error){this.logconsole.setText(logconsole.getText() + "\n" + Name + Firstname + MatrNr + StGr + Email );};
 				   
-//				   if(!error){
-//					  //Query bauen
-//					   String sql = "INSERT INTO student " + "VALUES (" + MatrNr + "," + Name + "," + Firstname +","+ Email + "," + StGr + "," + Note + ")";
-//					   //Query in DB blasen
-//					//..
-//				   }
+				   
+				   if(!error){
+					  //Query bauen
+					  
+					   String sql = "INSERT INTO " +  SqlTableStudent.tableName + " VALUES (" + MatrNr + ",\"" + Name + "\",\"" + Firstname +"\",\""+ Email + "\",\"" + StGr + "\",\"" + Note + "\")";
+					   this.logconsole.setText(logconsole.getText()+"\n"+sql);
+					   db.setQueryandInformModels(sql);
+
+				   }
 			}
+		   this.button_importieren.setEnabled(false);
+		   this.button_abbrechen.setText("Fertig");
 	   }
 	   
 	   //BUTTON "ABBRECHEN"
@@ -386,16 +403,25 @@ public void actionPerformed(ActionEvent e) {
 		   value_combo_seperator=combo_seperator.getSelectedItem().toString();
 		   DefaultTableModel datamodel = new DefaultTableModel(0,5);
 		   CsvImport csvimport = new CsvImport(file,value_combo_seperator,false);
-		   datamodel=csvimport.parseIt();
+		   try {
+				datamodel=csvimport.parseIt();
+			} catch (IOException e1) {
+				OkDialog okdialog = new OkDialog(Praktikumsverwaltung.getFrame(),true, "Fehler: Datei konnte nicht geöffnet werden. [IOException, Class: CsvImport] ");
+				e1.printStackTrace();
+			}			
+		   catch (ArrayIndexOutOfBoundsException e2) {
+				OkDialog okdialog = new OkDialog(Praktikumsverwaltung.getFrame(),true, "Fehler: Bitte überprüfen Sie den Seperator und die Spaltenanzahl Ihrer CSV Datei. [ArrayIndexOutOfBoundsException, Class: CsvImport]");
+				e2.printStackTrace();
+			}
 		   logconsole.setText("Es wurden " + csvimport.getcount() + " Datensätze gefunden.\n");
-		   
-		   table.setModel(datamodel);
-		   
-		   
-		   this.enableComboboxes(true);
-		   this.combo_seperator.setEnabled(false);
-		   this.checkbox_zeileignorieren.setEnabled(true);
-		   this.button_vorschau.setEnabled(false);
+		  
+		   if (csvimport.getcount()!=0){	// nur wenn Datensätze gefunden wurden nächste Arbeitschritte freischalten 
+			   table.setModel(datamodel);
+			   this.enableComboboxes(true);
+			   this.combo_seperator.setEnabled(false);
+			   this.checkbox_zeileignorieren.setEnabled(true);
+			   this.button_vorschau.setEnabled(false);
+		   }
 	   }
 	   
 	 //COMBOS
