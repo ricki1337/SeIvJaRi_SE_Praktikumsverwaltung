@@ -11,10 +11,33 @@ public class ErrorManager extends ControllerNew implements ErrorManagerCtrl{
 	private ErrorMessageDialog errorDialog;
 	public boolean retry = false;
 	
+	/**
+	 * Initialisiert die Ansicht der geworfenen Exception.<br>
+	 * ‹bernimmt die Exception und bringt sie in einem Dialig zur Ausgabe.
+	 * 
+	 * @param error	Geworfene Exception.
+	 */
 	public ErrorManager(Exception error){
 		exception = error;
 		errorDialog = new ErrorMessageDialog(this);
 		errorDialog.setErrorMessage(exception.getMessage().toString());
+		errorDialog.setErrorDetails(error);
+		errorDialog.setTitle("Ein Fehler ist aufgetreten.");
+		display();
+	}
+	
+	/**
+	 * Initialisiert die Ansicht der geworfenen Exception.<br>
+	 * ‹bernimmt die Exception und eine definierbare Errormeldung, bringt sie in einem Dialig zur Ausgabe.
+	 * 
+	 * @param error				Geworfene Exception.
+ 	 * @param myErrorMessage	Eigene, spezifische Errormeldung.
+	 */
+	public ErrorManager(Exception error, String myErrorMessage){
+		if(myErrorMessage == null) {new ErrorManager(error); return;}
+		exception = error;
+		errorDialog = new ErrorMessageDialog(this);
+		errorDialog.setErrorMessage(myErrorMessage);
 		errorDialog.setErrorDetails(error);
 		errorDialog.setTitle("Ein Fehler ist aufgetreten.");
 		display();
@@ -28,14 +51,12 @@ public class ErrorManager extends ControllerNew implements ErrorManagerCtrl{
 	@Override
 	public void buttonRepeatClicked() {
 		retry = true;
-		System.out.println("wiederholen und schlieﬂen");
 		errorDialog.setVisible(false);
 		errorDialog.dispatchEvent(new WindowEvent(errorDialog, WindowEvent.WINDOW_CLOSING));
 	}
 
 	@Override
 	public void buttonOkClicked() {
-		System.out.println("schlieﬂen");
 		errorDialog.setVisible(false);
 		errorDialog.dispatchEvent(new WindowEvent(errorDialog, WindowEvent.WINDOW_CLOSING));
 	}

@@ -10,6 +10,7 @@ import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
 
+import Controller.ErrorManager;
 import Import.CsvImport;
 import Models.Datenbank.Database;
 import Models.Datenbank.SqlTableStudent;
@@ -211,7 +212,7 @@ private void initComponents() {
     button_vorschau.setEnabled(false);
     
     jScrollPane1.setBorder(null);
-    jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createTitledBorder(null, "Error Log", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, java.awt.Color.lightGray));
+    jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createTitledBorder(null, "Log", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, java.awt.Color.lightGray));
 
     logconsole.setEditable(false);
     logconsole.setColumns(20);
@@ -316,8 +317,7 @@ public void actionPerformed(ActionEvent e) {
 			   button_vorschau.setEnabled(true);
 		   }
 		   catch(NullPointerException exeption){
-			   OkDialog okdialog = new OkDialog(Praktikumsverwaltung.getFrame(),true, "Fehler: Datei konnte nicht geöffnet werden. [NullPointerException, Class: ImportWizard] ");
-			   exeption.printStackTrace();
+				ErrorManager errorManager = new ErrorManager(exeption, "Die Datei \"" + file +"\" konnte nicht gefunden werden");
 		   }
 		   
 		   this.enableComboboxes(false);
@@ -372,6 +372,7 @@ public void actionPerformed(ActionEvent e) {
 									break; 
 					   }
 				   }catch  (NumberFormatException exeption){
+					   ErrorManager errorManager = new ErrorManager(exeption, "Bitte überprüfen Sie die Zuordnung der Spaltenbezeichnungen.");
 					   logconsole.setText(logconsole.getText() + "Zeile: " + rowIndex + " konnte nicht importiert werden. [ Spalte : " + columnIndex + ", Wert; "+ table.getModel().getValueAt(rowIndex, columnIndex) + " ]" );
 					   error=true;
 				   }                    
@@ -405,13 +406,13 @@ public void actionPerformed(ActionEvent e) {
 		   CsvImport csvimport = new CsvImport(file,value_combo_seperator,false);
 		   try {
 				datamodel=csvimport.parseIt();
-			} catch (IOException e1) {
-				OkDialog okdialog = new OkDialog(Praktikumsverwaltung.getFrame(),true, "Fehler: Datei konnte nicht geöffnet werden. [IOException, Class: CsvImport] ");
-				e1.printStackTrace();
+			} catch (IOException exception) {
+				
+				ErrorManager errorManager = new ErrorManager(exception,"Datei konnte nicht gelesen werden.");
 			}			
-		   catch (ArrayIndexOutOfBoundsException e2) {
-				OkDialog okdialog = new OkDialog(Praktikumsverwaltung.getFrame(),true, "Fehler: Bitte überprüfen sie den Seperator und die Spaltenanzahl ihrer CSV Datei. [ArrayIndexOutOfBoundsException, Class: CsvImport]");
-				e2.printStackTrace();
+		   catch (ArrayIndexOutOfBoundsException exception) {
+			  
+			   ErrorManager errorManager = new ErrorManager(exception, "Bitte überprüfen Sie ob das richtige Trennzeichen bzw die richtige Datei ausgewählte  wurde.");
 			}
 		   logconsole.setText("Es wurden " + csvimport.getcount() + " Datensätze gefunden.\n");
 		  
