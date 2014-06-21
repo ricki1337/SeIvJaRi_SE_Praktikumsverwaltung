@@ -2,6 +2,7 @@ package Import;
 
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -16,25 +17,20 @@ import Controller.ErrorManager;
 //
 //	Parameter
 //	------------------
-//	file : e.g D:\\Programme\\Topcased-5.3.0\\workspace\\Mappe2.csv  - ACHTUNG ESCAPESEQUENZ NICHT VERGESSEN!
 //	delimiter: e.g ';' -Symbol welches die Spaltenwerte untereinander trennt
 //	spaltenreihenfolge: e.g {'n','v','m','b','g'} - Reihenfolge  der Spalten in der *.csv Datei
 //				n - name , v - vorname , m - matrikelnr, b - bibliotheksnr, s - studiengruppenr
-//Funktionen
-//------------------
-//	parseIt()
-//		Return: StudentContainer
 
 
 
 public class CsvImport {
-//Eigenschaften
 
 		private String file, delimiter, errorlog="Beim Import sind Fehler aufgetreten:\n";
 		private int lines=0;
 		private Boolean importerrors=false,MetaDatenKopfZeile = true; //Wenn in der ersten Zeile Spaltenbezeichner stehen true, dann wird diese Zeile übersprungen
 		private DefaultTableModel datamodel = new DefaultTableModel(0,5);
 	
+
 	/**
 	 * Stellt Methoden zur Voransicht der zu importierenden Daten bereit.
 	 * @param file							Name der Datei, welche importiert wird
@@ -44,8 +40,7 @@ public class CsvImport {
 	public CsvImport(String file, String delimiter, boolean firstLineIncludesColumnNames){
 		this.file=file;
 		this.delimiter=delimiter;
-		this.MetaDatenKopfZeile=firstLineIncludesColumnNames;
-	}
+		this.MetaDatenKopfZeile=firstLineIncludesColumnNames;	}
 
 	/**
 	 * Liest den Dateiinhalt in ein {@link DefaultTableModel} ein und gibt dieses zurück.
@@ -56,13 +51,15 @@ public class CsvImport {
 		return datamodel;
 	}
 
+
 	/**
 	 * Geht alle Zeilen der Datei durch, spaltet die Informationen gemäß des Delimiters auf und schreibt die Info in das interne {@link DefaultTableModel}.
 	 */
-    private void parseCsvFile()  {
+
+    private void parseCsvFile() throws IOException, ArrayIndexOutOfBoundsException  {
         int i=0;//Zeileniteration
     	
-        try {
+       
 	    	final BufferedReader reader = new BufferedReader(new FileReader(file));
 	        String current;
 			current = reader.readLine();
@@ -73,19 +70,15 @@ public class CsvImport {
 		        	current = reader.readLine();
 		        	i++;
 		        }
-		   reader.close();
-		} catch (IOException e) {
-			ErrorManager errorManager = new ErrorManager(e);
-			if(errorManager.retry)
-				parseCsvFile();			
-		}
+		   reader.close();	
+
     }
     
     /**
      * Zerteilt die übergebene Datenzeile gemäß dem Delimiter und fügt sie dem internen  {@link DefaultTableModel} hinzu.
      * @param data	Ausgelesene Zeile der angegebenen Datei.
      */
-    public void processCsvLine(final String data) {
+    public void processCsvLine(final String data) throws ArrayIndexOutOfBoundsException {
     	
         String [] splittedline = data.split(delimiter);
         

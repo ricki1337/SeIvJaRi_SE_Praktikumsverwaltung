@@ -63,38 +63,38 @@ public class createPDF {
         document.add( Chunk.NEWLINE );
         document.add( Chunk.NEWLINE );
         
-        Chunk sechste = new Chunk("Student:                                        ");
+        Chunk sechste = new Chunk("Student:                                            ");
         document.add(sechste);
         Chunk Student = new Chunk(Vorname + " "+ Name);
         document.add(Student); 
         document.add(new Paragraph(""));
         
-        Chunk siebte = new Chunk("Matrikelnummer:                         ");
+        Chunk siebte = new Chunk("Matrikelnummer:                              ");
         document.add(siebte);
         Chunk matr = new Chunk(MatrNr);
         document.add(matr); 
         document.add(new Paragraph(""));
         
-        Chunk achte = new Chunk("Betreuender Professor:                         ");
+        Chunk achte = new Chunk("Betreuender Professor:                    ");
         document.add(achte);
         Chunk prof = new Chunk (betrProf);
         document.add(prof); 
         document.add(new Paragraph(""));
         
-        Chunk neunte = new Chunk("Studiengruppe:                             ");
+        Chunk neunte = new Chunk("Studiengruppe:                                 ");
         document.add(neunte);
         Chunk grp = new Chunk (Stdgrp);
         document.add(grp); 
         document.add(new Paragraph(""));
         
-        Chunk zehnte = new Chunk("Praktikumsbetrieb:                        ");
+        Chunk zehnte = new Chunk("Praktikumsbetrieb:                            ");
         document.add(zehnte);
         Chunk betr = new Chunk (Betrieb);
         document.add(betr); 
         document.add( Chunk.NEWLINE );
         document.add( Chunk.NEWLINE );
         
-        Chunk elfte = new Chunk("Thema:");
+        Chunk elfte = new Chunk("Thema:                                      ");
         document.add(elfte);
         document.add( Chunk.NEWLINE );
         document.add( Chunk.NEWLINE );

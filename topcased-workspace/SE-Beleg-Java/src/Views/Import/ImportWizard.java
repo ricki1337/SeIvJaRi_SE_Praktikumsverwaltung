@@ -3,17 +3,19 @@ package Views.Import;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
 
+import Controller.ErrorManager;
 import Import.CsvImport;
 import Models.Datenbank.Database;
 import Models.Datenbank.SqlTableStudent;
-
-//vlt sollte ein Button "Typüberprüfung" eingefügt werden. Denn im Fehler fall weis man nicht welche daten nicht importiert wurden
+import Praktikumsverwaltung.Praktikumsverwaltung;
+import Views.Dialog.OkDialog;
 
 
 public class ImportWizard extends JDialog implements ActionListener {
@@ -210,7 +212,7 @@ private void initComponents() {
     button_vorschau.setEnabled(false);
     
     jScrollPane1.setBorder(null);
-    jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createTitledBorder(null, "Error Log", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, java.awt.Color.lightGray));
+    jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createTitledBorder(null, "Log", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, java.awt.Color.lightGray));
 
     logconsole.setEditable(false);
     logconsole.setColumns(20);
@@ -314,7 +316,15 @@ public void actionPerformed(ActionEvent e) {
 			   textfield_datei.setText(file);
 			   button_vorschau.setEnabled(true);
 		   }
-		   catch(NullPointerException exeption){}
+		   catch(NullPointerException exeption){
+				ErrorManager errorManager = new ErrorManager(exeption, "Die Datei \"" + file +"\" konnte nicht gefunden werden");
+		   }
+		   
+		   this.enableComboboxes(false);
+		   this.combo_seperator.setEnabled(true);
+		   this.checkbox_zeileignorieren.setEnabled(false);
+		   this.button_vorschau.setEnabled(true); 
+		   
       }
 	   
 	//BUTTON "IMPORTIEREN"  	
@@ -362,6 +372,7 @@ public void actionPerformed(ActionEvent e) {
 									break; 
 					   }
 				   }catch  (NumberFormatException exeption){
+					   ErrorManager errorManager = new ErrorManager(exeption, "Bitte überprüfen Sie die Zuordnung der Spaltenbezeichnungen.");
 					   logconsole.setText(logconsole.getText() + "Zeile: " + rowIndex + " konnte nicht importiert werden. [ Spalte : " + columnIndex + ", Wert; "+ table.getModel().getValueAt(rowIndex, columnIndex) + " ]" );
 					   error=true;
 				   }                    
@@ -393,16 +404,25 @@ public void actionPerformed(ActionEvent e) {
 		   value_combo_seperator=combo_seperator.getSelectedItem().toString();
 		   DefaultTableModel datamodel = new DefaultTableModel(0,5);
 		   CsvImport csvimport = new CsvImport(file,value_combo_seperator,false);
-		   datamodel=csvimport.parseIt();
+		   try {
+				datamodel=csvimport.parseIt();
+			} catch (IOException exception) {
+				
+				ErrorManager errorManager = new ErrorManager(exception,"Datei konnte nicht gelesen werden.");
+			}			
+		   catch (ArrayIndexOutOfBoundsException exception) {
+			  
+			   ErrorManager errorManager = new ErrorManager(exception, "Bitte überprüfen Sie ob das richtige Trennzeichen bzw die richtige Datei ausgewählte  wurde.");
+			}
 		   logconsole.setText("Es wurden " + csvimport.getcount() + " Datensätze gefunden.\n");
-		   
-		   table.setModel(datamodel);
-		   
-		   
-		   this.enableComboboxes(true);
-		   this.combo_seperator.setEnabled(false);
-		   this.checkbox_zeileignorieren.setEnabled(true);
-		   this.button_vorschau.setEnabled(false);
+		  
+		   if (csvimport.getcount()!=0){	// nur wenn Datensätze gefunden wurden nächste Arbeitschritte freischalten 
+			   table.setModel(datamodel);
+			   this.enableComboboxes(true);
+			   this.combo_seperator.setEnabled(false);
+			   this.checkbox_zeileignorieren.setEnabled(true);
+			   this.button_vorschau.setEnabled(false);
+		   }
 	   }
 	   
 	 //COMBOS
