@@ -114,4 +114,14 @@ public class TableColumnNames {
 		return columnClass;
 	}
 	
+	/**
+	 * 
+	 * @param columnIndex
+	 * @return
+	 * @throws SQLException
+	 */
+	public int getDefinedColumnLength(int columnIndex) throws SQLException{
+		return sqlMetaInformation.getColumnDisplaySize(columnIndex);
+	}
+	
 }

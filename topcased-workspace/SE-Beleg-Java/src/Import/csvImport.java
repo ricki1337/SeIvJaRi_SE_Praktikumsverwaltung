@@ -45,8 +45,10 @@ public class CsvImport {
 	/**
 	 * Liest den Dateiinhalt in ein {@link DefaultTableModel} ein und gibt dieses zurück.
 	 * @return	{@link DefaultTableModel} mit den eingelesenen Informationen der Datei.
+	 * @throws IOException 
+	 * @throws ArrayIndexOutOfBoundsException 
 	 */
-	public DefaultTableModel parseIt() {
+	public DefaultTableModel parseIt() throws ArrayIndexOutOfBoundsException, IOException {
 		parseCsvFile();
 		return datamodel;
 	}
@@ -58,8 +60,7 @@ public class CsvImport {
 
     private void parseCsvFile() throws IOException, ArrayIndexOutOfBoundsException  {
         int i=0;//Zeileniteration
-    	
-       
+
 	    	final BufferedReader reader = new BufferedReader(new FileReader(file));
 	        String current;
 			current = reader.readLine();
@@ -71,7 +72,6 @@ public class CsvImport {
 		        	i++;
 		        }
 		   reader.close();	
-
     }
     
     /**

@@ -63,7 +63,7 @@ public class TableData {
 				do{
 					for(int dataColumn = 0, resultColumn = 1;dataColumn<columnNames.getCountOfColumns();dataColumn++,resultColumn++){
 						Object object = sqlResultSet.getObject(resultColumn);
-						if(object == null || columnNames.sqlMetaInformation.getColumnDisplaySize(resultColumn) == 1){
+						if(object == null || columnNames.getDefinedColumnLength(resultColumn) == 1){
 							object = sqlResultSet.getBoolean(resultColumn);
 						}
 						data[dataRow][dataColumn] = object;

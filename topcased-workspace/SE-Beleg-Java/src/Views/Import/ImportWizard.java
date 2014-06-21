@@ -408,11 +408,11 @@ public void actionPerformed(ActionEvent e) {
 				datamodel=csvimport.parseIt();
 			} catch (IOException exception) {
 				
-				ErrorManager errorManager = new ErrorManager(exception,"Datei konnte nicht gelesen werden.");
+				new ErrorManager(exception,"Datei konnte nicht gelesen werden.");
 			}			
 		   catch (ArrayIndexOutOfBoundsException exception) {
 			  
-			   ErrorManager errorManager = new ErrorManager(exception, "Bitte überprüfen Sie ob das richtige Trennzeichen bzw die richtige Datei ausgewählte  wurde.");
+			   new ErrorManager(exception, "Bitte überprüfen Sie ob das richtige Trennzeichen bzw die richtige Datei ausgewählte  wurde.");
 			}
 		   logconsole.setText("Es wurden " + csvimport.getcount() + " Datensätze gefunden.\n");
 		  
