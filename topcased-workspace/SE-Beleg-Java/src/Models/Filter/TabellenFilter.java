@@ -2,19 +2,29 @@ package Models.Filter;
 
 import java.util.ArrayList;
 
-public class TabellenFilter implements ObjectFilter{
+import Models.Interfaces.DatabaseFilterCtrl;
+import Models.Interfaces.DatatypeFilter;
+
+/**
+ * Implementiert die Möglichkeit, Filter mit Tabellenspalten zu verbinden und bietet verschiedene<br>
+ * Verbindungsarten. Bsp.: UND, ODER Verknüpfung
+ */
+public class TabellenFilter implements DatabaseFilterCtrl{
 
 	private ArrayList<String> spaltenName;
-	private ArrayList<FilterTyp> spaltenWert;
+	private ArrayList<DatatypeFilter> spaltenWert;
 	
+	/**
+	 * Initialisiert die wichtigsten Klassenvariablen.
+	 */
 	public TabellenFilter(){
 		spaltenName = new ArrayList<String>();
-		spaltenWert = new ArrayList<FilterTyp>();
+		spaltenWert = new ArrayList<DatatypeFilter>();
 	}
 	
 	
 	@Override
-	public void setOrFilter(String spaltenName, FilterTyp spaltenWert) {
+	public void setOrFilter(String spaltenName, DatatypeFilter spaltenWert) {
 
 		if(this.spaltenName.size()!=0)
 			this.spaltenName.add(" or "+spaltenName);
@@ -24,7 +34,7 @@ public class TabellenFilter implements ObjectFilter{
 	}
 	
 	@Override
-	public void setAndFilter(String spaltenName, FilterTyp spaltenWert) {
+	public void setAndFilter(String spaltenName, DatatypeFilter spaltenWert) {
 		if(this.spaltenName.size()!=0)
 			this.spaltenName.add(" and "+spaltenName);
 		else this.spaltenName.add(spaltenName);

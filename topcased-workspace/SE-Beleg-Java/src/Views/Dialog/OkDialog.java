@@ -10,6 +10,8 @@ import javax.swing.InputMap;
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
 
+import Praktikumsverwaltung.Praktikumsverwaltung;
+
 
 public class OkDialog extends javax.swing.JDialog {
 
@@ -20,9 +22,9 @@ public class OkDialog extends javax.swing.JDialog {
 
     private String message;
     
-    public OkDialog(java.awt.Frame parent, boolean modal, String message) {
+    public OkDialog(String message) {
         
-    	super(parent, modal);
+    	super(Praktikumsverwaltung.getFrame(), true);
     	this.message = message;
         initComponents();
 		this.setLocationRelativeTo(null);

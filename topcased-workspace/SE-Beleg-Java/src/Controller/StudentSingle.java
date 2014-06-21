@@ -1,5 +1,6 @@
 package Controller;
 
+import Models.Datenbank.SqlTableProfs;
 import Models.Datenbank.SqlTableStudent;
 import Models.Filter.IntFilter;
 import Views.GuiElemente.BoxElementBottomNavi;
@@ -10,33 +11,43 @@ import Views.Interfaces.NaviAbortSaveBoxCtrl;
 import Views.Interfaces.NaviPrevSaveNextBoxCtrl;
 import Views.Interfaces.EditBoxCtrl;
 
-public class StudentSingle extends ControllerNew implements EditBoxCtrl, NaviAbortSaveBoxCtrl, NaviPrevSaveNextBoxCtrl{
+/**
+ * Verwaltet die Detailansicht eines Studenten.
+ */
+public class StudentSingle extends Controller implements EditBoxCtrl, NaviAbortSaveBoxCtrl, NaviPrevSaveNextBoxCtrl{
 	
-	private String srcSqlQuery = "select " +
-									SqlTableStudent.MatrikelNummer + " as Matrikelnr, " +
-									SqlTableStudent.Vorname + " as Vorname, " +
-									SqlTableStudent.Nachname + " as Nachname, " +
-									SqlTableStudent.EMail + " as 'E-Mail', " +
-									SqlTableStudent.Studiengruppe + " as Studiengruppe, " +
-									SqlTableStudent.Bemerkung + " as Bemerkung " +
-								"from " +
-									SqlTableStudent.tableName;
+		private String srcSqlQuery = "select " +
+										SqlTableStudent.MatrikelNummer + " as Matrikelnr, " +
+										SqlTableStudent.Vorname + " as Vorname, " +
+										SqlTableStudent.Nachname + " as Nachname, " +
+										SqlTableStudent.EMail + " as 'E-Mail', " +
+										SqlTableStudent.Studiengruppe + " as Studiengruppe, " +
+										SqlTableStudent.Bemerkung + " as Bemerkung " +
+									"from " +
+										SqlTableStudent.tableName;
 	
-	
-	private Views.ViewNew view;
-	
+	/**
+	 * Initialisiert die Ansicht zur Neuanlage eines Datensatzes.<br>
+	 * Erstellt das {@link Model}.<br>
+	 * Erstellt die {@link View} und setzt den Fensternamen auf "Student anlegen".
+	 */
 	public StudentSingle(){
+		super();
 		setModel(new Models.Model(SqlTableStudent.tableName,SqlTableStudent.TableNameDotPrimaryKey));
-		setView(view = new Views.ViewNew(this));
+		setView(new Views.View(this));
 		view.setTitle("Student anlegen");
 		setElementsForNewData();
 	}
 	
-	
+	/**
+	 * Initialisiert die Ansicht zum Bearbeiten eines oder mehrer Studenten.<br>
+	 * Nimmt ein Object oder ein Object[] entgegen und erstellt darauf basierend das Model<br>
+	 * und die View.
+	 * @param primaryKeys	Wert bzw. Werte zur Filterung der {@link SqlTableStudent.PrimaryKey} Spalte.
+	 */
 	public StudentSingle(Object primaryKeys){
 		super();
-		
-		
+
 		Models.Model model = new Models.Model(srcSqlQuery,SqlTableStudent.tableName,SqlTableStudent.TableNameDotPrimaryKey);
 				
 		if(primaryKeys instanceof Object[]){		
@@ -48,9 +59,14 @@ public class StudentSingle extends ControllerNew implements EditBoxCtrl, NaviAbo
 		}
 		model.setResult();
 		setModel(model);
-		setView((view = new Views.ViewNew(this)));
+		setView((view = new Views.View(this)));
 		view.setTitle("Student editieren");
 		setElements();
+	}
+	
+	@Override
+	public void display() {
+		view.display();
 	}
 	
 	@Override
@@ -68,16 +84,11 @@ public class StudentSingle extends ControllerNew implements EditBoxCtrl, NaviAbo
 		navi.addBoxToRightSide(new BoxElementBottomNaviAbortSave(this));
 		view.addComponentToView(navi);
 	}
-	
-	@Override
-	public void display() {
-		view.display();
-	}
 
 	@Override
 	public String getStringValueForBoxElementEdit(String sqlColumnName) {
 		try {
-			return model.tableRowData.getStringValueFromPosition(model.rowPosition, sqlColumnName);
+			return model.getStringValueFromPosition(model.getRowPosition(), sqlColumnName);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -88,7 +99,7 @@ public class StudentSingle extends ControllerNew implements EditBoxCtrl, NaviAbo
 	@Override
 	public int getIntValueForBoxElementEdit(String sqlColumnName) {
 		try {
-			return Integer.parseInt(model.tableRowData.getStringValueFromPosition(model.rowPosition, sqlColumnName));
+			return Integer.parseInt(model.getStringValueFromPosition(model.getRowPosition(), sqlColumnName));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -99,7 +110,7 @@ public class StudentSingle extends ControllerNew implements EditBoxCtrl, NaviAbo
 	@Override
 	public boolean getBooleanValueForBoxElementEdit(String sqlColumnName) {
 		try {
-			return model.tableRowData.getBooleanValueFromPosition(model.rowPosition, sqlColumnName);
+			return model.getBooleanValueFromPosition(model.getRowPosition(), sqlColumnName);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -140,12 +151,12 @@ public class StudentSingle extends ControllerNew implements EditBoxCtrl, NaviAbo
 
 	@Override
 	public String getCurrentPos() {
-		return String.valueOf(model.rowPosition+1);
+		return String.valueOf(model.getRowPosition()+1);
 	}
 
 
 	@Override
 	public String getPosSum() {
-		return String.valueOf(model.tableRowData.getRowCount());
+		return String.valueOf(model.getTableRowCount());
 	}
 }

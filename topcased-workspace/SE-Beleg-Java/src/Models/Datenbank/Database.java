@@ -3,7 +3,15 @@ package Models.Datenbank;
 import java.sql.*;
 import java.util.*;
 import Controller.ErrorManager;
+import Models.Interfaces.DatabaseFunction;
+import Models.Interfaces.Observer;
 
+/**
+ * Stellt die zentrale Schnittstelle zur Datenbank dar.<br>
+ * Übernimmt sämtliche Kommunikation mit der Datenbank.<br>
+ * Ist als Singleton implementiert.
+ *
+ */
 public class Database
 {
 	private static Database instance = new Database();
@@ -20,12 +28,18 @@ public class Database
 	private Vector<Observer> observerList;
 	
 	protected ArrayList<String> tables;
-
+	
+	/**
+	 * Initialisiert die wichtigsten Klassenvariablen.
+	 */
 	private Database (){
 		observerList = new Vector<Observer>();
 		tables = new ArrayList<String>();
 	}
 	
+	/**
+	 * Die Instanz darf nicht kopiert werden.
+	 */
 	public Database clone(){ 
 		try {
 		throw new AssertionError("Von Database darf nur eine Instanz existieren!");
@@ -35,22 +49,47 @@ public class Database
 		return null;
 	}
 	
+	/**
+	 * Informiert alle registrierten Observer, dass sich Daten geändert haben.<br>
+	 * Die geänderten Tabellen werden mit übergeben und müssen von den Observern abgeglichen werden.
+	 * 
+	 * @param changedTables	Tabellennamen der aktualisierten Tabellen.
+	 */
 	private void informModels(String[] changedTables)
 	{
 		for(int i=0;i<observerList.size();i++)
 			observerList.elementAt(i).refresh(changedTables);
 	}
 	
+	/**
+	 * Registriert den Übergebenen {@link Models.Interfaces.Observer} in interner Liste.<br>
+	 * Der Observer wird bei Änderungen in der Datenbank informiert.
+	 * 
+	 * @param observer	Objekt, welches das Interface Observer implementiert
+	 * @see 	Models.Interfaces.Observer
+	 */
 	public void login(Observer observer)
 	{
 		observerList.add(observer);
 	}
 	
+	/**
+	 * Entfernt den Übergebenen {@link Models.Interfaces.Observer} aus der interner Liste.<br>
+	 * Der Observer bekommt keine Benachrichtigungen bei Änderungen der Datenbank mehr.
+	 * 
+	 * @param observer	Objekt, welches das Interface Observer implementiert
+	 * @see 			Models.Interfaces.Observer
+	 */
 	public void logout(Observer observer)
 	{
 		observerList.remove(observer);
 	}
 	
+	/**
+	 * Liefert die Singleton Instanz von Database
+	 * 
+	 * @return	Instanz von Database
+	 */
 	public static Database getInstance()
 	{
 		if(instance == null)
@@ -58,38 +97,64 @@ public class Database
 		return instance;
 	}
 
-
-	public ResultSet getQuery(String query) {
+	/**
+	 * Führt den übergebenen Sqlquery auf der Datenbank aus und liefert das Ergebnis in einem {@link ResultSet} zurück.
+	 * @param sqlQuery	Sqlquery, welches auf der Datenbank ausgeführt werden soll.
+	 * @return		Ergebnis des Sqlquery.
+	 * @see	ResulSet
+	 */
+	public ResultSet getQuery(String sqlQuery) {
 		ResultSet result = null;
 		try{
-			result = this.db.getQuery(query);
+			if(sqlQuery.toLowerCase().contains("update") || sqlQuery.toLowerCase().contains("insert") || sqlQuery.toLowerCase().contains("delete"))
+				throw new Exception("Es dürfen hier nur SELECT Querys ausgeführt werden.");
+			result = this.db.getQuery(sqlQuery);
 		}
 		catch(Exception e){
 			ErrorManager errorManager = new ErrorManager(e);
 			if(errorManager.retry)
-				result = getQuery(query);
+				result = getQuery(sqlQuery);
 		}
 		return result;
 	}
 
-	
-	public int setQueryandInformModels(String query) {
+	/**
+	 * Führt den übergebenen INSERT oder UPDATE Sqlquery auf der Datenbank aus<br>
+	 * und liefert die Zahl der betroffenen Datensätze zurück.<br>
+	 * Nach der erfolgreichen Änderung werden alle Models informiert.
+	 * 
+	 * @param sqlQuery	Sqlquery, welches auf der Datenbank ausgeführt werden soll.
+	 * @return			Anzahl der von der Sqlquery betroffenen Datensätze.
+	 */
+	public int setQueryandInformModels(String sqlQuery) {
 		int tmp = 0;
 		try{
-			tmp = this.db.setQuery(query);
+			if(sqlQuery.toLowerCase().contains("select") || sqlQuery.toLowerCase().contains("show"))
+				throw new Exception("Es dürfen hier keine SELECT Querys ausgeführt werden.");
+			tmp = this.db.setQuery(sqlQuery);
 		}
 		catch(Exception e){
 			ErrorManager errorManager = new ErrorManager(e);
 			if(errorManager.retry)
-				tmp = setQueryandInformModels(query);
+				tmp = setQueryandInformModels(sqlQuery);
 		}
-		informModels(getChangedTables(query));
+		informModels(getChangedTables(sqlQuery));
 		return tmp; 
 	}
 	
+	/**
+	 * Führt den übergebenen INSERT oder UPDATE Sqlquery auf der Datenbank aus<br>
+	 * und liefert die Zahl der betroffenen Datensätze zurück.<br>
+	 * Betroffene Models werden NICHT informiert.
+	 * 
+	 * @param sqlQuery	Sqlquery, welches auf der Datenbank ausgeführt werden soll.
+	 * @return			Anzahl der von der Sqlquery betroffenen Datensätze.
+	 */
 	public int setQuery(String query) {
 		int tmp = 0;
 		try{
+			if(query.toLowerCase().contains("select"))
+				throw new Exception("Es dürfen hier keine SELECT Querys ausgeführt werden.");
 			tmp = this.db.setQuery(query);
 		}
 		catch(Exception e){
@@ -100,6 +165,11 @@ public class Database
 		return tmp; 
 	}
 	
+	/**
+	 * Extrahiert die betroffenen Tabellen bei einer Änderung und gibt diese in einem Array zurück.
+	 * @param query	Sqlquery, welches Daten verändert.
+	 * @return		Stringarray, welches die Tabellennamen enthält.
+	 */
 	protected String[] getChangedTables(String query){
 		ArrayList<String> changedTables = new ArrayList<String>();
 		for(String table:tables){
@@ -115,7 +185,16 @@ public class Database
 		return changedTablesArray;
 	}
 	
-
+	/**
+	 * Stellt die Verbindung zur Datenbank her.<br>
+	 * @param dbType	Datenbanktyp, derzeitig ist nur "MySql" implementiert.
+	 * @param host		IP oder DNS Name des Datenbankservers.
+	 * @param port		Port, auf welchem der Datenbankserver auf eine Verbindung wartet.
+	 * @param user		Benutzername für die Anmeldung am Datenbankserver.
+	 * @param pw		Passwort für die Anmeldung am Datenbankserver.
+	 * @param db		Datenbankname, welche geöffnet werden soll.
+	 * @throws Exception
+	 */
 	public void connect(String dbType, String host, int port, String user, String pw, String db) throws Exception {
 		dbHost = host;
 		dbPort = port;
@@ -127,7 +206,6 @@ public class Database
 			switch(dbType){
 				case "MySql": 	this.db = new MySql();
 								break;
-
 			}
 			try{
 				this.db.connect(dbHost, dbPort, dbUser, dbPassword, dbName);
@@ -141,12 +219,16 @@ public class Database
 		setTables();
 	}
 	
+	/**
+	 * Fragt alle Tabellennamen der Datenbank ab und speichert sie Intern.<br>
+	 * Wird für den Vergleich der Sqlquery nach einer Änderung der Datenbank benötigt.<br>Bildet also die Vergleichsgrundlage.
+	 * @throws SQLException
+	 */
 	protected void setTables() throws SQLException{
 		ResultSet sqlTables = this.db.getQuery("show tables;");
 
 		while(sqlTables.next()){
 			String tableName = null;
-			
 			try{
 				tableName = sqlTables.getString(1);
 			}
@@ -162,9 +244,12 @@ public class Database
 			}
 			tables.add(tableName);
 		}
-
 	}
 	
+	/**
+	 * Beendet die Datenbankverbindung und die Instanz.<br>
+	 * Nach dem Aufruf muss die Datenbank erst wieder neu Verbunden werden um Abfragen auszuführen.
+	 */
 	public void disconnect() {
 		if(this.db != null) this.db.disconnect();
 		Database.instance = null;

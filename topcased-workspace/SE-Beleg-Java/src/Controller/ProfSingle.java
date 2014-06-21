@@ -10,7 +10,10 @@ import Views.Interfaces.NaviAbortSaveBoxCtrl;
 import Views.Interfaces.NaviPrevSaveNextBoxCtrl;
 import Views.Interfaces.EditBoxCtrl;
 
-public class ProfSingle extends ControllerNew implements EditBoxCtrl, NaviAbortSaveBoxCtrl, NaviPrevSaveNextBoxCtrl{
+/**
+ * Verwaltet die Detailansicht eines Betreuers.
+ */
+public class ProfSingle extends Controller implements EditBoxCtrl, NaviAbortSaveBoxCtrl, NaviPrevSaveNextBoxCtrl{
 	
 	private String srcSqlQuery = "select " +
 									SqlTableProfs.TableNameDotName + " as Name, " +
@@ -18,21 +21,28 @@ public class ProfSingle extends ControllerNew implements EditBoxCtrl, NaviAbortS
 								"from " +
 									SqlTableProfs.tableName;
 	
-	
-	private Views.ViewNew view;
-	
+	/**
+	 * Initialisiert die Ansicht für die Neuanlage eines Betreuers.<br>
+	 * Erstellt das {@link Model}.<br>
+	 * Erstellt die {@link View} und setzt den Fensternamen auf "Betreuer anlegen".
+	 */
 	public ProfSingle(){
 		setModel(new Models.Model(SqlTableProfs.tableName,SqlTableProfs.TableNameDotPrimaryKey));
-		setView(view = new Views.ViewNew(this));
+		setView(new Views.View(this));
 		view.setTitle("Betreuer anlegen");
 		setElementsForNewData();
 	}
 	
-	
+	/**
+	 * Initialisiert die Ansicht zum Bearbeiten eines oder mehrer Betreuer.<br>
+	 * Nimmt ein Object oder ein Object[] entgegen und erstellt darauf basierend das Model<br>
+	 * und die View.
+	 * 
+	 * @param primaryKeys Wert bzw. Werte zur Filterung der {@link SqlTableProfs.PrimaryKey} Spalte.
+	 */
 	public ProfSingle(Object primaryKeys){
 		super();
-		
-		
+
 		Models.Model model = new Models.Model(srcSqlQuery,SqlTableProfs.tableName,SqlTableProfs.TableNameDotPrimaryKey);
 				
 		if(primaryKeys instanceof Object[]){		
@@ -44,7 +54,7 @@ public class ProfSingle extends ControllerNew implements EditBoxCtrl, NaviAbortS
 		}
 		model.setResult();
 		setModel(model);
-		setView((view = new Views.ViewNew(this)));
+		setView((view = new Views.View(this)));
 		view.setTitle("Betreuer editieren");
 		setElements();
 	}
@@ -73,7 +83,7 @@ public class ProfSingle extends ControllerNew implements EditBoxCtrl, NaviAbortS
 	@Override
 	public String getStringValueForBoxElementEdit(String sqlColumnName) {
 		try {
-			return model.tableRowData.getStringValueFromPosition(model.rowPosition, sqlColumnName);
+			return model.getStringValueFromPosition(model.getRowPosition(), sqlColumnName);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -84,7 +94,7 @@ public class ProfSingle extends ControllerNew implements EditBoxCtrl, NaviAbortS
 	@Override
 	public int getIntValueForBoxElementEdit(String sqlColumnName) {
 		try {
-			return Integer.parseInt(model.tableRowData.getStringValueFromPosition(model.rowPosition, sqlColumnName));
+			return Integer.parseInt(model.getStringValueFromPosition(model.getRowPosition(), sqlColumnName));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -95,7 +105,7 @@ public class ProfSingle extends ControllerNew implements EditBoxCtrl, NaviAbortS
 	@Override
 	public boolean getBooleanValueForBoxElementEdit(String sqlColumnName) {
 		try {
-			return model.tableRowData.getBooleanValueFromPosition(model.rowPosition, sqlColumnName);
+			return model.getBooleanValueFromPosition(model.getRowPosition(), sqlColumnName);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -135,12 +145,12 @@ public class ProfSingle extends ControllerNew implements EditBoxCtrl, NaviAbortS
 
 	@Override
 	public String getCurrentPos() {
-		return String.valueOf(model.rowPosition+1);
+		return String.valueOf(model.getRowPosition()+1);
 	}
 
 
 	@Override
 	public String getPosSum() {
-		return String.valueOf(model.tableRowData.getRowCount());
+		return String.valueOf(model.getTableRowCount());
 	}
 }

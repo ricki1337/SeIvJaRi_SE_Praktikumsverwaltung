@@ -6,6 +6,8 @@ import java.sql.SQLException;
 
 import org.mockito.Mockito;
 
+import Models.Interfaces.DatabaseFunction;
+
 public class MockMySql implements DatabaseFunction{
 	
 	

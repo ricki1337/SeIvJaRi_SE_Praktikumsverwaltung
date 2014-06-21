@@ -1,5 +1,9 @@
 package Models.Datenbank;
 
+/**
+ * Definiert die Spaltennamen der Datenbanktabelle "Companies"
+ *
+ */
 public class SqlTableCompanies extends Object{
 	
 	public static String tableName = new String("Companies");

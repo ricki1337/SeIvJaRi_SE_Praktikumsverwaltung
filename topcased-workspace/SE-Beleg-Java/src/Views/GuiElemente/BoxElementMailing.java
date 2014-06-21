@@ -1,14 +1,18 @@
 package Views.GuiElemente;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
+import javax.swing.Box;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
@@ -48,7 +52,8 @@ public class BoxElementMailing extends JPanel implements BasicBox, MouseListener
 		String[][] dataArray;
 		
 		
-		private JPanel jp_maildata;
+		//private JPanel jp_maildata;
+		private JScrollPane jp_maildata;
 		private JTextField jtf_absender;
 		private JPasswordField jpw_password;
 		private JLabel jl_mailStatus;
@@ -69,8 +74,6 @@ public class BoxElementMailing extends JPanel implements BasicBox, MouseListener
 	
 	@Override
 	public void initComponents() {
-		jp_maildata = new JPanel();
-		
 		jtf_absender = new JTextField();
 		jtf_absender.setColumns(40);
 		
@@ -80,42 +83,45 @@ public class BoxElementMailing extends JPanel implements BasicBox, MouseListener
 		
 		jpw_password = new JPasswordField();
 		
-		jl_mailStatus = new JLabel();
+		jl_mailStatus = new JLabel("");
+		
+		jp_maildata = new JScrollPane();
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(jp_maildata, GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(jl_password, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(jl_absender, GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(jpw_password)
-								.addComponent(jtf_absender, GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))
-							.addGap(18)
-							.addComponent(jl_mailStatus, GroupLayout.PREFERRED_SIZE, 289, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap())
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(jl_absender)
-						.addComponent(jtf_absender, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(jl_mailStatus))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(jl_password)
-						.addComponent(jpw_password, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(26)
-					.addComponent(jp_maildata, GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
-					.addGap(17))
-		);
+				groupLayout.createParallelGroup(Alignment.LEADING)
+					.addGroup(groupLayout.createSequentialGroup()
+						.addContainerGap()
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+							.addComponent(jp_maildata, GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
+							.addGroup(groupLayout.createSequentialGroup()
+								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+									.addComponent(jl_password, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addComponent(jl_absender, GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+									.addComponent(jpw_password)
+									.addComponent(jtf_absender, GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))
+								.addGap(18)
+								.addComponent(jl_mailStatus, GroupLayout.PREFERRED_SIZE, 289, GroupLayout.PREFERRED_SIZE)))
+						.addContainerGap())
+			);
+			groupLayout.setVerticalGroup(
+				groupLayout.createParallelGroup(Alignment.LEADING)
+					.addGroup(groupLayout.createSequentialGroup()
+						.addContainerGap()
+						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+							.addComponent(jl_absender)
+							.addComponent(jtf_absender, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(jl_mailStatus))
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+							.addComponent(jl_password)
+							.addComponent(jpw_password, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGap(26)
+						.addComponent(jp_maildata, GroupLayout.PREFERRED_SIZE, 229, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+			);
+		
 		setLayout(groupLayout);
         
 	}
@@ -199,25 +205,30 @@ public class BoxElementMailing extends JPanel implements BasicBox, MouseListener
 
 	private void setMailingList(){
 		int anzahl = dataArray.length;
-		jp_maildata.setLayout( new GridLayout(/*3*/ 0, 7, 6, 3) );
+		//jp_maildata.setLayout( new GridLayout(/*3*/ 0, 7, 6, 3) );
 		JTextField jcb_empfaenger;
     	JCheckBox jcb_zeugnis;
     	JCheckBox jcb_bericht;
     	JCheckBox jcb_send;
     	JLabel jl_status;
     	
+    	Box mailDataBox = new Box(BoxLayout.Y_AXIS);
+    	
+		
+    	
     	for(int i=0;i<anzahl;i++){
     		JPanel mailData = new JPanel();
-    		mailData.setLayout(new GridLayout(0, 7, 6, 3));
-    		jp_maildata.add(new JLabel(vornamenliste[i]));
+    		mailData.setLayout(new GridLayout(1, 7, 6, 3));
+    		
+    		mailData.add(new JLabel(vornamenliste[i]));
 	    		 
-    		jp_maildata.add(new JLabel(nachnamenliste[i]));
+    		mailData.add(new JLabel(nachnamenliste[i]));
 	        
 	        //bericht checkbox
 	    	jcb_bericht = new JCheckBox("Bericht"); 
 	    	jcb_bericht.addMouseListener(this);
 	    	berichtCheckBoxList.add(jcb_bericht);
-	    	jp_maildata.add(jcb_bericht);
+	    	mailData.add(jcb_bericht);
 	    	if(berichtvorliegendliste[i])
 	    		jcb_bericht.setSelected(true);
 	    	else 
@@ -227,7 +238,7 @@ public class BoxElementMailing extends JPanel implements BasicBox, MouseListener
 	    	jcb_zeugnis = new JCheckBox("Zeugnis");
 	    	jcb_zeugnis.addMouseListener(this);
 	    	zeugnisCheckBoxList.add(jcb_zeugnis);
-	    	jp_maildata.add(jcb_zeugnis);
+	    	mailData.add(jcb_zeugnis);
 	    	if(zeugnisvorliegendliste[i])
 	    		jcb_zeugnis.setSelected(true);
 	    	else 
@@ -236,20 +247,25 @@ public class BoxElementMailing extends JPanel implements BasicBox, MouseListener
 	    	//empfänger
 	    	jcb_empfaenger= new JTextField(recipientEmailList[i]+"@htw-dresden.de");
 	    	txtfields.add(jcb_empfaenger);
-	    	jp_maildata.add(jcb_empfaenger);
+	    	mailData.add(jcb_empfaenger);
 	    	
 	    	//senden
 	    	jcb_send = new JCheckBox("senden");
 	    	jcb_send.addMouseListener(this);
 	    	jcb_send.setSelected(true);
 	    	senden.add(jcb_send);
-	    	jp_maildata.add(jcb_send);
+	    	mailData.add(jcb_send);
 	    	
 	    	// status
 	    	jl_status = new JLabel();
 	    	statusList.add(jl_status);
-	    	jp_maildata.add(jl_status);
+	    	mailData.add(jl_status);
+	    	mailData.setMaximumSize(new Dimension(getMaximumSize().width,25));
+	    	mailDataBox.add(mailData);
     	}
+    	
+    	jp_maildata.setViewportView(mailDataBox);
+    	
 	}
 
 	@Override

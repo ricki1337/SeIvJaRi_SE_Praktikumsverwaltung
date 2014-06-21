@@ -10,18 +10,21 @@ import java.util.concurrent.ThreadLocalRandom;
 import javax.swing.GroupLayout;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.ListSelectionModel;
 import javax.swing.RowSorter.SortKey;
 import javax.swing.event.RowSorterEvent;
 import javax.swing.event.RowSorterListener;
 import javax.swing.table.TableModel;
 
 import ConfigParser.Debug;
+import Models.Table.EmptyObject;
 import Models.Table.NonEditableTableModel;
 import Models.Table.TableDataRowSorter;
 import Views.Interfaces.BasicBox;
+import Views.Interfaces.TableBox;
 import Views.Interfaces.TableBoxCtrl;
 
-public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
+public class BoxElementTable extends JPanel implements BasicBox, TableBox, MouseListener{
 
 		private javax.swing.JScrollPane jScrollPane1;
 	    
@@ -93,8 +96,10 @@ public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
                     	controller.setOrderByColumn(test.get(0).getColumn(),test.get(0).getSortOrder());
                     }
                 });
+        setColumnSelectionToMulti();
 	}
-
+	
+	@Override
     public void setComponentEventHandler() {
     	jt_table.addMouseListener(this);
 	}
@@ -105,13 +110,19 @@ public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
 		jt_table.printAll(jt_table.getGraphics());
 	}
 	
+	@Override
+	public JComponent getJComponent() {
+		return this;
+	}
+	
+	@Override
 	public void setFlag(){
-		if(jt_table.getSelectedColumn() != 0) return;
 		boolean currentValue = (boolean) controller.getValueFromPosition(jt_table.getSelectedRow(), "Auswahl");
 		controller.setValueAtPosition(getSelectedRow(), "Auswahl", !currentValue);
 		jt_table.repaint();
 	}
 	
+	@Override
 	public void setFlagOnSelectedRows(){
 		if(jt_table.getSelectedRows().length == 0) return;
 		for(int row:getSelectedRows()){
@@ -121,23 +132,19 @@ public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
 		jt_table.repaint();
 	}
 	
-	
-
 	@Override
-	public JComponent getJComponent() {
-		return this;
-	}
-
 	public int getSelectedRowCount(){
 		return jt_table.getSelectedRowCount();
 	}
 	
+	@Override
 	public int getSelectedRow(){
 		int selectedRow = jt_table.getSelectedRow();
 		int rowIdInTableModel = jt_table.convertRowIndexToModel(selectedRow);
 		return rowIdInTableModel;
 	}
 	
+	@Override
 	public int[] getSelectedRows(){
 		int[] selectedRows = new int[jt_table.getSelectedRowCount()]; 
 		int rowIndex = 0;
@@ -148,21 +155,26 @@ public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
 		return selectedRows;
 	}
 	
+	@Override
 	public Object getColumnValueFromSelectedRow(String string) {
 		return controller.getValueFromPosition(jt_table.getSelectedRow(), string);
 	}
 	
+	@Override
 	public Object[] getColumnValuesFromSelectedRows(String columnName){
 		Object[] returnValues = new Object[getSelectedRowCount()];
 		int rowIndex = 0;
-		int column = jt_table.convertColumnIndexToModel(controller.getColumnAliasIndex(columnName));
+		int column = jt_table.convertColumnIndexToModel(controller.getColumnIndex(columnName));
 		for(int selectedRow:getSelectedRows()){
-			returnValues[rowIndex] = jt_table.getValueAt(jt_table.convertRowIndexToModel(selectedRow),column);
+			Object valueAtSelectedRow = jt_table.getValueAt(jt_table.convertRowIndexToModel(selectedRow),column);
+			if(valueAtSelectedRow instanceof EmptyObject) continue;
+			returnValues[rowIndex] = valueAtSelectedRow;
 			rowIndex++;
 		}
 		return returnValues;
 	}
 	
+	@Override
 	public int getFlaggedRowCount(){
 		int flaggedColumnCount = 0;
 		for(int index=0;index<jt_table.getRowCount();index++){
@@ -174,6 +186,7 @@ public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
 		return flaggedColumnCount;
 	}
 	
+	@Override
 	public int[] getFlaggedRows(){
 		int[] flaggedRows = new int[getFlaggedRowCount()];
 		int flaggedRowsCount = 0;
@@ -187,17 +200,27 @@ public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
 		return flaggedRows;
 	}
 	
+	@Override
 	public Object[] getColumnValuesFromFlaggedRows(String columnName){
 		Object[] returnValues = new Object[getFlaggedRowCount()];
 		int rowIndex = 0;
-		int column = jt_table.convertColumnIndexToModel(controller.getColumnAliasIndex(columnName));
+		int column = jt_table.convertColumnIndexToModel(controller.getColumnIndex(columnName));
 		for(int flaggedRow:getFlaggedRows()){
-			returnValues[rowIndex] = jt_table.getValueAt(jt_table.convertRowIndexToModel(flaggedRow),column);
+			Object valueAtFlaggedRow = jt_table.getValueAt(jt_table.convertRowIndexToModel(flaggedRow),column);
+			if(valueAtFlaggedRow instanceof EmptyObject) continue;
+			returnValues[rowIndex] = valueAtFlaggedRow;
 			rowIndex++;
 		}
 		return returnValues;
 	}
 
+	public void setToolTip(){
+		if(Debug.isDebugMode()){
+			setToolTipText(this.getClass().getCanonicalName());
+			this.setBackground(Color.getHSBColor(ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255));
+		}
+	}
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		if(e.getComponent().getName() == "table"){
@@ -207,13 +230,6 @@ public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
 			}else{
 				controller.tableRowClicked();
 			}
-		}
-	}
-	
-	public void setToolTip(){
-		if(Debug.isDebugMode()){
-			setToolTipText(this.getClass().getCanonicalName());
-			this.setBackground(Color.getHSBColor(ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255));
 		}
 	}
 
@@ -228,5 +244,15 @@ public class BoxElementTable extends JPanel implements BasicBox, MouseListener{
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {}
+
+	@Override
+	public void setColumnSelectionToOnlyOne() {
+		jt_table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+	}
+
+	@Override
+	public void setColumnSelectionToMulti() {
+		jt_table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+	}
 	                       
 }

@@ -4,10 +4,10 @@ import java.util.Map;
 
 import javax.swing.SortOrder;
 
-import Controller.Interfaces.CallbackSelectedValue;
+import Controller.Interfaces.SelectedValueCallbackCtrl;
 import Models.Datenbank.SqlTableContracts;
 import Models.Datenbank.SqlTableStudent;
-import Models.Filter.SqlListFilter;
+import Models.Filter.NestedSqlQueryFilter;
 import Praktikumsverwaltung.Praktikumsverwaltung;
 import Views.Dialog.OkDialog;
 import Views.GuiElemente.BoxElementBottomNavi;
@@ -26,69 +26,87 @@ import Views.Interfaces.ExtendedSearchBoxCtrl;
 import Views.Interfaces.SearchBoxCtrl;
 import Views.Interfaces.TableBoxCtrl;
 
-public class StudentList extends ControllerNew implements	BasicBoxCtrl, 
-															TableBoxCtrl, 
-															SearchBoxCtrl, 
-															ExtendedSearchBoxCtrl, 
-															NaviEditMailPrintBoxCtrl, 
-															NaviMarkBoxCtrl, 
-															NaviAbortSelectBoxCtrl, 
-															ExtendedStudentSearchBoxCtrl{
+/**
+ * Verwaltet die Listenansicht der Studenten.
+ */
+public class StudentList extends Controller implements	BasicBoxCtrl, 
+														TableBoxCtrl, 
+														SearchBoxCtrl, 
+														ExtendedSearchBoxCtrl, 
+														NaviEditMailPrintBoxCtrl, 
+														NaviMarkBoxCtrl, 
+														NaviAbortSelectBoxCtrl, 
+														ExtendedStudentSearchBoxCtrl{
 	
-	private String srcSqlQuery = "select " +
-									SqlTableStudent.TableNameDotMatrikelNummer + " as Matrikelnr, " +
-									SqlTableStudent.TableNameDotVorname + " as Vorname, " +
-									SqlTableStudent.TableNameDotNachname + " as Nachname, " +
-									SqlTableStudent.TableNameDotEMail + " as 'E-Mail', " +
-									SqlTableStudent.TableNameDotStudiengruppe + " as Studiengruppe, " +
-									SqlTableStudent.TableNameDotBemerkung + " as Bemerkung, " +
-									"CASE (SELECT count(*) FROM "+ SqlTableContracts.tableNameWithAlias + " WHERE " + SqlTableContracts.TableNameDotFK_Student + " = " + SqlTableStudent.TableNameDotMatrikelNummer +") " +
-										"WHEN '0' THEN CAST(0 as CHAR(1)) " +
-										"ELSE CAST(1 as CHAR(1)) " +
-									"END as Vertrag " +
- 
-								"from " +
-									SqlTableStudent.tableNameWithAlias;
-	
-	private SqlListFilter hasNoContractFilter = null;
-	private SqlListFilter hasContractFilter = null;
-	private String srcSqlQueryContract = "SELECT " +
-											SqlTableContracts.TableNameDotFK_Student + 
-										" FROM " + 
-											SqlTableContracts.tableNameWithAlias + 
-										" WHERE " + SqlTableContracts.TableNameDotFK_Student + " IS NOT NULL";
-	
-	
-	private Models.ListModel model;
-	private Views.ViewNew view;
+		private String srcSqlQuery = "select " +
+										SqlTableStudent.TableNameDotMatrikelNummer + " as Matrikelnr, " +
+										SqlTableStudent.TableNameDotVorname + " as Vorname, " +
+										SqlTableStudent.TableNameDotNachname + " as Nachname, " +
+										SqlTableStudent.TableNameDotEMail + " as 'E-Mail', " +
+										SqlTableStudent.TableNameDotStudiengruppe + " as Studiengruppe, " +
+										SqlTableStudent.TableNameDotBemerkung + " as Bemerkung, " +
+										"CASE (SELECT count(*) FROM "+ SqlTableContracts.tableNameWithAlias + " WHERE " + SqlTableContracts.TableNameDotFK_Student + " = " + SqlTableStudent.TableNameDotMatrikelNummer +") " +
+											"WHEN '0' THEN CAST(0 as CHAR(1)) " +
+											"ELSE CAST(1 as CHAR(1)) " +
+										"END as Vertrag " +
+	 
+									"from " +
+										SqlTableStudent.tableNameWithAlias;
 		
-	private BoxElementTable table;
-	private BoxElementSearchMenu searchMenu;
-	private ExtendedSearchPanelStudentNew extendedSearch;
+		private NestedSqlQueryFilter hasNoContractFilter = null;
+		private NestedSqlQueryFilter hasContractFilter = null;
+		private String srcSqlQueryContract = "SELECT " +
+												SqlTableContracts.TableNameDotFK_Student + 
+											" FROM " + 
+												SqlTableContracts.tableNameWithAlias + 
+											" WHERE " + SqlTableContracts.TableNameDotFK_Student + " IS NOT NULL";
+		
+		
+		private Models.ListModel model;
+		private Views.View view;
+			
+		private BoxElementTable table;
+		private BoxElementSearchMenu searchMenu;
+		private ExtendedSearchPanelStudentNew extendedSearch;
+		
+		private SelectedValueCallbackCtrl callback = null;
 	
-	private CallbackSelectedValue callback = null;
-	
+	/**
+	 * Initialisiert die Ansicht der Studentenliste.<br>
+	 * Erstellt das {@link ListModel}.<br>
+	 * Erstellt die {@link View} und setzt den Fensternamen auf "Studenten".
+	 */
 	public StudentList(){
 		super();
 		model = new Models.ListModel(srcSqlQuery,SqlTableStudent.tableName,SqlTableStudent.PrimaryKey);
 		
 		setModel(model);
-		setView(view = new Views.ViewNew(this));
+		setView(view = new Views.View(this));
 		view.setTitle("Studenten");
 		setElements();
 	}
 	
-	public StudentList(CallbackSelectedValue callback){
+	/**
+	 * Initialisiert die Ansicht der Studentenliste mit der Möglichkeit Daten an den Aufrufer zu übergeben.<br>
+	 * Erstellt das {@link ListModel}.<br>
+	 * Erstellt die {@link View} und setzt den Fensternamen auf "Student auswählen".<br>
+	 * Setzt den {@link SelectedValueCallbackCtrl} Verweis.
+	 * 
+	 * @param callback Controller, welcher {@link SelectedValueCallbackCtrl} implementiert.
+	 */
+	public StudentList(SelectedValueCallbackCtrl callback){
 		super();
 		model = new Models.ListModel(srcSqlQuery,SqlTableStudent.tableName,SqlTableStudent.PrimaryKey);
 		setModel(model);
-		setView(view = new Views.ViewNew(this));
+		setView(view = new Views.View(this));
 		view.setTitle("Student auswählen");
 		this.callback = callback;
 		setElementsForCallback();
 	}
 	
-	
+	/**
+	 * Setzt die Viewelemente bei Initialisierung mit Callback.
+	 */
 	public void setElementsForCallback() {
 		searchMenu = new BoxElementSearchMenu(this);
 		view.addComponentToView(searchMenu);
@@ -96,14 +114,18 @@ public class StudentList extends ControllerNew implements	BasicBoxCtrl,
 		extendedSearch.setVisible(false);
 		view.addComponentToView(extendedSearch);
 		table = new Views.GuiElemente.BoxElementTable(this);
-		//TODO
-		//tabellenfunktion zum einstellen, das nur ein datensatz auswählbar ist
+		table.setColumnSelectionToOnlyOne();
 		view.addComponentToView(table);
 		BoxElementBottomNavi navi = new BoxElementBottomNavi(this);
 		navi.addBoxToRightSide(new BoxElementBottomNaviAbortSelect(this));
 		view.addComponentToView(navi);
 	}
 
+	@Override
+	public void display() {
+		view.display();
+	}
+	
 	@Override
 	public void setElements(){
 		searchMenu = new BoxElementSearchMenu(this);
@@ -119,37 +141,30 @@ public class StudentList extends ControllerNew implements	BasicBoxCtrl,
 		view.addComponentToView(navi);
 	}
 	
-	
-	@Override
-	public void display() {
-		view.display();
-	}
-
-	
 	@Override
 	public Object[][] getTableData() {
 		
-		return model.tableRowData.getTableData();
+		return model.getTableData();
 	}
 
 	@Override
 	public Object[] getTableHeader() {
-		return model.tableRowData.getColumnAliasNames();
+		return model.getColumnAliasNames();
 	}
 
 	@Override
 	public Object getValueFromPosition(int row, String column) {
-		return model.tableRowData.getValueFromPosition(row, column);
+		return model.getValueFromPosition(row, column);
 	}
 
 	@Override
 	public void setValueAtPosition(int row, String column, Object value) {
-		model.tableRowData.setValueAtPosition(row, column, value);
+		model.setValueAtPosition(row, column, value);
 	}
 
 	@Override
-	public int getColumnAliasIndex(String columnName) {
-		return model.tableRowData.getColumnAliasIndex(columnName);
+	public int getColumnIndex(String columnName) {
+		return model.getColumnAliasIndex(columnName);
 	}
 
 	@Override
@@ -171,6 +186,12 @@ public class StudentList extends ControllerNew implements	BasicBoxCtrl,
 		}
 		
 	}
+	
+	@Override
+	public void setOrderByColumn(int columnIndex, SortOrder orderDirection) {
+		model.setOrder(columnIndex, orderDirection);
+	}
+
 
 	@Override
 	public void buttonEditClicked() {
@@ -182,7 +203,7 @@ public class StudentList extends ControllerNew implements	BasicBoxCtrl,
 			studentList = table.getColumnValuesFromSelectedRows("Matrikelnr");
 
 		if(studentList.length==0){
-			OkDialog okdialog = new OkDialog(Praktikumsverwaltung.getFrame(),true, "Bitte w\u00E4hlen Sie mindestens einen Eintrag aus.");
+			new OkDialog("Bitte w\u00E4hlen Sie mindestens einen Eintrag aus.");
 			return;
 		}
 		
@@ -195,19 +216,15 @@ public class StudentList extends ControllerNew implements	BasicBoxCtrl,
 	public void buttonMailToClicked() {
 		Object[] studentListForMailing;
 		
-		if(table.getFlaggedRowCount() != 0){ //per checkbox selektierte Zeilen
+		if(table.getFlaggedRowCount() != 0) //per checkbox selektierte Zeilen
 			studentListForMailing = table.getColumnValuesFromFlaggedRows("Matrikelnr");
-			System.out.println("flagged: " + table.getFlaggedRowCount());}
-		
 		else //per Mousedrag ausgewählte Zeilen
 			studentListForMailing = table.getColumnValuesFromSelectedRows("Matrikelnr");
-			System.out.println("selectedrows length: " + studentListForMailing.length);
 		
 		if(studentListForMailing.length==0){
-			OkDialog okdialog = new OkDialog(Praktikumsverwaltung.getFrame(),true, "Bitte w\u00E4hlen Sie mindestens einen Eintrag aus.");
+			new OkDialog("Bitte w\u00E4hlen Sie mindestens einen Eintrag aus.");
 			return;
 		}
-		
 		
 		Mailing newMailing = new Mailing(SqlTableStudent.TableNameDotPrimaryKey,studentListForMailing);
 		Praktikumsverwaltung.addFrameToForeground(newMailing);
@@ -222,7 +239,7 @@ public class StudentList extends ControllerNew implements	BasicBoxCtrl,
 			studentListForPrint = table.getColumnValuesFromSelectedRows("Matrikelnr");
 		
 		if(studentListForPrint.length == 0){
-			OkDialog okdialog = new OkDialog(Praktikumsverwaltung.getFrame(),true, "Bitte w\u00E4hlen Sie mindestens einen Eintrag aus.");
+			new OkDialog("Bitte w\u00E4hlen Sie mindestens einen Eintrag aus.");
 			return;
 			}
 		
@@ -307,12 +324,12 @@ public class StudentList extends ControllerNew implements	BasicBoxCtrl,
 
 	@Override
 	public void setHasNoContractFilterOn() {
-		hasNoContractFilter = new SqlListFilter(srcSqlQueryContract, false);
+		hasNoContractFilter = new NestedSqlQueryFilter(srcSqlQueryContract, false);
 	}
 
 	@Override
 	public void setHasContractFilterOn() {
-		hasContractFilter = new SqlListFilter(srcSqlQueryContract, true);
+		hasContractFilter = new NestedSqlQueryFilter(srcSqlQueryContract, true);
 	}
 
 	@Override
@@ -320,10 +337,6 @@ public class StudentList extends ControllerNew implements	BasicBoxCtrl,
 		hasContractFilter = null;
 	}
 
-	@Override
-	public void setOrderByColumn(int columnIndex, SortOrder orderDirection) {
-		model.setOrder(columnIndex, orderDirection);
-	}
-
+	
 	
 }

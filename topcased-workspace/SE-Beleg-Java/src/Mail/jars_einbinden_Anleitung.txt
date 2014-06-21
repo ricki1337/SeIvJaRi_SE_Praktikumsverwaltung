@@ -1,5 +1,0 @@
-Jars einbinden:
-Project -> Properties -> Java Build Path -> Add External JARS
--> alle auswählen -> ok 
-
-fertich

@@ -1,13 +1,20 @@
-package drucken;
+package Print;
 
+/**
+ * Hält alle Informationen eines Datensatzes für den Druck.
+ */
 public class ValuePrintObject {
 
 	private String mat, name, mail, gruppe, firma;
-
-	public ValuePrintObject(String[] strData) {
-		this.mat = strData[1];
-	}
 	
+	/**
+	 * Initialisiert alle Klassenvariablen.
+	 * @param mat		Matrikelnummer
+	 * @param name		Vor- und Nachname
+	 * @param mail		Bibliotheksnummer
+	 * @param gruppe	Studiengruppe
+	 * @param firma		Firmenname
+	 */
 	public ValuePrintObject(String mat, String name, String mail,String gruppe, String firma) {
 		this.mat = mat;
 		this.name = name;

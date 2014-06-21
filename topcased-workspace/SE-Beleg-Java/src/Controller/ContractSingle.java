@@ -1,6 +1,6 @@
 package Controller;
 
-import Controller.Interfaces.CallbackSelectedValue;
+import Controller.Interfaces.SelectedValueCallbackCtrl;
 import Models.Datenbank.SqlTableCompanies;
 import Models.Datenbank.SqlTableContracts;
 import Models.Datenbank.SqlTableProfs;
@@ -8,6 +8,7 @@ import Models.Datenbank.SqlTableStudent;
 import Models.Filter.IntFilter;
 import Models.Table.EmptyObject;
 import Praktikumsverwaltung.Praktikumsverwaltung;
+import Views.Dialog.OkDialog;
 import Views.GuiElemente.BoxElementBottomNavi;
 import Views.GuiElemente.BoxElementBottomNaviAbortSave;
 import Views.GuiElemente.BoxElementBottomNaviMailPrint;
@@ -30,13 +31,13 @@ import Views.Interfaces.NaviMailPrintBoxCtrl;
 import Views.Interfaces.NaviPrevSaveNextBoxCtrl;
 import Views.Interfaces.EditBoxCtrl;
 
-public class ContractSingle extends ControllerNew implements EditBoxCtrl, 
+public class ContractSingle extends Controller implements EditBoxCtrl, 
 																NaviAbortSaveBoxCtrl, 
 																NaviPrevSaveNextBoxCtrl, 
 																ContractDetailsCompanyBoxCtrl, 
 																ContractDetailsStudentBoxCtrl, 
 																ContractDetailsProfBoxCtrl, 
-																CallbackSelectedValue,
+																SelectedValueCallbackCtrl,
 																ContractDetailsStudentNewBoxCtrl,
 																ContractDetailsCompanyNewBoxCtrl,
 																ContractDetailsProfNewBoxCtrl, 
@@ -73,32 +74,44 @@ public class ContractSingle extends ControllerNew implements EditBoxCtrl,
 											SqlTableContracts.TableNameDotFK_Betreuer + " = " + SqlTableProfs.TableNameDotPrimaryKey;
 	
 	
-		private Views.ViewNew view;
+		private Views.View view;
 		private BoxElementContractDetails detailsBox;
 		private boolean newData = false;
 	
+		/**
+		 * Initialisiert den Controller für die Anlage eines neuen Vertrags.<br>
+		 * Setzt das {@link Model} als leeren Container.<br>
+		 * Setzt die View für die Neuanlage und setzt den Fensternamen auf "Vertrag anlegen".
+		 */
 	public ContractSingle(){
+		super();
 		newData = true;
 		setModel(new Models.Model(SqlTableContracts.tableName,SqlTableContracts.TableNameDotPrimaryKey));
 		model.setSrcQuery(srcSqlQuery);
 		model.setAndFilter(SqlTableContracts.TableNameDotPrimaryKey, new IntFilter(0));
 		model.setResult();
-		for(int index=0;index < model.tableRowData.getTableData()[0].length;index++){
-			model.tableRowData.setValueAtPosition(model.rowPosition, index, new EmptyObject());
+		for(int index=0;index < model.getTableData()[0].length;index++){
+			model.setValueAtPosition(model.getRowPosition(), index, new EmptyObject());
 		}
-		model.tableRowData.setValueAtPosition(model.rowPosition, "Typ", "");
-		model.tableRowData.setValueAtPosition(model.rowPosition, "beginnt am", "");
-		model.tableRowData.setValueAtPosition(model.rowPosition, "endet am", "");
-		model.tableRowData.setValueAtPosition(model.rowPosition, "Bericht", false);
-		model.tableRowData.setValueAtPosition(model.rowPosition, "Zeugnis", false);
-		model.tableRowData.setValueAtPosition(model.rowPosition, "Empfehlung", false);
+		model.setValueAtPosition("Bericht", false);
+		model.setValueAtPosition("Typ", new String(" "));
+		model.setValueAtPosition("beginnt am", new String(" "));
+		model.setValueAtPosition("endet am", new String(" "));
+	
+		model.setValueAtPosition("Zeugnis", false);
+		model.setValueAtPosition("Empfehlung", false);
 		
-		setView(view = new Views.ViewNew(this));
+		setView(view = new Views.View(this));
 		view.setTitle("Vertrag anlegen");
 		setElementsForNewData();
 	}
 	
-	
+	/**
+	 * Initialisiert die Ansicht einzelner Verträge auf Grundlage übergebener {@link SqlTableContracts.PrimaryKey}s.<br>
+	 * Setzt das Model mit den übergebenen Filtern.<br>
+	 * Setzt die View für die Änderung der Daten und setzt den Fensternamen auf "Vertrag editieren".
+	 * @param primaryKeys
+	 */
 	public ContractSingle(Object primaryKeys){
 		super();
 		
@@ -114,9 +127,111 @@ public class ContractSingle extends ControllerNew implements EditBoxCtrl,
 		}
 		model.setResult();
 		setModel(model);
-		setView((view = new Views.ViewNew(this)));
+		setView((view = new Views.View(this)));
 		view.setTitle("Vertrag editieren");
 		setElements();
+	}
+	
+	/**
+	 * Ändert die Studentendaten im Model auf Grundlage der Auswahl der View.<br>
+	 * Wird aufgerufen wenn der Student auf der View ausgetauscht oder neu gesetzt wird.
+	 * 
+	 * @param matrikelNr	Neue {@link SqlTableContracts.FK_Student} Zuordnung für den Vertrag.
+	 */
+	private void changeStudentInformation(Object matrikelNr){
+		boolean newData = false;
+		if(model.getValueFromPosition("Matrikelnr.") instanceof EmptyObject){
+			newData = true;
+		}
+		model.setValueAtPosition(SqlTableContracts.FK_Student, matrikelNr);
+		StudentSingle studentSingleController = new StudentSingle(matrikelNr);
+		try {
+			String studentFirstname = studentSingleController.model.getStringValueFromPosition(SqlTableStudent.Vorname);
+			model.setValueAtPosition("Vorname", studentFirstname);
+			String studentName = studentSingleController.model.getStringValueFromPosition(SqlTableStudent.Nachname);
+			model.setValueAtPosition("Nachname", studentName);
+			String studentEmail = studentSingleController.model.getStringValueFromPosition(SqlTableStudent.EMail);
+			model.setValueAtPosition("E-Mail", studentEmail);
+			String studentStudienGruppe = studentSingleController.model.getStringValueFromPosition(SqlTableStudent.Studiengruppe);
+			model.setValueAtPosition("Studiengruppe", studentStudienGruppe);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if(newData){
+			detailsBox.setStudentBox(new BoxElementContractDetailsStudent(this));
+		}
+		
+	}
+	
+	/**
+	 * Ändert die Firmendaten im Model auf Grundlage der Auswahl der View.<br>
+	 * Wird aufgerufen wenn die Firma auf der View ausgetauscht oder neu gesetzt wird.
+	 * 
+	 * @param companyId	Neue {@link SqlTableContracts.FK_Firma} Zuordnung für den Vertrag.
+	 */
+	private void changeCompanyInformation(Object companyId){
+		boolean newData = false;
+		if(model.getValueFromPosition("FirmenID") instanceof EmptyObject){
+			newData = true;
+		}
+		model.setValueAtPosition("FirmenID", companyId);
+		CompanySingle studentSingleController = new CompanySingle(companyId);
+		try {
+			String companyName = studentSingleController.model.getStringValueFromPosition(SqlTableCompanies.Firmenname);
+			model.setValueAtPosition("Firmenname", companyName);
+			String companyStreet = studentSingleController.model.getStringValueFromPosition(SqlTableCompanies.Strasse);
+			model.setValueAtPosition("Strasse", companyStreet);
+			String companyZIP = studentSingleController.model.getStringValueFromPosition(SqlTableCompanies.PLZ);
+			model.setValueAtPosition("PLZ", companyZIP);
+			String companyTown = studentSingleController.model.getStringValueFromPosition(SqlTableCompanies.Ort);
+			model.setValueAtPosition("Ort", companyTown);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if(newData){
+			detailsBox.setCompanyBox(new BoxElementContractDetailsCompany(this));
+		}
+		
+	}
+	
+	/**
+	 * 
+	 * Ändert die Betreuerdaten im Model auf Grundlage der Auswahl der View.<br>
+	 * Wird aufgerufen wenn der Betreuer auf der View ausgetauscht oder neu gesetzt wird.
+	 * @param profId	Neue {@link SqlTableContracts.FK_Betreuer} Zuordnung für den Vertrag.
+	 */
+	private void changeProfInformation(Object profId){
+		boolean newData = false;
+		if(model.getValueFromPosition("Betreuer") instanceof EmptyObject){
+			newData = true;
+		}
+		model.setValueAtPosition("Betreuer", profId);
+		ProfSingle studentSingleController = new ProfSingle(profId);
+		try {
+			String profName = studentSingleController.model.getStringValueFromPosition(SqlTableCompanies.Firmenname);
+			model.setValueAtPosition("BetreuerName", profName);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if(newData){
+			detailsBox.setProfBox(new BoxElementContractDetailsProf(this));
+		}
+	}
+	
+	/**
+	 * Prüft ob alle Notwendigen Informationen für einen neuen Datensatz angegeben wurden.
+	 * @return	True wenn alle Informationen gesetzt wurden, sonst False
+	 */
+	protected boolean notAllInformationsAreSet() {
+		if(model.getValueFromPosition("Matrikelnr.") instanceof EmptyObject) return true;
+		if(model.getValueFromPosition("FirmenID") instanceof EmptyObject) return true;
+		if(model.getValueFromPosition("Betreuer") instanceof EmptyObject) return true;
+		return false;
+	}
+	
+	@Override
+	public void display() {
+		view.display();
 	}
 	
 	@Override
@@ -145,16 +260,11 @@ public class ContractSingle extends ControllerNew implements EditBoxCtrl,
 		navi.addBoxToRightSide(new BoxElementBottomNaviAbortSave(this));
 		view.addComponentToView(navi);
 	}
-	
-	@Override
-	public void display() {
-		view.display();
-	}
 
 	@Override
 	public String getStringValueForBoxElementEdit(String sqlColumnName) {
 		try {
-			return model.tableRowData.getStringValueFromPosition(model.rowPosition, sqlColumnName);
+			return model.getStringValueFromPosition(sqlColumnName);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -165,7 +275,7 @@ public class ContractSingle extends ControllerNew implements EditBoxCtrl,
 	@Override
 	public int getIntValueForBoxElementEdit(String sqlColumnName) {
 		try {
-			return Integer.parseInt(model.tableRowData.getStringValueFromPosition(model.rowPosition, sqlColumnName));
+			return Integer.parseInt(model.getStringValueFromPosition(sqlColumnName));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -176,7 +286,7 @@ public class ContractSingle extends ControllerNew implements EditBoxCtrl,
 	@Override
 	public boolean getBooleanValueForBoxElementEdit(String sqlColumnName) {
 		try {
-			return model.tableRowData.getBooleanValueFromPosition(model.rowPosition, sqlColumnName);
+			return model.getBooleanValueFromPosition(sqlColumnName);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -192,6 +302,10 @@ public class ContractSingle extends ControllerNew implements EditBoxCtrl,
 
 	@Override
 	public void buttonSaveClicked() {
+		if(notAllInformationsAreSet()){
+			new OkDialog("Bitte geben Sie einen Betreuer, eine Firma und einen Studenten an.");
+			return;
+		}
 		model.insertIntoDatabase();
 		view.modelHasChanged();
 		if(newData){
@@ -202,6 +316,8 @@ public class ContractSingle extends ControllerNew implements EditBoxCtrl,
 			
 	}
 	
+	
+
 	@Override
 	public void buttonSaveChangesClicked() {
 		model.updateDatabaseAndInformOtherModels();
@@ -220,6 +336,17 @@ public class ContractSingle extends ControllerNew implements EditBoxCtrl,
 		view.modelHasChanged();		
 	}
 
+	@Override
+	public String getCurrentPos() {
+		return String.valueOf(model.getRowPosition()+1);
+	}
+
+
+	@Override
+	public String getPosSum() {
+		return String.valueOf(model.getTableRowCount());
+	}
+
 
 	@Override
 	public void buttonChangeCompanyOnContractDetailsClicked() {
@@ -230,7 +357,12 @@ public class ContractSingle extends ControllerNew implements EditBoxCtrl,
 
 	@Override
 	public void buttonEditCompanyOnContractDetailsClicked() {
-		Praktikumsverwaltung.addFrameToForeground(new CompanySingle(model.tableRowData.getValueFromPosition(model.rowPosition, "FirmenID")));
+		Praktikumsverwaltung.addFrameToForeground(new CompanySingle(model.getValueFromPosition("FirmenID")));
+	}
+	
+	@Override
+	public void buttonAddCompanyOnContractClicked() {
+		Praktikumsverwaltung.addFrameToForeground(new CompanyList(this));
 	}
 
 
@@ -242,9 +374,13 @@ public class ContractSingle extends ControllerNew implements EditBoxCtrl,
 
 	@Override
 	public void buttonEditStudentOnContractClicked() {
-		Praktikumsverwaltung.addFrameToForeground(new StudentSingle(model.tableRowData.getValueFromPosition(model.rowPosition, "Matrikelnr.")));
+		Praktikumsverwaltung.addFrameToForeground(new StudentSingle(model.getValueFromPosition("Matrikelnr.")));
 	}
 
+	@Override
+	public void buttonAddStudentOnContractClicked() {
+		Praktikumsverwaltung.addFrameToForeground(new StudentList(this));
+	}
 
 	@Override
 	public void buttonChangeProfOnContractDetailsClicked() {
@@ -255,7 +391,12 @@ public class ContractSingle extends ControllerNew implements EditBoxCtrl,
 
 	@Override
 	public void buttonEditProfOnContractDetailsClicked() {
-		Praktikumsverwaltung.addFrameToForeground(new ProfSingle(model.tableRowData.getValueFromPosition(model.rowPosition, "Betreuer")));
+		Praktikumsverwaltung.addFrameToForeground(new ProfSingle(model.getValueFromPosition("Betreuer")));
+	}
+	
+	@Override
+	public void buttonAddProfOnContractClicked() {
+		Praktikumsverwaltung.addFrameToForeground(new ProfList(this));
 	}
 
 
@@ -273,118 +414,20 @@ public class ContractSingle extends ControllerNew implements EditBoxCtrl,
 			view.modelHasChanged();
 	}
 	
-	private void changeStudentInformation(Object matrikelNr){
-		boolean newData = false;
-		if(model.tableRowData.getValueFromPosition(model.rowPosition, "Matrikelnr.") instanceof EmptyObject){
-			newData = true;
-		}
-		model.tableRowData.setValueAtPosition(model.rowPosition, SqlTableContracts.FK_Student, matrikelNr);
-		StudentSingle studentSingleController = new StudentSingle(matrikelNr);
-		try {
-			String studentFirstname = studentSingleController.model.tableRowData.getStringValueFromPosition(studentSingleController.model.rowPosition, SqlTableStudent.Vorname);
-			model.tableRowData.setValueAtPosition(model.rowPosition, "Vorname", studentFirstname);
-			String studentName = studentSingleController.model.tableRowData.getStringValueFromPosition(studentSingleController.model.rowPosition, SqlTableStudent.Nachname);
-			model.tableRowData.setValueAtPosition(model.rowPosition, "Nachname", studentName);
-			String studentEmail = studentSingleController.model.tableRowData.getStringValueFromPosition(studentSingleController.model.rowPosition, SqlTableStudent.EMail);
-			model.tableRowData.setValueAtPosition(model.rowPosition, "E-Mail", studentEmail);
-			String studentStudienGruppe = studentSingleController.model.tableRowData.getStringValueFromPosition(studentSingleController.model.rowPosition, SqlTableStudent.Studiengruppe);
-			model.tableRowData.setValueAtPosition(model.rowPosition, "Studiengruppe", studentStudienGruppe);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		if(newData){
-			detailsBox.setStudentBox(new BoxElementContractDetailsStudent(this));
-		}
-		
-	}
 	
-	private void changeCompanyInformation(Object companyId){
-		boolean newData = false;
-		if(model.tableRowData.getValueFromPosition(model.rowPosition, "FirmenID") instanceof EmptyObject){
-			newData = true;
-		}
-		model.tableRowData.setValueAtPosition(model.rowPosition, "FirmenID", companyId);
-		CompanySingle studentSingleController = new CompanySingle(companyId);
-		try {
-			String companyName = studentSingleController.model.tableRowData.getStringValueFromPosition(studentSingleController.model.rowPosition, SqlTableCompanies.Firmenname);
-			model.tableRowData.setValueAtPosition(model.rowPosition, "Firmenname", companyName);
-			String companyStreet = studentSingleController.model.tableRowData.getStringValueFromPosition(studentSingleController.model.rowPosition, SqlTableCompanies.Strasse);
-			model.tableRowData.setValueAtPosition(model.rowPosition, "Strasse", companyStreet);
-			String companyZIP = studentSingleController.model.tableRowData.getStringValueFromPosition(studentSingleController.model.rowPosition, SqlTableCompanies.PLZ);
-			model.tableRowData.setValueAtPosition(model.rowPosition, "PLZ", companyZIP);
-			String companyTown = studentSingleController.model.tableRowData.getStringValueFromPosition(studentSingleController.model.rowPosition, SqlTableCompanies.Ort);
-			model.tableRowData.setValueAtPosition(model.rowPosition, "Ort", companyTown);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		if(newData){
-			detailsBox.setCompanyBox(new BoxElementContractDetailsCompany(this));
-		}
-		
-	}
-	
-	private void changeProfInformation(Object profId){
-		boolean newData = false;
-		if(model.tableRowData.getValueFromPosition(model.rowPosition, "Betreuer") instanceof EmptyObject){
-			newData = true;
-		}
-		model.tableRowData.setValueAtPosition(model.rowPosition, "Betreuer", profId);
-		ProfSingle studentSingleController = new ProfSingle(profId);
-		try {
-			String profName = studentSingleController.model.tableRowData.getStringValueFromPosition(studentSingleController.model.rowPosition, SqlTableCompanies.Firmenname);
-			model.tableRowData.setValueAtPosition(model.rowPosition, "BetreuerName", profName);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		if(newData){
-			detailsBox.setProfBox(new BoxElementContractDetailsProf(this));
-		}
-	}
-
-
-	@Override
-	public void buttonAddProfOnContractClicked() {
-		Praktikumsverwaltung.addFrameToForeground(new ProfList(this));
-	}
-
-
-	@Override
-	public void buttonAddCompanyOnContractClicked() {
-		Praktikumsverwaltung.addFrameToForeground(new CompanyList(this));
-	}
-
-
-	@Override
-	public void buttonAddStudentOnContractClicked() {
-		Praktikumsverwaltung.addFrameToForeground(new StudentList(this));
-	}
-
-
-	@Override
-	public String getCurrentPos() {
-		return String.valueOf(model.rowPosition+1);
-	}
-
-
-	@Override
-	public String getPosSum() {
-		return String.valueOf(model.tableRowData.getRowCount());
-	}
-
-
 	@Override
 	public void buttonMailToClicked() {
-		Mailing newMailing = new Mailing(SqlTableContracts.TableNameDotId,model.tableRowData.getValueFromPosition(model.rowPosition, "ID"));
+		Mailing newMailing = new Mailing(SqlTableContracts.TableNameDotId,model.getValueFromPosition("ID"));
 		Praktikumsverwaltung.addFrameToForeground(newMailing);
 	}
 
 
 	@Override
 	public void buttonPrintClicked() {
-		Print printDlg = new Print(SqlTableContracts.TableNameDotId,model.tableRowData.getValueFromPosition(model.rowPosition, "ID"));
+		Print printDlg = new Print(SqlTableContracts.TableNameDotId,model.getValueFromPosition("ID"));
 		printDlg.display();
 		//automatischer emailversand
-		Mailing newMailing = new Mailing(SqlTableContracts.TableNameDotId,model.tableRowData.getValueFromPosition(model.rowPosition, "ID"));
+		Mailing newMailing = new Mailing(SqlTableContracts.TableNameDotId,model.getValueFromPosition("ID"));
 		Praktikumsverwaltung.addFrameToForeground(newMailing);
 		
 	}

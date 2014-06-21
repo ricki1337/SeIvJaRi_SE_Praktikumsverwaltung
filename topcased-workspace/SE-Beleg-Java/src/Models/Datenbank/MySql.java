@@ -6,11 +6,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import Models.Interfaces.DatabaseFunction;
+
+/**
+ * Implementiert den Adapter für die Anbindung an eine MySql Datenbank.
+ */
 public class MySql implements DatabaseFunction{
 	private Connection connection;
 	
-	public MySql(){}
-
+	@Override
 	public ResultSet getQuery(String query) throws SQLException {
 		Statement stmnt = connection.createStatement();
 		return stmnt.executeQuery(query);

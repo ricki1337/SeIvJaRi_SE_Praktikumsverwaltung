@@ -9,8 +9,26 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
+/**
+ * Erzeugt die PDF, welche im Anhang an die Mail an die Betreuer versendet wird.
+ *
+ */
 public class createPDF {
 	
+	/**
+	 * Erstellt die PDF, welche im Anhang an die Mail an die Betreuer versendet wird.
+	 * @param filename		Dateiname des Anhangs
+	 * @param bericht		Liegt ein Bericht vor
+	 * @param zeugnis		Liegt das Zeugnis des Praktikumsbetriebs vor
+	 * @param Name			Nachname des Studenten
+	 * @param Vorname		Vorname des Studenten
+	 * @param MatrNr		Matrikelnummer
+	 * @param Stdgrp		Studiengruppe
+	 * @param betrProf		Betreuer
+	 * @param Betrieb		Firmenname
+	 * @throws DocumentException
+	 * @throws IOException
+	 */
     public void createPdf(String filename, boolean bericht, boolean zeugnis, String Name, String Vorname, String MatrNr, 
     		String Stdgrp, String betrProf, String Betrieb) throws DocumentException,
             IOException {

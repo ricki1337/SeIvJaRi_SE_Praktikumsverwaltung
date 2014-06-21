@@ -4,14 +4,14 @@ import java.io.File;
 
 import Mail.createPDF;
 import Mail.MailSender;
-import Models.Datenbank.Observer;
 import Models.Datenbank.SqlTableCompanies;
 import Models.Datenbank.SqlTableContracts;
 import Models.Datenbank.SqlTableProfs;
 import Models.Datenbank.SqlTableStudent;
 import Models.Filter.IntFilter;
 import Models.Filter.StringFilter;
-import Views.ViewNew;
+import Models.Interfaces.Observer;
+import Views.View;
 import Views.GuiElemente.BoxElementBottomNavi;
 import Views.GuiElemente.BoxElementBottomNaviAbortSendMail;
 import Views.GuiElemente.BoxElementBottomNaviProgress;
@@ -22,7 +22,7 @@ import Views.Interfaces.MailBoxCtrl;
 import Views.Interfaces.NaviAbortSendMailBoxCtrl;
 import Views.Interfaces.NaviProgressBoxCtrl;
 
-public class Mailing extends ControllerNew implements 	BasicBoxCtrl, 
+public class Mailing extends Controller implements 		BasicBoxCtrl, 
 														MailBoxCtrl, 
 														Runnable, 
 														NaviProgressBoxCtrl, 
@@ -45,7 +45,7 @@ public class Mailing extends ControllerNew implements 	BasicBoxCtrl,
 									" JOIN " + SqlTableCompanies.tableNameWithAlias + " ON " + SqlTableContracts.TableNameDotFK_Firma + " = "+ SqlTableCompanies.TableNameDotPrimaryKey + 
 									" JOIN " + SqlTableProfs.tableNameWithAlias + " ON " + SqlTableProfs.TableNameDotPrimaryKey + " = " + SqlTableContracts.TableNameDotFK_Betreuer;
 	
-	private ViewNew view;
+	private View view;
 	protected Models.ListModel model;
 	private MailBox boxMail;
 	private BoxElementBottomNaviProgress progressBox;
@@ -55,14 +55,30 @@ public class Mailing extends ControllerNew implements 	BasicBoxCtrl,
 	private Object primaryKeyValues;
 	private String primaryKey;
 	
-	private int hundretPercentValue=0;
-	private int nullPercentValue=0;
-	private int currentPercentValue=0;
+	private int hundretPercentValueForProgressBox=0;
+	private int nullPercentValueForProgressBox=0;
+	private int currentPercentValueForProgressBox=0;
 	
 	private Thread mailingThread;
 	
+	/**
+	 * Standardkonstruktor von {@link Mailing} ist nicht erlaubt.
+	 */
 	protected Mailing(){}
 	
+	/**
+	 * Initialisiert die Mailansicht auf Grundlage der übergebenen Primärschlüssel.<br>
+	 * Erstellt den Mailing-Thread, welcher die Mails letztendlich verschickt.<br>
+	 * Erstellt das Datenmodel auf Grundlage der übergebenen Schlüsselpaare.
+	 * 
+	 * @param primaryKey		Eine Referenz einer SqlTable-Definition.
+	 * @param primaryKeyValues	Der Wert für primaryKey, auf welche gefiltert wird.
+	 * @see				Models.Datenbank.SqlTableProfs
+	 * @see				Models.Datenbank.SqlTableStudent
+	 * @see				Models.Datenbank.SqlTableContracts
+	 * @see				Models.Datenbank.SqlTableCompanies
+	 * @see				Models.Datenbank.SqlTableContacts
+	 */
 	public Mailing(String primaryKey, Object primaryKeyValues){
 		super();
 		setPrimaryKey(primaryKey);
@@ -70,43 +86,68 @@ public class Mailing extends ControllerNew implements 	BasicBoxCtrl,
 		configurePdfPath();
 		setListModel();
 		mailingThread = new Thread(this);
-		setView(view = new Views.ViewNew(this));
+		setView(view = new Views.View(this));
 		
 		setElements();
 	}
 
+	/**
+	 * Setzt den internen primaryKey.
+	 * @param primaryKey	Wert aus einer SqlTable-Definition.
+	 * @see				Models.Datenbank.SqlTableProfs
+	 * @see				Models.Datenbank.SqlTableStudent
+	 * @see				Models.Datenbank.SqlTableContracts
+	 * @see				Models.Datenbank.SqlTableCompanies
+	 * @see				Models.Datenbank.SqlTableContacts
+	 */
 	public void setPrimaryKey(String primaryKey) {
 		if(primaryKey == null)
 			throw new IllegalArgumentException();
 		this.primaryKey = primaryKey;
 	}
-
-
+	
+	/**
+	 * Gibt den gesetzten primaryKey zurück.
+	 * @return	primaryKey.
+	 */
+	public String getPrimaryKey() {
+		return primaryKey;
+	}
+	
+	/**
+	 * Setzt die internen primaryKeyValues, welche zum primaryKey gehören.
+	 * @param primaryKeyValues	gesetzte primaryKeyValues.	
+	 */
 	public void setPrimaryKeyValues(Object primaryKeyValues) {
 		if(primaryKeyValues == null)
 			throw new IllegalArgumentException();
 		this.primaryKeyValues = primaryKeyValues;
 	}
 
+	/**
+	 * Gibt die gesetzten primaryKeyValues zurück.
+	 * @return gesetzte primaryKeyValues.
+	 */
 	public Object getPrimaryKeyValues() {
 		return primaryKeyValues;
 	}
 
-
-	public String getPrimaryKey() {
-		return primaryKey;
-	}
-
+	/**
+	 * Initialisiert das Datenmodel auf Grundlage des übergebenen primaryKey und der primaryKeyValues.<br>
+	 * Fügt die Spalte "sendMail" an den Anfang des Models hinzu.
+	 */
 	protected void setListModel() {
 		model = new Models.ListModel(sqlQueryString,SqlTableContracts.tableName,getPrimaryKey());
 		setModelFilter();
 		model.setResult();
-		model.tableRowData.addColumnAtBegin("sendMail", (boolean)true);
+		model.addColumnAtBegin("sendMail", (boolean)true);
 		setModel(model);
 	}
 	
-
-
+	/**
+	 * Fügt die gesetzten Filter dem Model hinzu.<br>
+	 * Grundlage der Filter sind die übergebenen Werte von primaryKey und primaryKeyValues.
+	 */
 	protected void setModelFilter() {
 		Object primaryKeyValues = getPrimaryKeyValues();
 		String primaryKey = getPrimaryKey();
@@ -132,20 +173,10 @@ public class Mailing extends ControllerNew implements 	BasicBoxCtrl,
 		}
 	}
 	
-	@Override
-	public void setElements() {
-		view.setTitle("E-Mail senden");
-		
-		boxMail = new BoxElementMailing(this);
-		view.addComponentToView(boxMail);
-		BoxElementBottomNavi navi = new BoxElementBottomNavi(this);
-		progressBox = new BoxElementBottomNaviProgress(this);
-		navi.addBoxToLeftSide(progressBox);
-		navi.addBoxToRightSide(new BoxElementBottomNaviAbortSendMail(this));
-		view.addComponentToView(navi);
-	}
-	
-	public void configurePdfPath(){
+	/**
+	 * erstellt den Dateipfad für die temporäre Ablage der PDF für den Anhang der Mail.
+	 */
+	protected void configurePdfPath(){
 		String path = System.getProperty("user.dir");
 		
 		char [] pathCharArray;
@@ -163,42 +194,35 @@ public class Mailing extends ControllerNew implements 	BasicBoxCtrl,
 		tmpPathForPDF = path;
 	}
 	
-	
-
-	@Override
-	public void buttonSendMailClicked() {
-		if(mailingThread.isAlive()) return;
-		if(mailingThread.getState().equals(Thread.State.TERMINATED))
-			mailingThread = new Thread(this);
-		mailingThread.start();
-    }
-	
-	public void deletePdfFromLocalSystem(String path){
+	/**
+	 * Löscht die temporär abgelegte PDF Datei.
+	 * 
+	 * @param path	Pfad zur PDF.
+	 */
+	protected void deletePdfFromLocalSystem(String path){
 		File file = new File(path);  
 		if(file.exists()){
 			file.delete();
 		}
 	}
-
-
-	@Override
-	public String[][] getMailData() {
-		return createArrayForMailing();
-	}
 	
-	public String[][] createArrayForMailing(){
-		String[][] array = new String[model.tableRowData.getRowCount()][9]; 
+	/**
+	 * Erstellt die Datenbasis für die Anzeige der View.<br> 
+	 * @return	2D-Array mit den Daten für die View.
+	 */
+	protected String[][] createArrayForMailing(){
+		String[][] array = new String[model.getTableRowCount()][9]; 
 		try {
-			for(int i=0;i<model.tableRowData.getRowCount();i++){
-				array[i][0]= model.tableRowData.getStringValueFromPosition(i, "Vorname");
-				array[i][1]= model.tableRowData.getStringValueFromPosition(i, "Nachname");
-				array[i][2]= model.tableRowData.getStringValueFromPosition(i, "Matrikelnr.");
-				array[i][3]= model.tableRowData.getStringValueFromPosition(i, "Betreuer");
-				array[i][4]= model.tableRowData.getStringValueFromPosition(i, "Studiengruppe");
-				array[i][5]= model.tableRowData.getStringValueFromPosition(i, "Firmenname");
-				array[i][6]= model.tableRowData.getStringValueFromPosition(i, "Bericht");
-				array[i][7]= model.tableRowData.getStringValueFromPosition(i, "Zeugnis");
-				array[i][8]= getLocalPartOfEmailAdress(model.tableRowData.getStringValueFromPosition(i, "email"));
+			for(int i=0;i<model.getTableRowCount();i++){
+				array[i][0]= model.getStringValueFromPosition(i, "Vorname");
+				array[i][1]= model.getStringValueFromPosition(i, "Nachname");
+				array[i][2]= model.getStringValueFromPosition(i, "Matrikelnr.");
+				array[i][3]= model.getStringValueFromPosition(i, "Betreuer");
+				array[i][4]= model.getStringValueFromPosition(i, "Studiengruppe");
+				array[i][5]= model.getStringValueFromPosition(i, "Firmenname");
+				array[i][6]= model.getStringValueFromPosition(i, "Bericht");
+				array[i][7]= model.getStringValueFromPosition(i, "Zeugnis");
+				array[i][8]= getLocalPartOfEmailAdress(model.getStringValueFromPosition(i, "email"));
 			}
 		
 		} catch (Exception e) {
@@ -207,6 +231,12 @@ public class Mailing extends ControllerNew implements 	BasicBoxCtrl,
 		return array;
 	}
 	
+	/**
+	 * Separiert den Localpart einer Emailadresse.<br>
+	 * 
+	 * @param emailAdress	Emailadresse, von welcher der Localpart separiert werden soll.
+	 * @return	Localpart der übergebenen Emailadresse.
+	 */
 	public String getLocalPartOfEmailAdress(String emailAdress){
 		if(emailAdress == null) return null;
 		
@@ -220,100 +250,33 @@ public class Mailing extends ControllerNew implements 	BasicBoxCtrl,
 			
 		return localPartOfEmailAdress;	
 	}
-
-	@Override
-	public void setSendFlag(int index, boolean status) {
-		model.tableRowData.setValueAtPosition(index, "sendMail", status);
-	}
-
-
-	@Override
-	public void setBerichtFlag(int index, boolean status) {
-		model.tableRowData.setValueAtPosition(index, "Bericht", status);
-	}
-
-
-	@Override
-	public void setZeugnisFlag(int index, boolean status) {
-		model.tableRowData.setValueAtPosition(index, "Zeugnis", status);
-	}
 	
 	@Override
 	public void display() {
 		view.display();
 	}
-
+	
 	@Override
-	public void run() {
-		String absender = boxMail.getSenderEmailAdress();
-		char[] pw = boxMail.getSenderEmailPassword();
-        createPDF ps = new createPDF();
-        try {
-        	nullPercentValue = 0;
-        	currentPercentValue = 0;
-        	for(int i=0;i<model.tableRowData.getRowCount();i++)
-        		if(model.tableRowData.getBooleanValueFromPosition(i, "sendMail"))
-        			hundretPercentValue++;
-        	progressBox.setComponentValues();
-        	boxMail.setComponentValues();
-        	MailSender mailer = new MailSender(this);
-        	String queryString = new String();
-        	mailer.connect(absender, pw);
-        	
-        	for(int i=0;i<model.tableRowData.getRowCount();i++){
-        	
-				if(model.tableRowData.getBooleanValueFromPosition(i, "sendMail")){
-					currentPercentValue++;
-				    ps.createPdf(	tmpPathForPDF,
-									model.tableRowData.getBooleanValueFromPosition(i, "Bericht"),
-									model.tableRowData.getBooleanValueFromPosition(i, "Zeugnis"),
-									model.tableRowData.getStringValueFromPosition(i, "Vorname"),
-									model.tableRowData.getStringValueFromPosition(i, "Nachname"),
-									model.tableRowData.getStringValueFromPosition(i, "Matrikelnr."),
-									model.tableRowData.getStringValueFromPosition(i, "Studiengruppe"),
-									model.tableRowData.getStringValueFromPosition(i, "Betreuer"),
-									model.tableRowData.getStringValueFromPosition(i, "Firmenname")
-								); 
-				    
-				    boolean sendStatus = mailer.sendMail(boxMail.getRecipientEmailAdress(i));
-
-				    boxMail.setMailSend(i, sendStatus);
-					if(sendStatus){
-						queryString = "update "+ SqlTableContracts.tableName + " set " +
-								SqlTableContracts.Bericht + " = " + model.tableRowData.getBooleanValueFromPosition(i, "Bericht") + ", " +
-								SqlTableContracts.Zeugnis + " = " + model.tableRowData.getBooleanValueFromPosition(i, "Zeugnis") + 
-								" where "+ SqlTableContracts.Id + " = " + model.tableRowData.getStringValueFromPosition(i, "ID") +"; ";
-						model.updateDatabase(queryString);
-						progressBox.refreshContent();
-					}
-					deletePdfFromLocalSystem(tmpPathForPDF);
-				}
-        	}
-        	 
-        } catch (Exception e) {
-			ErrorManager errorManager = new ErrorManager(e);
-			if(errorManager.retry)
-				buttonSendMailClicked();
-		}
-       
+	public void setElements() {
+		view.setTitle("E-Mail senden");
 		
+		boxMail = new BoxElementMailing(this);
+		view.addComponentToView(boxMail);
+		BoxElementBottomNavi navi = new BoxElementBottomNavi(this);
+		progressBox = new BoxElementBottomNaviProgress(this);
+		navi.addBoxToLeftSide(progressBox);
+		navi.addBoxToRightSide(new BoxElementBottomNaviAbortSendMail(this));
+		view.addComponentToView(navi);
 	}
-
+	
 	@Override
-	public int getValueEqualToNullPercent() {
-		return nullPercentValue;
-	}
-
-	@Override
-	public int getValueEqualToHundretPercent() {
-		return hundretPercentValue;
-	}
-
-	@Override
-	public int getCurrentValue() {
-		return currentPercentValue;
-	}
-
+	public void buttonSendMailClicked() {
+		if(mailingThread.isAlive()) return;
+		if(mailingThread.getState().equals(Thread.State.TERMINATED))
+			mailingThread = new Thread(this);
+		mailingThread.start();
+    }
+	
 	@Override
 	public void buttonAbortClicked() {
 		if(mailingThread.isAlive()){
@@ -321,6 +284,97 @@ public class Mailing extends ControllerNew implements 	BasicBoxCtrl,
 		}
 		view.dispose();
 		model.modelClose();
+	}
+
+	@Override
+	public String[][] getMailData() {
+		return createArrayForMailing();
+	}
+
+	@Override
+	public void setSendFlag(int index, boolean status) {
+		model.setValueAtPosition(index, "sendMail", status);
+	}
+
+
+	@Override
+	public void setBerichtFlag(int index, boolean status) {
+		model.setValueAtPosition(index, "Bericht", status);
+	}
+
+	@Override
+	public void setZeugnisFlag(int index, boolean status) {
+		model.setValueAtPosition(index, "Zeugnis", status);
+	}
+	
+	/**
+	 * Versendet die Mails in einem separatem Thread.
+	 */
+	@Override
+	public void run() {
+		String absender = boxMail.getSenderEmailAdress();
+		char[] pw = boxMail.getSenderEmailPassword();
+        createPDF ps = new createPDF();
+        try {
+        	nullPercentValueForProgressBox = 0;
+        	currentPercentValueForProgressBox = 0;
+        	for(int i=0;i<model.getTableRowCount();i++)
+        		if(model.getBooleanValueFromPosition(i, "sendMail"))
+        			hundretPercentValueForProgressBox++;
+        	progressBox.setComponentValues();
+        	boxMail.setComponentValues();
+        	MailSender mailer = new MailSender(this);
+        	String queryString = new String();
+        	mailer.connect(absender, pw);
+        	
+        	for(int i=0;i<model.getTableRowCount();i++){
+				if(model.getBooleanValueFromPosition(i, "sendMail")){
+					currentPercentValueForProgressBox++;
+				    ps.createPdf(	tmpPathForPDF,
+									model.getBooleanValueFromPosition(i, "Bericht"),
+									model.getBooleanValueFromPosition(i, "Zeugnis"),
+									model.getStringValueFromPosition(i, "Vorname"),
+									model.getStringValueFromPosition(i, "Nachname"),
+									model.getStringValueFromPosition(i, "Matrikelnr."),
+									model.getStringValueFromPosition(i, "Studiengruppe"),
+									model.getStringValueFromPosition(i, "Betreuer"),
+									model.getStringValueFromPosition(i, "Firmenname")
+								); 
+				    
+				    boolean sendStatus = mailer.sendMail(boxMail.getRecipientEmailAdress(i));
+
+				    boxMail.setMailSend(i, sendStatus);
+					if(sendStatus){
+						queryString = "update "+ SqlTableContracts.tableName + " set " +
+								SqlTableContracts.Bericht + " = " + model.getBooleanValueFromPosition(i, "Bericht") + ", " +
+								SqlTableContracts.Zeugnis + " = " + model.getBooleanValueFromPosition(i, "Zeugnis") + 
+								" where "+ SqlTableContracts.Id + " = " + model.getStringValueFromPosition(i, "ID") +"; ";
+						model.updateDatabase(queryString);
+						progressBox.refreshContent();
+					}
+					deletePdfFromLocalSystem(tmpPathForPDF);
+				}
+        	}
+        } catch (Exception e) {
+			ErrorManager errorManager = new ErrorManager(e);
+			if(errorManager.retry)
+				buttonSendMailClicked();
+		}
+	}
+
+	@Override
+	public int getValueEqualToNullPercent() {
+		return nullPercentValueForProgressBox;
+	}
+
+	@Override
+	public int getValueEqualToHundretPercent() {
+		return hundretPercentValueForProgressBox;
+	}
+
+	@Override
+	public int getCurrentValue() {
+		return currentPercentValueForProgressBox;
 	}
 
 	@Override

@@ -20,21 +20,22 @@ import javax.swing.KeyStroke;
 import javax.swing.WindowConstants;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
-import Controller.ControllerNew;
+
+import Controller.Controller;
 import Models.Model;
 import Views.Interfaces.BasicBox;
 import Views.Interfaces.EditBox;
 
-public class ViewNew extends JInternalFrame implements UpdateView{
+public class View extends JInternalFrame implements UpdateView{
 
 	protected Model model;
-	protected ControllerNew controller;
+	protected Controller controller;
 	
 	private Box contentBox;
 	
 	protected ArrayList<BasicBox> listOfallComponentsOnView;
 	
-	public ViewNew(ControllerNew controller){
+	public View(Controller controller){
 		super("",true,true,true,true);
 		
 		this.controller = controller;
@@ -50,7 +51,7 @@ public class ViewNew extends JInternalFrame implements UpdateView{
 	}
 	
 	private void setCloseOnEscapeKey(){
-		final ViewNew instance = this;
+		final View instance = this;
 		String cancelName = "cancel";
         InputMap inputMap = getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), cancelName);

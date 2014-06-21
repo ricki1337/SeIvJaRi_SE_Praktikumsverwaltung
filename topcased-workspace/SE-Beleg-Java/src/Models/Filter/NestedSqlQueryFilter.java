@@ -1,12 +1,24 @@
 package Models.Filter;
 
-public class SqlListFilter implements FilterTyp{
+import Models.Interfaces.DatatypeFilter;
+
+/**
+ * Implementiert einen Filter für verschachtelte Sqlquerys,<br>
+ * welche mittels "IN" oder "NOT IN" gesetzt werden sollen. 
+ */
+public class NestedSqlQueryFilter implements DatatypeFilter{
 
 	private String sqlQuery;
 	private boolean valuesIn;
 	
-	public SqlListFilter(String query, boolean valuesIn){
-		setWert(query);
+	/**
+	 * Initialisiert einen Filter, welcher einen Sqlquery übernimmt und diesen mit, abhängig von<br>
+	 * valuesIn, mit "IN" oder "NOT IN" verknüpft.
+	 * @param nestedSqlQuery
+	 * @param valuesIn	True => Sqlquery wird mit "IN" verknüpft, false => Sqlquery wird mit "NOT IN" verknüpft.
+	 */
+	public NestedSqlQueryFilter(String nestedSqlQuery, boolean valuesIn){
+		setWert(nestedSqlQuery);
 		this.valuesIn = valuesIn;
 	}
 	

@@ -1,5 +1,10 @@
 package Models.Datenbank;
 
+
+/**
+ * Definiert die Spaltennamen der Datenbanktabelle "Student"
+ *
+ */
 public class SqlTableStudent extends Object{
 	public static String tableName = new String("Student");
 	public static String tableNameWithAlias = new String(tableName +" as "+tableName);

@@ -1,6 +1,6 @@
 package Controller;
 
-import Controller.Interfaces.CallbackSelectedValue;
+import Controller.Interfaces.SelectedValueCallbackCtrl;
 import Models.Datenbank.SqlTableCompanies;
 import Models.Datenbank.SqlTableContacts;
 import Models.Filter.IntFilter;
@@ -13,17 +13,17 @@ import Views.GuiElemente.BoxElementCompanyContactDetails;
 import Views.GuiElemente.BoxElementCompanyContactDetailsNav;
 import Views.GuiElemente.BoxElementCompanyDetails;
 import Views.Interfaces.CompanyContactDetailsBoxCtrl;
-import Views.Interfaces.CompanyDetailsContactCtrl;
+import Views.Interfaces.CompanyContactDetailsBoxNavCtrl;
 import Views.Interfaces.EditBoxCtrl;
 import Views.Interfaces.NaviAbortSaveBoxCtrl;
 import Views.Interfaces.NaviPrevSaveNextBoxCtrl;
 
-public class CompanySingle extends ControllerNew implements 	EditBoxCtrl, 
+public class CompanySingle extends Controller implements 	EditBoxCtrl, 
 																NaviAbortSaveBoxCtrl, 
 																NaviPrevSaveNextBoxCtrl, 
-																CallbackSelectedValue,
+																SelectedValueCallbackCtrl,
 																CompanyContactDetailsBoxCtrl,
-																CompanyDetailsContactCtrl{
+																CompanyContactDetailsBoxNavCtrl{
 	
 		private String srcSqlQuery = "select " +
 										SqlTableCompanies.Id + " as ID, " +
@@ -46,18 +46,28 @@ public class CompanySingle extends ControllerNew implements 	EditBoxCtrl,
 											SqlTableContacts.tableName;
 		
 		
-		private Views.ViewNew view;
+		private Views.View view;
 		private Models.Model contactModel;
 		private BoxElementCompanyContactDetails companyContactDetailsBox;
 	
+	/**
+	 * Initialisiert die Einzelansicht einer Firma für die Neuanlage.<br>
+	 * Erstellt das Datenmodel.<br>
+	 * Erstellt die View und legt den Namen des Fensters mit "Firma anlegen" fest.
+	 */
 	public CompanySingle(){
 		setModel(new Models.Model(SqlTableCompanies.tableName,SqlTableCompanies.PrimaryKey));
-		setView(view = new Views.ViewNew(this));
+		setView(view = new Views.View(this));
 		view.setTitle("Firma anlegen");
 		setElementsForNewData();
 	}
 	
-	
+	/**
+	 * Initialisiert die Einzelansicht einer Firma für ausgewählte Firmen.<br>
+	 * Erstellt das Datenmodel und legt die übergebenen Filter an.<br>
+	 * Erstellt das Model für die Anzeige der Ansprechpartner auf Grundlage der jeweiligen Firmen ID.<br>
+	 * Erstellt die View und legt den Namen des Fensters mit "Firma editieren" fest.
+	 */
 	public CompanySingle(Object primaryKeys){
 		super();
 				
@@ -72,7 +82,7 @@ public class CompanySingle extends ControllerNew implements 	EditBoxCtrl,
 		}
 		model.setResult();
 		setModel(model);
-		setView((view = new Views.ViewNew(this)));
+		setView((view = new Views.View(this)));
 		view.setTitle("Firma editieren");
 		
 		contactModel = new Models.Model(contactSrcSqlQuery,SqlTableContacts.tableName,SqlTableContacts.TableNameDotPrimaryKey);
@@ -80,6 +90,11 @@ public class CompanySingle extends ControllerNew implements 	EditBoxCtrl,
 		contactModel.setResult();
 		
 		setElements();
+	}
+
+	@Override
+	public void display() {
+		view.display();
 	}
 	
 	@Override
@@ -101,16 +116,11 @@ public class CompanySingle extends ControllerNew implements 	EditBoxCtrl,
 		navi.addBoxToRightSide(new BoxElementBottomNaviAbortSave(this));
 		view.addComponentToView(navi);
 	}
-	
-	@Override
-	public void display() {
-		view.display();
-	}
 
 	@Override
 	public String getStringValueForBoxElementEdit(String sqlColumnName) {
 		try {
-			return model.tableRowData.getStringValueFromPosition(model.rowPosition, sqlColumnName);
+			return model.getStringValueFromPosition(sqlColumnName);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -121,7 +131,7 @@ public class CompanySingle extends ControllerNew implements 	EditBoxCtrl,
 	@Override
 	public int getIntValueForBoxElementEdit(String sqlColumnName) {
 		try {
-			return Integer.parseInt(model.tableRowData.getStringValueFromPosition(model.rowPosition, sqlColumnName));
+			return Integer.parseInt(model.getStringValueFromPosition(sqlColumnName));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -132,7 +142,7 @@ public class CompanySingle extends ControllerNew implements 	EditBoxCtrl,
 	@Override
 	public boolean getBooleanValueForBoxElementEdit(String sqlColumnName) {
 		try {
-			return model.tableRowData.getBooleanValueFromPosition(model.rowPosition, sqlColumnName);
+			return model.getBooleanValueFromPosition(sqlColumnName);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -170,6 +180,17 @@ public class CompanySingle extends ControllerNew implements 	EditBoxCtrl,
 		model.nextRow();
 		view.modelHasChanged();		
 	}
+	
+	@Override
+	public String getCurrentPos() {
+		return String.valueOf(model.getRowPosition()+1);
+	}
+
+
+	@Override
+	public String getPosSum() {
+		return String.valueOf(model.getTableRowCount());
+	}
 
 
 	@Override
@@ -181,7 +202,7 @@ public class CompanySingle extends ControllerNew implements 	EditBoxCtrl,
 
 	@Override
 	public void buttonCompanyContactEditClicked() {
-		Praktikumsverwaltung.addFrameToForeground(new ContactSingle(contactModel.tableRowData.getValueFromPosition(contactModel.rowPosition, SqlTableContacts.PrimaryKey)));		
+		Praktikumsverwaltung.addFrameToForeground(new ContactSingle(contactModel.getValueFromPosition(SqlTableContacts.PrimaryKey)));		
 	}
 
 
@@ -195,7 +216,7 @@ public class CompanySingle extends ControllerNew implements 	EditBoxCtrl,
 	@Override
 	public String getStringValueForContactBoxElement(String bemerkung) {
 		try {
-			return contactModel.tableRowData.getStringValueFromPosition(contactModel.rowPosition, bemerkung);
+			return contactModel.getStringValueFromPosition(bemerkung);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -211,16 +232,7 @@ public class CompanySingle extends ControllerNew implements 	EditBoxCtrl,
 	}
 
 
-	@Override
-	public String getCurrentPos() {
-		return String.valueOf(model.rowPosition+1);
-	}
-
-
-	@Override
-	public String getPosSum() {
-		return String.valueOf(model.tableRowData.getRowCount());
-	}
+	
 	@Override
 	public void setSelectedValue(String valueName, Object value) {
 		companyContactDetailsBox.refreshContent();

@@ -1,5 +1,9 @@
 package Models.Datenbank;
 
+/**
+ * Definiert die Spaltennamen der Datenbanktabelle "Contracts"
+ *
+ */
 public class SqlTableContracts extends Object{
 	public static String tableName = new String("Contract");
 	public static String tableNameWithAlias = new String(tableName +" as "+tableName);

@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
 import ConfigParser.Debug;
-import Controller.ControllerNew;
+import Controller.Controller;
 import Views.Dialog.DatabaseConnectionDialog;
 import Views.GuiElemente.MenuBar;
 
@@ -19,7 +19,7 @@ public class Praktikumsverwaltung extends JFrame{
 	static JDesktopPane InnerDesktop;
 	static Praktikumsverwaltung praktikumsverwaltung ;
 	
-	public static void addFrameToForeground(ControllerNew controller){
+	public static void addFrameToForeground(Controller controller){
 		controller.display();
 		JInternalFrame newFrame = controller.getDisplayedFrame();
 		InnerDesktop.add(newFrame);
@@ -60,15 +60,16 @@ public class Praktikumsverwaltung extends JFrame{
 
 		if(args.length > 2 || args.length == 0){
 			System.out.println("Error! Es wurde eine falsche Anzahl Parameter übergeben.");
+			System.out.println("Parameter 1: Datenbankserver IP oder DNS Name - pflicht");
+			System.out.println("Parameter 2: 'debug' - optional");
 			System.exit(0);
 		}
 		//args[0] enthält db-host
 		//args[1] enthält debug mode
 		
 		if(args.length == 2){
-			if(args[1].equals("debug"))
+			if(args[1].toLowerCase().equals("debug"))
 				Debug.setDebugMode(true);
-			System.out.println(Debug.isDebugMode());
 		}
 			
 		praktikumsverwaltung = new Praktikumsverwaltung(args[0]);

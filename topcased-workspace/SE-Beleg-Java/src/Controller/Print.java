@@ -1,6 +1,5 @@
 package Controller;
 
-import drucken.PrintExport;
 
 import Models.Datenbank.SqlTableCompanies;
 import Models.Datenbank.SqlTableContracts;
@@ -8,8 +7,9 @@ import Models.Datenbank.SqlTableProfs;
 import Models.Datenbank.SqlTableStudent;
 import Models.Filter.IntFilter;
 import Models.Filter.StringFilter;
+import Print.PrintExport;
 
-public class Print extends ControllerNew{
+public class Print extends Controller{
 
 	String sqlQueryString = "SELECT " +
 								SqlTableStudent.TableNameDotEMail + " as Email, " +
@@ -29,6 +29,13 @@ public class Print extends ControllerNew{
 	private String primaryKey;
 	private Object primaryKeys;
 	
+	/**
+	 * Initialisiert die Printansicht auf Grundlage der übergebenen Primärschlüssel.<br>
+	 * Erstellt das Datenmodel und setzt die übergebenen primaryKeyValues als Filter von primaryKey.<br>
+	 * 
+	 * @param primaryKey		Wert einer SqlTable-Definition.
+	 * @param primaryKeyValues	Werte für primaryKey, auf welche gefiltert wird.
+	 */
 	public Print(String primaryKey, Object primaryKeyValues){
 		setPrimaryKey(primaryKey);
 		setPrimaryKeys(primaryKeyValues);
@@ -40,29 +47,54 @@ public class Print extends ControllerNew{
 		model.setResult();
 	}
 
-	public void setPrimaryKeys(Object primaryKeys) {
-		if(primaryKeys == null)
-			throw new IllegalArgumentException();
-		this.primaryKeys = primaryKeys;
-	}
+	
 
-
+	/**
+	 * Setzt den internen primaryKey.
+	 * @param primaryKey	Wert aus einer SqlTable-Definition.
+	 * @see				Models.Datenbank.SqlTableProfs
+	 * @see				Models.Datenbank.SqlTableStudent
+	 * @see				Models.Datenbank.SqlTableContracts
+	 * @see				Models.Datenbank.SqlTableCompanies
+	 * @see				Models.Datenbank.SqlTableContacts
+	 */
 	public void setPrimaryKey(String primaryKey) {
 		if(primaryKey == null)
 			throw new IllegalArgumentException();
 		this.primaryKey = primaryKey;
 	}
 	
+	/**
+	 * Gibt den gesetzten primaryKey zurück.
+	 * @return	primaryKey.
+	 */
 	public String getPrimaryKey() {
 		return primaryKey;
 	}
+	
 
+	/**
+	 * Setzt die internen primaryKeyValues, welche zum primaryKey gehören.
+	 * @param primaryKeyValues	gesetzte primaryKeyValues.	
+	 */
+	public void setPrimaryKeys(Object primaryKeys) {
+		if(primaryKeys == null)
+			throw new IllegalArgumentException();
+		this.primaryKeys = primaryKeys;
+	}
 
+	/**
+	 * Gibt die gesetzten primaryKeyValues zurück.
+	 * @return gesetzte primaryKeyValues.
+	 */
 	public Object getPrimaryKeys() {
 		return primaryKeys;
 	}
 
-
+	/**
+	 * Fügt die gesetzten Filter dem Model hinzu.<br>
+	 * Grundlage der Filter sind die übergebenen Werte von primaryKey und primaryKeyValues.
+	 */
 	protected void setModelFilter(String primaryKey, Object primaryKeyValues) {
 		if(primaryKeyValues instanceof Object[]){		
 			
@@ -88,18 +120,19 @@ public class Print extends ControllerNew{
 		}
 	}
 	
-	
-	
-	
+	/**
+	 * Erstellt das Datenarray für den Print mit Inhalten aus dem Model.
+	 * @return	2D Array mit den Inhalten.
+	 */
 	public String[][] createArrayForPrinting(){
-		String[][] array = new String[model.tableRowData.getRowCount()][9]; 
+		String[][] array = new String[model.getTableRowCount()][9]; 
 		try {
-			for(int i=0;i<model.tableRowData.getRowCount();i++){
-				array[i][0]= model.tableRowData.getStringValueFromPosition(i, "Matrikelnr.");
-				array[i][1]= model.tableRowData.getStringValueFromPosition(i, "Vorname") + " " + model.tableRowData.getStringValueFromPosition(i, "Nachname");
-				array[i][2]= model.tableRowData.getStringValueFromPosition(i, "Email");
-				array[i][3]= model.tableRowData.getStringValueFromPosition(i, "Studiengruppe");
-				array[i][4]= model.tableRowData.getStringValueFromPosition(i, "Firmenname");
+			for(int i=0;i<model.getTableRowCount();i++){
+				array[i][0]= model.getStringValueFromPosition(i, "Matrikelnr.");
+				array[i][1]= model.getStringValueFromPosition(i, "Vorname") + " " + model.getStringValueFromPosition(i, "Nachname");
+				array[i][2]= model.getStringValueFromPosition(i, "Email");
+				array[i][3]= model.getStringValueFromPosition(i, "Studiengruppe");
+				array[i][4]= model.getStringValueFromPosition(i, "Firmenname");
 			}
 		
 		} catch (Exception e) {
@@ -110,6 +143,10 @@ public class Print extends ControllerNew{
 		return array;
 	}
 	
+	/**
+	 * Bringt den Print-Dialog zur Anzeige.<br>
+	 * Initialisiert {@link PrintExport} und übermittelt die zu druckenden Daten.
+	 */
 	@Override
 	public void display() {
 		try {

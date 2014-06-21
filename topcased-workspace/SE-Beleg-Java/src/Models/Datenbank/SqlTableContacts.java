@@ -1,5 +1,10 @@
 package Models.Datenbank;
 
+
+/**
+ * Definiert die Spaltennamen der Datenbanktabelle "Contacts"
+ *
+ */
 public class SqlTableContacts extends Object{
 	public static String tableName = new String("Contact");
 	public static String tableNameWithAlias = new String(tableName +" as "+tableName);

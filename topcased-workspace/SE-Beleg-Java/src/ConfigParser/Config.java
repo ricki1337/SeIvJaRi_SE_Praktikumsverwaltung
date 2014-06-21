@@ -52,6 +52,12 @@ public class Config {
 
 	}
 	
+	/**
+	 * Setzt den Wert einer angegebenen Property.
+	 * @param key		Name der zu setzenden Property.
+	 * @param value		Wert der Property.
+	 * @return			Gibt bei Erfolg true, sonst false zurück.
+	 */
 	public static boolean setProperties(String key, String value){
 		Writer writer = null;
 		

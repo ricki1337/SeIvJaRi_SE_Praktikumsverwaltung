@@ -3,14 +3,24 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Implementiert Funktionen zur Verwaltund der Tabellenüberschriften.
+ */
 public class TableColumnNames {
 
-	ResultSetMetaData sqlMetaInformation;
-	ArrayList<String> columnAliasList;
-	ArrayList<String> columnNameList;
-	ArrayList<String> columnTableList;
+	private ResultSetMetaData sqlMetaInformation;
+	private ArrayList<String> columnAliasList;
+	private ArrayList<String> columnNameList;
+	private ArrayList<String> columnTableList;
 	
 	
+	/**
+	 * Initialisiert die internen Listen auf Grundlager der übergebenen {@link ResultSetMetaData}.<br>
+	 * Erstellt eine Liste für:<br>
+	 * Spaltenaliasnamen, Spaltennamen ohne führenden Tabellennamen, Spaltennamen mit führendem Tabellennamen.
+	 *
+	 * @param metaInformation	Metainformationen aus einem {@link ResultSet}
+	 */
 	public TableColumnNames(ResultSetMetaData metaInformation){
 		sqlMetaInformation = metaInformation;
 		columnAliasList = new ArrayList<String>();

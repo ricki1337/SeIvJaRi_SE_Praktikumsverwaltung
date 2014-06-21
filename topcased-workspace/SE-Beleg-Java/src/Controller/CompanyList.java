@@ -2,7 +2,7 @@ package Controller;
 
 import javax.swing.SortOrder;
 
-import Controller.Interfaces.CallbackSelectedValue;
+import Controller.Interfaces.SelectedValueCallbackCtrl;
 import Models.Datenbank.SqlTableCompanies;
 import Praktikumsverwaltung.Praktikumsverwaltung;
 import Views.Dialog.OkDialog;
@@ -23,14 +23,20 @@ import Views.Interfaces.ExtendedSearchBoxCtrl;
 import Views.Interfaces.SearchBoxCtrl;
 import Views.Interfaces.TableBoxCtrl;
 
-public class CompanyList extends ControllerNew implements 	BasicBoxCtrl, 
+/**
+ *	Verwaltet die Listenansicht der Firmen. 
+ */
+public class CompanyList extends Controller implements 	BasicBoxCtrl, 
 															TableBoxCtrl, 
 															SearchBoxCtrl, 
 															ExtendedSearchBoxCtrl, 
 															NaviMarkBoxCtrl, 
 															NaviAbortSelectBoxCtrl, 
 															NaviEditBoxCtrl{
-	
+	/**
+	 * Enthält den Sql-Query-String für die Tabellenspalten und Daten.<br>
+	 * Spaltennamen = Alias.
+	 */
 	private String srcSqlQuery = "select " +
 										SqlTableCompanies.TableNameDotId + " as ID, " +
 										SqlTableCompanies.TableNameDotFirmenname + " as Name, " +
@@ -43,31 +49,45 @@ public class CompanyList extends ControllerNew implements 	BasicBoxCtrl,
 									"from "+ SqlTableCompanies.tableName;
 	
 	private Models.ListModel model;
-	private Views.ViewNew view;
+	private Views.View view;
 		
 	private BoxElementTable table;
 	private BoxElementExtendedSearchCompany extendedSearch;
 	private BoxElementSearchMenu searchMenu;
 	
-	private CallbackSelectedValue callback = null;
+	private SelectedValueCallbackCtrl callback = null;
 	
-	
+	/**
+	 * Erstellt die Listenansicht der Firmen<br>
+	 * Kreiert das Datenmodel auf Grundlage des angegebenen Sql-Query und füllt die Tabelle mit den in der Datenbank hinterlegten Daten,<br>
+	 * legt den Fensternamen fest<br>
+	 * und definiert das Aussehen der View.
+	 */
 	public CompanyList(){
 		super();
 		model = new Models.ListModel(srcSqlQuery,SqlTableCompanies.tableName,SqlTableCompanies.PrimaryKey);
 		
 		setModel(model);
-		setView(view = new Views.ViewNew(this));
+		setView(view = new Views.View(this));
 		view.setTitle("Firmen");
 		setElements();
 	}
 	
-	public CompanyList(CallbackSelectedValue callback){
+	
+	/**
+	 * Erstellt die Listenansicht der Firmen, mit der Möglichkeit einen {@link SelectedValueCallbackCtrl} aufzurufen.
+	 * Kreiert das Datenmodel auf Grundlage des angegebenen Sql-Query und füllt die Tabelle mit den in der Datenbank hinterlegten Daten,<br>
+	 * legt den Fensternamen fest, <br>
+	 * stellt die Verbindung zum {@link SelectedValueCallbackCtrl} her<br>
+	 * und definiert das Aussehen der View.
+	 * @param callback
+	 */
+	public CompanyList(SelectedValueCallbackCtrl callback){
 		super();
 		model = new Models.ListModel(srcSqlQuery,SqlTableCompanies.tableName,SqlTableCompanies.PrimaryKey);
 		
 		setModel(model);
-		setView(view = new Views.ViewNew(this));
+		setView(view = new Views.View(this));
 		this.callback = callback;
 		view.setTitle("Firma auswählen");
 		setElementsForCallback();
@@ -88,17 +108,24 @@ public class CompanyList extends ControllerNew implements 	BasicBoxCtrl,
 		view.addComponentToView(navi);
 	}
 	
+	/**
+	 * Anordnung der Box-Elemente in der View bei Aufruf des Controllers mit einem {@link SelectedValueCallbackCtrl}.
+	 * Die Elemente werden der Reihenfolge nach von oben nach unten angeordnet.
+	 */
 	public void setElementsForCallback(){
 		searchMenu = new BoxElementSearchMenu(this);
 		view.addComponentToView(searchMenu);
+		
 		extendedSearch = new BoxElementExtendedSearchCompany(this);
 		extendedSearch.setVisible(false);
 		view.addComponentToView(extendedSearch);
+		
 		table = new BoxElementTable(this);
+		table.setColumnSelectionToOnlyOne();
 		view.addComponentToView(table);
+		
 		BoxElementBottomNavi navi = new BoxElementBottomNavi(this);
 		navi.addBoxToRightSide(new BoxElementBottomNaviAbortSelect(this));
-	
 		view.addComponentToView(navi);
 	}
 	
@@ -111,35 +138,29 @@ public class CompanyList extends ControllerNew implements 	BasicBoxCtrl,
 	@Override
 	public Object[][] getTableData() {
 		
-		return model.tableRowData.getTableData();
+		return model.getTableData();
 	}
 
 	@Override
 	public Object[] getTableHeader() {
-		return model.tableRowData.getColumnAliasNames();
+		return model.getTableHeader();
 	}
 
 	@Override
 	public Object getValueFromPosition(int row, String column) {
-		return model.tableRowData.getValueFromPosition(row, column);
+		return model.getValueFromPosition(row, column);
 	}
 
 	@Override
 	public void setValueAtPosition(int row, String column, Object value) {
-		model.tableRowData.setValueAtPosition(row, column, value);
+		model.setValueAtPosition(row, column, value);
 	}
 
 	@Override
-	public int getColumnAliasIndex(String columnName) {
-		return model.tableRowData.getColumnAliasIndex(columnName);
+	public int getColumnIndex(String columnName) {
+		return model.getColumnAliasIndex(columnName);
 	}
-
-
-	@Override
-	public int getSqlRecordLimit() {
-		return model.getColumnLimit();
-	}
-
+	
 	@Override
 	public void tableRowClicked() {
 		table.setFlag();
@@ -153,7 +174,41 @@ public class CompanyList extends ControllerNew implements 	BasicBoxCtrl,
 			Praktikumsverwaltung.addFrameToForeground(newFrame);
 		}
 	}
+	
+	@Override
+	public void setOrderByColumn(int columnIndex, SortOrder orderDirection) {
+		model.setOrder(columnIndex, orderDirection);
+	}
 
+	@Override
+	public int getSqlRecordLimit() {
+		return model.getColumnLimit();
+	}
+	
+	@Override
+	public void searchFieldChanged() {
+		((Models.ListModel)model).setSearchFilter(searchMenu.getValueOfSearchField());
+	}
+	
+	@Override
+	public void RecordLimitFieldChanged() {
+		model.setColumnLimitAndRefreshViews(searchMenu.getValueOfRecordLimitField());
+	}
+
+	@Override
+	public void buttonShowExtendedSearchClicked() {
+		boolean isVisible = extendedSearch.isVisible();
+		extendedSearch.setVisible(!isVisible);
+		view.getLayout().layoutContainer(view);
+		view.pack();
+	}
+
+	@Override
+	public void buttonAddNewDataClicked() {
+		CompanySingle newEmptyFrame = new CompanySingle();
+		Praktikumsverwaltung.addFrameToForeground(newEmptyFrame);
+	}
+	
 	@Override
 	public void buttonEditClicked() {
 		Object[] companyList;
@@ -163,14 +218,13 @@ public class CompanyList extends ControllerNew implements 	BasicBoxCtrl,
 			companyList = table.getColumnValuesFromSelectedRows("ID");
 		
 		if(companyList.length == 0){
-			OkDialog okdialog = new OkDialog(Praktikumsverwaltung.getFrame(),true, "Bitte w\u00E4hlen Sie mindestens einen Eintrag aus.");
+			new OkDialog("Bitte w\u00E4hlen Sie mindestens einen Eintrag aus.");
 			return;
 		}
 			
 		CompanySingle newFrame = new CompanySingle(companyList);
 		Praktikumsverwaltung.addFrameToForeground(newFrame);
 	}
-
 
 	@Override
 	public void buttonMarkClicked() {
@@ -191,30 +245,6 @@ public class CompanyList extends ControllerNew implements 	BasicBoxCtrl,
 	}
 
 	@Override
-	public void searchFieldChanged() {
-		((Models.ListModel)model).setSearchFilter(searchMenu.getValueOfSearchField());
-	}
-
-	@Override
-	public void RecordLimitFieldChanged() {
-		model.setColumnLimitAndRefreshViews(searchMenu.getValueOfRecordLimitField());
-	}
-
-	@Override
-	public void buttonShowExtendedSearchClicked() {
-		boolean isVisible = extendedSearch.isVisible();
-		extendedSearch.setVisible(!isVisible);
-		view.getLayout().layoutContainer(view);
-		view.pack();
-	}
-
-	@Override
-	public void buttonAddNewDataClicked() {
-		CompanySingle newEmptyFrame = new CompanySingle();
-		Praktikumsverwaltung.addFrameToForeground(newEmptyFrame);
-	}
-
-	@Override
 	public void buttonAbortClicked() {
 		view.dispose();
 		model.modelClose();
@@ -226,11 +256,4 @@ public class CompanyList extends ControllerNew implements 	BasicBoxCtrl,
 		view.dispose();
 		model.modelClose();
 	}
-
-	@Override
-	public void setOrderByColumn(int columnIndex, SortOrder orderDirection) {
-		model.setOrder(columnIndex, orderDirection);
-	}
-
-	
 }

@@ -2,7 +2,7 @@ package Controller;
 
 import javax.swing.SortOrder;
 
-import Controller.Interfaces.CallbackSelectedValue;
+import Controller.Interfaces.SelectedValueCallbackCtrl;
 import Models.Datenbank.SqlTableProfs;
 import Praktikumsverwaltung.Praktikumsverwaltung;
 import Views.Dialog.OkDialog;
@@ -21,7 +21,10 @@ import Views.Interfaces.ExtendedSearchBoxCtrl;
 import Views.Interfaces.SearchBoxCtrl;
 import Views.Interfaces.TableBoxCtrl;
 
-public class ProfList extends ControllerNew implements BasicBoxCtrl, 
+/**
+ * Verwaltet die Listenansicht der Betreuer.
+ */
+public class ProfList extends Controller implements BasicBoxCtrl, 
 														TableBoxCtrl, 
 														SearchBoxCtrl, 
 														ExtendedSearchBoxCtrl, 
@@ -36,34 +39,67 @@ public class ProfList extends ControllerNew implements BasicBoxCtrl,
 									SqlTableProfs.tableName;
 	
 	private Models.ListModel model;
-	private Views.ViewNew view;
+	private Views.View view;
 		
 	private BoxElementTable table;
 	private BoxElementExtendedSearchProf extendedSearch;
 	private BoxElementSearchMenu searchMenu;
 	
-	private CallbackSelectedValue callback = null;
+	private SelectedValueCallbackCtrl callback = null;
 	
-	
+	/**
+	 * Initialisiert die Ansicht der Betreuerliste.<br>
+	 * Erstellt das {@link ListModel}.<br>
+	 * Erstellt die {@link View} und setzt den Fensternamen auf "Betreuer".
+	 */
 	public ProfList(){
 		super();
 		model = new Models.ListModel(srcSqlQuery,SqlTableProfs.tableName,SqlTableProfs.PrimaryKey);
 		
 		setModel(model);
-		setView(view = new Views.ViewNew(this));
+		setView(view = new Views.View(this));
 		view.setTitle("Betreuer");
 		setElements();
 	}
 	
-	public ProfList(CallbackSelectedValue callback){
+	/**
+	 * Initialisiert die Ansicht der Betreuerliste mit der Möglichkeit Daten an den Aufrufer zurückzugeben.<br>
+	 * Erstellt das {@link ListModel}.<br>
+	 * Erstellt die {@link View} und setzt den Fensternamen auf "Betreuer auswählen".
+	 * 
+	 * @param callback Controller, welcher {@link SelectedValueCallbackCtrl} implementiert.
+	 */
+	public ProfList(SelectedValueCallbackCtrl callback){
 		super();
 		model = new Models.ListModel(srcSqlQuery,SqlTableProfs.tableName,SqlTableProfs.PrimaryKey);
 		
 		setModel(model);
-		setView(view = new Views.ViewNew(this));
+		setView(view = new Views.View(this));
 		this.callback = callback;
 		view.setTitle("Betreuer auswählen");
 		setElementsForCallback();
+	}
+	
+	/**
+	 * Setzt die Viewelemente bei Initialisierung mit Callback.
+	 */
+	public void setElementsForCallback(){
+		searchMenu = new BoxElementSearchMenu(this);
+		view.addComponentToView(searchMenu);
+		extendedSearch = new BoxElementExtendedSearchProf(this);
+		extendedSearch.setVisible(false);
+		view.addComponentToView(extendedSearch);
+		table = new BoxElementTable(this);
+		table.setColumnSelectionToOnlyOne();
+		view.addComponentToView(table);
+		BoxElementBottomNavi navi = new BoxElementBottomNavi(this);
+		navi.addBoxToRightSide(new BoxElementBottomNaviAbortSelect(this));
+		view.addComponentToView(navi);
+	}
+	
+	@Override
+	public void display() {
+		view.display();
 	}
 	
 	@Override
@@ -80,50 +116,30 @@ public class ProfList extends ControllerNew implements BasicBoxCtrl,
 		navi.addBoxToLeftSide(new BoxElementBottomNaviMark(this));
 		view.addComponentToView(navi);
 	}
-	
-	public void setElementsForCallback(){
-		searchMenu = new BoxElementSearchMenu(this);
-		view.addComponentToView(searchMenu);
-		extendedSearch = new BoxElementExtendedSearchProf(this);
-		extendedSearch.setVisible(false);
-		view.addComponentToView(extendedSearch);
-		table = new BoxElementTable(this);
-		view.addComponentToView(table);
-		BoxElementBottomNavi navi = new BoxElementBottomNavi(this);
-		navi.addBoxToRightSide(new BoxElementBottomNaviAbortSelect(this));
-		view.addComponentToView(navi);
-	}
-	
-	@Override
-	public void display() {
-		view.display();
-	}
-
-	
+		
 	@Override
 	public Object[][] getTableData() {
-		
-		return model.tableRowData.getTableData();
+		return model.getTableData();
 	}
 
 	@Override
 	public Object[] getTableHeader() {
-		return model.tableRowData.getColumnAliasNames();
+		return model.getColumnAliasNames();
 	}
 
 	@Override
 	public Object getValueFromPosition(int row, String column) {
-		return model.tableRowData.getValueFromPosition(row, column);
+		return model.getValueFromPosition(row, column);
 	}
 
 	@Override
 	public void setValueAtPosition(int row, String column, Object value) {
-		model.tableRowData.setValueAtPosition(row, column, value);
+		model.setValueAtPosition(row, column, value);
 	}
 
 	@Override
-	public int getColumnAliasIndex(String columnName) {
-		return model.tableRowData.getColumnAliasIndex(columnName);
+	public int getColumnIndex(String columnName) {
+		return model.getColumnAliasIndex(columnName);
 	}
 
 
@@ -145,6 +161,11 @@ public class ProfList extends ControllerNew implements BasicBoxCtrl,
 			Praktikumsverwaltung.addFrameToForeground(newFrame);
 		}
 	}
+	
+	@Override
+	public void setOrderByColumn(int columnIndex, SortOrder orderDirection) {
+		model.setOrder(columnIndex, orderDirection);
+	}
 
 	@Override
 	public void buttonEditClicked() {
@@ -155,7 +176,7 @@ public class ProfList extends ControllerNew implements BasicBoxCtrl,
 			profList = table.getColumnValuesFromSelectedRows("E-Mail");
 		
 		if(profList.length == 0){
-			OkDialog okdialog = new OkDialog(Praktikumsverwaltung.getFrame(),true, "Bitte w\u00E4hlen Sie mindestens einen Eintrag aus.");
+			new OkDialog("Bitte w\u00E4hlen Sie mindestens einen Eintrag aus.");
 			return;
 		}
 		
@@ -167,19 +188,6 @@ public class ProfList extends ControllerNew implements BasicBoxCtrl,
 	@Override
 	public void buttonMarkClicked() {
 		table.setFlagOnSelectedRows();
-	}
-
-	@Override
-	public void buttonSearchSpecificClicked() {
-		model.setSearchFilter(extendedSearch.getSearchFilter());
-	}
-
-	@Override
-	public void buttonDeleteFilterClicked() {
-		model.deleteSearchFilter();
-		model.setResult();
-		view.modelHasChanged();
-		extendedSearch.clearFields();
 	}
 
 	@Override
@@ -220,9 +228,15 @@ public class ProfList extends ControllerNew implements BasicBoxCtrl,
 	}
 
 	@Override
-	public void setOrderByColumn(int columnIndex, SortOrder orderDirection) {
-		model.setOrder(columnIndex, orderDirection);
+	public void buttonSearchSpecificClicked() {
+		model.setSearchFilter(extendedSearch.getSearchFilter());
 	}
 
-	
+	@Override
+	public void buttonDeleteFilterClicked() {
+		model.deleteSearchFilter();
+		model.setResult();
+		view.modelHasChanged();
+		extendedSearch.clearFields();
+	}	
 }

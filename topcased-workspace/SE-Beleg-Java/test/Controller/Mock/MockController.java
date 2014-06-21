@@ -1,16 +1,16 @@
 package Controller.Mock;
 
-import Controller.ControllerNew;
+import Controller.Controller;
 import Models.Model;
-import Views.ViewNew;
+import Views.View;
 
-public class MockController extends ControllerNew{
+public class MockController extends Controller{
 
 	public MockController(){
 		super();
 	}
 	
-	public MockController(ViewNew view, Model model){
+	public MockController(View view, Model model){
 		super(view,model);
 	}
 	

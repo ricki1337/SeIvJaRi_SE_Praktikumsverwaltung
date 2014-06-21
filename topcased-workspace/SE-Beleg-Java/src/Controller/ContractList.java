@@ -26,7 +26,7 @@ import Views.Interfaces.NaviMarkBoxCtrl;
 import Views.Interfaces.SearchBoxCtrl;
 import Views.Interfaces.TableBoxCtrl;
 
-public class ContractList extends ControllerNew implements 	BasicBoxCtrl, 
+public class ContractList extends Controller implements 	BasicBoxCtrl, 
 															TableBoxCtrl, 
 															SearchBoxCtrl, 
 															ExtendedSearchBoxCtrl, 
@@ -58,7 +58,7 @@ public class ContractList extends ControllerNew implements 	BasicBoxCtrl,
 										SqlTableContracts.TableNameDotFK_Betreuer + " = " + SqlTableProfs.TableNameDotPrimaryKey;
 	
 	private Models.ListModel model;
-	private Views.ViewNew view;
+	private Views.View view;
 		
 	private BoxElementTable table;
 	private BoxElementExtendedSearchContracts extendedSearch;
@@ -68,14 +68,25 @@ public class ContractList extends ControllerNew implements 	BasicBoxCtrl,
 	private IntFilter successfulInternshipFilter = null;
 	private StringFilter internationalInternshipFilter = null;
 	
+	
+	/**
+	 * Initialisiert die Liste zu Anzeige von Verträgen.<br>
+	 * Erstellt das {@link ListModel} mit der angegebenen Sql-Query.<br>
+	 * Erstellt die View und setzt den Namen des Fensters auf "Verträge".
+	 */
 	public ContractList(){
 		super();
 		model = new Models.ListModel(srcSqlQuery,SqlTableContracts.tableName,SqlTableContracts.PrimaryKey);
 		
 		setModel(model);
-		setView(view = new Views.ViewNew(this));
+		setView(view = new Views.View(this));
 		view.setTitle("Verträge");
 		setElements();
+	}
+	
+	@Override
+	public void display() {
+		view.display();
 	}
 	
 	@Override
@@ -92,38 +103,31 @@ public class ContractList extends ControllerNew implements 	BasicBoxCtrl,
 		navi.addBoxToLeftSide(new BoxElementBottomNaviMark(this));
 		view.addComponentToView(navi);
 	}
-	
-	
-	@Override
-	public void display() {
-		view.display();
-	}
 
 	
 	@Override
 	public Object[][] getTableData() {
-		
-		return model.tableRowData.getTableData();
+		return model.getTableData();
 	}
 
 	@Override
 	public Object[] getTableHeader() {
-		return model.tableRowData.getColumnAliasNames();
+		return model.getColumnAliasNames();
 	}
 
 	@Override
 	public Object getValueFromPosition(int row, String column) {
-		return model.tableRowData.getValueFromPosition(row, column);
+		return model.getValueFromPosition(row, column);
 	}
 
 	@Override
 	public void setValueAtPosition(int row, String column, Object value) {
-		model.tableRowData.setValueAtPosition(row, column, value);
+		model.setValueAtPosition(row, column, value);
 	}
 
 	@Override
-	public int getColumnAliasIndex(String columnName) {
-		return model.tableRowData.getColumnAliasIndex(columnName);
+	public int getColumnIndex(String columnName) {
+		return model.getColumnIndex(columnName);
 	}
 
 
@@ -145,6 +149,11 @@ public class ContractList extends ControllerNew implements 	BasicBoxCtrl,
 			Praktikumsverwaltung.addFrameToForeground(newFrame);
 		}
 	}
+	
+	@Override
+	public void setOrderByColumn(int columnIndex, SortOrder orderDirection) {
+		model.setOrder(columnIndex, orderDirection);
+	}
 
 	@Override
 	public void buttonEditClicked() {
@@ -155,7 +164,7 @@ public class ContractList extends ControllerNew implements 	BasicBoxCtrl,
 			contractList = table.getColumnValuesFromSelectedRows("ID");
 		
 		if(contractList.length == 0){
-			OkDialog okdialog = new OkDialog(Praktikumsverwaltung.getFrame(),true, "Bitte w\u00E4hlen Sie mindestens einen Eintrag aus.");
+			new OkDialog("Bitte w\u00E4hlen Sie mindestens einen Eintrag aus.");
 			return;
 		}
 		
@@ -172,7 +181,7 @@ public class ContractList extends ControllerNew implements 	BasicBoxCtrl,
 			contractListForMailing = table.getColumnValuesFromSelectedRows("ID");
 		
 		if(contractListForMailing.length == 0){
-			OkDialog okdialog = new OkDialog(Praktikumsverwaltung.getFrame(),true, "Bitte w\u00E4hlen Sie mindestens einen Eintrag aus.");
+			new OkDialog("Bitte w\u00E4hlen Sie mindestens einen Eintrag aus.");
 			return;
 		}
 		
@@ -189,7 +198,7 @@ public class ContractList extends ControllerNew implements 	BasicBoxCtrl,
 			contractListForPrint = table.getColumnValuesFromSelectedRows("ID");
 		
 		if(contractListForPrint.length == 0){
-			OkDialog okdialog = new OkDialog(Praktikumsverwaltung.getFrame(),true, "Bitte w\u00E4hlen Sie mindestens einen Eintrag aus.");
+			new OkDialog("Bitte w\u00E4hlen Sie mindestens einen Eintrag aus.");
 			return;
 		}
 		
@@ -202,27 +211,6 @@ public class ContractList extends ControllerNew implements 	BasicBoxCtrl,
 	@Override
 	public void buttonMarkClicked() {
 		table.setFlagOnSelectedRows();
-	}
-
-	@Override
-	public void buttonSearchSpecificClicked() {
-		Map<String,Object> filterElements = extendedSearch.getSearchFilter();
-		
-		if(internationalInternshipFilter != null)
-			filterElements.put(SqlTableContracts.TableNameDotTyp, internationalInternshipFilter);
-		
-		if(successfulInternshipFilter != null)
-			filterElements.put(SqlTableContracts.TableNameDotErfolg, successfulInternshipFilter);
-		
-		model.setSearchFilter(filterElements);
-	}
-
-	@Override
-	public void buttonDeleteFilterClicked() {
-		model.deleteSearchFilter();
-		model.setResult();
-		view.modelHasChanged();
-		extendedSearch.clearFields();
 	}
 
 	@Override
@@ -248,6 +236,27 @@ public class ContractList extends ControllerNew implements 	BasicBoxCtrl,
 		ContractSingle newEmptyFrame = new ContractSingle();
 		Praktikumsverwaltung.addFrameToForeground(newEmptyFrame);
 	}
+	
+	@Override
+	public void buttonSearchSpecificClicked() {
+		Map<String,Object> filterElements = extendedSearch.getSearchFilter();
+		
+		if(internationalInternshipFilter != null)
+			filterElements.put(SqlTableContracts.TableNameDotTyp, internationalInternshipFilter);
+		
+		if(successfulInternshipFilter != null)
+			filterElements.put(SqlTableContracts.TableNameDotErfolg, successfulInternshipFilter);
+		
+		model.setSearchFilter(filterElements);
+	}
+
+	@Override
+	public void buttonDeleteFilterClicked() {
+		model.deleteSearchFilter();
+		model.setResult();
+		view.modelHasChanged();
+		extendedSearch.clearFields();
+	}
 
 	@Override
 	public void setInternationalInternshipFilterOn() {
@@ -270,10 +279,4 @@ public class ContractList extends ControllerNew implements 	BasicBoxCtrl,
 		successfulInternshipFilter = null;
 	}
 
-	@Override
-	public void setOrderByColumn(int columnIndex, SortOrder orderDirection) {
-		model.setOrder(columnIndex, orderDirection);
-	}
-
-	
 }

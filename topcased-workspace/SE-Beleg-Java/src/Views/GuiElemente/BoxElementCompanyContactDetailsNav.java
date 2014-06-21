@@ -14,7 +14,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import ConfigParser.Debug;
 import Views.Interfaces.BasicBox;
-import Views.Interfaces.CompanyDetailsContactCtrl;
+import Views.Interfaces.CompanyContactDetailsBoxNavCtrl;
 
 
 public class BoxElementCompanyContactDetailsNav extends JPanel implements BasicBox, MouseListener{
@@ -23,9 +23,9 @@ public class BoxElementCompanyContactDetailsNav extends JPanel implements BasicB
 	    private JButton jb_prev;
 	    private JButton jb_add;
 	    
-	    private CompanyDetailsContactCtrl controller;
+	    private CompanyContactDetailsBoxNavCtrl controller;
 	    
-    public BoxElementCompanyContactDetailsNav(CompanyDetailsContactCtrl controller) {
+    public BoxElementCompanyContactDetailsNav(CompanyContactDetailsBoxNavCtrl controller) {
     	this.controller = controller;
         initComponents();
         setComponentEventHandler();

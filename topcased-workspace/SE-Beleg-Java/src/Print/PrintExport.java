@@ -1,4 +1,4 @@
-package drucken;
+package Print;
 
 import java.awt.Desktop;
 import java.io.ByteArrayOutputStream;
@@ -17,34 +17,50 @@ import java.util.Map;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
 
-import freemarker.cache.StringTemplateLoader;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateExceptionHandler;
 import freemarker.template.Version;
 
+/**
+ * Übermittelt Daten an den Drucker und initialisiert den Druckdialog.
+ */
 public class PrintExport {
 
 	static Configuration cfg;
 	private Template template;
 	private Map<String, Object> input= new HashMap<String, Object>();
 	private List<ValuePrintObject> tableData= new ArrayList<ValuePrintObject>();
-	private String[][] mstrData;
+	private String[][] printData;
 
-	//Konstruktur wenn daten beim Anlegen mit übergeben werden
-	public PrintExport(String[][] strData) throws Exception {
-		this.mstrData = strData;
+	/**
+	 * Initialisiert den Druckdialog und erstellt das zu druckende Dokument auf Grundlage der übermittelten Daten.
+	 * @param printData	Print-Datenarray in Form {Matrikelnr, Studentenname, Bibliotheksnr, Studiengruppe, Firmenname}
+	 * @throws Exception
+	 */
+	public PrintExport(String[][] printData) throws Exception {
+		this.printData = printData;
 		this.init();		
 		this.setData();
 		this.print();
 	}
 	
-	//Konstruktor wenn keine Daten mit übergeben werden, es müssen dann setdata und print manuell gemacht werden
+	/**
+	 * Initialisiert alle Notwendigen Umgebungsvariablen.<br>
+	 * {@link Printexport.setData(String[][] printData, String title,String headline)} und<br>
+	 * {@link Printexport.print()} müssen separat aufgerufen werden.
+	 * @throws Exception
+	 */
 	public PrintExport() throws Exception {
 		init();
 	}
 
-	//Template laden und aktivieren
+	/**
+	 * Initialisiert die {@link FreeMarker} Druckumgebung.
+	 * @throws Exception
+	 * @see http://freemarker.org/docs/
+	 */
+	
 	private void init() throws Exception {
 
 		// Configure FreeMarker
@@ -66,9 +82,10 @@ public class PrintExport {
 		template = new Template("name",new StringReader(PdfContent.getPdfContent()),new Configuration());
 	}
 
-
+	/**
+	 * Setzt die Daten, welche im Drucktemplate eingefügt werden.
+	 */
 	private void setData() {
-		
 		
 		input.put("title", "Template Export Sample fuer Praktikumsexport Funktion?");
 
@@ -76,13 +93,20 @@ public class PrintExport {
 
 		// Liste füllen mit gewünschten Daten bzw weitergabe an das
 		// entsprechende Objekt welche mit set/get arbeitet
-		for (String[] i : mstrData) {
-			tableData.add(new ValuePrintObject(i[0], i[1], i[2], i[3], i[4]));
+		for (String[] rowIndex : printData) {
+			tableData.add(new ValuePrintObject(rowIndex[0], rowIndex[1], rowIndex[2], rowIndex[3], rowIndex[4]));
 		}
 		input.put("tableData", tableData);
 	}
 	
-	public void setData(String[][] strData, String title,String headline) {
+	/**
+	 * Setzt die Daten, welche im Drucktemplate eingefügt werden.
+	 * 
+	 * @param printData	Print-Datenarray in Form {Matrikelnr, Studentenname, Bibliotheksnr, Studiengruppe, Firmenname}
+	 * @param title		Titel im Template.
+	 * @param headline	Überschrift im Template.
+	 */
+	public void setData(String[][] printData, String title,String headline) {
 
 		// Daten mit Template verknüpfen, Titel und Überschrift
 		input.put("title",title);
@@ -90,13 +114,36 @@ public class PrintExport {
 
 		// Liste füllen mit gewünschten Daten bzw weitergabe an das
 		// entsprechende Objekt welche mit set/get arbeitet
-		for (String[] i : strData) {
-			tableData.add(new ValuePrintObject(i[0], i[1], i[2], i[3], i[4]));
+		for (String[] rowIndex : printData) {
+			tableData.add(new ValuePrintObject(rowIndex[0], rowIndex[1], rowIndex[2], rowIndex[3], rowIndex[4]));
 		}
 		input.put("tableData", tableData);
 	}
 
-	public static void showhtml(String file) {
+	
+	/**
+	 * Zu Debugzwecken kann der Druck des Templates auf den Desktop umgeleitet werden.
+	 * 
+	 * @param fName			Zieldatei, in die das Template "gedruckt" wird.
+	 * @throws Exception
+	 */
+	public void printFile(String fName) throws Exception {
+		
+		//Daten in Datei schreiben zu verbose Zwecken ...
+		Writer fileWriter = new FileWriter(new File(fName));
+		try {
+			template.process(input, fileWriter);
+		} finally {
+			fileWriter.close();
+		}
+		showHtml(fName);
+	}
+	
+	/**
+	 * Zu Debugzwecken, wird die gedruckte Datei auf dem Desktop angezeigt.
+	 * @param file	Dateiname, des gedruckten Template.
+	 */
+	public static void showHtml(String file) {
 		Desktop desktop = Desktop.getDesktop();
 
 		// Datei mit Standardbrowser anzeigen
@@ -108,20 +155,11 @@ public class PrintExport {
 			System.out.println("Error...desktop not found?");
 		}
 	}
-
-	public void printFile(String fName) throws Exception {
-		
-		//Daten in Datei schreiben zu verbose Zwecken ...
-		Writer fileWriter = new FileWriter(new File(fName));
-		System.out.println(input);
-		try {
-			template.process(input, fileWriter);
-		} finally {
-			fileWriter.close();
-		}
-		showhtml(fName);
-	}
-
+	
+	/**
+	 * Erzeugt das Dokument auf Grundlage des Template und schickt es an den Drucker.
+	 * @throws Exception
+	 */
 	public void print() throws Exception {
 
 		// Ausgabe erzeugen

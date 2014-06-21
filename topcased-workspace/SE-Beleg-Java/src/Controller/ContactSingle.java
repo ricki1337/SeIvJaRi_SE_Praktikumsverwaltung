@@ -1,6 +1,6 @@
 package Controller;
 
-import Controller.Interfaces.CallbackSelectedValue;
+import Controller.Interfaces.SelectedValueCallbackCtrl;
 import Models.Datenbank.SqlTableContacts;
 import Models.Filter.StringFilter;
 import Views.GuiElemente.BoxElementBottomNavi;
@@ -11,7 +11,7 @@ import Views.Interfaces.NaviAbortSaveBoxCtrl;
 import Views.Interfaces.NaviPrevSaveNextBoxCtrl;
 import Views.Interfaces.EditBoxCtrl;
 
-public class ContactSingle extends ControllerNew implements EditBoxCtrl, 
+public class ContactSingle extends Controller implements 	EditBoxCtrl, 
 															NaviAbortSaveBoxCtrl, 
 															NaviPrevSaveNextBoxCtrl {
 	
@@ -24,20 +24,30 @@ public class ContactSingle extends ControllerNew implements EditBoxCtrl,
 								" from " +
 									SqlTableContacts.tableName;
 	
-	private CallbackSelectedValue cs;
-	private Views.ViewNew view;
+	private SelectedValueCallbackCtrl cs;
+	private Views.View view;
 	private int companyId = -1;
 
-	
+	/**
+	 * Initialisiert die Einzelansicht der Ansprechpartner einer Firma für die Neuanlage.<br>
+	 * Übernimmt die zugehörige Firmen ID.
+	 * 
+	 * @param companyId	Zuordnung des Neuen Ansprechpartners zur Firma.
+	 */
 	public ContactSingle(int companyId){
+		super();
 		this.companyId = companyId;
 		setModel(new Models.Model(SqlTableContacts.tableName,SqlTableContacts.TableNameDotPrimaryKey));
-		setView(view = new Views.ViewNew(this));
+		setView(view = new Views.View(this));
 		view.setTitle("Ansprechpartner anlegen");
 		setElementsForNewData();
 	}
 	
-	
+	/**
+	 * Initialisiert die Ansicht der Ansprechpartner einer Firma zur Bearbeitung.<br>
+	 * Übernimmt eine Liste von {@link SqlTableContacts.PrimaryKey}.
+	 * @param primaryKeys	{@link SqlTableContacts.PrimaryKey}'s zur Bearbeitung.
+	 */
 	public ContactSingle(Object primaryKeys){
 		super();
 
@@ -53,25 +63,19 @@ public class ContactSingle extends ControllerNew implements EditBoxCtrl,
 		}
 		model.setResult();
 		setModel(model);
-		setView((view = new Views.ViewNew(this)));
+		setView((view = new Views.View(this)));
 		view.setTitle("Ansprechpartner editieren");
 		setElements();
 	}
 	
-	@Override
-	public void setElements() {
-		view.addComponentToView(new BoxElementContactDetails(this));
-		BoxElementBottomNavi navi = new BoxElementBottomNavi(this);
-		navi.addBoxToLeftSide(new BoxElementBottomNaviPrevSaveNext(this));
-		view.addComponentToView(navi);
-	}
-
-	@Override
-	public void setElementsForNewData() {
-		view.addComponentToView(new BoxElementContactDetails(this,true,companyId));
-		BoxElementBottomNavi navi = new BoxElementBottomNavi(this);
-		navi.addBoxToRightSide(new BoxElementBottomNaviAbortSave(this));
-		view.addComponentToView(navi);
+	/**
+	 * Setzen der Callbackfunktion, welche nach der Neuanlage von Datensätzen aufgerufen wird,<br>
+	 * um einen anderen Controller zu informieren.
+	 * 
+	 * @param cs	Controller, welcher {@link SelectedValueCallbackCtrl} implementiert.
+	 */
+	public void setCallbackvalueController(SelectedValueCallbackCtrl cs){
+		this.cs = cs;
 	}
 	
 	@Override
@@ -80,9 +84,27 @@ public class ContactSingle extends ControllerNew implements EditBoxCtrl,
 	}
 
 	@Override
+	public void setElements() {
+		view.addComponentToView(new BoxElementContactDetails(this));
+		
+		BoxElementBottomNavi navi = new BoxElementBottomNavi(this);
+		navi.addBoxToLeftSide(new BoxElementBottomNaviPrevSaveNext(this));
+		view.addComponentToView(navi);
+	}
+
+	@Override
+	public void setElementsForNewData() {
+		view.addComponentToView(new BoxElementContactDetails(this,true,companyId));
+		
+		BoxElementBottomNavi navi = new BoxElementBottomNavi(this);
+		navi.addBoxToRightSide(new BoxElementBottomNaviAbortSave(this));
+		view.addComponentToView(navi);
+	}
+	
+	@Override
 	public String getStringValueForBoxElementEdit(String sqlColumnName) {
 		try {
-			return model.tableRowData.getStringValueFromPosition(model.rowPosition, sqlColumnName);
+			return model.getStringValueFromPosition(model.getRowPosition(), sqlColumnName);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -93,7 +115,7 @@ public class ContactSingle extends ControllerNew implements EditBoxCtrl,
 	@Override
 	public int getIntValueForBoxElementEdit(String sqlColumnName) {
 		try {
-			return Integer.parseInt(model.tableRowData.getStringValueFromPosition(model.rowPosition, sqlColumnName));
+			return Integer.parseInt(model.getStringValueFromPosition(model.getRowPosition(), sqlColumnName));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -104,7 +126,7 @@ public class ContactSingle extends ControllerNew implements EditBoxCtrl,
 	@Override
 	public boolean getBooleanValueForBoxElementEdit(String sqlColumnName) {
 		try {
-			return model.tableRowData.getBooleanValueFromPosition(model.rowPosition, sqlColumnName);
+			return model.getBooleanValueFromPosition(model.getRowPosition(), sqlColumnName);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -145,15 +167,13 @@ public class ContactSingle extends ControllerNew implements EditBoxCtrl,
 	
 	@Override
 	public String getCurrentPos() {
-		return String.valueOf(model.rowPosition+1);
+		return String.valueOf(model.getRowPosition()+1);
 	}
 
 
 	@Override
 	public String getPosSum() {
-		return String.valueOf(model.tableRowData.getRowCount());
+		return String.valueOf(model.getTableRowCount());
 	}
-	public void setCallbackvalueController(CallbackSelectedValue cs){
-		this.cs = cs;
-	}
+	
 }

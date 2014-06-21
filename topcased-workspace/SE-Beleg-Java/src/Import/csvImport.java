@@ -30,27 +30,35 @@ import Controller.ErrorManager;
 public class CsvImport {
 //Eigenschaften
 
-	String file, delimiter, errorlog="Beim Import sind Fehler aufgetreten:\n";
-	int lines=0;
-	Boolean importerrors=false,MetaDatenKopfZeile = true; //Wenn in der ersten Zeile Spaltenbezeichner stehen true, dann wird diese Zeile übersprungen
-	char [] spaltenreihenfolge;
-	DefaultTableModel datamodel = new DefaultTableModel(0,5);
+		private String file, delimiter, errorlog="Beim Import sind Fehler aufgetreten:\n";
+		private int lines=0;
+		private Boolean importerrors=false,MetaDatenKopfZeile = true; //Wenn in der ersten Zeile Spaltenbezeichner stehen true, dann wird diese Zeile übersprungen
+		private DefaultTableModel datamodel = new DefaultTableModel(0,5);
 	
-//Konstruktor
-	public CsvImport(String file, String delimiter, boolean t){
+	/**
+	 * Stellt Methoden zur Voransicht der zu importierenden Daten bereit.
+	 * @param file							Name der Datei, welche importiert wird
+	 * @param delimiter						Datentrennzeichen, z.B.: ',' oder ';'
+	 * @param firstLineIncludesColumnNames	True wenn Kopfzeile = Spaltennamen, False wenn nicht.
+	 */
+	public CsvImport(String file, String delimiter, boolean firstLineIncludesColumnNames){
 		this.file=file;
 		this.delimiter=delimiter;
-		this.MetaDatenKopfZeile=t;
-		this.spaltenreihenfolge= new  char [] {'n','v','m','b','g'};
+		this.MetaDatenKopfZeile=firstLineIncludesColumnNames;
 	}
 
-//Funktionen
+	/**
+	 * Liest den Dateiinhalt in ein {@link DefaultTableModel} ein und gibt dieses zurück.
+	 * @return	{@link DefaultTableModel} mit den eingelesenen Informationen der Datei.
+	 */
 	public DefaultTableModel parseIt() {
 		parseCsvFile();
 		return datamodel;
 	}
 
-//csv Parser
+	/**
+	 * Geht alle Zeilen der Datei durch, spaltet die Informationen gemäß des Delimiters auf und schreibt die Info in das interne {@link DefaultTableModel}.
+	 */
     private void parseCsvFile()  {
         int i=0;//Zeileniteration
     	
@@ -71,11 +79,12 @@ public class CsvImport {
 			if(errorManager.retry)
 				parseCsvFile();			
 		}
-		
-
-
     }
-// Verarbeitet eine Zeile
+    
+    /**
+     * Zerteilt die übergebene Datenzeile gemäß dem Delimiter und fügt sie dem internen  {@link DefaultTableModel} hinzu.
+     * @param data	Ausgelesene Zeile der angegebenen Datei.
+     */
     public void processCsvLine(final String data) {
     	
         String [] splittedline = data.split(delimiter);
@@ -86,14 +95,26 @@ public class CsvImport {
 
     }
     
+    /**
+     * Liefert den aktuelle Zeilenanzahl.
+     * @return	Zeilenanzahl
+     */
     public int getcount(){
     	return this.lines;
     }
     
+    /**
+     * Informiert über aufgetretene Fehler.
+     * @return	True wenn ein Fehler aufgetreten ist, sonst False.
+     */
     public boolean getImportErrors(){
     	return importerrors;
     }
     
+    /**
+     * Gibt die Fehlermeldung zurück.
+     * @return	Fehlermeldung
+     */
     public String getErrorLog(){
     	return errorlog;
     }

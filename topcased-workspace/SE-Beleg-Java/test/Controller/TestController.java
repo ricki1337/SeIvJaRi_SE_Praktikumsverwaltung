@@ -7,7 +7,7 @@ import org.junit.Test;
 import Controller.Mock.MockController;
 import Controller.Mock.MockModel;
 import Models.Model;
-import Views.ViewNew;
+import Views.View;
 
 public class TestController {
 
@@ -20,7 +20,7 @@ public class TestController {
 	@Test
 	public void testSetViewWithView(){
 		MockController controller = new MockController();
-		ViewNew view = new ViewNew(controller);
+		View view = new View(controller);
 		controller.setModel(new MockModel());
 		controller.setView(view);
 		assertSame(view,controller.view);
@@ -51,7 +51,7 @@ public class TestController {
 	public void testGetDisplayedFrameWithView(){
 		MockController controller = new MockController();
 		controller.setModel(new MockModel());
-		ViewNew view = new ViewNew(controller);
+		View view = new View(controller);
 		controller.setView(view);
 		assertSame(view,controller.getDisplayedFrame());
 	}
