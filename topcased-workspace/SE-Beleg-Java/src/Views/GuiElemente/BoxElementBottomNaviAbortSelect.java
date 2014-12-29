@@ -16,11 +16,19 @@ import ConfigParser.Debug;
 import Views.Interfaces.BasicBox;
 import Views.Interfaces.NaviAbortSelectBoxCtrl;
 
+/**
+ * Implementiert eine BasicBox mit den Button "abbrechen" und "auswählen".
+ *
+ */
 public class BoxElementBottomNaviAbortSelect extends JPanel implements BasicBox, MouseListener {
-	JButton jbn_select;
-	JButton jbn_abort;
-	private NaviAbortSelectBoxCtrl controller;
+		private JButton jbn_select;
+		private JButton jbn_abort;
+		private NaviAbortSelectBoxCtrl controller;
 	
+	/**
+	 * Initialisiert die Box und bringt sie zur Anzeige.
+	 * @param controller	NaviAbortSelectBoxCtrl Objekt, welches die Nutzereingaben verarbeitet.
+	 */
 	public BoxElementBottomNaviAbortSelect(NaviAbortSelectBoxCtrl controller){
 		this.controller = controller;
 		initComponents();
@@ -89,7 +97,7 @@ public class BoxElementBottomNaviAbortSelect extends JPanel implements BasicBox,
 			controller.buttonAbortClicked();
 		}
 	}
-	
+	@Override
 	public void setToolTip(){
 		if(Debug.isDebugMode()){
 			setToolTipText(this.getClass().getCanonicalName());

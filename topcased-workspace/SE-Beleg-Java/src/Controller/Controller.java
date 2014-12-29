@@ -29,8 +29,11 @@ public abstract class Controller {
 	 * @param model	Instanz von {@link Model}.
 	 */
 	public Controller(View view, Model model){
+		model.setView(view);
+		view.setModel(model);
 		setModel(model);
 		setView(view);
+		
 	}
 	
 	/**

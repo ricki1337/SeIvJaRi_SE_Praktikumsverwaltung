@@ -35,6 +35,7 @@ public class StudentSingle extends Controller implements EditBoxCtrl, NaviAbortS
 		super();
 		setModel(new Models.Model(SqlTableStudent.tableName,SqlTableStudent.TableNameDotPrimaryKey));
 		setView(new Views.View(this));
+		model.setView(view);
 		view.setTitle("Student anlegen");
 		setElementsForNewData();
 	}
@@ -60,6 +61,8 @@ public class StudentSingle extends Controller implements EditBoxCtrl, NaviAbortS
 		model.setResult();
 		setModel(model);
 		setView((view = new Views.View(this)));
+		model.setView(view);
+		view.setModel(model);
 		view.setTitle("Student editieren");
 		setElements();
 	}

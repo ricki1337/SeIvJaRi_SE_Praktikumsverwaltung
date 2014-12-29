@@ -18,13 +18,21 @@ import Models.Datenbank.SqlTableProfs;
 import Views.Interfaces.EditBox;
 import Views.Interfaces.EditBoxCtrl;
 
+/**
+ * Implementiert eine EditBox zur Darstellung von Informationen eines Betreuers.
+ */
 public class BoxElementProfDetails extends JPanel implements EditBox{
 		private JTextField jtf_name;
 		private JTextField jtf_email;
 
 		private EditBoxCtrl controller;
 		private boolean addNewContract = false;
+	
 		
+	/**
+	 * Initialisiert die Box und bringt sie zur Anzeige.
+	 * @param controller	EditBoxCtrl Objekt, welches Daten für die Box bereitstellt und die Nutzereingaben verarbeitet.
+	 */
 	public BoxElementProfDetails(EditBoxCtrl controller){
 		this.controller = controller;
 		initComponents();
@@ -34,6 +42,11 @@ public class BoxElementProfDetails extends JPanel implements EditBox{
 		setToolTip();
 	}
 	
+	/**
+	 * Initialisiert die Box für die Neuanlage von Datensätzen.
+	 * @param controller		EditBoxCtrl Objekt, welches die eingegebenen Daten verarbeitet.
+	 * @param addNewContract	Flag zur Signalisierung von einer Neuanlage.
+	 */
 	public BoxElementProfDetails(EditBoxCtrl controller, boolean addNewContract){
 		this.controller = controller;
 		this.addNewContract = addNewContract;
@@ -43,6 +56,14 @@ public class BoxElementProfDetails extends JPanel implements EditBox{
 		setToolTip();
 	}
 	
+	/**
+	 * Löscht alle Eingaben.
+	 */
+	public void clearComponentValues() {
+		jtf_email.setText("");
+		jtf_name.setText("");
+	}
+
 		
 	@Override
 	public void setComponentNames() {
@@ -57,13 +78,6 @@ public class BoxElementProfDetails extends JPanel implements EditBox{
 	}
 	
 	
-	public void clearComponentValues() {
-		jtf_email.setText("");
-		jtf_name.setText("");
-	}
-
-	
-
 	@Override
 	public void refreshContent() {
 		if(!addNewContract)
@@ -81,14 +95,20 @@ public class BoxElementProfDetails extends JPanel implements EditBox{
 	public Map<String, Object> getInputValues() {
 		Map<String, Object> inputValues = new HashMap<String, Object>();
 		
-		inputValues.put(jtf_email.getName(), jtf_email.getText());
-		inputValues.put(jtf_name.getName(), jtf_name.getText());
+		inputValues.put(jtf_email.getName(), getSubstringFromInputString(jtf_email.getText(),20));
+		inputValues.put(jtf_name.getName(), getSubstringFromInputString(jtf_name.getText(),25));
 		
 		return inputValues;
 	}
 	
+	private String getSubstringFromInputString(String inputString, int maxLenght) {
+		int length = inputString.length();
+		return (String) inputString.subSequence(0, (length<maxLenght)?length:maxLenght);
+	}
+	
+	@Override
 	public void initComponents(){
-JPanel panel = new JPanel();
+		JPanel panel = new JPanel();
 		
 		JPanel panel_1 = new JPanel();
 		GroupLayout groupLayout = new GroupLayout(this);
@@ -169,6 +189,7 @@ JPanel panel = new JPanel();
 	@Override
 	public void setComponentEventHandler() {}
 	
+	@Override
 	public void setToolTip(){
 		if(Debug.isDebugMode()){
 			setToolTipText(this.getClass().getCanonicalName());

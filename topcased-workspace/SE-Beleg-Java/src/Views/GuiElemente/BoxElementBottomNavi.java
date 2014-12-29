@@ -13,6 +13,9 @@ import ConfigParser.Debug;
 import Views.Interfaces.BasicBox;
 import Views.Interfaces.BasicBoxCtrl;
 
+/**
+ * Implementiert ein BasicBox Element mit 2 belegbaren Boxen.
+ */
 public class BoxElementBottomNavi extends JPanel implements BasicBox{
 	JPanel jpnl_right;
 	JPanel jpnl_left;
@@ -20,6 +23,10 @@ public class BoxElementBottomNavi extends JPanel implements BasicBox{
 	BasicBox rightBox = null;
 	BasicBox leftBox = null;
 	
+	/**
+	 * Initialisiert die Box.
+	 * @param parent	BasicBoxCtrl Objekt
+	 */
 	public BoxElementBottomNavi(BasicBoxCtrl parent){
 		this.parent = parent;
 		initComponents();
@@ -28,6 +35,29 @@ public class BoxElementBottomNavi extends JPanel implements BasicBox{
 		setToolTip();
 	}
 	
+	/**
+	 * Fügt eine übergebene BasicBox auf der linken Seite ein.
+	 * @param box	BasicBox, welche links angezeigt werden soll.
+	 */
+	public void addBoxToLeftSide(BasicBox box){
+		JPanel newPanel = (JPanel)box.getJComponent();
+		GroupLayout layout = (GroupLayout) this.getLayout();
+		layout.replace(jpnl_left, newPanel);
+		leftBox = box;
+	}
+	
+	/**
+	 * Fügt eine übergebene BasicBox auf der rechten Seite ein.
+	 * @param box	BasicBox, welche rechten angezeigt werden soll.
+	 */
+	public void addBoxToRightSide(BasicBox box){
+		JPanel newPanel = (JPanel)box.getJComponent();
+		GroupLayout layout = (GroupLayout) this.getLayout();
+		layout.replace(jpnl_right , newPanel);
+		rightBox = box;
+	}	
+	
+	@Override
 	public void initComponents(){
 		jpnl_right = new JPanel();
 		
@@ -53,25 +83,14 @@ public class BoxElementBottomNavi extends JPanel implements BasicBox{
 		setLayout(groupLayout);
 	}
 	
-	public void addBoxToLeftSide(BasicBox box){
-		JPanel newPanel = (JPanel)box.getJComponent();
-		GroupLayout layout = (GroupLayout) this.getLayout();
-		layout.replace(jpnl_left, newPanel);
-		leftBox = box;
-	}
 	
-	public void addBoxToRightSide(BasicBox box){
-		JPanel newPanel = (JPanel)box.getJComponent();
-		GroupLayout layout = (GroupLayout) this.getLayout();
-		layout.replace(jpnl_right , newPanel);
-		rightBox = box;
-	}	
 	
 	@Override
 	public JComponent getJComponent() {
 		return this;
 	}
 	
+	@Override
 	public void setToolTip(){
 		if(Debug.isDebugMode()){
 			setToolTipText(this.getClass().getCanonicalName());

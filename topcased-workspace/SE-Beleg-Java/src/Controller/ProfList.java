@@ -58,6 +58,8 @@ public class ProfList extends Controller implements BasicBoxCtrl,
 		
 		setModel(model);
 		setView(view = new Views.View(this));
+		model.setView(view);
+		view.setModel(model);
 		view.setTitle("Betreuer");
 		setElements();
 	}
@@ -75,6 +77,8 @@ public class ProfList extends Controller implements BasicBoxCtrl,
 		
 		setModel(model);
 		setView(view = new Views.View(this));
+		model.setView(view);
+		view.setModel(model);
 		this.callback = callback;
 		view.setTitle("Betreuer auswählen");
 		setElementsForCallback();
@@ -222,7 +226,8 @@ public class ProfList extends Controller implements BasicBoxCtrl,
 
 	@Override
 	public void buttonSelectClicked() {
-		callback.setSelectedValue(SqlTableProfs.PrimaryKey, getValueFromPosition(table.getSelectedRow(),SqlTableProfs.PrimaryKey));
+		//Tabelle Contract verweist auf den Name des Betreuers, nicht auf NameID
+		callback.setSelectedValue(SqlTableProfs.PrimaryKey, getValueFromPosition(table.getSelectedRow(),SqlTableProfs.Name));
 		view.dispose();
 		model.modelClose();
 	}

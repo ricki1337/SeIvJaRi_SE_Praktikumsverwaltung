@@ -69,6 +69,8 @@ public class CompanyList extends Controller implements 	BasicBoxCtrl,
 		
 		setModel(model);
 		setView(view = new Views.View(this));
+		model.setView(view);
+		view.setModel(model);
 		view.setTitle("Firmen");
 		setElements();
 	}
@@ -88,6 +90,8 @@ public class CompanyList extends Controller implements 	BasicBoxCtrl,
 		
 		setModel(model);
 		setView(view = new Views.View(this));
+		model.setView(view);
+		view.setModel(model);
 		this.callback = callback;
 		view.setTitle("Firma auswählen");
 		setElementsForCallback();

@@ -16,11 +16,18 @@ import ConfigParser.Debug;
 import Views.Interfaces.BasicBox;
 import Views.Interfaces.NaviAbortSaveBoxCtrl;
 
+/**
+ * Implementiert eine BasicBox mit den Button "Abbrechen" und "Speichern".
+ */
 public class BoxElementBottomNaviAbortSave extends JPanel implements BasicBox, MouseListener {
-	JButton jbn_save;
-	JButton jbn_abort;
-	private NaviAbortSaveBoxCtrl controller;
+		private JButton jbn_save;
+		private JButton jbn_abort;
+		private NaviAbortSaveBoxCtrl controller;
 	
+	/**
+	 * Initialisiert die Box.
+	 * @param controller	NaviAbortSaveBoxCtrl Objekt, welche die Nutzerinteraktionenbehandelt.
+	 */
 	public BoxElementBottomNaviAbortSave(NaviAbortSaveBoxCtrl controller){
 		this.controller = controller;
 		initComponents();
@@ -29,28 +36,11 @@ public class BoxElementBottomNaviAbortSave extends JPanel implements BasicBox, M
 		setToolTip();
 	}
 	
-	@Override
-	public void setComponentNames() {
-		jbn_save.setName("insert");
-		jbn_abort.setName("close");
-	}
 
-	@Override
-	public void setComponentEventHandler() {
-		jbn_save.addMouseListener(this);
-		jbn_abort.addMouseListener(this);
-	}
-
-	@Override
-	public JComponent getJComponent() {
-		return this;
-	}
-
+	
 	@Override
 	public void initComponents() {
 		jbn_save = new JButton("speichern");
-		
-		
 		jbn_abort = new JButton("abbrechen");
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
@@ -76,12 +66,6 @@ public class BoxElementBottomNaviAbortSave extends JPanel implements BasicBox, M
 	}
 	
 	@Override
-	public void setComponentValues() {}
-	
-	@Override
-	public void refreshContent() {}
-
-	@Override
 	public void mouseClicked(MouseEvent e) {
 		if(e.getComponent() == jbn_save){
 			controller.buttonSaveClicked();
@@ -90,7 +74,34 @@ public class BoxElementBottomNaviAbortSave extends JPanel implements BasicBox, M
 			controller.buttonAbortClicked();
 		}
 	}
+
+
+	@Override
+	public void setComponentNames() {
+		jbn_save.setName("insert");
+		jbn_abort.setName("close");
+	}
+
+	@Override
+	public void setComponentEventHandler() {
+		jbn_save.addMouseListener(this);
+		jbn_abort.addMouseListener(this);
+	}
 	
+	@Override
+	public JComponent getJComponent() {
+		return this;
+	}
+
+	
+	@Override
+	public void setComponentValues() {}
+	
+	@Override
+	public void refreshContent() {}
+
+	
+	@Override
 	public void setToolTip(){
 		if(Debug.isDebugMode()){
 			setToolTipText(this.getClass().getCanonicalName());

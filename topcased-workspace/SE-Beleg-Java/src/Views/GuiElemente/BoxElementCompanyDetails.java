@@ -7,6 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.InputVerifier;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,6 +21,9 @@ import Views.Interfaces.BasicBox;
 import Views.Interfaces.EditBox;
 import Views.Interfaces.EditBoxCtrl;
 
+/**
+ * Implementiert eine EditBox, welche die Informationen einer Firma darstellt und die Bearbeitung des Datensatzes ermöglicht.
+ */
 public class BoxElementCompanyDetails extends JPanel implements EditBox{
 		private JLabel jl_firmenname;
 	    private JLabel jl_strasse;
@@ -36,11 +40,15 @@ public class BoxElementCompanyDetails extends JPanel implements EditBox{
 	    
 	    private GroupLayout groupLayout;
 
-		private EditBoxCtrl parent;
+		private EditBoxCtrl controller;
 		private boolean addNewContract = false;
 		
-	public BoxElementCompanyDetails(EditBoxCtrl parent){
-		this.parent = parent;
+	/**
+	 * Initialisiert die Box und bringt sie zur Anzeige.
+	 * @param controller	EditBoxCtrl Objekt, welche die Benutzereingaben verarbeitet und die Daten bereitstellt.
+	 */
+	public BoxElementCompanyDetails(EditBoxCtrl controller){
+		this.controller = controller;
 		initComponents();
 		setComponentNames();
 		setComponentValues();
@@ -48,13 +56,42 @@ public class BoxElementCompanyDetails extends JPanel implements EditBox{
 		setToolTip();
 	}
 	
-	public BoxElementCompanyDetails(EditBoxCtrl parent, boolean addNewContract){
-		this.parent = parent;
+	/**
+	 * Initialisiert die Box zum Anlegen eines neuen Datensatzes.
+	 * @param controller			EditBoxCtrl Objekt, welche die Benutzereingaben verarbeitet.
+	 * @param addNewContract		Flag um die Neuanlage von einer Firma zu signalisieren.
+	 */
+	public BoxElementCompanyDetails(EditBoxCtrl controller, boolean addNewContract){
+		this.controller = controller;
 		this.addNewContract = addNewContract;
 		initComponents();
 		setComponentNames();
 		setComponentEventHandler();
 		setToolTip();
+	}
+	
+	/**
+	 * Löscht den Inhalt aller Felder.
+	 */
+	public void clearComponentValues() {
+		jtf_firmenname_value.setText("");
+		jtf_strasse_value.setText("");
+		jtf_plz_value.setText("");
+		jtf_ort_value.setText("");
+		jtf_land_value.setText("");
+		jtf_tel_value.setText("");
+	}
+	
+	/**
+	 * Ermöglicht das Einfügen einer BasicBox um z.B. die Ansprechpartner der Firma anzuzeigen.
+	 * @param contactBox	BasicBox Objekt welches neben den Informationen angezeigt werden soll.
+	 */
+	public void setContactBox(BasicBox contactBox){
+		JPanel newPanel = (JPanel)contactBox.getJComponent();
+		groupLayout.replace(pnl_contact, newPanel);
+		pnl_contact = newPanel;
+		pnl_contact.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.GRAY, null));
+		groupLayout.layoutContainer(this);
 	}
 	
 	@Override
@@ -65,30 +102,20 @@ public class BoxElementCompanyDetails extends JPanel implements EditBox{
 		jtf_ort_value.setName(SqlTableCompanies.Ort);
 		jtf_land_value.setName(SqlTableCompanies.Land);
 		jtf_tel_value.setName(SqlTableCompanies.Telefonnummer);
+		jta_bemerkung_value.setName(SqlTableCompanies.Bemerkung);
 	}
 
 	@Override
 	public void setComponentValues() {
-		jtf_firmenname_value.setText(parent.getStringValueForBoxElementEdit(SqlTableCompanies.Firmenname));
-		jtf_strasse_value.setText(parent.getStringValueForBoxElementEdit(SqlTableCompanies.Strasse));
-		jtf_plz_value.setText(parent.getStringValueForBoxElementEdit(SqlTableCompanies.PLZ));
-		jtf_ort_value.setText(parent.getStringValueForBoxElementEdit(SqlTableCompanies.Ort));
-		jtf_land_value.setText(parent.getStringValueForBoxElementEdit(SqlTableCompanies.Land));
-		jtf_tel_value.setText(parent.getStringValueForBoxElementEdit(SqlTableCompanies.Telefonnummer));
+		jtf_firmenname_value.setText(controller.getStringValueForBoxElementEdit(SqlTableCompanies.Firmenname));
+		jtf_strasse_value.setText(controller.getStringValueForBoxElementEdit(SqlTableCompanies.Strasse));
+		jtf_plz_value.setText(controller.getStringValueForBoxElementEdit(SqlTableCompanies.PLZ));
+		jtf_ort_value.setText(controller.getStringValueForBoxElementEdit(SqlTableCompanies.Ort));
+		jtf_land_value.setText(controller.getStringValueForBoxElementEdit(SqlTableCompanies.Land));
+		jtf_tel_value.setText(controller.getStringValueForBoxElementEdit(SqlTableCompanies.Telefonnummer));
+		jta_bemerkung_value.setText(controller.getStringValueForBoxElementEdit(SqlTableCompanies.Bemerkung));
 	}
 	
-	
-	public void clearComponentValues() {
-		jtf_firmenname_value.setText("");
-		jtf_strasse_value.setText("");
-		jtf_plz_value.setText("");
-		jtf_ort_value.setText("");
-		jtf_land_value.setText("");
-		jtf_tel_value.setText("");
-	}
-
-	
-
 	@Override
 	public void refreshContent() {
 		if(!addNewContract)
@@ -108,16 +135,22 @@ public class BoxElementCompanyDetails extends JPanel implements EditBox{
 	@Override
 	public Map<String, Object> getInputValues() {
 		Map<String, Object> inputValues = new HashMap<String, Object>();
-		inputValues.put(jtf_firmenname_value.getName(), jtf_firmenname_value.getText());
-		inputValues.put(jtf_strasse_value.getName(), jtf_strasse_value.getText());
-		inputValues.put(jtf_plz_value.getName(), jtf_plz_value.getText());
-		inputValues.put(jtf_ort_value.getName(), jtf_ort_value.getText());
-		inputValues.put(jtf_land_value.getName(), jtf_land_value.getText());
-		inputValues.put(jtf_tel_value.getName(), jtf_tel_value.getText());
-		
+		inputValues.put(jtf_firmenname_value.getName(), getSubstringFromInputString(jtf_firmenname_value.getText(),30));
+		inputValues.put(jtf_strasse_value.getName(), getSubstringFromInputString(jtf_strasse_value.getText(),30));
+		inputValues.put(jtf_plz_value.getName(), getSubstringFromInputString(jtf_plz_value.getText(),10));
+		inputValues.put(jtf_ort_value.getName(), getSubstringFromInputString(jtf_ort_value.getText(),20));
+		inputValues.put(jtf_land_value.getName(), getSubstringFromInputString(jtf_land_value.getText(),12));
+		inputValues.put(jtf_tel_value.getName(), getSubstringFromInputString(jtf_tel_value.getText(),20));
+		inputValues.put(jta_bemerkung_value.getName(), getSubstringFromInputString(jta_bemerkung_value.getText(),100));
 		return inputValues;
 	}
+
+	private String getSubstringFromInputString(String inputString, int maxLenght) {
+		int length = inputString.length();
+		return (String) inputString.subSequence(0, (length<maxLenght)?length:maxLenght);
+	}
 	
+	@Override
 	public void initComponents(){
 		jl_firmenname = new javax.swing.JLabel();
         jl_plz = new javax.swing.JLabel();
@@ -236,16 +269,7 @@ public class BoxElementCompanyDetails extends JPanel implements EditBox{
 	@Override
 	public void setComponentEventHandler() {}
 	
-	public void setContactBox(BasicBox contactBox){
-		JPanel newPanel = (JPanel)contactBox.getJComponent();
-		groupLayout.replace(pnl_contact, newPanel);
-		pnl_contact = newPanel;
-		pnl_contact.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.GRAY, null));
-		groupLayout.layoutContainer(this);
-	}
-	
-	
-	
+	@Override
 	public void setToolTip(){
 		if(Debug.isDebugMode()){
 			setToolTipText(this.getClass().getCanonicalName());

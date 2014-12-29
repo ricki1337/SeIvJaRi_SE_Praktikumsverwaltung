@@ -14,13 +14,19 @@ import ConfigParser.Debug;
 import Views.Interfaces.BasicBox;
 import Views.Interfaces.ContractDetailsStudentNewBoxCtrl;
 
-
+/**
+ * Implementiert eine BasicBox mit einem Button "Hinzufügen".
+ */
 public class BoxElementContractDetailsStudentNew extends JPanel implements BasicBox, MouseListener{
 		
 		private javax.swing.JButton jb_add;
 	    
 	    private ContractDetailsStudentNewBoxCtrl controller;
-	    
+	
+	/**
+	 * Initialisiert die Box und bringt sie zur Anzeige.
+	 * @param controller	ContractDetailsStudentNewBoxCtrl Objekt, welche auf die Nutzereingaben reagiert.
+	 */
     public BoxElementContractDetailsStudentNew(ContractDetailsStudentNewBoxCtrl controller) {
     	this.controller = controller;
         initComponents();

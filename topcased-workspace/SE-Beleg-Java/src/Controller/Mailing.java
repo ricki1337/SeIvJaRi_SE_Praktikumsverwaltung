@@ -87,7 +87,8 @@ public class Mailing extends Controller implements 		BasicBoxCtrl,
 		setListModel();
 		mailingThread = new Thread(this);
 		setView(view = new Views.View(this));
-		
+		model.setView(view);
+		view.setModel(model);
 		setElements();
 	}
 

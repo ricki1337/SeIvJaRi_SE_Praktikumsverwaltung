@@ -21,7 +21,9 @@ import Models.Datenbank.SqlTableContracts;
 import Views.Interfaces.ContractDetailsCompanyBox;
 import Views.Interfaces.ContractDetailsCompanyBoxCtrl;
 
-
+/**
+ * Implementiert die Anzeige der Firmeninformationen eines Vertrags und ermöglicht die Bearbeitung der Firmeninformationen.
+ */
 public class BoxElementContractDetailsCompany extends JPanel implements ContractDetailsCompanyBox, MouseListener{
 	 	private JButton jb_aendern;
 	    private JButton jb_bearbeiten;
@@ -33,7 +35,11 @@ public class BoxElementContractDetailsCompany extends JPanel implements Contract
 	    private JLabel jl_strasse_value;
 
 	    private ContractDetailsCompanyBoxCtrl controller;	
-	    
+	
+	/**
+	 * Initialisiert die Box und bringt sie zur Anzeige.
+	 * @param controller	ContractDetailsCompanyBoxCtrl Objekt, welche Informationen für die Box bereitstellt und auf Nutzeraktionen reagiert.
+	 */
     public BoxElementContractDetailsCompany(ContractDetailsCompanyBoxCtrl controller) {
     	this.controller = controller;
         initComponents();
@@ -159,7 +165,6 @@ public class BoxElementContractDetailsCompany extends JPanel implements Contract
 		
 		if(e.getComponent() == jb_bearbeiten)
 			controller.buttonEditCompanyOnContractDetailsClicked();
-		
 	}
 
 	@Override
@@ -181,6 +186,7 @@ public class BoxElementContractDetailsCompany extends JPanel implements Contract
 		return inputValues;
 	}                
 	
+	@Override
 	public void setToolTip(){
 		if(Debug.isDebugMode()){
 			setToolTipText(this.getClass().getCanonicalName());

@@ -14,13 +14,19 @@ import ConfigParser.Debug;
 import Views.Interfaces.BasicBox;
 import Views.Interfaces.ContractDetailsCompanyNewBoxCtrl;
 
-
+/**
+ * Implementiert eine BasicBox mit einem Button "Hinzufügen".
+ */
 public class BoxElementContractDetailsCompanyNew extends JPanel implements BasicBox, MouseListener{
 		
 		private javax.swing.JButton jb_add;
 	    
 	    private ContractDetailsCompanyNewBoxCtrl controller;
-	    
+	
+	/**
+	 * Initialisiert die Box und bringt sie zur Anzeige.
+	 * @param controller	ContractDetailsCompanyNewBoxCtrl Objekt, welche auf die Nutzereingaben reagiert.
+	 */
     public BoxElementContractDetailsCompanyNew(ContractDetailsCompanyNewBoxCtrl controller) {
     	this.controller = controller;
         initComponents();
@@ -68,7 +74,7 @@ public class BoxElementContractDetailsCompanyNew extends JPanel implements Basic
 		if(e.getComponent() == jb_add)
 			controller.buttonAddCompanyOnContractClicked();
 	}
-	
+	@Override
 	public void setToolTip(){
 		if(Debug.isDebugMode()){
 			setToolTipText(this.getClass().getCanonicalName());

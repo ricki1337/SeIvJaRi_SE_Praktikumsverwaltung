@@ -4,6 +4,7 @@ package Print;
  * Templateklasse, welche HTML Templates fürs Drucken bereithält.
  */
 public class PdfContent {
+	
 	static String pdfcontent = 	"<html> " + 
 								"	<head> " + 
 								"		<title>${title}</title> " + 
@@ -18,6 +19,7 @@ public class PdfContent {
 								"		th,td {padding:5px;} " + 
 								" " + 
 								"	</style> " + 
+								"<!--<meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\">-->"+
 								"	</head> " + 
 								"	 " + 
 								"	<body> " + 
@@ -110,7 +112,7 @@ public class PdfContent {
 								"</html> " ;
 	
 	/**
-	 * Übermittelt das Template zum Drucken der Meldung der Studenten an das Prüfungsamt. 
+	 * übermittelt das Template zum Drucken der Meldung der Studenten an das Prüfungsamt. 
 	 * @return	Template als String.
 	 */
 	static public String getPdfContent(){

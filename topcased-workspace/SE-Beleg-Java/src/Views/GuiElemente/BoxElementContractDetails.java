@@ -1,6 +1,7 @@
 package Views.GuiElemente;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
@@ -15,13 +16,18 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EtchedBorder;
 
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+
 import ConfigParser.Debug;
 import Models.Datenbank.SqlTableContracts;
+import Views.CustomFocusTraversalPolicy;
 import Views.Interfaces.BasicBox;
 import Views.Interfaces.EditBox;
 import Views.Interfaces.EditBoxCtrl;
 
-
+/**
+ * Implementation einer EditBox zur Ansicht und Bearbeitung von Vertragsdaten.
+ */
 public class BoxElementContractDetails extends JPanel implements EditBox{
 		private JCheckBox jcb_erfolg;
 	    private JCheckBox jcb_empfehlung;
@@ -42,22 +48,82 @@ public class BoxElementContractDetails extends JPanel implements EditBox{
 	    
 	    private EditBoxCtrl controller;
 	    private boolean addNewContract = false;
-	    
+	
+	/**
+	 * Initialisiert die Box und bringt sie zur Anzeige.
+	 * @param controller	EditBoxCtrl Objekt, welches die eingegebenen Daten verarbeitet und Daten für die Box liefert.
+	 */
     public BoxElementContractDetails(EditBoxCtrl controller) {
     	this.controller = controller;
         initComponents();
         setComponentNames();
         setComponentValues();
+        setTabIndexes();
         setToolTip();
     }
     
+    /**
+     * Initialisiert die Box für die Neuanlage eines Vertrags.
+     * @param controller		EditBoxCtrl Objekt welches die eingegebenen Daten verarbeitet.
+     * @param addNewContract	Flag zur Signalsisierung neuer Daten.
+     */
     public BoxElementContractDetails(EditBoxCtrl controller, boolean addNewContract) {
     	this.controller = controller;
     	this.addNewContract = addNewContract;
         initComponents();
         setComponentNames();
+        setTabIndexes();
         setToolTip();        
     }
+    
+    /**
+     * Löscht alle Eingaben.
+     */
+    public void clearComponentValues(){
+		jtf_beginnt_value.setText("");
+	    jtf_endet_value.setText("");
+	    jtf_typ_value.setText("");
+	    jcb_empfehlung.setSelected(false);
+	    jcb_zeugnis.setSelected(false);
+	    jcb_bericht.setSelected(false);
+	    jcb_erfolg.setSelected(false);
+	}
+    
+    /**
+     * Ermöglicht die Anzeige einer BasicBox, welche die Studenteninformationen zum Vertrag darstellt.
+     * @param studentBox	BasicBox Objekt mit den Informationen zum Studenten.
+     */
+    public void setStudentBox(BasicBox studentBox){
+		JPanel newPanel = (JPanel)studentBox.getJComponent();
+		GroupLayout layout = (GroupLayout) this.getLayout();
+		layout.replace(pnl_student , newPanel);
+		pnl_student = newPanel;
+		pnl_student.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.GRAY, null));
+	}
+	
+    /**
+     * Ermöglicht die Anzeige einer BasicBox, welche die Firmeninformationen zum Vertrag darstellt.
+     * @param companyBox	BasicBox Objekt mit den Informationen zur Firma.
+     */
+	public void setCompanyBox(BasicBox companyBox){
+		JPanel newPanel = (JPanel)companyBox.getJComponent();
+		GroupLayout layout = (GroupLayout) this.getLayout();
+		layout.replace(pnl_company , newPanel);
+		pnl_company = newPanel;
+		pnl_company.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.GRAY, null));
+	}
+	
+	/**
+     * Ermöglicht die Anzeige einer BasicBox, welche die Betreuerinformationen zum Vertrag darstellt.
+     * @param profBox	BasicBox Objekt mit den Informationen zum Betreuer.
+     */
+	public void setProfBox(BasicBox profBox){
+		JPanel newPanel = (JPanel)profBox.getJComponent();
+		GroupLayout layout = (GroupLayout) this.getLayout();
+		layout.replace(pnl_prof , newPanel);
+		pnl_prof = newPanel;
+		pnl_prof.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.GRAY, null));
+	}
     
     @Override
     public void initComponents() {
@@ -66,6 +132,7 @@ public class BoxElementContractDetails extends JPanel implements EditBox{
         jl_typ = new javax.swing.JLabel();
         jl_endet = new javax.swing.JLabel();
         jtf_beginnt_value = new javax.swing.JTextField();
+        
         jtf_endet_value = new javax.swing.JTextField();
         jtf_typ_value = new javax.swing.JTextField();
 
@@ -179,6 +246,10 @@ public class BoxElementContractDetails extends JPanel implements EditBox{
         this.setLayout(layout);
     }                 
 
+    private void setTabIndexes() {
+    	setFocusCycleRoot(true);
+    	setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{jtf_beginnt_value, jtf_endet_value, jtf_typ_value, jcb_bericht, jcb_zeugnis, jcb_empfehlung, jcb_erfolg}));
+    }
          
 	@Override
 	public void setComponentNames() {
@@ -202,23 +273,12 @@ public class BoxElementContractDetails extends JPanel implements EditBox{
 	    jcb_erfolg.setSelected(controller.getBooleanValueForBoxElementEdit(SqlTableContracts.Erfolg));
 	}
 	
-	public void clearComponentValues(){
-		jtf_beginnt_value.setText("");
-	    jtf_endet_value.setText("");
-	    jtf_typ_value.setText("");
-	    jcb_empfehlung.setSelected(false);
-	    jcb_zeugnis.setSelected(false);
-	    jcb_bericht.setSelected(false);
-	    jcb_erfolg.setSelected(false);
-	}
-
+	
 	@Override
 	public void refreshContent() {
 		if(!addNewContract)
 			setComponentValues();
-		else
-			clearComponentValues();
-	    
+		
 	    if(pnl_student instanceof EditBox){
 			((EditBox)pnl_student).refreshContent();
 		}
@@ -265,30 +325,7 @@ public class BoxElementContractDetails extends JPanel implements EditBox{
 		return inputValues;
 	}
 	
-	public void setStudentBox(BasicBox studentBox){
-		JPanel newPanel = (JPanel)studentBox.getJComponent();
-		GroupLayout layout = (GroupLayout) this.getLayout();
-		layout.replace(pnl_student , newPanel);
-		pnl_student = newPanel;
-		pnl_student.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.GRAY, null));
-	}
-	
-	public void setCompanyBox(BasicBox companyBox){
-		JPanel newPanel = (JPanel)companyBox.getJComponent();
-		GroupLayout layout = (GroupLayout) this.getLayout();
-		layout.replace(pnl_company , newPanel);
-		pnl_company = newPanel;
-		pnl_company.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.GRAY, null));
-	}
-	
-	public void setProfBox(BasicBox profBox){
-		JPanel newPanel = (JPanel)profBox.getJComponent();
-		GroupLayout layout = (GroupLayout) this.getLayout();
-		layout.replace(pnl_prof , newPanel);
-		pnl_prof = newPanel;
-		pnl_prof.setBorder(new EtchedBorder(EtchedBorder.LOWERED, Color.GRAY, null));
-	}
-	
+	@Override
 	public void setToolTip(){
 		if(Debug.isDebugMode()){
 			setToolTipText(this.getClass().getCanonicalName());

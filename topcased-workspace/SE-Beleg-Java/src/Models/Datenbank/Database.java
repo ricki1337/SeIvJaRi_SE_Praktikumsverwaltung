@@ -2,8 +2,12 @@ package Models.Datenbank;
 
 import java.sql.*;
 import java.util.*;
+
+import com.mysql.jdbc.MysqlDataTruncation;
+import com.mysql.jdbc.exceptions.jdbc4.CommunicationsException;
+
 import Controller.ErrorManager;
-import Models.Interfaces.DatabaseFunction;
+import Models.Interfaces.DatabaseTypeFunctions;
 import Models.Interfaces.Observer;
 
 /**
@@ -16,16 +20,17 @@ public class Database
 {
 	private static Database instance = new Database();
 	
-	protected DatabaseFunction db;
+	protected DatabaseTypeFunctions db;
 	
 	private String dbHost = null;
 	private int dbPort = 0;
 	private String dbName = null;
 	private String dbPassword = null;
 	private String dbUser = null;
+	private String dbType = null;
 	
 	
-	private Vector<Observer> observerList;
+	private static Vector<Observer> observerList;
 	
 	protected ArrayList<String> tables;
 	
@@ -96,7 +101,7 @@ public class Database
 			instance = new Database();
 		return instance;
 	}
-
+	
 	/**
 	 * Führt den übergebenen Sqlquery auf der Datenbank aus und liefert das Ergebnis in einem {@link ResultSet} zurück.
 	 * @param sqlQuery	Sqlquery, welches auf der Datenbank ausgeführt werden soll.
@@ -110,10 +115,21 @@ public class Database
 				throw new Exception("Es dürfen hier nur SELECT Querys ausgeführt werden.");
 			result = this.db.getQuery(sqlQuery);
 		}
+		catch(CommunicationsException e) {
+			this.db = null;
+			try {
+				connect(dbType, dbHost, dbPort, dbUser, dbPassword, dbName);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			return getQuery(sqlQuery);
+		}
 		catch(Exception e){
 			ErrorManager errorManager = new ErrorManager(e);
 			if(errorManager.retry)
 				result = getQuery(sqlQuery);
+			
 		}
 		return result;
 	}
@@ -133,13 +149,21 @@ public class Database
 				throw new Exception("Es dürfen hier keine SELECT Querys ausgeführt werden.");
 			tmp = this.db.setQuery(sqlQuery);
 		}
+		catch(CommunicationsException e) {
+			this.db = null;
+			connect(dbType, dbHost, dbPort, dbUser, dbPassword, dbName);
+			return setQueryandInformModels(sqlQuery);
+		}
 		catch(Exception e){
 			ErrorManager errorManager = new ErrorManager(e);
 			if(errorManager.retry)
 				tmp = setQueryandInformModels(sqlQuery);
+			
 		}
-		informModels(getChangedTables(sqlQuery));
-		return tmp; 
+		finally {
+			informModels(getChangedTables(sqlQuery));
+			return tmp;
+		}
 	}
 	
 	/**
@@ -157,12 +181,21 @@ public class Database
 				throw new Exception("Es dürfen hier keine SELECT Querys ausgeführt werden.");
 			tmp = this.db.setQuery(query);
 		}
+		catch(CommunicationsException e) {
+			this.db = null;
+			connect(dbType, dbHost, dbPort, dbUser, dbPassword, dbName);
+			return setQuery(query);
+		}
 		catch(Exception e){
-			ErrorManager errorManager = new ErrorManager(e);
+			e.printStackTrace();
+			/*ErrorManager errorManager = new ErrorManager(e);
 			if(errorManager.retry)
 				tmp = setQuery(query);
+			*/
 		}
-		return tmp; 
+		finally {
+			return tmp;
+		}
 	}
 	
 	/**
@@ -201,6 +234,7 @@ public class Database
 		dbUser = user;
 		dbName = db;
 		dbPassword = pw;
+		this.dbType = dbType;
 		
 		if(this.db == null){
 			switch(dbType){
@@ -225,6 +259,8 @@ public class Database
 	 * @throws SQLException
 	 */
 	protected void setTables() throws SQLException{
+		if(!tables.isEmpty())
+			return;
 		ResultSet sqlTables = this.db.getQuery("show tables;");
 
 		while(sqlTables.next()){
@@ -252,6 +288,9 @@ public class Database
 	 */
 	public void disconnect() {
 		if(this.db != null) this.db.disconnect();
+		for(int i=observerList.size();i>0;i--) {
+			observerList.remove(i);			
+		}
 		Database.instance = null;
 	}
 

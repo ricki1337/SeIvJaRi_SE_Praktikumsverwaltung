@@ -16,7 +16,9 @@ import ConfigParser.Debug;
 import Views.Interfaces.BasicBox;
 import Views.Interfaces.CompanyContactDetailsBoxNavCtrl;
 
-
+/**
+ * Implementation einer BasicBox, welche für die Navigation zwischen den Datensätzen der Ansprechpartner einer Firma zuständig ist.
+ */
 public class BoxElementCompanyContactDetailsNav extends JPanel implements BasicBox, MouseListener{
 	 	private JButton jb_bearbeiten;
 	    private JButton jb_next;
@@ -24,7 +26,11 @@ public class BoxElementCompanyContactDetailsNav extends JPanel implements BasicB
 	    private JButton jb_add;
 	    
 	    private CompanyContactDetailsBoxNavCtrl controller;
-	    
+	
+	/**
+	 * Initialisiert die Box und bringt sie zur Anzeige.
+	 * @param controller	CompanyContactDetailsBoxNavCtrl Objekt, welches die Nutzereingaben verarbeitet.
+	 */
     public BoxElementCompanyContactDetailsNav(CompanyContactDetailsBoxNavCtrl controller) {
     	this.controller = controller;
         initComponents();
@@ -105,6 +111,7 @@ public class BoxElementCompanyContactDetailsNav extends JPanel implements BasicB
 		
 	}
 	
+	@Override
 	public void setToolTip(){
 		if(Debug.isDebugMode()){
 			setToolTipText(this.getClass().getCanonicalName());

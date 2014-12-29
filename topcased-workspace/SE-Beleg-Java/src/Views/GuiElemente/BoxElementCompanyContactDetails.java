@@ -18,7 +18,9 @@ import Views.Interfaces.BasicBox;
 import Views.Interfaces.CompanyContactDetailsBoxCtrl;
 
 
-
+/**
+ * Implementiert eine BasicBox zur Anzeige von Detailinformationen eines Ansprechpartners einer Firma.
+ */
 public class BoxElementCompanyContactDetails extends JPanel implements BasicBox{
 	
 	    private JLabel jl_ansprechpartner;
@@ -31,7 +33,11 @@ public class BoxElementCompanyContactDetails extends JPanel implements BasicBox{
 	    private GroupLayout groupLayout;
 	    
 	    private CompanyContactDetailsBoxCtrl controller;
-	    
+
+	/**
+	 * Initialisiert die Box und bringt sie zur Anzeige.
+	 * @param controller	CompanyContactDetailsBoxCtrl Objekt, welches die Daten für die Box bereitstellt.
+	 */
     public BoxElementCompanyContactDetails(CompanyContactDetailsBoxCtrl controller) {
     	this.controller = controller;
         initComponents();
@@ -39,6 +45,16 @@ public class BoxElementCompanyContactDetails extends JPanel implements BasicBox{
         setComponentValues();
         setToolTip();
     }
+    
+    /**
+     * Ermöglicht das einfügen einer BoxElementCompanyContactDetailsNav unter die Informationen. 
+     * @param naviBox	BoxElementCompanyContactDetailsNav Objekt, welches z.B. die Navigation unter den Ansprechpartnern ermöglicht.
+     */
+    public void setContactNaviBox(BoxElementCompanyContactDetailsNav naviBox){
+		JPanel newPanel = (JPanel)naviBox.getJComponent();
+		groupLayout.replace(jpnl_navi, newPanel);
+		jpnl_navi = newPanel;
+	}
     
     @Override
     public void initComponents() {
@@ -140,12 +156,8 @@ public class BoxElementCompanyContactDetails extends JPanel implements BasicBox{
 		return this;
 	}
 	
-	public void setContactNaviBox(BoxElementCompanyContactDetailsNav naviBox){
-		JPanel newPanel = (JPanel)naviBox.getJComponent();
-		groupLayout.replace(jpnl_navi, newPanel);
-		jpnl_navi = newPanel;
-	}
 	
+	@Override
 	public void setToolTip(){
 		if(Debug.isDebugMode()){
 			setToolTipText(this.getClass().getCanonicalName());

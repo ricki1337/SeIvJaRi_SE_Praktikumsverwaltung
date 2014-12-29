@@ -17,11 +17,18 @@ import Views.Interfaces.BasicBox;
 import Views.Interfaces.NaviEditBoxCtrl;
 import Views.Interfaces.NaviEditMailPrintBoxCtrl;
 
+/**
+ * Implementiert eine BasicBox mit dem Button "markierte bearbeiten",
+ */
 public class BoxElementBottomNaviEdit extends JPanel implements BasicBox, MouseListener {
 
-	JButton jbn_edit;
-	private NaviEditBoxCtrl controller;
+		private JButton jbn_edit;
+		private NaviEditBoxCtrl controller;
 	
+	/**
+	 * Initialisiert die Box und bringt sie zur Anzeige.
+	 * @param controller	NaviEditBoxCtrl Objekt, welches die Nutzereingaben verarbeitet.
+	 */
 	public BoxElementBottomNaviEdit(NaviEditBoxCtrl controller){
 		this.controller = controller;
 		initComponents();
@@ -79,6 +86,7 @@ public class BoxElementBottomNaviEdit extends JPanel implements BasicBox, MouseL
 			controller.buttonEditClicked();
 	}
 
+	@Override
 	public void setToolTip(){
 		if(Debug.isDebugMode()){
 			setToolTipText(this.getClass().getCanonicalName());

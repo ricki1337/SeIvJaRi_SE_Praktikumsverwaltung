@@ -21,7 +21,9 @@ import Models.Datenbank.SqlTableStudent;
 import Views.Interfaces.ContractDetailsStudentBox;
 import Views.Interfaces.ContractDetailsStudentBoxCtrl;
 
-
+/**
+ * Implementiert die Anzeige der Studenteninformationen eines Vertrags und ermöglicht die Bearbeitung der Studenteninformationen.
+ */
 public class BoxElementContractDetailsStudent extends JPanel implements ContractDetailsStudentBox, MouseListener{
 		private JButton jb_aendern;
 	    private JButton jb_bearbeiten;
@@ -33,9 +35,15 @@ public class BoxElementContractDetailsStudent extends JPanel implements Contract
 	    private JLabel jl_name_value;
 	    private JLabel jl_vorname;
 	    private JLabel jl_vorname_value;
+	    private JLabel lblSt;
+	    private JLabel jl_stdgrp_value;
 	    
 	    private ContractDetailsStudentBoxCtrl controller;
 	    
+    /**
+	 * Initialisiert die Box und bringt sie zur Anzeige.
+	 * @param controller	ContractDetailsStudentBoxCtrl Objekt, welche Informationen für die Box bereitstellt und auf Nutzeraktionen reagiert.
+	 */
     public BoxElementContractDetailsStudent(ContractDetailsStudentBoxCtrl controller) {
     	this.controller = controller;
         initComponents();
@@ -71,13 +79,19 @@ public class BoxElementContractDetailsStudent extends JPanel implements Contract
 
         jl_email_value.setText("leer");
 
-        jl_matrikelnr.setText("Matrikelknr:");
+        jl_matrikelnr.setText("Matrikelnr:");
 
         jl_matrikelnr_value.setText("leer");
 
-        jb_aendern.setText("\u00E4ndern");
+        jb_aendern.setText("Ändern");
 
-        jb_bearbeiten.setText("bearbeiten");
+        jb_bearbeiten.setText("Bearbeiten");
+        
+        lblSt = new JLabel();
+        lblSt.setText("Studiengruppe:");
+        
+        jl_stdgrp_value = new JLabel();
+        jl_stdgrp_value.setText("leer");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         layout.setHorizontalGroup(
@@ -86,17 +100,23 @@ public class BoxElementContractDetailsStudent extends JPanel implements Contract
         			.addContainerGap()
         			.addGroup(layout.createParallelGroup(Alignment.LEADING)
         				.addGroup(layout.createSequentialGroup()
+        					.addGroup(layout.createParallelGroup(Alignment.TRAILING, false)
+        						.addComponent(lblSt, 0, 0, Short.MAX_VALUE)
+        						.addComponent(jl_vorname, Alignment.LEADING)
+        						.addComponent(jl_name, Alignment.LEADING)
+        						.addComponent(jl_email, Alignment.LEADING)
+        						.addComponent(jl_matrikelnr, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         					.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        						.addComponent(jl_vorname)
-        						.addComponent(jl_name)
-        						.addComponent(jl_email)
-        						.addComponent(jl_matrikelnr))
-        					.addPreferredGap(ComponentPlacement.UNRELATED)
-        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        						.addComponent(jl_vorname_value, GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-        						.addComponent(jl_name_value, GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-        						.addComponent(jl_matrikelnr_value, GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-        						.addComponent(jl_email_value, GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)))
+        						.addGroup(layout.createSequentialGroup()
+        							.addPreferredGap(ComponentPlacement.UNRELATED)
+        							.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        								.addComponent(jl_vorname_value, GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+        								.addComponent(jl_name_value, GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+        								.addComponent(jl_matrikelnr_value, GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+        								.addComponent(jl_email_value, GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)))
+        						.addGroup(Alignment.TRAILING, layout.createSequentialGroup()
+        							.addGap(10)
+        							.addComponent(jl_stdgrp_value, GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))))
         				.addGroup(layout.createSequentialGroup()
         					.addComponent(jb_aendern)
         					.addPreferredGap(ComponentPlacement.RELATED)
@@ -124,9 +144,13 @@ public class BoxElementContractDetailsStudent extends JPanel implements Contract
         				.addComponent(jl_email_value))
         			.addPreferredGap(ComponentPlacement.RELATED)
         			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(lblSt)
+        				.addComponent(jl_stdgrp_value))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
         				.addComponent(jb_aendern)
         				.addComponent(jb_bearbeiten))
-        			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        			.addContainerGap(20, Short.MAX_VALUE))
         );
         this.setLayout(layout);
     }                    
@@ -137,7 +161,7 @@ public class BoxElementContractDetailsStudent extends JPanel implements Contract
         jl_name_value.setName(SqlTableStudent.Nachname);
         jl_email_value.setName(SqlTableStudent.EMail);
         jl_matrikelnr_value.setName(SqlTableStudent.MatrikelNummer);
-		
+        jl_stdgrp_value.setName(SqlTableStudent.Studiengruppe);
 	}
 
 	@Override
@@ -146,7 +170,7 @@ public class BoxElementContractDetailsStudent extends JPanel implements Contract
         jl_name_value.setText(controller.getStringValueForBoxElementEdit(SqlTableStudent.Nachname));
         jl_email_value.setText(controller.getStringValueForBoxElementEdit(SqlTableStudent.EMail));
         jl_matrikelnr_value.setText(controller.getStringValueForBoxElementEdit(SqlTableStudent.MatrikelNummer));
-		
+        jl_stdgrp_value.setText(controller.getStringValueForBoxElementEdit(SqlTableStudent.Studiengruppe));
 	}
 
 	@Override
@@ -194,6 +218,7 @@ public class BoxElementContractDetailsStudent extends JPanel implements Contract
 		return inputValues;
 	}
 	
+	@Override
 	public void setToolTip(){
 		if(Debug.isDebugMode()){
 			setToolTipText(this.getClass().getCanonicalName());

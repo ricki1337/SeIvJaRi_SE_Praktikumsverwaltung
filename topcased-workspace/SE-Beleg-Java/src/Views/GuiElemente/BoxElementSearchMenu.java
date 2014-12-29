@@ -17,20 +17,26 @@ import ConfigParser.Debug;
 import Views.Interfaces.SearchBox;
 import Views.Interfaces.SearchBoxCtrl;
 
-
+/**
+ * Implementiert eine SearchBox zum Suchen von Datensätzen und für die Neuanlage von Datensätzen.
+ */
 public class BoxElementSearchMenu extends JPanel implements SearchBox,MouseListener, DocumentListener, ActionListener{
- 	private javax.swing.JButton jb_erweitertesuche;
-    private javax.swing.JButton jb_neuanlegen;
-    private javax.swing.JLabel jl_anzdaten;
-    private javax.swing.JLabel jl_suchen;
-    private javax.swing.JTextField jtf_anzdaten;
-    private javax.swing.JTextField jtf_suchen;
-    
-    private SearchBoxCtrl parent;
-    
-    public BoxElementSearchMenu(SearchBoxCtrl parent){
+	 	private javax.swing.JButton jb_erweitertesuche;
+	    private javax.swing.JButton jb_neuanlegen;
+	    private javax.swing.JLabel jl_anzdaten;
+	    private javax.swing.JLabel jl_suchen;
+	    private javax.swing.JTextField jtf_anzdaten;
+	    private javax.swing.JTextField jtf_suchen;
+	    
+	    private SearchBoxCtrl controller;
+
+	/**
+	 * Initialisiert die Box und bringt sie zur Anzeige.
+	 * @param controller	SearchBoxCtrl Objekt, welches die Nutzereingaben verarbeitet.
+	 */
+    public BoxElementSearchMenu(SearchBoxCtrl controller){
     	super();
-    	this.parent = parent;
+    	this.controller = controller;
     	initComponents();
     	setComponentNames();
     	setComponentValues();
@@ -48,9 +54,6 @@ public class BoxElementSearchMenu extends JPanel implements SearchBox,MouseListe
         jl_anzdaten = new javax.swing.JLabel();
         
         jtf_anzdaten = new javax.swing.JTextField();
-        
-        
-        
         
         setBackground(new java.awt.Color(204, 204, 204));
         setPreferredSize(new java.awt.Dimension(600, 45));
@@ -109,7 +112,7 @@ public class BoxElementSearchMenu extends JPanel implements SearchBox,MouseListe
 	
 	@Override
 	public void setComponentValues() {
-		jtf_anzdaten.setText(String.valueOf(parent.getSqlRecordLimit()));
+		jtf_anzdaten.setText(String.valueOf(controller.getSqlRecordLimit()));
 		
 	}
 	
@@ -128,38 +131,44 @@ public class BoxElementSearchMenu extends JPanel implements SearchBox,MouseListe
 
 	@Override
 	public void changedUpdate(DocumentEvent arg0) {
-		parent.searchFieldChanged();
+		int curserPos = jtf_suchen.getSelectionStart();
+		controller.searchFieldChanged();
+		jtf_suchen.setSelectionStart(curserPos);
 	}
 
 	@Override
 	public void insertUpdate(DocumentEvent arg0) {
-		parent.searchFieldChanged();
+		int curserPos = jtf_suchen.getSelectionStart();
+		controller.searchFieldChanged();
+		jtf_suchen.setSelectionStart(curserPos);
 	}
 
 	@Override
 	public void removeUpdate(DocumentEvent arg0) {
-		parent.searchFieldChanged();		
+		int curserPos = jtf_suchen.getSelectionStart();
+		controller.searchFieldChanged();
+		jtf_suchen.setSelectionStart(curserPos);
 	}
 
 	@Override
 	public void refreshContent() {
-		jtf_anzdaten.setText(String.valueOf(parent.getSqlRecordLimit()));
+		jtf_anzdaten.setText(String.valueOf(controller.getSqlRecordLimit()));
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() instanceof JTextField && (JTextField)(e.getSource()) == jtf_anzdaten){
-				parent.RecordLimitFieldChanged();
+				controller.RecordLimitFieldChanged();
 		}
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		if(e.getComponent() == jb_neuanlegen)
-			parent.buttonAddNewDataClicked();
+			controller.buttonAddNewDataClicked();
 		
 		if(e.getComponent() == jb_erweitertesuche)
-			parent.buttonShowExtendedSearchClicked();
+			controller.buttonShowExtendedSearchClicked();
 		
 	}
 	
@@ -168,7 +177,7 @@ public class BoxElementSearchMenu extends JPanel implements SearchBox,MouseListe
 		int valueOfRecordLimitField = Integer.parseInt(jtf_anzdaten.getText());
 		if(valueOfRecordLimitField <=0){
 			valueOfRecordLimitField = 20;
-			jtf_anzdaten.setText(String.valueOf(parent.getSqlRecordLimit()));
+			jtf_anzdaten.setText(String.valueOf(controller.getSqlRecordLimit()));
 		}
 		return valueOfRecordLimitField;
 	}
@@ -189,6 +198,7 @@ public class BoxElementSearchMenu extends JPanel implements SearchBox,MouseListe
 	@Override
 	public void mouseReleased(MouseEvent arg0) {}
 	
+	@Override
 	public void setToolTip(){
 		if(Debug.isDebugMode()){
 			setToolTipText(this.getClass().getCanonicalName());

@@ -1,36 +1,46 @@
 package Views.GuiElemente.SearchPanel;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import ConfigParser.Debug;
 import Models.Datenbank.SqlTableCompanies;
 import Views.Interfaces.ExtendedSearchBox;
 import Views.Interfaces.ExtendedSearchBoxCtrl;
 
+/**
+ * Implementiert die erweiterte Suche nach Firmen.
+ */
 public class BoxElementExtendedSearchCompany extends JPanel implements ExtendedSearchBox, MouseListener{
 	
-    private javax.swing.JButton jb_filterentfernen;
-    private javax.swing.JButton jb_suchen;
-    private javax.swing.JLabel jl_land;
-    private javax.swing.JLabel jl_name;
-    private javax.swing.JLabel jl_ort;
-    private javax.swing.JLabel jl_plz;
-    private javax.swing.JTextField jtf_land;
-    private javax.swing.JTextField jtf_name;
-    private javax.swing.JTextField jtf_ort;
-    private javax.swing.JTextField jtf_plz;
+	    private javax.swing.JButton jb_filterentfernen;
+	    private javax.swing.JButton jb_suchen;
+	    private javax.swing.JLabel jl_land;
+	    private javax.swing.JLabel jl_name;
+	    private javax.swing.JLabel jl_ort;
+	    private javax.swing.JLabel jl_plz;
+	    private javax.swing.JTextField jtf_land;
+	    private javax.swing.JTextField jtf_name;
+	    private javax.swing.JTextField jtf_ort;
+	    private javax.swing.JTextField jtf_plz;
+		
+	    private ExtendedSearchBoxCtrl controller;
 	
-    private ExtendedSearchBoxCtrl parent;
-	
-	public BoxElementExtendedSearchCompany(ExtendedSearchBoxCtrl parent){
-		this.parent = parent;
+	/**
+	 * Initialsiert die Box bringt sie aber NICHT zur Anzeige.
+	 * @param controller	ExtendedSearchBoxCtrl Objekt, welches auf Nutzerinteraktionen reagiert.
+	 */
+	public BoxElementExtendedSearchCompany(ExtendedSearchBoxCtrl controller){
+		this.controller = controller;
 		initComponents();
 		setComponentNames();
 		setComponentValues();
@@ -168,10 +178,10 @@ public class BoxElementExtendedSearchCompany extends JPanel implements ExtendedS
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		if(e.getComponent() == jb_filterentfernen)
-			parent.buttonDeleteFilterClicked();
+			controller.buttonDeleteFilterClicked();
 		
 		if(e.getComponent() == jb_suchen)
-			parent.buttonSearchSpecificClicked();
+			controller.buttonSearchSpecificClicked();
 		
 		
 	}
@@ -193,6 +203,14 @@ public class BoxElementExtendedSearchCompany extends JPanel implements ExtendedS
 	
 	@Override
 	public void refreshContent() {}
+
+	@Override
+	public void setToolTip() {
+		if(Debug.isDebugMode()){
+			setToolTipText(this.getClass().getCanonicalName());
+			this.setBackground(Color.getHSBColor(ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255));
+		}
+	}
 	
 	
 	

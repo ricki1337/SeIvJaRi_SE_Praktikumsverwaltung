@@ -1,6 +1,7 @@
 package Praktikumsverwaltung;
 
 
+import java.awt.Frame;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.beans.PropertyVetoException;
@@ -14,11 +15,19 @@ import Controller.Controller;
 import Views.Dialog.DatabaseConnectionDialog;
 import Views.GuiElemente.MenuBar;
 
+/**
+ * Hauptfenster der Anwendung<br>
+ * Beinhaltet die main und ist für das Anzeigen von Views zuständig.
+ */
 public class Praktikumsverwaltung extends JFrame{
 
 	static JDesktopPane InnerDesktop;
 	static Praktikumsverwaltung praktikumsverwaltung ;
 	
+	/**
+	 * Bringt eine View zur Anzeige im InnerDesktop.
+	 * @param controller	Controller einer View.
+	 */
 	public static void addFrameToForeground(Controller controller){
 		controller.display();
 		JInternalFrame newFrame = controller.getDisplayedFrame();
@@ -30,8 +39,20 @@ public class Praktikumsverwaltung extends JFrame{
 		}
 	}
 	
-	public static Praktikumsverwaltung getFrame(){return praktikumsverwaltung;}
+	/**
+	 * Liefert die Frame Repräsentation des Hauptfensters
+	 * @return	Frame
+	 */
+	public static Frame getFrame(){
+		return praktikumsverwaltung;
+	}
 	
+	/**
+	 * Hauptkonstruktor<br>
+	 * Legt das Hauptfenster an und<br>
+	 * Initialisiert die Datenbankverbindung
+	 * @param dbHost	IP-Adresse oder DNS Name des Datenbankservers
+	 */
 	public Praktikumsverwaltung(String dbHost){
 		super("Praktikumsverwaltung");
 		InnerDesktop = new JDesktopPane();
@@ -72,7 +93,7 @@ public class Praktikumsverwaltung extends JFrame{
 				Debug.setDebugMode(true);
 		}
 			
-		praktikumsverwaltung = new Praktikumsverwaltung(args[0]);
+		Praktikumsverwaltung.praktikumsverwaltung = new Praktikumsverwaltung(args[0]);
 		
 	}
 }

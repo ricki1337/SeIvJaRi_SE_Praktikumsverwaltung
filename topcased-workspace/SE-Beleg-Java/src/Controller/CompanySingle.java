@@ -58,6 +58,8 @@ public class CompanySingle extends Controller implements 	EditBoxCtrl,
 	public CompanySingle(){
 		setModel(new Models.Model(SqlTableCompanies.tableName,SqlTableCompanies.PrimaryKey));
 		setView(view = new Views.View(this));
+		model.setView(view);
+		view.setModel(model);
 		view.setTitle("Firma anlegen");
 		setElementsForNewData();
 	}
@@ -83,6 +85,8 @@ public class CompanySingle extends Controller implements 	EditBoxCtrl,
 		model.setResult();
 		setModel(model);
 		setView((view = new Views.View(this)));
+		model.setView(view);
+		view.setModel(model);
 		view.setTitle("Firma editieren");
 		
 		contactModel = new Models.Model(contactSrcSqlQuery,SqlTableContacts.tableName,SqlTableContacts.TableNameDotPrimaryKey);

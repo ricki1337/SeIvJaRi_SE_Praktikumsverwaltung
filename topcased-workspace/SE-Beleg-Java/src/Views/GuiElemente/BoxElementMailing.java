@@ -30,29 +30,29 @@ import Views.Interfaces.BasicBox;
 import Views.Interfaces.MailBox;
 import Views.Interfaces.MailBoxCtrl;
  
-
+/**
+ * Implementiert einer BasicBox, welche Informationen zu den zu versendenden Mails ausgibt.
+ */
 public class BoxElementMailing extends JPanel implements BasicBox, MouseListener, MailBox{
    
-	   	ArrayList<JTextArea> txtareas = new ArrayList<JTextArea>();
-		ArrayList<JCheckBox> zeugnisCheckBoxList = new ArrayList<JCheckBox>();
-		ArrayList<JCheckBox> berichtCheckBoxList = new ArrayList<JCheckBox>();
-		ArrayList<JCheckBox> senden = new ArrayList<JCheckBox>();
-		ArrayList<JTextField> txtfields = new ArrayList<JTextField>();
-		ArrayList<JLabel> statusList = new ArrayList<JLabel>();
+	   	private ArrayList<JTextArea> txtareas = new ArrayList<JTextArea>();
+	   	private ArrayList<JCheckBox> zeugnisCheckBoxList = new ArrayList<JCheckBox>();
+	   	private ArrayList<JCheckBox> berichtCheckBoxList = new ArrayList<JCheckBox>();
+	   	private ArrayList<JCheckBox> senden = new ArrayList<JCheckBox>();
+	   	private ArrayList<JTextField> txtfields = new ArrayList<JTextField>();
+	   	private ArrayList<JLabel> statusList = new ArrayList<JLabel>();
 
-		String[] vornamenliste;
-		String[] nachnamenliste;
-		String[] matrklliste;
-		String[] profliste;
-		String[] studiengruppeListe;
-		String[] betriebsliste;
-		boolean[]	berichtvorliegendliste;
-		boolean[]	zeugnisvorliegendliste;
-		String[] recipientEmailList;
-		String[][] dataArray;
+	   	private String[] vornamenliste;
+	   	private String[] nachnamenliste;
+	   	private String[] matrklliste;
+	   	private String[] profliste;
+	   	private String[] studiengruppeListe;
+	   	private String[] betriebsliste;
+	   	private boolean[]	berichtvorliegendliste;
+	   	private boolean[]	zeugnisvorliegendliste;
+	   	private String[] recipientEmailList;
+	   	private String[][] dataArray;
 		
-		
-		//private JPanel jp_maildata;
 		private JScrollPane jp_maildata;
 		private JTextField jtf_absender;
 		private JPasswordField jpw_password;
@@ -60,6 +60,10 @@ public class BoxElementMailing extends JPanel implements BasicBox, MouseListener
 		
 		private MailBoxCtrl controller;
 	
+	/**
+	 * Initialisiert die Box und bringt sie zur Anzeige.
+	 * @param controller	MailBoxCtrl Objekt, welches Daten bereitstellt und auf die Nutzereingaben reagiert.
+	 */
 	public BoxElementMailing(MailBoxCtrl controller){
 		this.controller = controller;
 		   	
@@ -68,9 +72,74 @@ public class BoxElementMailing extends JPanel implements BasicBox, MouseListener
 		setMailingList();
 		setToolTip();
     } 
-
 	
-	
+	/**
+	 * Erzeugt die Liste der Mailinformationen.
+	 */
+	private void setMailingList(){
+		int anzahl = dataArray.length;
+		//jp_maildata.setLayout( new GridLayout(/*3*/ 0, 7, 6, 3) );
+		JTextField jcb_empfaenger;
+    	JCheckBox jcb_zeugnis;
+    	JCheckBox jcb_bericht;
+    	JCheckBox jcb_send;
+    	JLabel jl_status;
+    	
+    	Box mailDataBox = new Box(BoxLayout.Y_AXIS);
+    	
+		
+    	
+    	for(int i=0;i<anzahl;i++){
+    		JPanel mailData = new JPanel();
+    		mailData.setLayout(new GridLayout(1, 7, 6, 3));
+    		
+    		mailData.add(new JLabel(vornamenliste[i]));
+	    		 
+    		mailData.add(new JLabel(nachnamenliste[i]));
+	        
+	        //bericht checkbox
+	    	jcb_bericht = new JCheckBox("Bericht"); 
+	    	jcb_bericht.addMouseListener(this);
+	    	berichtCheckBoxList.add(jcb_bericht);
+	    	mailData.add(jcb_bericht);
+	    	if(berichtvorliegendliste[i])
+	    		jcb_bericht.setSelected(true);
+	    	else 
+	    		jcb_bericht.setSelected(false);
+	    	
+	    	//Zeugnis checkbox 
+	    	jcb_zeugnis = new JCheckBox("Zeugnis");
+	    	jcb_zeugnis.addMouseListener(this);
+	    	zeugnisCheckBoxList.add(jcb_zeugnis);
+	    	mailData.add(jcb_zeugnis);
+	    	if(zeugnisvorliegendliste[i])
+	    		jcb_zeugnis.setSelected(true);
+	    	else 
+	    		jcb_zeugnis.setSelected(false);
+	    	
+	    	//empfänger
+	    	jcb_empfaenger= new JTextField(recipientEmailList[i]+"@htw-dresden.de");
+	    	txtfields.add(jcb_empfaenger);
+	    	mailData.add(jcb_empfaenger);
+	    	
+	    	//senden
+	    	jcb_send = new JCheckBox("senden");
+	    	jcb_send.addMouseListener(this);
+	    	jcb_send.setSelected(true);
+	    	senden.add(jcb_send);
+	    	mailData.add(jcb_send);
+	    	
+	    	// status
+	    	jl_status = new JLabel();
+	    	statusList.add(jl_status);
+	    	mailData.add(jl_status);
+	    	mailData.setMaximumSize(new Dimension(getMaximumSize().width,25));
+	    	mailDataBox.add(mailData);
+    	}
+    	
+    	jp_maildata.setViewportView(mailDataBox);
+    	
+	}
 	
 	@Override
 	public void initComponents() {
@@ -178,6 +247,7 @@ public class BoxElementMailing extends JPanel implements BasicBox, MouseListener
 		return txtfields.get(index).getText();
 	}
 	
+	@Override
 	public void setToolTip(){
 		if(Debug.isDebugMode()){
 			setToolTipText(this.getClass().getCanonicalName());
@@ -203,70 +273,7 @@ public class BoxElementMailing extends JPanel implements BasicBox, MouseListener
 	@Override
 	public void setComponentNames() {}
 
-	private void setMailingList(){
-		int anzahl = dataArray.length;
-		//jp_maildata.setLayout( new GridLayout(/*3*/ 0, 7, 6, 3) );
-		JTextField jcb_empfaenger;
-    	JCheckBox jcb_zeugnis;
-    	JCheckBox jcb_bericht;
-    	JCheckBox jcb_send;
-    	JLabel jl_status;
-    	
-    	Box mailDataBox = new Box(BoxLayout.Y_AXIS);
-    	
-		
-    	
-    	for(int i=0;i<anzahl;i++){
-    		JPanel mailData = new JPanel();
-    		mailData.setLayout(new GridLayout(1, 7, 6, 3));
-    		
-    		mailData.add(new JLabel(vornamenliste[i]));
-	    		 
-    		mailData.add(new JLabel(nachnamenliste[i]));
-	        
-	        //bericht checkbox
-	    	jcb_bericht = new JCheckBox("Bericht"); 
-	    	jcb_bericht.addMouseListener(this);
-	    	berichtCheckBoxList.add(jcb_bericht);
-	    	mailData.add(jcb_bericht);
-	    	if(berichtvorliegendliste[i])
-	    		jcb_bericht.setSelected(true);
-	    	else 
-	    		jcb_bericht.setSelected(false);
-	    	
-	    	//Zeugnis checkbox 
-	    	jcb_zeugnis = new JCheckBox("Zeugnis");
-	    	jcb_zeugnis.addMouseListener(this);
-	    	zeugnisCheckBoxList.add(jcb_zeugnis);
-	    	mailData.add(jcb_zeugnis);
-	    	if(zeugnisvorliegendliste[i])
-	    		jcb_zeugnis.setSelected(true);
-	    	else 
-	    		jcb_zeugnis.setSelected(false);
-	    	
-	    	//empfänger
-	    	jcb_empfaenger= new JTextField(recipientEmailList[i]+"@htw-dresden.de");
-	    	txtfields.add(jcb_empfaenger);
-	    	mailData.add(jcb_empfaenger);
-	    	
-	    	//senden
-	    	jcb_send = new JCheckBox("senden");
-	    	jcb_send.addMouseListener(this);
-	    	jcb_send.setSelected(true);
-	    	senden.add(jcb_send);
-	    	mailData.add(jcb_send);
-	    	
-	    	// status
-	    	jl_status = new JLabel();
-	    	statusList.add(jl_status);
-	    	mailData.add(jl_status);
-	    	mailData.setMaximumSize(new Dimension(getMaximumSize().width,25));
-	    	mailDataBox.add(mailData);
-    	}
-    	
-    	jp_maildata.setViewportView(mailDataBox);
-    	
-	}
+	
 
 	@Override
 	public void setComponentValues() {

@@ -1,11 +1,13 @@
 package Views.GuiElemente.SearchPanel;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -17,31 +19,40 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import ConfigParser.Debug;
 import Models.Datenbank.SqlTableCompanies;
+import Models.Datenbank.SqlTableContracts;
 import Models.Datenbank.SqlTableProfs;
 import Models.Datenbank.SqlTableStudent;
 import Views.Interfaces.ExtendedContractsSearchBoxCtrl;
 import Views.Interfaces.ExtendedSearchBox;
-
+/**
+ * Implementiert die erweiterte Suche nach Verträgen.
+ */
 public class BoxElementExtendedSearchContracts extends JPanel implements ExtendedSearchBox, MouseListener{
 	
-    private JButton jb_filterentfernen;
-    private JButton jb_suchen;
-    private JLabel jl_betreuer;
-    private JLabel jl_firma;
-    private JLabel jl_matrikelnr;
-    private JLabel jl_nachname;
-    private JLabel jl_vorname;
-    private JTextField jtf_betreuer;
-    private JTextField jtf_firma;
-    private JTextField jtf_matrikelnr;
-    private JTextField jtf_nachname;
-    private JTextField jtf_vorname;
-    private JCheckBox jcb_praktikumserfolg;
-    private JCheckBox jcb_auslandspraktikum;
-	
-    private ExtendedContractsSearchBoxCtrl controller;
-	
+	    private JButton jb_filterentfernen;
+	    private JButton jb_suchen;
+	    private JLabel jl_betreuer;
+	    private JLabel jl_firma;
+	    private JLabel jl_matrikelnr;
+	    private JLabel jl_nachname;
+	    private JLabel jl_vorname;
+	    private JTextField jtf_betreuer;
+	    private JTextField jtf_firma;
+	    private JTextField jtf_matrikelnr;
+	    private JTextField jtf_nachname;
+	    private JTextField jtf_vorname;
+	    private JCheckBox jcb_praktikumserfolg;
+	    private JCheckBox jcb_auslandspraktikum;
+	    private JTextField jtf_vertragsid;
+	    
+	    private ExtendedContractsSearchBoxCtrl controller;
+		
+	/**
+	 * Initialsiert die Box bringt sie aber NICHT zur Anzeige.
+	 * @param controller	ExtendedContractsSearchBoxCtrl Objekt, welches auf Nutzerinteraktionen reagiert.
+	 */
 	public BoxElementExtendedSearchContracts(ExtendedContractsSearchBoxCtrl controller){
 		this.controller = controller;
 		initComponents();
@@ -66,7 +77,7 @@ public class BoxElementExtendedSearchContracts extends JPanel implements Extende
         jl_betreuer = new javax.swing.JLabel();
         jtf_betreuer = new javax.swing.JTextField();
 
-        setPreferredSize(new Dimension(600, 125));
+        setPreferredSize(new Dimension(700, 125));
 
         jl_vorname.setText("Vorname:");
 
@@ -85,13 +96,18 @@ public class BoxElementExtendedSearchContracts extends JPanel implements Extende
         jcb_praktikumserfolg = new JCheckBox("Praktikumserfolg");
         
         jcb_auslandspraktikum = new JCheckBox("Auslandspraktikum");
+        
+        JLabel lblVertragsId = new JLabel();
+        lblVertragsId.setText("Vertrags ID:");
+        
+        jtf_vertragsid = new JTextField();
 
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         layout.setHorizontalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
         		.addGroup(layout.createSequentialGroup()
-        			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        			.addGap(75)
         			.addGroup(layout.createParallelGroup(Alignment.LEADING)
         				.addComponent(jl_vorname)
         				.addComponent(jl_nachname)
@@ -103,18 +119,29 @@ public class BoxElementExtendedSearchContracts extends JPanel implements Extende
         				.addComponent(jtf_vorname)
         				.addComponent(jtf_nachname)
         				.addComponent(jtf_matrikelnr, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
-        			.addGap(18)
-        			.addComponent(jl_firma)
-        			.addGap(18)
         			.addGroup(layout.createParallelGroup(Alignment.LEADING)
         				.addGroup(layout.createSequentialGroup()
+        					.addGap(66)
         					.addComponent(jb_filterentfernen)
         					.addPreferredGap(ComponentPlacement.UNRELATED)
         					.addComponent(jb_suchen))
-        				.addComponent(jtf_firma, GroupLayout.PREFERRED_SIZE, 175, GroupLayout.PREFERRED_SIZE)
-        				.addComponent(jcb_praktikumserfolg)
-        				.addComponent(jcb_auslandspraktikum))
-        			.addGap(61))
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(55)
+        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        						.addGroup(layout.createSequentialGroup()
+        							.addComponent(jcb_praktikumserfolg)
+        							.addPreferredGap(ComponentPlacement.UNRELATED)
+        							.addComponent(jcb_auslandspraktikum))
+        						.addGroup(layout.createParallelGroup(Alignment.TRAILING, false)
+        							.addGroup(layout.createSequentialGroup()
+        								.addComponent(jl_firma, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        								.addGap(18)
+        								.addComponent(jtf_firma, GroupLayout.PREFERRED_SIZE, 175, GroupLayout.PREFERRED_SIZE))
+        							.addGroup(Alignment.LEADING, layout.createSequentialGroup()
+        								.addComponent(lblVertragsId, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE)
+        								.addGap(18)
+        								.addComponent(jtf_vertragsid, GroupLayout.PREFERRED_SIZE, 175, GroupLayout.PREFERRED_SIZE))))))
+        			.addContainerGap(89, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
@@ -123,33 +150,43 @@ public class BoxElementExtendedSearchContracts extends JPanel implements Extende
         			.addGroup(layout.createParallelGroup(Alignment.TRAILING)
         				.addGroup(layout.createSequentialGroup()
         					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        						.addComponent(jl_firma)
-        						.addComponent(jtf_firma, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addComponent(jcb_praktikumserfolg)
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addComponent(jcb_auslandspraktikum)
-        					.addPreferredGap(ComponentPlacement.RELATED)
-        					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        						.addComponent(jb_filterentfernen)
-        						.addComponent(jb_suchen)))
-        				.addGroup(layout.createSequentialGroup()
-        					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
         						.addComponent(jl_vorname)
         						.addComponent(jtf_vorname, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
         					.addPreferredGap(ComponentPlacement.RELATED)
         					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
         						.addComponent(jl_nachname)
         						.addComponent(jtf_nachname, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addPreferredGap(ComponentPlacement.RELATED, 5, Short.MAX_VALUE)
         					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
         						.addComponent(jl_matrikelnr)
-        						.addComponent(jtf_matrikelnr, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        						.addComponent(jtf_matrikelnr, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+        				.addGroup(layout.createSequentialGroup()
+        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        						.addComponent(jtf_firma, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        						.addGroup(layout.createSequentialGroup()
+        							.addGap(6)
+        							.addComponent(jl_firma)))
         					.addPreferredGap(ComponentPlacement.RELATED)
         					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        						.addComponent(jcb_praktikumserfolg)
+        						.addComponent(jcb_auslandspraktikum))
+        					.addGap(7)
+        					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        						.addComponent(lblVertragsId)
+        						.addComponent(jtf_vertragsid, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        					.addPreferredGap(ComponentPlacement.RELATED, 3, Short.MAX_VALUE)))
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(9)
+        					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
         						.addComponent(jtf_betreuer, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        						.addComponent(jl_betreuer))))
-        			.addContainerGap(50, Short.MAX_VALUE))
+        						.addComponent(jl_betreuer)))
+        				.addGroup(layout.createSequentialGroup()
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        						.addComponent(jb_filterentfernen)
+        						.addComponent(jb_suchen))))
+        			.addContainerGap(14, Short.MAX_VALUE))
         );
         this.setLayout(layout);
     }
@@ -160,6 +197,7 @@ public class BoxElementExtendedSearchContracts extends JPanel implements Extende
 		jtf_vorname.setName(SqlTableStudent.TableNameDotVorname);
 		jtf_nachname.setName(SqlTableStudent.TableNameDotNachname);
 
+		jtf_vertragsid.setName(SqlTableContracts.TableNameDotPrimaryKey);
 		
 		jtf_matrikelnr.setName(SqlTableStudent.TableNameDotMatrikelNummer);
 		jtf_betreuer.setName(SqlTableProfs.TableNameDotName);//tablenamefk_betreuerdot
@@ -234,6 +272,14 @@ public class BoxElementExtendedSearchContracts extends JPanel implements Extende
 			controller.buttonSearchSpecificClicked();
 		
 		
+	}
+	
+	@Override
+	public void setToolTip() {
+		if(Debug.isDebugMode()){
+			setToolTipText(this.getClass().getCanonicalName());
+			this.setBackground(Color.getHSBColor(ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255));
+		}
 	}
 
 	@Override

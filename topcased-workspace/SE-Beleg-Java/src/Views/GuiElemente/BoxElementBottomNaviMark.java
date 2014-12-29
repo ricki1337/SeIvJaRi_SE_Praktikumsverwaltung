@@ -15,11 +15,17 @@ import ConfigParser.Debug;
 import Views.Interfaces.BasicBox;
 import Views.Interfaces.NaviMarkBoxCtrl;
 
+/**
+ * Implementiert eine BasicBox mit dem Button "markierte auswählen".
+ */
 public class BoxElementBottomNaviMark extends JPanel implements BasicBox , MouseListener{
-	JButton jbn_mark;
+		private JButton jbn_mark;
+		private NaviMarkBoxCtrl controller;
 	
-	private NaviMarkBoxCtrl controller;
-	
+	/**
+	 * Initialisiert die Box und bringt sie zur Anzeige.
+	 * @param controller	NaviMarkBoxCtrl Objekt, welches die Nutzereingaben verarbeitet.
+	 */
 	public BoxElementBottomNaviMark(NaviMarkBoxCtrl controller){
 		this.controller = controller;
 		initComponents();
@@ -76,6 +82,7 @@ public class BoxElementBottomNaviMark extends JPanel implements BasicBox , Mouse
 		
 	}
 	
+	@Override
 	public void setToolTip(){
 		if(Debug.isDebugMode()){
 			setToolTipText(this.getClass().getCanonicalName());

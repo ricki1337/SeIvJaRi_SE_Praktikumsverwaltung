@@ -40,6 +40,8 @@ public class ContactSingle extends Controller implements 	EditBoxCtrl,
 		setModel(new Models.Model(SqlTableContacts.tableName,SqlTableContacts.TableNameDotPrimaryKey));
 		setView(view = new Views.View(this));
 		view.setTitle("Ansprechpartner anlegen");
+		model.setView(view);
+		view.setModel(model);
 		setElementsForNewData();
 	}
 	
@@ -64,6 +66,8 @@ public class ContactSingle extends Controller implements 	EditBoxCtrl,
 		model.setResult();
 		setModel(model);
 		setView((view = new Views.View(this)));
+		model.setView(view);
+		view.setModel(model);
 		view.setTitle("Ansprechpartner editieren");
 		setElements();
 	}

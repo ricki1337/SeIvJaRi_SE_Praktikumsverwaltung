@@ -23,33 +23,37 @@ import Models.Datenbank.Database;
 import Praktikumsverwaltung.Praktikumsverwaltung;
 import Views.Import.ImportWizard;
 
-
+/**
+ * Implementiert die Menüleiste des Hauptfensters.
+ */
 public class MenuBar implements ActionListener{
 
-	Praktikumsverwaltung frame;
+	private Praktikumsverwaltung frame;
     
     // Menüleiste
-    JMenuBar menueLeiste;
+	private JMenuBar menueLeiste;
     
     // Menüleiste Elemente
-    JMenu jm_datei;
-    JMenu jm_hilfe;
+	private JMenu jm_datei;
+	private JMenu jm_hilfe;
 
     // Datei
-    JMenuItem jmi_oeffnen;
-    JMenuItem jmi_importieren;
-    JMenuItem jmi_beenden;
+	private JMenuItem jmi_oeffnen;
+	private JMenuItem jmi_importieren;
+	private JMenuItem jmi_beenden;
     
     //Button
-    JButton		jb_student;
-    JButton		jb_firma;
-    JButton		jb_vertrag;
-    JButton		jb_betreuer;
+	private JButton		jb_student;
+	private JButton		jb_firma;
+	private JButton		jb_vertrag;
+	private JButton		jb_betreuer;
     
     //Label
-    JLabel jl_suchmaske;
+	private JLabel jl_suchmaske;
 
-    
+    /**
+     * Initialisiert das Menü und bringt es zur Anzeige.
+     */
     public MenuBar(){
     	
     	JSeparator separator = new JSeparator(SwingConstants.VERTICAL);
@@ -104,15 +108,23 @@ public class MenuBar implements ActionListener{
         setToolTip();
     }
     
+    /**
+     * Liefert das Menüobjekt zurück.
+     * @return	JMenuBar Repräsentation des Menüs
+     */
     public JMenuBar getMenu(){
     	return menueLeiste;
     }   	
     
+    /**
+     * Speichert den Hauptframe.
+     * @param frame	Hauptframe
+     */
     public void setFrame(Praktikumsverwaltung frame){
     	this.frame = frame;
     }
 	
-    
+    @Override
     public void actionPerformed(ActionEvent object) {
         if (object.getSource() == jb_student){
         	Praktikumsverwaltung.addFrameToForeground(new StudentList());
@@ -138,6 +150,9 @@ public class MenuBar implements ActionListener{
         }
    }
     
+    /**
+     * Öffnet den Importdialog.
+     */
     private void startImport(){
     	ImportWizard importwizard =new ImportWizard();
     	importwizard.setSize(800, 600);
@@ -147,6 +162,9 @@ public class MenuBar implements ActionListener{
 		importwizard.setVisible(true);
     }
   
+    /**
+     * Zeigt im DEBUG-Modus den Klassenname in einem Tooltip an.
+     */
     public void setToolTip(){
 		if(Debug.isDebugMode()){
 			menueLeiste.setToolTipText(this.getClass().getCanonicalName());

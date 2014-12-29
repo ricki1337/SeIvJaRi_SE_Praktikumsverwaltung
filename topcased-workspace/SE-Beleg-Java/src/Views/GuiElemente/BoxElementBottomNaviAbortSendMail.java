@@ -17,11 +17,18 @@ import Views.Interfaces.BasicBox;
 import Views.Interfaces.NaviAbortSaveBoxCtrl;
 import Views.Interfaces.NaviAbortSendMailBoxCtrl;
 
+/**
+ *	Implementiert eine BasicBox mit den Button "abbrechen" und "senden". 
+ */
 public class BoxElementBottomNaviAbortSendMail extends JPanel implements BasicBox, MouseListener {
-	private JButton jb_sendmail;
-	private JButton jb_abbrechen;
-	private NaviAbortSendMailBoxCtrl controller;
+		private JButton jb_sendmail;
+		private JButton jb_abbrechen;
+		private NaviAbortSendMailBoxCtrl controller;
 	
+	/**
+	 * Initialisiert die Box und bringt sie zur Anzeige.
+	 * @param controller	NaviAbortSendMailBoxCtrl Objekt, welches die Nutzereingaben verarbeitet.
+	 */
 	public BoxElementBottomNaviAbortSendMail(NaviAbortSendMailBoxCtrl controller){
 		this.controller = controller;
 		initComponents();
@@ -89,6 +96,7 @@ public class BoxElementBottomNaviAbortSendMail extends JPanel implements BasicBo
 		}
 	}
 	
+	@Override
 	public void setToolTip(){
 		if(Debug.isDebugMode()){
 			setToolTipText(this.getClass().getCanonicalName());

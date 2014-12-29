@@ -19,16 +19,22 @@ import Models.Datenbank.SqlTableContacts;
 import Views.Interfaces.EditBox;
 import Views.Interfaces.EditBoxCtrl;
 
+/**
+ * 	Implementiert eine EditBox, welche die Informationen zu Ansprechpartnern zum bearbeiten darstellt.
+ */
 public class BoxElementContactDetails extends JPanel implements EditBox{
 		private JTextField jtf_name;
 		private JTextField jtf_tel;
 		private JTextArea jta_bemerkung;
-		
 
 		private EditBoxCtrl controller;
 		private boolean addNewContract = false;
 		private int companyId = -1;
-		
+	
+	/**
+	 * Initialisiert die Box und bringt sie zur Anzeige.
+	 * @param controller	EditBoxCtrl Objekt, welche die eingegebenen Daten verarbeitet und Daten für die Box bereitstellt.
+	 */
 	public BoxElementContactDetails(EditBoxCtrl controller){
 		this.controller = controller;
 		initComponents();
@@ -38,6 +44,12 @@ public class BoxElementContactDetails extends JPanel implements EditBox{
 		setToolTip();
 	}
 	
+	/**
+	 * Initialisiert die Box zum Anlegen neuer Ansprechpartner.
+	 * @param controller		EditBoxCtrl Objekt, welche die eingegebenen Daten verarbeitet.
+	 * @param addNewContract	Flag zur Signalisierung einer Neuanlage.
+	 * @param companyId			FirmenID, zu welchem der Ansprechpartner gehört.
+	 */
 	public BoxElementContactDetails(EditBoxCtrl controller, boolean addNewContract, int companyId){
 		this.controller = controller;
 		this.addNewContract = addNewContract;
@@ -48,6 +60,14 @@ public class BoxElementContactDetails extends JPanel implements EditBox{
 		setToolTip();
 	}
 	
+	/**
+	 * Löscht alle eingaben.
+	 */
+	public void clearComponentValues(){
+		jtf_tel.setText("");
+		jtf_name.setText("");
+		jta_bemerkung.setText("");
+	}
 		
 	@Override
 	public void setComponentNames() {
@@ -62,13 +82,6 @@ public class BoxElementContactDetails extends JPanel implements EditBox{
 		jtf_name.setText(controller.getStringValueForBoxElementEdit(SqlTableContacts.Name));
 		jta_bemerkung.setText(controller.getStringValueForBoxElementEdit(SqlTableContacts.Bemerkung));
 	}
-
-	public void clearComponentValues(){
-		jtf_tel.setText("");
-		jtf_name.setText("");
-		jta_bemerkung.setText("");
-	}
-	
 
 	@Override
 	public void refreshContent() {
@@ -87,9 +100,9 @@ public class BoxElementContactDetails extends JPanel implements EditBox{
 	public Map<String, Object> getInputValues() {
 		Map<String, Object> inputValues = new HashMap<String, Object>();
 		
-		inputValues.put(jtf_tel.getName(), jtf_tel.getText());
-		inputValues.put(jta_bemerkung.getName(), jta_bemerkung.getText());
-		inputValues.put(jtf_name.getName(), jtf_name.getText());
+		inputValues.put(jtf_tel.getName(), getSubstringFromInputString(jtf_tel.getText(),15));
+		inputValues.put(jta_bemerkung.getName(), getSubstringFromInputString(jta_bemerkung.getText(),50));
+		inputValues.put(jtf_name.getName(), getSubstringFromInputString(jtf_name.getText(),15));
 		
 		if(companyId != -1)
 			inputValues.put(SqlTableContacts.ZuordnungFirma, companyId);
@@ -97,6 +110,12 @@ public class BoxElementContactDetails extends JPanel implements EditBox{
 		return inputValues;
 	}
 	
+	private String getSubstringFromInputString(String inputString, int maxLenght) {
+		int length = inputString.length();
+		return (String) inputString.subSequence(0, (length<maxLenght)?length:maxLenght);
+	}
+	
+	@Override
 	public void initComponents(){
 		JPanel panel = new JPanel();
 		
@@ -225,6 +244,7 @@ public class BoxElementContactDetails extends JPanel implements EditBox{
 	@Override
 	public void setComponentEventHandler() {}
 	
+	@Override
 	public void setToolTip(){
 		if(Debug.isDebugMode()){
 			setToolTipText(this.getClass().getCanonicalName());

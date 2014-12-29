@@ -17,11 +17,17 @@ import ConfigParser.Debug;
 import Views.Interfaces.BasicBox;
 import Views.Interfaces.NaviProgressBoxCtrl;
 
+/**
+ * Implementiert eine BasicBox, welche eine JProgressBar enthält.
+ */
 public class BoxElementBottomNaviProgress extends JPanel implements BasicBox{
-	JProgressBar progressBar;
+		private JProgressBar progressBar;
+		private NaviProgressBoxCtrl controller;
 	
-	private NaviProgressBoxCtrl controller;
-	
+	/**
+	 * Initialisiert die Box und bringt sie zur Anzeige.
+	 * @param controller	NaviProgressBoxCtrl Objekt, welches für die Datenzufuhr der Progressbar zuständig ist.
+	 */
 	public BoxElementBottomNaviProgress(NaviProgressBoxCtrl controller){
 		this.controller = controller;
 		initComponents();
@@ -62,18 +68,13 @@ public class BoxElementBottomNaviProgress extends JPanel implements BasicBox{
 		
 	}
 	
+	@Override
 	public void setToolTip(){
 		if(Debug.isDebugMode()){
 			setToolTipText(this.getClass().getCanonicalName());
 			this.setBackground(Color.getHSBColor(ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255));
 		}
 	}
-	
-	@Override
-	public void setComponentNames() {}
-	
-	@Override
-	public void setComponentEventHandler() {}
 
 	@Override
 	public void setComponentValues() {
@@ -81,8 +82,7 @@ public class BoxElementBottomNaviProgress extends JPanel implements BasicBox{
 			
 			@Override
 			public void stateChanged(ChangeEvent e) {
-				System.out.println("geändert....");
-				
+//				System.out.println("geändert....");
 			}
 		});
 		progressBar.setMaximum(controller.getValueEqualToHundretPercent());
@@ -97,5 +97,11 @@ public class BoxElementBottomNaviProgress extends JPanel implements BasicBox{
 		progressBar.repaint();
 		repaint();
 	}
+
+	@Override
+	public void setComponentNames() {}
+	
+	@Override
+	public void setComponentEventHandler() {}
 
 }

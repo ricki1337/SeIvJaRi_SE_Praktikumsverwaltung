@@ -24,6 +24,9 @@ import Views.Interfaces.BasicBox;
 import Views.Interfaces.TableBox;
 import Views.Interfaces.TableBoxCtrl;
 
+/**
+ * Implementiert die TableBox - Listenansicht von Informationen.
+ */
 public class BoxElementTable extends JPanel implements BasicBox, TableBox, MouseListener{
 
 		private javax.swing.JScrollPane jScrollPane1;
@@ -35,7 +38,10 @@ public class BoxElementTable extends JPanel implements BasicBox, TableBox, Mouse
 	    
 	    private TableBoxCtrl controller;
     
-    
+    /**
+     * Initialisiert die Box und bringt sie zur Anzeige.
+     * @param controller	TableBoxCtrl Objekt, welches Daten zur Verfügung stellt und auf Nutzereingaben reagiert.
+     */
     public BoxElementTable(TableBoxCtrl controller) {
     	this.controller = controller;
         initComponents();
@@ -213,7 +219,8 @@ public class BoxElementTable extends JPanel implements BasicBox, TableBox, Mouse
 		}
 		return returnValues;
 	}
-
+	
+	@Override
 	public void setToolTip(){
 		if(Debug.isDebugMode()){
 			setToolTipText(this.getClass().getCanonicalName());

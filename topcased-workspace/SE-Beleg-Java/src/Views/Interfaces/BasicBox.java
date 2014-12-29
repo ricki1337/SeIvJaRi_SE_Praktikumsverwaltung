@@ -42,4 +42,9 @@ public interface BasicBox {
 	 * Wird zum anordnen der Elemente in der Box genutzt.
 	 */
 	public void initComponents();
+	
+	/**
+	 * Erstellt einen ToolTip, welcher im Debugmodus angezeigt wird.
+	 */
+	public void setToolTip();
 }

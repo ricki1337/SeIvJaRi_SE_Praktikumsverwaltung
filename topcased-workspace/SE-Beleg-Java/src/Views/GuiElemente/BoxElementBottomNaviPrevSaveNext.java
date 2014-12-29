@@ -17,15 +17,21 @@ import ConfigParser.Debug;
 import Views.Interfaces.BasicBox;
 import Views.Interfaces.NaviPrevSaveNextBoxCtrl;
 
+/**
+ * Implementiert eine BasicBox mit den Buttons "<<", "speichern" und ">>".
+ */
 public class BoxElementBottomNaviPrevSaveNext extends JPanel implements BasicBox, MouseListener{
 		
 		private JButton jbn_previus;
 		private JButton jbn_save;
 		private JButton jbn_next;
 		private  JLabel jl_count;
-		
 		private NaviPrevSaveNextBoxCtrl controller;
 	
+	/**
+	 * Initialisiert die Box und bringt sie zur Anzeige.
+	 * @param controller	NaviPrevSaveNextBoxCtrl Objekt, welches die Nutzereingaben verarbeitet.
+	 */
 	public BoxElementBottomNaviPrevSaveNext(NaviPrevSaveNextBoxCtrl controller){
 		this.controller = controller;
 		initComponents();
@@ -51,6 +57,7 @@ public class BoxElementBottomNaviPrevSaveNext extends JPanel implements BasicBox
 		jbn_next.addMouseListener(this);		
 	}
 	
+	@Override
 	public void initComponents(){
 		jbn_previus = new JButton("<<");
 		
@@ -123,7 +130,7 @@ public class BoxElementBottomNaviPrevSaveNext extends JPanel implements BasicBox
 			controller.buttonNextClicked();
 		
 	}
-
+	@Override
 	public void setToolTip(){
 		if(Debug.isDebugMode()){
 			setToolTipText(this.getClass().getCanonicalName());

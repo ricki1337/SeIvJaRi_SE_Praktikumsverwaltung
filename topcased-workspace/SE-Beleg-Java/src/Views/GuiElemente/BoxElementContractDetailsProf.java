@@ -21,18 +21,24 @@ import Models.Datenbank.SqlTableProfs;
 import Views.Interfaces.ContractDetailsProfBox;
 import Views.Interfaces.ContractDetailsProfBoxCtrl;
 
-
+/**
+ * Implementiert die Anzeige der Betreuerinformationen eines Vertrags und ermöglicht die Bearbeitung der Betreuerinformationen.
+ */
 public class BoxElementContractDetailsProf extends JPanel implements ContractDetailsProfBox, MouseListener{
 
-	private JLabel jl_ansprechpartner;
-    private JLabel jl_ansprechpartner_value;
-    private JLabel jl_email;
-    private JLabel jl_email_value;
-    private JButton btn_change;
-    private JButton btn_edit;
+		private JLabel jl_ansprechpartner;
+	    private JLabel jl_ansprechpartner_value;
+	    private JLabel jl_email;
+	    private JLabel jl_email_value;
+	    private JButton btn_change;
+	    private JButton btn_edit;
+		
+	    private ContractDetailsProfBoxCtrl controller;
 	
-    private ContractDetailsProfBoxCtrl controller;
-	
+    /**
+	 * Initialisiert die Box und bringt sie zur Anzeige.
+	 * @param controller	ContractDetailsProfBoxCtrl Objekt, welche Informationen für die Box bereitstellt und auf Nutzeraktionen reagiert.
+	 */
     public BoxElementContractDetailsProf(ContractDetailsProfBoxCtrl controller) {
     	this.controller = controller;
         initComponents();
@@ -164,6 +170,7 @@ public class BoxElementContractDetailsProf extends JPanel implements ContractDet
 		return inputValues;
 	}             
 	
+	@Override
 	public void setToolTip(){
 		if(Debug.isDebugMode()){
 			setToolTipText(this.getClass().getCanonicalName());

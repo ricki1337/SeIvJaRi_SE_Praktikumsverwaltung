@@ -17,7 +17,8 @@ public class Print extends Controller{
 								SqlTableStudent.TableNameDotNachname + " as Nachname, " +
 								SqlTableStudent.TableNameDotMatrikelNummer + " as 'Matrikelnr.', " +
 								SqlTableStudent.TableNameDotStudiengruppe + " as Studiengruppe, " +
-								SqlTableCompanies.TableNameDotFirmenname + " as Firmenname " +
+								SqlTableCompanies.TableNameDotFirmenname + " as Firmenname, " +
+								SqlTableContracts.TableNameDotTyp + " as Typ " +
 							"FROM "+ SqlTableContracts.tableNameWithAlias + " " +
 								"JOIN " + SqlTableStudent.tableNameWithAlias + " ON " +
 										SqlTableContracts.TableNameDotFK_Student + " = " + SqlTableStudent.TableNameDotPrimaryKey + " " +
@@ -28,6 +29,7 @@ public class Print extends Controller{
 	
 	private String primaryKey;
 	private Object primaryKeys;
+	
 	
 	/**
 	 * Initialisiert die Printansicht auf Grundlage der übergebenen Primärschlüssel.<br>
@@ -42,7 +44,6 @@ public class Print extends Controller{
 		
 		model = new Models.ListModel(sqlQueryString,SqlTableContracts.tableName,primaryKey);
 		setModel(model);
-		
 		setModelFilter(primaryKey, primaryKeyValues);
 		model.setResult();
 	}
@@ -143,6 +144,44 @@ public class Print extends Controller{
 		return array;
 	}
 	
+	public String createHeadingForPrintDocument() 
+	{
+		String heading = "Praxisprojekt";
+		
+		boolean mixed = false;
+		String lastType = "PS";
+		try {
+			for(int i=0;i<model.getTableRowCount();i++){
+				if(model.getStringValueFromPosition(i, "Typ").contains("PR") == true && mixed == false)
+				{
+					heading = "Praxisprojekt";
+				}
+				
+				if(model.getStringValueFromPosition(i, "Typ").contains("PS") == true && mixed == false)
+				{
+					heading = "Praxissemester";
+				}
+				
+				if(model.getStringValueFromPosition(i, "Typ").contains("PS") == true && lastType.contains("PS") == false && mixed == false)
+				{
+					heading = "Praxisprojekt/-semester";
+					mixed = true;
+				}
+				
+				lastType = model.getStringValueFromPosition(i, "Typ");
+			}
+			return heading;
+		} catch (Exception e) {
+			ErrorManager errorManager = new ErrorManager(e);
+				if(errorManager.retry)
+					return createHeadingForPrintDocument();
+		}
+		
+		
+		
+		return heading;
+	}
+	
 	/**
 	 * Bringt den Print-Dialog zur Anzeige.<br>
 	 * Initialisiert {@link PrintExport} und übermittelt die zu druckenden Daten.
@@ -152,7 +191,10 @@ public class Print extends Controller{
 		try {
 			PrintExport testding;
 			testding = new PrintExport();
-			testding.setData(createArrayForPrinting(), "Titel","Folgende(r) Student(en) absolviert(en) das Praxisprojekt erfolgreich:");
+			String[][] arrayForPrinting = createArrayForPrinting();
+			String documentHeading = createHeadingForPrintDocument();
+			
+			testding.setData(arrayForPrinting, "Titel","Folgende(r) Student(en) absolviert(en) das "+ documentHeading +" erfolgreich:");
 			testding.print();
 		} catch (Exception e) {
 			ErrorManager errorManager = new ErrorManager(e);

@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 import org.mockito.Mockito;
 
-import Models.Interfaces.DatabaseFunction;
+import Models.Interfaces.DatabaseTypeFunctions;
 
-public class MockMySql implements DatabaseFunction{
+public class MockMySql implements DatabaseTypeFunctions{
 	
 	
 	@Override

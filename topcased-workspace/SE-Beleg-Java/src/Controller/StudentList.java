@@ -1,8 +1,12 @@
 package Controller;
 
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.Map;
 
 import javax.swing.SortOrder;
+
+import com.sun.jmx.snmp.tasks.Task;
 
 import Controller.Interfaces.SelectedValueCallbackCtrl;
 import Models.Datenbank.SqlTableContracts;
@@ -16,7 +20,7 @@ import Views.GuiElemente.BoxElementBottomNaviEditMailPrint;
 import Views.GuiElemente.BoxElementBottomNaviMark;
 import Views.GuiElemente.BoxElementTable;
 import Views.GuiElemente.BoxElementSearchMenu;
-import Views.GuiElemente.SearchPanel.ExtendedSearchPanelStudentNew;
+import Views.GuiElemente.SearchPanel.BoxElementExtendedSearchStudent;
 import Views.Interfaces.BasicBoxCtrl;
 import Views.Interfaces.ExtendedStudentSearchBoxCtrl;
 import Views.Interfaces.NaviAbortSelectBoxCtrl;
@@ -67,9 +71,46 @@ public class StudentList extends Controller implements	BasicBoxCtrl,
 			
 		private BoxElementTable table;
 		private BoxElementSearchMenu searchMenu;
-		private ExtendedSearchPanelStudentNew extendedSearch;
+		private BoxElementExtendedSearchStudent extendedSearch;
 		
 		private SelectedValueCallbackCtrl callback = null;
+		private long lastSearchButtonTap = 0;
+		
+		
+		private Task searchTask = new Task() {
+
+			@Override
+			public void run() {
+				
+//				if((System.currentTimeMillis()-lastSearchButtonTap) < 300)
+//				{
+//					lastSearchButtonTap = System.currentTimeMillis();
+//					System.out.println("wait...");
+//					return;
+//				}
+//				System.out.println("waited for: "+String.valueOf(System.currentTimeMillis()-lastSearchButtonTap));
+//				lastSearchButtonTap = System.currentTimeMillis();
+				
+				
+				
+				String valueOfSearchField = searchMenu.getValueOfSearchField();
+				if(valueOfSearchField.length() == 0)
+					((Models.ListModel)model).deleteSearchFilter();
+				else
+					((Models.ListModel)model).setSearchFilter(valueOfSearchField);
+				
+				
+			}
+
+			@Override
+			public void cancel() {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			
+		};
+		
 	
 	/**
 	 * Initialisiert die Ansicht der Studentenliste.<br>
@@ -83,6 +124,8 @@ public class StudentList extends Controller implements	BasicBoxCtrl,
 		setModel(model);
 		setView(view = new Views.View(this));
 		view.setTitle("Studenten");
+		model.setView(view);
+		view.setModel(model);
 		setElements();
 	}
 	
@@ -101,6 +144,8 @@ public class StudentList extends Controller implements	BasicBoxCtrl,
 		setView(view = new Views.View(this));
 		view.setTitle("Student auswählen");
 		this.callback = callback;
+		model.setView(view);
+		view.setModel(model);
 		setElementsForCallback();
 	}
 	
@@ -110,7 +155,7 @@ public class StudentList extends Controller implements	BasicBoxCtrl,
 	public void setElementsForCallback() {
 		searchMenu = new BoxElementSearchMenu(this);
 		view.addComponentToView(searchMenu);
-		extendedSearch = new ExtendedSearchPanelStudentNew(this);
+		extendedSearch = new BoxElementExtendedSearchStudent(this);
 		extendedSearch.setVisible(false);
 		view.addComponentToView(extendedSearch);
 		table = new Views.GuiElemente.BoxElementTable(this);
@@ -130,7 +175,7 @@ public class StudentList extends Controller implements	BasicBoxCtrl,
 	public void setElements(){
 		searchMenu = new BoxElementSearchMenu(this);
 		view.addComponentToView(searchMenu);
-		extendedSearch = new ExtendedSearchPanelStudentNew(this);
+		extendedSearch = new BoxElementExtendedSearchStudent(this);
 		extendedSearch.setVisible(false);
 		view.addComponentToView(extendedSearch);
 		table = new Views.GuiElemente.BoxElementTable(this);
@@ -277,11 +322,18 @@ public class StudentList extends Controller implements	BasicBoxCtrl,
 
 	@Override
 	public void searchFieldChanged() {
+		
+		
 		String valueOfSearchField = searchMenu.getValueOfSearchField();
 		if(valueOfSearchField.length() == 0)
 			((Models.ListModel)model).deleteSearchFilter();
 		else
-			((Models.ListModel)model).setSearchFilter(valueOfSearchField);
+			{
+			searchTask.cancel();
+			searchTask.run();
+			}
+			
+		lastSearchButtonTap = System.currentTimeMillis();
 	}
 
 	@Override

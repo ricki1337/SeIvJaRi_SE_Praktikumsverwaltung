@@ -1,9 +1,11 @@
 package Views.Dialog;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -18,9 +20,13 @@ import javax.swing.JToggleButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
+import ConfigParser.Debug;
 import Views.Interfaces.BasicBox;
 import Views.Interfaces.ErrorManagerCtrl;
 
+/**
+ * Bringt Fehlermeldungen und den dazugehörigen Stacktrace zur Ansicht.
+ */
 public class ErrorMessageDialog extends JDialog implements BasicBox, MouseListener{
 	private final JPanel contentPanel = new JPanel();
 	private JTextPane jtxtp_errorMessage;
@@ -34,7 +40,11 @@ public class ErrorMessageDialog extends JDialog implements BasicBox, MouseListen
 	private JButton repeatButton;
 	private JButton okButton;
 	private JToggleButton tglbtn_details;
-	
+
+	/**
+	 * Initialisiert einen ErrorMessageDialog, erzeugt alle Elemente ohne sie anzuzeigen.
+	 * @param controller	Implementation eines ErrorManagerCtrl
+	 */
 	public ErrorMessageDialog(ErrorManagerCtrl controller){
 		super();
 		this.controller = controller;		
@@ -42,11 +52,19 @@ public class ErrorMessageDialog extends JDialog implements BasicBox, MouseListen
 		setComponentEventHandler();
 	}
 	
+	/**
+	 * Setzt die anzuzeigende Fehlernachricht.
+	 * @param errorMessage	anzuzeigende Fehlernachricht.
+	 */
 	public void setErrorMessage(String errorMessage){
 		if(errorMessage != null)
 			jtxtp_errorMessage.setText(errorMessage);
 	}
 	
+	/**
+	 * Stellt den Stacktrace zum Fehler dar.
+	 * @param error	Exception der Ausnahme.
+	 */
 	public void setErrorDetails(Exception error){
 		if(error == null) return;
 		String errorDetails = new String();
@@ -57,10 +75,16 @@ public class ErrorMessageDialog extends JDialog implements BasicBox, MouseListen
 		
 	}
 	
+	/**
+	 * Bringt den Dialog zur Anzeige.
+	 */
 	public void showErrorDialog() {
 		setVisible(true);
 	}
 
+	/**
+	 * Weiterleitung der Klick-Aktionen von Buttons "OK" und "Wiederholen" und Behandlung der Anzeige des detailierten Fehlers.
+	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		if(e.getComponent() == okButton)
@@ -189,6 +213,14 @@ public class ErrorMessageDialog extends JDialog implements BasicBox, MouseListen
 
 	@Override
 	public void setComponentValues() {}
+
+	@Override
+	public void setToolTip() {
+		if(Debug.isDebugMode()){
+			contentPanel.setToolTipText(this.getClass().getCanonicalName());
+			this.setBackground(Color.getHSBColor(ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255, ThreadLocalRandom.current().nextFloat()%255));
+		}
+	}
 
 
 }

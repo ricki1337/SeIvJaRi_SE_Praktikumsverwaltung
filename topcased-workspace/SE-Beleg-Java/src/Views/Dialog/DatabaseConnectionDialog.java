@@ -13,7 +13,11 @@ import javax.swing.KeyStroke;
 
 import ConfigParser.Config;
 import Models.Datenbank.Database;
-
+/**
+ * Stellt den Dialog zur Anmeldung an Datenbank bereit.<br>
+ * Adresse des Datenbankservers, der angegebene Nutzername und die ausgew‰hlte Datenbank werden gespeichert.
+ * 
+ */
 public class DatabaseConnectionDialog extends JDialog {
 	
     // Variables declaration - do not modify                     
@@ -30,7 +34,12 @@ public class DatabaseConnectionDialog extends JDialog {
     private String dbhost = "";
     // End of variables declaration          
 	
-	
+	/**
+	 * Initialisiert den Dialog und bringt ihn zur Anzeige.
+	 * @param dbhost	Adresse des Datenbankservers
+	 * @param parent	Frame, in welchem der Dialog dargestellt werden soll.
+	 * @param modal		Soll der Dialog modal dargestellt werden.
+	 */
     public DatabaseConnectionDialog(String dbhost, Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -47,10 +56,9 @@ public class DatabaseConnectionDialog extends JDialog {
         });
     }
     
-    
-    
-    
-    
+    /**
+     * Erstellt alle Dialogelemente und positioniert sie.
+     */
     private void initComponents() {
 
         jb_verbinden = new javax.swing.JButton();
@@ -170,8 +178,11 @@ public class DatabaseConnectionDialog extends JDialog {
         pack();
     }                     
 
+    /**
+     * Nutzt die eingegebenen Daten um die Verbindung zur Datenbank zu initialisieren.
+     * @param evt	Event
+     */
     private void jb_verbindenActionPerformed(ActionEvent evt) {                                             
-    	//String dbhost = this.dbhost;
     	String database = this.jtf_datenbank.getText();
 		String user = this.jtf_nutzername.getText();
 		
@@ -197,6 +208,10 @@ public class DatabaseConnectionDialog extends JDialog {
     	
     }                                            
 
+    /**
+     * Schlieﬂt die Anwendung bei bet‰tigen des "abbrechen" Button.
+     * @param evt
+     */
     private void jb_abbrechenActionPerformed(ActionEvent evt) {                                             
     	System.exit(0);
     }                                            

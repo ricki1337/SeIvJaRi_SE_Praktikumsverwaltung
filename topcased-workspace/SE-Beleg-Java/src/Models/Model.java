@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Models.Datenbank.Database;
+import Models.Datenbank.SqlTableContracts;
 import Models.Datenbank.SqlTableProfs;
 import Models.Datenbank.SqlTableStudent;
 import Models.Filter.TabellenFilter;
@@ -21,7 +22,7 @@ public class Model implements Observer{
 
 		private Database db;
 		private String srcQuery;
-		private ArrayList<String> srcTables;
+		protected ArrayList<String> srcTables;
 		private ResultSet result;
 		private String tableNameForUpdateOrInsert; 
 		private String primaryKeyColumnName;
@@ -311,6 +312,12 @@ public class Model implements Observer{
 		for(Object[] row:newData){
 			String columnName = (String)row[0];
 			String columnValue = convertToString(row[1]);
+			
+			//workaround Erfolg true == X in Datenbank
+			if(columnName.equals(SqlTableContracts.TableNameDotErfolg) || columnName.equals(SqlTableContracts.Erfolg))
+				columnValue = columnValue.equals("true")?"'X'":"''";
+			
+			
 			if(counter > 1){
 				sqlUpdateQuery += columnName + " = " + columnValue + ", ";
 			}else{

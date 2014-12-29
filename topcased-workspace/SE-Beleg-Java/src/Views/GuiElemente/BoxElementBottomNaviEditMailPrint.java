@@ -16,12 +16,19 @@ import ConfigParser.Debug;
 import Views.Interfaces.BasicBox;
 import Views.Interfaces.NaviEditMailPrintBoxCtrl;
 
+/**
+ * 	Implementiert eine BasicBox, welche die Button "markierte bearbeiten", "drucken" und "mailen" beinhaltet.
+ */
 public class BoxElementBottomNaviEditMailPrint extends JPanel implements BasicBox, MouseListener {
-	JButton jbn_mail;
-	JButton jbn_print;
-	JButton jbn_edit;
-	private NaviEditMailPrintBoxCtrl controller;
+		private JButton jbn_mail;
+		private JButton jbn_print;
+		private JButton jbn_edit;
+		private NaviEditMailPrintBoxCtrl controller;
 	
+	/**
+	 * Initialisiert die Box und bringt sie zur Anzeige.
+	 * @param controller	NaviEditMailPrintBoxCtrl Objekt, welches die Nutzereingaben verarbeitet.
+	 */
 	public BoxElementBottomNaviEditMailPrint(NaviEditMailPrintBoxCtrl controller){
 		this.controller = controller;
 		initComponents();
@@ -102,6 +109,7 @@ public class BoxElementBottomNaviEditMailPrint extends JPanel implements BasicBo
 		
 	}
 
+	@Override
 	public void setToolTip(){
 		if(Debug.isDebugMode()){
 			setToolTipText(this.getClass().getCanonicalName());

@@ -30,6 +30,8 @@ public class ProfSingle extends Controller implements EditBoxCtrl, NaviAbortSave
 		setModel(new Models.Model(SqlTableProfs.tableName,SqlTableProfs.TableNameDotPrimaryKey));
 		setView(new Views.View(this));
 		view.setTitle("Betreuer anlegen");
+		model.setView(view);
+		view.setModel(model);
 		setElementsForNewData();
 	}
 	
@@ -55,6 +57,8 @@ public class ProfSingle extends Controller implements EditBoxCtrl, NaviAbortSave
 		model.setResult();
 		setModel(model);
 		setView((view = new Views.View(this)));
+		model.setView(view);
+		view.setModel(model);
 		view.setTitle("Betreuer editieren");
 		setElements();
 	}

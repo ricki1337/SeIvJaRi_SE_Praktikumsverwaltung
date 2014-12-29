@@ -55,7 +55,7 @@ public class ContractList extends Controller implements 	BasicBoxCtrl,
 										" JOIN "+ SqlTableCompanies.tableName +" ON " +
 										SqlTableContracts.TableNameDotFK_Firma + " = " + SqlTableCompanies.TableNameDotPrimaryKey + 
 										" JOIN "+ SqlTableProfs.tableName +" ON " +
-										SqlTableContracts.TableNameDotFK_Betreuer + " = " + SqlTableProfs.TableNameDotPrimaryKey;
+										SqlTableContracts.TableNameDotFK_Betreuer + " = " + SqlTableProfs.TableNameDotName;
 	
 	private Models.ListModel model;
 	private Views.View view;
@@ -77,9 +77,10 @@ public class ContractList extends Controller implements 	BasicBoxCtrl,
 	public ContractList(){
 		super();
 		model = new Models.ListModel(srcSqlQuery,SqlTableContracts.tableName,SqlTableContracts.PrimaryKey);
-		
 		setModel(model);
 		setView(view = new Views.View(this));
+		model.setView(view);
+		view.setModel(model);
 		view.setTitle("Verträge");
 		setElements();
 	}

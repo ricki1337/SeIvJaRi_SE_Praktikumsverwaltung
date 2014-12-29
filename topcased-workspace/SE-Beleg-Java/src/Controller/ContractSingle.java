@@ -1,6 +1,8 @@
 package Controller;
 
 import Controller.Interfaces.SelectedValueCallbackCtrl;
+import Models.Model;
+import Models.Datenbank.Database;
 import Models.Datenbank.SqlTableCompanies;
 import Models.Datenbank.SqlTableContracts;
 import Models.Datenbank.SqlTableProfs;
@@ -20,6 +22,7 @@ import Views.GuiElemente.BoxElementContractDetailsProf;
 import Views.GuiElemente.BoxElementContractDetailsProfNew;
 import Views.GuiElemente.BoxElementContractDetailsStudent;
 import Views.GuiElemente.BoxElementContractDetailsStudentNew;
+import Views.Interfaces.BasicBox;
 import Views.Interfaces.ContractDetailsCompanyBoxCtrl;
 import Views.Interfaces.ContractDetailsCompanyNewBoxCtrl;
 import Views.Interfaces.ContractDetailsProfBoxCtrl;
@@ -71,13 +74,17 @@ public class ContractSingle extends Controller implements EditBoxCtrl,
 										" LEFT JOIN " + SqlTableCompanies.tableName + " ON " +
 											SqlTableContracts.TableNameDotFK_Firma + " = "+ SqlTableCompanies.TableNameDotPrimaryKey +
 										" LEFT JOIN " + SqlTableProfs.tableNameWithAlias + " ON " +
-											SqlTableContracts.TableNameDotFK_Betreuer + " = " + SqlTableProfs.TableNameDotPrimaryKey;
+											SqlTableContracts.TableNameDotFK_Betreuer + " = " + SqlTableProfs.TableNameDotName;
 	
 	
-		private Views.View view;
 		private BoxElementContractDetails detailsBox;
 		private boolean newData = false;
 	
+		
+		private StudentSingle studentSingleController;
+		private CompanySingle companySingleController;
+		private ProfSingle profSingleController;
+		
 		/**
 		 * Initialisiert den Controller für die Anlage eines neuen Vertrags.<br>
 		 * Setzt das {@link Model} als leeren Container.<br>
@@ -86,22 +93,50 @@ public class ContractSingle extends Controller implements EditBoxCtrl,
 	public ContractSingle(){
 		super();
 		newData = true;
-		setModel(new Models.Model(SqlTableContracts.tableName,SqlTableContracts.TableNameDotPrimaryKey));
+		
+		setModel(new Models.Model(SqlTableContracts.tableName,SqlTableContracts.TableNameDotPrimaryKey) {
+			@Override
+			public void refresh(String[] changedTables) {
+				for(String table:changedTables){
+					if(srcTables.contains(table)){
+						informView();
+						break;
+					}
+				}
+				
+			}
+		});
+		
 		model.setSrcQuery(srcSqlQuery);
 		model.setAndFilter(SqlTableContracts.TableNameDotPrimaryKey, new IntFilter(0));
 		model.setResult();
-		for(int index=0;index < model.getTableData()[0].length;index++){
-			model.setValueAtPosition(model.getRowPosition(), index, new EmptyObject());
-		}
-		model.setValueAtPosition("Bericht", false);
+
+
 		model.setValueAtPosition("Typ", new String(" "));
 		model.setValueAtPosition("beginnt am", new String(" "));
 		model.setValueAtPosition("endet am", new String(" "));
-	
+		
+		model.setValueAtPosition("Bericht", false);
 		model.setValueAtPosition("Zeugnis", false);
 		model.setValueAtPosition("Empfehlung", false);
 		
-		setView(view = new Views.View(this));
+		setView(new Views.View(this) {
+			@Override
+			public void modelHasChanged() {
+				ContractSingle.this.setSelectedValue(SqlTableStudent.PrimaryKey, ContractSingle.this.model.getValueFromPosition("Matrikelnr."));
+				ContractSingle.this.setSelectedValue(SqlTableCompanies.PrimaryKey, ContractSingle.this.model.getValueFromPosition("FirmenID"));
+				ContractSingle.this.setSelectedValue(SqlTableProfs.PrimaryKey, ContractSingle.this.model.getValueFromPosition("Betreuer"));
+				for (BasicBox box : listOfallComponentsOnView) {
+					box.refreshContent();
+				}
+			}
+		});
+		
+		
+		
+		
+		model.setView(view);
+		view.setModel(model);
 		view.setTitle("Vertrag anlegen");
 		setElementsForNewData();
 	}
@@ -127,8 +162,10 @@ public class ContractSingle extends Controller implements EditBoxCtrl,
 		}
 		model.setResult();
 		setModel(model);
-		setView((view = new Views.View(this)));
+		setView(new Views.View(this));
 		view.setTitle("Vertrag editieren");
+		model.setView(view);
+		view.setModel(this.model);
 		setElements();
 	}
 	
@@ -144,8 +181,11 @@ public class ContractSingle extends Controller implements EditBoxCtrl,
 			newData = true;
 		}
 		model.setValueAtPosition(SqlTableContracts.FK_Student, matrikelNr);
-		StudentSingle studentSingleController = new StudentSingle(matrikelNr);
+		studentSingleController = new StudentSingle(matrikelNr);
 		try {
+//			Database db = Database.getInstance();
+//			db.login(studentSingleController.model);
+//			studentSingleController.model.setView(view);
 			String studentFirstname = studentSingleController.model.getStringValueFromPosition(SqlTableStudent.Vorname);
 			model.setValueAtPosition("Vorname", studentFirstname);
 			String studentName = studentSingleController.model.getStringValueFromPosition(SqlTableStudent.Nachname);
@@ -175,15 +215,18 @@ public class ContractSingle extends Controller implements EditBoxCtrl,
 			newData = true;
 		}
 		model.setValueAtPosition("FirmenID", companyId);
-		CompanySingle studentSingleController = new CompanySingle(companyId);
+		companySingleController = new CompanySingle(companyId);
 		try {
-			String companyName = studentSingleController.model.getStringValueFromPosition(SqlTableCompanies.Firmenname);
+//			Database db = Database.getInstance();
+//			db.login(companySingleController.model);
+//			companySingleController.model.setView(view);
+			String companyName = companySingleController.model.getStringValueFromPosition(SqlTableCompanies.Firmenname);
 			model.setValueAtPosition("Firmenname", companyName);
-			String companyStreet = studentSingleController.model.getStringValueFromPosition(SqlTableCompanies.Strasse);
+			String companyStreet = companySingleController.model.getStringValueFromPosition(SqlTableCompanies.Strasse);
 			model.setValueAtPosition("Strasse", companyStreet);
-			String companyZIP = studentSingleController.model.getStringValueFromPosition(SqlTableCompanies.PLZ);
+			String companyZIP = companySingleController.model.getStringValueFromPosition(SqlTableCompanies.PLZ);
 			model.setValueAtPosition("PLZ", companyZIP);
-			String companyTown = studentSingleController.model.getStringValueFromPosition(SqlTableCompanies.Ort);
+			String companyTown = companySingleController.model.getStringValueFromPosition(SqlTableCompanies.Ort);
 			model.setValueAtPosition("Ort", companyTown);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -206,9 +249,12 @@ public class ContractSingle extends Controller implements EditBoxCtrl,
 			newData = true;
 		}
 		model.setValueAtPosition("Betreuer", profId);
-		ProfSingle studentSingleController = new ProfSingle(profId);
+		profSingleController = new ProfSingle(profId);
 		try {
-			String profName = studentSingleController.model.getStringValueFromPosition(SqlTableCompanies.Firmenname);
+//			Database db = Database.getInstance();
+//			db.login(profSingleController.model);
+//			profSingleController.model.setView(view);
+			String profName = profSingleController.model.getStringValueFromPosition(SqlTableCompanies.Firmenname);
 			model.setValueAtPosition("BetreuerName", profName);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -402,6 +448,8 @@ public class ContractSingle extends Controller implements EditBoxCtrl,
 
 	@Override
 	public void setSelectedValue(String valueName, Object value) {
+		if(value instanceof EmptyObject)
+			return;
 		if(valueName.equals(SqlTableStudent.PrimaryKey))
 			changeStudentInformation(value);
 		

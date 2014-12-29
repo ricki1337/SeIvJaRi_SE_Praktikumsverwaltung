@@ -19,6 +19,9 @@ import Models.Datenbank.SqlTableStudent;
 import Views.Interfaces.EditBox;
 import Views.Interfaces.EditBoxCtrl;
 
+/**
+ * Implementiert eine EditBox für die Bearbeitung von Studenteninformationen.
+ */
 public class BoxElementStudentDetails extends JPanel implements EditBox{
 		private JTextField jtf_matrikelnr;
 		private JTextField jtf_firstname;
@@ -27,11 +30,15 @@ public class BoxElementStudentDetails extends JPanel implements EditBox{
 		private JTextField jtf_mail;
 		private JTextArea jta_note;
 	
-		private EditBoxCtrl parent;
+		private EditBoxCtrl controller;
 		private boolean addNewContract = false;
 		
-	public BoxElementStudentDetails(EditBoxCtrl parent){
-		this.parent = parent;
+	/**
+	 * Initialisiert die Box und bringt sie zur Anzeige.
+	 * @param controller	EditBoxCtrl Objekt, welches die Nutzereingaben verarbeitet und Daten für die Box bereitstellt.
+	 */
+	public BoxElementStudentDetails(EditBoxCtrl controller){
+		this.controller = controller;
 		initComponents();
 		setComponentNames();
 		setComponentValues();
@@ -39,13 +46,30 @@ public class BoxElementStudentDetails extends JPanel implements EditBox{
 		setToolTip();
 	}
 	
-	public BoxElementStudentDetails(EditBoxCtrl parent, boolean addNewContract){
-		this.parent = parent;
+	/**
+	 * Initialisiert die Box für Neuanlagen von Studenten.
+	 * @param controller		EditBoxCtrl Objekt, welches die Nutzereingaben verarbeitet.
+	 * @param addNewContract	Flag zur Signalisierung von Neuanlagen.
+	 */
+	public BoxElementStudentDetails(EditBoxCtrl controller, boolean addNewContract){
+		this.controller = controller;
 		this.addNewContract = addNewContract;
 		initComponents();
 		setComponentNames();
 		setComponentEventHandler();
 		setToolTip();
+	}
+	
+	/**
+	 * Löscht alle Eingaben.
+	 */
+	public void clearComponentValues() {
+		jtf_matrikelnr.setText("");
+		jtf_firstname.setText("");
+		jtf_name.setText("");
+		jtf_stgr.setText("");
+		jtf_mail.setText("");
+		jta_note.setText("");
 	}
 	
 	@Override
@@ -60,28 +84,18 @@ public class BoxElementStudentDetails extends JPanel implements EditBox{
 
 	@Override
 	public void setComponentValues() {
-		jtf_matrikelnr.setText(parent.getStringValueForBoxElementEdit(SqlTableStudent.TableNameDotMatrikelNummer));
-		jtf_firstname.setText(parent.getStringValueForBoxElementEdit(SqlTableStudent.TableNameDotVorname));
-		jtf_name.setText(parent.getStringValueForBoxElementEdit(SqlTableStudent.TableNameDotNachname));
-		jtf_stgr.setText(parent.getStringValueForBoxElementEdit(SqlTableStudent.TableNameDotStudiengruppe));
-		jtf_mail.setText(parent.getStringValueForBoxElementEdit(SqlTableStudent.TableNameDotEMail));
-		jta_note.setText(parent.getStringValueForBoxElementEdit(SqlTableStudent.TableNameDotBemerkung));
+		jtf_matrikelnr.setText(controller.getStringValueForBoxElementEdit(SqlTableStudent.TableNameDotMatrikelNummer));
+		jtf_firstname.setText(controller.getStringValueForBoxElementEdit(SqlTableStudent.TableNameDotVorname));
+		jtf_name.setText(controller.getStringValueForBoxElementEdit(SqlTableStudent.TableNameDotNachname));
+		jtf_stgr.setText(controller.getStringValueForBoxElementEdit(SqlTableStudent.TableNameDotStudiengruppe));
+		jtf_mail.setText(controller.getStringValueForBoxElementEdit(SqlTableStudent.TableNameDotEMail));
+		jta_note.setText(controller.getStringValueForBoxElementEdit(SqlTableStudent.TableNameDotBemerkung));
 	}
 	
-	public void clearComponentValues() {
-		jtf_matrikelnr.setText("");
-		jtf_firstname.setText("");
-		jtf_name.setText("");
-		jtf_stgr.setText("");
-		jtf_mail.setText("");
-		jta_note.setText("");
-	}
+	
 
 	@Override
-	public void setComponentEventHandler() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void setComponentEventHandler() {}
 
 	@Override
 	public void refreshContent() {
@@ -100,15 +114,21 @@ public class BoxElementStudentDetails extends JPanel implements EditBox{
 	public Map<String, Object> getInputValues() {
 		Map<String, Object> inputValues = new HashMap<String, Object>();
 		
-		inputValues.put(jtf_matrikelnr.getName(), jtf_matrikelnr.getText());
-		inputValues.put(jtf_firstname.getName(), jtf_firstname.getText());
-		inputValues.put(jtf_name.getName(), jtf_name.getText());
-		inputValues.put(jtf_stgr.getName(), jtf_stgr.getText());
-		inputValues.put(jtf_mail.getName(), jtf_mail.getText());
-		inputValues.put(jta_note.getName(), jta_note.getText());
+		inputValues.put(jtf_matrikelnr.getName(), getSubstringFromInputString(jtf_matrikelnr.getText(),10));
+		inputValues.put(jtf_firstname.getName(), getSubstringFromInputString(jtf_firstname.getText(),15));
+		inputValues.put(jtf_name.getName(), getSubstringFromInputString(jtf_name.getText(),20));
+		inputValues.put(jtf_stgr.getName(), getSubstringFromInputString(jtf_stgr.getText(),15));
+		inputValues.put(jtf_mail.getName(), getSubstringFromInputString(jtf_mail.getText(),40));
+		inputValues.put(jta_note.getName(), getSubstringFromInputString(jta_note.getText(),100));
 		return inputValues;
 	}
 	
+	private String getSubstringFromInputString(String inputString, int maxLenght) {
+		int length = inputString.length();
+		return (String) inputString.subSequence(0, (length<maxLenght)?length:maxLenght);
+	}
+	
+	@Override
 	public void initComponents(){
 		JPanel panel = new JPanel();
 		
@@ -247,7 +267,7 @@ public class BoxElementStudentDetails extends JPanel implements EditBox{
 		panel.setLayout(gl_panel);
 		setLayout(groupLayout);
 	}
-	
+	@Override
 	public void setToolTip(){
 		if(Debug.isDebugMode()){
 			setToolTipText(this.getClass().getCanonicalName());
