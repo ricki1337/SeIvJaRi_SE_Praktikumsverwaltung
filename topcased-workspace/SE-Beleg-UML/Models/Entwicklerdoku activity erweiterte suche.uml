@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="idModel" name="Entwicklerdoku activity erweiterte sucheModel">
+  <packagedElement xmi:type="uml:Package" xmi:id="idPackage" name="Entwicklerdoku activity erweiterte suchePackage">
+    <packagedElement xmi:type="uml:Activity" xmi:id="idActivity" name="Entwicklerdoku activity erweiterte sucheActivity">
+      <ownedRule xmi:id="_Tv_hIPobEeOX45VyPlcj5A" name="Box ist eingebunden" constrainedElement="_3RU9kPoZEeOX45VyPlcj5A"/>
+      <node xmi:type="uml:ActivityFinalNode" xmi:id="_ub7DIPoZEeOX45VyPlcj5A" name="Anzeige, aller den Filtern entsprechenden Datensätzen" incoming="_JCIswPoaEeOX45VyPlcj5A"/>
+      <node xmi:type="uml:InitialNode" xmi:id="_utFroPoZEeOX45VyPlcj5A" name="Listenansicht" outgoing="_EDJqQPoaEeOX45VyPlcj5A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_3RU9kPoZEeOX45VyPlcj5A" name="Button &quot;erweiterte Suche&quot;" outgoing="_Dte8QPoaEeOX45VyPlcj5A" incoming="_EDJqQPoaEeOX45VyPlcj5A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_3jK7gPoZEeOX45VyPlcj5A" name="ausfüllen der gewünschten Werte in die Suchfelder" outgoing="_EM7RUPoaEeOX45VyPlcj5A" incoming="_Dte8QPoaEeOX45VyPlcj5A _7OSF4PoaEeOX45VyPlcj5A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_3mG6wPoZEeOX45VyPlcj5A" name="Button &quot;suchen&quot;" outgoing="_Eyjt8PoaEeOX45VyPlcj5A" incoming="_EM7RUPoaEeOX45VyPlcj5A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_HS6K0PoaEeOX45VyPlcj5A" name="Anzeige, aller den Filtern entsprechenden Datensätzen" outgoing="_JCIswPoaEeOX45VyPlcj5A __lsyEPoaEeOX45VyPlcj5A" incoming="_Eyjt8PoaEeOX45VyPlcj5A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_J8SA0PoaEeOX45VyPlcj5A" name="Button &quot;Filter entfernen&quot;" outgoing="_7OSF4PoaEeOX45VyPlcj5A" incoming="__lsyEPoaEeOX45VyPlcj5A"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_Dte8QPoaEeOX45VyPlcj5A" name="blendet erweiterte Suche ein" source="_3RU9kPoZEeOX45VyPlcj5A" target="_3jK7gPoZEeOX45VyPlcj5A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_Dte8QfoaEeOX45VyPlcj5A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_Dte8QvoaEeOX45VyPlcj5A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_EDJqQPoaEeOX45VyPlcj5A" name="ControlFlow2" source="_utFroPoZEeOX45VyPlcj5A" target="_3RU9kPoZEeOX45VyPlcj5A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_EDJqQfoaEeOX45VyPlcj5A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_EDJqQvoaEeOX45VyPlcj5A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_EM7RUPoaEeOX45VyPlcj5A" name="ControlFlow3" source="_3jK7gPoZEeOX45VyPlcj5A" target="_3mG6wPoZEeOX45VyPlcj5A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_EM7RUfoaEeOX45VyPlcj5A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_EM7RUvoaEeOX45VyPlcj5A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_Eyjt8PoaEeOX45VyPlcj5A" name="ControlFlow4" source="_3mG6wPoZEeOX45VyPlcj5A" target="_HS6K0PoaEeOX45VyPlcj5A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_Eyjt8foaEeOX45VyPlcj5A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_Eyjt8voaEeOX45VyPlcj5A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_JCIswPoaEeOX45VyPlcj5A" name="ControlFlow5" source="_HS6K0PoaEeOX45VyPlcj5A" target="_ub7DIPoZEeOX45VyPlcj5A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_JCIswfoaEeOX45VyPlcj5A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_JCIswvoaEeOX45VyPlcj5A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_7OSF4PoaEeOX45VyPlcj5A" name="eingegebene Filter werden gelöst" source="_J8SA0PoaEeOX45VyPlcj5A" target="_3jK7gPoZEeOX45VyPlcj5A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_7OSF4foaEeOX45VyPlcj5A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_7OSF4voaEeOX45VyPlcj5A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__lsyEPoaEeOX45VyPlcj5A" name="ControlFlow1" source="_HS6K0PoaEeOX45VyPlcj5A" target="_J8SA0PoaEeOX45VyPlcj5A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="__lsyEfoaEeOX45VyPlcj5A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="__lsyEvoaEeOX45VyPlcj5A" value="1"/>
+      </edge>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>

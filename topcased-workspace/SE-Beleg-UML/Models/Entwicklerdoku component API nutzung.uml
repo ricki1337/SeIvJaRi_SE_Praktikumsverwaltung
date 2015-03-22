@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="idModel" name="Entwicklerdoku component systemarchitekturModel">
+  <packagedElement xmi:type="uml:Package" xmi:id="idPackage" name="Entwicklerdoku component systemarchitekturPackage">
+    <packagedElement xmi:type="uml:Component" xmi:id="idComponent" name="Entwicklerdoku component systemarchitekturComponent">
+      <nestedClassifier xmi:type="uml:Component" xmi:id="_MWxLMPqnEeOy3cM4huDibg" name="Praktikumsverwaltung" clientDependency="_ZXoZcPqnEeOy3cM4huDibg">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_CgEg8PqpEeOy3cM4huDibg" name="Port1" clientDependency="_FElsIPqpEeOy3cM4huDibg _Hu1r4PqpEeOy3cM4huDibg _LFEA0PqpEeOy3cM4huDibg _VcHUMPqpEeOy3cM4huDibg" aggregation="composite"/>
+        <interfaceRealization xmi:id="_ZXoZcPqnEeOy3cM4huDibg" name="InterfaceRealization1" supplier="_TKwAcPqnEeOy3cM4huDibg" client="_MWxLMPqnEeOy3cM4huDibg" contract="_TKwAcPqnEeOy3cM4huDibg"/>
+      </nestedClassifier>
+      <nestedClassifier xmi:type="uml:Component" xmi:id="_M00ZIPqnEeOy3cM4huDibg" name="MySql Connector" clientDependency="_aC_DkPqnEeOy3cM4huDibg">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_8gC4MPqoEeOy3cM4huDibg" name="Port1" aggregation="composite"/>
+        <packagedElement xmi:type="uml:Usage" xmi:id="_aC_DkPqnEeOy3cM4huDibg" name="Usage1" supplier="_TKwAcPqnEeOy3cM4huDibg" client="_M00ZIPqnEeOy3cM4huDibg"/>
+      </nestedClassifier>
+      <nestedClassifier xmi:type="uml:Component" xmi:id="_NOyYUPqnEeOy3cM4huDibg" name="Controller" clientDependency="_gJ-P8PqnEeOy3cM4huDibg _guX9gPqnEeOy3cM4huDibg"/>
+      <nestedClassifier xmi:type="uml:Interface" xmi:id="_TKwAcPqnEeOy3cM4huDibg" name="DatabaseType"/>
+      <nestedClassifier xmi:type="uml:Component" xmi:id="_Xm3xAPqoEeOy3cM4huDibg" name="FreeMarker API">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_9VAKQPqoEeOy3cM4huDibg" name="Port1" aggregation="composite"/>
+      </nestedClassifier>
+      <nestedClassifier xmi:type="uml:Component" xmi:id="_aZhe0PqoEeOy3cM4huDibg" name="iText API">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_98vfsPqoEeOy3cM4huDibg" name="Port1" aggregation="composite"/>
+      </nestedClassifier>
+      <nestedClassifier xmi:type="uml:Component" xmi:id="_j1TcwPqoEeOy3cM4huDibg" name="JavaMail API">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_-fV2cPqoEeOy3cM4huDibg" name="Port1" aggregation="composite"/>
+      </nestedClassifier>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_gJ-P8PqnEeOy3cM4huDibg" name="Dependency1" supplier="_MWxLMPqnEeOy3cM4huDibg" client="_NOyYUPqnEeOy3cM4huDibg"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_guX9gPqnEeOy3cM4huDibg" name="Dependency2" supplier="_M00ZIPqnEeOy3cM4huDibg" client="_NOyYUPqnEeOy3cM4huDibg"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_FElsIPqpEeOy3cM4huDibg" name="Datenbankanbindung" supplier="_8gC4MPqoEeOy3cM4huDibg" client="_CgEg8PqpEeOy3cM4huDibg"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_Hu1r4PqpEeOy3cM4huDibg" name="Print Template" supplier="_9VAKQPqoEeOy3cM4huDibg" client="_CgEg8PqpEeOy3cM4huDibg"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_LFEA0PqpEeOy3cM4huDibg" name="E-Mail PDF Anhang" supplier="_98vfsPqoEeOy3cM4huDibg" client="_CgEg8PqpEeOy3cM4huDibg"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_VcHUMPqpEeOy3cM4huDibg" name="E-Mail Kommunikation" supplier="_-fV2cPqoEeOy3cM4huDibg" client="_CgEg8PqpEeOy3cM4huDibg"/>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>

@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagrams:Diagrams xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.topcased.org/DI/1.0" xmlns:diagrams="http://www.topcased.org/Diagrams/1.0" xmi:id="_0Y02AIOiEeObnc40kTtmyw" activeDiagram="_0Y02AYOiEeObnc40kTtmyw">
+  <model href="rick%20activity%20diagram%20anlegen%20vertrag.uml#idActivity"/>
+  <diagrams xmi:id="_0Y02AYOiEeObnc40kTtmyw" position="0,0" size="100,100" name="rick activity diagram anlegen vertrag" viewport="0,0">
+    <property xmi:id="_0ZMpcIOiEeObnc40kTtmyw" key="pageFormatName" value="A4"/>
+    <property xmi:id="_0ZMpcYOiEeObnc40kTtmyw" key="diagramWidth" value="840"/>
+    <property xmi:id="_0ZMpcoOiEeObnc40kTtmyw" key="diagramHeight" value="1188"/>
+    <property xmi:id="_0ZMpc4OiEeObnc40kTtmyw" key="pageMarginName" value="Small Margin"/>
+    <property xmi:id="_0ZMpdIOiEeObnc40kTtmyw" key="diagramTopMargin" value="20"/>
+    <property xmi:id="_0ZMpdYOiEeObnc40kTtmyw" key="diagramBottomMargin" value="20"/>
+    <property xmi:id="_0ZMpdoOiEeObnc40kTtmyw" key="diagramLeftMargin" value="20"/>
+    <property xmi:id="_0ZMpd4OiEeObnc40kTtmyw" key="diagramRightMargin" value="20"/>
+    <property xmi:id="_0ZMpeIOiEeObnc40kTtmyw" key="orientation" value="portrait"/>
+    <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_0Y1dEIOiEeObnc40kTtmyw" presentation="org.topcased.modeler.uml.activitydiagram">
+      <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#idActivity"/>
+    </semanticModel>
+    <contained xsi:type="di:GraphNode" xmi:id="_4ecAgIOiEeObnc40kTtmyw" position="278,78" size="126,46">
+      <anchorage xmi:id="_jNUW0YOjEeObnc40kTtmyw" graphEdge="_jNWMAIOjEeObnc40kTtmyw _rkgrQIOjEeObnc40kTtmyw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_4ecAgYOiEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_4ePzQoOiEeObnc40kTtmyw"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_4eg5AIOiEeObnc40kTtmyw" position="323,179" size="60,10">
+      <anchorage xmi:id="_rkfdIIOjEeObnc40kTtmyw" graphEdge="_rkgrQIOjEeObnc40kTtmyw _sJzJoIOjEeObnc40kTtmyw _stBLcIOjEeObnc40kTtmyw _tGW4gIOjEeObnc40kTtmyw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_4eg5AYOiEeObnc40kTtmyw" presentation="horizontal">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_4ePzQ4OiEeObnc40kTtmyw"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_4elKcIOiEeObnc40kTtmyw" position="112,261" size="40,60">
+      <property xmi:id="_4elKcYOiEeObnc40kTtmyw" key="isVisibleLabel" value="visible"/>
+      <anchorage xmi:id="_sJx7gIOjEeObnc40kTtmyw" graphEdge="_sJzJoIOjEeObnc40kTtmyw _tfejIIOjEeObnc40kTtmyw _vZicEIOjEeObnc40kTtmyw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_4elKcoOiEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_4ePzRIOiEeObnc40kTtmyw"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_4eoNwIOiEeObnc40kTtmyw" position="14,349" size="78,64">
+      <anchorage xmi:id="_tfdVAIOjEeObnc40kTtmyw" graphEdge="_tfejIIOjEeObnc40kTtmyw _GO1RcIOnEeObnc40kTtmyw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_4eoNwYOiEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_4ePzRYOiEeObnc40kTtmyw"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_4erREIOiEeObnc40kTtmyw" position="9,522" size="83,76">
+      <anchorage xmi:id="_I8Yc0IOnEeObnc40kTtmyw" graphEdge="_I8Zq8IOnEeObnc40kTtmyw _YWvSAIOnEeObnc40kTtmyw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_4erREYOiEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_4ePzRoOiEeObnc40kTtmyw"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_4eu7cIOiEeObnc40kTtmyw" position="188,353" size="84,64">
+      <anchorage xmi:id="_u-naoIOjEeObnc40kTtmyw" graphEdge="_vZicEIOjEeObnc40kTtmyw _GO1RcIOnEeObnc40kTtmyw _IDtvcIOnEeObnc40kTtmyw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_4eu7cYOiEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_4ePzR4OiEeObnc40kTtmyw"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_4ex-wIOiEeObnc40kTtmyw" position="279,353" size="134,69">
+      <anchorage xmi:id="_ss_9UIOjEeObnc40kTtmyw" graphEdge="_stBLcIOjEeObnc40kTtmyw _xRqbUIOjEeObnc40kTtmyw _uIK-AIOnEeObnc40kTtmyw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_4ex-wYOiEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_4ePzSIOiEeObnc40kTtmyw"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_4e1CEIOiEeObnc40kTtmyw" position="454,410" size="96,60">
+      <anchorage xmi:id="_x-zOIIOjEeObnc40kTtmyw" graphEdge="_x-0cQIOjEeObnc40kTtmyw _yaBKgIOjEeObnc40kTtmyw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_4e1pIIOiEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_4ePzSYOiEeObnc40kTtmyw"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_4e4scIOiEeObnc40kTtmyw" position="621,410" size="114,62">
+      <anchorage xmi:id="_yZ_8YIOjEeObnc40kTtmyw" graphEdge="_yaBKgIOjEeObnc40kTtmyw _yyjmUIOjEeObnc40kTtmyw _zJ2sAIOjEeObnc40kTtmyw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_4e4scYOiEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_4ePzSoOiEeObnc40kTtmyw"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_4e8W0IOiEeObnc40kTtmyw" position="575,315" size="40,60">
+      <property xmi:id="_4e8W0YOiEeObnc40kTtmyw" key="isVisibleLabel" value="visible"/>
+      <anchorage xmi:id="_tGVqYIOjEeObnc40kTtmyw" graphEdge="_tGW4gIOjEeObnc40kTtmyw _x-0cQIOjEeObnc40kTtmyw _zJ2sAIOjEeObnc40kTtmyw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_4e8W0oOiEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_4ePzS4OiEeObnc40kTtmyw"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_4e_aIIOiEeObnc40kTtmyw" position="322,603" size="60,10">
+      <anchorage xmi:id="_wYTKYIOjEeObnc40kTtmyw" graphEdge="_xRqbUIOjEeObnc40kTtmyw _yyjmUIOjEeObnc40kTtmyw _QwziwIOkEeObnc40kTtmyw _ZFGz4IOnEeObnc40kTtmyw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_4e_aIYOiEeObnc40kTtmyw" presentation="horizontal">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_4ePzTIOiEeObnc40kTtmyw"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_Cg5j8IOjEeObnc40kTtmyw" position="109,75" size="40,40">
+      <property xmi:id="_DEuCsIOjEeObnc40kTtmyw" key="isVisibleLabel" value="visible"/>
+      <anchorage xmi:id="_jNUW0IOjEeObnc40kTtmyw" graphEdge="_jNWMAIOjEeObnc40kTtmyw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Cg5j8YOjEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_Cg0rcIOjEeObnc40kTtmyw"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_jNWMAIOjEeObnc40kTtmyw" anchor="_jNUW0IOjEeObnc40kTtmyw _jNUW0YOjEeObnc40kTtmyw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_jNWMAYOjEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_jNZPUIOjEeObnc40kTtmyw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_jNWMAoOjEeObnc40kTtmyw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_jNWMA4OjEeObnc40kTtmyw" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_jNWMBIOjEeObnc40kTtmyw" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_jNWMBYOjEeObnc40kTtmyw" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_jNWMBoOjEeObnc40kTtmyw" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_jNWMB4OjEeObnc40kTtmyw" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_rkgrQIOjEeObnc40kTtmyw" anchor="_jNUW0YOjEeObnc40kTtmyw _rkfdIIOjEeObnc40kTtmyw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_rkgrQYOjEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_rkjukIOjEeObnc40kTtmyw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_rkgrQoOjEeObnc40kTtmyw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_rkgrQ4OjEeObnc40kTtmyw" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_rkgrRIOjEeObnc40kTtmyw" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_rkgrRYOjEeObnc40kTtmyw" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_rkgrRoOjEeObnc40kTtmyw" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_rkgrR4OjEeObnc40kTtmyw" visible="false" id="interruptibleIconEdgeObject"/>
+      <waypoints>[12, 13, 0, -70]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_sJzJoIOjEeObnc40kTtmyw" anchor="_rkfdIIOjEeObnc40kTtmyw _sJx7gIOjEeObnc40kTtmyw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_sJzJoYOjEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_sJ2M8IOjEeObnc40kTtmyw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_sJzJooOjEeObnc40kTtmyw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_sJzJo4OjEeObnc40kTtmyw" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_sJzJpIOjEeObnc40kTtmyw" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_sJzJpYOjEeObnc40kTtmyw" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_sJzJpoOjEeObnc40kTtmyw" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_sJzJp4OjEeObnc40kTtmyw" visible="false" id="interruptibleIconEdgeObject"/>
+      <waypoints>[-221, 0, 0, -107]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_stBLcIOjEeObnc40kTtmyw" anchor="_rkfdIIOjEeObnc40kTtmyw _ss_9UIOjEeObnc40kTtmyw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_stBLcYOjEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_stEOwIOjEeObnc40kTtmyw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_stBLcoOjEeObnc40kTtmyw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_stBLc4OjEeObnc40kTtmyw" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_stBLdIOjEeObnc40kTtmyw" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_stBLdYOjEeObnc40kTtmyw" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_stBLdoOjEeObnc40kTtmyw" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_stBLd4OjEeObnc40kTtmyw" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_tGW4gIOjEeObnc40kTtmyw" anchor="_rkfdIIOjEeObnc40kTtmyw _tGVqYIOjEeObnc40kTtmyw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_tGW4gYOjEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_tGai4IOjEeObnc40kTtmyw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_tGW4goOjEeObnc40kTtmyw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_tGW4g4OjEeObnc40kTtmyw" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_tGW4hIOjEeObnc40kTtmyw" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_tGW4hYOjEeObnc40kTtmyw" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_tGW4hoOjEeObnc40kTtmyw" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_tGW4h4OjEeObnc40kTtmyw" visible="false" id="interruptibleIconEdgeObject" offset="-57,0"/>
+      <waypoints>[242, 0, 0, -161]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_tfejIIOjEeObnc40kTtmyw" anchor="_sJx7gIOjEeObnc40kTtmyw _tfdVAIOjEeObnc40kTtmyw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_tfejIYOjEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_tfiNgIOjEeObnc40kTtmyw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_tfejIoOjEeObnc40kTtmyw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_tfejI4OjEeObnc40kTtmyw" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_tfejJIOjEeObnc40kTtmyw" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_tfejJYOjEeObnc40kTtmyw" id="nameEdgeObject" uDistance="80" vDistance="2"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_tfejJoOjEeObnc40kTtmyw" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_tfejJ4OjEeObnc40kTtmyw" visible="false" id="interruptibleIconEdgeObject" offset="-29,-48"/>
+      <waypoints>[-94, 0, 0, -86]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_vZicEIOjEeObnc40kTtmyw" anchor="_sJx7gIOjEeObnc40kTtmyw _u-naoIOjEeObnc40kTtmyw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_vZicEYOjEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_vZmtgIOjEeObnc40kTtmyw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_vZicEoOjEeObnc40kTtmyw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_vZicE4OjEeObnc40kTtmyw" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_vZicFIOjEeObnc40kTtmyw" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_vZicFYOjEeObnc40kTtmyw" id="nameEdgeObject" uDistance="88" vDistance="-1"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_vZicFoOjEeObnc40kTtmyw" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_vZicF4OjEeObnc40kTtmyw" visible="false" id="interruptibleIconEdgeObject"/>
+      <waypoints>[98, 2, 0, -92]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_xRqbUIOjEeObnc40kTtmyw" anchor="_ss_9UIOjEeObnc40kTtmyw _wYTKYIOjEeObnc40kTtmyw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_xRqbUYOjEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_xRuswIOjEeObnc40kTtmyw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_xRqbUoOjEeObnc40kTtmyw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_xRqbU4OjEeObnc40kTtmyw" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_xRqbVIOjEeObnc40kTtmyw" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_xRqbVYOjEeObnc40kTtmyw" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_xRqbVoOjEeObnc40kTtmyw" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_xRqbV4OjEeObnc40kTtmyw" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_x-0cQIOjEeObnc40kTtmyw" anchor="_tGVqYIOjEeObnc40kTtmyw _x-zOIIOjEeObnc40kTtmyw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_x-0cQYOjEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_x-4tsIOjEeObnc40kTtmyw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_x-0cQoOjEeObnc40kTtmyw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_x-0cQ4OjEeObnc40kTtmyw" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_x-0cRIOjEeObnc40kTtmyw" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_x-0cRYOjEeObnc40kTtmyw" id="nameEdgeObject" uDistance="81"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_x-0cRoOjEeObnc40kTtmyw" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_x-0cR4OjEeObnc40kTtmyw" visible="false" id="interruptibleIconEdgeObject" offset="-84,-58"/>
+      <waypoints>[-93, 0, 0, -95]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_yaBKgIOjEeObnc40kTtmyw" anchor="_x-zOIIOjEeObnc40kTtmyw _yZ_8YIOjEeObnc40kTtmyw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_yaBKgYOjEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_yaGDAIOjEeObnc40kTtmyw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_yaBKgoOjEeObnc40kTtmyw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_yaBKg4OjEeObnc40kTtmyw" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_yaBKhIOjEeObnc40kTtmyw" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_yaBKhYOjEeObnc40kTtmyw" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_yaBKhoOjEeObnc40kTtmyw" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_yaBKh4OjEeObnc40kTtmyw" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_yyjmUIOjEeObnc40kTtmyw" anchor="_yZ_8YIOjEeObnc40kTtmyw _wYTKYIOjEeObnc40kTtmyw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_yyjmUYOjEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_yyoe0IOjEeObnc40kTtmyw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_yyjmUoOjEeObnc40kTtmyw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_yyjmU4OjEeObnc40kTtmyw" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_yyjmVIOjEeObnc40kTtmyw" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_yyjmVYOjEeObnc40kTtmyw" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_yyjmVoOjEeObnc40kTtmyw" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_yyjmV4OjEeObnc40kTtmyw" visible="false" id="interruptibleIconEdgeObject" offset="-39,16"/>
+      <waypoints>[6, 167, 332, 0]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_zJ2sAIOjEeObnc40kTtmyw" anchor="_tGVqYIOjEeObnc40kTtmyw _yZ_8YIOjEeObnc40kTtmyw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_zJ2sAYOjEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_zJ7kgIOjEeObnc40kTtmyw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_zJ2sAoOjEeObnc40kTtmyw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_zJ2sA4OjEeObnc40kTtmyw" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_zJ2sBIOjEeObnc40kTtmyw" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_zJ2sBYOjEeObnc40kTtmyw" id="nameEdgeObject" uDistance="82"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_zJ2sBoOjEeObnc40kTtmyw" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_zJ2sB4OjEeObnc40kTtmyw" visible="false" id="interruptibleIconEdgeObject"/>
+      <waypoints>[94, 0, 0, -96]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_QD9D0IOkEeObnc40kTtmyw" position="333,684" size="40,40">
+      <anchorage xmi:id="_QwyUoIOkEeObnc40kTtmyw" graphEdge="_QwziwIOkEeObnc40kTtmyw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_QD9D0YOkEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_QEE_oIOkEeObnc40kTtmyw"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_QwziwIOkEeObnc40kTtmyw" anchor="_wYTKYIOjEeObnc40kTtmyw _QwyUoIOkEeObnc40kTtmyw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_QwziwYOkEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_Qw5CUIOkEeObnc40kTtmyw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_QwziwoOkEeObnc40kTtmyw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_Qwziw4OkEeObnc40kTtmyw" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_QwzixIOkEeObnc40kTtmyw" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_QwzixYOkEeObnc40kTtmyw" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_QwzixoOkEeObnc40kTtmyw" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_Qwzix4OkEeObnc40kTtmyw" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_j5DUEIOmEeObnc40kTtmyw" position="143,445" size="30,50">
+      <property xmi:id="_j5DUEYOmEeObnc40kTtmyw" key="isVisibleLabel" value="visible"/>
+      <anchorage xmi:id="_IDshUIOnEeObnc40kTtmyw" graphEdge="_IDtvcIOnEeObnc40kTtmyw _I8Zq8IOnEeObnc40kTtmyw _VlocUIOnEeObnc40kTtmyw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_j5DUEoOmEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_j5JasIOmEeObnc40kTtmyw"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_GO1RcIOnEeObnc40kTtmyw" anchor="_tfdVAIOjEeObnc40kTtmyw _u-naoIOjEeObnc40kTtmyw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_GO1RcYOnEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_GO6xAIOnEeObnc40kTtmyw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_GO1RcoOnEeObnc40kTtmyw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_GO1Rc4OnEeObnc40kTtmyw" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_GO1RdIOnEeObnc40kTtmyw" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_GO1RdYOnEeObnc40kTtmyw" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_GO1RdoOnEeObnc40kTtmyw" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_GO1Rd4OnEeObnc40kTtmyw" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_IDtvcIOnEeObnc40kTtmyw" anchor="_u-naoIOjEeObnc40kTtmyw _IDshUIOnEeObnc40kTtmyw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_IDtvcYOnEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_IDzPAIOnEeObnc40kTtmyw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_IDtvcoOnEeObnc40kTtmyw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_IDtvc4OnEeObnc40kTtmyw" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_IDtvdIOnEeObnc40kTtmyw" visible="false" id="weightEdgeObject" uDistance="4"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_IDtvdYOnEeObnc40kTtmyw" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_IDtvdoOnEeObnc40kTtmyw" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_IDtvd4OnEeObnc40kTtmyw" visible="false" id="interruptibleIconEdgeObject"/>
+      <waypoints>[0, 36, 72, -49]</waypoints>
+      <waypoints>[-72, 36, 0, -49]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_I8Zq8IOnEeObnc40kTtmyw" anchor="_IDshUIOnEeObnc40kTtmyw _I8Yc0IOnEeObnc40kTtmyw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_I8Zq8YOnEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_I8fxkIOnEeObnc40kTtmyw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_I8Zq8oOnEeObnc40kTtmyw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_I8Zq84OnEeObnc40kTtmyw" visible="false" id="guardEdgeObject" uDistance="44" vDistance="-30"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_I8Zq9IOnEeObnc40kTtmyw" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_I8Zq9YOnEeObnc40kTtmyw" id="nameEdgeObject" uDistance="62" vDistance="5"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_I8Zq9oOnEeObnc40kTtmyw" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_I8Zq94OnEeObnc40kTtmyw" visible="false" id="interruptibleIconEdgeObject"/>
+      <waypoints>[-114, 0, -6, -90]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_QfWfAIOnEeObnc40kTtmyw" position="194,535" size="81,65">
+      <anchorage xmi:id="_VlnOMIOnEeObnc40kTtmyw" graphEdge="_VlocUIOnEeObnc40kTtmyw _YWvSAIOnEeObnc40kTtmyw _ZFGz4IOnEeObnc40kTtmyw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_QfWfAYOnEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_QfdMsIOnEeObnc40kTtmyw"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_VlocUIOnEeObnc40kTtmyw" anchor="_IDshUIOnEeObnc40kTtmyw _VlnOMIOnEeObnc40kTtmyw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_VlocUYOnEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_Vlui8IOnEeObnc40kTtmyw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_VlocUoOnEeObnc40kTtmyw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_VlocU4OnEeObnc40kTtmyw" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_VlocVIOnEeObnc40kTtmyw" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_VlocVYOnEeObnc40kTtmyw" id="nameEdgeObject" uDistance="81" vDistance="-4"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_VlocVoOnEeObnc40kTtmyw" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_VlocV4OnEeObnc40kTtmyw" visible="false" id="interruptibleIconEdgeObject"/>
+      <waypoints>[85, 0, 9, -97]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_YWvSAIOnEeObnc40kTtmyw" anchor="_I8Yc0IOnEeObnc40kTtmyw _VlnOMIOnEeObnc40kTtmyw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_YWvSAYOnEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_YW1YoIOnEeObnc40kTtmyw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_YWvSAoOnEeObnc40kTtmyw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_YWvSA4OnEeObnc40kTtmyw" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_YWvSBIOnEeObnc40kTtmyw" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_YWvSBYOnEeObnc40kTtmyw" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_YWvSBoOnEeObnc40kTtmyw" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_YWvSB4OnEeObnc40kTtmyw" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_ZFGz4IOnEeObnc40kTtmyw" anchor="_VlnOMIOnEeObnc40kTtmyw _wYTKYIOjEeObnc40kTtmyw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ZFGz4YOnEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_ZFM6gIOnEeObnc40kTtmyw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_ZFGz4oOnEeObnc40kTtmyw" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_ZFGz44OnEeObnc40kTtmyw" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_ZFGz5IOnEeObnc40kTtmyw" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_ZFGz5YOnEeObnc40kTtmyw" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_ZFGz5oOnEeObnc40kTtmyw" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_ZFGz54OnEeObnc40kTtmyw" visible="false" id="interruptibleIconEdgeObject"/>
+      <waypoints>[7, 41, -111, 0]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_hhKaMIOnEeObnc40kTtmyw" position="388,494" size="202,76">
+      <anchorage xmi:id="_uIKW8IOnEeObnc40kTtmyw" graphEdge="_uIK-AIOnEeObnc40kTtmyw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_hhKaMYOnEeObnc40kTtmyw" presentation="default">
+        <element href="rick%20activity%20diagram%20anlegen%20vertrag.uml#_hhRu8IOnEeObnc40kTtmyw"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_uIK-AIOnEeObnc40kTtmyw" anchor="_uIKW8IOnEeObnc40kTtmyw _ss_9UIOjEeObnc40kTtmyw">
+      <semanticModel xsi:type="di:SimpleSemanticModelElement" xmi:id="_uIK-AYOnEeObnc40kTtmyw" presentation="default" typeInfo="CommentLink"/>
+    </contained>
+  </diagrams>
+</diagrams:Diagrams>

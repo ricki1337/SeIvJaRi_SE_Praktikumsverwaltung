@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagrams:Diagrams xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.topcased.org/DI/1.0" xmlns:diagrams="http://www.topcased.org/Diagrams/1.0" xmi:id="_ppkKgPrhEeOYium-N2dPGw" activeDiagram="_ppkKgfrhEeOYium-N2dPGw">
+  <model href="Entwicklerdoku%20sequenz%20student%20neu.uml#idInteraction"/>
+  <diagrams xmi:id="_ppkKgfrhEeOYium-N2dPGw" position="0,0" size="100,100" name="Entwicklerdoku sequenz student neu" viewport="0,185">
+    <property xmi:id="_p17LgPrhEeOYium-N2dPGw" key="pageFormatName" value="A4"/>
+    <property xmi:id="_p17LgfrhEeOYium-N2dPGw" key="diagramWidth" value="840"/>
+    <property xmi:id="_p17LgvrhEeOYium-N2dPGw" key="diagramHeight" value="1188"/>
+    <property xmi:id="_p17Lg_rhEeOYium-N2dPGw" key="pageMarginName" value="Small Margin"/>
+    <property xmi:id="_p17LhPrhEeOYium-N2dPGw" key="diagramTopMargin" value="20"/>
+    <property xmi:id="_p17LhfrhEeOYium-N2dPGw" key="diagramBottomMargin" value="20"/>
+    <property xmi:id="_p17LhvrhEeOYium-N2dPGw" key="diagramLeftMargin" value="20"/>
+    <property xmi:id="_p17Lh_rhEeOYium-N2dPGw" key="diagramRightMargin" value="20"/>
+    <property xmi:id="_p17LiPrhEeOYium-N2dPGw" key="orientation" value="portrait"/>
+    <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ppkKgvrhEeOYium-N2dPGw" presentation="org.topcased.modeler.uml.sequencediagram">
+      <element href="Entwicklerdoku%20sequenz%20student%20neu.uml#idInteraction"/>
+    </semanticModel>
+    <contained xsi:type="di:GraphNode" xmi:id="_uGqn8PrhEeOYium-N2dPGw" position="59,40" size="253,483">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_uGqn8frhEeOYium-N2dPGw" presentation="default">
+        <element href="Entwicklerdoku%20sequenz%20student%20neu.uml#_uGtrQPrhEeOYium-N2dPGw"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_yFvsoPrhEeOYium-N2dPGw" position="116,9" size="20,445">
+        <anchorage xmi:id="_Dse50PriEeOYium-N2dPGw" position="13,28" graphEdge="_DtfmcPriEeOYium-N2dPGw"/>
+        <anchorage xmi:id="_b7JyYPrkEeOYium-N2dPGw" position="13,67" graphEdge="_b7JyYfrkEeOYium-N2dPGw"/>
+        <anchorage xmi:id="_ddnDoPrkEeOYium-N2dPGw" position="14,116" graphEdge="_ddoRwfrkEeOYium-N2dPGw"/>
+        <anchorage xmi:id="_gyAzoPrkEeOYium-N2dPGw" position="6,156" graphEdge="_gyBasPrkEeOYium-N2dPGw"/>
+        <anchorage xmi:id="_tcEEYPrkEeOYium-N2dPGw" position="15,238" graphEdge="_tcF5kPrkEeOYium-N2dPGw"/>
+        <anchorage xmi:id="_5Fxz4PtwEeOArMmf6kBsfw" position="12,403" graphEdge="_5Fya8PtwEeOArMmf6kBsfw"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_yFvsofrhEeOYium-N2dPGw" presentation="default">
+          <element href="Entwicklerdoku%20sequenz%20student%20neu.uml#_yF8g8PrhEeOYium-N2dPGw"/>
+        </semanticModel>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_qvZp0PrkEeOYium-N2dPGw" position="25,202" size="50,20">
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_qvZp0frkEeOYium-N2dPGw" presentation="default">
+          <element href="Entwicklerdoku%20sequenz%20student%20neu.uml#_qvg-kPrkEeOYium-N2dPGw"/>
+        </semanticModel>
+      </contained>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_xV8AUPrhEeOYium-N2dPGw" position="455,40" size="197,483">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_xV8AUfrhEeOYium-N2dPGw" presentation="default">
+        <element href="Entwicklerdoku%20sequenz%20student%20neu.uml#_xV-ckPrhEeOYium-N2dPGw"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_3nQ0cPrhEeOYium-N2dPGw" position="88,9" size="20,445">
+        <anchorage xmi:id="_DtdxQPriEeOYium-N2dPGw" position="11,28" graphEdge="_DtfmcPriEeOYium-N2dPGw"/>
+        <anchorage xmi:id="_b7JLUPrkEeOYium-N2dPGw" position="6,67" graphEdge="_b7JyYfrkEeOYium-N2dPGw"/>
+        <anchorage xmi:id="_ddoRwPrkEeOYium-N2dPGw" position="6,116" graphEdge="_ddoRwfrkEeOYium-N2dPGw"/>
+        <anchorage xmi:id="_gyAMkPrkEeOYium-N2dPGw" position="11,156" graphEdge="_gyBasPrkEeOYium-N2dPGw"/>
+        <anchorage xmi:id="_tcFSgPrkEeOYium-N2dPGw" position="12,238" graphEdge="_tcF5kPrkEeOYium-N2dPGw"/>
+        <anchorage xmi:id="_5FwlwftwEeOArMmf6kBsfw" position="5,403" graphEdge="_5Fya8PtwEeOArMmf6kBsfw"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_3nQ0cfrhEeOYium-N2dPGw" presentation="default">
+          <element href="Entwicklerdoku%20sequenz%20student%20neu.uml#_3nTQsPrhEeOYium-N2dPGw"/>
+        </semanticModel>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_vZVCUPrkEeOYium-N2dPGw" position="73,276" size="50,20">
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_vZVCUfrkEeOYium-N2dPGw" presentation="default">
+          <element href="Entwicklerdoku%20sequenz%20student%20neu.uml#_vZWQcPrkEeOYium-N2dPGw"/>
+        </semanticModel>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_xVJ10PrkEeOYium-N2dPGw" position="73,317" size="50,20">
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_xVJ10frkEeOYium-N2dPGw" presentation="default">
+          <element href="Entwicklerdoku%20sequenz%20student%20neu.uml#_xVLD8PrkEeOYium-N2dPGw"/>
+        </semanticModel>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_y8ZgcPrkEeOYium-N2dPGw" position="73,368" size="50,20">
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_y8ZgcfrkEeOYium-N2dPGw" presentation="default">
+          <element href="Entwicklerdoku%20sequenz%20student%20neu.uml#_y8aukPrkEeOYium-N2dPGw"/>
+        </semanticModel>
+      </contained>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_DtfmcPriEeOYium-N2dPGw" anchor="_Dse50PriEeOYium-N2dPGw _DtdxQPriEeOYium-N2dPGw">
+      <property xmi:id="_zlZsEPriEeOYium-N2dPGw" key="font" value="-regular-9"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_DtfmcfriEeOYium-N2dPGw" presentation="default">
+        <element href="Entwicklerdoku%20sequenz%20student%20neu.uml#_Dtto4PriEeOYium-N2dPGw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_DtfmcvriEeOYium-N2dPGw" id="nameEdgeObject" offset="0,-10"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_b7JyYfrkEeOYium-N2dPGw" anchor="_b7JLUPrkEeOYium-N2dPGw _b7JyYPrkEeOYium-N2dPGw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_b7JyYvrkEeOYium-N2dPGw" presentation="default">
+        <element href="Entwicklerdoku%20sequenz%20student%20neu.uml#_b7ctUPrkEeOYium-N2dPGw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_b7JyY_rkEeOYium-N2dPGw" id="nameEdgeObject" offset="0,-10"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_ddoRwfrkEeOYium-N2dPGw" anchor="_ddnDoPrkEeOYium-N2dPGw _ddoRwPrkEeOYium-N2dPGw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ddoRwvrkEeOYium-N2dPGw" presentation="default">
+        <element href="Entwicklerdoku%20sequenz%20student%20neu.uml#_deDIgPrkEeOYium-N2dPGw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_ddoRw_rkEeOYium-N2dPGw" id="nameEdgeObject" offset="0,-10"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_gyBasPrkEeOYium-N2dPGw" anchor="_gyAMkPrkEeOYium-N2dPGw _gyAzoPrkEeOYium-N2dPGw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_gyBasfrkEeOYium-N2dPGw" presentation="default">
+        <element href="Entwicklerdoku%20sequenz%20student%20neu.uml#_gyU8sPrkEeOYium-N2dPGw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_gyBasvrkEeOYium-N2dPGw" id="nameEdgeObject" offset="0,-10"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_tcF5kPrkEeOYium-N2dPGw" anchor="_tcEEYPrkEeOYium-N2dPGw _tcFSgPrkEeOYium-N2dPGw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_tcF5kfrkEeOYium-N2dPGw" presentation="default">
+        <element href="Entwicklerdoku%20sequenz%20student%20neu.uml#_tckasPrkEeOYium-N2dPGw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_tcF5kvrkEeOYium-N2dPGw" id="nameEdgeObject" offset="0,-10"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_5Fya8PtwEeOArMmf6kBsfw" anchor="_5FwlwftwEeOArMmf6kBsfw _5Fxz4PtwEeOArMmf6kBsfw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_5Fya8ftwEeOArMmf6kBsfw" presentation="default">
+        <element href="Entwicklerdoku%20sequenz%20student%20neu.uml#_5GT_YPtwEeOArMmf6kBsfw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_5Fya8vtwEeOArMmf6kBsfw" id="nameEdgeObject" offset="0,-10"/>
+    </contained>
+  </diagrams>
+</diagrams:Diagrams>

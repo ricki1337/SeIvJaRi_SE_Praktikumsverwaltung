@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_qb8akM37EdqwVrslYOdUDA">
+  <packagedElement xmi:type="uml:Package" xmi:id="_w8IxIM37EdqwVrslYOdUDA" name="Praktikumsverwaltung">
+    <packagedElement xmi:type="uml:Actor" xmi:id="_snpnMH9ZEeOFFqCBgts--g" name="Praktikumsverantwortlicher"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_wL5xEH9ZEeOFFqCBgts--g" name="Studenten verwalten" isAbstract="true" useCase="_wL5xEH9ZEeOFFqCBgts--g" subject="_wL5xEH9ZEeOFFqCBgts--g">
+      <include xmi:id="_GOe3c39aEeOFFqCBgts--g" name="Include1" addition="_2HAdkH9ZEeOFFqCBgts--g"/>
+      <include xmi:id="_KipXIIHSEeO9TbmwoxemMQ" name="Include2" addition="_JujnwIHSEeO9TbmwoxemMQ"/>
+      <extensionPoint xmi:id="_HphSEH9aEeOFFqCBgts--g" name="Button Neu"/>
+      <extensionPoint xmi:id="_tp50sIAlEeOV07fk0emd0A" name="Button Mail senden"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_yQthcH9ZEeOFFqCBgts--g" name="Firmen verwalten" isAbstract="true">
+      <include xmi:id="_alYfI39aEeOFFqCBgts--g" name="Include1" addition="_ZwCykH9aEeOFFqCBgts--g"/>
+      <include xmi:id="_Fv7PAIHSEeO9TbmwoxemMQ" name="Include2" addition="_E-bgoIHSEeO9TbmwoxemMQ"/>
+      <extensionPoint xmi:id="__pvNcIAcEeOV07fk0emd0A" name="Button Firma hinzufügen"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_2HAdkH9ZEeOFFqCBgts--g" name="Anzeigen">
+      <include xmi:id="_FPhU0H9aEeOFFqCBgts--g" name="Include1" addition="_wL5xEH9ZEeOFFqCBgts--g"/>
+      <extensionPoint xmi:id="_9MEbwH9ZEeOFFqCBgts--g" name="Suchfeld"/>
+      <extensionPoint xmi:id="_zhA2QH9aEeOFFqCBgts--g" name="Bearbeitung der Felder"/>
+      <extensionPoint xmi:id="_99lVAIAZEeOV07fk0emd0A" name="Button Drucken"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="__wb18H9ZEeOFFqCBgts--g" name="A_&lt;praktikumsverantwortlicher>_&lt;studenten verwalten>" memberEnd="__wb18X9ZEeOFFqCBgts--g __wb19H9ZEeOFFqCBgts--g">
+      <ownedEnd xmi:id="__wb18X9ZEeOFFqCBgts--g" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="__wb18H9ZEeOFFqCBgts--g">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__wb18n9ZEeOFFqCBgts--g" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__wb1839ZEeOFFqCBgts--g" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="__wb19H9ZEeOFFqCBgts--g" name="studenten verwalten" type="_wL5xEH9ZEeOFFqCBgts--g" association="__wb18H9ZEeOFFqCBgts--g">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__wb19X9ZEeOFFqCBgts--g" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__wb19n9ZEeOFFqCBgts--g" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_ADGTRn9aEeOFFqCBgts--g" name="A_&lt;praktikumsverantwortlicher>_&lt;firmen verwalten>" memberEnd="_ADGTR39aEeOFFqCBgts--g _ADGTSn9aEeOFFqCBgts--g">
+      <ownedEnd xmi:id="_ADGTR39aEeOFFqCBgts--g" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_ADGTRn9aEeOFFqCBgts--g">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ADGTSH9aEeOFFqCBgts--g" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ADGTSX9aEeOFFqCBgts--g" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_ADGTSn9aEeOFFqCBgts--g" name="firmen verwalten" type="_yQthcH9ZEeOFFqCBgts--g" association="_ADGTRn9aEeOFFqCBgts--g">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ADGTS39aEeOFFqCBgts--g" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ADGTTH9aEeOFFqCBgts--g" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_J903AH9aEeOFFqCBgts--g" name="Daten eingeben"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_ZwCykH9aEeOFFqCBgts--g" name="Anzeigen">
+      <generalization xmi:id="_m6MfsH9aEeOFFqCBgts--g" general="_40ia0H9ZEeOFFqCBgts--g"/>
+      <extensionPoint xmi:id="_Yp5KIIAbEeOV07fk0emd0A" name="Suchfeld"/>
+      <extensionPoint xmi:id="_cQPlwIAbEeOV07fk0emd0A" name="Button Neuer Kontakt"/>
+      <extensionPoint xmi:id="_gmEWgIAbEeOV07fk0emd0A" name="Button Bearbeiten"/>
+      <extensionPoint xmi:id="_SbSLcIAeEeOV07fk0emd0A" name="Button Kontakt bearbeiten"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_bVUuUH9aEeOFFqCBgts--g" name="Anlegen">
+      <extensionPoint xmi:id="_dYk_gH9aEeOFFqCBgts--g" name="Button Import"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_gMqQsH9aEeOFFqCBgts--g" name="Import"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_UXVlQoAaEeOV07fk0emd0A" name="Verträge verwalten" isAbstract="true">
+      <include xmi:id="_yqZzxIAdEeOV07fk0emd0A" name="Include1" addition="_8TxpIoAaEeOV07fk0emd0A"/>
+      <include xmi:id="_AqMBE4HOEeO9TbmwoxemMQ" name="Include2" addition="__ykckIHNEeO9TbmwoxemMQ"/>
+      <extensionPoint xmi:id="_1sY-EIAdEeOV07fk0emd0A" name="Button Neuen Vertrag hinzufügen"/>
+      <extensionPoint xmi:id="_1Yo3cIAkEeOV07fk0emd0A" name="Button Drucken"/>
+      <extensionPoint xmi:id="_n6fa0IAlEeOV07fk0emd0A" name="Button Mail an Betreuer senden"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_1GTV0oAaEeOV07fk0emd0A" name="Kontakt hinzufügen">
+      <include xmi:id="_9YKmc4f-EeOz9qZr-sntZg" name="Include1" addition="_HibnEIHVEeOm7eGx0SwIbg"/>
+      <extend xmi:id="_cQigtYAbEeOV07fk0emd0A" name="Extend1" extendedCase="_8_4PQoAcEeOV07fk0emd0A" extensionLocation="_cQPlwIAbEeOV07fk0emd0A"/>
+      <extend xmi:id="_BHu_FIHWEeOm7eGx0SwIbg" name="Extend2" extendedCase="_HibnEIHVEeOm7eGx0SwIbg" extensionLocation="_BHa2AIHWEeOm7eGx0SwIbg"/>
+      <extend xmi:id="_ryfsRINIEeOElNdY8ylrQg" name="Extend3" extendedCase="_UeNz4oAbEeOV07fk0emd0A" extensionLocation="_rx5PUINIEeOElNdY8ylrQg"/>
+      <extend xmi:id="_z5N7xINIEeOElNdY8ylrQg" name="Extend4" extendedCase="_8_4PQoAcEeOV07fk0emd0A" extensionLocation="_z4oF4INIEeOElNdY8ylrQg"/>
+      <extend xmi:id="_zMb81If_EeOz9qZr-sntZg" name="Extend5" extendedCase="_8_4PQoAcEeOV07fk0emd0A" extensionLocation="_zMIa0If_EeOz9qZr-sntZg"/>
+      <extend xmi:id="_giWJUIgMEeOBIJc0t5u9Zw" name="Extend6" extendedCase="_8_4PQoAcEeOV07fk0emd0A" extensionLocation="_ghvsYYgMEeOBIJc0t5u9Zw"/>
+      <extensionPoint xmi:id="_YudaoINIEeOElNdY8ylrQg" name="ExtensionPoint1"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_6ULI4oAaEeOV07fk0emd0A" name="Betreuer verwalten" clientDependency="_aphgAIISEeOAXuZJKXkoQg" isAbstract="true">
+      <include xmi:id="_Wh20tIAdEeOV07fk0emd0A" name="Include1" addition="_MpH1AoAdEeOV07fk0emd0A"/>
+      <include xmi:id="_-eQ_Q4HREeO9TbmwoxemMQ" name="Include2" addition="_9sfkEIHREeO9TbmwoxemMQ"/>
+      <include xmi:id="_Benx4IHSEeO9TbmwoxemMQ" name="Include3" addition="_9sfkEIHREeO9TbmwoxemMQ"/>
+      <extensionPoint xmi:id="_UUEHcIAdEeOV07fk0emd0A" name="Button Betreuer anlegen"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_8TxpIoAaEeOV07fk0emd0A" name="Anzeigen">
+      <extensionPoint xmi:id="_4OOBoIAdEeOV07fk0emd0A" name="Suchfeld"/>
+      <extensionPoint xmi:id="_5sMbgIAdEeOV07fk0emd0A" name="Button bearbeiten"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_9Sq6UoAaEeOV07fk0emd0A" name="Anlegen">
+      <extend xmi:id="_1s1qBYAdEeOV07fk0emd0A" name="Extend1" extendedCase="_UXVlQoAaEeOV07fk0emd0A" extensionLocation="_1sY-EIAdEeOV07fk0emd0A"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_-0SeEoAaEeOV07fk0emd0A" name="Bearbeiten">
+      <include xmi:id="_3eEeM4gMEeOBIJc0t5u9Zw" name="Include1" addition="_gFMT8IIREeOAXuZJKXkoQg"/>
+      <extend xmi:id="_5spHdYAdEeOV07fk0emd0A" name="Extend1" extendedCase="_UXVlQoAaEeOV07fk0emd0A" extensionLocation="_5sMbgIAdEeOV07fk0emd0A"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_UeNz4oAbEeOV07fk0emd0A" name="Bearbeiten">
+      <include xmi:id="_5SP584f-EeOz9qZr-sntZg" name="Include1" addition="_HibnEIHVEeOm7eGx0SwIbg"/>
+      <extend xmi:id="_gmXRdYAbEeOV07fk0emd0A" name="Extend1" extendedCase="_HibnEIHVEeOm7eGx0SwIbg" extensionLocation="_gmEWgIAbEeOV07fk0emd0A"/>
+      <extend xmi:id="_djyx5INIEeOElNdY8ylrQg" name="Extend2" extendedCase="_NsYMUoAeEeOV07fk0emd0A" extensionLocation="_djDLAINIEeOElNdY8ylrQg"/>
+      <extensionPoint xmi:id="_i84WcINIEeOElNdY8ylrQg" name="ExtensionPoint1"/>
+      <extensionPoint xmi:id="_rx5PUINIEeOElNdY8ylrQg" name="ExtensionPoint2"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_WikRQoAbEeOV07fk0emd0A" name="Filtern">
+      <include xmi:id="_kBfSE4f-EeOz9qZr-sntZg" name="Include1" addition="_E-bgoIHSEeO9TbmwoxemMQ"/>
+      <extend xmi:id="_YqV2FIAbEeOV07fk0emd0A" name="Extend1" extendedCase="_E-bgoIHSEeO9TbmwoxemMQ" extensionLocation="_Yp5KIIAbEeOV07fk0emd0A"/>
+      <extend xmi:id="_9Ki1xIQPEeOdZvtSBWegFQ" name="Extend2" extendedCase="_E-bgoIHSEeO9TbmwoxemMQ" extensionLocation="_9J2SMIQPEeOdZvtSBWegFQ"/>
+      <extensionPoint xmi:id="_JZFmsIHVEeOm7eGx0SwIbg" name="ExtensionPoint1"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_8_4PQoAcEeOV07fk0emd0A" name="Anlegen">
+      <extend xmi:id="__qCIZYAcEeOV07fk0emd0A" name="Extend1" extendedCase="_yQthcH9ZEeOFFqCBgts--g" extensionLocation="__pvNcIAcEeOV07fk0emd0A"/>
+      <extend xmi:id="_YvD3lINIEeOElNdY8ylrQg" name="Extend2" extendedCase="_1GTV0oAaEeOV07fk0emd0A" extensionLocation="_YudaoINIEeOElNdY8ylrQg"/>
+      <extensionPoint xmi:id="_z4oF4INIEeOElNdY8ylrQg" name="ExtensionPoint1"/>
+      <extensionPoint xmi:id="_zMIa0If_EeOz9qZr-sntZg" name="ExtensionPoint2"/>
+      <extensionPoint xmi:id="_ghvsYYgMEeOBIJc0t5u9Zw" name="ExtensionPoint3"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_I1ekR4AdEeOV07fk0emd0A" name="A_&lt;betreuer verwalten>_&lt;praktikumsverantwortlicher>" memberEnd="_I1ekSIAdEeOV07fk0emd0A _I1ekS4AdEeOV07fk0emd0A">
+      <ownedEnd xmi:id="_I1ekSIAdEeOV07fk0emd0A" name="betreuer verwalten" type="_6ULI4oAaEeOV07fk0emd0A" association="_I1ekR4AdEeOV07fk0emd0A">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_I1ekSYAdEeOV07fk0emd0A" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_I1ekSoAdEeOV07fk0emd0A" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_I1ekS4AdEeOV07fk0emd0A" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_I1ekR4AdEeOV07fk0emd0A">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_I1ekTIAdEeOV07fk0emd0A" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_I1ekTYAdEeOV07fk0emd0A" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_MpH1AoAdEeOV07fk0emd0A" name="Anzeigen">
+      <extensionPoint xmi:id="_YCObQIAdEeOV07fk0emd0A" name="Suchfeld"/>
+      <extensionPoint xmi:id="_aA8KsIAdEeOV07fk0emd0A" name="Button bearbeiten"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_NtSAsoAdEeOV07fk0emd0A" name="Filtern">
+      <include xmi:id="_PFk404f-EeOz9qZr-sntZg" name="Include1" addition="_9sfkEIHREeO9TbmwoxemMQ"/>
+      <extend xmi:id="_YChWNYAdEeOV07fk0emd0A" name="Extend1" extendedCase="_6ULI4oAaEeOV07fk0emd0A" extensionLocation="_YCObQIAdEeOV07fk0emd0A"/>
+      <extend xmi:id="_GrAU1IQPEeOdZvtSBWegFQ" name="Extend2" extendedCase="_9sfkEIHREeO9TbmwoxemMQ" extensionLocation="_GqTxQIQPEeOdZvtSBWegFQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_P7XB0oAdEeOV07fk0emd0A" name="Bearbeiten">
+      <include xmi:id="_O9PRo4f9EeOz9qZr-sntZg" name="Include1" addition="_NcUQkIQPEeOdZvtSBWegFQ"/>
+      <extend xmi:id="_aBY2pYAdEeOV07fk0emd0A" name="Extend1" extendedCase="_6ULI4oAaEeOV07fk0emd0A" extensionLocation="_aA8KsIAdEeOV07fk0emd0A"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_R2Wu4oAdEeOV07fk0emd0A" name="Anlegen">
+      <include xmi:id="_DKp0Y4f9EeOz9qZr-sntZg" name="Include1" addition="_NcUQkIQPEeOdZvtSBWegFQ"/>
+      <extend xmi:id="_UUXCZYAdEeOV07fk0emd0A" name="Extend1" extendedCase="_6ULI4oAaEeOV07fk0emd0A" extensionLocation="_UUEHcIAdEeOV07fk0emd0A"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_oJW254AdEeOV07fk0emd0A" name="A_&lt;verträge verwalten>_&lt;praktikumsverantwortlicher>" memberEnd="_oJW26IAdEeOV07fk0emd0A _oJW264AdEeOV07fk0emd0A">
+      <ownedEnd xmi:id="_oJW26IAdEeOV07fk0emd0A" name="verträge verwalten" type="_UXVlQoAaEeOV07fk0emd0A" association="_oJW254AdEeOV07fk0emd0A">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_oJW26YAdEeOV07fk0emd0A" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_oJW26oAdEeOV07fk0emd0A" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_oJW264AdEeOV07fk0emd0A" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_oJW254AdEeOV07fk0emd0A">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_oJW27IAdEeOV07fk0emd0A" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_oJW27YAdEeOV07fk0emd0A" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_rn8dooAdEeOV07fk0emd0A" name="Filtern">
+      <include xmi:id="_2OVUo4gMEeOBIJc0t5u9Zw" name="Include1" addition="__ykckIHNEeO9TbmwoxemMQ"/>
+      <extend xmi:id="_4OqtlIAdEeOV07fk0emd0A" name="Extend1" extendedCase="_UXVlQoAaEeOV07fk0emd0A" extensionLocation="_4OOBoIAdEeOV07fk0emd0A"/>
+      <extend xmi:id="_nN5NtIQOEeOdZvtSBWegFQ" name="Extend2" extendedCase="__ykckIHNEeO9TbmwoxemMQ" extensionLocation="_nNMDEIQOEeOdZvtSBWegFQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_NsYMUoAeEeOV07fk0emd0A" name="Kontakt bearbeiten">
+      <include xmi:id="_7UzAg4f-EeOz9qZr-sntZg" name="Include1" addition="_HibnEIHVEeOm7eGx0SwIbg"/>
+      <extend xmi:id="_Sbu3YIAeEeOV07fk0emd0A" name="Extend1" extendedCase="_HibnEIHVEeOm7eGx0SwIbg" extensionLocation="_SbSLcIAeEeOV07fk0emd0A">
+        <condition xmi:id="_Sbu3YYAeEeOV07fk0emd0A" constrainedElement="_Sbu3YIAeEeOV07fk0emd0A">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_Sbu3YoAeEeOV07fk0emd0A">
+            <body>Kontakt vorhanden</body>
+          </specification>
+        </condition>
+      </extend>
+      <extend xmi:id="_i9eMVINIEeOElNdY8ylrQg" name="Extend2" extendedCase="_UeNz4oAbEeOV07fk0emd0A" extensionLocation="_i84WcINIEeOElNdY8ylrQg"/>
+      <extensionPoint xmi:id="_djDLAINIEeOElNdY8ylrQg" name="ExtensionPoint1"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_zVxn0oAkEeOV07fk0emd0A" name="Drucken">
+      <extend xmi:id="_1ZFjZYAkEeOV07fk0emd0A" name="Extend1" extendedCase="_UXVlQoAaEeOV07fk0emd0A" extensionLocation="_1Yo3cIAkEeOV07fk0emd0A"/>
+      <extend xmi:id="_wkftk4NGEeOElNdY8ylrQg" name="Extend2" extendedCase="_k6WqooAlEeOV07fk0emd0A" extensionLocation="_wj4pkINGEeOElNdY8ylrQg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_k6WqooAlEeOV07fk0emd0A" name="Mail an Betreuer">
+      <extend xmi:id="_n68GwIAlEeOV07fk0emd0A" name="Extend1" extendedCase="_UXVlQoAaEeOV07fk0emd0A" extensionLocation="_n6fa0IAlEeOV07fk0emd0A"/>
+      <extensionPoint xmi:id="_wj4pkINGEeOElNdY8ylrQg" name="ExtensionPoint1"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_00i2cIAlEeOV07fk0emd0A" name="Package1"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="__ykckIHNEeO9TbmwoxemMQ" name="Liste anzeigen">
+      <extensionPoint xmi:id="_nNMDEIQOEeOdZvtSBWegFQ" name="ExtensionPoint1"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_9sfkEIHREeO9TbmwoxemMQ" name="Liste anzeigen">
+      <extensionPoint xmi:id="_GqTxQIQPEeOdZvtSBWegFQ" name="ExtensionPoint1"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_E-bgoIHSEeO9TbmwoxemMQ" name="Liste anzeigen">
+      <extensionPoint xmi:id="_I4HnoIHVEeOm7eGx0SwIbg" name="ExtensionPoint1"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_OurAwIHUEeOm7eGx0SwIbg" name="Studenten auswählen">
+      <extend xmi:id="_QlrltIHUEeOm7eGx0SwIbg" name="Extend1" extendedCase="_JujnwIHSEeO9TbmwoxemMQ" extensionLocation="_QlTLMIHUEeOm7eGx0SwIbg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_g7J_UIHUEeOm7eGx0SwIbg" name="Auswahl"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_p9Q5AIHUEeOm7eGx0SwIbg" name="Firmendaten anzeigen"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_HibnEIHVEeOm7eGx0SwIbg" name="Details anzeigen">
+      <extend xmi:id="_I4Z7hIHVEeOm7eGx0SwIbg" name="Extend1" extendedCase="_E-bgoIHSEeO9TbmwoxemMQ" extensionLocation="_I4HnoIHVEeOm7eGx0SwIbg"/>
+      <extend xmi:id="_JZYhoIHVEeOm7eGx0SwIbg" name="Extend2" extendedCase="_WikRQoAbEeOV07fk0emd0A" extensionLocation="_JZFmsIHVEeOm7eGx0SwIbg"/>
+      <extensionPoint xmi:id="_BHa2AIHWEeOm7eGx0SwIbg" name="ExtensionPoint1"/>
+      <extensionPoint xmi:id="_9J2SMIQPEeOdZvtSBWegFQ" name="ExtensionPoint2"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Actor" xmi:id="_-s5TgIIFEeOAXuZJKXkoQg" name="Praktikumsverantwortlicher"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_FsxvYIIJEeOAXuZJKXkoQg" name="Studenten verwalten"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_HQ2KMIIJEeOAXuZJKXkoQg" name="A_&lt;praktikumsverantwortlicher>_&lt;praktikumsverwaltung>" memberEnd="_HQ2KMYIJEeOAXuZJKXkoQg _HQ2KNIIJEeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_HQ2KMYIJEeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_-s5TgIIFEeOAXuZJKXkoQg" association="_HQ2KMIIJEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_HQ2KMoIJEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_HQ2KM4IJEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_HQ2KNIIJEeOAXuZJKXkoQg" name="praktikumsverwaltung" type="_FsxvYIIJEeOAXuZJKXkoQg" association="_HQ2KMIIJEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_HQ2KNYIJEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_HQ2KNoIJEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_9a0jcIIMEeOAXuZJKXkoQg" name="Firmen verwalten"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="__JK7oIIMEeOAXuZJKXkoQg" name="UseCase1"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="__lE0gIIMEeOAXuZJKXkoQg" name="Betreuer verwalten"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_AFpK8IINEeOAXuZJKXkoQg" name="Verträge verwalten"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_DqIlZoINEeOAXuZJKXkoQg" name="A_&lt;praktikumsverantwortlicher>_&lt;firmen verwalten>_2" memberEnd="_DqIlZ4INEeOAXuZJKXkoQg _DqIlaoINEeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_DqIlZ4INEeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_-s5TgIIFEeOAXuZJKXkoQg" association="_DqIlZoINEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DqIlaIINEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DqIlaYINEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_DqIlaoINEeOAXuZJKXkoQg" name="firmen verwalten" type="_9a0jcIIMEeOAXuZJKXkoQg" association="_DqIlZoINEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DqIla4INEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DqIlbIINEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_E4RMcIINEeOAXuZJKXkoQg" name="A_&lt;betreuer verwalten>_&lt;praktikumsverantwortlicher>_2" memberEnd="_E4RMcYINEeOAXuZJKXkoQg _E4RMdIINEeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_E4RMcYINEeOAXuZJKXkoQg" name="betreuer verwalten" type="__lE0gIIMEeOAXuZJKXkoQg" association="_E4RMcIINEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_E4RMcoINEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_E4RMc4INEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_E4RMdIINEeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_-s5TgIIFEeOAXuZJKXkoQg" association="_E4RMcIINEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_E4RMdYINEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_E4RMdoINEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_HWh-oIINEeOAXuZJKXkoQg" name="A_&lt;verträge verwalten>_&lt;praktikumsverantwortlicher>_2" memberEnd="_HWh-oYINEeOAXuZJKXkoQg _HWh-pIINEeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_HWh-oYINEeOAXuZJKXkoQg" name="verträge verwalten" type="_AFpK8IINEeOAXuZJKXkoQg" association="_HWh-oIINEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_HWh-ooINEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_HWh-o4INEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_HWh-pIINEeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_-s5TgIIFEeOAXuZJKXkoQg" association="_HWh-oIINEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_HWh-pYINEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_HWh-poINEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_zKsiBoINEeOAXuZJKXkoQg" name="A_&lt;praktikumsverantwortlicher>_&lt;anlegen>" memberEnd="_zKsiB4INEeOAXuZJKXkoQg _zKsiCoINEeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_zKsiB4INEeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_zKsiBoINEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zKsiCIINEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zKsiCYINEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_zKsiCoINEeOAXuZJKXkoQg" name="anlegen" type="_40ia0H9ZEeOFFqCBgts--g" association="_zKsiBoINEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zKsiC4INEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zKsiDIINEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_zhJTJoINEeOAXuZJKXkoQg" name="A_&lt;praktikumsverantwortlicher>_&lt;import>" memberEnd="_zhJTJ4INEeOAXuZJKXkoQg _zhJTKoINEeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_zhJTJ4INEeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_zhJTJoINEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zhJTKIINEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zhJTKYINEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_zhJTKoINEeOAXuZJKXkoQg" name="import" type="_L-HTwH9aEeOFFqCBgts--g" association="_zhJTJoINEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zhJTK4INEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zhJTLIINEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_z5pStoINEeOAXuZJKXkoQg" name="A_&lt;praktikumsverantwortlicher>_&lt;liste anzeigen>" memberEnd="_z5pSt4INEeOAXuZJKXkoQg _z5pSuoINEeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_z5pSt4INEeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_z5pStoINEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_z5pSuIINEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_z5pSuYINEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_z5pSuoINEeOAXuZJKXkoQg" name="liste anzeigen" type="_JujnwIHSEeO9TbmwoxemMQ" association="_z5pStoINEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_z5pSu4INEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_z5pSvIINEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_0ed3BoINEeOAXuZJKXkoQg" name="A_&lt;praktikumsverantwortlicher>_&lt;filtern>" memberEnd="_0ed3B4INEeOAXuZJKXkoQg _0ed3CoINEeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_0ed3B4INEeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_0ed3BoINEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0ed3CIINEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0ed3CYINEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_0ed3CoINEeOAXuZJKXkoQg" name="filtern" type="_6_eoYH9ZEeOFFqCBgts--g" association="_0ed3BoINEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0ed3C4INEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0ed3DIINEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_04VIhoINEeOAXuZJKXkoQg" name="A_&lt;praktikumsverantwortlicher>_&lt;dokument(e) drucken>" memberEnd="_04VIh4INEeOAXuZJKXkoQg _04VIioINEeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_04VIh4INEeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_04VIhoINEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_04VIiIINEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_04VIiYINEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_04VIioINEeOAXuZJKXkoQg" name="dokument(e) drucken" type="_7tTUcIAZEeOV07fk0emd0A" association="_04VIhoINEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_04VIi4INEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_04VIjIINEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_WStYIIIPEeOAXuZJKXkoQg" name="A_&lt;mail senden>_&lt;praktikumsverantwortlicher>" memberEnd="_WStYIYIPEeOAXuZJKXkoQg _WStYJIIPEeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_WStYIYIPEeOAXuZJKXkoQg" name="mail senden" type="_qchSsoAlEeOV07fk0emd0A" association="_WStYIIIPEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WStYIoIPEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WStYI4IPEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_WStYJIIPEeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_WStYIIIPEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WStYJYIPEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WStYJoIPEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_WxtBQIIPEeOAXuZJKXkoQg" name="A_&lt;student anzeigen>_&lt;praktikumsverantwortlicher>" memberEnd="_WxtBQYIPEeOAXuZJKXkoQg _WxtBRIIPEeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_WxtBQYIPEeOAXuZJKXkoQg" name="student anzeigen" type="_1ve0wIHSEeO9TbmwoxemMQ" association="_WxtBQIIPEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WxtBQoIPEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WxtBQ4IPEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_WxtBRIIPEeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_WxtBQIIPEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WxtBRYIPEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WxtBRoIPEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_XmR40IIPEeOAXuZJKXkoQg" name="A_&lt;bearbeiten>_&lt;praktikumsverantwortlicher>" memberEnd="_XmR40YIPEeOAXuZJKXkoQg _XmR41IIPEeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_XmR40YIPEeOAXuZJKXkoQg" name="bearbeiten" type="_xCvdAH9aEeOFFqCBgts--g" association="_XmR40IIPEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XmR40oIPEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XmR404IPEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_XmR41IIPEeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_XmR40IIPEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XmR41YIPEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XmR41oIPEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_a0ObgIIPEeOAXuZJKXkoQg" name="Studenten verwalten"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_qchSsoAlEeOV07fk0emd0A" name="Mail senden">
+      <extend xmi:id="_tqMvpYAlEeOV07fk0emd0A" name="Extend1" extendedCase="_1ve0wIHSEeO9TbmwoxemMQ" extensionLocation="_tp50sIAlEeOV07fk0emd0A"/>
+      <extend xmi:id="_XSQLYIHUEeOm7eGx0SwIbg" name="Extend2" extendedCase="_6_eoYH9ZEeOFFqCBgts--g" extensionLocation="_XR5mEIHUEeOm7eGx0SwIbg"/>
+      <extend xmi:id="_NxCHcIIOEeOAXuZJKXkoQg" name="Extend3" extendedCase="_1ve0wIHSEeO9TbmwoxemMQ" extensionLocation="_NwtXUIIOEeOAXuZJKXkoQg"/>
+      <extend xmi:id="_-rKtQIQKEeOdZvtSBWegFQ" name="Extend4" extendedCase="_7tTUcIAZEeOV07fk0emd0A" extensionLocation="_-qW08YQKEeOdZvtSBWegFQ"/>
+      <extensionPoint xmi:id="_UUie8INGEeOElNdY8ylrQg" name="ExtensionPoint1"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_7tTUcIAZEeOV07fk0emd0A" name="Meldung drucken">
+      <extend xmi:id="_9-CA9YAZEeOV07fk0emd0A" name="Extend1" extendedCase="_1ve0wIHSEeO9TbmwoxemMQ" extensionLocation="_99lVAIAZEeOV07fk0emd0A"/>
+      <extend xmi:id="_fA6gNIHUEeOm7eGx0SwIbg" name="Extend2" extendedCase="_JujnwIHSEeO9TbmwoxemMQ" extensionLocation="_fAlwEIHUEeOm7eGx0SwIbg"/>
+      <extend xmi:id="_UVhWY4NGEeOElNdY8ylrQg" name="Extend3" extendedCase="_qchSsoAlEeOV07fk0emd0A" extensionLocation="_UUie8INGEeOElNdY8ylrQg"/>
+      <extensionPoint xmi:id="_-qW08YQKEeOdZvtSBWegFQ" name="ExtensionPoint1"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_6_eoYH9ZEeOFFqCBgts--g" name="Filtern">
+      <include xmi:id="_pNwaRIgMEeOBIJc0t5u9Zw" name="Include1" addition="_JujnwIHSEeO9TbmwoxemMQ"/>
+      <extend xmi:id="_9M5iMH9ZEeOFFqCBgts--g" name="Extend1" extendedCase="_JujnwIHSEeO9TbmwoxemMQ" extensionLocation="_9MEbwH9ZEeOFFqCBgts--g"/>
+      <extend xmi:id="_DF5r0IQOEeOdZvtSBWegFQ" name="Extend2" extendedCase="_JujnwIHSEeO9TbmwoxemMQ" extensionLocation="_DFI20IQOEeOdZvtSBWegFQ"/>
+      <extensionPoint xmi:id="_ECPIsIHTEeO9TbmwoxemMQ" name="ExtensionPoint1"/>
+      <extensionPoint xmi:id="_XR5mEIHUEeOm7eGx0SwIbg" name="ExtensionPoint2"/>
+      <extensionPoint xmi:id="_fAlwEIHUEeOm7eGx0SwIbg" name="ExtensionPoint3"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_JujnwIHSEeO9TbmwoxemMQ" name="Liste anzeigen">
+      <extensionPoint xmi:id="_4dRQsIHSEeO9TbmwoxemMQ" name="ExtensionPoint1"/>
+      <extensionPoint xmi:id="_QlTLMIHUEeOm7eGx0SwIbg" name="ExtensionPoint2"/>
+      <extensionPoint xmi:id="_KO-9AIIOEeOAXuZJKXkoQg" name="ExtensionPoint3"/>
+      <extensionPoint xmi:id="_DFI20IQOEeOdZvtSBWegFQ" name="ExtensionPoint4"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_1ve0wIHSEeO9TbmwoxemMQ" name="Details anzeigen">
+      <extend xmi:id="_4eOS8IHSEeO9TbmwoxemMQ" name="Extend1" extendedCase="_JujnwIHSEeO9TbmwoxemMQ" extensionLocation="_4dRQsIHSEeO9TbmwoxemMQ"/>
+      <extend xmi:id="_EDNZEIHTEeO9TbmwoxemMQ" name="Extend2" extendedCase="_6_eoYH9ZEeOFFqCBgts--g" extensionLocation="_ECPIsIHTEeO9TbmwoxemMQ"/>
+      <extend xmi:id="__WVYcIINEeOAXuZJKXkoQg" name="trest" extendedCase="_6_eoYH9ZEeOFFqCBgts--g">
+        <condition xmi:id="__WVYcYINEeOAXuZJKXkoQg" constrainedElement="__WVYcIINEeOAXuZJKXkoQg">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="__WVYcoINEeOAXuZJKXkoQg">
+            <body>Filterergebnis enthält genau ein ergebnis</body>
+          </specification>
+        </condition>
+      </extend>
+      <extend xmi:id="_KPSfBIIOEeOAXuZJKXkoQg" name="Extend3" extendedCase="_JujnwIHSEeO9TbmwoxemMQ" extensionLocation="_KO-9AIIOEeOAXuZJKXkoQg"/>
+      <extensionPoint xmi:id="_M7MroIIOEeOAXuZJKXkoQg" name="ExtensionPoint1"/>
+      <extensionPoint xmi:id="_NwtXUIIOEeOAXuZJKXkoQg" name="ExtensionPoint2"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_xCvdAH9aEeOFFqCBgts--g" name="Bearbeiten">
+      <include xmi:id="_u0RW04gMEeOBIJc0t5u9Zw" name="Include1" addition="_1ve0wIHSEeO9TbmwoxemMQ"/>
+      <extend xmi:id="_zhTxNH9aEeOFFqCBgts--g" name="Extend1" extendedCase="_1ve0wIHSEeO9TbmwoxemMQ" extensionLocation="_zhA2QH9aEeOFFqCBgts--g"/>
+      <extend xmi:id="_M7hbwIIOEeOAXuZJKXkoQg" name="Extend2" extendedCase="_1ve0wIHSEeO9TbmwoxemMQ" extensionLocation="_M7MroIIOEeOAXuZJKXkoQg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_L-HTwH9aEeOFFqCBgts--g" name="Import">
+      <extend xmi:id="_N3xkFH9aEeOFFqCBgts--g" name="Extend1" extendedCase="_40ia0H9ZEeOFFqCBgts--g" extensionLocation="_N3eCEH9aEeOFFqCBgts--g"/>
+      <extend xmi:id="_dY5IlH9aEeOFFqCBgts--g" name="Extend2" extendedCase="_bVUuUH9aEeOFFqCBgts--g" extensionLocation="_dYk_gH9aEeOFFqCBgts--g"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_40ia0H9ZEeOFFqCBgts--g" name="Anlegen">
+      <include xmi:id="_LRCyY39aEeOFFqCBgts--g" name="Include1" addition="_J903AH9aEeOFFqCBgts--g"/>
+      <extend xmi:id="_Hp1bJH9aEeOFFqCBgts--g" name="Extend1" extendedCase="_wL5xEH9ZEeOFFqCBgts--g" extensionLocation="_HphSEH9aEeOFFqCBgts--g"/>
+      <extensionPoint xmi:id="_N3eCEH9aEeOFFqCBgts--g" name="Button Import"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_wGBlMIIPEeOAXuZJKXkoQg" name="Studenten verwalten"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_9xjEkIIQEeOAXuZJKXkoQg" name="A_&lt;praktikumsverantwortlicher>_&lt;filtern>_2" memberEnd="_9xjEkYIQEeOAXuZJKXkoQg _9xjElIIQEeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_9xjEkYIQEeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_9xjEkIIQEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9xjEkoIQEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9xjEk4IQEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_9xjElIIQEeOAXuZJKXkoQg" name="filtern" type="_NtSAsoAdEeOV07fk0emd0A" association="_9xjEkIIQEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9xjElYIQEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9xjEloIQEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_-NgAwIIQEeOAXuZJKXkoQg" name="A_&lt;praktikumsverantwortlicher>_&lt;bearbeiten>" memberEnd="_-NgAwYIQEeOAXuZJKXkoQg _-NgAxIIQEeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_-NgAwYIQEeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_-NgAwIIQEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-NgAwoIQEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-NgAw4IQEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_-NgAxIIQEeOAXuZJKXkoQg" name="bearbeiten" type="_P7XB0oAdEeOV07fk0emd0A" association="_-NgAwIIQEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-NgAxYIQEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-NgAxoIQEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_-z7HkIIQEeOAXuZJKXkoQg" name="A_&lt;praktikumsverantwortlicher>_&lt;anzeigen>" memberEnd="_-z7HkYIQEeOAXuZJKXkoQg _-z7HlIIQEeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_-z7HkYIQEeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_-z7HkIIQEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-z7HkoIQEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-z7Hk4IQEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_-z7HlIIQEeOAXuZJKXkoQg" name="anzeigen" type="_9sfkEIHREeO9TbmwoxemMQ" association="_-z7HkIIQEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-z7HlYIQEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-z7HloIQEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="__MpwoIIQEeOAXuZJKXkoQg" name="A_&lt;praktikumsverantwortlicher>_&lt;anlegen>_2" memberEnd="__MpwoYIQEeOAXuZJKXkoQg __MpwpIIQEeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="__MpwoYIQEeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="__MpwoIIQEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__MpwooIQEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__Mpwo4IQEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="__MpwpIIQEeOAXuZJKXkoQg" name="anlegen" type="_R2Wu4oAdEeOV07fk0emd0A" association="__MpwoIIQEeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__MpwpYIQEeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__MpwpoIQEeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_LY5rEIIREeOAXuZJKXkoQg" name="A_&lt;praktikumsverantwortlicher>_&lt;anlegen>_3" memberEnd="_LY5rEYIREeOAXuZJKXkoQg _LY5rFIIREeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_LY5rEYIREeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_LY5rEIIREeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LY5rEoIREeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LY5rE4IREeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_LY5rFIIREeOAXuZJKXkoQg" name="anlegen" type="_8_4PQoAcEeOV07fk0emd0A" association="_LY5rEIIREeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LY5rFYIREeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LY5rFoIREeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_Lz0FcIIREeOAXuZJKXkoQg" name="A_&lt;praktikumsverantwortlicher>_&lt;kontakt hinzufügen>" memberEnd="_Lz0FcYIREeOAXuZJKXkoQg _Lz0FdIIREeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_Lz0FcYIREeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_Lz0FcIIREeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Lz0FcoIREeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Lz0Fc4IREeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_Lz0FdIIREeOAXuZJKXkoQg" name="kontakt hinzufügen" type="_1GTV0oAaEeOV07fk0emd0A" association="_Lz0FcIIREeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Lz0FdYIREeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Lz0FdoIREeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_MOKfIIIREeOAXuZJKXkoQg" name="A_&lt;praktikumsverantwortlicher>_&lt;kontakt bearbeiten>" memberEnd="_MOKfIYIREeOAXuZJKXkoQg _MOKfJIIREeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_MOKfIYIREeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_MOKfIIIREeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MOKfIoIREeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MOKfI4IREeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_MOKfJIIREeOAXuZJKXkoQg" name="kontakt bearbeiten" type="_NsYMUoAeEeOV07fk0emd0A" association="_MOKfIIIREeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MOKfJYIREeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MOKfJoIREeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_MkDPkIIREeOAXuZJKXkoQg" name="A_&lt;praktikumsverantwortlicher>_&lt;bearbeiten>_2" memberEnd="_MkDPkYIREeOAXuZJKXkoQg _MkDPlIIREeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_MkDPkYIREeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_MkDPkIIREeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MkDPkoIREeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MkDPk4IREeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_MkDPlIIREeOAXuZJKXkoQg" name="bearbeiten" type="_UeNz4oAbEeOV07fk0emd0A" association="_MkDPkIIREeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MkDPlYIREeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MkDPloIREeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_M8eWoIIREeOAXuZJKXkoQg" name="A_&lt;praktikumsverantwortlicher>_&lt;liste anzeigen>_2" memberEnd="_M8eWoYIREeOAXuZJKXkoQg _M8eWpIIREeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_M8eWoYIREeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_M8eWoIIREeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_M8eWooIREeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_M8eWo4IREeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_M8eWpIIREeOAXuZJKXkoQg" name="liste anzeigen" type="_E-bgoIHSEeO9TbmwoxemMQ" association="_M8eWoIIREeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_M8eWpYIREeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_M8eWpoIREeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_NfSv0IIREeOAXuZJKXkoQg" name="A_&lt;praktikumsverantwortlicher>_&lt;details anzeigen>" memberEnd="_NfSv0YIREeOAXuZJKXkoQg _NfSv1IIREeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_NfSv0YIREeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_NfSv0IIREeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_NfSv0oIREeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NfSv04IREeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_NfSv1IIREeOAXuZJKXkoQg" name="details anzeigen" type="_HibnEIHVEeOm7eGx0SwIbg" association="_NfSv0IIREeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_NfSv1YIREeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NfSv1oIREeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_N6wj0IIREeOAXuZJKXkoQg" name="A_&lt;praktikumsverantwortlicher>_&lt;filtern>_3" memberEnd="_N6wj0YIREeOAXuZJKXkoQg _N6wj1IIREeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_N6wj0YIREeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_N6wj0IIREeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_N6wj0oIREeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_N6wj04IREeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_N6wj1IIREeOAXuZJKXkoQg" name="filtern" type="_WikRQoAbEeOV07fk0emd0A" association="_N6wj0IIREeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_N6wj1YIREeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_N6wj1oIREeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_gFMT8IIREeOAXuZJKXkoQg" name="Details anzeigen"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_lHzSMIIREeOAXuZJKXkoQg" name="A_&lt;praktikumsverantwortlicher>_&lt;drucken>" memberEnd="_lHzSMYIREeOAXuZJKXkoQg _lHzSNIIREeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_lHzSMYIREeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_lHzSMIIREeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lHzSMoIREeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lHzSM4IREeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_lHzSNIIREeOAXuZJKXkoQg" name="drucken" type="_zVxn0oAkEeOV07fk0emd0A" association="_lHzSMIIREeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lHzSNYIREeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lHzSNoIREeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_ldBUQIIREeOAXuZJKXkoQg" name="A_&lt;praktikumsverantwortlicher>_&lt;mail an Betreuer>" memberEnd="_ldBUQYIREeOAXuZJKXkoQg _ldBURIIREeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_ldBUQYIREeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_ldBUQIIREeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ldBUQoIREeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ldBUQ4IREeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_ldBURIIREeOAXuZJKXkoQg" name="mail an Betreuer" type="_k6WqooAlEeOV07fk0emd0A" association="_ldBUQIIREeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ldBURYIREeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ldBURoIREeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_lwxWsIIREeOAXuZJKXkoQg" name="A_&lt;praktikumsverantwortlicher>_&lt;bearbeiten>_3" memberEnd="_lwxWsYIREeOAXuZJKXkoQg _lwxWtIIREeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_lwxWsYIREeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_lwxWsIIREeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lwxWsoIREeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lwxWs4IREeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_lwxWtIIREeOAXuZJKXkoQg" name="bearbeiten" type="_-0SeEoAaEeOV07fk0emd0A" association="_lwxWsIIREeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lwxWtYIREeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lwxWtoIREeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_mCrmEIIREeOAXuZJKXkoQg" name="A_&lt;praktikumsverantwortlicher>_&lt;details anzeigen>_2" memberEnd="_mCrmEYIREeOAXuZJKXkoQg _mCrmFIIREeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_mCrmEYIREeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_mCrmEIIREeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mCrmEoIREeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mCrmE4IREeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_mCrmFIIREeOAXuZJKXkoQg" name="details anzeigen" type="_gFMT8IIREeOAXuZJKXkoQg" association="_mCrmEIIREeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mCrmFYIREeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mCrmFoIREeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_mTvg4IIREeOAXuZJKXkoQg" name="A_&lt;praktikumsverantwortlicher>_&lt;filtern>_4" memberEnd="_mTvg4YIREeOAXuZJKXkoQg _mTvg5IIREeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_mTvg4YIREeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_mTvg4IIREeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mTvg4oIREeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mTvg44IREeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_mTvg5IIREeOAXuZJKXkoQg" name="filtern" type="_rn8dooAdEeOV07fk0emd0A" association="_mTvg4IIREeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mTvg5YIREeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mTvg5oIREeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_mrnOUIIREeOAXuZJKXkoQg" name="A_&lt;praktikumsverantwortlicher>_&lt;liste anzeigen>_3" memberEnd="_mrnOUYIREeOAXuZJKXkoQg _mrnOVIIREeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_mrnOUYIREeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_mrnOUIIREeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mrnOUoIREeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mrnOU4IREeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_mrnOVIIREeOAXuZJKXkoQg" name="liste anzeigen" type="__ykckIHNEeO9TbmwoxemMQ" association="_mrnOUIIREeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mrnOVYIREeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mrnOVoIREeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_m_biMIIREeOAXuZJKXkoQg" name="A_&lt;praktikumsverantwortlicher>_&lt;anlegen>_4" memberEnd="_m_biMYIREeOAXuZJKXkoQg _m_biNIIREeOAXuZJKXkoQg">
+      <ownedEnd xmi:id="_m_biMYIREeOAXuZJKXkoQg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_m_biMIIREeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_m_biMoIREeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_m_biM4IREeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_m_biNIIREeOAXuZJKXkoQg" name="anlegen" type="_9Sq6UoAaEeOV07fk0emd0A" association="_m_biMIIREeOAXuZJKXkoQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_m_biNYIREeOAXuZJKXkoQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_m_biNoIREeOAXuZJKXkoQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_aphgAIISEeOAXuZJKXkoQg" name="Dependency1" supplier="_E-bgoIHSEeO9TbmwoxemMQ" client="_6ULI4oAaEeOV07fk0emd0A"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_4XSUcINGEeOElNdY8ylrQg" name="Mail an Student"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_5_7GMINGEeOElNdY8ylrQg" name="A_&lt;praktikumsverantwortlicher>_&lt;mail an Student>" memberEnd="_5_7GMYNGEeOElNdY8ylrQg _5_7GNINGEeOElNdY8ylrQg">
+      <ownedEnd xmi:id="_5_7GMYNGEeOElNdY8ylrQg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_5_7GMINGEeOElNdY8ylrQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5_7GMoNGEeOElNdY8ylrQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_7GM4NGEeOElNdY8ylrQg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_5_7GNINGEeOElNdY8ylrQg" name="mail an Student" type="_4XSUcINGEeOElNdY8ylrQg" association="_5_7GMINGEeOElNdY8ylrQg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5_7GNYNGEeOElNdY8ylrQg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5_7GNoNGEeOElNdY8ylrQg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_NcUQkIQPEeOdZvtSBWegFQ" name="Details anzeigen"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_P6Q5sIQPEeOdZvtSBWegFQ" name="A_&lt;praktikumsverantwortlicher>_&lt;details anzeigen>_3" memberEnd="_P6Q5sYQPEeOdZvtSBWegFQ _P6Q5tIQPEeOdZvtSBWegFQ">
+      <ownedEnd xmi:id="_P6Q5sYQPEeOdZvtSBWegFQ" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_P6Q5sIQPEeOdZvtSBWegFQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_P6Q5soQPEeOdZvtSBWegFQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_P6Q5s4QPEeOdZvtSBWegFQ" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_P6Q5tIQPEeOdZvtSBWegFQ" name="details anzeigen" type="_NcUQkIQPEeOdZvtSBWegFQ" association="_P6Q5sIQPEeOdZvtSBWegFQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_P6Q5tYQPEeOdZvtSBWegFQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_P6Q5toQPEeOdZvtSBWegFQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_IHaM0If-EeOz9qZr-sntZg" name="A_&lt;praktikumsverantwortlicher>_&lt;bearbeiten>_4" memberEnd="_IHaM0Yf-EeOz9qZr-sntZg _IHaM1If-EeOz9qZr-sntZg">
+      <ownedEnd xmi:id="_IHaM0Yf-EeOz9qZr-sntZg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_IHaM0If-EeOz9qZr-sntZg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IHaM0of-EeOz9qZr-sntZg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IHaM04f-EeOz9qZr-sntZg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_IHaM1If-EeOz9qZr-sntZg" name="bearbeiten" type="_P7XB0oAdEeOV07fk0emd0A" association="_IHaM0If-EeOz9qZr-sntZg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IHaM1Yf-EeOz9qZr-sntZg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IHaM1of-EeOz9qZr-sntZg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_MdpNRof-EeOz9qZr-sntZg" name="A_&lt;praktikumsverantwortlicher>_&lt;filtern>_5" memberEnd="_MdpNR4f-EeOz9qZr-sntZg _MdpNSof-EeOz9qZr-sntZg">
+      <ownedEnd xmi:id="_MdpNR4f-EeOz9qZr-sntZg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_MdpNRof-EeOz9qZr-sntZg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MdpNSIf-EeOz9qZr-sntZg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MdpNSYf-EeOz9qZr-sntZg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_MdpNSof-EeOz9qZr-sntZg" name="filtern" type="_NtSAsoAdEeOV07fk0emd0A" association="_MdpNRof-EeOz9qZr-sntZg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MdpNS4f-EeOz9qZr-sntZg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MdpNTIf-EeOz9qZr-sntZg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_fyzrIIf-EeOz9qZr-sntZg" name="A_&lt;praktikumsverantwortlicher>_&lt;filtern>_6" memberEnd="_fyzrIYf-EeOz9qZr-sntZg _fyzrJIf-EeOz9qZr-sntZg">
+      <ownedEnd xmi:id="_fyzrIYf-EeOz9qZr-sntZg" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_fyzrIIf-EeOz9qZr-sntZg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_fyzrIof-EeOz9qZr-sntZg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_fyzrI4f-EeOz9qZr-sntZg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_fyzrJIf-EeOz9qZr-sntZg" name="filtern" type="_WikRQoAbEeOV07fk0emd0A" association="_fyzrIIf-EeOz9qZr-sntZg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_fyzrJYf-EeOz9qZr-sntZg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_fyzrJof-EeOz9qZr-sntZg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_qLZuRogMEeOBIJc0t5u9Zw" name="A_&lt;praktikumsverantwortlicher>_&lt;filtern>_7" memberEnd="_qLZuR4gMEeOBIJc0t5u9Zw _qLZuSogMEeOBIJc0t5u9Zw">
+      <ownedEnd xmi:id="_qLZuR4gMEeOBIJc0t5u9Zw" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_qLZuRogMEeOBIJc0t5u9Zw">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qLZuSIgMEeOBIJc0t5u9Zw" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qLZuSYgMEeOBIJc0t5u9Zw" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_qLZuSogMEeOBIJc0t5u9Zw" name="filtern" type="_6_eoYH9ZEeOFFqCBgts--g" association="_qLZuRogMEeOBIJc0t5u9Zw">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qLZuS4gMEeOBIJc0t5u9Zw" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qLZuTIgMEeOBIJc0t5u9Zw" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_yMFnNogMEeOBIJc0t5u9Zw" name="A_&lt;praktikumsverantwortlicher>_&lt;filtern>_8" memberEnd="_yMFnN4gMEeOBIJc0t5u9Zw _yMFnOogMEeOBIJc0t5u9Zw">
+      <ownedEnd xmi:id="_yMFnN4gMEeOBIJc0t5u9Zw" name="praktikumsverantwortlicher" type="_snpnMH9ZEeOFFqCBgts--g" association="_yMFnNogMEeOBIJc0t5u9Zw">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_yMFnOIgMEeOBIJc0t5u9Zw" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_yMFnOYgMEeOBIJc0t5u9Zw" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_yMFnOogMEeOBIJc0t5u9Zw" name="filtern" type="_rn8dooAdEeOV07fk0emd0A" association="_yMFnNogMEeOBIJc0t5u9Zw">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_yMFnO4gMEeOBIJc0t5u9Zw" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_yMFnPIgMEeOBIJc0t5u9Zw" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>

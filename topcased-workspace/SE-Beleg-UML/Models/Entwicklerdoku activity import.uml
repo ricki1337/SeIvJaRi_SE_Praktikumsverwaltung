@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="idModel" name="Entwicklerdoku activity importModel">
+  <packagedElement xmi:type="uml:Package" xmi:id="idPackage" name="Entwicklerdoku activity importPackage">
+    <packagedElement xmi:type="uml:Activity" xmi:id="idActivity" name="Entwicklerdoku activity importActivity">
+      <ownedRule xmi:id="_ho_3UPomEeOX45VyPlcj5A" name="Datei ist vorhanden und lesbar" constrainedElement="_OO82QPoiEeOX45VyPlcj5A"/>
+      <ownedRule xmi:id="_oqYPYPomEeOX45VyPlcj5A" name="Daten liegen"/>
+      <ownedRule xmi:id="_4eDUUPqmEeOy3cM4huDibg" name="Constraint1"/>
+      <node xmi:type="uml:InitialNode" xmi:id="_GwzpsPoiEeOX45VyPlcj5A" name="Studenten importieren" outgoing="_duSVQPomEeOX45VyPlcj5A"/>
+      <node xmi:type="uml:ActivityFinalNode" xmi:id="_G8TvEPoiEeOX45VyPlcj5A" name="Daten werden importiert" incoming="_ecPncPomEeOX45VyPlcj5A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_N0RscPoiEeOX45VyPlcj5A" name="Datei auswählen" outgoing="_d1kB8PomEeOX45VyPlcj5A" incoming="_duSVQPomEeOX45VyPlcj5A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_OO82QPoiEeOX45VyPlcj5A" name="Seperator festlegen" outgoing="_eChf4PomEeOX45VyPlcj5A" incoming="_d1kB8PomEeOX45VyPlcj5A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_OfaUIPoiEeOX45VyPlcj5A" name="Daten in der Vorschau anzeigen" outgoing="_eJ7IYPomEeOX45VyPlcj5A" incoming="_eChf4PomEeOX45VyPlcj5A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_OvewcPoiEeOX45VyPlcj5A" name="Spalten zuordnen" outgoing="_eQ56IPomEeOX45VyPlcj5A" incoming="_eJ7IYPomEeOX45VyPlcj5A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_PTVrcPoiEeOX45VyPlcj5A" name="Button &quot;Importieren&quot;" outgoing="_ecPncPomEeOX45VyPlcj5A" incoming="_eQ56IPomEeOX45VyPlcj5A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_NK6pkPomEeOX45VyPlcj5A" name="Button &quot;abbrechen&quot;"/>
+      <node xmi:type="uml:FlowFinalNode" xmi:id="_ZTou4PomEeOX45VyPlcj5A" name="FlowFinalNode1"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_duSVQPomEeOX45VyPlcj5A" name="ControlFlow1" source="_GwzpsPoiEeOX45VyPlcj5A" target="_N0RscPoiEeOX45VyPlcj5A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_duSVQfomEeOX45VyPlcj5A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_duSVQvomEeOX45VyPlcj5A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_d1kB8PomEeOX45VyPlcj5A" name="ControlFlow2" source="_N0RscPoiEeOX45VyPlcj5A" target="_OO82QPoiEeOX45VyPlcj5A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_d1kB8fomEeOX45VyPlcj5A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_d1kB8vomEeOX45VyPlcj5A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_eChf4PomEeOX45VyPlcj5A" name="ControlFlow3" source="_OO82QPoiEeOX45VyPlcj5A" target="_OfaUIPoiEeOX45VyPlcj5A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_eChf4fomEeOX45VyPlcj5A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_eChf4vomEeOX45VyPlcj5A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_eJ7IYPomEeOX45VyPlcj5A" name="ControlFlow4" source="_OfaUIPoiEeOX45VyPlcj5A" target="_OvewcPoiEeOX45VyPlcj5A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_eJ7IYfomEeOX45VyPlcj5A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_eJ7IYvomEeOX45VyPlcj5A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_eQ56IPomEeOX45VyPlcj5A" name="ControlFlow5" source="_OvewcPoiEeOX45VyPlcj5A" target="_PTVrcPoiEeOX45VyPlcj5A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_eQ56IfomEeOX45VyPlcj5A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_eQ56IvomEeOX45VyPlcj5A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_ecPncPomEeOX45VyPlcj5A" name="ControlFlow6" source="_PTVrcPoiEeOX45VyPlcj5A" target="_G8TvEPoiEeOX45VyPlcj5A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_ecPncfomEeOX45VyPlcj5A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_ecPncvomEeOX45VyPlcj5A" value="1"/>
+      </edge>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>

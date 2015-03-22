@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagrams:Diagrams xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.topcased.org/DI/1.0" xmlns:diagrams="http://www.topcased.org/Diagrams/1.0" xmi:id="_rFQmIPoVEeOX45VyPlcj5A" activeDiagram="_rFQmIfoVEeOX45VyPlcj5A">
+  <model href="Entwicklerdoku%20activity%20anlegen%20firma.uml#idActivity"/>
+  <diagrams xmi:id="_rFQmIfoVEeOX45VyPlcj5A" position="0,0" size="100,100" name="Entwicklerdoku activity anlegen firma" viewport="0,0">
+    <property xmi:id="_rFlWQPoVEeOX45VyPlcj5A" key="pageFormatName" value="A4"/>
+    <property xmi:id="_rFlWQfoVEeOX45VyPlcj5A" key="diagramWidth" value="840"/>
+    <property xmi:id="_rFlWQvoVEeOX45VyPlcj5A" key="diagramHeight" value="1188"/>
+    <property xmi:id="_rFlWQ_oVEeOX45VyPlcj5A" key="pageMarginName" value="Small Margin"/>
+    <property xmi:id="_rFlWRPoVEeOX45VyPlcj5A" key="diagramTopMargin" value="20"/>
+    <property xmi:id="_rFlWRfoVEeOX45VyPlcj5A" key="diagramBottomMargin" value="20"/>
+    <property xmi:id="_rFlWRvoVEeOX45VyPlcj5A" key="diagramLeftMargin" value="20"/>
+    <property xmi:id="_rFlWR_oVEeOX45VyPlcj5A" key="diagramRightMargin" value="20"/>
+    <property xmi:id="_rFlWSPoVEeOX45VyPlcj5A" key="orientation" value="portrait"/>
+    <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_rFQmIvoVEeOX45VyPlcj5A" presentation="org.topcased.modeler.uml.activitydiagram">
+      <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#idActivity"/>
+    </semanticModel>
+    <contained xsi:type="di:GraphNode" xmi:id="_rhoZEPoVEeOX45VyPlcj5A" position="90,67" size="30,30">
+      <property xmi:id="_vcMxMPoVEeOX45VyPlcj5A" key="isVisibleLabel" value="visible"/>
+      <property xmi:id="_ylak4PoVEeOX45VyPlcj5A" key="font" value="-regular-9"/>
+      <anchorage xmi:id="_JAKToPoWEeOX45VyPlcj5A" graphEdge="_JALhwPoWEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_rhoZEfoVEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_rhpAIPoVEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_rsbT0PoVEeOX45VyPlcj5A" position="518,70" size="40,40">
+      <property xmi:id="_vyo7QPoVEeOX45VyPlcj5A" key="isVisibleLabel" value="visible"/>
+      <property xmi:id="_ylak4foVEeOX45VyPlcj5A" key="font" value="-regular-9"/>
+      <anchorage xmi:id="_JZ3NEPoWEeOX45VyPlcj5A" graphEdge="_JZ5CQPoWEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_rsbT0foVEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_rsdJAPoVEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_r6MqEPoVEeOX45VyPlcj5A" position="292,404" size="40,40">
+      <property xmi:id="_tP2OYPoVEeOX45VyPlcj5A" key="isVisibleLabel" value="visible"/>
+      <property xmi:id="_ylZ90voVEeOX45VyPlcj5A" key="font" value="-regular-9"/>
+      <anchorage xmi:id="_Nd9UoPoWEeOX45VyPlcj5A" graphEdge="_Nd_J0PoWEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_r6MqEfoVEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_r6PGUPoVEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_sISJYPoVEeOX45VyPlcj5A" position="282,322" size="50,10">
+      <property xmi:id="_ylZ90PoVEeOX45VyPlcj5A" key="font" value="-regular-9"/>
+      <anchorage xmi:id="_LZFS0PoWEeOX45VyPlcj5A" graphEdge="_LZHIAPoWEeOX45VyPlcj5A _LihisPoWEeOX45VyPlcj5A _L5B-MPoWEeOX45VyPlcj5A _MNxfIPoWEeOX45VyPlcj5A _MlL5kPoWEeOX45VyPlcj5A _M1pXcPoWEeOX45VyPlcj5A _NS7JUPoWEeOX45VyPlcj5A _Nd_J0PoWEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_sISJYfoVEeOX45VyPlcj5A" presentation="horizontal">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_sIUloPoVEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_sRoSoPoVEeOX45VyPlcj5A" position="279,145" size="50,10">
+      <property xmi:id="_ylZ92PoVEeOX45VyPlcj5A" key="font" value="-regular-9"/>
+      <anchorage xmi:id="_JxSOkPoWEeOX45VyPlcj5A" graphEdge="_JxUq0PoWEeOX45VyPlcj5A _J5yqUPoWEeOX45VyPlcj5A _KHMNIPoWEeOX45VyPlcj5A _KUu54PoWEeOX45VyPlcj5A _KeD1APoWEeOX45VyPlcj5A _KrDvMPoWEeOX45VyPlcj5A _K4bc0PoWEeOX45VyPlcj5A _LGwMsPoWEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_sRoSofoVEeOX45VyPlcj5A" presentation="horizontal">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_sRqu4PoVEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_wmKp8PoVEeOX45VyPlcj5A" position="219,57" size="150,60">
+      <property xmi:id="_ylZ91foVEeOX45VyPlcj5A" key="font" value="-regular-9"/>
+      <anchorage xmi:id="_JAKTofoWEeOX45VyPlcj5A" graphEdge="_JALhwPoWEeOX45VyPlcj5A _JZ5CQPoWEeOX45VyPlcj5A _JxUq0PoWEeOX45VyPlcj5A _yh_A8PoWEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_wmKp8foVEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_wmNtQPoVEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_w22xUPoVEeOX45VyPlcj5A" position="25,212" size="131,60">
+      <property xmi:id="_ylYIoPoVEeOX45VyPlcj5A" key="font" value="-regular-9"/>
+      <anchorage xmi:id="_J5xcMPoWEeOX45VyPlcj5A" graphEdge="_J5yqUPoWEeOX45VyPlcj5A _LZHIAPoWEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_w22xUfoVEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_w26bsPoVEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_w5cyUPoVEeOX45VyPlcj5A" position="159,210" size="100,60">
+      <property xmi:id="_ylZ91voVEeOX45VyPlcj5A" key="font" value="-regular-9"/>
+      <anchorage xmi:id="_KHKX8PoWEeOX45VyPlcj5A" graphEdge="_KHMNIPoWEeOX45VyPlcj5A _LihisPoWEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_w5dZYPoVEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_w5gcsPoVEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_w8qeYPoVEeOX45VyPlcj5A" position="266,210" size="80,60">
+      <property xmi:id="_ylZ90foVEeOX45VyPlcj5A" key="font" value="-regular-9"/>
+      <anchorage xmi:id="_KUtrwPoWEeOX45VyPlcj5A" graphEdge="_KUu54PoWEeOX45VyPlcj5A _L5B-MPoWEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_w8qeYfoVEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_w8thsPoVEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_w_4KcPoVEeOX45VyPlcj5A" position="447,209" size="82,62">
+      <property xmi:id="_ylZ91PoVEeOX45VyPlcj5A" key="font" value="-regular-9"/>
+      <anchorage xmi:id="_KrChEPoWEeOX45VyPlcj5A" graphEdge="_KrDvMPoWEeOX45VyPlcj5A _MlL5kPoWEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_w_4KcfoVEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_xAAGQPoVEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_xEK0kPoVEeOX45VyPlcj5A" position="361,210" size="86,60">
+      <property xmi:id="_ylZ91_oVEeOX45VyPlcj5A" key="font" value="-regular-9"/>
+      <anchorage xmi:id="_KeB_0PoWEeOX45VyPlcj5A" graphEdge="_KeD1APoWEeOX45VyPlcj5A _MNxfIPoWEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_xEK0kfoVEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_xEPGAPoVEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_xJmuMPoVEeOX45VyPlcj5A" position="526,213" size="87,60">
+      <property xmi:id="_ylZ90_oVEeOX45VyPlcj5A" key="font" value="-regular-9"/>
+      <anchorage xmi:id="_K4aOsPoWEeOX45VyPlcj5A" graphEdge="_K4bc0PoWEeOX45VyPlcj5A _M1pXcPoWEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_xJmuMfoVEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_xJq_oPoVEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_EmasMPoWEeOX45VyPlcj5A" position="611,207" size="97,60">
+      <property xmi:id="_G5oE8PoWEeOX45VyPlcj5A" key="font" value="-regular-9"/>
+      <anchorage xmi:id="_LGuXgPoWEeOX45VyPlcj5A" graphEdge="_LGwMsPoWEeOX45VyPlcj5A _NS7JUPoWEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_EmasMfoWEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_EmeWkPoWEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_JALhwPoWEeOX45VyPlcj5A" anchor="_JAKToPoWEeOX45VyPlcj5A _JAKTofoWEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_JALhwfoWEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_JAPzMPoWEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_JALhwvoWEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_JALhw_oWEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_JALhxPoWEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_JALhxfoWEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_JALhxvoWEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_JALhx_oWEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_JZ5CQPoWEeOX45VyPlcj5A" anchor="_JAKTofoWEeOX45VyPlcj5A _JZ3NEPoWEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_JZ5CQfoWEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_JZ_I4PoWEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_JZ5CQvoWEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_JZ5CQ_oWEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_JZ5CRPoWEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_JZ5CRfoWEeOX45VyPlcj5A" id="nameEdgeObject" uDistance="22" vDistance="-19"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_JZ5CRvoWEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_JZ5CR_oWEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_JxUq0PoWEeOX45VyPlcj5A" anchor="_JAKTofoWEeOX45VyPlcj5A _JxSOkPoWEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_JxUq0foWEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_JxaxcPoWEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_JxUq0voWEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_JxUq0_oWEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_JxUq1PoWEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_JxUq1foWEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_JxUq1voWEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_JxUq1_oWEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_J5yqUPoWEeOX45VyPlcj5A" anchor="_JxSOkPoWEeOX45VyPlcj5A _J5xcMPoWEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_J5yqUfoWEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_J527wPoWEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_J5yqUvoWEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_J5yqU_oWEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_J5yqVPoWEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_J5yqVfoWEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_J5yqVvoWEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_J5yqV_oWEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject" offset="-200,-71"/>
+      <waypoints>[-214, 0, 0, -92]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_KHMNIPoWEeOX45VyPlcj5A" anchor="_JxSOkPoWEeOX45VyPlcj5A _KHKX8PoWEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_KHMNIfoWEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_KHS60PoWEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_KHMNIvoWEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_KHMNI_oWEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_KHMNJPoWEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_KHMNJfoWEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_KHMNJvoWEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_KHMNJ_oWEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject" offset="-36,-4"/>
+      <waypoints>[-95, 30, 0, -60]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_KUu54PoWEeOX45VyPlcj5A" anchor="_JxSOkPoWEeOX45VyPlcj5A _KUtrwPoWEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_KUvg8PoWEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_KU21sPoWEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_KUvg8foWEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_KUvg8voWEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_KUvg8_oWEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_KUvg9PoWEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_KUvg9foWEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_KUvg9voWEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_KeD1APoWEeOX45VyPlcj5A" anchor="_JxSOkPoWEeOX45VyPlcj5A _KeB_0PoWEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_KeD1AfoWEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_KeMX4PoWEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_KeD1AvoWEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_KeD1A_oWEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_KeD1BPoWEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_KeD1BfoWEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_KeD1BvoWEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_KeD1B_oWEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+      <waypoints>[100, 43, 0, -47]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_KrDvMPoWEeOX45VyPlcj5A" anchor="_JxSOkPoWEeOX45VyPlcj5A _KrChEPoWEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_KrDvMfoWEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_KrJOwPoWEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_KrDvMvoWEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_KrDvM_oWEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_KrDvNPoWEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_KrDvNfoWEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_KrDvNvoWEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_KrDvN_oWEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+      <waypoints>[184, 46, 0, -44]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_K4bc0PoWEeOX45VyPlcj5A" anchor="_JxSOkPoWEeOX45VyPlcj5A _K4aOsPoWEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_K4bc0foWEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_K4g8YPoWEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_K4bc0voWEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_K4bc0_oWEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_K4bc1PoWEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_K4bc1foWEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_K4bc1voWEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_K4bc1_oWEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+      <waypoints>[265, 29, 0, -64]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_LGwMsPoWEeOX45VyPlcj5A" anchor="_JxSOkPoWEeOX45VyPlcj5A _LGuXgPoWEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_LGwMsfoWEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_LG5WoPoWEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_LGwMsvoWEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_LGwMs_oWEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_LGwMtPoWEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_LGwMtfoWEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_LGwMtvoWEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_LGwMt_oWEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+      <waypoints>[355, 0, 0, -87]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_LZHIAPoWEeOX45VyPlcj5A" anchor="_J5xcMPoWEeOX45VyPlcj5A _LZFS0PoWEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_LZHIAfoWEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_LZQR8PoWEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_LZHIAvoWEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_LZHIA_oWEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_LZHIBPoWEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_LZHIBfoWEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_LZHIBvoWEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_LZHIB_oWEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject" offset="-26,10"/>
+      <waypoints>[0, 85, -217, 0]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_LihisPoWEeOX45VyPlcj5A" anchor="_KHKX8PoWEeOX45VyPlcj5A _LZFS0PoWEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_LihisfoWEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_Lir6wPoWEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_LihisvoWEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_Lihis_oWEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_LihitPoWEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_LihitfoWEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_LihitvoWEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_Lihit_oWEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+      <waypoints>[0, 52, -98, -35]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_L5B-MPoWEeOX45VyPlcj5A" anchor="_KUtrwPoWEeOX45VyPlcj5A _LZFS0PoWEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_L5B-MfoWEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_L5LvMPoWEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_L5B-MvoWEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_L5B-M_oWEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_L5B-NPoWEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_L5B-NfoWEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_L5B-NvoWEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_L5B-N_oWEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_MNxfIPoWEeOX45VyPlcj5A" anchor="_KeB_0PoWEeOX45VyPlcj5A _LZFS0PoWEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_MNxfIfoWEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_MN73MPoWEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_MNxfIvoWEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_MNxfI_oWEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_MNxfJPoWEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_MNxfJfoWEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_MNxfJvoWEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_MNxfJ_oWEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject" offset="6,1"/>
+      <waypoints>[0, 44, 97, -43]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_MlL5kPoWEeOX45VyPlcj5A" anchor="_KrChEPoWEeOX45VyPlcj5A _LZFS0PoWEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_MlL5kfoWEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_MlWRoPoWEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_MlL5kvoWEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_MlL5k_oWEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_MlL5lPoWEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_MlL5lfoWEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_MlL5lvoWEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_MlL5l_oWEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+      <waypoints>[0, 49, 181, -38]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_M1pXcPoWEeOX45VyPlcj5A" anchor="_K4aOsPoWEeOX45VyPlcj5A _LZFS0PoWEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_M1pXcfoWEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_M10WkPoWEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_M1pXcvoWEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_M1pXc_oWEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_M1pXdPoWEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_M1pXdfoWEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_M1pXdvoWEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_M1pXd_oWEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+      <waypoints>[0, 61, 262, -23]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_NS7JUPoWEeOX45VyPlcj5A" anchor="_LGuXgPoWEeOX45VyPlcj5A _LZFS0PoWEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_NS7JUfoWEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_NTFhYPoWEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_NS7JUvoWEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_NS7JU_oWEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_NS7JVPoWEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_NS7JVfoWEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_NS7JVvoWEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_NS7JV_oWEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+      <waypoints>[0, 90, 352, 0]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_Nd_J0PoWEeOX45VyPlcj5A" anchor="_LZFS0PoWEeOX45VyPlcj5A _Nd9UoPoWEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Nd_J0foWEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_NeFQcPoWEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_Nd_J0voWEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_Nd_J0_oWEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_Nd_J1PoWEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_Nd_J1foWEeOX45VyPlcj5A" id="nameEdgeObject" uDistance="31" vDistance="14"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_Nd_J1voWEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_Nd_J1_oWEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_xjL2YPoWEeOX45VyPlcj5A" position="19,368" size="189,113">
+      <property xmi:id="_z8hFQPoWEeOX45VyPlcj5A" key="font" value="-regular-9"/>
+      <anchorage xmi:id="_yh9y0PoWEeOX45VyPlcj5A" graphEdge="_yh_A8PoWEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_xjL2YfoWEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20firma.uml#_xjUZQPoWEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_yh_A8PoWEeOX45VyPlcj5A" anchor="_yh9y0PoWEeOX45VyPlcj5A _JAKTofoWEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:SimpleSemanticModelElement" xmi:id="_yh_A8foWEeOX45VyPlcj5A" presentation="default" typeInfo="CommentLink"/>
+      <waypoints>[-95, -108, -272, 210]</waypoints>
+      <waypoints>[-95, -383, -272, -65]</waypoints>
+      <waypoints>[177, -383, 0, -65]</waypoints>
+    </contained>
+  </diagrams>
+</diagrams:Diagrams>

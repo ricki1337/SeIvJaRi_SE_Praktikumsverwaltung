@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="idModel" name="Entwicklerdoku activity sucheModel">
+  <packagedElement xmi:type="uml:Package" xmi:id="idPackage" name="Entwicklerdoku activity suchePackage">
+    <packagedElement xmi:type="uml:Activity" xmi:id="idActivity" name="Entwicklerdoku activity sucheActivity">
+      <node xmi:type="uml:InitialNode" xmi:id="_Q0UFEPoZEeOX45VyPlcj5A" name="Listenansicht" outgoing="_dh2usPoZEeOX45VyPlcj5A"/>
+      <node xmi:type="uml:ActivityFinalNode" xmi:id="_RG8GIPoZEeOX45VyPlcj5A" name="Anzeige aller auf das Suchwort passender Datensätze" incoming="_dq9AUPoZEeOX45VyPlcj5A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_R6N9MPoZEeOX45VyPlcj5A" name="Eingabe Suchwort in Suchfeld" outgoing="_dq9AUPoZEeOX45VyPlcj5A" incoming="_dh2usPoZEeOX45VyPlcj5A"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_dh2usPoZEeOX45VyPlcj5A" name="ControlFlow1" source="_Q0UFEPoZEeOX45VyPlcj5A" target="_R6N9MPoZEeOX45VyPlcj5A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_dh2usfoZEeOX45VyPlcj5A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_dh2usvoZEeOX45VyPlcj5A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_dq9AUPoZEeOX45VyPlcj5A" name="ControlFlow2" source="_R6N9MPoZEeOX45VyPlcj5A" target="_RG8GIPoZEeOX45VyPlcj5A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_dq9AUfoZEeOX45VyPlcj5A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_dq9AUvoZEeOX45VyPlcj5A" value="1"/>
+      </edge>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>

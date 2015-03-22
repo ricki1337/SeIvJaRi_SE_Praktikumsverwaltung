@@ -6,8 +6,6 @@ import java.util.Map;
 
 import javax.swing.SortOrder;
 
-import com.sun.jmx.snmp.tasks.Task;
-
 import Controller.Interfaces.SelectedValueCallbackCtrl;
 import Models.Datenbank.SqlTableContracts;
 import Models.Datenbank.SqlTableStudent;
@@ -77,8 +75,9 @@ public class StudentList extends Controller implements	BasicBoxCtrl,
 		private long lastSearchButtonTap = 0;
 		
 		
-		private Task searchTask = new Task() {
+		private SearchThread searchTask = new SearchThread() ;
 
+		class SearchThread extends Thread{
 			@Override
 			public void run() {
 				
@@ -102,11 +101,6 @@ public class StudentList extends Controller implements	BasicBoxCtrl,
 				
 			}
 
-			@Override
-			public void cancel() {
-				// TODO Auto-generated method stub
-				
-			}
 			
 			
 		};
@@ -329,7 +323,7 @@ public class StudentList extends Controller implements	BasicBoxCtrl,
 			((Models.ListModel)model).deleteSearchFilter();
 		else
 			{
-			searchTask.cancel();
+			searchTask.stop();
 			searchTask.run();
 			}
 			

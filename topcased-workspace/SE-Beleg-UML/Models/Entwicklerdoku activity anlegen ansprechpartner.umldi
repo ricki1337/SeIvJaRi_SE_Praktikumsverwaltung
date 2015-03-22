@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagrams:Diagrams xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.topcased.org/DI/1.0" xmlns:diagrams="http://www.topcased.org/Diagrams/1.0" xmi:id="_J1VLoPoXEeOX45VyPlcj5A" activeDiagram="_J1VysPoXEeOX45VyPlcj5A">
+  <model href="Entwicklerdoku%20activity%20anlegen%20ansprechpartner.uml#idActivity"/>
+  <diagrams xmi:id="_J1VysPoXEeOX45VyPlcj5A" position="0,0" size="100,100" name="Entwicklerdoku activity anlegen student" viewport="0,0">
+    <property xmi:id="_J1p7wPoXEeOX45VyPlcj5A" key="pageFormatName" value="A4"/>
+    <property xmi:id="_J1p7wfoXEeOX45VyPlcj5A" key="diagramWidth" value="840"/>
+    <property xmi:id="_J1p7wvoXEeOX45VyPlcj5A" key="diagramHeight" value="1188"/>
+    <property xmi:id="_J1p7w_oXEeOX45VyPlcj5A" key="pageMarginName" value="Small Margin"/>
+    <property xmi:id="_J1p7xPoXEeOX45VyPlcj5A" key="diagramTopMargin" value="20"/>
+    <property xmi:id="_J1p7xfoXEeOX45VyPlcj5A" key="diagramBottomMargin" value="20"/>
+    <property xmi:id="_J1p7xvoXEeOX45VyPlcj5A" key="diagramLeftMargin" value="20"/>
+    <property xmi:id="_J1p7x_oXEeOX45VyPlcj5A" key="diagramRightMargin" value="20"/>
+    <property xmi:id="_J1p7yPoXEeOX45VyPlcj5A" key="orientation" value="portrait"/>
+    <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_J1VysfoXEeOX45VyPlcj5A" presentation="org.topcased.modeler.uml.activitydiagram">
+      <element href="Entwicklerdoku%20activity%20anlegen%20ansprechpartner.uml#idActivity"/>
+    </semanticModel>
+    <contained xsi:type="di:GraphNode" xmi:id="_KC3RUPoXEeOX45VyPlcj5A" position="95,103" size="30,30">
+      <property xmi:id="_QucYgPoXEeOX45VyPlcj5A" key="isVisibleLabel" value="visible"/>
+      <property xmi:id="_SD69svoXEeOX45VyPlcj5A" key="font" value="-regular-9"/>
+      <anchorage xmi:id="_awJuAPoXEeOX45VyPlcj5A" graphEdge="_awN_cPoXEeOX45VyPlcj5A _iL1ccPoXEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_KC3RUfoXEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20ansprechpartner.uml#_KC4fcPoXEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_KTw0EPoXEeOX45VyPlcj5A" position="314,384" size="40,40">
+      <property xmi:id="_QD3xgPoXEeOX45VyPlcj5A" key="isVisibleLabel" value="visible"/>
+      <property xmi:id="_SD69tPoXEeOX45VyPlcj5A" key="font" value="-regular-9"/>
+      <anchorage xmi:id="_lU3p8PoXEeOX45VyPlcj5A" graphEdge="_lU5fIPoXEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_KTw0EfoXEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20ansprechpartner.uml#_KTypQPoXEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_KfF6UPoXEeOX45VyPlcj5A" position="605,102" size="40,40">
+      <property xmi:id="_QWKbYPoXEeOX45VyPlcj5A" key="isVisibleLabel" value="visible"/>
+      <property xmi:id="_SD69t_oXEeOX45VyPlcj5A" key="font" value="-regular-9"/>
+      <anchorage xmi:id="_iW_jkPoXEeOX45VyPlcj5A" graphEdge="_iXBYwPoXEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_KfF6UfoXEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20ansprechpartner.uml#_KfHvgPoXEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_LOxq0PoXEeOX45VyPlcj5A" position="259,92" size="150,60">
+      <property xmi:id="_SD69tvoXEeOX45VyPlcj5A" key="font" value="-regular-9"/>
+      <anchorage xmi:id="_iL0OUPoXEeOX45VyPlcj5A" graphEdge="_iL1ccPoXEeOX45VyPlcj5A _iXBYwPoXEeOX45VyPlcj5A _j4RJEPoXEeOX45VyPlcj5A _DoFJwPoYEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_LOxq0foXEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20ansprechpartner.uml#_LO0HEPoXEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_LY4pEPoXEeOX45VyPlcj5A" position="111,231" size="99,60">
+      <property xmi:id="_SD69sfoXEeOX45VyPlcj5A" key="font" value="-regular-9"/>
+      <anchorage xmi:id="_kCMhIPoXEeOX45VyPlcj5A" graphEdge="_kCNIMPoXEeOX45VyPlcj5A _kPPeoPoXEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_LY4pEfoXEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20ansprechpartner.uml#_LY7FUPoXEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_LbppMPoXEeOX45VyPlcj5A" position="289,228" size="82,60">
+      <property xmi:id="_SD5vkPoXEeOX45VyPlcj5A" key="font" value="-regular-9"/>
+      <anchorage xmi:id="_kozOIPoXEeOX45VyPlcj5A" graphEdge="_koz1MPoXEeOX45VyPlcj5A _ky1T4PoXEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_LbppMfoXEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20ansprechpartner.uml#_LbsFcPoXEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_LgJusPoXEeOX45VyPlcj5A" position="417,230" size="89,60">
+      <property xmi:id="_SD69s_oXEeOX45VyPlcj5A" key="font" value="-regular-9"/>
+      <anchorage xmi:id="_lDCTEPoXEeOX45VyPlcj5A" graphEdge="_lDDhMPoXEeOX45VyPlcj5A _lNLtkPoXEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_LgJusfoXEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20ansprechpartner.uml#_LgMyAPoXEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_N_EoMPoXEeOX45VyPlcj5A" position="300,173" size="50,10">
+      <property xmi:id="_PB-PoPoXEeOX45VyPlcj5A" key="isVisibleLabel" value="hide"/>
+      <property xmi:id="_SD69tfoXEeOX45VyPlcj5A" key="font" value="-regular-9"/>
+      <anchorage xmi:id="_j4PT4PoXEeOX45VyPlcj5A" graphEdge="_j4RJEPoXEeOX45VyPlcj5A _kCNIMPoXEeOX45VyPlcj5A _koz1MPoXEeOX45VyPlcj5A _lDDhMPoXEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_N_EoMfoXEeOX45VyPlcj5A" presentation="horizontal">
+        <element href="Entwicklerdoku%20activity%20anlegen%20ansprechpartner.uml#_N_I5oPoXEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_OIMH8PoXEeOX45VyPlcj5A" position="310,333" size="50,10">
+      <property xmi:id="_Ocj1cPoXEeOX45VyPlcj5A" key="isVisibleLabel" value="hide"/>
+      <property xmi:id="_SD69sPoXEeOX45VyPlcj5A" key="font" value="-regular-9"/>
+      <anchorage xmi:id="_kPNCYPoXEeOX45VyPlcj5A" graphEdge="_kPPeoPoXEeOX45VyPlcj5A _ky1T4PoXEeOX45VyPlcj5A _lNLtkPoXEeOX45VyPlcj5A _lU5fIPoXEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_OIMH8foXEeOX45VyPlcj5A" presentation="horizontal">
+        <element href="Entwicklerdoku%20activity%20anlegen%20ansprechpartner.uml#_OIOkMPoXEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_Yx_YMPoXEeOX45VyPlcj5A" position="146,38" size="130,40">
+      <anchorage xmi:id="_awJG8PoXEeOX45VyPlcj5A" graphEdge="_awN_cPoXEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Yx_YMfoXEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20ansprechpartner.uml#_YyHUAPoXEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_awN_cPoXEeOX45VyPlcj5A" anchor="_awJG8PoXEeOX45VyPlcj5A _awJuAPoXEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:SimpleSemanticModelElement" xmi:id="_awN_cfoXEeOX45VyPlcj5A" presentation="default" typeInfo="ConstraintLink"/>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_eD4IkPoXEeOX45VyPlcj5A" position="457,23" size="150,51">
+      <anchorage xmi:id="_DoEisPoYEeOX45VyPlcj5A" graphEdge="_DoFJwPoYEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_eD4IkfoXEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20ansprechpartner.uml#_eD7y8PoXEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_iL1ccPoXEeOX45VyPlcj5A" anchor="_awJuAPoXEeOX45VyPlcj5A _iL0OUPoXEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_iL1ccfoXEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20ansprechpartner.uml#_iL34sPoXEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_iL1ccvoXEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_iL1cc_oXEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_iL1cdPoXEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_iL1cdfoXEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_iL1cdvoXEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_iL1cd_oXEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_iXBYwPoXEeOX45VyPlcj5A" anchor="_iL0OUPoXEeOX45VyPlcj5A _iW_jkPoXEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_iXBYwfoXEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20ansprechpartner.uml#_iXGRQPoXEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_iXBYwvoXEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_iXBYw_oXEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_iXBYxPoXEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_iXBYxfoXEeOX45VyPlcj5A" id="nameEdgeObject" uDistance="63" vDistance="-5"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_iXBYxvoXEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_iXBYx_oXEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_j4RJEPoXEeOX45VyPlcj5A" anchor="_iL0OUPoXEeOX45VyPlcj5A _j4PT4PoXEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_j4RJEfoXEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20ansprechpartner.uml#_j4WooPoXEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_j4RJEvoXEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_j4RJE_oXEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_j4RJFPoXEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_j4RJFfoXEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_j4RJFvoXEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_j4RJF_oXEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_kCNIMPoXEeOX45VyPlcj5A" anchor="_j4PT4PoXEeOX45VyPlcj5A _kCMhIPoXEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_kCNIMfoXEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20ansprechpartner.uml#_kCQykPoXEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_kCNIMvoXEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_kCNIM_oXEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_kCNINPoXEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_kCNINfoXEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_kCNINvoXEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_kCNIN_oXEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+      <waypoints>[-165, 0, 0, -83]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_kPPeoPoXEeOX45VyPlcj5A" anchor="_kCMhIPoXEeOX45VyPlcj5A _kPNCYPoXEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_kPPeofoXEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20ansprechpartner.uml#_kPVlQPoXEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_kPPeovoXEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_kPPeo_oXEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_kPPepPoXEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_kPPepfoXEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_kPPepvoXEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_kPPep_oXEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject" offset="-250,51"/>
+      <waypoints>[0, 77, -175, 0]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_koz1MPoXEeOX45VyPlcj5A" anchor="_j4PT4PoXEeOX45VyPlcj5A _kozOIPoXEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_koz1MfoXEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20ansprechpartner.uml#_ko4GoPoXEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_koz1MvoXEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_koz1M_oXEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_koz1NPoXEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_koz1NfoXEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_koz1NvoXEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_koz1N_oXEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_ky1T4PoXEeOX45VyPlcj5A" anchor="_kozOIPoXEeOX45VyPlcj5A _kPNCYPoXEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ky1T4foXEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20ansprechpartner.uml#_ky8BkPoXEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_ky1T4voXEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_ky1T4_oXEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_ky1T5PoXEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_ky1T5foXEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_ky1T5voXEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_ky1T5_oXEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_lDDhMPoXEeOX45VyPlcj5A" anchor="_j4PT4PoXEeOX45VyPlcj5A _lDCTEPoXEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_lDDhMfoXEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20ansprechpartner.uml#_lDHyoPoXEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_lDDhMvoXEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_lDDhM_oXEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="-15" vDistance="106"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_lDDhNPoXEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_lDDhNfoXEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_lDDhNvoXEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_lDDhN_oXEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject" offset="331,-75"/>
+      <waypoints>[136, 0, 0, -82]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_lNLtkPoXEeOX45VyPlcj5A" anchor="_lDCTEPoXEeOX45VyPlcj5A _kPNCYPoXEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_lNLtkfoXEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20ansprechpartner.uml#_lNTCUPoXEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_lNLtkvoXEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_lNLtk_oXEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_lNLtlPoXEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_lNLtlfoXEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_lNLtlvoXEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_lNLtl_oXEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+      <waypoints>[0, 78, 126, 0]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_lU5fIPoXEeOX45VyPlcj5A" anchor="_kPNCYPoXEeOX45VyPlcj5A _lU3p8PoXEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_lU5fIfoXEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20anlegen%20ansprechpartner.uml#_lVAz4PoXEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_lU5fIvoXEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_lU5fI_oXEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_lU5fJPoXEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_lU5fJfoXEeOX45VyPlcj5A" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_lU5fJvoXEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_lU5fJ_oXEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_DoFJwPoYEeOX45VyPlcj5A" anchor="_DoEisPoYEeOX45VyPlcj5A _iL0OUPoXEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:SimpleSemanticModelElement" xmi:id="_DoFJwfoYEeOX45VyPlcj5A" presentation="default" typeInfo="CommentLink"/>
+    </contained>
+  </diagrams>
+</diagrams:Diagrams>

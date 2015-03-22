@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_qb8akM37EdqwVrslYOdUDA">
+  <packagedElement xmi:type="uml:Package" xmi:id="_w8IxIM37EdqwVrslYOdUDA" name="Problembereich">
+    <packagedElement xmi:type="uml:Class" xmi:id="_tDQUAIQNEeOcIqH7FFhV2w" name="Student">
+      <ownedAttribute xmi:id="_qJ99QIQOEeOcIqH7FFhV2w" name="Vertrag" type="_upEbQIQNEeOcIqH7FFhV2w" isUnique="false" aggregation="composite" association="_qKHHMIQOEeOcIqH7FFhV2w">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qJ99QYQOEeOcIqH7FFhV2w" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qJ99QoQOEeOcIqH7FFhV2w" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_zI18wIQOEeOcIqH7FFhV2w" name="praktikumsbericht" type="_y3m4QIQNEeOcIqH7FFhV2w" aggregation="composite" association="_zI_twIQOEeOcIqH7FFhV2w">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zI2j0IQOEeOcIqH7FFhV2w" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zI2j0YQOEeOcIqH7FFhV2w" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_upEbQIQNEeOcIqH7FFhV2w" name="Vertrag">
+      <ownedAttribute xmi:id="_3hyFMIjrEeOU8pNJR_ce1A" name="student" type="_tDQUAIQNEeOcIqH7FFhV2w" isUnique="false" aggregation="composite" association="_3h1IgIjrEeOU8pNJR_ce1A">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3hyFMYjrEeOU8pNJR_ce1A" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3hyFMojrEeOU8pNJR_ce1A" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_3-fPUIjrEeOU8pNJR_ce1A" name="betrieb" type="_xMGYsIQNEeOcIqH7FFhV2w" aggregation="composite" association="_3-iSoIjrEeOU8pNJR_ce1A">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3-fPUYjrEeOU8pNJR_ce1A" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3-fPUojrEeOU8pNJR_ce1A" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_4XK1EIjrEeOU8pNJR_ce1A" name="praktikumsverantwortlicher" type="_9JPgIIQNEeOcIqH7FFhV2w" aggregation="composite" association="_4XOfcIjrEeOU8pNJR_ce1A">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4XK1EYjrEeOU8pNJR_ce1A" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4XK1EojrEeOU8pNJR_ce1A" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_xMGYsIQNEeOcIqH7FFhV2w" name="Betrieb">
+      <ownedAttribute xmi:id="_wxfD0IQOEeOcIqH7FFhV2w" name="Vertrag" type="_upEbQIQNEeOcIqH7FFhV2w" isUnique="false" aggregation="composite" association="_wxpb5YQOEeOcIqH7FFhV2w">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_wxfD0YQOEeOcIqH7FFhV2w" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_wxfD0oQOEeOcIqH7FFhV2w" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_zx45wIQOEeOcIqH7FFhV2w" name="beurteilung" type="_1ZVOIIQNEeOcIqH7FFhV2w" aggregation="composite" association="_zyCDuoQOEeOcIqH7FFhV2w">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zx45wYQOEeOcIqH7FFhV2w" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zx45woQOEeOcIqH7FFhV2w" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_y3m4QIQNEeOcIqH7FFhV2w" name="Praktikumsbericht"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_1ZVOIIQNEeOcIqH7FFhV2w" name="Beurteilung"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_4H5GIIQNEeOcIqH7FFhV2w" name="betreuender Professor"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_9JPgIIQNEeOcIqH7FFhV2w" name="Praktikumsverantwortlicher"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="__noOIIQNEeOcIqH7FFhV2w" name="Prüfungsamt"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_qKHHMIQOEeOcIqH7FFhV2w" name="unterschreibt" memberEnd="_qKHHMYQOEeOcIqH7FFhV2w _qJ99QIQOEeOcIqH7FFhV2w">
+      <ownedEnd xmi:id="_qKHHMYQOEeOcIqH7FFhV2w" name="Student" visibility="public" type="_tDQUAIQNEeOcIqH7FFhV2w" association="_qKHHMIQOEeOcIqH7FFhV2w">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qKHHMoQOEeOcIqH7FFhV2w" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qKHHM4QOEeOcIqH7FFhV2w" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_wxpb5YQOEeOcIqH7FFhV2w" name="unterschreibt" memberEnd="_wxpb5oQOEeOcIqH7FFhV2w _wxfD0IQOEeOcIqH7FFhV2w">
+      <ownedEnd xmi:id="_wxpb5oQOEeOcIqH7FFhV2w" name="Betrieb" type="_xMGYsIQNEeOcIqH7FFhV2w" association="_wxpb5YQOEeOcIqH7FFhV2w">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_wxpb54QOEeOcIqH7FFhV2w" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_wxpb6IQOEeOcIqH7FFhV2w" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_zI_twIQOEeOcIqH7FFhV2w" name="verfasst" memberEnd="_zI_twYQOEeOcIqH7FFhV2w _zI18wIQOEeOcIqH7FFhV2w">
+      <ownedEnd xmi:id="_zI_twYQOEeOcIqH7FFhV2w" name="student" type="_tDQUAIQNEeOcIqH7FFhV2w" association="_zI_twIQOEeOcIqH7FFhV2w">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zI_twoQOEeOcIqH7FFhV2w" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zI_tw4QOEeOcIqH7FFhV2w" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_zyCDuoQOEeOcIqH7FFhV2w" name="verfasst" memberEnd="_zyCDu4QOEeOcIqH7FFhV2w _zx45wIQOEeOcIqH7FFhV2w">
+      <ownedEnd xmi:id="_zyCDu4QOEeOcIqH7FFhV2w" name="betrieb" type="_xMGYsIQNEeOcIqH7FFhV2w" association="_zyCDuoQOEeOcIqH7FFhV2w">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zyDR0IQOEeOcIqH7FFhV2w" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zyDR0YQOEeOcIqH7FFhV2w" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_425EtYQOEeOcIqH7FFhV2w" name="überprüft und wertet aus" memberEnd="_425EtoQOEeOcIqH7FFhV2w _425EuYQOEeOcIqH7FFhV2w" navigableOwnedEnd="_425EuYQOEeOcIqH7FFhV2w">
+      <ownedEnd xmi:id="_425EtoQOEeOcIqH7FFhV2w" name="praktikumsbetreuer" type="_4H5GIIQNEeOcIqH7FFhV2w" association="_425EtYQOEeOcIqH7FFhV2w">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_425Et4QOEeOcIqH7FFhV2w" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_425EuIQOEeOcIqH7FFhV2w" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_425EuYQOEeOcIqH7FFhV2w" name="beurteilung" type="_1ZVOIIQNEeOcIqH7FFhV2w" association="_425EtYQOEeOcIqH7FFhV2w">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_425EuoQOEeOcIqH7FFhV2w" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_425Eu4QOEeOcIqH7FFhV2w" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_gPUKoIQREeOcIqH7FFhV2w" name="spricht Empfehlung aus" memberEnd="_gPUKoYQREeOcIqH7FFhV2w _gPUKpIQREeOcIqH7FFhV2w" navigableOwnedEnd="_gPUKpIQREeOcIqH7FFhV2w">
+      <ownedEnd xmi:id="_gPUKoYQREeOcIqH7FFhV2w" name="praktikumsbetreuer" type="_4H5GIIQNEeOcIqH7FFhV2w" association="_gPUKoIQREeOcIqH7FFhV2w">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gPUKooQREeOcIqH7FFhV2w" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gPUKo4QREeOcIqH7FFhV2w" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_gPUKpIQREeOcIqH7FFhV2w" name="praktikumsverwalter" type="_9JPgIIQNEeOcIqH7FFhV2w" association="_gPUKoIQREeOcIqH7FFhV2w">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gPUKpYQREeOcIqH7FFhV2w" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gPUKpoQREeOcIqH7FFhV2w" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iY5GQIQREeOcIqH7FFhV2w" name="leitet Erfolg/nicht Erfolg weiter" memberEnd="_iY5GQYQREeOcIqH7FFhV2w _iY5GRIQREeOcIqH7FFhV2w" navigableOwnedEnd="_iY5GRIQREeOcIqH7FFhV2w">
+      <ownedEnd xmi:id="_iY5GQYQREeOcIqH7FFhV2w" name="praktikumsverwalter" type="_9JPgIIQNEeOcIqH7FFhV2w" association="_iY5GQIQREeOcIqH7FFhV2w">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iY5GQoQREeOcIqH7FFhV2w" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iY5GQ4QREeOcIqH7FFhV2w" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_iY5GRIQREeOcIqH7FFhV2w" name="prüfungsamt" type="__noOIIQNEeOcIqH7FFhV2w" association="_iY5GQIQREeOcIqH7FFhV2w">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iY5GRYQREeOcIqH7FFhV2w" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iY5GRoQREeOcIqH7FFhV2w" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iDTqQIQxEeO80LdjRKDJeA" name="überprüft und wertet aus" memberEnd="_iDTqQYQxEeO80LdjRKDJeA _iDTqRIQxEeO80LdjRKDJeA" navigableOwnedEnd="_iDTqQYQxEeO80LdjRKDJeA">
+      <ownedEnd xmi:id="_iDTqQYQxEeO80LdjRKDJeA" name="praktikumsbericht" type="_y3m4QIQNEeOcIqH7FFhV2w" association="_iDTqQIQxEeO80LdjRKDJeA">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iDTqQoQxEeO80LdjRKDJeA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iDTqQ4QxEeO80LdjRKDJeA" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_iDTqRIQxEeO80LdjRKDJeA" name="praktikumsbetreuer" type="_4H5GIIQNEeOcIqH7FFhV2w" association="_iDTqQIQxEeO80LdjRKDJeA">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iDTqRYQxEeO80LdjRKDJeA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iDTqRoQxEeO80LdjRKDJeA" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_PKv3YIjoEeOU8pNJR_ce1A" name="Dekan"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_RPbr8IjoEeOU8pNJR_ce1A" name="unterschreibt" memberEnd="_RPbr8YjoEeOU8pNJR_ce1A _RPbr9IjoEeOU8pNJR_ce1A" navigableOwnedEnd="_RPbr9IjoEeOU8pNJR_ce1A">
+      <ownedEnd xmi:id="_RPbr8YjoEeOU8pNJR_ce1A" name="dekan" type="_PKv3YIjoEeOU8pNJR_ce1A" association="_RPbr8IjoEeOU8pNJR_ce1A">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RPbr8ojoEeOU8pNJR_ce1A" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RPbr84joEeOU8pNJR_ce1A" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_RPbr9IjoEeOU8pNJR_ce1A" name="vertrag" type="_upEbQIQNEeOcIqH7FFhV2w" association="_RPbr8IjoEeOU8pNJR_ce1A">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RPbr9YjoEeOU8pNJR_ce1A" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RPbr9ojoEeOU8pNJR_ce1A" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_kS-jeojqEeOU8pNJR_ce1A" name="unterschreibt" memberEnd="_kS-je4jqEeOU8pNJR_ce1A _kS-jfojqEeOU8pNJR_ce1A" navigableOwnedEnd="_kS-jfojqEeOU8pNJR_ce1A">
+      <ownedEnd xmi:id="_kS-je4jqEeOU8pNJR_ce1A" name="praktikumsverantwortlicher" type="_9JPgIIQNEeOcIqH7FFhV2w" association="_kS-jeojqEeOU8pNJR_ce1A">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_kS-jfIjqEeOU8pNJR_ce1A" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_kS-jfYjqEeOU8pNJR_ce1A" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_kS-jfojqEeOU8pNJR_ce1A" name="vertrag" type="_upEbQIQNEeOcIqH7FFhV2w" association="_kS-jeojqEeOU8pNJR_ce1A">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_kS-jf4jqEeOU8pNJR_ce1A" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_kS-jgIjqEeOU8pNJR_ce1A" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_xquySojrEeOU8pNJR_ce1A" name="unterschreibt" memberEnd="_xquyS4jrEeOU8pNJR_ce1A _xquyTojrEeOU8pNJR_ce1A" navigableOwnedEnd="_xquyTojrEeOU8pNJR_ce1A">
+      <ownedEnd xmi:id="_xquyS4jrEeOU8pNJR_ce1A" name="student" type="_tDQUAIQNEeOcIqH7FFhV2w" association="_xquySojrEeOU8pNJR_ce1A">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xquyTIjrEeOU8pNJR_ce1A" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xquyTYjrEeOU8pNJR_ce1A" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_xquyTojrEeOU8pNJR_ce1A" name="vertrag" type="_upEbQIQNEeOcIqH7FFhV2w" association="_xquySojrEeOU8pNJR_ce1A">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xquyT4jrEeOU8pNJR_ce1A" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xquyUIjrEeOU8pNJR_ce1A" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_3h1IgIjrEeOU8pNJR_ce1A" name="wird unterschrieben von" memberEnd="_3h1IgYjrEeOU8pNJR_ce1A _3hyFMIjrEeOU8pNJR_ce1A">
+      <ownedEnd xmi:id="_3h1IgYjrEeOU8pNJR_ce1A" name="vertrag" type="_upEbQIQNEeOcIqH7FFhV2w" association="_3h1IgIjrEeOU8pNJR_ce1A">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3h1IgojrEeOU8pNJR_ce1A" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3h1Ig4jrEeOU8pNJR_ce1A" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_3-iSoIjrEeOU8pNJR_ce1A" name="wird unterschrieben von" memberEnd="_3-iSoYjrEeOU8pNJR_ce1A _3-fPUIjrEeOU8pNJR_ce1A">
+      <ownedEnd xmi:id="_3-iSoYjrEeOU8pNJR_ce1A" name="vertrag" type="_upEbQIQNEeOcIqH7FFhV2w" association="_3-iSoIjrEeOU8pNJR_ce1A">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3-iSoojrEeOU8pNJR_ce1A" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3-iSo4jrEeOU8pNJR_ce1A" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_4XOfcIjrEeOU8pNJR_ce1A" name="wird unterschrieben von" memberEnd="_4XOfcYjrEeOU8pNJR_ce1A _4XK1EIjrEeOU8pNJR_ce1A">
+      <ownedEnd xmi:id="_4XOfcYjrEeOU8pNJR_ce1A" name="vertrag" type="_upEbQIQNEeOcIqH7FFhV2w" association="_4XOfcIjrEeOU8pNJR_ce1A">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4XOfcojrEeOU8pNJR_ce1A" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4XOfc4jrEeOU8pNJR_ce1A" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_5Yu_yojrEeOU8pNJR_ce1A" name="verfasst" memberEnd="_5Yu_y4jrEeOU8pNJR_ce1A _5Yu_zojrEeOU8pNJR_ce1A" navigableOwnedEnd="_5Yu_zojrEeOU8pNJR_ce1A">
+      <ownedEnd xmi:id="_5Yu_y4jrEeOU8pNJR_ce1A" name="betrieb" type="_xMGYsIQNEeOcIqH7FFhV2w" association="_5Yu_yojrEeOU8pNJR_ce1A">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5Yu_zIjrEeOU8pNJR_ce1A" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5Yu_zYjrEeOU8pNJR_ce1A" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_5Yu_zojrEeOU8pNJR_ce1A" name="beurteilung" type="_1ZVOIIQNEeOcIqH7FFhV2w" association="_5Yu_yojrEeOU8pNJR_ce1A">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5Yu_z4jrEeOU8pNJR_ce1A" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5Yu_0IjrEeOU8pNJR_ce1A" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>

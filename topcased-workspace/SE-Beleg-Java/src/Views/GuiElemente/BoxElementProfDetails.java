@@ -73,7 +73,7 @@ public class BoxElementProfDetails extends JPanel implements EditBox{
 
 	@Override
 	public void setComponentValues() {
-		jtf_email.setText(controller.getStringValueForBoxElementEdit(SqlTableProfs.Id));
+		jtf_email.setText(controller.getStringValueForBoxElementEdit("E-Mail"));
 		jtf_name.setText(controller.getStringValueForBoxElementEdit(SqlTableProfs.Name));
 	}
 	

@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagrams:Diagrams xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.topcased.org/DI/1.0" xmlns:diagrams="http://www.topcased.org/Diagrams/1.0" xmi:id="_v2m7oPodEeOX45VyPlcj5A" activeDiagram="_v2m7ofodEeOX45VyPlcj5A">
+  <model href="Entwicklerdoku%20activity%20mailen.uml#idActivity"/>
+  <diagrams xmi:id="_v2m7ofodEeOX45VyPlcj5A" position="0,0" size="100,100" name="Entwicklerdoku activity mailen" zoom="0.75" viewport="0,0">
+    <property xmi:id="_v2854PodEeOX45VyPlcj5A" key="pageFormatName" value="A4"/>
+    <property xmi:id="_v29g8PodEeOX45VyPlcj5A" key="diagramWidth" value="840"/>
+    <property xmi:id="_v29g8fodEeOX45VyPlcj5A" key="diagramHeight" value="1188"/>
+    <property xmi:id="_v29g8vodEeOX45VyPlcj5A" key="pageMarginName" value="Small Margin"/>
+    <property xmi:id="_v29g8_odEeOX45VyPlcj5A" key="diagramTopMargin" value="20"/>
+    <property xmi:id="_v29g9PodEeOX45VyPlcj5A" key="diagramBottomMargin" value="20"/>
+    <property xmi:id="_v29g9fodEeOX45VyPlcj5A" key="diagramLeftMargin" value="20"/>
+    <property xmi:id="_v29g9vodEeOX45VyPlcj5A" key="diagramRightMargin" value="20"/>
+    <property xmi:id="_v29g9_odEeOX45VyPlcj5A" key="orientation" value="landscape"/>
+    <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_v2nisPodEeOX45VyPlcj5A" presentation="org.topcased.modeler.uml.activitydiagram">
+      <element href="Entwicklerdoku%20activity%20mailen.uml#idActivity"/>
+    </semanticModel>
+    <contained xsi:type="di:GraphNode" xmi:id="_wZKPEPodEeOX45VyPlcj5A" position="80,26" size="30,30">
+      <property xmi:id="__GV1MPodEeOX45VyPlcj5A" key="isVisibleLabel" value="visible"/>
+      <anchorage xmi:id="_FqKSEPofEeOX45VyPlcj5A" graphEdge="_FqLgMPofEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_wZK2IPodEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_wZMEQPodEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_wvlyEPodEeOX45VyPlcj5A" position="449,695" size="40,40">
+      <property xmi:id="_VGt8IPoeEeOX45VyPlcj5A" key="isVisibleLabel" value="visible"/>
+      <anchorage xmi:id="_S3WFEPofEeOX45VyPlcj5A" graphEdge="_S3X6QPofEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_wvlyEfodEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_wvoOUPodEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_9mQigPodEeOX45VyPlcj5A" position="39,423" size="150,73">
+      <anchorage xmi:id="_3Iaf4foeEeOX45VyPlcj5A" graphEdge="_3IcVEPoeEeOX45VyPlcj5A _3au-8PoeEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_9mQigfodEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_9mSXsPodEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_9pGbIPodEeOX45VyPlcj5A" position="392,21" size="150,60">
+      <anchorage xmi:id="_FQhqEPofEeOX45VyPlcj5A" graphEdge="_FQi4MPofEeOX45VyPlcj5A _FqLgMPofEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_9pGbIfodEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_9pJecPodEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_9wkVEPodEeOX45VyPlcj5A" position="386,325" size="150,60">
+      <anchorage xmi:id="_FG07gPofEeOX45VyPlcj5A" graphEdge="_FG2wsPofEeOX45VyPlcj5A _f-yxkPohEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_9wkVEfodEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_9wnYYPodEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_90GKMPodEeOX45VyPlcj5A" position="723,421" size="150,69">
+      <anchorage xmi:id="_EzODAPofEeOX45VyPlcj5A" graphEdge="_EzPRIPofEeOX45VyPlcj5A _E9NFcPofEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_90GKMfodEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_90ImcPodEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_cqYh4PoeEeOX45VyPlcj5A" position="448,448" size="30,50">
+      <property xmi:id="_cqYh4foeEeOX45VyPlcj5A" key="isVisibleLabel" value="hide"/>
+      <anchorage xmi:id="_3Iaf4PoeEeOX45VyPlcj5A" graphEdge="_3IcVEPoeEeOX45VyPlcj5A _3au-8PoeEeOX45VyPlcj5A _D8IC8PofEeOX45VyPlcj5A _EIKT0PofEeOX45VyPlcj5A _EfVdsPofEeOX45VyPlcj5A _EqOfEPofEeOX45VyPlcj5A _EzPRIPofEeOX45VyPlcj5A _E9NFcPofEeOX45VyPlcj5A _FG2wsPofEeOX45VyPlcj5A _SkgooPofEeOX45VyPlcj5A _XatikPofEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_cqYh4voeEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_cqa-IPoeEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_eXuNcPoeEeOX45VyPlcj5A" position="55,582" size="150,74">
+      <anchorage xmi:id="_D8G00PofEeOX45VyPlcj5A" graphEdge="_D8IC8PofEeOX45VyPlcj5A _EIKT0PofEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_eXuNcfoeEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_eXye4PoeEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_vh9E0PoeEeOX45VyPlcj5A" position="669,314" size="150,76">
+      <anchorage xmi:id="_EfUPkPofEeOX45VyPlcj5A" graphEdge="_EfVdsPofEeOX45VyPlcj5A _EqOfEPofEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_vh9E0foeEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_viAvMPoeEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_3IcVEPoeEeOX45VyPlcj5A" anchor="_3Iaf4PoeEeOX45VyPlcj5A _3Iaf4foeEeOX45VyPlcj5A">
+      <property xmi:id="_CxolwPofEeOX45VyPlcj5A" key="router" value="Oblique"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_3IcVEfoeEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_3IgmgPoeEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_3IcVEvoeEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_3IcVE_oeEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_3IcVFPoeEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_3IcVFfoeEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="18" vDistance="32"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_3IcVFvoeEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_3IcVF_oeEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_3au-8PoeEeOX45VyPlcj5A" anchor="_3Iaf4foeEeOX45VyPlcj5A _3Iaf4PoeEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_3au-8foeEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_3aypUPoeEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_3au-8voeEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_3au-8_oeEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_3au-9PoeEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_3au-9foeEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_3au-9voeEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_3au-9_oeEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject" offset="26,2"/>
+      <waypoints>[176, -64, -173, -78]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_D8IC8PofEeOX45VyPlcj5A" anchor="_3Iaf4PoeEeOX45VyPlcj5A _D8G00PofEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_D8IC8fofEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_D8LGQPofEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_D8IC8vofEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_D8IC8_ofEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_D8IC9PofEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_D8IC9fofEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_D8IC9vofEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_D8IC9_ofEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+      <waypoints>[-124, 90, 209, -56]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_EIKT0PofEeOX45VyPlcj5A" anchor="_D8G00PofEeOX45VyPlcj5A _3Iaf4PoeEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_EIKT0fofEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_EIPzYPofEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_EIKT0vofEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_EIKT0_ofEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_EIKT1PofEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_EIKT1fofEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_EIKT1vofEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_EIKT1_ofEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject" offset="-52,-28"/>
+      <waypoints>[140, -98, -193, 48]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_EfVdsPofEeOX45VyPlcj5A" anchor="_3Iaf4PoeEeOX45VyPlcj5A _EfUPkPofEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_EfVdsfofEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_EfZIEPofEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_EfVdsvofEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_EfVds_ofEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_EfVdtPofEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_EfVdtfofEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_EfVdtvofEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_EfVdt_ofEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+      <waypoints>[177, -25, -162, 70]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_EqOfEPofEeOX45VyPlcj5A" anchor="_EfUPkPofEeOX45VyPlcj5A _3Iaf4PoeEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_EqOfEfofEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_EqUlsPofEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_EqOfEvofEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_EqOfE_ofEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_EqOfFPofEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_EqOfFfofEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_EqOfFvofEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_EqOfF_ofEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject" offset="-81,-122"/>
+      <waypoints>[-215, 29, 124, -66]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_EzPRIPofEeOX45VyPlcj5A" anchor="_3Iaf4PoeEeOX45VyPlcj5A _EzODAPofEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_EzPRIfofEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_EzS7gPofEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_EzPRIvofEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_EzPRI_ofEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_EzPRJPofEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_EzPRJfofEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_EzPRJvofEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_EzPRJ_ofEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject" offset="4,-33"/>
+      <waypoints>[168, -20, -167, -2]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_E9NFcPofEeOX45VyPlcj5A" anchor="_EzODAPofEeOX45VyPlcj5A _3Iaf4PoeEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_E9NFcfofEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_E9UaMPofEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_E9NFcvofEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_E9NFc_ofEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_E9NFdPofEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_E9NFdfofEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_E9NFdvofEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_E9NFd_ofEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+      <waypoints>[-172, 29, 163, 11]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_FG2wsPofEeOX45VyPlcj5A" anchor="_FG07gPofEeOX45VyPlcj5A _3Iaf4PoeEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_FG2wsfofEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_FG-FcPofEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_FG2wsvofEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_FG2ws_ofEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_FG2wtPofEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_FG2wtfofEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_FG2wtvofEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_FG2wt_ofEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_FQi4MPofEeOX45VyPlcj5A" anchor="_FQhqEPofEeOX45VyPlcj5A _Wr97UPohEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_FQi4MfofEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_FQnJoPofEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_FQi4MvofEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_FQi4M_ofEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_FQi4NPofEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_FQi4NfofEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_FQi4NvofEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_FQi4N_ofEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_FqLgMPofEeOX45VyPlcj5A" anchor="_FqKSEPofEeOX45VyPlcj5A _FQhqEPofEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_FqLgMfofEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_FqQYsPofEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_FqLgMvofEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_FqLgM_ofEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_FqLgNPofEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_FqLgNfofEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_FqLgNvofEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_FqLgN_ofEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_RHkwkPofEeOX45VyPlcj5A" position="389,590" size="150,60">
+      <anchorage xmi:id="_SkfagPofEeOX45VyPlcj5A" graphEdge="_SkgooPofEeOX45VyPlcj5A _S3X6QPofEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_RHkwkfofEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_RHq3MPofEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_SkgooPofEeOX45VyPlcj5A" anchor="_3Iaf4PoeEeOX45VyPlcj5A _SkfagPofEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_SkhPsPofEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_SkpLgPofEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_SkhPsfofEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_SkhPsvofEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_SkhPs_ofEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_SkhPtPofEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_SkhPtfofEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_SkhPtvofEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_S3X6QPofEeOX45VyPlcj5A" anchor="_SkfagPofEeOX45VyPlcj5A _S3WFEPofEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_S3X6QfofEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_S3gdIPofEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_S3X6QvofEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_S3X6Q_ofEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_S3X6RPofEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_S3X6RfofEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_S3X6RvofEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_S3X6R_ofEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_UyTV4PofEeOX45VyPlcj5A" position="740,559" size="150,60">
+      <anchorage xmi:id="_XD3v4PofEeOX45VyPlcj5A" graphEdge="_XD5lEPofEeOX45VyPlcj5A _XatikPofEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_UyTV4fofEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_UyZcgPofEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_WlZEIPofEeOX45VyPlcj5A" position="790,668" size="40,40">
+      <property xmi:id="_b4ptgPofEeOX45VyPlcj5A" key="isVisibleLabel" value="visible"/>
+      <anchorage xmi:id="_XD3v4fofEeOX45VyPlcj5A" graphEdge="_XD5lEPofEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_WlZEIfofEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_WlejsPofEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_XD5lEPofEeOX45VyPlcj5A" anchor="_XD3v4PofEeOX45VyPlcj5A _XD3v4fofEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_XD5lEfofEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_XEDWEPofEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_XD5lEvofEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_XD5lE_ofEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_XD5lFPofEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_XD5lFfofEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_XD5lFvofEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_XD5lF_ofEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_XatikPofEeOX45VyPlcj5A" anchor="_3Iaf4PoeEeOX45VyPlcj5A _XD3v4PofEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_XatikfofEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_Xa36oPofEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_XatikvofEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_Xatik_ofEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_XatilPofEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_XatilfofEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_XatilvofEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_Xatil_ofEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject" offset="-11,21"/>
+      <waypoints>[121, 106, -231, -10]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_U3JuwPohEeOX45VyPlcj5A" position="446,207" size="39,59">
+      <property xmi:id="_U3JuwfohEeOX45VyPlcj5A" key="isVisibleLabel" value="hide"/>
+      <anchorage xmi:id="_fnLi0PohEeOX45VyPlcj5A" graphEdge="_fnMw8PohEeOX45VyPlcj5A _f4Hh0PohEeOX45VyPlcj5A _f-yxkPohEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_U3JuwvohEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_U3FdUPohEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_U3ee4PohEeOX45VyPlcj5A" position="83,178" size="143,103">
+      <anchorage xmi:id="_feWW8PohEeOX45VyPlcj5A" graphEdge="_feXlEPohEeOX45VyPlcj5A _fnMw8PohEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_U3ee4fohEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_U3FdUfohEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_U3qFEPohEeOX45VyPlcj5A" position="694,174" size="123,105">
+      <anchorage xmi:id="_fwDK8PohEeOX45VyPlcj5A" graphEdge="_fwDyAPohEeOX45VyPlcj5A _f4Hh0PohEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_U3qFEfohEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_U3FdUvohEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_U31EMPohEeOX45VyPlcj5A" position="447,106" size="39,59">
+      <property xmi:id="_U31EMfohEeOX45VyPlcj5A" key="isVisibleLabel" value="visible"/>
+      <anchorage xmi:id="_Wr97UPohEeOX45VyPlcj5A" graphEdge="_FQi4MPofEeOX45VyPlcj5A _feXlEPohEeOX45VyPlcj5A _fwDyAPohEeOX45VyPlcj5A"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_U31rQPohEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_U3FdU_ohEeOX45VyPlcj5A"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_feXlEPohEeOX45VyPlcj5A" anchor="_Wr97UPohEeOX45VyPlcj5A _feWW8PohEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_feXlEfohEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_feh9IPohEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_feXlEvohEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_feXlE_ohEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_feXlFPohEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_feXlFfohEeOX45VyPlcj5A" id="nameEdgeObject" uDistance="60" vDistance="120"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_feXlFvohEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_feXlF_ohEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+      <waypoints>[-319, 0, -7, -94]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_fnMw8PohEeOX45VyPlcj5A" anchor="_feWW8PohEeOX45VyPlcj5A _fnLi0PohEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_fnMw8fohEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_fnXwEPohEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_fnMw8vohEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_fnMw8_ohEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_fnMw9PohEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_fnMw9fohEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_fnMw9vohEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_fnMw9_ohEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_fwDyAPohEeOX45VyPlcj5A" anchor="_Wr97UPohEeOX45VyPlcj5A _fwDK8PohEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_fwDyAfohEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_fwOxIPohEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_fwDyAvohEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_fwDyA_ohEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_fwDyBPohEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_fwDyBfohEeOX45VyPlcj5A" id="nameEdgeObject" uDistance="62" vDistance="-95"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_fwDyBvohEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_fwDyB_ohEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+      <waypoints>[289, -7, 0, -98]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_f4Hh0PohEeOX45VyPlcj5A" anchor="_fwDK8PohEeOX45VyPlcj5A _fnLi0PohEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_f4Hh0fohEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_f4acwPohEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_f4Hh0vohEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_f4Hh0_ohEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_f4Hh1PohEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_f4Hh1fohEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_f4Hh1vohEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_f4Hh1_ohEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_f-yxkPohEeOX45VyPlcj5A" anchor="_fnLi0PohEeOX45VyPlcj5A _FG07gPofEeOX45VyPlcj5A">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_f-yxkfohEeOX45VyPlcj5A" presentation="default">
+        <element href="Entwicklerdoku%20activity%20mailen.uml#_f_DQQPohEeOX45VyPlcj5A"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_f-yxkvohEeOX45VyPlcj5A" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_f-yxk_ohEeOX45VyPlcj5A" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_f-yxlPohEeOX45VyPlcj5A" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_f-yxlfohEeOX45VyPlcj5A" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_f-yxlvohEeOX45VyPlcj5A" visible="false" id="interruptibleEdgeObject"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_f-yxl_ohEeOX45VyPlcj5A" visible="false" id="interruptibleIconEdgeObject"/>
+    </contained>
+  </diagrams>
+</diagrams:Diagrams>

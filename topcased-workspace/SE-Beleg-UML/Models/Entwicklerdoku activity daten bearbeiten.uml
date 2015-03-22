@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="idModel" name="Entwicklerdoku activity daten bearbeitenModel">
+  <packagedElement xmi:type="uml:Package" xmi:id="idPackage" name="Entwicklerdoku activity daten bearbeitenPackage">
+    <packagedElement xmi:type="uml:Activity" xmi:id="idActivity" name="Entwicklerdoku activity daten bearbeitenActivity">
+      <ownedComment xmi:id="_c3bU0PodEeOX45VyPlcj5A" annotatedElement="_GFzMkPocEeOX45VyPlcj5A">
+        <body>In der Liste kann mittels zweier Button vor und zurück gesprungen werden.&#xD;
+</body>
+      </ownedComment>
+      <ownedRule xmi:id="_riQccPobEeOX45VyPlcj5A" name="es existieren Daten zum bearbeiten" constrainedElement="_pLxtQPobEeOX45VyPlcj5A"/>
+      <node xmi:type="uml:InitialNode" xmi:id="_jIPdgPobEeOX45VyPlcj5A" name="Listenansicht" outgoing="_p_EycPobEeOX45VyPlcj5A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_lTGLgPobEeOX45VyPlcj5A" name="OpaqueAction1"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_lWKGkPobEeOX45VyPlcj5A" name=""/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_lZsiwPobEeOX45VyPlcj5A" name="OpaqueAction3" incoming="_B5hZYPocEeOX45VyPlcj5A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_leSH0PobEeOX45VyPlcj5A" name="OpaqueAction4"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_lhCg4PobEeOX45VyPlcj5A" name="OpaqueAction5"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_ljuogPobEeOX45VyPlcj5A" name="OpaqueAction6" incoming="_CD9u0PocEeOX45VyPlcj5A"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_pLxtQPobEeOX45VyPlcj5A" name="Datensatzauswahl" outgoing="_7pT_kPobEeOX45VyPlcj5A _ByJmEPocEeOX45VyPlcj5A" incoming="_p_EycPobEeOX45VyPlcj5A"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_zGS1oPobEeOX45VyPlcj5A" name="Wurden Datensätze markiert?" outgoing="_B5hZYPocEeOX45VyPlcj5A _CD9u0PocEeOX45VyPlcj5A _QVeFkPocEeOX45VyPlcj5A _SFn0kPocEeOX45VyPlcj5A" incoming="_ByJmEPocEeOX45VyPlcj5A"/>
+      <node xmi:type="uml:ActivityFinalNode" xmi:id="_6P-1IPobEeOX45VyPlcj5A" name="aktiven Datensatz bearbeiten" incoming="_7pT_kPobEeOX45VyPlcj5A"/>
+      <node xmi:type="uml:ActivityFinalNode" xmi:id="_Ds_iIPocEeOX45VyPlcj5A" name="ActivityFinalNode1"/>
+      <node xmi:type="uml:ActivityFinalNode" xmi:id="_D5YYUPocEeOX45VyPlcj5A" name="ActivityFinalNode2"/>
+      <node xmi:type="uml:ActivityFinalNode" xmi:id="_F0CHIPocEeOX45VyPlcj5A" name="nur markierte Datensätze bearbeiten"/>
+      <node xmi:type="uml:ActivityFinalNode" xmi:id="_GFzMkPocEeOX45VyPlcj5A" name="Datensatz aus Liste bearbeiten" incoming="_jr1A0PodEeOX45VyPlcj5A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_izAX4PocEeOX45VyPlcj5A" name="nur markierte Datensätze bearbeiten" outgoing="_U7mtwPodEeOX45VyPlcj5A" incoming="_QVeFkPocEeOX45VyPlcj5A"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_mUQ4IPocEeOX45VyPlcj5A" name="nur ausgewählte Datensätze bearbeiten" outgoing="_VF7HYPodEeOX45VyPlcj5A" incoming="_SFn0kPocEeOX45VyPlcj5A"/>
+      <node xmi:type="uml:MergeNode" xmi:id="_7suqgPocEeOX45VyPlcj5A" name="Liste mit Datensätzen" outgoing="_jr1A0PodEeOX45VyPlcj5A" incoming="_U7mtwPodEeOX45VyPlcj5A _VF7HYPodEeOX45VyPlcj5A"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_p_EycPobEeOX45VyPlcj5A" name="ControlFlow1" source="_jIPdgPobEeOX45VyPlcj5A" target="_pLxtQPobEeOX45VyPlcj5A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_p_EycfobEeOX45VyPlcj5A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_p_EycvobEeOX45VyPlcj5A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_7pT_kPobEeOX45VyPlcj5A" name="Doppelklick auf einen Datensatz" source="_pLxtQPobEeOX45VyPlcj5A" target="_6P-1IPobEeOX45VyPlcj5A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_7pT_kfobEeOX45VyPlcj5A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_7pT_kvobEeOX45VyPlcj5A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_ByJmEPocEeOX45VyPlcj5A" name="Markierung mehrerer Datensätze" source="_pLxtQPobEeOX45VyPlcj5A" target="_zGS1oPobEeOX45VyPlcj5A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_ByJmEfocEeOX45VyPlcj5A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_ByJmEvocEeOX45VyPlcj5A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_B5hZYPocEeOX45VyPlcj5A" name="ControlFlow3" source="_zGS1oPobEeOX45VyPlcj5A" target="_lZsiwPobEeOX45VyPlcj5A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_B5hZYfocEeOX45VyPlcj5A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_B5hZYvocEeOX45VyPlcj5A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_CD9u0PocEeOX45VyPlcj5A" name="ControlFlow4" source="_zGS1oPobEeOX45VyPlcj5A" target="_ljuogPobEeOX45VyPlcj5A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_CD9u0focEeOX45VyPlcj5A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_CD9u0vocEeOX45VyPlcj5A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_QVeFkPocEeOX45VyPlcj5A" name="ja" source="_zGS1oPobEeOX45VyPlcj5A" target="_izAX4PocEeOX45VyPlcj5A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_QVeFkfocEeOX45VyPlcj5A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_QVeFkvocEeOX45VyPlcj5A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_SFn0kPocEeOX45VyPlcj5A" name="nein" source="_zGS1oPobEeOX45VyPlcj5A" target="_mUQ4IPocEeOX45VyPlcj5A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_SFn0kfocEeOX45VyPlcj5A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_SFn0kvocEeOX45VyPlcj5A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_U7mtwPodEeOX45VyPlcj5A" name="ControlFlow2" source="_izAX4PocEeOX45VyPlcj5A" target="_7suqgPocEeOX45VyPlcj5A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_U7mtwfodEeOX45VyPlcj5A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_U7mtwvodEeOX45VyPlcj5A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_VF7HYPodEeOX45VyPlcj5A" name="ControlFlow5" source="_mUQ4IPocEeOX45VyPlcj5A" target="_7suqgPocEeOX45VyPlcj5A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_VF7HYfodEeOX45VyPlcj5A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_VF7HYvodEeOX45VyPlcj5A" value="1"/>
+      </edge>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_jr1A0PodEeOX45VyPlcj5A" name="ControlFlow6" source="_7suqgPocEeOX45VyPlcj5A" target="_GFzMkPocEeOX45VyPlcj5A">
+        <guard xmi:type="uml:LiteralBoolean" xmi:id="_jr1A0fodEeOX45VyPlcj5A" value="true"/>
+        <weight xmi:type="uml:LiteralInteger" xmi:id="_jr1A0vodEeOX45VyPlcj5A" value="1"/>
+      </edge>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>

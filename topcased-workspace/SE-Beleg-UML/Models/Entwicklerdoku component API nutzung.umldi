@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagrams:Diagrams xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.topcased.org/DI/1.0" xmlns:diagrams="http://www.topcased.org/Diagrams/1.0" xmi:id="_KEhbwPqnEeOy3cM4huDibg" activeDiagram="_KEhbwfqnEeOy3cM4huDibg">
+  <model href="Entwicklerdoku%20component%20API%20nutzung.uml#idComponent"/>
+  <diagrams xmi:id="_KEhbwfqnEeOy3cM4huDibg" position="0,0" size="100,100" name="Entwicklerdoku component systemarchitektur" zoom="0.75" viewport="0,42">
+    <property xmi:id="_KFazoPqnEeOy3cM4huDibg" key="pageFormatName" value="A4"/>
+    <property xmi:id="_KFbasPqnEeOy3cM4huDibg" key="diagramWidth" value="840"/>
+    <property xmi:id="_KFbasfqnEeOy3cM4huDibg" key="diagramHeight" value="1188"/>
+    <property xmi:id="_KFbasvqnEeOy3cM4huDibg" key="pageMarginName" value="Small Margin"/>
+    <property xmi:id="_KFbas_qnEeOy3cM4huDibg" key="diagramTopMargin" value="20"/>
+    <property xmi:id="_KFbatPqnEeOy3cM4huDibg" key="diagramBottomMargin" value="20"/>
+    <property xmi:id="_KFbatfqnEeOy3cM4huDibg" key="diagramLeftMargin" value="20"/>
+    <property xmi:id="_KFbatvqnEeOy3cM4huDibg" key="diagramRightMargin" value="20"/>
+    <property xmi:id="_KFbat_qnEeOy3cM4huDibg" key="orientation" value="portrait"/>
+    <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_KEhbwvqnEeOy3cM4huDibg" presentation="org.topcased.modeler.uml.componentdiagram">
+      <element href="Entwicklerdoku%20component%20API%20nutzung.uml#idComponent"/>
+    </semanticModel>
+    <contained xsi:type="di:GraphNode" xmi:id="_MWYwsPqnEeOy3cM4huDibg" position="61,182" size="200,90">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_MWYwsfqnEeOy3cM4huDibg" presentation="default">
+        <element href="Entwicklerdoku%20component%20API%20nutzung.uml#_MWxLMPqnEeOy3cM4huDibg"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_CgCrwPqpEeOy3cM4huDibg" position="178,40" size="-1,-1">
+        <property xmi:id="_CgCrwfqpEeOy3cM4huDibg" key="portPosition" value="4"/>
+        <anchorage xmi:id="_FEXpsPqpEeOy3cM4huDibg" graphEdge="_FEZe4PqpEeOy3cM4huDibg _HupeoPqpEeOy3cM4huDibg _LE3MgPqpEeOy3cM4huDibg _Vb7G8PqpEeOy3cM4huDibg"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_CgCrwvqpEeOy3cM4huDibg" presentation="default">
+          <element href="Entwicklerdoku%20component%20API%20nutzung.uml#_CgEg8PqpEeOy3cM4huDibg"/>
+        </semanticModel>
+      </contained>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_M0u5kPqnEeOy3cM4huDibg" position="539,30" size="200,90">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_M0u5kfqnEeOy3cM4huDibg" presentation="default">
+        <element href="Entwicklerdoku%20component%20API%20nutzung.uml#_M00ZIPqnEeOy3cM4huDibg"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_8f6VUPqoEeOy3cM4huDibg" position="-12,36" size="-1,-1">
+        <property xmi:id="_8f6VUfqoEeOy3cM4huDibg" key="portPosition" value="1"/>
+        <anchorage xmi:id="_FEXpsfqpEeOy3cM4huDibg" graphEdge="_FEZe4PqpEeOy3cM4huDibg"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_8f6VUvqoEeOy3cM4huDibg" presentation="default">
+          <element href="Entwicklerdoku%20component%20API%20nutzung.uml#_8gC4MPqoEeOy3cM4huDibg"/>
+        </semanticModel>
+      </contained>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_XmyRcPqoEeOy3cM4huDibg" position="539,126" size="200,90">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_XmyRcfqoEeOy3cM4huDibg" presentation="default">
+        <element href="Entwicklerdoku%20component%20API%20nutzung.uml#_Xm3xAPqoEeOy3cM4huDibg"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_9U-8IPqoEeOy3cM4huDibg" position="0,36" size="-1,-1">
+        <property xmi:id="_9U-8IfqoEeOy3cM4huDibg" key="portPosition" value="1"/>
+        <anchorage xmi:id="_HunpcPqpEeOy3cM4huDibg" graphEdge="_HupeoPqpEeOy3cM4huDibg"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_9U-8IvqoEeOy3cM4huDibg" presentation="default">
+          <element href="Entwicklerdoku%20component%20API%20nutzung.uml#_9VAKQPqoEeOy3cM4huDibg"/>
+        </semanticModel>
+      </contained>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_aZb_QPqoEeOy3cM4huDibg" position="539,222" size="200,90">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_aZb_QfqoEeOy3cM4huDibg" presentation="default">
+        <element href="Entwicklerdoku%20component%20API%20nutzung.uml#_aZhe0PqoEeOy3cM4huDibg"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_98tDcPqoEeOy3cM4huDibg" position="0,36" size="-1,-1">
+        <property xmi:id="_98tDcfqoEeOy3cM4huDibg" key="portPosition" value="1"/>
+        <anchorage xmi:id="_LE1XUPqpEeOy3cM4huDibg" graphEdge="_LE3MgPqpEeOy3cM4huDibg"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_98tDcvqoEeOy3cM4huDibg" presentation="default">
+          <element href="Entwicklerdoku%20component%20API%20nutzung.uml#_98vfsPqoEeOy3cM4huDibg"/>
+        </semanticModel>
+      </contained>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_j1MvEPqoEeOy3cM4huDibg" position="539,318" size="200,90">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_j1MvEfqoEeOy3cM4huDibg" presentation="default">
+        <element href="Entwicklerdoku%20component%20API%20nutzung.uml#_j1TcwPqoEeOy3cM4huDibg"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_-fUoUPqoEeOy3cM4huDibg" position="0,36" size="-1,-1">
+        <property xmi:id="_-fUoUfqoEeOy3cM4huDibg" key="portPosition" value="1"/>
+        <anchorage xmi:id="_Vb4qsPqpEeOy3cM4huDibg" graphEdge="_Vb7G8PqpEeOy3cM4huDibg"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_-fUoUvqoEeOy3cM4huDibg" presentation="default">
+          <element href="Entwicklerdoku%20component%20API%20nutzung.uml#_-fV2cPqoEeOy3cM4huDibg"/>
+        </semanticModel>
+      </contained>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_FEZe4PqpEeOy3cM4huDibg" anchor="_FEXpsPqpEeOy3cM4huDibg _FEXpsfqpEeOy3cM4huDibg">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_FEZe4fqpEeOy3cM4huDibg" presentation="default">
+        <element href="Entwicklerdoku%20component%20API%20nutzung.uml#_FElsIPqpEeOy3cM4huDibg"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_FEZe4vqpEeOy3cM4huDibg" id="stereotypeEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_HupeoPqpEeOy3cM4huDibg" anchor="_FEXpsPqpEeOy3cM4huDibg _HunpcPqpEeOy3cM4huDibg">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_HupeofqpEeOy3cM4huDibg" presentation="default">
+        <element href="Entwicklerdoku%20component%20API%20nutzung.uml#_Hu1r4PqpEeOy3cM4huDibg"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_HupeovqpEeOy3cM4huDibg" id="stereotypeEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_LE3MgPqpEeOy3cM4huDibg" anchor="_FEXpsPqpEeOy3cM4huDibg _LE1XUPqpEeOy3cM4huDibg">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_LE3MgfqpEeOy3cM4huDibg" presentation="default">
+        <element href="Entwicklerdoku%20component%20API%20nutzung.uml#_LFEA0PqpEeOy3cM4huDibg"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_LE3MgvqpEeOy3cM4huDibg" id="stereotypeEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_Vb7G8PqpEeOy3cM4huDibg" anchor="_FEXpsPqpEeOy3cM4huDibg _Vb4qsPqpEeOy3cM4huDibg">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Vb7G8fqpEeOy3cM4huDibg" presentation="default">
+        <element href="Entwicklerdoku%20component%20API%20nutzung.uml#_VcHUMPqpEeOy3cM4huDibg"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_Vb7G8vqpEeOy3cM4huDibg" id="stereotypeEdgeObject"/>
+    </contained>
+  </diagrams>
+</diagrams:Diagrams>

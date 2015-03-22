@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_qb8akM37EdqwVrslYOdUDA">
+  <packagedElement xmi:type="uml:Package" xmi:id="_w8IxIM37EdqwVrslYOdUDA" name="Entwicklerdoku class Systemarchitektur">
+    <ownedComment xmi:id="_80gk8PqrEeOy3cM4huDibg" annotatedElement="_EOA-kPqrEeOy3cM4huDibg">
+      <body>Implementationen stellen die Inhalte dar.</body>
+    </ownedComment>
+    <ownedComment xmi:id="_GIn0oPqsEeOy3cM4huDibg" annotatedElement="_24tm0PqpEeOy3cM4huDibg">
+      <body>Steuern den Inhalt des Models und die angezeigten Inhalte der View.&#xD;
+&#xD;
+Kennt u. U. die BasicBox Elemente der View um die Ereignisse auszuwerten.</body>
+    </ownedComment>
+    <ownedComment xmi:id="_rgXuMPqsEeOy3cM4huDibg" annotatedElement="_8AoGYPqqEeOy3cM4huDibg">
+      <body>Konkreter Datenbank-Connector</body>
+    </ownedComment>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2jvcYPqpEeOy3cM4huDibg" name="View" clientDependency="_AJ7TgPqqEeOy3cM4huDibg">
+      <interfaceRealization xmi:id="_AJ7TgPqqEeOy3cM4huDibg" name="InterfaceRealization1" supplier="_56bEUPqpEeOy3cM4huDibg" client="_2jvcYPqpEeOy3cM4huDibg" contract="_56bEUPqpEeOy3cM4huDibg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_24tm0PqpEeOy3cM4huDibg" name="Controller"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_3PP3gPqpEeOy3cM4huDibg" name="Model" clientDependency="_OaMscPqwEeOy3cM4huDibg">
+      <interfaceRealization xmi:id="_OaMscPqwEeOy3cM4huDibg" name="InterfaceRealization1" supplier="_LzV-8PqwEeOy3cM4huDibg" client="_3PP3gPqpEeOy3cM4huDibg" contract="_LzV-8PqwEeOy3cM4huDibg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_56bEUPqpEeOy3cM4huDibg" name="UpdateView"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="__bybIPqpEeOy3cM4huDibg" name="A_&lt;model>_&lt;updateView>" memberEnd="__bybIfqpEeOy3cM4huDibg __bybJPqpEeOy3cM4huDibg" navigableOwnedEnd="__bybJPqpEeOy3cM4huDibg">
+      <ownedEnd xmi:id="__bybIfqpEeOy3cM4huDibg" name="model" type="_3PP3gPqpEeOy3cM4huDibg" association="__bybIPqpEeOy3cM4huDibg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__bybIvqpEeOy3cM4huDibg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__bybI_qpEeOy3cM4huDibg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="__bybJPqpEeOy3cM4huDibg" name="updateView" type="_56bEUPqpEeOy3cM4huDibg" association="__bybIPqpEeOy3cM4huDibg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__bybJfqpEeOy3cM4huDibg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__bybJvqpEeOy3cM4huDibg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_CWNk4PqqEeOy3cM4huDibg" name="A_&lt;controller>_&lt;view>" memberEnd="_CWOL8PqqEeOy3cM4huDibg _CWOL8_qqEeOy3cM4huDibg" navigableOwnedEnd="_CWOL8PqqEeOy3cM4huDibg _CWOL8_qqEeOy3cM4huDibg">
+      <ownedEnd xmi:id="_CWOL8PqqEeOy3cM4huDibg" name="controller" type="_24tm0PqpEeOy3cM4huDibg" association="_CWNk4PqqEeOy3cM4huDibg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CWOL8fqqEeOy3cM4huDibg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CWOL8vqqEeOy3cM4huDibg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_CWOL8_qqEeOy3cM4huDibg" name="view" type="_2jvcYPqpEeOy3cM4huDibg" association="_CWNk4PqqEeOy3cM4huDibg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CWOL9PqqEeOy3cM4huDibg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CWOL9fqqEeOy3cM4huDibg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_D47U0PqqEeOy3cM4huDibg" name="A_&lt;controller>_&lt;model>" memberEnd="_D47U0fqqEeOy3cM4huDibg _D47U1PqqEeOy3cM4huDibg" navigableOwnedEnd="_D47U1PqqEeOy3cM4huDibg">
+      <ownedEnd xmi:id="_D47U0fqqEeOy3cM4huDibg" name="controller" type="_24tm0PqpEeOy3cM4huDibg" association="_D47U0PqqEeOy3cM4huDibg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D47U0vqqEeOy3cM4huDibg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D47U0_qqEeOy3cM4huDibg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_D47U1PqqEeOy3cM4huDibg" name="model" type="_3PP3gPqpEeOy3cM4huDibg" association="_D47U0PqqEeOy3cM4huDibg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D47U1fqqEeOy3cM4huDibg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D47U1vqqEeOy3cM4huDibg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_WAsLcPqqEeOy3cM4huDibg" name="Database"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_Yb_wQPqqEeOy3cM4huDibg" name="A_&lt;model>_&lt;database>" memberEnd="_Yb_wQfqqEeOy3cM4huDibg _Yb_wRPqqEeOy3cM4huDibg" navigableOwnedEnd="_Yb_wQfqqEeOy3cM4huDibg">
+      <ownedEnd xmi:id="_Yb_wQfqqEeOy3cM4huDibg" name="model" type="_LzV-8PqwEeOy3cM4huDibg" isUnique="false" association="_Yb_wQPqqEeOy3cM4huDibg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Yb_wQvqqEeOy3cM4huDibg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Yb_wQ_qqEeOy3cM4huDibg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_Yb_wRPqqEeOy3cM4huDibg" name="Datenbankanbindung" type="_WAsLcPqqEeOy3cM4huDibg" association="_Yb_wQPqqEeOy3cM4huDibg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Yb_wRfqqEeOy3cM4huDibg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Yb_wRvqqEeOy3cM4huDibg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_qp9VgPqqEeOy3cM4huDibg" name="DatabaseTypeFunctions"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_4WungPqqEeOy3cM4huDibg" name="A_&lt;database>_&lt;databaseTypeFunctions>" memberEnd="_4WungfqqEeOy3cM4huDibg _4WunhPqqEeOy3cM4huDibg" navigableOwnedEnd="_4WunhPqqEeOy3cM4huDibg">
+      <ownedEnd xmi:id="_4WungfqqEeOy3cM4huDibg" name="database" type="_WAsLcPqqEeOy3cM4huDibg" association="_4WungPqqEeOy3cM4huDibg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4WungvqqEeOy3cM4huDibg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4Wung_qqEeOy3cM4huDibg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_4WunhPqqEeOy3cM4huDibg" name="databaseTypeFunctions" type="_qp9VgPqqEeOy3cM4huDibg" association="_4WungPqqEeOy3cM4huDibg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4WunhfqqEeOy3cM4huDibg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4WunhvqqEeOy3cM4huDibg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_8AoGYPqqEeOy3cM4huDibg" name="MySql" clientDependency="_9dAk0PqqEeOy3cM4huDibg">
+      <interfaceRealization xmi:id="_9dAk0PqqEeOy3cM4huDibg" name="InterfaceRealization1" supplier="_qp9VgPqqEeOy3cM4huDibg" client="_8AoGYPqqEeOy3cM4huDibg" contract="_qp9VgPqqEeOy3cM4huDibg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_EOA-kPqrEeOy3cM4huDibg" name="BasicBox"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_MjdmkPqrEeOy3cM4huDibg" name="A_&lt;view>_&lt;basicBox>" memberEnd="_MjdmkfqrEeOy3cM4huDibg _MjdmlPqrEeOy3cM4huDibg" navigableOwnedEnd="_MjdmlPqrEeOy3cM4huDibg">
+      <ownedEnd xmi:id="_MjdmkfqrEeOy3cM4huDibg" name="view" type="_2jvcYPqpEeOy3cM4huDibg" association="_MjdmkPqrEeOy3cM4huDibg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MjdmkvqrEeOy3cM4huDibg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Mjdmk_qrEeOy3cM4huDibg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_MjdmlPqrEeOy3cM4huDibg" name="View Elemente" type="_EOA-kPqrEeOy3cM4huDibg" isUnique="false" association="_MjdmkPqrEeOy3cM4huDibg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MjdmlfqrEeOy3cM4huDibg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MjdmlvqrEeOy3cM4huDibg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_xCCccPqrEeOy3cM4huDibg" name="A_&lt;view>_&lt;basicBox>_2" memberEnd="_xCCccfqrEeOy3cM4huDibg _xCCcdPqrEeOy3cM4huDibg">
+      <ownedEnd xmi:id="_xCCccfqrEeOy3cM4huDibg" name="view" type="_2jvcYPqpEeOy3cM4huDibg" association="_xCCccPqrEeOy3cM4huDibg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xCCccvqrEeOy3cM4huDibg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xCCcc_qrEeOy3cM4huDibg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_xCCcdPqrEeOy3cM4huDibg" name="basicBox" type="_EOA-kPqrEeOy3cM4huDibg" isUnique="false" aggregation="shared" association="_xCCccPqrEeOy3cM4huDibg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xCCcdfqrEeOy3cM4huDibg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xCCcdvqrEeOy3cM4huDibg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_LzV-8PqwEeOy3cM4huDibg" name="Observer"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_Sy6ZIPqwEeOy3cM4huDibg" name="A_&lt;model>_&lt;database>_2" memberEnd="_Sy7AMPqwEeOy3cM4huDibg _Sy7AM_qwEeOy3cM4huDibg" navigableOwnedEnd="_Sy7AM_qwEeOy3cM4huDibg">
+      <ownedEnd xmi:id="_Sy7AMPqwEeOy3cM4huDibg" name="model" type="_3PP3gPqpEeOy3cM4huDibg" association="_Sy6ZIPqwEeOy3cM4huDibg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Sy7AMfqwEeOy3cM4huDibg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Sy7AMvqwEeOy3cM4huDibg" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_Sy7AM_qwEeOy3cM4huDibg" name="database" type="_WAsLcPqqEeOy3cM4huDibg" association="_Sy6ZIPqwEeOy3cM4huDibg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Sy7ANPqwEeOy3cM4huDibg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Sy7ANfqwEeOy3cM4huDibg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>
