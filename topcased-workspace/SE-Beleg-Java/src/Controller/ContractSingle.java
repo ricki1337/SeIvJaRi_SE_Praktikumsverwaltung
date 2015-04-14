@@ -119,6 +119,7 @@ public class ContractSingle extends Controller implements EditBoxCtrl,
 		model.setValueAtPosition("Bericht", false);
 		model.setValueAtPosition("Zeugnis", false);
 		model.setValueAtPosition("Empfehlung", false);
+		model.setValueAtPosition("Erfolg", false);
 		
 		setView(new Views.View(this) {
 			@Override
@@ -358,7 +359,18 @@ public class ContractSingle extends Controller implements EditBoxCtrl,
 			detailsBox.setStudentBox(new BoxElementContractDetailsStudentNew(this));
 			detailsBox.setCompanyBox(new BoxElementContractDetailsCompanyNew(this));
 			detailsBox.setProfBox(new BoxElementContractDetailsProfNew(this));
+			model.setValueAtPosition("Typ", new String(" "));
+			model.setValueAtPosition("beginnt am", new String(" "));
+			model.setValueAtPosition("endet am", new String(" "));
+			
+			model.setValueAtPosition("Bericht", false);
+			model.setValueAtPosition("Zeugnis", false);
+			model.setValueAtPosition("Empfehlung", false);
+			model.setValueAtPosition("Erfolg", false);
+			detailsBox.clearComponentValues();
+			
 		}
+		
 			
 	}
 	

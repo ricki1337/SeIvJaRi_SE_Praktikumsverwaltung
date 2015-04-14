@@ -315,7 +315,7 @@ public class Model implements Observer{
 			
 			//workaround Erfolg true == X in Datenbank
 			if(columnName.equals(SqlTableContracts.TableNameDotErfolg) || columnName.equals(SqlTableContracts.Erfolg))
-				columnValue = columnValue.equals("true")?"'X'":"''";
+				columnValue = columnValue.equals("true")?"'X'":"'0'";
 			
 			
 			if(counter > 1){

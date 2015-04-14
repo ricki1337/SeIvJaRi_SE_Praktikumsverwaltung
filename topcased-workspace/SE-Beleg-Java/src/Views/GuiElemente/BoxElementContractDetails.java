@@ -270,7 +270,7 @@ public class BoxElementContractDetails extends JPanel implements EditBox{
 	    jcb_empfehlung.setSelected(controller.getBooleanValueForBoxElementEdit(SqlTableContracts.Empfehlung));
 	    jcb_zeugnis.setSelected(controller.getBooleanValueForBoxElementEdit(SqlTableContracts.Zeugnis));
 	    jcb_bericht.setSelected(controller.getBooleanValueForBoxElementEdit(SqlTableContracts.Bericht));
-	    jcb_erfolg.setSelected(controller.getBooleanValueForBoxElementEdit(SqlTableContracts.Erfolg));
+	    jcb_erfolg.setSelected(controller.getStringValueForBoxElementEdit(SqlTableContracts.Erfolg).equals("true")?true:false);
 	}
 	
 	

@@ -1,5 +1,5 @@
 #Database Configuration
-#Tue Feb 10 07:50:56 CET 2015
+#Tue Apr 14 20:59:37 CEST 2015
 emailAdress=s68524@htw-dresden.de
 Datenbank=seproject
 key=value\nmuhahaha

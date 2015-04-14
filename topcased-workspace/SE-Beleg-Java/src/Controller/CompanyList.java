@@ -2,6 +2,7 @@ package Controller;
 
 import javax.swing.SortOrder;
 
+import Controller.ContractList.SearchThread;
 import Controller.Interfaces.SelectedValueCallbackCtrl;
 import Models.Datenbank.SqlTableCompanies;
 import Praktikumsverwaltung.Praktikumsverwaltung;
@@ -56,6 +57,21 @@ public class CompanyList extends Controller implements 	BasicBoxCtrl,
 	private BoxElementSearchMenu searchMenu;
 	
 	private SelectedValueCallbackCtrl callback = null;
+	private long lastSearchButtonTap = 0;
+	
+	
+	private SearchThread searchTask = new SearchThread() ;
+
+	class SearchThread extends Thread{
+		@Override
+		public void run() {
+			
+			String valueOfSearchField = searchMenu.getValueOfSearchField();
+			if(valueOfSearchField.length() >= 0)
+				((Models.ListModel)model).setSearchFilter(valueOfSearchField);
+				
+		}	
+	};
 	
 	/**
 	 * Erstellt die Listenansicht der Firmen<br>
@@ -191,7 +207,16 @@ public class CompanyList extends Controller implements 	BasicBoxCtrl,
 	
 	@Override
 	public void searchFieldChanged() {
-		((Models.ListModel)model).setSearchFilter(searchMenu.getValueOfSearchField());
+		String valueOfSearchField = searchMenu.getValueOfSearchField();
+		if(valueOfSearchField.length() == 0)
+			((Models.ListModel)model).deleteSearchFilterAndInformViews();
+		else
+			{
+			searchTask.stop();
+			searchTask.run();
+			}
+			
+		lastSearchButtonTap = System.currentTimeMillis();
 	}
 	
 	@Override

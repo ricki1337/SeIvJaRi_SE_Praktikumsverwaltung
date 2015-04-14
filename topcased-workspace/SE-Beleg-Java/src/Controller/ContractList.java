@@ -4,6 +4,8 @@ import java.util.Map;
 
 import javax.swing.SortOrder;
 
+import Controller.Interfaces.SelectedValueCallbackCtrl;
+import Controller.StudentList.SearchThread;
 import Models.Datenbank.SqlTableCompanies;
 import Models.Datenbank.SqlTableContracts;
 import Models.Datenbank.SqlTableProfs;
@@ -68,6 +70,20 @@ public class ContractList extends Controller implements 	BasicBoxCtrl,
 	private IntFilter successfulInternshipFilter = null;
 	private StringFilter internationalInternshipFilter = null;
 	
+	private SelectedValueCallbackCtrl callback = null;
+	private long lastSearchButtonTap = 0;
+	
+	
+	private SearchThread searchTask = new SearchThread() ;
+
+	class SearchThread extends Thread{
+		@Override
+		public void run() {
+			String valueOfSearchField = searchMenu.getValueOfSearchField();
+			if(valueOfSearchField.length() != 0)
+				((Models.ListModel)model).setSearchFilter(valueOfSearchField);		
+		}
+	};
 	
 	/**
 	 * Initialisiert die Liste zu Anzeige von Verträgen.<br>
@@ -216,7 +232,16 @@ public class ContractList extends Controller implements 	BasicBoxCtrl,
 
 	@Override
 	public void searchFieldChanged() {
-		((Models.ListModel)model).setSearchFilter(searchMenu.getValueOfSearchField());
+		String valueOfSearchField = searchMenu.getValueOfSearchField();
+		if(valueOfSearchField.length() == 0)
+			((Models.ListModel)model).deleteSearchFilterAndInformViews();
+		else
+			{
+			searchTask.stop();
+			searchTask.run();
+			}
+			
+		lastSearchButtonTap = System.currentTimeMillis();
 	}
 
 	@Override

@@ -130,6 +130,19 @@ public class ListModel extends Model{
 	}
 	
 	/**
+	 * Entfernt alle gesetzten Filter.
+	 */
+	public void deleteSearchFilterAndInformViews(){
+		String[] columnNames = getSqlResultColumnNames();
+		
+		for(String columnName:columnNames){
+			deleteFilter(columnName);
+		}
+		setResult();
+		informView();
+	}
+	
+	/**
 	 * Übermittelt den Datentyp der angegebenen Spalte.
 	 * @param columnName	SqlTable-Spaltenname
 	 * @return				Datentyp der Spalte.

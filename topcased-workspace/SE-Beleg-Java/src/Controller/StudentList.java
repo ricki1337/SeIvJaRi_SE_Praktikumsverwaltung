@@ -81,28 +81,10 @@ public class StudentList extends Controller implements	BasicBoxCtrl,
 			@Override
 			public void run() {
 				
-//				if((System.currentTimeMillis()-lastSearchButtonTap) < 300)
-//				{
-//					lastSearchButtonTap = System.currentTimeMillis();
-//					System.out.println("wait...");
-//					return;
-//				}
-//				System.out.println("waited for: "+String.valueOf(System.currentTimeMillis()-lastSearchButtonTap));
-//				lastSearchButtonTap = System.currentTimeMillis();
-				
-				
-				
 				String valueOfSearchField = searchMenu.getValueOfSearchField();
-				if(valueOfSearchField.length() == 0)
-					((Models.ListModel)model).deleteSearchFilter();
-				else
-					((Models.ListModel)model).setSearchFilter(valueOfSearchField);
-				
-				
+				if(valueOfSearchField.length() != 0)
+					((Models.ListModel)model).setSearchFilter(valueOfSearchField);	
 			}
-
-			
-			
 		};
 		
 	
@@ -319,8 +301,9 @@ public class StudentList extends Controller implements	BasicBoxCtrl,
 		
 		
 		String valueOfSearchField = searchMenu.getValueOfSearchField();
-		if(valueOfSearchField.length() == 0)
-			((Models.ListModel)model).deleteSearchFilter();
+		if(valueOfSearchField.length() == 0) {
+			((Models.ListModel)model).deleteSearchFilterAndInformViews();
+		}
 		else
 			{
 			searchTask.stop();
